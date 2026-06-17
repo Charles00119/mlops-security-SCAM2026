@@ -1,0 +1,112 @@
+[
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.untrusted_source_handling",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected untrusted source handling: The code only reads files uploaded directly by users or from local disk; it does not fetch data from any remote source such as a URL, S3, or HuggingFace Hub, so no integrity verification or source authentication is applicable or present.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_flipping_detection",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected label flipping detection: No code checks label distributions, validates label values against an expected set, or uses any label-noise detection tool before training.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.data_poisoning_defenses",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected data poisoning defenses: There are no outlier detection, statistical anomaly checks, or suspicious input filtering steps applied to the training data before modeling.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.model_integrity_verification",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected model integrity verification: The code trains models from scratch (CatBoostClassifier) and does not load any pretrained weights or serialized models, so no integrity verification (hash check, signature, or pinned revision) is performed.",
+    "snippet": "",
+    "stage": "modeling"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_distribution_validation",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected label distribution validation: The code performs no class balance check, expected-label-set validation, or anomaly detection on training samples before or during training.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.backdoor_or_trigger_detection",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected backdoor or trigger detection: There is no neural-cleanse-style trigger detection, activation-pattern analysis, or gradient anomaly detection anywhere in the training loop.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.differential_privacy",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected differential privacy: No differential privacy library (Opacus, TensorFlow Privacy, DP-SGD, etc.) is imported or used; CatBoost is trained without any DP mechanisms.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.adversarial_robustness_testing",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected adversarial robustness testing: No adversarial robustness testing frameworks (Foolbox, ART, FGSM, PGD, etc.) are imported or invoked anywhere in the code.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.metric_tampering_protection",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected metric tampering protection: Although a train/test split is performed, the test set is not isolated from the Optuna tuning loop (it is passed directly to optuna_learning for evaluation), there is no signing or hashing of evaluation data, and only a single metric (ROC-AUC/Gini) is used without independent validation.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.output_bounds_checks",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected output bounds checks: The run() function and inference path perform no sanity checks on model outputs (e.g., probability bounds, NaN guards) before returning or logging results.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.prompt_injection_defenses",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected prompt injection defenses: The model is a tabular CatBoost classifier, not an LLM, so prompt-injection defenses are not applicable and none are implemented.",
+    "snippet": "",
+    "stage": "inference"
+  }
+]

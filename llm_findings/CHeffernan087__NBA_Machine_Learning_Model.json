@@ -1,0 +1,122 @@
+[
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_validation",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected input validation: The code reads CSV files directly into DataFrames and accesses columns by position without any schema checks, dtype assertions, null-value guards, or value-range validations.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.untrusted_source_handling",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected untrusted source handling: Data is scraped from basketball-reference.com via CSVGenerator without any checksum verification, authentication, or integrity checks on the retrieved content.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_flipping_detection",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected label flipping detection: No code checks label distributions, validates label values against an expected set, or uses any label-noise detection tool before training.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.data_poisoning_defenses",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected data poisoning defenses: The data preparation code reads CSVs and constructs features without any outlier detection, statistical anomaly checks, or filtering of suspicious training samples.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.model_integrity_verification",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected model integrity verification: The code trains models from scratch using sklearn (LogisticRegression, SVC, KNeighborsClassifier) and loads only CSV data files; no pretrained weights or serialized models are loaded, and no hash/signature verification is performed anywhere.",
+    "snippet": "",
+    "stage": "modeling"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_distribution_validation",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected label distribution validation: The code reads training and testing CSVs and splits features/labels but performs no class balance check, expected-label-set verification, or anomalous sample detection before training.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.backdoor_or_trigger_detection",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected backdoor or trigger detection: There is no trigger detection, activation-pattern analysis, neural cleanse, or any other backdoor defense anywhere in the training loop or helper functions.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.differential_privacy",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected differential privacy: No differential privacy library (Opacus, TensorFlow Privacy, DP-SGD, etc.) is imported or used; standard scikit-learn pipelines are used without any noise-addition mechanism.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.adversarial_robustness_testing",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected adversarial robustness testing: No adversarial robustness testing tools (Foolbox, ART, FGSM, PGD, etc.) are imported or used anywhere in the code.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_sanitization",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected input sanitization: The code reads CSV files directly into DataFrames and slices columns with no shape, range, type, or schema validation before passing features to the model.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.output_bounds_checks",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected output bounds checks: Predictions are consumed directly via accuracy_score, recall_score, etc. with no NaN guards, probability sanity checks, or threshold validation on model outputs.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.prompt_injection_defenses",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected prompt injection defenses: This pipeline uses classical ML classifiers (Logistic Regression, SVC, KNN), not an LLM, so prompt-injection defenses are not applicable and none are present.",
+    "snippet": "",
+    "stage": "inference"
+  }
+]

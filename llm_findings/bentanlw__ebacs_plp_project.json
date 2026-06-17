@@ -1,0 +1,132 @@
+[
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_validation",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected input validation: While there are basic checks for empty strings (intent=='' and pattern==''), there is no schema validation, type checking, length limits, or sanitization of user-supplied text before it is processed or stored in the database.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.untrusted_source_handling",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected untrusted source handling: Data is loaded from local pickle/model files and a local SQLite database; no remote sources are fetched, and no checksum or integrity verification is performed on the local files loaded (e.g., the pickle embeddings file).",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_flipping_detection",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected label flipping detection: The code performs no comparison of label distributions, validation against an expected label set, or use of any label-noise detection tool before training.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.data_poisoning_defenses",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected data poisoning defenses: There is no outlier detection, statistical anomaly checking, or filtering of suspicious training samples anywhere in the data preparation pipeline.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.model_integrity_verification",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected model integrity verification: The code loads pretrained embeddings via pickle and models via keras load_model with no hash check, signature verification, or pinned revision before use.",
+    "snippet": "",
+    "stage": "modeling"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_distribution_validation",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected label distribution validation: The code computes class weights via sklearn's compute_class_weight for loss balancing, but performs no explicit validation or check of label distribution, expected label set, or anomalous sample detection before training.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.backdoor_or_trigger_detection",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected backdoor or trigger detection: There is no neural-cleanse-style trigger detection, activation-pattern analysis, or gradient anomaly detection anywhere in the training pipeline.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.differential_privacy",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected differential privacy: The training code uses standard Keras/Adam optimizer with no differential privacy library (Opacus, TensorFlow Privacy, DP-SGD) integrated.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.adversarial_robustness_testing",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected adversarial robustness testing: No adversarial robustness testing libraries (Foolbox, ART, FGSM, PGD) or any adversarial stress tests are present anywhere in the code.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.metric_tampering_protection",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected metric tampering protection: While a train-test split is performed, there is no held-out isolation enforced programmatically, no signed/hashed evaluation data, and no multiple independent metrics logged; the same LabelEncoder/OneHotEncoder is fit inside PrepareData without ensuring test labels are encoded only from training fit",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_sanitization",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected input sanitization: User input is only lowercased, stripped of whitespace, and collapsed spaces — there are no shape/range checks, schema validation, length limits, or rejection of malformed inputs before passing to PredictClass or PredictNer.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.output_bounds_checks",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected output bounds checks: The code uses the model outputs (intent label, NER entities) directly without any probability threshold checks, NaN guards, or confidence-score validation.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.prompt_injection_defenses",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected prompt injection defenses: This is not an LLM pipeline; it uses a shallow CNN classifier and NER model, so prompt-injection defenses are not applicable and none are implemented.",
+    "snippet": "",
+    "stage": "inference"
+  }
+]

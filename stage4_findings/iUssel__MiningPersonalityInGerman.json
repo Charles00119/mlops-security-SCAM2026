@@ -1,0 +1,72 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "helper/scraping.py",
+    "line": 255,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "254             print(\n255                 'Will select followers from ' +\n256                 str(sampling_follower) +\n257                 ' users retrieved via location scraping. '",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "miping/interfaces/glove.py",
+    "line": 100,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "99                 # so that question marks ? can be added\n100                 sql = \"SELECT * FROM glove WHERE words IN ({seq})\".format(\n101                         seq=','.join(['?']*len(chunkList))",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "miping/interfaces/ibm.py",
+    "line": 83,
+    "message": "Call to requests without timeout",
+    "snippet": "82 \n83         response = requests.post(\n84             self.url,\n85             data=myobj,\n86             headers=myHeaders,\n87             auth=('apiKey', self.apiKey)\n88         )\n89",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B103",
+    "file_path": "miping/one_time_setup.py",
+    "line": 86,
+    "message": "Chmod setting a permissive mask 0o777 on file (dest).",
+    "snippet": "85                 # change permissions as open as possible\n86                 os.chmod(dest, 0o0777)\n87             else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "miping/one_time_setup.py",
+    "line": 623,
+    "message": "Call to requests without timeout",
+    "snippet": "622                 # write zip to file\n623                 with requests.get(zip_file_url, stream=True) as r:\n624                     copyfileobj(r.raw, f)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "miping/webapp/requestHandler.py",
+    "line": 178,
+    "message": "Call to requests without timeout",
+    "snippet": "177             # query google service\n178             google_response = requests.post(verify_url)\n179",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.insecure-file-permissions.insecure-file-permissions",
+    "file_path": "miping/one_time_setup.py",
+    "line": 86,
+    "message": "These permissions `0o0777` are widely permissive and grant access to more people than may be necessary. A good default is `0o644` which gives read and write access to yourself and read access to everyone else.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

@@ -1,0 +1,132 @@
+[
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_validation",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected input validation: The code only checks that 'image' key exists and filename is non-empty, but does not validate file type, extension, MIME type, image dimensions, or content integrity before processing.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.untrusted_source_handling",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected untrusted source handling: All data comes from local file uploads or local disk files; there is no fetching from remote sources, and no checksum or signature verification is performed on any loaded file.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_flipping_detection",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected label flipping detection: There is no label distribution comparison, label value validation against an expected set, or any label-noise detection tool used anywhere in the data preparation pipeline.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.data_poisoning_defenses",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected data poisoning defenses: The code performs no outlier detection, statistical anomaly checks, or filtering of suspicious inputs on training samples or uploaded images before processing.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.model_integrity_verification",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected model integrity verification: Both CNN.py and SVM.py load serialized model files (e.g., 'CNN_Model.pkl') using pickle without any hash check, signature verification, or pinned revision to verify integrity before loading.",
+    "snippet": "",
+    "stage": "modeling"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_distribution_validation",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected label distribution validation: The code loads datasets via image_dataset_from_directory and prints image count, but performs no class balance check, expected-label-set validation, or anomalous sample detection before training.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.backdoor_or_trigger_detection",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected backdoor or trigger detection: There is no neural cleanse, activation analysis, gradient anomaly detection, or any other backdoor/trigger defense present in the training loop.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.differential_privacy",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected differential privacy: The code uses standard Keras/TensorFlow training with no DP-SGD, Opacus, TensorFlow Privacy, or any other differential privacy mechanism.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.adversarial_robustness_testing",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected adversarial robustness testing: No adversarial testing frameworks (Foolbox, ART, FGSM, PGD, etc.) or robustness stress tests are present anywhere in the code.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.metric_tampering_protection",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected metric tampering protection: There is no held-out test set isolation, signed/hashed evaluation data, or use of multiple independent metrics; evaluation is purely inference-time prediction with no metric tracking or integrity controls.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_sanitization",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected input sanitization: Only `secure_filename` and a non-empty filename check are performed; there is no validation of file type (MIME type or extension whitelist), image dimensions, file size limits, or content integrity before passing the file to the model pipeline.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.output_bounds_checks",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected output bounds checks: Model outputs (denomination from CNN and prediction from SVM) are used directly in the response string with no probability/confidence threshold checks, NaN guards, or sanity validation of returned values.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.prompt_injection_defenses",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected prompt injection defenses: This pipeline uses image-based CNN and SVM models, not an LLM, so prompt-injection defenses are not applicable and none are implemented.",
+    "snippet": "",
+    "stage": "inference"
+  }
+]

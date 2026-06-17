@@ -1,0 +1,32 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "app_live_test.py",
+    "line": 18,
+    "message": "Call to requests without timeout",
+    "snippet": "17 \n18 response = requests.post(\n19     url='https://ml-heroku-fastapi.herokuapp.com/',\n20     json=data\n21 )\n22",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "MAL-2026-4750",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "fastapi 0.136.3: --- _-= Per source details. Do not edit below this line.=-_  ## Source: amazon-inspector (a753fd569a7bb908b7cdf82fe0228dc0e24dcc253b67993af5dd5c30b61f4411) This release of fastapi 0.136.3 modifies pyp (fix: no fix listed)",
+    "snippet": "fastapi==0.136.3",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2025-69872",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "diskcache 5.6.3: DiskCache (python-diskcache) through 5.6.3 uses Python pickle for serialization by default. An attacker with write access to the cache directory can achieve arbitrary code execution when a victim appl (fix: no fix listed)",
+    "snippet": "diskcache==5.6.3",
+    "stage": "dependencies"
+  }
+]

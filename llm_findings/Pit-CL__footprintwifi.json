@@ -1,0 +1,132 @@
+[
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_validation",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected input validation: The code reads CSV files and applies filters/column operations but performs no schema checks, dtype assertions, or value-range guards on the incoming data before use.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.untrusted_source_handling",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected untrusted source handling: Data is read from a local filesystem path with no checksum verification, authentication, or integrity checks of any kind.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_flipping_detection",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected label flipping detection: The code performs no label distribution comparison, label value validation, or noise-detection (e.g., Cleanlab) at any point in the data preparation flow.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.data_poisoning_defenses",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected data poisoning defenses: The only filtering applied is a bounding-box geographic filter for Santiago; there are no outlier detection routines, statistical anomaly checks, or suspicious-input filtering to defend against poisoned samples.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.model_integrity_verification",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected model integrity verification: The code does not load any pretrained weights or serialized model; it builds a LightGBM model from scratch with no hash, signature, or revision verification.",
+    "snippet": "",
+    "stage": "modeling"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_distribution_validation",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected label distribution validation: There is no code that checks class balance, expected label sets, or anomalous sample distributions before training.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.backdoor_or_trigger_detection",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected backdoor or trigger detection: No backdoor or trigger detection mechanisms (e.g., neural cleanse, activation analysis, gradient anomaly detection) are present in the code.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.differential_privacy",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected differential privacy: The code uses LightGBM and PySpark ML without any differential privacy library or DP-SGD mechanism.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.adversarial_robustness_testing",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected adversarial robustness testing: There is no use of Foolbox, ART, FGSM, PGD, or any adversarial attack/robustness testing framework anywhere in the visible code.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.metric_tampering_protection",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected metric tampering protection: Although sklearn's train_test_split and accuracy_score/confusion_matrix are imported, there is no visible enforcement of test-set isolation from training, no hashing/signing of evaluation data, and no use of multiple independent metrics in the truncated code shown.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_sanitization",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected input sanitization: The code reads CSV files and applies spatial filters (lat/lon bounds) but performs no schema validation, type checking, or input sanitization before passing data to the model.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.output_bounds_checks",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected output bounds checks: The truncated code shows use of accuracy_score and confusion_matrix but no checks on model output probabilities, NaN guards, or threshold validation before returning predictions.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.prompt_injection_defenses",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected prompt injection defenses: This pipeline uses LightGBM on tabular WiFi geolocation data, not an LLM, so prompt-injection defenses are not applicable and not present.",
+    "snippet": "",
+    "stage": "inference"
+  }
+]

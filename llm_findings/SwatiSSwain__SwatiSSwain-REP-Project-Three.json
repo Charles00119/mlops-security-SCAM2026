@@ -1,0 +1,132 @@
+[
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_validation",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected input validation: User-supplied predictor_list from the POST request is passed directly into SQL queries and pandas operations without any type, range, or schema validation.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.untrusted_source_handling",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected untrusted source handling: The code connects to a PostgreSQL database using credentials from environment variables but performs no integrity checks, checksum verification, or source authentication on the retrieved data.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_flipping_detection",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected label flipping detection: The code fetches target labels from the database and uses them directly for training without any validation of label distributions, expected label sets, or label-noise detection.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.data_poisoning_defenses",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected data poisoning defenses: The only data cleaning performed is dropna() to remove missing values; there is no outlier detection, statistical anomaly checking, or filtering of suspicious inputs to defend against data poisoning.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.model_integrity_verification",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected model integrity verification: The code trains a RandomForestClassifier from scratch each time predict() is called and does not load any serialized/pretrained model weights, so there is no integrity verification (no hash check, signature, or pinned revision) applied to any model artifact.",
+    "snippet": "",
+    "stage": "modeling"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_distribution_validation",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected label distribution validation: No code checks class balance, validates expected label set, or detects anomalous samples before training begins.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.backdoor_or_trigger_detection",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected backdoor or trigger detection: There is no trigger detection, activation analysis, or gradient anomaly detection of any kind in the training loop.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.differential_privacy",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected differential privacy: The code uses a standard scikit-learn RandomForestClassifier with no differential privacy library or DP-SGD mechanism applied.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.adversarial_robustness_testing",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected adversarial robustness testing: No adversarial robustness testing libraries or techniques (Foolbox, ART, FGSM, PGD, etc.) are present anywhere in the code.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.metric_tampering_protection",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected metric tampering protection: Although a train/test split is used, there is no held-out set isolation enforcement, no hashing/signing of evaluation data, and only a single accuracy metric (rf.score) is computed with no additional independent metrics or integrity checks.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_sanitization",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected input sanitization: The inference path passes user-supplied predictor lists directly to SQL queries and the model without any shape, range, type, or schema validation.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.output_bounds_checks",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected output bounds checks: The Random Forest predictions and feature importances are returned without any NaN guards, probability sanity checks, or threshold validation.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.prompt_injection_defenses",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected prompt injection defenses: The model is a Random Forest classifier, not an LLM, so prompt injection defenses are not applicable.",
+    "snippet": "",
+    "stage": "inference"
+  }
+]

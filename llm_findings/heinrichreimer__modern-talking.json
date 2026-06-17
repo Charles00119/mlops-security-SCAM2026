@@ -1,0 +1,122 @@
+[
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_validation",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected input validation: The download function only checks whether files already exist on disk; there is no validation of file structure, schema, dtype, or value ranges after download.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.untrusted_source_handling",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected untrusted source handling: Files are fetched via urlretrieve from a GitHub raw URL with no checksum verification, signature check, or pinned commit/revision, so integrity of downloaded data is never confirmed.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_flipping_detection",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected label flipping detection: The code contains no checks for label-flipping anomalies, unexpected label values, or label distribution comparisons; labels are used as-is from CSV files.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.data_poisoning_defenses",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected data poisoning defenses: There is no outlier detection, statistical anomaly checking, or suspicious-input filtering applied to the downloaded training data before use.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.model_integrity_verification",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected model integrity verification: Pretrained models like 'bert-base-uncased' and 'distilbert-base-uncased' are referenced by name with no hash check, signature verification, or pinned revision to verify integrity before loading.",
+    "snippet": "",
+    "stage": "modeling"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_distribution_validation",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected label distribution validation: No code checks class balance, expected label sets, or anomalous sample distributions before training begins.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.backdoor_or_trigger_detection",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected backdoor or trigger detection: There is no activation analysis, gradient anomaly detection, or any backdoor/trigger defense present in the training pipeline.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.differential_privacy",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected differential privacy: No differential privacy libraries (Opacus, TensorFlow Privacy, DP-SGD) or mechanisms are imported or used anywhere in the code.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.adversarial_robustness_testing",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected adversarial robustness testing: No adversarial robustness testing libraries or attack methods (Foolbox, ART, FGSM, PGD) are present anywhere in the code.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_sanitization",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected input sanitization: No input validation, shape checks, schema enforcement, or malformed-input rejection is visible anywhere on the inference data-flow path.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.output_bounds_checks",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected output bounds checks: The evaluation code applies a 0.5 threshold to discretize labels but there are no NaN guards, probability range assertions, or sanity bounds applied to raw model outputs before use.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.prompt_injection_defenses",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected prompt injection defenses: Although BERT/DistilBERT transformer models are used, the pipeline is a classification/matching task with no chat or generative text output, and no prompt-injection filtering or output content moderation is implemented.",
+    "snippet": "",
+    "stage": "inference"
+  }
+]

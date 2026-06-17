@@ -1,0 +1,272 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "src/data/download_dataset.py",
+    "line": 11,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "10     else:\n11         dataset_dict = load_dataset(name)\n12         if not os.path.exists(save_path):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "src/data/load_data.py",
+    "line": 26,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "25         self.batch_size = batch_size\n26         self.tokenizer = AutoTokenizer.from_pretrained(self.model_name, use_fast=True)\n27         self.debug = debug",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "src/data/load_data.py",
+    "line": 60,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "59         datasets.load_from_disk(self.data_path)\n60         AutoTokenizer.from_pretrained(self.model_name, use_fast=True)\n61",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "src/models/deprecated/fine_tuninng_with_PyTorch_Lightning.py",
+    "line": 33,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "32         self.batch_size = batch_size\n33         self.tokenizer = AutoTokenizer.from_pretrained(self.model_name, use_fast=True)\n34",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "src/models/deprecated/fine_tuninng_with_PyTorch_Lightning.py",
+    "line": 48,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "47         datasets.load_from_disk(self.data_path)\n48         AutoTokenizer.from_pretrained(self.model_name, use_fast=True)\n49",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "src/models/deprecated/fine_tuninng_with_PyTorch_Lightning.py",
+    "line": 85,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "84         # define the model\n85         self.model = AutoModelForSequenceClassification.from_pretrained(\n86             model_name, num_labels=2\n87         )\n88         self.metric = datasets.load_metric(\"accuracy\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "src/models/deprecated/fine_tuninng_with_sigle_gpu_or_cpu.py",
+    "line": 35,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "34         self.batch_size = batch_size\n35         self.tokenizer = AutoTokenizer.from_pretrained(self.model_name, use_fast=True)\n36",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "src/models/deprecated/fine_tuninng_with_sigle_gpu_or_cpu.py",
+    "line": 50,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "49         datasets.load_from_disk(self.data_path)\n50         AutoTokenizer.from_pretrained(self.model_name, use_fast=True)\n51",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "src/models/deprecated/fine_tuninng_with_sigle_gpu_or_cpu.py",
+    "line": 90,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "89         # define the model\n90         self.model = AutoModelForSequenceClassification.from_pretrained(\n91             model_name, num_labels=2\n92         )\n93         self.metric = datasets.load_metric(\"accuracy\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "src/models/deprecated/predict_model.py",
+    "line": 15,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "14     processed_datasets = load_from_disk(path)\n15     tokenizer = AutoTokenizer.from_pretrained(\"bert-base-cased\")\n16",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "src/models/deprecated/predict_model.py",
+    "line": 38,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "37     test_dataloader = fetch_data()\n38     model = AutoModelForSequenceClassification.from_pretrained(\n39         \"bert-base-cased\", num_labels=2\n40     )\n41     model.load_state_dict(torch.load(\"outputs/2022-01-19/15-29-53/model1.pt\"))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "src/models/deprecated/predict_model.py",
+    "line": 41,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "40     )\n41     model.load_state_dict(torch.load(\"outputs/2022-01-19/15-29-53/model1.pt\"))\n42     device = torch.device(\"cuda\") if torch.cuda.is_available() else torch.device(\"cpu\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "src/models/deprecated/train_model(deprecated).py",
+    "line": 30,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "29     # processed_datasets = load_from_disk(path)\n30     tokenizer = AutoTokenizer.from_pretrained(\"bert-base-cased\")\n31",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "src/models/deprecated/train_model(deprecated).py",
+    "line": 75,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "74         # Defining model\n75         model = AutoModelForSequenceClassification.from_pretrained(\n76             cfg.model, num_labels=2\n77         )\n78         optimizer = AdamW(model.parameters(), lr=cfg.lr)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "src/models/model.py",
+    "line": 25,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "24         # define the model\n25         self.model = AutoModelForSequenceClassification.from_pretrained(\n26             model_name, num_labels=2\n27         )\n28         self.metric = datasets.load_metric(\"accuracy\")",
+    "stage": "evaluation+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "src/utils/deploy.py",
+    "line": 27,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "26         # define the model\n27         self.model = AutoModelForSequenceClassification.from_pretrained(\n28             model_name, num_labels=2\n29         )\n30         self.metric = datasets.load_metric(\"accuracy\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "src/utils/deploy.py",
+    "line": 99,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "98 print(\"io\")\n99 model.load_state_dict(torch.load(data, map_location=torch.device(\"cpu\")))\n100 print(\"model loaded\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "src/utils/pkl_transformer.py",
+    "line": 21,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "20 \n21 tokenizer = AutoTokenizer.from_pretrained(\"bert-base-cased\")\n22",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "src/utils/pkl_transformer.py",
+    "line": 39,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "38 model.load_state_dict(\n39     torch.load(pt_file, map_location=torch.device(\"cpu\"))[\"state_dict\"]\n40 )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tests/test_data_old.py",
+    "line": 8,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "7     # Fetching data\n8     processed_dataset = load_dataset(\"imdb\")\n9     tokenizer = AutoTokenizer.from_pretrained(\"bert-base-cased\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tests/test_data_old.py",
+    "line": 9,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "8     processed_dataset = load_dataset(\"imdb\")\n9     tokenizer = AutoTokenizer.from_pretrained(\"bert-base-cased\")\n10",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tests/test_tokenizer.py",
+    "line": 13,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "12 \n13 tokenizer = AutoTokenizer.from_pretrained(\"bert-base-cased\")\n14",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tests/test_train.py",
+    "line": 20,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "19 # Temporary load of data\n20 raw_datasets = load_dataset(\"imdb\")\n21 tokenizer = AutoTokenizer.from_pretrained(\"bert-base-cased\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tests/test_train.py",
+    "line": 21,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "20 raw_datasets = load_dataset(\"imdb\")\n21 tokenizer = AutoTokenizer.from_pretrained(\"bert-base-cased\")\n22",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tests/test_train.py",
+    "line": 44,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "43     def testing_optimizer(self):\n44         model = AutoModelForSequenceClassification.from_pretrained(\n45             \"bert-base-cased\", num_labels=2\n46         )\n47         optimizer = AdamW(model.parameters(), lr=0.001)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tests/test_train.py",
+    "line": 91,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "90         \"\"\"\n91         model = AutoModelForSequenceClassification.from_pretrained(\n92             \"bert-base-cased\", num_labels=2\n93         )\n94         optimizer = AdamW(model.parameters(), lr=0.001)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "src/utils/pkl_transformer.py",
+    "line": 52,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

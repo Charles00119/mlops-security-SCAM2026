@@ -1,0 +1,22 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "app/services/tensorboard_process.py",
+    "line": 14,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "13         if self.os_name == \"nt\":\n14             os.system(f\"{sys.executable} -m tensorboard.main --logdir '{self.log_dp}' 2> NUL\")\n15         elif self.os_name == \"posix\":",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "app/services/tensorboard_process.py",
+    "line": 16,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "15         elif self.os_name == \"posix\":\n16             os.system(f\"{sys.executable} -m tensorboard.main --logdir '{self.log_dp}' >/dev/null 2>&1\")\n17         else:",
+    "stage": "reachable_unmapped"
+  }
+]

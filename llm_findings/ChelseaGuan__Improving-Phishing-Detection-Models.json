@@ -1,0 +1,132 @@
+[
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_validation",
+    "file_path": "train.py",
+    "line": 0,
+    "message": "No detected input validation: No schema checks, dtype assertions, or value-range guards are visible in the data acquisition path; the code reads files and connects to MySQL without validating structure or types of incoming data.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.untrusted_source_handling",
+    "file_path": "train.py",
+    "line": 0,
+    "message": "No detected untrusted source handling: The code explicitly disables SSL/TLS warnings via urllib3.disable_warnings and uses InsecureRequestWarning suppression, with no checksum verification, signed URLs, or authentication of remote sources.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_flipping_detection",
+    "file_path": "train.py",
+    "line": 0,
+    "message": "No detected label flipping detection: There is no code that validates label values, checks label distributions, or uses any label-noise detection tool before training.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.data_poisoning_defenses",
+    "file_path": "train.py",
+    "line": 0,
+    "message": "No detected data poisoning defenses: No outlier detection, statistical anomaly checks, or filtering of suspicious training samples is present in the data preparation code path.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.model_integrity_verification",
+    "file_path": "train.py",
+    "line": 0,
+    "message": "No detected model integrity verification: No pretrained model loading is visible in the provided code, and there is no hash check, signature verification, or pinned revision control anywhere in the snippet.",
+    "snippet": "",
+    "stage": "modeling"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_distribution_validation",
+    "file_path": "train.py",
+    "line": 0,
+    "message": "No detected label distribution validation: No code checks class balance, expected label sets, or anomalous sample distribution before training begins.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.backdoor_or_trigger_detection",
+    "file_path": "train.py",
+    "line": 0,
+    "message": "No detected backdoor or trigger detection: There is no neural-cleanse-style trigger detection, activation-pattern analysis, or gradient anomaly detection present in the training code.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.differential_privacy",
+    "file_path": "train.py",
+    "line": 0,
+    "message": "No detected differential privacy: No differential privacy libraries (Opacus, TensorFlow Privacy, DP-SGD) or mechanisms are imported or used anywhere in the code.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.adversarial_robustness_testing",
+    "file_path": "train.py",
+    "line": 0,
+    "message": "No detected adversarial robustness testing: No adversarial robustness testing frameworks (Foolbox, ART, FGSM, PGD, etc.) are imported or invoked anywhere in the code slice.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.metric_tampering_protection",
+    "file_path": "train.py",
+    "line": 0,
+    "message": "No detected metric tampering protection: There is no evidence of a held-out test set isolation mechanism, signed/hashed evaluation data, or use of multiple independent metrics to protect against metric manipulation in the provided code.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_sanitization",
+    "file_path": "train.py",
+    "line": 0,
+    "message": "No detected input sanitization: The code performs regex-based domain/URL parsing and keyword filtering but there are no explicit input shape/range checks, schema validation, or malformed-input rejection guards on the inference data path.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.output_bounds_checks",
+    "file_path": "train.py",
+    "line": 0,
+    "message": "No detected output bounds checks: No code is visible that checks model output probabilities for NaN, out-of-range values, or applies calibrated thresholds before returning inference results.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.prompt_injection_defenses",
+    "file_path": "train.py",
+    "line": 0,
+    "message": "No detected prompt injection defenses: This is a phishing-detection ML pipeline (not an LLM), so prompt-injection defenses are not applicable and none are present.",
+    "snippet": "",
+    "stage": "inference"
+  }
+]

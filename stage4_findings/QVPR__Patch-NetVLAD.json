@@ -1,0 +1,192 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "add_pca.py",
+    "line": 98,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "97             print(\"=> loading checkpoint '{}'\".format(opt.resume_path))\n98             checkpoint = torch.load(opt.resume_path, map_location=lambda storage, loc: storage)\n99             config['global_params']['num_clusters'] = str(checkpoint['state_dict']['pool.centroids'].shape[0])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "download_models.py",
+    "line": 33,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "32             print('Downloading mapillary_WPCA128.pth.tar')\n33             urllib.request.urlretrieve(\"https://huggingface.co/TobiasRobotics/Patch-NetVLAD/resolve/main/mapillary_WPCA128.pth.tar?download=true\", os.path.join(dest_dir, \"mapillary_WPCA128.pth.tar\"))\n34         if not os.path.isfile(os.path.join(dest_dir, \"mapillary_WPCA512.pth.tar\")):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "download_models.py",
+    "line": 36,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "35             print('Downloading mapillary_WPCA512.pth.tar')\n36             urllib.request.urlretrieve(\"https://huggingface.co/TobiasRobotics/Patch-NetVLAD/resolve/main/mapillary_WPCA512.pth.tar?download=true\", os.path.join(dest_dir, \"mapillary_WPCA512.pth.tar\"))\n37         if not os.path.isfile(os.path.join(dest_dir, \"mapillary_WPCA4096.pth.tar\")):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "download_models.py",
+    "line": 39,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "38             print('Downloading mapillary_WPCA4096.pth.tar')\n39             urllib.request.urlretrieve(\"https://huggingface.co/TobiasRobotics/Patch-NetVLAD/resolve/main/mapillary_WPCA4096.pth.tar?download=true\", os.path.join(dest_dir, \"mapillary_WPCA4096.pth.tar\"))\n40         if not os.path.isfile(os.path.join(dest_dir, \"pittsburgh_WPCA128.pth.tar\")):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "download_models.py",
+    "line": 42,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "41             print('Downloading pittsburgh_WPCA128.pth.tar')\n42             urllib.request.urlretrieve(\"https://huggingface.co/TobiasRobotics/Patch-NetVLAD/resolve/main/pitts_WPCA128.pth.tar?download=true\", os.path.join(dest_dir, \"pittsburgh_WPCA128.pth.tar\"))\n43         if not os.path.isfile(os.path.join(dest_dir, \"pittsburgh_WPCA512.pth.tar\")):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "download_models.py",
+    "line": 45,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "44             print('Downloading pittsburgh_WPCA512.pth.tar')\n45             urllib.request.urlretrieve(\"https://huggingface.co/TobiasRobotics/Patch-NetVLAD/resolve/main/pitts_WPCA512.pth.tar?download=true\", os.path.join(dest_dir, \"pittsburgh_WPCA512.pth.tar\"))\n46         if not os.path.isfile(os.path.join(dest_dir, \"pittsburgh_WPCA4096.pth.tar\")):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "download_models.py",
+    "line": 48,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "47             print('Downloading pittsburgh_WPCA4096.pth.tar')\n48             urllib.request.urlretrieve(\"https://huggingface.co/TobiasRobotics/Patch-NetVLAD/resolve/main/pitts_WPCA4096.pth.tar?download=true\", os.path.join(dest_dir, \"pittsburgh_WPCA4096.pth.tar\"))\n49         if not os.path.isfile(os.path.join(dest_dir, \"landmarks_WPCA4096.pth.tar\")):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "download_models.py",
+    "line": 51,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "50             print('Downloading landmarks_WPCA4096.pth.tar')\n51             urllib.request.urlretrieve(\"https://huggingface.co/TobiasRobotics/Patch-NetVLAD/resolve/main/landmarks_WPCA4096.pth.tar?download=true\", os.path.join(dest_dir, \"landmarks_WPCA4096.pth.tar\"))\n52         print('Downloaded all pretrained models.')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "feature_extract.py",
+    "line": 152,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "151         print(\"=> loading checkpoint '{}'\".format(resume_ckpt))\n152         checkpoint = torch.load(resume_ckpt, map_location=lambda storage, loc: storage)\n153         if config['global_params']['num_pcs'] != '0':",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "match_realtime.py",
+    "line": 85,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "84         print(\"=> loading checkpoint '{}'\".format(resume_ckpt))\n85         checkpoint = torch.load(resume_ckpt, map_location=lambda storage, loc: storage)\n86         assert checkpoint['state_dict']['WPCA.0.bias'].shape[0] == int(config['global_params']['num_pcs'])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "match_two.py",
+    "line": 198,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "197         print(\"=> loading checkpoint '{}'\".format(resume_ckpt))\n198         checkpoint = torch.load(resume_ckpt, map_location=lambda storage, loc: storage)\n199         assert checkpoint['state_dict']['WPCA.0.bias'].shape[0] == int(config['global_params']['num_pcs'])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "train.py",
+    "line": 124,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "123             print(\"=> loading checkpoint '{}'\".format(opt.resume_path))\n124             checkpoint = torch.load(opt.resume_path, map_location=lambda storage, loc: storage)\n125             config['global_params']['num_clusters'] = str(checkpoint['state_dict']['pool.centroids'].shape[0])",
+    "stage": "data_acquisition+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "download_models.py",
+    "line": 33,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "download_models.py",
+    "line": 36,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "download_models.py",
+    "line": 39,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "download_models.py",
+    "line": 42,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "download_models.py",
+    "line": 45,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "download_models.py",
+    "line": 48,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "download_models.py",
+    "line": 51,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

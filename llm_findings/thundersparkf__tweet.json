@@ -1,0 +1,132 @@
+[
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_validation",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected input validation: File paths are taken directly from user input and passed to pd.read_csv without any schema checks, dtype assertions, or value-range guards on the loaded data.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.untrusted_source_handling",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected untrusted source handling: Data is loaded from local CSV files and a local GloVe file via user-supplied paths with no checksum verification, signature validation, or authenticated source confirmation.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_flipping_detection",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected label flipping detection: The code only prints unique label values for debugging purposes but performs no validation, distribution comparison, or anomaly detection to detect label-flipping attacks.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.data_poisoning_defenses",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected data poisoning defenses: There are no outlier detection, statistical anomaly checks, or filtering mechanisms applied to training samples at any point in the data preparation pipeline.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.model_integrity_verification",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected model integrity verification: The Integrator class loads model JSON and weights from local files without any hash check, signature verification, or pinned revision; no integrity verification is performed before use.",
+    "snippet": "",
+    "stage": "modeling"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_distribution_validation",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected label distribution validation: While compute_class_weight is used to handle imbalance during training, there is no explicit validation or check of label distribution or expected label set before training begins.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.backdoor_or_trigger_detection",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected backdoor or trigger detection: There is no neural-cleanse-style trigger detection, activation-pattern analysis, or gradient anomaly detection anywhere in the training pipeline.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.differential_privacy",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected differential privacy: No differential privacy library (Opacus, TensorFlow Privacy, DP-SGD) is imported or used anywhere in the code.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.adversarial_robustness_testing",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected adversarial robustness testing: No adversarial attack libraries (Foolbox, ART, etc.) or attack methods (FGSM, PGD) are imported or used anywhere in the evaluation code.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.metric_tampering_protection",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected metric tampering protection: Although multiple metrics are computed (accuracy, F1, precision, recall, confusion matrix), the test set is derived from the same train_test_split call used during training, is not cryptographically signed or hashed, and is not held out independently from the training pipeline, offering no real prot",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_sanitization",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected input sanitization: Tweets fetched from Twitter are passed directly to tokenization and the model without any shape, range, or content validation checks.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.output_bounds_checks",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected output bounds checks: The model predictions are collected into a list and returned as-is with no NaN guards, probability range checks, or threshold sanity validation.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.prompt_injection_defenses",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected prompt injection defenses: This is a binary fake-news classifier (not an LLM), and no prompt-injection filtering, system-prompt isolation, or output content moderation is implemented.",
+    "snippet": "",
+    "stage": "inference"
+  }
+]

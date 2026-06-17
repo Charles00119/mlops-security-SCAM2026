@@ -1,0 +1,22 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "genome.py",
+    "line": 49,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "48 \n49 \t\tself.hash = hashlib.md5(genh.encode(\"UTF-8\")).hexdigest()\n50",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "genome.py",
+    "line": 49,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

@@ -1,0 +1,712 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/huggingface_transformers_interface/modules.py",
+    "line": 262,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "261 \n262         self.model = transformers.BertModel.from_pretrained(\n263             args.input_module, cache_dir=self.cache_dir, output_hidden_states=True\n264         )\n265         self.max_pos = self.model.config.max_position_embeddings",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/huggingface_transformers_interface/modules.py",
+    "line": 267,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "266 \n267         self.tokenizer = transformers.BertTokenizer.from_pretrained(\n268             args.input_module, cache_dir=self.cache_dir, do_lower_case=\"uncased\" in args.tokenizer\n269         )  # TODO: Speed things up slightly by reusing the previously-loaded tokenizer.\n270         self._sep_id = self.tokenizer.convert_tokens_to_ids(\"[SEP]\")",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/huggingface_transformers_interface/modules.py",
+    "line": 305,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "304     def get_pretrained_lm_head(self):\n305         model_with_lm_head = transformers.BertForMaskedLM.from_pretrained(\n306             self.input_module, cache_dir=self.cache_dir\n307         )\n308         lm_head = model_with_lm_head.cls",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/huggingface_transformers_interface/modules.py",
+    "line": 320,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "319 \n320         self.model = transformers.RobertaModel.from_pretrained(\n321             args.input_module, cache_dir=self.cache_dir, output_hidden_states=True\n322         )\n323         self.max_pos = self.model.config.max_position_embeddings",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/huggingface_transformers_interface/modules.py",
+    "line": 325,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "324 \n325         self.tokenizer = transformers.RobertaTokenizer.from_pretrained(\n326             args.input_module, cache_dir=self.cache_dir\n327         )  # TODO: Speed things up slightly by reusing the previously-loaded tokenizer.\n328         self._sep_id = self.tokenizer.convert_tokens_to_ids(\"</s>\")",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/huggingface_transformers_interface/modules.py",
+    "line": 360,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "359     def get_pretrained_lm_head(self):\n360         model_with_lm_head = transformers.RobertaForMaskedLM.from_pretrained(\n361             self.input_module, cache_dir=self.cache_dir\n362         )\n363         lm_head = model_with_lm_head.lm_head",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/huggingface_transformers_interface/modules.py",
+    "line": 375,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "374 \n375         self.model = transformers.AlbertModel.from_pretrained(\n376             args.input_module, cache_dir=self.cache_dir, output_hidden_states=True\n377         )\n378         self.max_pos = self.model.config.max_position_embeddings",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/huggingface_transformers_interface/modules.py",
+    "line": 380,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "379 \n380         self.tokenizer = transformers.AlbertTokenizer.from_pretrained(\n381             args.input_module, cache_dir=self.cache_dir\n382         )  # TODO: Speed things up slightly by reusing the previously-loaded tokenizer.\n383         self._sep_id = self.tokenizer.convert_tokens_to_ids(\"[SEP]\")",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/huggingface_transformers_interface/modules.py",
+    "line": 418,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "417     def get_pretrained_lm_head(self):\n418         model_with_lm_head = transformers.AlbertForMaskedLM.from_pretrained(\n419             self.input_module, cache_dir=self.cache_dir\n420         )\n421         lm_head = model_with_lm_head.predictions",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/huggingface_transformers_interface/modules.py",
+    "line": 433,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "432 \n433         self.model = transformers.XLNetModel.from_pretrained(\n434             args.input_module, cache_dir=self.cache_dir, output_hidden_states=True\n435         )\n436",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/huggingface_transformers_interface/modules.py",
+    "line": 437,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "436 \n437         self.tokenizer = transformers.XLNetTokenizer.from_pretrained(\n438             args.input_module, cache_dir=self.cache_dir, do_lower_case=\"uncased\" in args.tokenizer\n439         )  # TODO: Speed things up slightly by reusing the previously-loaded tokenizer.\n440         self._sep_id = self.tokenizer.convert_tokens_to_ids(\"<sep>\")",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/huggingface_transformers_interface/modules.py",
+    "line": 481,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "480     def get_pretrained_lm_head(self, args):\n481         model_with_lm_head = transformers.XLNetLMHeadModel.from_pretrained(\n482             self.input_module, cache_dir=self.cache_dir\n483         )\n484         lm_head = model_with_lm_head.lm_loss",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/huggingface_transformers_interface/modules.py",
+    "line": 496,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "495 \n496         self.model = transformers.OpenAIGPTModel.from_pretrained(\n497             args.input_module, cache_dir=self.cache_dir, output_hidden_states=True\n498         )  # TODO: Speed things up slightly by reusing the previously-loaded tokenizer.\n499         self.max_pos = self.model.config.n_positions",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/huggingface_transformers_interface/modules.py",
+    "line": 501,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "500 \n501         self.tokenizer = transformers.OpenAIGPTTokenizer.from_pretrained(\n502             args.input_module, cache_dir=self.cache_dir\n503         )\n504         self._pad_id = self.tokenizer.convert_tokens_to_ids(\"\\n</w>\")",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/huggingface_transformers_interface/modules.py",
+    "line": 544,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "543     def get_pretrained_lm_head(self, args):\n544         model_with_lm_head = transformers.OpenAIGPTLMHeadModel.from_pretrained(\n545             self.input_module, cache_dir=self.cache_dir\n546         )\n547         lm_head = model_with_lm_head.lm_head",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/huggingface_transformers_interface/modules.py",
+    "line": 559,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "558 \n559         self.model = transformers.GPT2Model.from_pretrained(\n560             args.input_module, cache_dir=self.cache_dir, output_hidden_states=True\n561         )  # TODO: Speed things up slightly by reusing the previously-loaded tokenizer.\n562         self.max_pos = self.model.config.n_positions",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/huggingface_transformers_interface/modules.py",
+    "line": 564,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "563 \n564         self.tokenizer = transformers.GPT2Tokenizer.from_pretrained(\n565             args.input_module, cache_dir=self.cache_dir\n566         )\n567         self._pad_id = self.tokenizer.convert_tokens_to_ids(\"<|endoftext|>\")",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/huggingface_transformers_interface/modules.py",
+    "line": 606,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "605     def get_pretrained_lm_head(self):\n606         model_with_lm_head = transformers.GPT2LMHeadModel.from_pretrained(\n607             self.input_module, cache_dir=self.cache_dir\n608         )\n609         lm_head = model_with_lm_head.lm_head",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/huggingface_transformers_interface/modules.py",
+    "line": 621,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "620 \n621         self.model = transformers.TransfoXLModel.from_pretrained(\n622             args.input_module, cache_dir=self.cache_dir, output_hidden_states=True\n623         )  # TODO: Speed things up slightly by reusing the previously-loaded tokenizer.\n624",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/huggingface_transformers_interface/modules.py",
+    "line": 625,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "624 \n625         self.tokenizer = transformers.TransfoXLTokenizer.from_pretrained(\n626             args.input_module, cache_dir=self.cache_dir\n627         )\n628         self._pad_id = self.tokenizer.convert_tokens_to_ids(\"<eos>\")",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/huggingface_transformers_interface/modules.py",
+    "line": 669,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "668         # Note: transformers didn't implement TransfoXLLMHeadModel, use this in eval only\n669         model_with_lm_head = transformers.TransfoXLLMHeadModel.from_pretrained(\n670             self.input_module, cache_dir=self.cache_dir\n671         )\n672         lm_head = model_with_lm_head.crit",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/huggingface_transformers_interface/modules.py",
+    "line": 691,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "690 \n691         self.model = transformers.XLMModel.from_pretrained(\n692             args.input_module, cache_dir=self.cache_dir, output_hidden_states=True\n693         )  # TODO: Speed things up slightly by reusing the previously-loaded tokenizer.\n694         self.max_pos = self.model.config.max_position_embeddings",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/huggingface_transformers_interface/modules.py",
+    "line": 696,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "695 \n696         self.tokenizer = transformers.XLMTokenizer.from_pretrained(\n697             args.input_module, cache_dir=self.cache_dir\n698         )\n699         self._unk_id = self.tokenizer.convert_tokens_to_ids(\"<unk>\")",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/huggingface_transformers_interface/modules.py",
+    "line": 727,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "726     def get_pretrained_lm_head(self):\n727         model_with_lm_head = transformers.XLMWithLMHeadModel.from_pretrained(\n728             self.input_module, cache_dir=self.cache_dir\n729         )\n730         lm_head = model_with_lm_head.pred_layer",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/preprocess.py",
+    "line": 699,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "698     if tokenizer_name.startswith(\"bert-\"):\n699         tokenizer = BertTokenizer.from_pretrained(tokenizer_name, do_lower_case=do_lower_case)\n700     elif tokenizer_name.startswith(\"roberta-\") or tokenizer_name.startswith(\"nyu-mll/roberta-\"):",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/preprocess.py",
+    "line": 701,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "700     elif tokenizer_name.startswith(\"roberta-\") or tokenizer_name.startswith(\"nyu-mll/roberta-\"):\n701         tokenizer = RobertaTokenizer.from_pretrained(tokenizer_name)\n702     elif tokenizer_name.startswith(\"albert-\"):",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/preprocess.py",
+    "line": 703,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "702     elif tokenizer_name.startswith(\"albert-\"):\n703         tokenizer = AlbertTokenizer.from_pretrained(tokenizer_name)\n704     elif tokenizer_name.startswith(\"xlnet-\"):",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/preprocess.py",
+    "line": 705,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "704     elif tokenizer_name.startswith(\"xlnet-\"):\n705         tokenizer = XLNetTokenizer.from_pretrained(tokenizer_name, do_lower_case=do_lower_case)\n706     elif tokenizer_name.startswith(\"openai-gpt\"):",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/preprocess.py",
+    "line": 707,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "706     elif tokenizer_name.startswith(\"openai-gpt\"):\n707         tokenizer = OpenAIGPTTokenizer.from_pretrained(tokenizer_name)\n708     elif tokenizer_name.startswith(\"gpt2\"):",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/preprocess.py",
+    "line": 709,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "708     elif tokenizer_name.startswith(\"gpt2\"):\n709         tokenizer = GPT2Tokenizer.from_pretrained(tokenizer_name)\n710     elif tokenizer_name.startswith(\"transfo-xl-\"):",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/preprocess.py",
+    "line": 711,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "710     elif tokenizer_name.startswith(\"transfo-xl-\"):\n711         tokenizer = TransfoXLTokenizer.from_pretrained(tokenizer_name)\n712     elif tokenizer_name.startswith(\"xlm-\"):",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/preprocess.py",
+    "line": 713,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "712     elif tokenizer_name.startswith(\"xlm-\"):\n713         tokenizer = XLMTokenizer.from_pretrained(tokenizer_name)\n714",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "jiant/trainer.py",
+    "line": 1220,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "1219 \n1220         model_state = torch.load(model_path)\n1221",
+    "stage": "inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "jiant/trainer.py",
+    "line": 1229,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "1228         self._model.load_state_dict(model_state, strict=False)\n1229         task_states = torch.load(task_state_path)\n1230         for task_name, task_state in task_states.items():",
+    "stage": "inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "jiant/trainer.py",
+    "line": 1247,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "1246         self._scheduler.lr_scheduler.load_state_dict(task_states[\"global\"][\"scheduler\"])\n1247         metric_states = torch.load(metric_state_path)\n1248         for metric_name, metric_state in metric_states.items():",
+    "stage": "inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "jiant/trainer.py",
+    "line": 1253,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "1252 \n1253         training_state = torch.load(training_state_path)\n1254         return training_state[\"step\"], training_state[\"should_stop\"]",
+    "stage": "inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "jiant/utils/gcp.py",
+    "line": 13,
+    "message": "Call to requests without timeout",
+    "snippet": "12     metadata_flavor = {\"Metadata-Flavor\": \"Google\"}\n13     gce_id = requests.get(metadata_server + \"id\", headers=metadata_flavor).text\n14     return gce_id",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/utils/tokenizers.py",
+    "line": 98,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "97         do_lower_case = tokenizer_name.endswith(\"uncased\")\n98         tokenizer = BertTokenizer.from_pretrained(tokenizer_name, do_lower_case=do_lower_case)\n99     elif tokenizer_name.startswith(\"roberta-\") or tokenizer_name.startswith(\"nyu-mll/roberta-\"):",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/utils/tokenizers.py",
+    "line": 100,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "99     elif tokenizer_name.startswith(\"roberta-\") or tokenizer_name.startswith(\"nyu-mll/roberta-\"):\n100         tokenizer = RobertaTokenizer.from_pretrained(tokenizer_name)\n101     elif tokenizer_name.startswith(\"albert-\"):",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/utils/tokenizers.py",
+    "line": 102,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "101     elif tokenizer_name.startswith(\"albert-\"):\n102         tokenizer = AlbertTokenizer.from_pretrained(tokenizer_name)\n103     elif tokenizer_name.startswith(\"xlnet-\"):",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/utils/tokenizers.py",
+    "line": 105,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "104         do_lower_case = tokenizer_name.endswith(\"uncased\")\n105         tokenizer = XLNetTokenizer.from_pretrained(tokenizer_name, do_lower_case=do_lower_case)\n106     elif tokenizer_name.startswith(\"openai-gpt\"):",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/utils/tokenizers.py",
+    "line": 107,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "106     elif tokenizer_name.startswith(\"openai-gpt\"):\n107         tokenizer = OpenAIGPTTokenizer.from_pretrained(tokenizer_name)\n108     elif tokenizer_name.startswith(\"gpt2\"):",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/utils/tokenizers.py",
+    "line": 109,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "108     elif tokenizer_name.startswith(\"gpt2\"):\n109         tokenizer = GPT2Tokenizer.from_pretrained(tokenizer_name)\n110     elif tokenizer_name.startswith(\"transfo-xl-\"):",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/utils/tokenizers.py",
+    "line": 114,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "113     elif tokenizer_name.startswith(\"xlm-\"):\n114         tokenizer = XLMTokenizer.from_pretrained(tokenizer_name)\n115     elif tokenizer_name == \"MosesTokenizer\":",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "jiant/utils/utils.py",
+    "line": 341,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "340     \"\"\"\n341     model_state = torch.load(state_path)\n342",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "probing/get_scalar_mix.py",
+    "line": 41,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "40     # Load and keep on CPU\n41     data = torch.load(checkpoint_path, map_location=torch.device(\"cpu\"))\n42     # Find prefixes by matching names.",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "scripts/download_glue_data.py",
+    "line": 59,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "58     data_file = \"%s.zip\" % task\n59     urllib.request.urlretrieve(TASK2PATH[task], data_file)\n60     with zipfile.ZipFile(data_file) as zip_ref:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "scripts/download_glue_data.py",
+    "line": 78,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "77         mrpc_test_file = os.path.join(mrpc_dir, \"msr_paraphrase_test.txt\")\n78         urllib.request.urlretrieve(MRPC_TRAIN, mrpc_train_file)\n79         urllib.request.urlretrieve(MRPC_TEST, mrpc_test_file)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "scripts/download_glue_data.py",
+    "line": 79,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "78         urllib.request.urlretrieve(MRPC_TRAIN, mrpc_train_file)\n79         urllib.request.urlretrieve(MRPC_TEST, mrpc_test_file)\n80     assert os.path.isfile(mrpc_train_file), \"Train data not found at %s\" % mrpc_train_file",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "scripts/download_glue_data.py",
+    "line": 82,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "81     assert os.path.isfile(mrpc_test_file), \"Test data not found at %s\" % mrpc_test_file\n82     urllib.request.urlretrieve(TASK2PATH[\"MRPC\"], os.path.join(mrpc_dir, \"dev_ids.tsv\"))\n83",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "scripts/download_glue_data.py",
+    "line": 118,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "117     data_file = os.path.join(data_dir, \"MNLI\", \"diagnostic.tsv\")\n118     urllib.request.urlretrieve(TASK2PATH[\"diagnostic\"][0], data_file)\n119     data_file = os.path.join(data_dir, \"MNLI\", \"diagnostic-full.tsv\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "scripts/download_glue_data.py",
+    "line": 120,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "119     data_file = os.path.join(data_dir, \"MNLI\", \"diagnostic-full.tsv\")\n120     urllib.request.urlretrieve(TASK2PATH[\"diagnostic\"][1], data_file)\n121     print(\"\\tCompleted!\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "scripts/download_superglue_data.py",
+    "line": 41,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "40     data_file = os.path.join(data_dir, \"%s.zip\" % task)\n41     urllib.request.urlretrieve(TASK2PATH[task], data_file)\n42     with zipfile.ZipFile(data_file) as zip_ref:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "scripts/download_superglue_data.py",
+    "line": 57,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "56     data_file = os.path.join(diagnostic_dir, \"broadcoverage.zip\")\n57     urllib.request.urlretrieve(TASK2PATH[\"broadcoverage-diagnostic\"], data_file)\n58     with zipfile.ZipFile(data_file) as zip_ref:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "scripts/download_superglue_data.py",
+    "line": 65,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "64     data_file = os.path.join(diagnostic_dir, \"winogender.zip\")\n65     urllib.request.urlretrieve(TASK2PATH[\"winogender-diagnostic\"], data_file)\n66     with zipfile.ZipFile(data_file) as zip_ref:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "jiant/preprocess.py",
+    "line": 231,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "jiant/preprocess.py",
+    "line": 375,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "jiant/preprocess.py",
+    "line": 483,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "jiant/preprocess.py",
+    "line": 510,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "info",
+    "rule_id": "python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http",
+    "file_path": "jiant/utils/gcp.py",
+    "line": 13,
+    "message": "Detected a request using 'http://'. This request will be unencrypted, and attackers could listen into traffic on the network and be able to obtain sensitive information. Use 'https://' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "jiant/utils/serialize.py",
+    "line": 12,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "jiant/utils/serialize.py",
+    "line": 83,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "scripts/download_glue_data.py",
+    "line": 59,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "scripts/download_glue_data.py",
+    "line": 78,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "scripts/download_glue_data.py",
+    "line": 79,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "scripts/download_glue_data.py",
+    "line": 82,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "scripts/download_glue_data.py",
+    "line": 118,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "scripts/download_glue_data.py",
+    "line": 120,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "scripts/download_superglue_data.py",
+    "line": 41,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "scripts/download_superglue_data.py",
+    "line": 57,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "scripts/download_superglue_data.py",
+    "line": 65,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

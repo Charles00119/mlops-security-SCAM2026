@@ -1,0 +1,122 @@
+[
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_validation",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected input validation: The read_file function in data_utils.py parses CSV rows with basic header skipping but performs no schema checks, dtype assertions, value-range guards, or shape validation on the incoming data.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.untrusted_source_handling",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected untrusted source handling: Data is loaded from a local file path ('data/skin/hmnist_28_28_RGB.csv') with no remote fetch, and no checksum or integrity verification is performed on the file.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_flipping_detection",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected label flipping detection: No validation of label values against an expected set, no distribution comparison, and no label-noise detection tool (e.g., Cleanlab) is used anywhere in the pipeline.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.data_poisoning_defenses",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected data poisoning defenses: No outlier detection, statistical anomaly checks, or filtering of suspicious inputs is performed on the training samples; the data is read and used directly.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.model_integrity_verification",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected model integrity verification: The model is loaded via `load_model()` from a file path constructed from config values with no hash check, signature verification, or pinned revision before or after loading.",
+    "snippet": "",
+    "stage": "modeling"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_distribution_validation",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected label distribution validation: The code uses oversampling to handle class imbalance but never explicitly validates or checks the label distribution before training begins.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.backdoor_or_trigger_detection",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected backdoor or trigger detection: There is no trigger detection, neural cleanse, activation analysis, or gradient anomaly detection anywhere in the training pipeline.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.differential_privacy",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected differential privacy: The code uses standard TensorFlow/Keras training with no differential privacy library (Opacus, TensorFlow Privacy, DP-SGD) applied.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.adversarial_robustness_testing",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected adversarial robustness testing: No adversarial attack libraries (Foolbox, ART, etc.) or attack methods (FGSM, PGD) are imported or used anywhere in the evaluation pipeline.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_sanitization",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected input sanitization: The code only casts data to float64 during data loading but performs no shape checks, range validation, or malformed-input rejection before passing data to the model.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.output_bounds_checks",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected output bounds checks: Model outputs are passed directly to np.argmax without any NaN guards, probability sanity checks, or threshold validation.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.prompt_injection_defenses",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected prompt injection defenses: This is an image-based skin cancer classifier, not an LLM, so prompt injection defenses are not applicable and none are present.",
+    "snippet": "",
+    "stage": "inference"
+  }
+]

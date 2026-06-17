@@ -1,0 +1,102 @@
+[
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.untrusted_source_handling",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected untrusted source handling: Data is fetched via imblearn's fetch_datasets without any checksum verification, signature validation, or pinned revision to authenticate the source.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.data_poisoning_defenses",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected data poisoning defenses: The code performs only deduplication (drop_duplicates) but no outlier detection, statistical anomaly checks, or filtering of suspicious inputs that would constitute a data poisoning defense.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.model_integrity_verification",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected model integrity verification: The code only instantiates fresh model objects (DecisionTreeClassifier, RandomForestClassifier, SVC, Sequential) and never loads pretrained weights or a serialized model, so there is no integrity verification to observe.",
+    "snippet": "",
+    "stage": "modeling"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.backdoor_or_trigger_detection",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected backdoor or trigger detection: There is no neural-cleanse, activation analysis, gradient anomaly detection, or any other backdoor/trigger defense in the training loop.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.differential_privacy",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected differential privacy: No differential privacy library (Opacus, TensorFlow Privacy, DP-SGD) is imported or applied during training.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.adversarial_robustness_testing",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected adversarial robustness testing: No adversarial attack frameworks (Foolbox, ART, FGSM, PGD, etc.) or robustness stress tests are present anywhere in the code.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.metric_tampering_protection",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected metric tampering protection: Although KFold splits are used to separate train/test data, there is no signing or hashing of evaluation data, no truly held-out test set isolated before any pipeline decisions, and no independent auditing mechanism to prevent metric manipulation.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_sanitization",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected input sanitization: The code only performs a label assertion (`assert np.all(np.unique(y) == np.array([0, 1]))`) and drops duplicates; there are no shape, range, or schema checks on the raw input features before they reach the model.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.output_bounds_checks",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected output bounds checks: Model outputs are only passed through `np.around()` for rounding neural-network probabilities; there are no NaN guards, probability range checks, or sanity bounds on predictions before they are consumed.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.prompt_injection_defenses",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected prompt injection defenses: The pipeline uses tabular classifiers (Random Forest, SVM, Decision Tree, shallow NN) and is not an LLM, so prompt-injection defenses are not applicable and none are present.",
+    "snippet": "",
+    "stage": "inference"
+  }
+]

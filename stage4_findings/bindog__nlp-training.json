@@ -1,0 +1,102 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "datasets/lmdb_dataset.py",
+    "line": 24,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "23             buf = txn.get(key)\n24             raw_dict = pickle.loads(buf)\n25             return raw_dict",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "models/file_utils.py",
+    "line": 1018,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "1017                 with ZipFile(output_path, \"r\") as zip_file:\n1018                     zip_file.extractall(output_path_extracted)\n1019                     zip_file.close()",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "models/file_utils.py",
+    "line": 1022,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "1021                 tar_file = tarfile.open(output_path)\n1022                 tar_file.extractall(output_path_extracted)\n1023                 tar_file.close()",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "models/file_utils.py",
+    "line": 1055,
+    "message": "Call to requests without timeout",
+    "snippet": "1054         headers[\"Range\"] = \"bytes=%d-\" % (resume_size,)\n1055     r = requests.get(url, stream=True, proxies=proxies, headers=headers)\n1056     r.raise_for_status()",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "models/modeling_utils.py",
+    "line": 950,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "949             try:\n950                 state_dict = torch.load(resolved_archive_file, map_location=\"cpu\")\n951             except Exception:",
+    "stage": "inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "tools/inference.py",
+    "line": 77,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "76         self.model = SimpleFC(200, num_labels)\n77         self.model.load_state_dict(torch.load(model_weight_path))\n78",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "tools/utils.py",
+    "line": 103,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "102 def torch_init_model(model, init_checkpoint, delete_module=False):\n103     state_dict = torch.load(init_checkpoint, map_location='cpu')\n104     state_dict_new = {}",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "utils/config_utils.py",
+    "line": 17,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "16     with open(config_path, \"r\") as f:\n17         cfg = yaml.load(f, Loader=yaml.FullLoader)\n18     return cfg",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "datasets/lmdb_dataset.py",
+    "line": 24,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "tools/create_lmdb.py",
+    "line": 80,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

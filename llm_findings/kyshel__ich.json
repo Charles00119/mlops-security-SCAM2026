@@ -1,0 +1,122 @@
+[
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_validation",
+    "file_path": "train.py",
+    "line": 0,
+    "message": "No detected input validation: No schema checks, dtype assertions, or value-range guards are applied to incoming data in any of the visible code paths.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.untrusted_source_handling",
+    "file_path": "train.py",
+    "line": 0,
+    "message": "No detected untrusted source handling: No remote data fetching is visible in the code, and no checksum verification, signed URLs, or pinned revisions are implemented anywhere in the shown snippets.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_flipping_detection",
+    "file_path": "train.py",
+    "line": 0,
+    "message": "No detected label flipping detection: The code only plots a class distribution bar chart (plot_cls_bar) for visualization purposes but performs no validation of label values against an expected set, no comparison of distributions across splits, and no label-noise detection tool is used.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.data_poisoning_defenses",
+    "file_path": "train.py",
+    "line": 0,
+    "message": "No detected data poisoning defenses: There are no outlier detection, statistical anomaly checks, or filtering mechanisms applied to training samples anywhere in the visible data preparation code.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.model_integrity_verification",
+    "file_path": "train.py",
+    "line": 0,
+    "message": "No detected model integrity verification: Pretrained weights are loaded via torchvision's `pretrained=True` (e.g., `models.resnet18(pretrained=True)`) without any hash check, signature verification, or pinned revision to a controlled internal source.",
+    "snippet": "",
+    "stage": "modeling"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.backdoor_or_trigger_detection",
+    "file_path": "train.py",
+    "line": 0,
+    "message": "No detected backdoor or trigger detection: No neural-cleanse, activation analysis, gradient anomaly detection, or any other backdoor/trigger defense mechanism is present in the code.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.differential_privacy",
+    "file_path": "train.py",
+    "line": 0,
+    "message": "No detected differential privacy: No differential privacy library (Opacus, TensorFlow Privacy, DP-SGD) or related mechanism is imported or used anywhere in the code.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.adversarial_robustness_testing",
+    "file_path": "train.py",
+    "line": 0,
+    "message": "No detected adversarial robustness testing: No adversarial attack libraries (Foolbox, ART) or attack methods (FGSM, PGD) are imported or invoked anywhere in the code.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.metric_tampering_protection",
+    "file_path": "train.py",
+    "line": 0,
+    "message": "No detected metric tampering protection: There is no evidence of a held-out test set isolation mechanism, cryptographic signing/hashing of evaluation data, or use of multiple independent metrics to guard against metric manipulation.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_sanitization",
+    "file_path": "train.py",
+    "line": 0,
+    "message": "No detected input sanitization: No input validation, shape checks, range checks, or schema validation are present in the inference data-flow path; inputs are passed directly to the model.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.output_bounds_checks",
+    "file_path": "train.py",
+    "line": 0,
+    "message": "No detected output bounds checks: No post-inference checks for NaN values, probability sanity bounds, or calibrated thresholds are visible in the code.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.prompt_injection_defenses",
+    "file_path": "train.py",
+    "line": 0,
+    "message": "No detected prompt injection defenses: This is a computer-vision classification pipeline (not an LLM), so prompt-injection defenses are not applicable and none are implemented.",
+    "snippet": "",
+    "stage": "inference"
+  }
+]

@@ -1,0 +1,152 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "valerie/modeling.py",
+    "line": 91,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "90             )\n91             self.features = torch.load(cached_features_file)\n92         else:",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "valerie/modeling.py",
+    "line": 218,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "217     ):\n218         tokenizer = AutoTokenizer.from_pretrained(\n219             pretrained_model_name_or_path, **tokenizer_args\n220         )\n221         config = AutoConfig.from_pretrained(",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "valerie/modeling.py",
+    "line": 221,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "220         )\n221         config = AutoConfig.from_pretrained(\n222             pretrained_model_name_or_path, **config_args\n223         )\n224         model = AutoModelForSequenceClassification.from_pretrained(",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "valerie/modeling.py",
+    "line": 224,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "223         )\n224         model = AutoModelForSequenceClassification.from_pretrained(\n225             os.path.join(pretrained_model_name_or_path, checkpoint_dir)\n226             if checkpoint_dir\n227             else pretrained_model_name_or_path,\n228             config=config,\n229             **model_args,\n230         )\n231         return cls(config, tokenizer, model)",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "valerie/search.py",
+    "line": 19,
+    "message": "Call to requests without timeout",
+    "snippet": "18     try:\n19         resp = requests.get(\n20             SEARCH_API_URL,\n21             headers={\"X-Api-Key\": API_KEY},\n22             params={\"query\": query_string, \"from\": from_idx},\n23         )\n24         if resp.status_code == requests.codes.ok:  # pylint: disable=no-member",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "scripts/query.py",
+    "line": 144,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "info",
+    "rule_id": "python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http",
+    "file_path": "valerie/search.py",
+    "line": 20,
+    "message": "Detected a request using 'http://'. This request will be unencrypted, and attackers could listen into traffic on the network and be able to obtain sensitive information. Use 'https://' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2021-130",
+    "file_path": "requirements-dev.txt",
+    "line": 0,
+    "message": "jupyterlab 2.1.3: JupyterLab is a user interface for Project Jupyter which will eventually replace the classic Jupyter Notebook. In affected versions untrusted notebook can execute code on load. In particular JupyterLa (fix: 1.2.21, 2.2.10, 2.3.2, 3.0.17, 3.1.4)",
+    "snippet": "jupyterlab==2.1.3",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2021-130",
+    "file_path": "requirements-dev.txt",
+    "line": 0,
+    "message": "jupyterlab 2.1.3: ### Impact  Untrusted notebook can execute code on load. This is a remote code execution, but requires user action to open a notebook.  ### Patches  Patched in the following versions: 3.1.4, 3.0.17, 2 (fix: 1.2.21, 2.2.10, 2.3.2, 3.0.17, 3.1.4)",
+    "snippet": "jupyterlab==2.1.3",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2024-22421",
+    "file_path": "requirements-dev.txt",
+    "line": 0,
+    "message": "jupyterlab 2.1.3: ### Impact Users of JupyterLab who click on a malicious link may get their `Authorization` and `XSRFToken` tokens exposed to a third party when running an older `jupyter-server` version.  ### Patches  (fix: 3.6.7, 4.0.11)",
+    "snippet": "jupyterlab==2.1.3",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2025-59842",
+    "file_path": "requirements-dev.txt",
+    "line": 0,
+    "message": "jupyterlab 2.1.3: Links generated with LaTeX typesetters in Markdown files and Markdown cells in JupyterLab and Jupyter Notebook did not include the `noopener` attribute.  This is deemed to have no impact on the defaul (fix: 4.4.8)",
+    "snippet": "jupyterlab==2.1.3",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2026-42557",
+    "file_path": "requirements-dev.txt",
+    "line": 0,
+    "message": "jupyterlab 2.1.3: JupyterLab's HTML sanitizer allowlists `data-commandlinker-command` and `data-commandlinker-args` on `button` elements, while `CommandLinker` listens for all click events on `document.body` and execut (fix: 4.5.7)",
+    "snippet": "jupyterlab==2.1.3",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2024-48",
+    "file_path": "requirements-dev.txt",
+    "line": 0,
+    "message": "black 19.10b0: Versions of the package black before 24.3.0 are vulnerable to Regular Expression Denial of Service (ReDoS) via the lines_with_leading_tabs_expanded function in the strings.py file. An attacker could e (fix: 24.3.0)",
+    "snippet": "black==19.10b0",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2024-48",
+    "file_path": "requirements-dev.txt",
+    "line": 0,
+    "message": "black 19.10b0: Versions of the package black before 24.3.0 are vulnerable to Regular Expression Denial of Service (ReDoS) via the lines_with_leading_tabs_expanded function in the strings.py file. An attacker could e (fix: 24.3.0)",
+    "snippet": "black==19.10b0",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2026-32274",
+    "file_path": "requirements-dev.txt",
+    "line": 0,
+    "message": "black 19.10b0: ### Impact  Black writes a cache file, the name of which is computed from various formatting options. The value of the `--python-cell-magics` option was placed in the filename without sanitization, wh (fix: 26.3.1)",
+    "snippet": "black==19.10b0",
+    "stage": "dependencies"
+  }
+]

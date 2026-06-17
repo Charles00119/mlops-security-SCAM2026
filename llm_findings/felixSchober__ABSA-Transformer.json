@@ -1,0 +1,112 @@
+[
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.untrusted_source_handling",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected untrusted source handling: All data sources are local file paths; there is no remote fetching, and no checksum or integrity verification is implemented anywhere in the visible code.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_flipping_detection",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected label flipping detection: The code only validates dataset and task names against allowed string values but never checks label distributions, validates label values against an expected set, or uses any label-noise detection tool.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.data_poisoning_defenses",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected data poisoning defenses: There are no outlier detection routines, statistical anomaly checks on training samples, or any filtering of suspicious inputs in the data preparation pipeline.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.model_integrity_verification",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected model integrity verification: The code references loading a model via `args.restoreModel` and `load_model_path`, and constructs a TransformerEncoder, but there is no hash check, signature verification, or pinned revision applied to any loaded weights or serialized model artifacts.",
+    "snippet": "",
+    "stage": "modeling"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_distribution_validation",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected label distribution validation: The code uses class_weights in the loss function, indicating awareness of class imbalance, but there is no explicit validation or check of label distribution or anomalous samples before training begins.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.backdoor_or_trigger_detection",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected backdoor or trigger detection: There is no evidence of any backdoor or trigger detection mechanism such as neural cleanse, activation analysis, or gradient anomaly detection anywhere in the training pipeline.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.differential_privacy",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected differential privacy: No differential privacy library or mechanism (e.g., Opacus, TF Privacy, DP-SGD) is imported or referenced anywhere in the visible code.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.adversarial_robustness_testing",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected adversarial robustness testing: There is no use of adversarial attack libraries (Foolbox, ART, FGSM, PGD) or any robustness stress-testing logic anywhere in the visible code.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.metric_tampering_protection",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected metric tampering protection: While separate train/validation/test split files are referenced, there is no hashing, signing, or isolation enforcement of the test set, nor any mechanism to detect or prevent metric manipulation.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.output_bounds_checks",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected output bounds checks: No code in the provided slice checks model output probabilities for NaN, out-of-range values, or applies calibrated thresholds before returning results.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.prompt_injection_defenses",
+    "file_path": "main.py",
+    "line": 0,
+    "message": "No detected prompt injection defenses: This is an NER/ABSA transformer-based pipeline, not an LLM, and no prompt-injection filtering, system-prompt isolation, or content moderation is present.",
+    "snippet": "",
+    "stage": "inference"
+  }
+]

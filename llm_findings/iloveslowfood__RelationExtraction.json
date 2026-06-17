@@ -1,0 +1,132 @@
+[
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_validation",
+    "file_path": "train.py",
+    "line": 0,
+    "message": "No detected input validation: The code loads CSV data and assigns columns but performs no schema checks, dtype assertions, or value-range guards on the incoming data.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.untrusted_source_handling",
+    "file_path": "train.py",
+    "line": 0,
+    "message": "No detected untrusted source handling: Pretrained models are loaded via HuggingFace `from_pretrained` without pinned commits, checksums, or any integrity verification of the remote source.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_flipping_detection",
+    "file_path": "train.py",
+    "line": 0,
+    "message": "No detected label flipping detection: The code only applies a LabelEncoder transform to map label strings to integers but never validates label distributions, checks for unexpected label values, or uses any noise-detection tooling like Cleanlab.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.data_poisoning_defenses",
+    "file_path": "train.py",
+    "line": 0,
+    "message": "No detected data poisoning defenses: There are no outlier detection, statistical anomaly checks, or filtering steps applied to the training samples at any point in the data preparation pipeline.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.model_integrity_verification",
+    "file_path": "train.py",
+    "line": 0,
+    "message": "No detected model integrity verification: The code loads pretrained weights via `torch.load(load_state_dict)` and HuggingFace `from_pretrained()` without any hash check, signature verification, or pinned model revision to verify integrity.",
+    "snippet": "",
+    "stage": "modeling"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_distribution_validation",
+    "file_path": "train.py",
+    "line": 0,
+    "message": "No detected label distribution validation: The code loads data and encodes labels but performs no class balance check, expected-label-set validation, or anomalous-sample detection before training begins.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.backdoor_or_trigger_detection",
+    "file_path": "train.py",
+    "line": 0,
+    "message": "No detected backdoor or trigger detection: The training loop contains no backdoor defenses such as trigger detection, activation-pattern analysis, or gradient anomaly detection.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.differential_privacy",
+    "file_path": "train.py",
+    "line": 0,
+    "message": "No detected differential privacy: No differential privacy library (Opacus, TensorFlow Privacy, DP-SGD) is imported or used anywhere in the training code.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.adversarial_robustness_testing",
+    "file_path": "train.py",
+    "line": 0,
+    "message": "No detected adversarial robustness testing: The evaluation function only computes standard classification metrics (accuracy, precision, recall, F1) with no adversarial attack frameworks or robustness stress tests present.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.metric_tampering_protection",
+    "file_path": "train.py",
+    "line": 0,
+    "message": "No detected metric tampering protection: Although a train/validation split is performed, there is no held-out test set isolated from the split process, no signing or hashing of evaluation data, and metrics are computed on the same validation split used during training, providing no strong protection against metric manipulation.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_sanitization",
+    "file_path": "train.py",
+    "line": 0,
+    "message": "No detected input sanitization: The code loads and tokenizes data directly from CSV files without any shape, range, or schema validation on inputs before passing them to the model.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.output_bounds_checks",
+    "file_path": "train.py",
+    "line": 0,
+    "message": "No detected output bounds checks: Model outputs are passed directly to the criterion or returned as logits with no NaN guards, probability sanity checks, or threshold validation.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.prompt_injection_defenses",
+    "file_path": "train.py",
+    "line": 0,
+    "message": "No detected prompt injection defenses: The model is a BERT-based relation extraction classifier (not a generative LLM), and no prompt-injection filtering, system-prompt isolation, or content moderation is implemented.",
+    "snippet": "",
+    "stage": "inference"
+  }
+]

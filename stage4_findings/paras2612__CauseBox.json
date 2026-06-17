@@ -1,0 +1,1172 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "CFRNet/param_search.py",
+    "line": 16,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "15                 if len(vs)>0:\n16                     k,v = (vs[0].strip(), eval(vs[1].strip()))\n17                     if not isinstance(v,list):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "CFRNet/param_search.py",
+    "line": 86,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "85         flags = ' '.join('--%s %s' % (k,str(v)) for k,v in cfg.items())\n86         call('python main.py cfrnet %s' % flags, shell=True)\n87         shutil.rmtree(\"D:/PycharmProjects/pythonProject/CFRNet/Results/ihdp\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "PM/evaluate.py",
+    "line": 209,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "208 \n209         output = subprocess.check_output(command, shell=True)\n210         job_id = output[output.find(\"<\") + 1:output.find(\">\")]",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/ihdp_data_access.py",
+    "line": 136,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "135 \n136         self.db.executemany(\"INSERT INTO {table_name} VALUES ({question_marks});\"\n137                             .format(table_name=table_name,\n138                                     question_marks=\",\".join([\"?\"] * len(values[0]))),",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/ihdp_data_access.py",
+    "line": 147,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "146         self.create_temporary_table(tmp_name, ids)\n147         return_value = self.db.execute(\"SELECT {column_name} \"\n148                                        \"FROM {table_name} \"\n149                                        \"WHERE rowid IN (SELECT id FROM {tmp_table}) \"\n150                                        \"ORDER BY rowid;\"\n151                                        .format(column_name=",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/ihdp_data_access.py",
+    "line": 161,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "160         # NOTE: This query assumes that there has never been any deletions in the time series table.\n161         return self.db.execute(\"SELECT MAX(_ROWID_) FROM {} LIMIT 1;\".format(table_name)) \\\n162         .fetchone()[0]",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/ihdp_data_access.py",
+    "line": 167,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "166             columns = \"rowid, \" + columns\n167         query = \"SELECT \" \\\n168                 \"{columns} \" \\\n169                 \"FROM {table_name} \" \\\n170                 \"WHERE rowid = ?;\".format(table_name=table_name,\n171                                           columns=columns)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/ihdp_data_access.py",
+    "line": 177,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "176         self.create_temporary_table(tmp_name, list(map(lambda x: (x,), train_ids)))\n177         query1 = \"SELECT id FROM {tmp_table};\".format(tmp_table=tmp_name)\n178         ids = self.db.execute(query1).fetchall()",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/ihdp_data_access.py",
+    "line": 182,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "181             stra = \",\".join(a)\n182             ihdp = self.db.execute(\"SELECT {columns} \" \n183                                     \"FROM {table_pairs} \"\n184                                     \"WHERE rowid IN ({stra});\"\n185                                     .format(columns=columns,\n186                                             table_pairs=DataAccess.TABLE_IHDP,",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/ihdp_data_access.py",
+    "line": 188,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "187                                             stra=stra)).fetchall()\n188             query = \"SELECT {columns} FROM {table_pairs} WHERE rowid IN (SELECT id FROM {tmp_table});\".format(columns=columns,table_pairs=DataAccess.TABLE_IHDP,tmp_table=tmp_name)\n189         except:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/ihdp_data_access.py",
+    "line": 192,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "191             stra = \",\".join(a)\n192             ihdp = self.db.execute(\"SELECT {columns} \"\n193                                    \"FROM {table_pairs} \"\n194                                    \"WHERE rowid IN ({stra});\"\n195                                    .format(columns=columns,\n196                                            table_pairs=DataAccess.TABLE_IHDP,",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/ihdp_data_access.py",
+    "line": 223,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "222         if len(values) != 0:\n223             self.db.executemany(\"INSERT INTO {table_name} VALUES (?);\".format(table_name=table_name), values)\n224         return table_name",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/jobs_data_access.py",
+    "line": 110,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "109     def insert_many(self, table_name, values):\n110         self.db.executemany(\"INSERT INTO {table_name} VALUES ({question_marks});\"\n111                             .format(table_name=table_name,\n112                                     question_marks=\",\".join([\"?\"] * len(values[0]))),",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/jobs_data_access.py",
+    "line": 121,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "120         self.create_temporary_table(tmp_name, ids)\n121         return_value = self.db.execute(\"SELECT {column_name} \"\n122                                        \"FROM {table_name} \"\n123                                        \"WHERE rowid IN (SELECT id FROM {tmp_table}) \"\n124                                        \"ORDER BY rowid;\"\n125                                        .format(column_name=",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/jobs_data_access.py",
+    "line": 133,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "132         # NOTE: This query assumes that there has never been any deletions in the time series table.\n133         return self.db.execute(\"SELECT MAX(_ROWID_) FROM {} LIMIT 1;\".format(table_name)) \\\n134             .fetchone()[0]",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/jobs_data_access.py",
+    "line": 139,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "138             columns = \"rowid,\" + columns\n139         query = \"SELECT \" \\\n140                 \"{columns} \" \\\n141                 \"FROM {table_name} \" \\\n142                 \"WHERE rowid = ?;\".format(table_name=table_name,\n143                                           columns=columns)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/jobs_data_access.py",
+    "line": 149,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "148         self.create_temporary_table(tmp_name, list(map(lambda x: (x,), train_ids)))\n149         query1 = \"SELECT id FROM {tmp_table};\".format(tmp_table=tmp_name)\n150         ids = self.db.execute(query1).fetchall()",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/jobs_data_access.py",
+    "line": 154,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "153             stra = \",\".join(a)\n154             ihdp = self.db.execute(\"SELECT {columns} \" \n155                                     \"FROM {table_pairs} \"\n156                                     \"WHERE rowid IN ({stra});\"\n157                                     .format(columns=columns,\n158                                             table_pairs=DataAccess.TABLE_JOBS,",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/jobs_data_access.py",
+    "line": 160,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "159                                             stra=stra)).fetchall()\n160             query = \"SELECT {columns} FROM {table_pairs} WHERE rowid IN (SELECT id FROM {tmp_table});\".format(columns=columns,table_pairs=DataAccess.TABLE_JOBS,tmp_table=tmp_name)\n161         except:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/jobs_data_access.py",
+    "line": 165,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "164             print(stra)\n165             ihdp = self.db.execute(\"SELECT {columns} \"\n166                                    \"FROM {table_pairs} \"\n167                                    \"WHERE rowid IN ({stra});\"\n168                                    .format(columns=columns,\n169                                            table_pairs=DataAccess.TABLE_JOBS,",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/jobs_data_access.py",
+    "line": 195,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "194         if len(values) != 0:\n195             self.db.executemany(\"INSERT INTO {table_name} VALUES (?);\".format(table_name=table_name), values)\n196         return table_name",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/news_data_access.py",
+    "line": 61,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "60     def insert_many(self, table_name, values):\n61         self.db.executemany(\"INSERT INTO {table_name} VALUES ({question_marks});\"\n62                             .format(table_name=table_name,\n63                                     question_marks=\",\".join([\"?\"] * len(values[0]))),",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/news_data_access.py",
+    "line": 72,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "71         self.create_temporary_table(tmp_name, ids)\n72         return_value = self.db.execute(\"SELECT {column_name} \"\n73                                        \"FROM {table_name} \"\n74                                        \"WHERE rowid IN (SELECT id FROM {tmp_table}) \"\n75                                        \"ORDER BY rowid;\"\n76                                        .format(column_name=column",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/news_data_access.py",
+    "line": 84,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "83         # NOTE: This query assumes that there has never been any deletions in the time series table.\n84         return self.db.execute(\"SELECT MAX(_ROWID_) FROM {} LIMIT 1;\".format(table_name)) \\\n85             .fetchone()[0]",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/news_data_access.py",
+    "line": 97,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "96 \n97         query = \"SELECT \" \\\n98                 \"{columns} \" \\\n99                 \"FROM {table_name} \" \\\n100                 \"WHERE rowid = ?;\".format(table_name=table_name,\n101                                           columns=columns)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/news_data_access.py",
+    "line": 110,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "109 \n110         news = self.db.execute(\"SELECT rowid, * \"\n111                                \"FROM {table_pairs} \"\n112                                \"WHERE rowid IN (SELECT id FROM {tmp_table});\"\n113                                .format(table_pairs=DataAccess.TABLE_NEWS,\n114                                        tmp_table=tmp_name)).fetchall()",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/news_data_access.py",
+    "line": 128,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "127 \n128         query = \"SELECT \" \\\n129                 \"{columns} \" \\\n130                 \"FROM {table_name} \" \\\n131                 \"WHERE id = ?;\".format(table_name=table_name,\n132                                        columns=columns)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/news_data_access.py",
+    "line": 141,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "140         if len(values) != 0:\n141             self.db.executemany(\"INSERT INTO {table_name} VALUES (?);\".format(table_name=table_name), values)\n142         return table_name",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/news_data_access.py",
+    "line": 148,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "147     def get_news_dimension(self):\n148         news = self.db.execute(\"SELECT * FROM {table_name} WHERE rowid = 1;\"\n149                                .format(table_name=DataAccess.TABLE_NEWS)).fetchone()\n150         return news[0].shape[0]",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/perfect_match/data_access/ihdp/data_access.py",
+    "line": 136,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "135     def insert_many(self, table_name, values):\n136         self.db.executemany(\"INSERT INTO {table_name} VALUES ({question_marks});\"\n137                             .format(table_name=table_name,\n138                                     question_marks=\",\".join([\"?\"] * len(values[0]))),",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/perfect_match/data_access/ihdp/data_access.py",
+    "line": 147,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "146         self.create_temporary_table(tmp_name, ids)\n147         return_value = self.db.execute(\"SELECT {column_name} \"\n148                                        \"FROM {table_name} \"\n149                                        \"WHERE rowid IN (SELECT id FROM {tmp_table}) \"\n150                                        \"ORDER BY rowid;\"\n151                                        .format(column_name=",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/perfect_match/data_access/ihdp/data_access.py",
+    "line": 159,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "158         # NOTE: This query assumes that there has never been any deletions in the time series table.\n159         return self.db.execute(\"SELECT MAX(_ROWID_) FROM {} LIMIT 1;\".format(table_name)) \\\n160             .fetchone()[0]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/perfect_match/data_access/ihdp/data_access.py",
+    "line": 166,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "165 \n166         query = \"SELECT \" \\\n167                 \"{columns} \" \\\n168                 \"FROM {table_name} \" \\\n169                 \"WHERE rowid = ?;\".format(table_name=table_name,\n170                                           columns=columns)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/perfect_match/data_access/ihdp/data_access.py",
+    "line": 177,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "176 \n177         ihdp = self.db.execute(\"SELECT {columns} \"\n178                                \"FROM {table_pairs} \"\n179                                \"WHERE rowid IN (SELECT id FROM {tmp_table});\"\n180                                .format(columns=columns,\n181                                        table_pairs=DataAccess.TABLE_IHDP,",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/perfect_match/data_access/ihdp/data_access.py",
+    "line": 200,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "199         if len(values) != 0:\n200             self.db.executemany(\"INSERT INTO {table_name} VALUES (?);\".format(table_name=table_name), values)\n201         return table_name",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/perfect_match/data_access/jobs/data_access.py",
+    "line": 108,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "107     def insert_many(self, table_name, values):\n108         self.db.executemany(\"INSERT INTO {table_name} VALUES ({question_marks});\"\n109                             .format(table_name=table_name,\n110                                     question_marks=\",\".join([\"?\"] * len(values[0]))),",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/perfect_match/data_access/jobs/data_access.py",
+    "line": 119,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "118         self.create_temporary_table(tmp_name, ids)\n119         return_value = self.db.execute(\"SELECT {column_name} \"\n120                                        \"FROM {table_name} \"\n121                                        \"WHERE rowid IN (SELECT id FROM {tmp_table}) \"\n122                                        \"ORDER BY rowid;\"\n123                                        .format(column_name=",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/perfect_match/data_access/jobs/data_access.py",
+    "line": 131,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "130         # NOTE: This query assumes that there has never been any deletions in the time series table.\n131         return self.db.execute(\"SELECT MAX(_ROWID_) FROM {} LIMIT 1;\".format(table_name)) \\\n132             .fetchone()[0]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/perfect_match/data_access/jobs/data_access.py",
+    "line": 138,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "137 \n138         query = \"SELECT \" \\\n139                 \"{columns} \" \\\n140                 \"FROM {table_name} \" \\\n141                 \"WHERE rowid = ?;\".format(table_name=table_name,\n142                                           columns=columns)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/perfect_match/data_access/jobs/data_access.py",
+    "line": 149,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "148 \n149         ihdp = self.db.execute(\"SELECT {columns} \"\n150                                \"FROM {table_pairs} \"\n151                                \"WHERE rowid IN (SELECT id FROM {tmp_table});\"\n152                                .format(columns=columns,\n153                                        table_pairs=DataAccess.TABLE_JOBS,",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/perfect_match/data_access/jobs/data_access.py",
+    "line": 172,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "171         if len(values) != 0:\n172             self.db.executemany(\"INSERT INTO {table_name} VALUES (?);\".format(table_name=table_name), values)\n173         return table_name",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/perfect_match/data_access/news/data_access.py",
+    "line": 61,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "60     def insert_many(self, table_name, values):\n61         self.db.executemany(\"INSERT INTO {table_name} VALUES ({question_marks});\"\n62                             .format(table_name=table_name,\n63                                     question_marks=\",\".join([\"?\"] * len(values[0]))),",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/perfect_match/data_access/news/data_access.py",
+    "line": 72,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "71         self.create_temporary_table(tmp_name, ids)\n72         return_value = self.db.execute(\"SELECT {column_name} \"\n73                                        \"FROM {table_name} \"\n74                                        \"WHERE rowid IN (SELECT id FROM {tmp_table}) \"\n75                                        \"ORDER BY rowid;\"\n76                                        .format(column_name=column",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/perfect_match/data_access/news/data_access.py",
+    "line": 84,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "83         # NOTE: This query assumes that there has never been any deletions in the time series table.\n84         return self.db.execute(\"SELECT MAX(_ROWID_) FROM {} LIMIT 1;\".format(table_name)) \\\n85             .fetchone()[0]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/perfect_match/data_access/news/data_access.py",
+    "line": 97,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "96 \n97         query = \"SELECT \" \\\n98                 \"{columns} \" \\\n99                 \"FROM {table_name} \" \\\n100                 \"WHERE rowid = ?;\".format(table_name=table_name,\n101                                           columns=columns)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/perfect_match/data_access/news/data_access.py",
+    "line": 110,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "109 \n110         news = self.db.execute(\"SELECT rowid, * \"\n111                                \"FROM {table_pairs} \"\n112                                \"WHERE rowid IN (SELECT id FROM {tmp_table});\"\n113                                .format(table_pairs=DataAccess.TABLE_NEWS,\n114                                        tmp_table=tmp_name)).fetchall()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/perfect_match/data_access/news/data_access.py",
+    "line": 128,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "127 \n128         query = \"SELECT \" \\\n129                 \"{columns} \" \\\n130                 \"FROM {table_name} \" \\\n131                 \"WHERE id = ?;\".format(table_name=table_name,\n132                                        columns=columns)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/perfect_match/data_access/news/data_access.py",
+    "line": 141,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "140         if len(values) != 0:\n141             self.db.executemany(\"INSERT INTO {table_name} VALUES (?);\".format(table_name=table_name), values)\n142         return table_name",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/perfect_match/data_access/news/data_access.py",
+    "line": 148,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "147     def get_news_dimension(self):\n148         news = self.db.execute(\"SELECT * FROM {table_name} WHERE rowid = 1;\"\n149                                .format(table_name=DataAccess.TABLE_NEWS)).fetchone()\n150         return news[0].shape[0]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/perfect_match/data_access/tcga/data_access.py",
+    "line": 150,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "149     def insert_many(self, table_name, values):\n150         self.db.executemany(\"INSERT INTO {table_name} VALUES ({question_marks});\"\n151                             .format(table_name=table_name,\n152                                     question_marks=\",\".join([\"?\"] * len(values[0]))),",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/perfect_match/data_access/tcga/data_access.py",
+    "line": 185,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "184         self.create_temporary_table(tmp_name, ids)\n185         return_value = self.db.execute(\"SELECT {column_name} \"\n186                                        \"FROM {table_name} \"\n187                                        \"WHERE rowid IN (SELECT id FROM {tmp_table}) \"\n188                                        \"ORDER BY rowid;\"\n189                                        .format(column_name=",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/perfect_match/data_access/tcga/data_access.py",
+    "line": 197,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "196         # NOTE: This query assumes that there has never been any deletions in the time series table.\n197         return self.db.execute(\"SELECT MAX(_ROWID_) FROM {} LIMIT 1;\".format(table_name)) \\\n198             .fetchone()[0]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/perfect_match/data_access/tcga/data_access.py",
+    "line": 205,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "204 \n205         query = \"SELECT \" \\\n206                 \"{columns} \" \\\n207                 \"FROM {table_name} \" \\\n208                 \"WHERE rowid = ?;\".format(table_name=table_name,\n209                                           columns=columns)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/perfect_match/data_access/tcga/data_access.py",
+    "line": 220,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "219 \n220         patients = self.db.execute(\"SELECT rowid, * \"\n221                                    \"FROM {table_pairs} \"\n222                                    \"WHERE rowid IN (SELECT id FROM {tmp_table});\"\n223                                    .format(table_pairs=DataAccess.TABLE_CLINICAL,\n224                                            tmp_table=tmp_name)).fetchall()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/perfect_match/data_access/tcga/data_access.py",
+    "line": 234,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "233 \n234         rnaseq_data = self.db.execute(\"SELECT * \" \\\n235                                       \"FROM {table_name} \" \\\n236                                       \"WHERE clinical_id IN (SELECT id FROM {tmp_table});\"\n237                                       .format(table_name=DataAccess.TABLE_RNASEQ,\n238                                               tmp_table=tmp_name)).fetchall()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/perfect_match/data_access/tcga/data_access.py",
+    "line": 258,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "257 \n258         query = \"SELECT \" \\\n259                 \"{columns} \" \\\n260                 \"FROM {table_name} \" \\\n261                 \"WHERE id = ?;\".format(table_name=table_name,\n262                                        columns=columns)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/perfect_match/data_access/tcga/data_access.py",
+    "line": 270,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "269 \n270         query = \"SELECT \" \\\n271                 \"{columns} \" \\\n272                 \"FROM {table_name} \" \\\n273                 \"WHERE clinical_id = ?;\".format(table_name=table_name,\n274                                                 columns=columns)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/perfect_match/data_access/tcga/data_access.py",
+    "line": 278,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "277     def get_labelled_patients(self):\n278         return_value = self.db.execute(\"SELECT {table_name}.rowid \"\n279                                        \"FROM {table_name} \"\n280                                        \"WHERE {table_name}.id IN (SELECT clinical_id FROM {other_table}) \"\n281                                        \"ORDER BY {table_name}.rowid;\"\n282                                   ",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/perfect_match/data_access/tcga/data_access.py",
+    "line": 290,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "289         if len(values) != 0:\n290             self.db.executemany(\"INSERT INTO {table_name} VALUES (?);\".format(table_name=table_name), values)\n291         return table_name",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/perfect_match/data_access/tcga/data_access.py",
+    "line": 297,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "296     def get_rnaseq_dimension(self):\n297         rnaseq = self.db.execute(\"SELECT data FROM {table_name} WHERE rowid = 1;\"\n298                                  .format(table_name=DataAccess.TABLE_RNASEQ)).fetchone()[0]\n299",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/perfect_match/data_access/twins/data_access.py",
+    "line": 74,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "73     def insert_many(self, table_name, values):\n74         self.db.executemany(\"INSERT INTO {table_name} VALUES ({question_marks});\"\n75                             .format(table_name=table_name,\n76                                     question_marks=\",\".join([\"?\"] * len(values[0]))),",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/perfect_match/data_access/twins/data_access.py",
+    "line": 85,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "84         self.create_temporary_table(tmp_name, ids)\n85         return_value = self.db.execute(\"SELECT {column_name} \"\n86                                        \"FROM {table_name} \"\n87                                        \"WHERE rowid IN (SELECT id FROM {tmp_table}) \"\n88                                        \"ORDER BY rowid;\"\n89                                        .format(column_name=column",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/perfect_match/data_access/twins/data_access.py",
+    "line": 97,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "96         # NOTE: This query assumes that there has never been any deletions in the time series table.\n97         return self.db.execute(\"SELECT MAX(_ROWID_) FROM {} LIMIT 1;\".format(table_name)) \\\n98             .fetchone()[0]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/perfect_match/data_access/twins/data_access.py",
+    "line": 105,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "104 \n105         query = \"SELECT \" \\\n106                 \"{columns} \" \\\n107                 \"FROM {table_name} \" \\\n108                 \"WHERE rowid = ?;\".format(table_name=table_name,\n109                                           columns=columns)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/perfect_match/data_access/twins/data_access.py",
+    "line": 116,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "115 \n116         pairs = self.db.execute(\"SELECT * \"\n117                                 \"FROM {table_pairs} \"\n118                                 \"WHERE rowid IN (SELECT id FROM {tmp_table});\"\n119                                 .format(table_pairs=DataAccess.TABLE_PAIRS,\n120                                         tmp_table=tmp_name)).fetchall()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/perfect_match/data_access/twins/data_access.py",
+    "line": 133,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "132 \n133         query = \"SELECT \" \\\n134                 \"{columns} \" \\\n135                 \"FROM {table_name} \" \\\n136                 \"WHERE id = ?;\".format(table_name=table_name,\n137                                        columns=columns)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/perfect_match/data_access/twins/data_access.py",
+    "line": 143,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "142 \n143         query = \"SELECT \" \\\n144                 \"{columns} \" \\\n145                 \"FROM {table_name} \" \\\n146                 \"WHERE clinical_id = ?;\".format(table_name=table_name,\n147                                                 columns=columns)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/perfect_match/data_access/twins/data_access.py",
+    "line": 156,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "155         if len(values) != 0:\n156             self.db.executemany(\"INSERT INTO {table_name} VALUES (?);\".format(table_name=table_name), values)\n157         return table_name",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/perfect_match/data_access/twins/data_access.py",
+    "line": 163,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "162     def get_pairs_dimension(self):\n163         pair = self.db.execute(\"SELECT * FROM {table_name} WHERE rowid = 1;\"\n164                                .format(table_name=DataAccess.TABLE_PAIRS)).fetchone()\n165         return len(pair) - 7",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/tcga_data_access.py",
+    "line": 150,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "149     def insert_many(self, table_name, values):\n150         self.db.executemany(\"INSERT INTO {table_name} VALUES ({question_marks});\"\n151                             .format(table_name=table_name,\n152                                     question_marks=\",\".join([\"?\"] * len(values[0]))),",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/tcga_data_access.py",
+    "line": 185,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "184         self.create_temporary_table(tmp_name, ids)\n185         return_value = self.db.execute(\"SELECT {column_name} \"\n186                                        \"FROM {table_name} \"\n187                                        \"WHERE rowid IN (SELECT id FROM {tmp_table}) \"\n188                                        \"ORDER BY rowid;\"\n189                                        .format(column_name=",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/tcga_data_access.py",
+    "line": 197,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "196         # NOTE: This query assumes that there has never been any deletions in the time series table.\n197         return self.db.execute(\"SELECT MAX(_ROWID_) FROM {} LIMIT 1;\".format(table_name)) \\\n198             .fetchone()[0]",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/tcga_data_access.py",
+    "line": 205,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "204 \n205         query = \"SELECT \" \\\n206                 \"{columns} \" \\\n207                 \"FROM {table_name} \" \\\n208                 \"WHERE rowid = ?;\".format(table_name=table_name,\n209                                           columns=columns)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/tcga_data_access.py",
+    "line": 220,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "219 \n220         patients = self.db.execute(\"SELECT rowid, * \"\n221                                    \"FROM {table_pairs} \"\n222                                    \"WHERE rowid IN (SELECT id FROM {tmp_table});\"\n223                                    .format(table_pairs=DataAccess.TABLE_CLINICAL,\n224                                            tmp_table=tmp_name)).fetchall()",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/tcga_data_access.py",
+    "line": 234,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "233 \n234         rnaseq_data = self.db.execute(\"SELECT * \" \\\n235                                       \"FROM {table_name} \" \\\n236                                       \"WHERE clinical_id IN (SELECT id FROM {tmp_table});\"\n237                                       .format(table_name=DataAccess.TABLE_RNASEQ,\n238                                               tmp_table=tmp_name)).fetchall()",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/tcga_data_access.py",
+    "line": 258,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "257 \n258         query = \"SELECT \" \\\n259                 \"{columns} \" \\\n260                 \"FROM {table_name} \" \\\n261                 \"WHERE id = ?;\".format(table_name=table_name,\n262                                        columns=columns)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/tcga_data_access.py",
+    "line": 270,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "269 \n270         query = \"SELECT \" \\\n271                 \"{columns} \" \\\n272                 \"FROM {table_name} \" \\\n273                 \"WHERE clinical_id = ?;\".format(table_name=table_name,\n274                                                 columns=columns)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/tcga_data_access.py",
+    "line": 278,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "277     def get_labelled_patients(self):\n278         return_value = self.db.execute(\"SELECT {table_name}.rowid \"\n279                                        \"FROM {table_name} \"\n280                                        \"WHERE {table_name}.id IN (SELECT clinical_id FROM {other_table}) \"\n281                                        \"ORDER BY {table_name}.rowid;\"\n282                                   ",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/tcga_data_access.py",
+    "line": 290,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "289         if len(values) != 0:\n290             self.db.executemany(\"INSERT INTO {table_name} VALUES (?);\".format(table_name=table_name), values)\n291         return table_name",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/tcga_data_access.py",
+    "line": 298,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "297         try:\n298             rnaseq = self.db.execute(\"SELECT data FROM {table_name} WHERE rowid = 1;\"\n299                                  .format(table_name=DataAccess.TABLE_RNASEQ)).fetchone()[0]\n300",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/test.py",
+    "line": 5,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "4 \n5 query = \"SELECT \" \\\n6                 \"{columns} \" \\\n7                 \"FROM {table_name} \" \\\n8                 \"WHERE rowid = ?;\".format(table_name=\"jobs\",\n9                                           columns=\"rowid,x\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/twins_data_access.py",
+    "line": 74,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "73     def insert_many(self, table_name, values):\n74         self.db.executemany(\"INSERT INTO {table_name} VALUES ({question_marks});\"\n75                             .format(table_name=table_name,\n76                                     question_marks=\",\".join([\"?\"] * len(values[0]))),",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/twins_data_access.py",
+    "line": 85,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "84         self.create_temporary_table(tmp_name, ids)\n85         return_value = self.db.execute(\"SELECT {column_name} \"\n86                                        \"FROM {table_name} \"\n87                                        \"WHERE rowid IN (SELECT id FROM {tmp_table}) \"\n88                                        \"ORDER BY rowid;\"\n89                                        .format(column_name=column",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/twins_data_access.py",
+    "line": 97,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "96         # NOTE: This query assumes that there has never been any deletions in the time series table.\n97         return self.db.execute(\"SELECT MAX(_ROWID_) FROM {} LIMIT 1;\".format(table_name)) \\\n98             .fetchone()[0]",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/twins_data_access.py",
+    "line": 105,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "104 \n105         query = \"SELECT \" \\\n106                 \"{columns} \" \\\n107                 \"FROM {table_name} \" \\\n108                 \"WHERE rowid = ?;\".format(table_name=table_name,\n109                                           columns=columns)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/twins_data_access.py",
+    "line": 116,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "115 \n116         pairs = self.db.execute(\"SELECT * \"\n117                                 \"FROM {table_pairs} \"\n118                                 \"WHERE rowid IN (SELECT id FROM {tmp_table});\"\n119                                 .format(table_pairs=DataAccess.TABLE_PAIRS,\n120                                         tmp_table=tmp_name)).fetchall()",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/twins_data_access.py",
+    "line": 133,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "132 \n133         query = \"SELECT \" \\\n134                 \"{columns} \" \\\n135                 \"FROM {table_name} \" \\\n136                 \"WHERE id = ?;\".format(table_name=table_name,\n137                                        columns=columns)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/twins_data_access.py",
+    "line": 143,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "142 \n143         query = \"SELECT \" \\\n144                 \"{columns} \" \\\n145                 \"FROM {table_name} \" \\\n146                 \"WHERE clinical_id = ?;\".format(table_name=table_name,\n147                                                 columns=columns)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/twins_data_access.py",
+    "line": 156,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "155         if len(values) != 0:\n156             self.db.executemany(\"INSERT INTO {table_name} VALUES (?);\".format(table_name=table_name), values)\n157         return table_name",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "PM/twins_data_access.py",
+    "line": 163,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "162     def get_pairs_dimension(self):\n163         pair = self.db.execute(\"SELECT * FROM {table_name} WHERE rowid = 1;\"\n164                                .format(table_name=DataAccess.TABLE_PAIRS)).fetchone()\n165         return len(pair) - 7",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "SITE/evaluate.py",
+    "line": 65,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "64         # Load evaluation\n65         eval_results, configs = pickle.load(open(eval_path, \"rb\"))\n66     # print eval_results",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "SITE/evaluate.py",
+    "line": 166,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "165         if len(sys.argv)>3:\n166             filters = eval(sys.argv[3])\n167",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "SITE/propensity.py",
+    "line": 100,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "99 def load_propensity_score(model_file_name,x):\n100     loaded_model = pickle.load(open(model_file_name, 'rb'))\n101     result = loaded_model.predict_proba(x)",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "SITE/site_param_search.py",
+    "line": 15,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "14                 if len(vs)>0:\n15                     k,v = (vs[0], eval(vs[1]))\n16                     if not isinstance(v,list):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "SITE/site_param_search.py",
+    "line": 74,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "73     propensity_dir = configs['propensity_dir'][0]\n74     call('python D:\\PycharmProjects\\pythonProject\\SITE\\propensity_score_calculation.py %s %s' % (data_path, propensity_dir), shell=True)\n75",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "SITE/site_param_search.py",
+    "line": 94,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "93         flags = ' '.join('--%s %s' % (k,str(v)) for k,v in cfg.items())\n94         call('python D:\\PycharmProjects\\pythonProject\\SITE\\site_net_train.py %s' % flags, shell=True)\n95",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "CFRNet/evaluate.py",
+    "line": 63,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "CFRNet/param_search.py",
+    "line": 16,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "CFRNet/param_search.py",
+    "line": 86,
+    "message": "Found 'subprocess' function 'call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "DRN/evaluate.py",
+    "line": 66,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "PM/evaluate.py",
+    "line": 209,
+    "message": "Found 'subprocess' function 'check_output' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-cPickle",
+    "file_path": "PM/model_factory.py",
+    "line": 38,
+    "message": "Avoid using `cPickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "PM/model_factory.py",
+    "line": 38,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-cPickle",
+    "file_path": "PM/model_factory.py",
+    "line": 42,
+    "message": "Avoid using `cPickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "PM/model_factory.py",
+    "line": 42,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-cPickle",
+    "file_path": "PM/perfect_match/models/model_factory.py",
+    "line": 38,
+    "message": "Avoid using `cPickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "PM/perfect_match/models/model_factory.py",
+    "line": 38,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-cPickle",
+    "file_path": "PM/perfect_match/models/model_factory.py",
+    "line": 42,
+    "message": "Avoid using `cPickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "PM/perfect_match/models/model_factory.py",
+    "line": 42,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "SITE/evaluate.py",
+    "line": 60,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "SITE/evaluate.py",
+    "line": 65,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "SITE/evaluate.py",
+    "line": 166,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "SITE/propensity.py",
+    "line": 100,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "SITE/propensity_score_calculation.py",
+    "line": 16,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "SITE/site_param_search.py",
+    "line": 15,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "SITE/site_param_search.py",
+    "line": 74,
+    "message": "Found 'subprocess' function 'call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "SITE/site_param_search.py",
+    "line": 94,
+    "message": "Found 'subprocess' function 'call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

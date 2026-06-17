@@ -1,0 +1,162 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "convert_model_weights.py",
+    "line": 8,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "7     args = parser.parse_args()\n8     params = torch.load(args.file)\n9     del params[\"code_embeddings.weight\"]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model_loader.py",
+    "line": 81,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "80     if model_file is not None:\n81         model.load_state_dict(torch.load(model_file, map_location='cpu'))\n82     model.correct_devices()",
+    "stage": "inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model_loader.py",
+    "line": 88,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "87         if optimizer_file is not None:\n88             optimizer.load_state_dict(torch.load(optimizer_file))\n89         return batcher, model, postprocessor, optimizer",
+    "stage": "inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "models/clinical_bert/model.py",
+    "line": 12,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "11         super(ClinicalBertWrapper, self).__init__()\n12         config = BertModel.config_class.from_pretrained(p.pretrained_model)\n13         config.output_attentions = True",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "models/clinical_bert/model.py",
+    "line": 15,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "14         self.hidden_size = config.hidden_size\n15         self.clinical_bert = BertModel.from_pretrained(p.pretrained_model, config=config)\n16",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "processing/dataset.py",
+    "line": 10,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "9         dictionary = super(Dataset, self).__getitem__(i)\n10         dictionary['reports'] = pd.DataFrame(eval(dictionary['reports']))\n11         dictionary['reports']['date'] = pd.to_datetime(dictionary['reports']['date'])",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "processing/dataset.py",
+    "line": 12,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "11         dictionary['reports']['date'] = pd.to_datetime(dictionary['reports']['date'])\n12         dictionary['targets'] = eval(dictionary['targets'])\n13         dictionary['labels'] = eval(dictionary['labels'])",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "processing/dataset.py",
+    "line": 13,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "12         dictionary['targets'] = eval(dictionary['targets'])\n13         dictionary['labels'] = eval(dictionary['labels'])\n14         return dictionary",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "processing/postprocessor.py",
+    "line": 50,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "49             if supervised:\n50                 annotations = eval(batch.instances[b]['annotations'])\n51             for s in range(outputs['num_codes'][b]):",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "processing/tokenizer.py",
+    "line": 33,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "32     def __init__(self, with_cls=True, with_sep=True):\n33         self.tokenizer = BertTokenizer.from_pretrained(p.pretrained_model)\n34         self.with_cls = with_cls",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "utils.py",
+    "line": 77,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "76         with open(file, 'r') as f:\n77             return eval(f.read())\n78",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "processing/dataset.py",
+    "line": 10,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "processing/dataset.py",
+    "line": 12,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "processing/dataset.py",
+    "line": 13,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "processing/postprocessor.py",
+    "line": 50,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "utils.py",
+    "line": 77,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  }
+]

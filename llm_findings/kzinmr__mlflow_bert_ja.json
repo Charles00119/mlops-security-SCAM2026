@@ -1,0 +1,132 @@
+[
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_validation",
+    "file_path": "ner_local.py",
+    "line": 0,
+    "message": "No detected input validation: The code checks response.ok before writing the downloaded file but performs no structural, schema, type, or value-range validation on the downloaded data content.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.untrusted_source_handling",
+    "file_path": "ner_local.py",
+    "line": 0,
+    "message": "No detected untrusted source handling: The download_dataset function fetches data via plain HTTP GET with no checksum verification, signature validation, pinned commit/revision, or authentication of the remote source.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_flipping_detection",
+    "file_path": "ner_local.py",
+    "line": 0,
+    "message": "No detected label flipping detection: The code converts BIO to BILOU format and processes labels but never validates label values against an expected set, compares label distributions, or uses any label-noise detection tool.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.data_poisoning_defenses",
+    "file_path": "ner_local.py",
+    "line": 0,
+    "message": "No detected data poisoning defenses: There are no outlier detection, statistical anomaly checks, or filtering mechanisms applied to training samples to defend against data poisoning.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.model_integrity_verification",
+    "file_path": "ner_local.py",
+    "line": 0,
+    "message": "No detected model integrity verification: The code uses AutoConfig, AutoModelForTokenClassification, and AutoTokenizer from HuggingFace without any hash verification, signature check, pinned revision, or restriction to a controlled internal source.",
+    "snippet": "",
+    "stage": "modeling"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_distribution_validation",
+    "file_path": "ner_local.py",
+    "line": 0,
+    "message": "No detected label distribution validation: The code processes and converts BIO/BILOU labels but contains no class balance checks, expected-label-set validation, or anomalous sample detection before training.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.backdoor_or_trigger_detection",
+    "file_path": "ner_local.py",
+    "line": 0,
+    "message": "No detected backdoor or trigger detection: There is no neural-cleanse-style trigger detection, activation-pattern analysis, or gradient anomaly detection anywhere in the visible training code.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.differential_privacy",
+    "file_path": "ner_local.py",
+    "line": 0,
+    "message": "No detected differential privacy: The code uses standard AdamW/Adafactor optimizers via Hugging Face and PyTorch Lightning with no Opacus, TensorFlow Privacy, or any DP-SGD mechanism.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.adversarial_robustness_testing",
+    "file_path": "ner_local.py",
+    "line": 0,
+    "message": "No detected adversarial robustness testing: No adversarial robustness libraries (Foolbox, ART, etc.) or attack methods (FGSM, PGD) are imported or used anywhere in the visible code.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.metric_tampering_protection",
+    "file_path": "ner_local.py",
+    "line": 0,
+    "message": "No detected metric tampering protection: While a separate test split is defined via the Split enum, there is no evidence of hashing/signing evaluation data or explicit isolation guarantees preventing the test set from leaking into training; multiple metrics (accuracy, F1, precision, recall) are imported but this alone does not constitute t",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_sanitization",
+    "file_path": "ner_local.py",
+    "line": 0,
+    "message": "No detected input sanitization: The visible code handles data downloading, BIO/BILOU conversion, and dataset utilities but contains no input shape, range, or schema validation on incoming inference requests.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.output_bounds_checks",
+    "file_path": "ner_local.py",
+    "line": 0,
+    "message": "No detected output bounds checks: No probability sanity bounds, NaN guards, or threshold checks on model outputs are visible in the provided code slice.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.prompt_injection_defenses",
+    "file_path": "ner_local.py",
+    "line": 0,
+    "message": "No detected prompt injection defenses: This is a NER (token classification) pipeline, not an LLM, and no prompt-injection filtering or content moderation is present or applicable in the visible code.",
+    "snippet": "",
+    "stage": "inference"
+  }
+]

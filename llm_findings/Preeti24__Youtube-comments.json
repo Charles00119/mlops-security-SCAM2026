@@ -1,0 +1,132 @@
+[
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_validation",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected input validation: The URL and comment count are taken directly from user input and passed to the extractor without any format validation, type checks, or range guards beyond Streamlit's number_input widget.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.untrusted_source_handling",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected untrusted source handling: The code authenticates to the YouTube API via OAuth but performs no integrity verification (checksums, pinned API versions beyond the string 'v3', or signature checks) on the fetched comment data.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_flipping_detection",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected label flipping detection: There is no code that validates label distributions, checks label values against an expected set, or uses any label-noise detection tool such as Cleanlab.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.data_poisoning_defenses",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected data poisoning defenses: The data preparation code only scrapes and lightly filters comments (stopwords, URL removal) with no outlier detection, statistical anomaly checks, or suspicious-input filtering against poisoning.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.model_integrity_verification",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected model integrity verification: The model is loaded directly with `dill.load(open('fittedWinnerModel', 'rb'))` without any hash check, signature verification, or pinned revision check.",
+    "snippet": "",
+    "stage": "modeling"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_distribution_validation",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected label distribution validation: The code loads a pre-fitted model with dill and runs inference/analysis; there is no validation of label distribution or class balance check before any training step.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.backdoor_or_trigger_detection",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected backdoor or trigger detection: No backdoor or trigger detection mechanisms (e.g., Neural Cleanse, activation analysis, gradient anomaly detection) are present anywhere in the code.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.differential_privacy",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected differential privacy: No differential privacy libraries or mechanisms (Opacus, TensorFlow Privacy, DP-SGD) are imported or used in any part of the code.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.adversarial_robustness_testing",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected adversarial robustness testing: No adversarial robustness testing frameworks or attack simulations (Foolbox, ART, FGSM, PGD, etc.) are present anywhere in the code.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.metric_tampering_protection",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected metric tampering protection: While Helper.py computes multiple metrics (precision, recall, F1, Fbeta, accuracy, ROC-AUC), there is no evidence of a held-out test set isolation strategy, signed/hashed evaluation data, or other controls to prevent metric manipulation.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_sanitization",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected input sanitization: The YouTube URL and comment count are taken directly from user input via st.text_input/st.number_input with no validation of URL format, range checks on comment count, or schema enforcement before being passed to the extraction and model pipeline.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.output_bounds_checks",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected output bounds checks: The code loads and uses the dill-deserialized model (fittedWinnerModel) for inference with no visible checks on output probabilities, NaN guards, or sanity bounds on predictions before displaying results.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.prompt_injection_defenses",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected prompt injection defenses: The model is a classical ML spam/sentiment classifier (not an LLM), so prompt injection is not directly applicable; no input filtering or content moderation against adversarial text manipulation is implemented either.",
+    "snippet": "",
+    "stage": "inference"
+  }
+]

@@ -1,0 +1,122 @@
+[
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.untrusted_source_handling",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected untrusted source handling: All data is read from local filesystem paths (directories and files passed via --dataPath); there is no remote/network source fetching and therefore no checksum, signature, or authentication mechanism is present.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_flipping_detection",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected label flipping detection: The code only filters out labels not in DAMAGE_TYPES but does not check for label distribution anomalies, compare label distributions across splits, or use any label-noise detection tool.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.data_poisoning_defenses",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected data poisoning defenses: The preparation code performs basic null/geometry checks but does no outlier detection, statistical anomaly checks, or any other mechanism to defend against poisoned training samples.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.model_integrity_verification",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected model integrity verification: The code loads model weights via pickle (load_obj uses pickle.load) and saves/loads a best_model_wts.pkl file, but there is no hash check, signature verification, or pinned revision performed on the loaded weights.",
+    "snippet": "",
+    "stage": "modeling"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_distribution_validation",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected label distribution validation: The code filters samples by damage type membership in DAMAGE_TYPES but never checks class balance, distribution statistics, or flags anomalous label ratios before training.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.backdoor_or_trigger_detection",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected backdoor or trigger detection: There is no activation-pattern analysis, gradient anomaly detection, neural-cleanse-style trigger scanning, or any other backdoor defense in the training loop.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.differential_privacy",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected differential privacy: The optimizer used is a standard Adam (torch.optim.Adam) with no DP-SGD wrapping, Opacus, or any other differential privacy mechanism.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.adversarial_robustness_testing",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected adversarial robustness testing: There is no use of Foolbox, ART, FGSM, PGD, or any other adversarial attack/robustness testing framework anywhere in the code.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.metric_tampering_protection",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected metric tampering protection: There is no evidence of a held-out test set isolated from training data at the code level, signed/hashed evaluation data, or use of multiple independent metrics to guard against metric manipulation; the test split is loaded from a shared cached file alongside training splits.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_sanitization",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected input sanitization: The inference path loads images and GeoJSON data without validating input shapes, pixel value ranges, or schema correctness before passing data to the model.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.output_bounds_checks",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected output bounds checks: No code inspects model outputs for NaN values, out-of-range probabilities, or threshold sanity before returning or logging results.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.prompt_injection_defenses",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected prompt injection defenses: This is a computer-vision/damage-assessment model, not an LLM, so prompt-injection defenses are not applicable and none are present.",
+    "snippet": "",
+    "stage": "inference"
+  }
+]

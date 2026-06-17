@@ -1,0 +1,132 @@
+[
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_validation",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected input validation: No schema checks, dtype assertions, or value-range guards are present on incoming audio data, config values, or text inputs throughout the data acquisition path.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.untrusted_source_handling",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected untrusted source handling: Google ASR credentials are loaded from a config file without any integrity verification (checksums, pinned revisions, or authenticated URLs) on the remote API source.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_flipping_detection",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected label flipping detection: No code checks label distributions, validates label values against an expected set, or uses any label-noise detection tool such as Cleanlab.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.data_poisoning_defenses",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected data poisoning defenses: No outlier detection, statistical anomaly checks, or filtering of suspicious inputs is performed on training samples or the dataset during preparation.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.model_integrity_verification",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected model integrity verification: The code loads classifiers via load_classifiers() from directory paths in config.json without any hash check, signature verification, or pinned revision before deserializing the models.",
+    "snippet": "",
+    "stage": "modeling"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_distribution_validation",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected label distribution validation: The code loads classifiers and extracts features but contains no checks for class balance, expected label sets, or anomalous sample detection before or during training.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.backdoor_or_trigger_detection",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected backdoor or trigger detection: There is no neural-cleanse-style trigger detection, activation-pattern analysis, or gradient anomaly detection anywhere in the visible code.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.differential_privacy",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected differential privacy: No differential privacy libraries (Opacus, TensorFlow Privacy, DP-SGD) or related mechanisms are imported or used anywhere in the code.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.adversarial_robustness_testing",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected adversarial robustness testing: No adversarial testing frameworks (Foolbox, ART, FGSM, PGD, etc.) or robustness stress tests are present anywhere in the code.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.metric_tampering_protection",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected metric tampering protection: There is no evidence of held-out test set isolation, signed/hashed evaluation data, or multiple independent metrics to guard against metric manipulation; evaluation data is loaded directly from a config file without any integrity checks.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_sanitization",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected input sanitization: The code reads audio directly from PyAudio stream and config file without any shape, range, or schema validation before passing to models.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.output_bounds_checks",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected output bounds checks: Model outputs from get_final_class, predict, and feature extraction functions are used directly with no NaN guards, probability bounds checks, or sanity validation.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.prompt_injection_defenses",
+    "file_path": "app.py",
+    "line": 0,
+    "message": "No detected prompt injection defenses: The pipeline uses speech/audio-based ML models and text scoring, not an LLM, so prompt injection defenses are not applicable and none are implemented.",
+    "snippet": "",
+    "stage": "inference"
+  }
+]

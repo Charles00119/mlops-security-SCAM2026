@@ -1,0 +1,132 @@
+[
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_validation",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected input validation: The code only sets up GUI widgets and connects signals; there is no schema check, dtype assertion, or value-range guard on any incoming data.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.untrusted_source_handling",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected untrusted source handling: Although 'requests' is imported and a 'detect_version()' call is present, no checksum verification, signature check, or pinned revision is visible for any remote fetch in the provided code slice.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_flipping_detection",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected label flipping detection: No code validates label values against an expected set, compares label distributions, or uses any label-noise detection tool such as Cleanlab.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.data_poisoning_defenses",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected data poisoning defenses: The code is primarily GUI wiring (PyQt5 setup, stylesheet loading) with no outlier detection, statistical anomaly checks, or filtering of suspicious training samples.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.model_integrity_verification",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected model integrity verification: The code is a GUI launcher that initializes UI components and connects signals; there is no loading of pretrained weights or serialized models, and consequently no hash check, signature verification, or pinned revision control.",
+    "snippet": "",
+    "stage": "modeling"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_distribution_validation",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected label distribution validation: No code in the provided slice checks class balance, expected label sets, or anomalous training samples before or during training.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.backdoor_or_trigger_detection",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected backdoor or trigger detection: The code contains only GUI wiring and stylesheet loading; there is no backdoor defense, trigger detection, or gradient anomaly analysis anywhere in the slice.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.differential_privacy",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected differential privacy: No differential privacy library (Opacus, TensorFlow Privacy, DP-SGD, etc.) is imported or invoked anywhere in the provided code.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.adversarial_robustness_testing",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected adversarial robustness testing: No adversarial robustness testing libraries (Foolbox, ART, FGSM, PGD) or related logic are present anywhere in the visible code.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.metric_tampering_protection",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected metric tampering protection: The visible code is primarily GUI scaffolding with no evidence of held-out test set isolation, signed/hashed evaluation data, or multiple independent metric verification mechanisms.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_sanitization",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected input sanitization: The code shows only GUI initialization and event wiring with no visible input validation, schema checks, or shape/range guards on data passed to the model.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.output_bounds_checks",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected output bounds checks: No code is visible that inspects, bounds-checks, or filters model outputs (e.g., probability ranges, NaN guards) before returning results to the user.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.prompt_injection_defenses",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected prompt injection defenses: The pipeline uses classical ML classification/regression models (not an LLM), so prompt-injection defenses are not applicable and none are implemented.",
+    "snippet": "",
+    "stage": "inference"
+  }
+]

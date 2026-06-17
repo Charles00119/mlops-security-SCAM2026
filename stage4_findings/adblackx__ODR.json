@@ -1,0 +1,22 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "base/base_trainer.py",
+    "line": 136,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "135 \t\tself.logger.info(\"Loading checkpoint: {} ...\".format(resume_path))\n136 \t\tcheckpoint = torch.load(resume_path)\n137 \t\tself.start_epoch = checkpoint['epoch'] + 1",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "visualisation/plot.py",
+    "line": 84,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "83 \n84 \tmodel.load_state_dict(torch.load(PATH))\n85 \tmodel.eval()",
+    "stage": "unreachable"
+  }
+]

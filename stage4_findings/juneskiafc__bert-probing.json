@@ -1,0 +1,932 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "attention_flow.py",
+    "line": 67,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "66     checkpoint_file = list(checkpoint_dir.rglob('*.pt'))[0]\n67     state_dict = torch.load(checkpoint_file)\n68     del state_dict['optimizer']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "attention_flow.py",
+    "line": 285,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "284                             cross_iid, multi_iid = iids[0][b, :], iids[1][b, :]\n285                             tokenizer = AutoTokenizer.from_pretrained('bert-base-multilingual-cased')\n286                             cross_tokens = tokenizer.convert_ids_to_tokens(cross_iid)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "bert_src/trainer.py",
+    "line": 1061,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "1060                 # We load the model state dict on the CPU to avoid an OOM error.\n1061                 state_dict = torch.load(os.path.join(resume_from_checkpoint, WEIGHTS_NAME), map_location=\"cpu\")\n1062                 # If the model is on the GPU, it still works!",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "bert_src/trainer.py",
+    "line": 1365,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "1364             # We load the model state dict on the CPU to avoid an OOM error.\n1365             state_dict = torch.load(os.path.join(self.state.best_model_checkpoint, WEIGHTS_NAME), map_location=\"cpu\")\n1366             # If the model is on the GPU, it still works!",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "bert_src/trainer.py",
+    "line": 1436,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "1435 \n1436         checkpoint_rng_state = torch.load(rng_file)\n1437         random.setstate(checkpoint_rng_state[\"python\"])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "bert_src/trainer.py",
+    "line": 1571,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "1570                 # On TPU we have to take some extra precautions to properly load the states on the right device.\n1571                 optimizer_state = torch.load(os.path.join(checkpoint, \"optimizer.pt\"), map_location=\"cpu\")\n1572                 with warnings.catch_warnings(record=True) as caught_warnings:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "bert_src/trainer.py",
+    "line": 1573,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "1572                 with warnings.catch_warnings(record=True) as caught_warnings:\n1573                     lr_scheduler_state = torch.load(os.path.join(checkpoint, \"scheduler.pt\"), map_location=\"cpu\")\n1574                 reissue_pt_warnings(caught_warnings)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "bert_src/trainer.py",
+    "line": 1584,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "1583                 self.optimizer.load_state_dict(\n1584                     torch.load(os.path.join(checkpoint, \"optimizer.pt\"), map_location=map_location)\n1585                 )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "bert_src/trainer.py",
+    "line": 1587,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "1586                 with warnings.catch_warnings(record=True) as caught_warnings:\n1587                     self.lr_scheduler.load_state_dict(torch.load(os.path.join(checkpoint, \"scheduler.pt\")))\n1588                 reissue_pt_warnings(caught_warnings)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "bert_src/trainer.py",
+    "line": 1590,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "1589                 if self.use_amp and os.path.isfile(os.path.join(checkpoint, \"scaler.pt\")):\n1590                     self.scaler.load_state_dict(torch.load(os.path.join(checkpoint, \"scaler.pt\")))\n1591",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "debug/examine.py",
+    "line": 4,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "3 \n4 marc_cross = torch.load(Path('debug/cross_head_training/NLI/MARC.pt'))\n5 marc_multi = torch.load(Path('debug/multi_head_training/NLI/MARC.pt'))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "debug/examine.py",
+    "line": 5,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "4 marc_cross = torch.load(Path('debug/cross_head_training/NLI/MARC.pt'))\n5 marc_multi = torch.load(Path('debug/multi_head_training/NLI/MARC.pt'))\n6",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "examine_kqv.py",
+    "line": 26,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "25         model_name = Path(model_ckpt).parent.name\n26         state_dict = torch.load(model_ckpt)['state']\n27",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "examine_kqv.py",
+    "line": 70,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "69 \n70                 pretrained_k = torch.load(head_folder.joinpath('key.pt'))\n71                 pretrained_q = torch.load(head_folder.joinpath('query.pt'))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "examine_kqv.py",
+    "line": 71,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "70                 pretrained_k = torch.load(head_folder.joinpath('key.pt'))\n71                 pretrained_q = torch.load(head_folder.joinpath('query.pt'))\n72                 pretrained_v = torch.load(head_folder.joinpath('value.pt'))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "examine_kqv.py",
+    "line": 72,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "71                 pretrained_q = torch.load(head_folder.joinpath('query.pt'))\n72                 pretrained_v = torch.load(head_folder.joinpath('value.pt'))\n73",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "examine_kqv.py",
+    "line": 75,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "74                 ft_hl_head_folder = finetuned_kqv_dir.joinpath(hidden_layer_idx, head_idx)\n75                 finetuned_k = torch.load(ft_hl_head_folder.joinpath('key.pt'))\n76                 finetuned_q = torch.load(ft_hl_head_folder.joinpath('query.pt'))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "examine_kqv.py",
+    "line": 76,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "75                 finetuned_k = torch.load(ft_hl_head_folder.joinpath('key.pt'))\n76                 finetuned_q = torch.load(ft_hl_head_folder.joinpath('query.pt'))\n77                 finetuned_v = torch.load(ft_hl_head_folder.joinpath('value.pt'))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "examine_kqv.py",
+    "line": 77,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "76                 finetuned_q = torch.load(ft_hl_head_folder.joinpath('query.pt'))\n77                 finetuned_v = torch.load(ft_hl_head_folder.joinpath('value.pt'))\n78",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "experiments/MARC/get_statistics.py",
+    "line": 6,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "5         for lang in ['en', 'fr', 'es', 'de']:\n6             dataset = load_dataset('amazon_reviews_multi', lang, split=split)\n7             print(f'{lang}, {split}, {len(dataset)}')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "experiments/MARC/prepare_data.py",
+    "line": 29,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "28                 for lang in langs:\n29                     dataset = load_dataset('amazon_reviews_multi', lang, split=split)\n30                     datasets.append(dataset)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "experiments/MARC/utils.py",
+    "line": 11,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "10         for lang in ['en', 'fr', 'de', 'es']:\n11             dataset = load_dataset('amazon_reviews_multi', lang, split=split)\n12             datasets.append(dataset)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "experiments/MLM/utils.py",
+    "line": 3,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "2 \n3 tokenizer = AutoTokenizer.from_pretrained('bert-base-multilingual-cased', cache_dir='.cache')\n4 encoded_input = tokenizer('hello [SEP] hi')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "experiments/NER/get_statistics.py",
+    "line": 7,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "6         for lang in ['en', 'fr', 'es', 'de']:\n7             dataset = load_dataset('wikiann', lang, split=split)\n8             print(f'{lang}, {split}, {len(dataset)}')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "experiments/NER/prepare_data.py",
+    "line": 47,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "46             for lang in langs_by_split[split]:\n47                 dataset = load_dataset('wikiann', lang, split=split)\n48                 datasets.append(dataset)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "experiments/NER/utils.py",
+    "line": 23,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "22         for lang in ['en', 'fr', 'de', 'es']:\n23             dataset = load_dataset('wikiann', lang, split=split)\n24             datasets.append(dataset)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "experiments/PAWSX/get_statistics.py",
+    "line": 6,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "5         for lang in ['en', 'fr', 'es', 'de']:\n6             dataset = load_dataset('paws-x', lang, split=split)\n7             print(f'{lang}, {split}, {len(dataset)}')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "experiments/PAWSX/prepare_data.py",
+    "line": 34,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "33                 for lang in langs:\n34                     dataset = load_dataset('paws-x', lang, split=split)\n35                     datasets.append(dataset)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "experiments/PAWSX/utils.py",
+    "line": 11,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "10         for lang in ['en', 'fr', 'de', 'es']:\n11             dataset = load_dataset('paws-x', lang, split=split)\n12             datasets.append(dataset)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "experiments/POS/data/en/others/UD_English-GUMReddit/get_text.py",
+    "line": 223,
+    "message": "Call to requests without timeout",
+    "snippet": "222 \tout_posts = {}\n223 \ttab_delim = requests.get(\"https://corpling.uis.georgetown.edu/gum/fetch_text_proxy.py\").text\n224 \tfor line in tab_delim.split(\"\\n\"):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "experiments/POS/data/en/others/UD_English-GUMReddit/get_text.py",
+    "line": 277,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "276 \t# Submit an async query.\n277 \tquery = \"SELECT * FROM [\" + table_name + \"] WHERE id = '\"+post_id+\"';\"\n278 \tjob_id, _results = client.query(query)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "experiments/utils.py",
+    "line": 57,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "56         with open(y, 'r') as f:\n57             data = yaml.load(f, Loader=yaml.Loader)\n58             master.update(data)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "extractor.py",
+    "line": 212,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "211     if os.path.exists(args.checkpoint):\n212         state_dict = torch.load(args.checkpoint)\n213         config = state_dict['config']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "fractional_training.py",
+    "line": 34,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "33                     command += f'--out_file {model.name}-{seed}-{frac} --task {model.name}'\n34                     subprocess.call(command, shell=True, stdout=subprocess.PIPE)\n35",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "get_head_probe_results.py",
+    "line": 101,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "100         with open('checkpoint/dummy_config.pkl', 'rb') as f:\n101             config = pickle.load(f)\n102",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "get_head_probe_results.py",
+    "line": 123,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "122 \n123     state_dict = torch.load(checkpoint)\n124     config = state_dict['config']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "get_head_probe_results.py",
+    "line": 252,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "251         try:\n252             state_dict_for_head = torch.load(str(state_dict_for_head))['state']\n253         except:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "get_head_probe_results.py",
+    "line": 387,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "386         for lang in ['en', 'fr', 'de', 'es']:\n387             dataset = load_dataset('paws-x', lang, split='test')\n388             lang_to_id[lang] = list(range(i, i + len(dataset)))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "get_model_probe_results.py",
+    "line": 28,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "27         with open('checkpoint/dummy_config.pkl', 'rb') as fr:\n28             config = pickle.load(fr)\n29             model = MTDNNModel(config, devices=[device_id])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "get_model_probe_results.py",
+    "line": 119,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "118     print(f'loading from {state_dict_for_head}')\n119     state_dict_for_head = torch.load(state_dict_for_head, map_location=f'cuda:{device_id}')\n120     if 'state' in state_dict_for_head.keys():",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "gradient_probing.py",
+    "line": 94,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "93                 \n94                 a = raw_to_final_form(torch.load(a)).numpy().flatten()\n95                 b = raw_to_final_form(torch.load(b)).numpy().flatten()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "gradient_probing.py",
+    "line": 95,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "94                 a = raw_to_final_form(torch.load(a)).numpy().flatten()\n95                 b = raw_to_final_form(torch.load(b)).numpy().flatten()\n96",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "gradient_probing.py",
+    "line": 241,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "240     else:\n241         attention_gradients = torch.load(save_path.joinpath('grad.pt'))\n242",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "head_probe.py",
+    "line": 86,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "85         print(f'[{setting.name}] [GPU {did}] {finetuned_task.name}->{task.name} {(hl, hi)}')\n86         process = subprocess.Popen(template, shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE)\n87         processes.append((hl, hi, did, process))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "head_transplant.py",
+    "line": 25,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "24 \n25     base_model = torch.load(base_model_ckpt)\n26     multilingual_model = torch.load(multilingual_model_ckpt)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "head_transplant.py",
+    "line": 26,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "25     base_model = torch.load(base_model_ckpt)\n26     multilingual_model = torch.load(multilingual_model_ckpt)\n27",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "mlm/loaders.py",
+    "line": 195,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "194             # mbleu_output = subprocess.check_output(\"sacrebleu {} < {}\".format(fp_ref.name, fp_hyp.name), shell=True)\n195             mbleu_output = subprocess.check_output(\"perl multi-bleu.perl {} < {}\".format(fp_ref.name, fp_hyp.name), shell=True)\n196             logging.warn(mbleu_output)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "mlm/models/__init__.py",
+    "line": 101,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "100 \n101             tokenizer = transformers.AlbertTokenizer.from_pretrained(model_fullname)\n102             vocab = None",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "mlm/models/__init__.py",
+    "line": 111,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "110 \n111             tokenizer = transformers.BertTokenizer.from_pretrained(model_fullname)\n112             vocab = None",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "mlm/models/__init__.py",
+    "line": 121,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "120 \n121             tokenizer = transformers.DistilBertTokenizer.from_pretrained(model_fullname)\n122             vocab = None",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "mlm/models/__init__.py",
+    "line": 126,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "125 \n126             model, loading_info = transformers.XLMWithLMHeadModel.from_pretrained(model_fullname, output_loading_info=True)\n127             tokenizer = transformers.XLMTokenizer.from_pretrained(model_fullname)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "mlm/models/__init__.py",
+    "line": 127,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "126             model, loading_info = transformers.XLMWithLMHeadModel.from_pretrained(model_fullname, output_loading_info=True)\n127             tokenizer = transformers.XLMTokenizer.from_pretrained(model_fullname)\n128             vocab = None",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "mlm_finetune.py",
+    "line": 208,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "207     # Load pretrained model and tokenizer\n208     config = AutoConfig.from_pretrained(model_args.model_name_or_path, cache_dir=model_args.cache_dir)\n209",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "mlm_finetune.py",
+    "line": 214,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "213     \n214     tokenizer = AutoTokenizer.from_pretrained(tokenizer_name, cache_dir=model_args.cache_dir)\n215",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "mlm_finetune.py",
+    "line": 216,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "215 \n216     model = AutoModelWithLMHead.from_pretrained(\n217         model_args.model_name_or_path,\n218         from_tf=False,\n219         config=config,\n220         cache_dir=model_args.cache_dir,\n221     )\n222",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "mlm_finetune.py",
+    "line": 224,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "223     if model_args.mtdnn_checkpoint != '':\n224         mtdnn = torch.load(model_args.mtdnn_checkpoint, map_location=f'{training_args.device}')['state']\n225         # these are leftovers from NLI finetuning, get rid",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "mlm_score.py",
+    "line": 154,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "153         with open(scores_out_file, 'rb') as f:\n154             scores = pickle.load(f)\n155",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "mlm_score.py",
+    "line": 161,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "160     else:\n161         tokenizer = AutoTokenizer.from_pretrained('bert-base-multilingual-cased')\n162         model = BertForMaskedLM.from_pretrained('bert-base-multilingual-cased')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "mlm_score.py",
+    "line": 162,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "161         tokenizer = AutoTokenizer.from_pretrained('bert-base-multilingual-cased')\n162         model = BertForMaskedLM.from_pretrained('bert-base-multilingual-cased')\n163         vocab = tokenizer.vocab",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "mlm_score.py",
+    "line": 244,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "243             print(f'loading ckpt from {model_ckpt}.')\n244             state_dict = torch.load(model_ckpt)\n245",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "mlm_score.py",
+    "line": 309,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "308                 with open(scores_for_dataset_out_file, 'rb') as f:\n309                     scores_for_dataset = pickle.load(f)\n310                     combined_scores.extend(scores_for_dataset)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "mlm_score.py",
+    "line": 338,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "337         with open(score_pkl, 'rb') as f:\n338             score_for_split = pickle.load(f)\n339         all_scores.extend(score_for_split)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "module/bert_optim.py",
+    "line": 16,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "15     try:\n16         f = eval(sch)\n17     except:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "module/common.py",
+    "line": 27,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "26     try:\n27         f = eval(func_a)\n28     except:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "module/common.py",
+    "line": 33,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "32 def init_wrapper(init='xavier_uniform'):\n33     return eval(init)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "mt_dnn/model.py",
+    "line": 157,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "156             from transformers import AutoTokenizer \n157             self.tokenizer = AutoTokenizer.from_pretrained(\n158                 self.config['init_checkpoint'],\n159                 cache_dir=self.config['transformer_cache'])\n160         except:",
+    "stage": "data_preparation+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "mt_dnn/model.py",
+    "line": 333,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "332     def load(self, checkpoint, load_optimizer=True):\n333         model_state_dict = torch.load(checkpoint)\n334         if 'state' in model_state_dict:",
+    "stage": "data_preparation+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "predict.py",
+    "line": 188,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "187         state_dict_for_head = list(state_dict_for_head.rglob(\"*.pt\"))[0]\n188         state_dict_for_head = torch.load(state_dict_for_head)\n189         if TASK != 'NLI':",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "predict.py",
+    "line": 237,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "236     if args.device_id > 0:\n237         state_dict = torch.load(checkpoint)\n238     else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "predict.py",
+    "line": 239,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "238     else:\n239         state_dict = torch.load(checkpoint, map_location=\"cpu\")\n240",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "prepro_std.py",
+    "line": 172,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "171 \n172     tokenizer = AutoTokenizer.from_pretrained(args.model)\n173",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "tests/_test_train.py",
+    "line": 42,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "41     subprocess.check_output(\"python train.py --epoch 1 --log_per_updates 1 --data_dir run_test/sample_data/output --output_dir %(OUTPUT_DIR)s 2>&1 > %(OUTPUT_DIR)s/log.txt\"\n42                                      % {\"OUTPUT_DIR\": OUTPUT_DIR}, stderr=subprocess.STDOUT, shell=True)\n43 \n44     compare_output(OUTPUT_DIR, EXPECTED_DIR)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "train.py",
+    "line": 341,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "340         print_message(logger, f'loading model from {args.model_ckpt}')           \n341         state_dict = torch.load(args.model_ckpt, map_location=f'cuda:{args.devices[0]}')\n342",
+    "stage": "data_acquisition+evaluation+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "train.py",
+    "line": 452,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "451         if args.model_ckpt != '':\n452             state_dict = torch.load(args.model_ckpt, map_location=f'cuda:{args.devices[0]}')\n453             state_dict['state']['scoring_list.0.weight'] = model.network.state_dict()['scoring_list.0.weight']",
+    "stage": "data_acquisition+evaluation+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "train.py",
+    "line": 496,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "495             print(f'model_probe, loading model ckpt from {args.model_ckpt}')\n496             state_dict = torch.load(args.model_ckpt, map_location=f'cuda:{args.devices[0]}')\n497",
+    "stage": "data_acquisition+evaluation+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "utils.py",
+    "line": 133,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "132         with open('checkpoint/dummy_config.pkl', 'rb') as fr:\n133             config = pickle.load(fr)\n134         state_dict = None",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "utils.py",
+    "line": 136,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "135     else:\n136         state_dict = torch.load(checkpoint, map_location=f'cuda:{device_id}')\n137         config = state_dict['config']",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "experiments/POS/data/en/others/UD_English-ESL/merge.py",
+    "line": 19,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.deserialization.avoid-pyyaml-load.avoid-pyyaml-load",
+    "file_path": "experiments/utils.py",
+    "line": 57,
+    "message": "Detected a possible YAML deserialization vulnerability. `yaml.unsafe_load`, `yaml.Loader`, `yaml.CLoader`, and `yaml.UnsafeLoader` are all known to be unsafe methods of deserializing YAML. An attacker with control over the YAML input could create special YAML input that allows the attacker to run arbitrary Python code. This would allow the attacker to steal files, download and install malware, or otherwise take over the machine. Use `yaml.safe_load` or `yaml.SafeLoader` instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "fractional_training.py",
+    "line": 34,
+    "message": "Found 'subprocess' function 'call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "get_head_probe_results.py",
+    "line": 101,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "get_model_probe_results.py",
+    "line": 28,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "head_probe.py",
+    "line": 86,
+    "message": "Found 'subprocess' function 'Popen' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "mlm/loaders.py",
+    "line": 195,
+    "message": "Found 'subprocess' function 'check_output' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "mlm_score.py",
+    "line": 154,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "mlm_score.py",
+    "line": 202,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "mlm_score.py",
+    "line": 309,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "mlm_score.py",
+    "line": 338,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "mlm_score.py",
+    "line": 343,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "module/bert_optim.py",
+    "line": 16,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "module/common.py",
+    "line": 27,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "module/common.py",
+    "line": 33,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "utils.py",
+    "line": 133,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference"
+  }
+]

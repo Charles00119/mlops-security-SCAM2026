@@ -1,0 +1,452 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "main.py",
+    "line": 73,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "72                       mode=\"rb\") as f:\n73         model = pickle.load(f)\n74",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "main.py",
+    "line": 78,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "77                       mode=\"rb\") as f:\n78         encoder = pickle.load(f)\n79",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "main.py",
+    "line": 83,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "82                       mode=\"rb\") as f:\n83         binarizer = pickle.load(f)\n84",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "sample_request_get.py",
+    "line": 4,
+    "message": "Call to requests without timeout",
+    "snippet": "3 url = \"https://deploying-ml-model.herokuapp.com/inference/sex\"\n4 response = requests.get(url)\n5 print(response.status_code)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "sample_request_post.py",
+    "line": 12,
+    "message": "Call to requests without timeout",
+    "snippet": "11 headers = {\"Content-type\": \"application/json\"}\n12 response = requests.post(url, data=json.dumps(sample), headers=headers)\n13 print(response.status_code)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "main.py",
+    "line": 73,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "main.py",
+    "line": 78,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "main.py",
+    "line": 83,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "starter/train_model.py",
+    "line": 20,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "starter/train_model.py",
+    "line": 24,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "starter/train_model.py",
+    "line": 28,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "test_main.py",
+    "line": 26,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "test_main.py",
+    "line": 34,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "test_main.py",
+    "line": 42,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2021-34141",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "numpy 1.21.2: Incomplete string comparison in the numpy.core component in NumPy1.9.x, which allows attackers to fail the APIs via constructing specific string objects. (fix: 1.22)",
+    "snippet": "numpy==1.21.2",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2024-110",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "scikit-learn 1.0.2: A sensitive data leakage vulnerability was identified in scikit-learn's TfidfVectorizer, specifically in versions up to and including 1.4.1.post1, which was fixed in version 1.5.0. The vulnerability a (fix: 1.5.0)",
+    "snippet": "scikit-learn==1.0.2",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2024-110",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "scikit-learn 1.0.2: A sensitive data leakage vulnerability was identified in scikit-learn's TfidfVectorizer, specifically in versions up to and including 1.4.1.post1, which was fixed in version 1.5.0. The vulnerability a (fix: 1.5.0)",
+    "snippet": "scikit-learn==1.0.2",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2025-71176",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "pytest 6.2.5: pytest through 9.0.2 on UNIX relies on directories with the `/tmp/pytest-of-{user}` name pattern, which allows local users to cause a denial of service or possibly gain privileges. (fix: 9.0.3)",
+    "snippet": "pytest==6.2.5",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2023-74",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "requests 2.27.1: ### Impact  Since Requests v2.3.0, Requests has been vulnerable to potentially leaking `Proxy-Authorization` headers to destination servers, specifically during redirects to an HTTPS origin. This is a (fix: 2.31.0)",
+    "snippet": "requests==2.27.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2023-74",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "requests 2.27.1: Requests is a HTTP library. Since Requests 2.3.0, Requests has been leaking Proxy-Authorization headers to destination servers when redirected to an HTTPS endpoint. This is a product of how we use `re (fix: 2.31.0)",
+    "snippet": "requests==2.27.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2024-35195",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "requests 2.27.1: When using a `requests.Session`, if the first request to a given origin is made with `verify=False`, TLS certificate verification may remain disabled for all subsequent requests to that origin, even i (fix: 2.32.0)",
+    "snippet": "requests==2.27.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2024-47081",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "requests 2.27.1: ### Impact  Due to a URL parsing issue, Requests releases prior to 2.32.4 may leak .netrc credentials to third parties for specific maliciously-crafted URLs.  ### Workarounds For older versions of Req (fix: 2.32.4)",
+    "snippet": "requests==2.27.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2026-25645",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "requests 2.27.1: ### Impact The `requests.utils.extract_zipped_paths()` utility function uses a predictable filename when extracting files from zip archives into the system temporary directory. If the target file alre (fix: 2.33.0)",
+    "snippet": "requests==2.27.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2024-38",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "fastapi 0.72.0: FastAPI is a web framework for building APIs with Python 3.8+ based on standard Python type hints. When using form data, `python-multipart` uses a Regular Expression to parse the HTTP `Content-Type` h (fix: 0.109.1)",
+    "snippet": "fastapi==0.72.0",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2024-1135",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "gunicorn 20.1.0: Gunicorn fails to properly validate Transfer-Encoding headers, leading to HTTP Request Smuggling (HRS) vulnerabilities. By crafting requests with conflicting Transfer-Encoding headers, attackers can b (fix: 22.0.0)",
+    "snippet": "gunicorn==20.1.0",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2024-6827",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "gunicorn 20.1.0: Gunicorn version 21.2.0 does not properly validate the value of the 'Transfer-Encoding' header as specified in the RFC standards, which leads to the default fallback method of 'Content-Length,' making (fix: 22.0.0)",
+    "snippet": "gunicorn==20.1.0",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2023-48",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "starlette 0.17.1: ### Impact  The `MultipartParser` using the package `python-multipart` accepts an unlimited number of multipart parts (form fields or files).  Processing too many parts results in high CPU usage and h (fix: 0.25.0)",
+    "snippet": "starlette==0.17.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2023-48",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "starlette 0.17.1: There MultipartParser usage in Encode's Starlette python framework before versions 0.25.0 allows an unauthenticated and remote attacker to specify any number of form fields or files which can cause ex (fix: 0.25.0)",
+    "snippet": "starlette==0.17.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2023-83",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "starlette 0.17.1: ### Summary When using `StaticFiles`, if there's a file or directory that starts with the same name as the `StaticFiles` directory, that file or directory is also exposed via `StaticFiles` which is a  (fix: 0.27.0)",
+    "snippet": "starlette==0.17.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2023-83",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "starlette 0.17.1: Directory traversal vulnerability in Starlette versions 0.13.5 and later and prior to 0.27.0 allows a remote unauthenticated attacker to view files in a web service which was built using Starlette. (fix: 0.27.0)",
+    "snippet": "starlette==0.17.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2026-161",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "starlette 0.17.1: Starlette reconstructs the requested URL based on the HTTP Host request header and requested path, but does not perform any validation of the Host header value. This allows attackers to inject paths i (fix: 1.0.1)",
+    "snippet": "starlette==0.17.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2024-47874",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "starlette 0.17.1: ### Summary Starlette treats `multipart/form-data` parts without a `filename` as text form fields and buffers those in byte strings with no size limit. This allows an attacker to upload arbitrary larg (fix: 0.40.0)",
+    "snippet": "starlette==0.17.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2025-54121",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "starlette 0.17.1: ### Summary When parsing a multi-part form with large files (greater than the [default max spool size](https://github.com/encode/starlette/blob/fa5355442753f794965ae1af0f87f9fec1b9a3de/starlette/formp (fix: 0.47.2)",
+    "snippet": "starlette==0.17.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2023-237",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "asyncssh 2.8.1: ### Summary  An issue in AsyncSSH v2.14.0 and earlier allows attackers to control the extension info message (RFC 8308) via a man-in-the-middle attack.  ### Details  The rogue extension negotiation at (fix: 2.14.1)",
+    "snippet": "asyncssh==2.8.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2023-239",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "asyncssh 2.8.1: ### Summary  An issue in AsyncSSH v2.14.0 and earlier allows attackers to control the remote end of an SSH client session via packet injection/removal and shell emulation.  ### Details  The rogue sess (fix: 2.14.1)",
+    "snippet": "asyncssh==2.8.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2023-237",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "asyncssh 2.8.1: An issue in AsyncSSH v2.14.0 and earlier allows attackers to control the extension info message (RFC 8308) via a man-in-the-middle attack. (fix: 2.14.1)",
+    "snippet": "asyncssh==2.8.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2023-239",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "asyncssh 2.8.1: An issue in AsyncSSH v2.14.0 and earlier allows attackers to control the remote end of an SSH client session via packet injection/removal and shell emulation. (fix: 2.14.1)",
+    "snippet": "asyncssh==2.8.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "GHSA-hfmc-7525-mj55",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "asyncssh 2.8.1: ### Summary  AsyncSSH v2.14.1 and earlier is vulnerable to a novel prefix truncation attack (a.k.a. Terrapin attack), which allows a man-in-the-middle attacker to strip an arbitrary number of messages (fix: 2.14.2)",
+    "snippet": "asyncssh==2.8.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2026-141",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "urllib3 1.26.20: urllib3 is an HTTP client library for Python. From 1.23 to before 2.7.0, cross-origin redirects followed from the low-level API via ProxyManager.connection_from_url().urlopen(..., assert_same_host=Fal (fix: 2.7.0)",
+    "snippet": "urllib3==1.26.20",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2025-50181",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "urllib3 1.26.20: urllib3 handles redirects and retries using the same mechanism, which is controlled by the `Retry` object. The most common way to disable redirects is at the request level, as follows:  ```python resp (fix: 2.5.0)",
+    "snippet": "urllib3==1.26.20",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2025-66418",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "urllib3 1.26.20: ## Impact  urllib3 supports chained HTTP encoding algorithms for response content according to RFC 9110 (e.g., `Content-Encoding: gzip, zstd`).  However, the number of links in the decompression chain (fix: 2.6.0)",
+    "snippet": "urllib3==1.26.20",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2025-66471",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "urllib3 1.26.20: ### Impact  urllib3's [streaming API](https://urllib3.readthedocs.io/en/2.5.0/advanced-usage.html#streaming-and-i-o) is designed for the efficient handling of large HTTP responses by reading the conte (fix: 2.6.0)",
+    "snippet": "urllib3==1.26.20",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2026-21441",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "urllib3 1.26.20: ### Impact  urllib3's [streaming API](https://urllib3.readthedocs.io/en/2.6.2/advanced-usage.html#streaming-and-i-o) is designed for the efficient handling of large HTTP responses by reading the conte (fix: 2.6.3)",
+    "snippet": "urllib3==1.26.20",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2025-69872",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "diskcache 5.6.3: DiskCache (python-diskcache) through 5.6.3 uses Python pickle for serialization by default. An attacker with write access to the cache directory can achieve arbitrary code execution when a victim appl (fix: no fix listed)",
+    "snippet": "diskcache==5.6.3",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2022-42969",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "py 1.11.0: The py library through 1.11.0 for Python allows remote attackers to conduct a ReDoS (Regular expression Denial of Service) attack via a Subversion repository with crafted info data, because the InfoSv (fix: no fix listed)",
+    "snippet": "py==1.11.0",
+    "stage": "dependencies"
+  }
+]

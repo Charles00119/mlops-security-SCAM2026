@@ -1,0 +1,122 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "m2m_text/datasets/sbert.py",
+    "line": 54,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "53         with open(self.dataset.tokenized_path, \"rb\") as f:\n54             texts = pickle.load(f)\n55",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "m2m_text/datasets/sbert.py",
+    "line": 57,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "56         os.environ[\"TOKENIZERS_PARALLELISM\"] = \"true\"\n57         tokenizer = AutoTokenizer.from_pretrained(model_name)\n58",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "m2m_text/datasets/text.py",
+    "line": 158,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "157         else:\n158             tokenizer = AutoTokenizer.from_pretrained(self.tokenizer_model_name)\n159             texts, labels = self.raw_data()",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "m2m_text/utils/_base.py",
+    "line": 25,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "24     \"\"\"\n25     md5 = hashlib.md5()\n26     with open(fpath, \"rb\") as f:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "m2m_text/utils/data.py",
+    "line": 87,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "86         with open(tokenized_path, \"rb\") as f:\n87             return pickle.load(f)\n88",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "m2m_text/utils/model.py",
+    "line": 75,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "74 ) -> int:\n75     ckpt = torch.load(ckpt_path, **torch_load_args)\n76",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "m2m_text/utils/model.py",
+    "line": 158,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "157 \n158     states = torch.load(ckpt_path)\n159",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "main_mixup.py",
+    "line": 154,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "153 \n154         tokenizer = AutoTokenizer.from_pretrained(model_cnf[\"model\"][\"model_name\"])\n155",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "m2m_text/datasets/sbert.py",
+    "line": 54,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "m2m_text/utils/_base.py",
+    "line": 25,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "m2m_text/utils/data.py",
+    "line": 87,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "m2m_text/utils/data.py",
+    "line": 91,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  }
+]

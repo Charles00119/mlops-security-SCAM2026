@@ -1,0 +1,182 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "absa.py",
+    "line": 173,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "172     if hasattr(opts, 'pretrained'):\n173         net.load_state_dict(torch.load(opts.pretrained, map_location='cpu' if opts.device == 'cpu' else None)).to(opts.device)\n174         logger.info(f'Loaded pretrained model {opts.encoder} for {opts.encoder}')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bert_clf.py",
+    "line": 125,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "124     # init model\n125     config = AutoConfig.from_pretrained(args.model)\n126     config.num_labels = args.num_labels",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bert_clf.py",
+    "line": 128,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "127 \n128     net = AutoModelForSequenceClassification.from_pretrained(args.model, config=config)\n129     tokenizer = AutoTokenizer.from_pretrained(args.model)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bert_clf.py",
+    "line": 129,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "128     net = AutoModelForSequenceClassification.from_pretrained(args.model, config=config)\n129     tokenizer = AutoTokenizer.from_pretrained(args.model)\n130",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "classifier/phobert_sequence_clf.py",
+    "line": 8,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "7     def __init__(self, num_classes):\n8         self.config = RobertaConfig.from_pretrained(\n9             os.path.join(os.getcwd(), 'pretrained', 'PhoBERT_base_transformers', 'config.json')\n10         )\n11",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "classifier/phobert_sequence_clf.py",
+    "line": 13,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "12         self.config.num_labels = num_classes\n13         self.net = RobertaForSequenceClassification.from_pretrained(\n14             os.path.join(os.getcwd(), 'pretrained', 'PhoBERT_base_transformers', 'model.bin'),\n15             config=self.config,\n16         )\n17",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "models/bert.py",
+    "line": 10,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "9         super(BertEncoder, self).__init__()\n10         self.tokenizer = BertTokenizer.from_pretrained(pretrained_shortcut)\n11         self.bert = BertModel.from_pretrained(pretrained_shortcut)",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "models/bert.py",
+    "line": 11,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "10         self.tokenizer = BertTokenizer.from_pretrained(pretrained_shortcut)\n11         self.bert = BertModel.from_pretrained(pretrained_shortcut)\n12",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "models/phobert.py",
+    "line": 11,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "10     def __init__(self, frozen=False, re_init=4):\n11         self.config = RobertaConfig.from_pretrained(\n12             os.path.join(os.getcwd(), 'pretrained', 'PhoBERT_base_transformers', 'config.json')\n13         )\n14         super(PhoBertEncoder, self).__init__(self.config)",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "models/phobert.py",
+    "line": 16,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "15 \n16         self.phobert = RobertaModel.from_pretrained(\n17             os.path.join(os.getcwd(), 'pretrained', 'PhoBERT_base_transformers', 'model.bin'),\n18             config=self.config,\n19         )\n20",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "test/test.py",
+    "line": 32,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "31     if hasattr(args, 'pretrained'):\n32         net.load_state_dict(torch.load(args.pretrained))\n33         logger.info(f'Loaded pretrained model {args.encoder} for {args.encoder}')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "train.py",
+    "line": 112,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "111     elif opts.encoder == 'bert':\n112         config_bert = BertConfig.from_pretrained('bert-base-uncased')\n113         config_bert.num_labels = 3",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "train.py",
+    "line": 115,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "114 \n115         net = BertForSequenceClassification.from_pretrained('bert-base-uncased', config=config_bert)\n116         net = net.to(opts.device)",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "train.py",
+    "line": 132,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "131     if hasattr(opts, 'pretrained'):\n132         net.load_state_dict(torch.load(opts.pretrained))\n133         logger.info(f'Loaded pretrained model {opts.encoder} for {opts.encoder}')",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "utils/tokenizer.py",
+    "line": 50,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "49     def __init__(self, max_length=256, shortcut_pretrained='bert-base-multilingual-cased'):\n50         self.tokenizer = BertTokenizer.from_pretrained(shortcut_pretrained)\n51         self.max_length = max_length",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.deserialization.avoid-pyyaml-load.avoid-pyyaml-load",
+    "file_path": "absa.py",
+    "line": 53,
+    "message": "Detected a possible YAML deserialization vulnerability. `yaml.unsafe_load`, `yaml.Loader`, `yaml.CLoader`, and `yaml.UnsafeLoader` are all known to be unsafe methods of deserializing YAML. An attacker with control over the YAML input could create special YAML input that allows the attacker to run arbitrary Python code. This would allow the attacker to steal files, download and install malware, or otherwise take over the machine. Use `yaml.safe_load` or `yaml.SafeLoader` instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.deserialization.avoid-pyyaml-load.avoid-pyyaml-load",
+    "file_path": "train.py",
+    "line": 60,
+    "message": "Detected a possible YAML deserialization vulnerability. `yaml.unsafe_load`, `yaml.Loader`, `yaml.CLoader`, and `yaml.UnsafeLoader` are all known to be unsafe methods of deserializing YAML. An attacker with control over the YAML input could create special YAML input that allows the attacker to run arbitrary Python code. This would allow the attacker to steal files, download and install malware, or otherwise take over the machine. Use `yaml.safe_load` or `yaml.SafeLoader` instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.deserialization.avoid-pyyaml-load.avoid-pyyaml-load",
+    "file_path": "train_kfold.py",
+    "line": 55,
+    "message": "Detected a possible YAML deserialization vulnerability. `yaml.unsafe_load`, `yaml.Loader`, `yaml.CLoader`, and `yaml.UnsafeLoader` are all known to be unsafe methods of deserializing YAML. An attacker with control over the YAML input could create special YAML input that allows the attacker to run arbitrary Python code. This would allow the attacker to steal files, download and install malware, or otherwise take over the machine. Use `yaml.safe_load` or `yaml.SafeLoader` instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

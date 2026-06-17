@@ -1,0 +1,82 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "src/app.py",
+    "line": 67,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "66         import os\n67         self.APP.run(host='0.0.0.0',\n68                      port=os.environ[\"PORT\"] if os.environ[\"PORT\"] else 5000,",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "src/data_processor/processor/data_collector.py",
+    "line": 65,
+    "message": "Call to requests without timeout",
+    "snippet": "64         try:\n65             response = requests.get(url)\n66",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "src/web_scrapper/scrapper/get_requests.py",
+    "line": 16,
+    "message": "Call to requests without timeout",
+    "snippet": "15     try:\n16         with closing(get(url, stream=True)) as resp:\n17             if is_good_response(resp):",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "src/web_scrapper/utils/ticker_symbol.py",
+    "line": 24,
+    "message": "Call to requests without timeout",
+    "snippet": "23 \n24     result = requests.get(url).json()\n25     company_name = ''",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "src/web_scrapper/utils/ticker_symbol.py",
+    "line": 42,
+    "message": "Call to requests without timeout",
+    "snippet": "41 \n42     result = requests.get(url).json()\n43",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "trade-advisor-api.py",
+    "line": 7,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "6     # For testing locally\n7     app.run(host=\"0.0.0.0\", port=5000)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "trade-advisor-ws.py",
+    "line": 10,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "9     \n10     ws_ip = '0.0.0.0'\n11     ws_route = '/news'",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.app-run-param-config.avoid_app_run_with_bad_host",
+    "file_path": "trade-advisor-api.py",
+    "line": 7,
+    "message": "Running flask app with host 0.0.0.0 could expose the server publicly.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

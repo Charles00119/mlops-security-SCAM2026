@@ -1,0 +1,252 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "augmentation/gpt2_training/distributed.py",
+    "line": 92,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "91         bytes_list = bytes(out_buffer[2:size+2].tolist())\n92         result = pickle.loads(bytes_list)\n93         results.append(result)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "augmentation/gpt2_training/train_utils.py",
+    "line": 24,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "23             logger.info('loading finetuned model from %s' % checkpoint)\n24         model_state_dict = torch.load(checkpoint)\n25         model_state_dict = fix_state_dict_namespace(model_state_dict)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "augmentation/src/gen.py",
+    "line": 16,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "15        \n16         self.tokenizer = GPT2Tokenizer.from_pretrained('gpt2') \n17         model_config = GPT2Config(n_embd=768, n_layer=12, n_head=12)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "augmentation/src/gen.py",
+    "line": 19,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "18         self.model = GPT2LMHeadModel(model_config)\n19         weights = torch.load(path)\n20         ori_weights=[]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "augmentation/src/transformers/file_utils.py",
+    "line": 231,
+    "message": "Call to requests without timeout",
+    "snippet": "230 def http_get(url, temp_file, proxies=None):\n231     req = requests.get(url, stream=True, proxies=proxies)\n232     content_length = req.headers.get('Content-Length')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "augmentation/src/transformers/modeling_utils.py",
+    "line": 345,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "344         if state_dict is None and not from_tf:\n345             state_dict = torch.load(resolved_archive_file, map_location='cpu')\n346",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "gector/gector/bert_token_embedder.py",
+    "line": 29,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "28 \n29         model = AutoModel.from_pretrained(model_name)\n30         if cache_model:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "gector/gector/gec_model.py",
+    "line": 90,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "89             if torch.cuda.is_available():\n90                 model.load_state_dict(torch.load(model_path))\n91             else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "gector/gector/gec_model.py",
+    "line": 92,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "91             else:\n92                 model.load_state_dict(torch.load(model_path,\n93                                                  map_location=torch.device('cpu')))\n94             model.eval()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "gector/gector/gec_model.py",
+    "line": 112,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "111                 if torch.cuda.is_available():\n112                     loaded_model = torch.load(model_path)\n113                 else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "gector/gector/gec_model.py",
+    "line": 114,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "113                 else:\n114                     loaded_model = torch.load(model_path,\n115                                               map_location=lambda storage,\n116                                                                   loc: storage)\n117             except:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "gector/gector/wordpiece_indexer.py",
+    "line": 414,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "413 \n414         bert_tokenizer = AutoTokenizer.from_pretrained(\n415             pretrained_model, do_lower_case=do_lowercase, do_basic_tokenize=False)\n416",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "gector/train.py",
+    "line": 141,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "140     if args.pretrain:\n141         model.load_state_dict(torch.load(os.path.join(args.pretrain_folder, args.pretrain + '.th')))\n142",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B313",
+    "file_path": "gector/utils/prepare_clc_fce_data.py",
+    "line": 19,
+    "message": "Using xml.etree.cElementTree.fromstring to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.cElementTree.fromstring with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "18     result = []\n19     doc = cElementTree.fromstring(xml)\n20     paragraphs = doc.findall('head/text/*/coded_answer/p')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "pytorch_pretrained_bert/file_utils.py",
+    "line": 154,
+    "message": "Call to requests without timeout",
+    "snippet": "153 def http_get(url: str, temp_file: IO) -> None:\n154     req = requests.get(url, stream=True)\n155     content_length = req.headers.get('Content-Length')",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "pytorch_pretrained_bert/file_utils.py",
+    "line": 181,
+    "message": "Call to requests without timeout",
+    "snippet": "180     else:\n181         response = requests.head(url, allow_redirects=True)\n182         if response.status_code != 200:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "pytorch_pretrained_bert/modeling.py",
+    "line": 502,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "501             with tarfile.open(resolved_archive_file, 'r:gz') as archive:\n502                 archive.extractall(tempdir)\n503             serialization_dir = tempdir",
+    "stage": "data_acquisition+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "pytorch_pretrained_bert/modeling.py",
+    "line": 512,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "511             weights_path = os.path.join(serialization_dir, WEIGHTS_NAME)\n512             state_dict = torch.load(weights_path)\n513",
+    "stage": "data_acquisition+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "run.py",
+    "line": 591,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "590         output_model_file = os.path.join(args.output_dir, \"pytorch_model.bin\")\n591         model_state_dict = torch.load(output_model_file)\n592         model = BertForSequenceClassification.from_pretrained(args.bert_model, state_dict=model_state_dict, num_labels=num_labels)",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "seq2seq.py",
+    "line": 327,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "326         # Downloading and loading a dataset from the hub.\n327         datasets = load_dataset(data_args.dataset_name, data_args.dataset_config_name)\n328     else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "seq2seq.py",
+    "line": 339,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "338             extension = data_args.test_file.split(\".\")[-1]\n339         datasets = load_dataset(extension, data_files=data_files)\n340     # See more about loading any type of standard or custom dataset (from files, python dict, pandas DataFrame, etc) at",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "augmentation/gpt2_training/distributed.py",
+    "line": 74,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "augmentation/gpt2_training/distributed.py",
+    "line": 92,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml.use-defused-xml",
+    "file_path": "gector/utils/prepare_clc_fce_data.py",
+    "line": 10,
+    "message": "The Python documentation recommends using `defusedxml` instead of `xml` because the native Python `xml` library is vulnerable to XML External Entity (XXE) attacks. These attacks can leak confidential data and \"XML bombs\" can cause denial of service.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "run.py",
+    "line": 325,
+    "message": "Detected a python logger call with a potential hardcoded secret \"tokens: %s\" % \" \".join(\r\n                [str(x) for x in tokens]) being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+training"
+  }
+]

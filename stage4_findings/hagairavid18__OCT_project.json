@@ -1,0 +1,202 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "attention_viz.py",
+    "line": 77,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "76 model = timm.create_model('vit_base_patch32_384', num_classes=4, img_size=(496, 512))\n77 model.load_state_dict(torch.load(f'{name}.pt', map_location=torch.device(device)))\n78 model = model.to(device)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "grad_cam_playground.py",
+    "line": 79,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "78     for name, model in zip(models_names, models):\n79         model.load_state_dict(torch.load(f'{name}.pt', map_location=torch.device(device)))\n80",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "loging_gradcam.py",
+    "line": 72,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "71 for name, model in zip(names, models):\n72     model.load_state_dict(torch.load(f'{name}.pt', map_location=torch.device(device)))\n73     model = model.to(device)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "vit_att_trial/attn_plus_gardcam.py",
+    "line": 51,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "50 model_timm = timm.create_model(name, num_classes=4, img_size=(496, 512))\n51 model_timm.load_state_dict(torch.load(f'{name}.pt', map_location=torch.device(device)))\n52 model_timm = model_timm.to(device)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "vit_att_trial/attn_plus_gardcam.py",
+    "line": 55,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "54 model_attn = vit_LRP(num_classes=4, img_size=(496, 512))\n55 model_attn.load_state_dict(torch.load(f'{name}.pt', map_location=torch.device(device)))\n56 model_attn = model_attn.to(device)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "vit_att_trial/attn_plus_gardcam.py",
+    "line": 120,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "119         if name != 'vit_base_patch16_224':\n120             model.load_state_dict(torch.load(f'{name}.pt', map_location=torch.device(device)))\n121             model = model.to(device)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "vit_att_trial/baselines/ViT/helpers.py",
+    "line": 21,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "20     if checkpoint_path and os.path.isfile(checkpoint_path):\n21         checkpoint = torch.load(checkpoint_path, map_location='cpu')\n22         state_dict_key = 'state_dict'",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "vit_att_trial/baselines/ViT/helpers.py",
+    "line": 50,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "49     if os.path.isfile(checkpoint_path):\n50         checkpoint = torch.load(checkpoint_path, map_location='cpu')\n51         if isinstance(checkpoint, dict) and 'state_dict' in checkpoint:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "vit_att_trial/baselines/ViT/pertubation_eval_from_hdf5.py",
+    "line": 233,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "232 \n233     eval(args)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "vit_att_trial/occlusion_test.py",
+    "line": 169,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "168     model = models[4]\n169     model.load_state_dict(torch.load(f'{name}.pt', map_location=torch.device(device)))\n170     model = model.to(device)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "vit_att_trial/run_wandb_att.py",
+    "line": 87,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "86 model = vit_LRP(num_classes=4, img_size=(496, 512))\n87 model.load_state_dict(torch.load(f'{name}.pt', map_location=torch.device(device)))\n88 model = model.to(device)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "vit_att_trial/single_run_of_attn.py",
+    "line": 41,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "40 model = vit_LRP(num_classes=4, img_size=(496, 512))\n41 model.load_state_dict(torch.load(f'{name}.pt', map_location=torch.device(device)))\n42 model = model.to(device)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "vit_att_trial/updated_cam.py",
+    "line": 80,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "79 for name, model in zip(names, models):\n80     model.load_state_dict(torch.load(f'{name}.pt', map_location=torch.device(device)))\n81     model = model.to(device)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "vit_att_trial/utils/render.py",
+    "line": 145,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "144     # create color map object from name string\n145     cmap = eval('matplotlib.cm.{}'.format(cmap))\n146",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "vit_att_trial/utils/render.py",
+    "line": 193,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "192     # create color map object from name string\n193     cmap = eval('matplotlib.cm.{}'.format(cmap))\n194",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "vit_att_trial/visualization_helpers.py",
+    "line": 93,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "92     model_timm = timm.create_model(name, num_classes=4, img_size=(496, 512))\n93     model_timm.load_state_dict(torch.load(f'{name}.pt', map_location=torch.device(device)))\n94     model_timm = model_timm.to(device)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "vit_att_trial/visualization_helpers.py",
+    "line": 97,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "96     model_attn = vit_LRP(num_classes=4, img_size=(496, 512))\n97     model_attn.load_state_dict(torch.load(f'{name}.pt', map_location=torch.device(device)))\n98     model_attn = model_attn.to(device)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "vit_att_trial/baselines/ViT/pertubation_eval_from_hdf5.py",
+    "line": 233,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "vit_att_trial/utils/render.py",
+    "line": 145,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "vit_att_trial/utils/render.py",
+    "line": 193,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

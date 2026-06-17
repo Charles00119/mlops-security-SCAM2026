@@ -1,0 +1,72 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "Train_Test_Valid.py",
+    "line": 96,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "95 \n96         checkpoint = torch.load(self.params['network_output_path'] + '/' + self.params['checkpoint_name'])\n97         self.device = None",
+    "stage": "data_preparation+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "Train_Test_Valid.py",
+    "line": 398,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "397         '''Load pre trained model to the using pre-trained_model_path parameter from config file'''\n398         self.model.load_state_dict(torch.load(self.model_info['pretrain_model_path']))\n399",
+    "stage": "data_preparation+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "Train_Test_Valid.py",
+    "line": 463,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "462             self.model_cnn.load_state_dict(\n463                 torch.load(self.params_CNN['network_output_path'] + \"/epoch\" + str(19) + \"_\" + model_file_name_c))\n464             # self.model_rnn.load_state_dict(torch.load(self.params_RNN['network_output_path'] + \"/\" + model_file_name_r))",
+    "stage": "data_preparation+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "Train_Test_Valid.py",
+    "line": 466,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "465             self.model_rnn.load_state_dict(\n466                 torch.load(self.params_RNN['network_output_path'] + \"/epoch\" + str(43) + \"_\" + model_file_name_r))\n467         else:",
+    "stage": "data_preparation+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "Train_Test_Valid.py",
+    "line": 469,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "468             # self.model_p.load_state_dict(torch.load(self.params['network_output_path'] + \"/\" + model_file_name))\n469             self.model_p.load_state_dict(torch.load(self.params['network_output_path'] + \"/epoch\" + str(epoch) + \"_\" + model_file_name))\n470",
+    "stage": "data_preparation+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "data/data_processing.py",
+    "line": 328,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "327         print('The word is:', word,'- Max number of tweets:', max_tweets)\n328         os.system(' python %s/GetOldTweets3.py --querysearch \"%s\" --lang en --toptweets --maxtweets %s'\n329                   ' --output=%s/%s.csv' %(path, word, max_tweets, path, word))\n330     if mode == 'test':",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2026-73",
+    "file_path": "requirements/requirements.txt",
+    "line": 0,
+    "message": "keras 3.12.2: Allocation of Resources Without Limits or Throttling in the HDF5 weight loading component in Google Keras 3.0.0 through 3.13.0 on all platforms allows a remote attacker to cause a Denial of Service (D (fix: 3.13.1)",
+    "snippet": "keras==3.12.2",
+    "stage": "dependencies"
+  }
+]

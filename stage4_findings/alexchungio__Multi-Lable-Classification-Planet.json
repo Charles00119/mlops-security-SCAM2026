@@ -1,0 +1,52 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "inference.py",
+    "line": 66,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "65         assert os.path.isfile(args.best_checkpoint), '{} not found'.format(args.best_checkpoint)\n66         checkpoint = torch.load(args.best_checkpoint)\n67         print('Restoring model with {} architecture...'.format(checkpoint['arch']))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "onnx/export_model_to_onnx.py",
+    "line": 115,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "114         assert os.path.isfile(args.best_checkpoint), '{} not found'.format(args.best_checkpoint)\n115         checkpoint = torch.load(args.best_checkpoint, map_location=None)\n116         # Load all tensors onto the CPU",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "train.py",
+    "line": 148,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "147             print(\"=> loading checkpoint '{}'\".format(args.resume))\n148             checkpoint = torch.load(args.resume)\n149             args.start_epoch = checkpoint['epoch']",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "train.py",
+    "line": 176,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "175                                threshold=threshold, class_weights=class_weights_norm, use_cuda=use_cuda)\n176             eval_metrics, latest_threshold = eval(loader=eval_loader, model=model, epoch=epoch, criterion=criterion,\n177                                                   threshold=threshold, use_cuda=use_cuda)\n178",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "train.py",
+    "line": 176,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation+inference+training"
+  }
+]

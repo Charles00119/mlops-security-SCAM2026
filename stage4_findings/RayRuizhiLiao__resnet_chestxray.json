@@ -1,0 +1,82 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "eval.py",
+    "line": 100,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "99 \n100 eval(all_epochs=-1)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "eval_all_tasks.py",
+    "line": 118,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "117 \t\targs.label_key = label_key\n118 \t\teval_results_all_tasks[args.label_key] = eval(args, device, all_epochs=all_epochs)\n119",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "resnet_chestxray/model.py",
+    "line": 205,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "204         if state_dict is None:\n205             state_dict = torch.load(pretrained_model_path, map_location='cpu')\n206",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "resnet_chestxray/model.py",
+    "line": 394,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "393         if state_dict is None:\n394             state_dict = torch.load(pretrained_model_path, map_location='cpu')\n395",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "resnet_chestxray/model.py",
+    "line": 580,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "579         if state_dict is None:\n580             state_dict = torch.load(pretrained_model_path, map_location='cpu')\n581",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "resnet_chestxray/model.py",
+    "line": 767,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "766         if state_dict is None:\n767             state_dict = torch.load(pretrained_model_path, map_location='cpu')\n768",
+    "stage": "modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "eval.py",
+    "line": 100,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "eval_all_tasks.py",
+    "line": 118,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

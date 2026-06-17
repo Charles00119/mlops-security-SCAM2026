@@ -1,0 +1,22 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "main.py",
+    "line": 187,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "186 \n187             model.load_state_dict(torch.load(f\"{self.checkpoints_dir}/{path}.pth\"))\n188             model.to(self.device)",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "main.py",
+    "line": 227,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "226     with open(f'./configs/{config_filename}.yaml', 'r') as file:\n227         params = yaml.load(file, yaml.Loader)\n228",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  }
+]

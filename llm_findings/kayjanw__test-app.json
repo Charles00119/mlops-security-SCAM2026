@@ -1,0 +1,122 @@
+[
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.untrusted_source_handling",
+    "file_path": "entrypoint.sh",
+    "line": 0,
+    "message": "No detected untrusted source handling: No remote data fetching with integrity checks (checksums, signed URLs, pinned revisions) is visible anywhere in this code slice.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_flipping_detection",
+    "file_path": "entrypoint.sh",
+    "line": 0,
+    "message": "No detected label flipping detection: The code contains only UI/dashboard callbacks and layout definitions with no label validation, distribution checks, or label-noise detection logic.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.data_poisoning_defenses",
+    "file_path": "entrypoint.sh",
+    "line": 0,
+    "message": "No detected data poisoning defenses: There is no outlier detection, statistical anomaly checking, or suspicious-input filtering applied to any training or preparation dataset in this code.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.model_integrity_verification",
+    "file_path": "entrypoint.sh",
+    "line": 0,
+    "message": "No detected model integrity verification: The code is a Dash web application focused on UI routing and callbacks; there is no loading of pretrained weights or serialized models anywhere in the visible code, and therefore no integrity verification is implemented.",
+    "snippet": "",
+    "stage": "modeling"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_distribution_validation",
+    "file_path": "entrypoint.sh",
+    "line": 0,
+    "message": "No detected label distribution validation: The code is a Dash web application with UI callbacks; there is no training loop or label distribution validation present anywhere in the provided snippets.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.backdoor_or_trigger_detection",
+    "file_path": "entrypoint.sh",
+    "line": 0,
+    "message": "No detected backdoor or trigger detection: No training loop exists in this code; it is a web application front-end with no backdoor or trigger detection mechanisms.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.differential_privacy",
+    "file_path": "entrypoint.sh",
+    "line": 0,
+    "message": "No detected differential privacy: No ML training code, Opacus, TensorFlow Privacy, or DP-SGD usage is present; the code is purely a Dash web application.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.adversarial_robustness_testing",
+    "file_path": "entrypoint.sh",
+    "line": 0,
+    "message": "No detected adversarial robustness testing: No adversarial robustness testing frameworks (Foolbox, ART, FGSM, PGD, etc.) are present anywhere in the code; the code is a Dash web application with UI callbacks, not an ML evaluation pipeline.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.metric_tampering_protection",
+    "file_path": "entrypoint.sh",
+    "line": 0,
+    "message": "No detected metric tampering protection: There is no evaluation logic, held-out test set isolation, signed/hashed evaluation data, or multiple independent metrics anywhere in the provided code; it is purely a Dash UI application.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_sanitization",
+    "file_path": "entrypoint.sh",
+    "line": 0,
+    "message": "No detected input sanitization: No input shape, range, schema validation, or sanitization is visible in any of the inference-path callbacks; user inputs are passed directly without validation beyond the email check in the contact form.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.output_bounds_checks",
+    "file_path": "entrypoint.sh",
+    "line": 0,
+    "message": "No detected output bounds checks: No model output bounds checks, NaN guards, or probability sanity checks are present anywhere in the visible inference code.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.prompt_injection_defenses",
+    "file_path": "entrypoint.sh",
+    "line": 0,
+    "message": "No detected prompt injection defenses: Although there is a chat callback registered (register_callbacks_chat), no prompt-injection filtering, system-prompt isolation, or output content moderation is visible in the provided code slices.",
+    "snippet": "",
+    "stage": "inference"
+  }
+]

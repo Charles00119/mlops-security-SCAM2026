@@ -1,0 +1,62 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "daisy/model/pair/train.py",
+    "line": 28,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "27         if os.path.exists(f'weights/{args.dataset}/{init_weight_path}'):\n28             checkpoint = torch.load(f\"weights/{args.dataset}/{init_weight_path}\")\n29             # checkpoint = torch.load(\"weights/??/checkpoint_??.pt\", map_location=('cpu' if device != 'cuda' else None))",
+    "stage": "evaluation+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "daisy/utils/splitter.py",
+    "line": 29,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "28         best_weight_path = os.path.join(filename_weights, match_file)\n29         checkpoint = torch.load(best_weight_path)\n30         # aux = 'best_epoch=6_mf_RANK_ALL_lr=0.0005_DO=0_bs=512_reindexed_UIC__100epochs__not_early_stopping.pkl'",
+    "stage": "data_preparation+evaluation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "daisy/utils/tunner.py",
+    "line": 45,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "44             assert ct in ['int', 'float'], 'Invalid choice type'\n45             ct_op = eval(ct)\n46             cs = input('choice set(space as delimeter): ')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "daisy/utils/tunner.py",
+    "line": 53,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "52         else:\n53             tp_op = eval(tp)\n54             step_size = input('step size(if no need, just press enter): ')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "daisy/utils/tunner.py",
+    "line": 45,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "daisy/utils/tunner.py",
+    "line": 53,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

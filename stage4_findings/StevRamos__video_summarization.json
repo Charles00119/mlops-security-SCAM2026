@@ -1,0 +1,232 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "api/Google.py",
+    "line": 29,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "28         with open(pickle_file, 'rb') as token:\n29             cred = pickle.load(token)\n30",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "app.py",
+    "line": 202,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "201 \n202     dict_summary = pickle.load(open(os.path.join(PATH_DATA, f'{summary_id}.pk'), 'rb'))\n203     summary = dict_summary['summary']",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "src/models/CNN.py",
+    "line": 16,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "15         super(ResNet, self).__init__()\n16         self.preprocess = eval(transform)()\n17         self.model = models.resnext101_32x8d(pretrained=True)",
+    "stage": "inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "src/models/CNN.py",
+    "line": 79,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "78         super(GoogleNet, self).__init__()\n79         self.preprocess = eval(transform)()\n80         self.model = models.googlenet(pretrained=True)",
+    "stage": "inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "src/models/CNN.py",
+    "line": 107,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "106         super(Inception, self).__init__()\n107         self.preprocess = eval(transform)(resized=299, centercrop=299)\n108         self.model = models.inception_v3(pretrained=True, aux_logits=False)",
+    "stage": "inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "src/models/CNN3D.py",
+    "line": 23,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "22         if path_weights_flow is not None: \n23             self.model_flow.load_state_dict(torch.load(path_weights_flow))\n24         if path_weights_rgb is not None:",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "src/models/CNN3D.py",
+    "line": 25,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "24         if path_weights_rgb is not None:\n25             self.model_rgb.load_state_dict(torch.load(path_weights_rgb))\n26",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "src/models/CNN3D.py",
+    "line": 121,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "120         if path_weights is not None: \n121             pretrain = torch.load(path_weights)\n122             self.model.load_state_dict(pretrain['state_dict'])",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "src/models/CNN3D.py",
+    "line": 126,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "125         self.model = self.model.eval()\n126         self.preprocess = eval(transform)()\n127         self.device = device",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "src/models/vsm.py",
+    "line": 41,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "40     def load_weights(self, weights_path):\n41         self.msva.load_state_dict(torch.load(weights_path, \n42                                             map_location=torch.device(self.device)))\n43",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "src/models/vsm.py",
+    "line": 79,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "78         transformations_path = transformations_path if self.config.feature_len==1024 else None\n79         self.transformations = pickle.load(open(transformations_path, 'rb'))\n80",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "src/utils/vsm_dataset.py",
+    "line": 31,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "30         if transformations_path is not None:\n31             transformations = pickle.load(open(transformations_path, 'rb'))\n32",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "api/Google.py",
+    "line": 29,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "api/Google.py",
+    "line": 41,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.fastapi.security.wildcard-cors.wildcard-cors",
+    "file_path": "app.py",
+    "line": 33,
+    "message": "CORS policy allows any origin (using wildcard '*'). This is insecure and should be avoided.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "app.py",
+    "line": 162,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "app.py",
+    "line": 202,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "src/models/CNN.py",
+    "line": 16,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "inference+modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "src/models/CNN.py",
+    "line": 79,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "inference+modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "src/models/CNN.py",
+    "line": 107,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "inference+modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "src/models/CNN3D.py",
+    "line": 126,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "src/models/vsm.py",
+    "line": 79,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "src/utils/vsm_dataset.py",
+    "line": 31,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  }
+]

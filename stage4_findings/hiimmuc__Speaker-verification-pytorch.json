@@ -1,0 +1,642 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "audio_augment_tools/tests/test_add_background_noise.py",
+    "line": 92,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "91         pickled = pickle.dumps(transform)\n92         unpickled = pickle.loads(pickled)\n93         assert transform.sound_file_paths == unpickled.sound_file_paths",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "audio_augment_tools/tests/test_add_short_noises.py",
+    "line": 216,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "215         pickled = pickle.dumps(transform)\n216         unpickled = pickle.loads(pickled)\n217         assert transform.sound_file_paths == unpickled.sound_file_paths",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "audio_augment_tools/tests/test_apply_impulse_response.py",
+    "line": 87,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "86         pickled = pickle.dumps(add_ir_transform)\n87         unpickled = pickle.loads(pickled)\n88         assert add_ir_transform.ir_files == unpickled.ir_files",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "collect_env.py",
+    "line": 52,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "51     p = subprocess.Popen(command, stdout=subprocess.PIPE,\n52                          stderr=subprocess.PIPE, shell=True)\n53     raw_output, raw_err = p.communicate()\n54     rc = p.returncode",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "dataprep.py",
+    "line": 44,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "43     \"\"\"\n44     hash_md5 = hashlib.md5()\n45     with open(fname, \"rb\") as f:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "dataprep.py",
+    "line": 63,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "62                               (url, args.save_path, outfile),\n63                               shell=True)\n64         if out != 0:\n65             raise ValueError(\n66                 'Download failed %s. If download fails repeatedly, use alternate URL on the VoxCeleb website.'",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "dataprep.py",
+    "line": 84,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "83         with tarfile.open(fname, \"r:gz\") as tar:\n84             tar.extractall(args.save_path)\n85     elif fname.endswith(\".zip\"):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "dataprep.py",
+    "line": 87,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "86         with ZipFile(fname, 'r') as zf:\n87             zf.extractall(args.save_path)\n88",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "dataprep.py",
+    "line": 278,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "277                 % (fpath, outpath),\n278                 shell=True)\n279             if out != 0:\n280                 raise ValueError('Conversion failed %s.' % fpath)\n281             subprocess.call('rm %s' % (fpath), shell=True)\n282             subprocess.call('mv %s %s' % (outpath, fpath), shell=True)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "dataprep.py",
+    "line": 281,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "280                 raise ValueError('Conversion failed %s.' % fpath)\n281             subprocess.call('rm %s' % (fpath), shell=True)\n282             subprocess.call('mv %s %s' % (outpath, fpath), shell=True)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "dataprep.py",
+    "line": 282,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "281             subprocess.call('rm %s' % (fpath), shell=True)\n282             subprocess.call('mv %s %s' % (outpath, fpath), shell=True)\n283         print('Done!')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "filter_dataset_raw.py",
+    "line": 166,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "165             if os.path.exists(path_dir):\n166                 subprocess.call(f\"rm -rf {path_dir}\", shell=True)\n167         for f in tqdm(wrong_files, desc=\"Deleting low quality speaker's files...\"):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "filter_dataset_raw.py",
+    "line": 169,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "168             if os.path.exists(f):\n169                 subprocess.call(f\"rm -rf {f}\", shell=True)\n170         print('Done!')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "filter_dataset_raw.py",
+    "line": 179,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "178             if os.path.exists(old_path_dir):\n179                 subprocess.call(f\"mv {old_path_dir}/*.wav {new_path_dir}\", shell=True)\n180",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "inference.py",
+    "line": 58,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "57             copy_name = chosen_model_state.split('.')[0] + f'_copy_{ver}' + '.' + chosen_model_state.split('.')[-1]\n58         subprocess.call(f\"cp {chosen_model_state} {copy_name}\", shell=True)\n59     else:",
+    "stage": "data_acquisition+evaluation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "inference.py",
+    "line": 142,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "141             if keep_file.strip() == 'n':\n142                 subprocess.call(f\"rm {copy_name}\", shell=True)\n143                 print(\"removed copy file...\")",
+    "stage": "data_acquisition+evaluation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "inference.py",
+    "line": 184,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "183         classes_path = Path(args.save_path, 'classes.npy')\n184         embeds = torch.load(embeds_path).to(torch.device(args.device))\n185         classes = np.load(str(classes_path), allow_pickle=True).item()",
+    "stage": "data_acquisition+evaluation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "losses/pytorch_metric_learning/utils/common_functions.py",
+    "line": 324,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "323     try:\n324         model_def.load_state_dict(torch.load(model_filename, map_location=device))\n325     except KeyError:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "losses/pytorch_metric_learning/utils/common_functions.py",
+    "line": 327,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "326         # original saved file with DataParallel\n327         state_dict = torch.load(model_filename)\n328         # create new OrderedDict that does not contain `module.`",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "losses/pytorch_metric_learning/utils/logging_presets.py",
+    "line": 219,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "218         output = self.record_keeper.query(\n219             \"SELECT {} FROM {}\".format(columns, table_name), return_dict=True\n220         )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "losses/pytorch_metric_learning/utils/logging_presets.py",
+    "line": 234,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "233             keys = \"*\" if return_all_metrics else \"epoch, %s\" % keys\n234             query = \"SELECT {} FROM {}\".format(keys, table_name)\n235             return self.record_keeper.query(query, return_dict=True)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "losses/pytorch_metric_learning/utils/logging_presets.py",
+    "line": 277,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "276             columns = \"*\" if select_all else \"epoch, %s\" % key\n277             query = \"SELECT %s FROM %s WHERE epoch=?\" % (columns, table_name)\n278             return self.record_keeper.query(query, (epoch,))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "losses/pytorch_metric_learning/utils/logging_presets.py",
+    "line": 293,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "292             params = \", \".join([\"?\"] * len(ignore_epoch))\n293             query = \"\"\"SELECT {0} FROM {1} WHERE {2}=\n294                         (SELECT max({2}) FROM {1} WHERE epoch NOT IN ({3}))\n295                         AND epoch NOT IN ({3})\"\"\".format(\n296                 columns, table_name, key, params",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "main.py",
+    "line": 340,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "339             config_dir = '/'.join(str(args.config).split('/')[:-1])\n340             subprocess.call(f\"cp -R {config_dir}/*.yaml {config_clone_path}\", shell=True)\n341     with open(f'{config_clone_path}/config.yaml', 'w') as outfile:",
+    "stage": "training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model.py",
+    "line": 576,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "575         if self.device == torch.device('cpu'):\n576             loaded_state = torch.load(path, map_location=torch.device('cpu'))\n577         else:",
+    "stage": "data_acquisition+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model.py",
+    "line": 579,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "578             print(f\"Load model in {torch.cuda.device_count()} GPU(s)\")\n579             loaded_state = torch.load(path, map_location=torch.device(self.device))\n580         for name, param in loaded_state.items():",
+    "stage": "data_acquisition+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "test-client-embedding.py",
+    "line": 49,
+    "message": "Call to requests without timeout",
+    "snippet": "48 \n49     r = requests.post(URL, json=data_json)\n50",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "test-client-matching.py",
+    "line": 83,
+    "message": "Call to requests without timeout",
+    "snippet": "82     try:\n83         r = requests.post(URL, json=data_json)\n84         # print with color state of response",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B201",
+    "file_path": "test-server-onnx.py",
+    "line": 263,
+    "message": "A Flask app appears to be run with debug=True, which exposes the Werkzeug debugger and allows the execution of arbitrary code.",
+    "snippet": "262     #     app.run(debug=True)\n263     app.run(debug=True, host='0.0.0.0', port=8111)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "test-server-onnx.py",
+    "line": 263,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "262     #     app.run(debug=True)\n263     app.run(debug=True, host='0.0.0.0', port=8111)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B201",
+    "file_path": "test-server.py",
+    "line": 244,
+    "message": "A Flask app appears to be run with debug=True, which exposes the Werkzeug debugger and allows the execution of arbitrary code.",
+    "snippet": "243     #     app.run(debug=True)\n244     app.run(debug=True, host='0.0.0.0', port=8111)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "test-server.py",
+    "line": 244,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "243     #     app.run(debug=True)\n244     app.run(debug=True, host='0.0.0.0', port=8111)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B201",
+    "file_path": "test-webdemo.py",
+    "line": 135,
+    "message": "A Flask app appears to be run with debug=True, which exposes the Werkzeug debugger and allows the execution of arbitrary code.",
+    "snippet": "134 if __name__ == '__main__':\n135     app.run(debug=True, host='0.0.0.0', port=8111)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "test-webdemo.py",
+    "line": 135,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "134 if __name__ == '__main__':\n135     app.run(debug=True, host='0.0.0.0', port=8111)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "utils.py",
+    "line": 171,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "170     with open(config_path, \"r\") as f:\n171         yml_config = yaml.load(f, Loader=yaml.FullLoader)\n172     for k, v in yml_config.items():",
+    "stage": "data_acquisition+data_preparation+evaluation+modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "collect_env.py",
+    "line": 52,
+    "message": "Found 'subprocess' function 'Popen' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "dataprep.py",
+    "line": 44,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "dataprep.py",
+    "line": 63,
+    "message": "Found 'subprocess' function 'call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "dataprep.py",
+    "line": 278,
+    "message": "Found 'subprocess' function 'call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "dataprep.py",
+    "line": 281,
+    "message": "Found 'subprocess' function 'call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "dataprep.py",
+    "line": 282,
+    "message": "Found 'subprocess' function 'call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "filter_dataset_raw.py",
+    "line": 166,
+    "message": "Found 'subprocess' function 'call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "filter_dataset_raw.py",
+    "line": 169,
+    "message": "Found 'subprocess' function 'call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "filter_dataset_raw.py",
+    "line": 179,
+    "message": "Found 'subprocess' function 'call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "inference.py",
+    "line": 58,
+    "message": "Found 'subprocess' function 'call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "inference.py",
+    "line": 142,
+    "message": "Found 'subprocess' function 'call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-subprocess-use-tainted-env-args.dangerous-subprocess-use-tainted-env-args",
+    "file_path": "main.py",
+    "line": 340,
+    "message": "Detected subprocess function 'call' with user controlled data. A malicious actor could leverage this to perform command injection. You may consider using 'shlex.quote()'.",
+    "snippet": "requires login",
+    "stage": "training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "main.py",
+    "line": 340,
+    "message": "Found 'subprocess' function 'call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "templates/demo.html",
+    "line": 116,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "templates/demo.html",
+    "line": 121,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "templates/demo.html",
+    "line": 145,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "templates/demo.html",
+    "line": 147,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "templates/demo.html",
+    "line": 160,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "info",
+    "rule_id": "python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http",
+    "file_path": "test-client-embedding.py",
+    "line": 49,
+    "message": "Detected a request using 'http://'. This request will be unencrypted, and attackers could listen into traffic on the network and be able to obtain sensitive information. Use 'https://' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "info",
+    "rule_id": "python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http",
+    "file_path": "test-client-matching.py",
+    "line": 83,
+    "message": "Detected a request using 'http://'. This request will be unencrypted, and attackers could listen into traffic on the network and be able to obtain sensitive information. Use 'https://' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.hardcoded-config.avoid_hardcoded_config_DEBUG",
+    "file_path": "test-server-onnx.py",
+    "line": 76,
+    "message": "Hardcoded variable `DEBUG` detected. Set this by using FLASK_DEBUG environment variable",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.app-run-param-config.avoid_app_run_with_bad_host",
+    "file_path": "test-server-onnx.py",
+    "line": 263,
+    "message": "Running flask app with host 0.0.0.0 could expose the server publicly.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.debug-enabled.debug-enabled",
+    "file_path": "test-server-onnx.py",
+    "line": 263,
+    "message": "Detected Flask app with debug=True. Do not deploy to production with this flag enabled as it will leak sensitive information. Instead, consider using Flask configuration variables or setting 'debug' using system environment variables.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.hardcoded-config.avoid_hardcoded_config_DEBUG",
+    "file_path": "test-server.py",
+    "line": 59,
+    "message": "Hardcoded variable `DEBUG` detected. Set this by using FLASK_DEBUG environment variable",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.app-run-param-config.avoid_app_run_with_bad_host",
+    "file_path": "test-server.py",
+    "line": 244,
+    "message": "Running flask app with host 0.0.0.0 could expose the server publicly.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.debug-enabled.debug-enabled",
+    "file_path": "test-server.py",
+    "line": 244,
+    "message": "Detected Flask app with debug=True. Do not deploy to production with this flag enabled as it will leak sensitive information. Instead, consider using Flask configuration variables or setting 'debug' using system environment variables.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.flask.security.open-redirect.open-redirect",
+    "file_path": "test-webdemo.py",
+    "line": 71,
+    "message": "Data from request is passed to redirect(). This is an open redirect and could be exploited. Consider using 'url_for()' to generate links to known locations. If you must use a URL to unknown pages, consider using 'urlparse()' or similar and checking if the 'netloc' property is the same as your site's host name. See the references for more information.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.app-run-param-config.avoid_app_run_with_bad_host",
+    "file_path": "test-webdemo.py",
+    "line": 135,
+    "message": "Running flask app with host 0.0.0.0 could expose the server publicly.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.debug-enabled.debug-enabled",
+    "file_path": "test-webdemo.py",
+    "line": 135,
+    "message": "Detected Flask app with debug=True. Do not deploy to production with this flag enabled as it will leak sensitive information. Instead, consider using Flask configuration variables or setting 'debug' using system environment variables.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

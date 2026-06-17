@@ -1,0 +1,62 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "autoupdate.py",
+    "line": 75,
+    "message": "Call to requests without timeout",
+    "snippet": "74         if datetime.datetime.now() > cur_date:\n75           r = requests.get('https://api.tradestation.com/v2/stream/barchart/' + symbol + '/' + str(interval) + '/' + unit + '/' + from_date + '/' + to_date + '?access_token=' + access_token)\n76           if r.status_code == 200:",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "tsapi.py",
+    "line": 15,
+    "message": "Call to requests without timeout",
+    "snippet": "14 def get_token(token, auth_code):\n15   res = requests.post(ts_api_auth_url, data = {\n16     \"grant_type\": \"authorization_code\",\n17     \"client_id\": ts_client_id,\n18     \"redirect_uri\": \"https://api-ml-web-tool.herokuapp.com/account/tsapi_callback/\" + token,\n19     \"client_secret\": ts_client_secret,\n20     \"code\": auth_code,\n21     \"response_type\": \"token\"\n22   })\n23",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "tsapi.py",
+    "line": 32,
+    "message": "Call to requests without timeout",
+    "snippet": "31 def get_access_token(refresh_token):\n32   res = requests.post(ts_api_auth_url, data = {\n33     \"grant_type\": \"refresh_token\",\n34     \"client_id\": ts_client_id,\n35     \"redirect_uri\": \"http://ec2-52-201-19-122.compute-1.amazonaws.com:3002/app/ml-app\", #https://ml-web-tool.herokuapp.com/\n36     \"client_secret\": ts_client_secret,\n37     \"refresh_token\": refresh_token,\n38     \"response_type\": \"toke",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "tsapi.py",
+    "line": 69,
+    "message": "Call to requests without timeout",
+    "snippet": "68     try:\n69       res = requests.get(url, stream=True)    \n70       if res.status_code == 200:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.jwt.security.jwt-hardcode.jwt-python-hardcoded-secret",
+    "file_path": "app.py",
+    "line": 200,
+    "message": "Hardcoded JWT secret or private key is used. This is a Insufficiently Protected Credentials weakness: https://cwe.mitre.org/data/definitions/522.html Consider using an appropriate security mechanism to protect the credentials (e.g. keeping secrets in environment variables)",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.jwt.security.jwt-hardcode.jwt-python-hardcoded-secret",
+    "file_path": "app.py",
+    "line": 227,
+    "message": "Hardcoded JWT secret or private key is used. This is a Insufficiently Protected Credentials weakness: https://cwe.mitre.org/data/definitions/522.html Consider using an appropriate security mechanism to protect the credentials (e.g. keeping secrets in environment variables)",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference"
+  }
+]

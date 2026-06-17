@@ -1,0 +1,362 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "claf/config/utils.py",
+    "line": 36,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "35         with open(file_path, \"r\") as f:\n36             return yaml.load(f)\n37",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "claf/data/data_handler.py",
+    "line": 96,
+    "message": "Call to requests without timeout",
+    "snippet": "95     def _download_from_http(self, temp_file, url):\n96         req = requests.get(url, stream=True)\n97         content_length = req.headers.get('Content-Length')",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "claf/data/data_handler.py",
+    "line": 139,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "138         with open(path, \"rb\") as in_file:\n139             return pickle.load(in_file, encoding=encoding)\n140",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "claf/learn/experiment.py",
+    "line": 95,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "94         if cuda_devices == \"cpu\":\n95             return torch.load(checkpoint_path, map_location=\"cpu\")  # use CPU\n96",
+    "stage": "evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "claf/learn/experiment.py",
+    "line": 98,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "97         if torch.cuda.is_available():\n98             checkpoint = torch.load(\n99                 checkpoint_path,\n100                 map_location={\n101                     f\"cuda:{prev_cuda_device_id}\": f\"cuda:{cuda_devices[0]}\"\n102                 },  # different cuda_device id case (save/load)\n103             )\n104         else:",
+    "stage": "evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "claf/learn/experiment.py",
+    "line": 105,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "104         else:\n105             checkpoint = torch.load(checkpoint_path, map_location=\"cpu\")  # use CPU\n106         return checkpoint",
+    "stage": "evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "claf/learn/utils.py",
+    "line": 170,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "169         checkpoint_path = os.path.join(dir_path, CHECKPOINT_FNAME)\n170         checkpoint = torch.load(checkpoint_path)\n171",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "claf/learn/utils.py",
+    "line": 229,
+    "message": "Call to requests without timeout",
+    "snippet": "228         else:\n229             requests.post(webhook_url, data=json.dumps(data))\n230     except Exception as e:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "claf/metric/wikisql_lib/dbengine.py",
+    "line": 49,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "48             where_str = 'WHERE ' + ' AND '.join(where_clause)\n49         query = 'SELECT {} AS result FROM {} {}'.format(select, table_id, where_str)\n50         out = self.conn.query(query, **where_map)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "claf/metric/wikisql_lib/query.py",
+    "line": 67,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "66     def __repr__(self):\n67         rep = \"SELECT {agg} {sel} FROM table\".format(\n68             agg=self.agg_ops[self.agg_index], sel=\"col{}\".format(self.sel_index)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "claf/model/multi_task/bert.py",
+    "line": 41,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "40 \n41         self.shared_layers = BertModel.from_pretrained(\n42             pretrained_model_name, cache_dir=str(CachePath.ROOT)\n43         )\n44         self._init_task_layers(tasks, dropouts)",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "claf/model/reading_comprehension/bert.py",
+    "line": 38,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "37 \n38         self.model = BertForQuestionAnswering.from_pretrained(\n39             pretrained_model_name, cache_dir=str(CachePath.ROOT)\n40         )\n41         self.criterion = nn.CrossEntropyLoss()",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "claf/model/reading_comprehension/roberta.py",
+    "line": 37,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "36 \n37         self.model = RobertaModel.from_pretrained(\n38             pretrained_model_name, cache_dir=str(CachePath.ROOT)\n39         )\n40         self.qa_outputs = nn.Linear(self.model.config.hidden_size, self.model.config.num_labels)",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "claf/model/regression/bert.py",
+    "line": 34,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "33 \n34         self.model = BertForSequenceClassification.from_pretrained(\n35             pretrained_model_name, cache_dir=str(CachePath.ROOT), num_labels=NUM_CLASSES,\n36         )\n37         self.criterion = nn.MSELoss()",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "claf/model/regression/roberta.py",
+    "line": 34,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "33 \n34         self.model = RobertaForSequenceClassification.from_pretrained(\n35             pretrained_model_name, cache_dir=str(CachePath.ROOT), num_labels=NUM_CLASSES,\n36         )\n37         self.criterion = nn.MSELoss()",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "claf/model/sequence_classification/bert.py",
+    "line": 35,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "34 \n35         self.model = BertForSequenceClassification.from_pretrained(\n36             pretrained_model_name, cache_dir=str(CachePath.ROOT), num_labels=num_classes,\n37         )\n38         self.criterion = nn.CrossEntropyLoss()",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "claf/model/sequence_classification/roberta.py",
+    "line": 35,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "34 \n35         self.model = RobertaForSequenceClassification.from_pretrained(\n36             pretrained_model_name, cache_dir=str(CachePath.ROOT), num_labels=num_classes,\n37         )\n38         self.criterion = nn.CrossEntropyLoss()",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "claf/model/token_classification/bert.py",
+    "line": 40,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "39 \n40         self.model = BertForTokenClassification.from_pretrained(\n41             pretrained_model_name, cache_dir=str(CachePath.ROOT), num_labels=num_tags,\n42         )\n43         self.criterion = nn.CrossEntropyLoss(ignore_index=ignore_tag_idx)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "claf/tokens/cove.py",
+    "line": 31,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "30         if torch.cuda.is_available():\n31             checkpoint = torch.load(cove_weight_path)\n32         else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "claf/tokens/cove.py",
+    "line": 33,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "32         else:\n33             checkpoint = torch.load(cove_weight_path, map_location=\"cpu\")\n34",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "claf/tokens/embedding/bert_embedding.py",
+    "line": 37,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "36 \n37         self.bert_model = BertModel.from_pretrained(pretrained_model_name)  # BertModel with config\n38",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "claf/utils.py",
+    "line": 18,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "17     try:\n18         return eval(user_input)\n19     except BaseException:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "script/convert_checkpoint_to_bert_model.py",
+    "line": 13,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "12 def convert_checkpoint_to_bert_model(checkpoint_path, output_path):\n13     checkpoint = torch.load(checkpoint_path, map_location=\"cpu\")\n14     model_weights = checkpoint[\"weights\"]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "setup.py",
+    "line": 44,
+    "message": "Use of exec detected.",
+    "snippet": "43     with open(os.path.join(here, NAME, '__version__.py')) as f:\n44         exec(f.read(), about)\n45 else:",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "setup.py",
+    "line": 74,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "73         self.status('Building Source and Wheel (universal) distribution…')\n74         os.system('{0} setup.py sdist bdist_wheel --universal'.format(sys.executable))\n75",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "setup.py",
+    "line": 80,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "79         self.status('Pushing git tags…')\n80         os.system('git tag v{0}'.format(about['__version__']))\n81         os.system('git push --tags')",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "claf/data/data_handler.py",
+    "line": 139,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "claf/data/data_handler.py",
+    "line": 151,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-uuid-version.insecure-uuid-version",
+    "file_path": "claf/data/reader/bert/regression.py",
+    "line": 127,
+    "message": "Using UUID version 1 for UUID generation can lead to predictable UUIDs based on system information (e.g., MAC address, timestamp). This may lead to security risks such as the sandwich attack. Consider using `uuid.uuid4()` instead for better randomness and security.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-uuid-version.insecure-uuid-version",
+    "file_path": "claf/data/reader/bert/seq_cls.py",
+    "line": 161,
+    "message": "Using UUID version 1 for UUID generation can lead to predictable UUIDs based on system information (e.g., MAC address, timestamp). This may lead to security risks such as the sandwich attack. Consider using `uuid.uuid4()` instead for better randomness and security.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-uuid-version.insecure-uuid-version",
+    "file_path": "claf/data/reader/bert/tok_cls.py",
+    "line": 165,
+    "message": "Using UUID version 1 for UUID generation can lead to predictable UUIDs based on system information (e.g., MAC address, timestamp). This may lead to security risks such as the sandwich attack. Consider using `uuid.uuid4()` instead for better randomness and security.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-uuid-version.insecure-uuid-version",
+    "file_path": "claf/data/reader/seq_cls.py",
+    "line": 120,
+    "message": "Using UUID version 1 for UUID generation can lead to predictable UUIDs based on system information (e.g., MAC address, timestamp). This may lead to security risks such as the sandwich attack. Consider using `uuid.uuid4()` instead for better randomness and security.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-uuid-version.insecure-uuid-version",
+    "file_path": "claf/data/reader/wikisql.py",
+    "line": 70,
+    "message": "Using UUID version 1 for UUID generation can lead to predictable UUIDs based on system information (e.g., MAC address, timestamp). This may lead to security risks such as the sandwich attack. Consider using `uuid.uuid4()` instead for better randomness and security.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "claf/utils.py",
+    "line": 18,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-uuid-version.insecure-uuid-version",
+    "file_path": "script/make_squad_synthetic_data.py",
+    "line": 23,
+    "message": "Using UUID version 1 for UUID generation can lead to predictable UUIDs based on system information (e.g., MAC address, timestamp). This may lead to security risks such as the sandwich attack. Consider using `uuid.uuid4()` instead for better randomness and security.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "setup.py",
+    "line": 44,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "dependencies"
+  }
+]

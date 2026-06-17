@@ -1,0 +1,102 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "average_attentions.py",
+    "line": 107,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "106     # net = SegAttention(model=models.resnet50, image_size=(244,244), n_layers=N_LAYERS, n_heads=N_HEADS, softmax=SOFTMAX)\n107     net.load_state_dict(torch.load(model, map_location=device))\n108     net.to(device)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "nets/SegAttention.py",
+    "line": 46,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "45         self.hidden_dim = NUM_CLASSES\n46         if restore is not None: self.seg_net.load_state_dict(torch.load(restore, map_location=device))\n47",
+    "stage": "inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "nets/SegRank.py",
+    "line": 36,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "35         self.n_outputs = n_outputs\n36         if restore is not None: self.seg_net.load_state_dict(torch.load(restore, map_location=device))\n37",
+    "stage": "inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "nets/SegRankBaseline.py",
+    "line": 31,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "30         self.softmax = nn.Softmax(dim=1) if softmax else None\n31         if restore is not None: self.seg_net.load_state_dict(torch.load(restore, map_location=device))\n32",
+    "stage": "inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "rank_validation.py",
+    "line": 198,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "197     # net = SegRank(image_size=(244,244),softmax=SOFTMAX)\n198     net.load_state_dict(torch.load(model, map_location=device))\n199     net.to(device)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "scripts/evaluate_rank.py",
+    "line": 62,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "61     net.to(device)\n62     net.load_state_dict(torch.load(f'{MODEL_DIR}/{MODELS[attribute]}'))\n63     net.eval()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "scripts/rank_script.py",
+    "line": 16,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "15     net.to(device)\n16     net.load_state_dict(torch.load(model_path))\n17     net.eval()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "segmentation_stats.py",
+    "line": 64,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "63 seg_net = Seg_Model(num_classes=NUM_CLASSES)\n64 seg_net.load_state_dict(torch.load(RESTORE_FROM, map_location=device))\n65 seg_net.to(device)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "test.py",
+    "line": 67,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "66     net = Net(models[args.premodel])\n67     net.load_state_dict(torch.load(os.path.join(args.model_dir,'{}_{}_{}_model_{}.pth'.format(\n68             args.model,\n69             args.premodel,\n70             args.attribute,\n71             args.epoch\n72         ))))\n73",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "train.py",
+    "line": 185,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "184     if args.resume:\n185         net.load_state_dict(torch.load(os.path.join(args.model_dir,'{}_{}_{}_model_{}.pth'.format(\n186             args.model,\n187             args.premodel,\n188             args.attribute,\n189             args.epoch\n190         ))))\n191",
+    "stage": "data_acquisition+data_preparation+training"
+  }
+]

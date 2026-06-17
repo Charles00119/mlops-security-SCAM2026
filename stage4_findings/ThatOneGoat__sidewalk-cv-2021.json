@@ -1,0 +1,122 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "citysurfaces/network/hrnetv2.py",
+    "line": 542,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "541         if os.path.isfile(pretrained):\n542             pretrained_dict = torch.load(pretrained,\n543                                          map_location={'cuda:0': 'cpu'})\n544             # logx.msg('=> loading pretrained model {}'.format(pretrained))",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "citysurfaces/network/hrnetv2.py",
+    "line": 567,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "566 def get_hrnet_with_citysurface_weights(citysurfaces_pretrained_model_path, num_classes):\n567     citysurfaces_data = torch.load(citysurfaces_pretrained_model_path)\n568     citysurfaces_weights = citysurfaces_data['state_dict']",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "eval.py",
+    "line": 86,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "85 if (os.path.exists(pr_roc_save_path)):\n86   pr_roc_data = torch.load(pr_roc_save_path)\n87 else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B314",
+    "file_path": "scrape_and_check_xml_metadata.py",
+    "line": 87,
+    "message": "Using xml.etree.ElementTree.parse to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.parse with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "86     with open(path_to_metadata_xml, 'rb') as pano_xml:\n87         tree = ET.parse(pano_xml)\n88         root = tree.getroot()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "utils/training_utils.py",
+    "line": 103,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "102     'recall_validation': []}, -1  # training starts at last epoch + 1\n103   checkpoint = torch.load(path)\n104   model.load_state_dict(checkpoint['model_state'])",
+    "stage": "evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "utils/training_utils.py",
+    "line": 116,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "115 def load_best_weights(model, path):\n116   checkpoint = torch.load(path)\n117   model.load_state_dict(checkpoint['best_model_state'])",
+    "stage": "evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "visualization_utils/analyze_results.py",
+    "line": 30,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "29 \n30 results = torch.load(TRAIN_SAVE_PATH)\n31 metrics = results['metrics']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "visualization_utils/plot_pr_roc.py",
+    "line": 12,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "11 pr_roc_save_path = os.path.join(args.visualizations_path, args.eval_session_group_name +  \"_pr_roc_points.pt\")\n12 pr_roc_data = torch.load(pr_roc_save_path)\n13",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "visualization_utils/plot_results_vs_metric.py",
+    "line": 36,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "35 \n36     results = torch.load(TRAIN_SAVE_PATH)\n37     metrics = results['metrics']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml.use-defused-xml",
+    "file_path": "scrape_and_check_xml_metadata.py",
+    "line": 7,
+    "message": "The Python documentation recommends using `defusedxml` instead of `xml` because the native Python `xml` library is vulnerable to XML External Entity (XXE) attacks. These attacks can leak confidential data and \"XML bombs\" can cause denial of service.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml-parse.use-defused-xml-parse",
+    "file_path": "scrape_and_check_xml_metadata.py",
+    "line": 87,
+    "message": "The native Python `xml` library is vulnerable to XML External Entity (XXE) attacks.  These attacks can leak confidential data and \"XML bombs\" can cause denial of service. Do not use this library to parse untrusted input. Instead  the Python documentation recommends using `defusedxml`.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.httpsconnection-detected.httpsconnection-detected",
+    "file_path": "scrape_and_crop_labels.py",
+    "line": 26,
+    "message": "The HTTPSConnection API has changed frequently with minor releases of Python. Ensure you are using the API for your version of Python securely. For example, Python 3 versions prior to 3.4.3 will not verify SSL certificates by default. See https://docs.python.org/3/library/http.client.html#http.client.HTTPSConnection for more information.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

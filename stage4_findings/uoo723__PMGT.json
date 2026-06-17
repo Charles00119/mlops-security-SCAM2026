@@ -1,0 +1,42 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "pmgt/base_trainer.py",
+    "line": 104,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "103     if load_best:\n104         ckpt = torch.load(ckpt_path, map_location=\"cpu\")\n105         key = [k for k in ckpt[\"callbacks\"].keys() if k.startswith(\"ModelCheckpoint\")][",
+    "stage": "evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "pmgt/ncf/trainer.py",
+    "line": 116,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "115 \n116     ckpt = torch.load(ckpt_path, map_location=\"cpu\")\n117     model = NCF(",
+    "stage": "data_acquisition+data_preparation+evaluation+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "pmgt/pmgt/trainer.py",
+    "line": 81,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "80     args.min_neg_samples = int(params.min_neg_samples)\n81     args.hop_sampling_sizes = eval(params.hop_sampling_sizes)\n82",
+    "stage": "data_acquisition+data_preparation+evaluation+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "pmgt/pmgt/trainer.py",
+    "line": 81,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+training"
+  }
+]

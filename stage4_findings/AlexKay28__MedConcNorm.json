@@ -1,0 +1,212 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "run.py",
+    "line": 130,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "129                 print('Use cached train data')\n130                 train = pd.read_pickle(file_path)\n131             else:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "run.py",
+    "line": 149,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "148                 print('Use cached test data')\n149                 test = pd.read_pickle(test_file)\n150             else:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "src/configs/__init__.py",
+    "line": 36,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "35     print('Create random configuration')\n36     temp_config = eval(str(choose_random_configuration(configurations)))\n37     print(f\"create config: '{CONFIG_FOR_PIPE}'\")",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "src/data/sentence_vectorizer.py",
+    "line": 182,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "181 \n182         tokenizer = BertTokenizer.from_pretrained(bert_type)\n183         if bert_type in ['cimm-kzn/endr-bert']:",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "src/data/sentence_vectorizer.py",
+    "line": 184,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "183         if bert_type in ['cimm-kzn/endr-bert']:\n184             model = BertModel.from_pretrained(bert_type)\n185             get_vecors_from_context = get_vecors_from_context_TORCH",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "src/data/sentence_vectorizer.py",
+    "line": 187,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "186         else:\n187             model = TFBertModel.from_pretrained(bert_type)\n188             get_vecors_from_context = get_vecors_from_context_TF",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "src/data/sentence_vectorizer.py",
+    "line": 200,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "199         with open('models/encoder/tokenizer.pickle', 'rb') as tok:\n200             tokenizer = pickle.load(tok)\n201         #encoder = keras.models.load_model('models/encoder/encoder_cadec.h5')",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "src/data/sentence_vectorizer.py",
+    "line": 214,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "213         with open('models/tfidfvectorizer/vectorizer.pickle', 'rb') as tok:\n214             vectorizer = pickle.load(tok)\n215         lemmatized = data[feat_col].apply(",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "src/features/retrofitting.py",
+    "line": 17,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "16     print('loading ENDR-BERT')\n17     tokenizer = BertTokenizer.from_pretrained('cimm-kzn/endr-bert')\n18     vec_model = BertModel.from_pretrained('cimm-kzn/endr-bert')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "src/features/retrofitting.py",
+    "line": 18,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "17     tokenizer = BertTokenizer.from_pretrained('cimm-kzn/endr-bert')\n18     vec_model = BertModel.from_pretrained('cimm-kzn/endr-bert')\n19 elif vec_model_name == 'SRoBERTa':",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "src/features/retrofitting.py",
+    "line": 86,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "85     concept = row[concept_row]\n86     synonims = set(eval(row[synonim_row]))\n87     concept_vec = vectorize_sent_direct(concept)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "src/support_models/classic_metric_learner.py",
+    "line": 35,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "34     def __init__(self, name, params):\n35         self.model = eval(f\"self.{name}\")() #(**params)\n36",
+    "stage": "training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "src/support_models/classic_metric_learner.py",
+    "line": 52,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "51     def __init__(self, name, params):\n52         self.model = eval(f\"self.{name}\")(**params)\n53",
+    "stage": "training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "src/support_models/classic_metric_learner.py",
+    "line": 68,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "67     def __init__(self, name, params):\n68         self.model = eval(f\"self.{name}\")(**params)\n69",
+    "stage": "training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "src/configs/__init__.py",
+    "line": 36,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "src/data/sentence_vectorizer.py",
+    "line": 200,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "src/data/sentence_vectorizer.py",
+    "line": 214,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "src/features/retrofitting.py",
+    "line": 86,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "src/support_models/classic_metric_learner.py",
+    "line": 35,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "src/support_models/classic_metric_learner.py",
+    "line": 52,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "src/support_models/classic_metric_learner.py",
+    "line": 68,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "training"
+  }
+]

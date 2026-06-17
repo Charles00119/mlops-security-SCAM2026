@@ -1,0 +1,112 @@
+[
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.untrusted_source_handling",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected untrusted source handling: Data is read from local files via os.path.join and open(), with no remote fetching, so no checksum or authentication controls are needed or present.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_flipping_detection",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected label flipping detection: The code performs no checks on label distributions, validation against an expected label set, or use of any label-noise detection tool before training.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.data_poisoning_defenses",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected data poisoning defenses: While Infinity/NaN values are replaced with -1 in the CICIDS path, there is no outlier detection, statistical anomaly checking, or filtering of suspicious training samples that would constitute a poisoning defense.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.model_integrity_verification",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected model integrity verification: No pretrained weights or serialized models are loaded in this code; models are built and trained from scratch with no hash checks, signature verification, or pinned revisions present.",
+    "snippet": "",
+    "stage": "modeling"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_distribution_validation",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected label distribution validation: The code loads training data and calls .fit() directly without any class balance checks, expected-label-set validation, or anomalous sample detection before training.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.backdoor_or_trigger_detection",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected backdoor or trigger detection: There is no neural-cleanse-style trigger detection, activation-pattern analysis, or gradient anomaly detection anywhere in the training pipeline.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.differential_privacy",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected differential privacy: The code uses standard Keras/scikit-learn training with a plain Adam optimizer and no differential privacy library (Opacus, TensorFlow Privacy, DP-SGD) is imported or used.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.adversarial_robustness_testing",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected adversarial robustness testing: No adversarial attack libraries (Foolbox, ART, CleverHans) or attack methods (FGSM, PGD) are imported or used anywhere in the evaluation code.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.metric_tampering_protection",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected metric tampering protection: While a separate test set is used via train_test_split, there is no hashing/signing of evaluation data, no isolation enforcement beyond variable scope, and no independent verification mechanism to prevent metric manipulation.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.output_bounds_checks",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected output bounds checks: Model predictions are used directly (e.g., model.predict_classes, model.predict) with no NaN guards, probability sanity bounds, or threshold checks on the returned values.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.prompt_injection_defenses",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected prompt injection defenses: The models are classic ML/DNN classifiers for network intrusion detection, not LLMs, so prompt injection defenses are not applicable and none are implemented.",
+    "snippet": "",
+    "stage": "inference"
+  }
+]

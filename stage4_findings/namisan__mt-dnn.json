@@ -1,0 +1,332 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "data_utils/__init__.py",
+    "line": 41,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "40                 \"uid\": fields[0],\n41                 \"label\": eval(fields[1]),\n42                 \"premise\": eval(fields[2]),",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "data_utils/__init__.py",
+    "line": 42,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "41                 \"label\": eval(fields[1]),\n42                 \"premise\": eval(fields[2]),\n43             }",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "data_utils/__init__.py",
+    "line": 64,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "63         elif task_type == TaskType.ClozeChoice:\n64             labels = eval(row[\"label\"])\n65             row[\"label\"] = int(np.argmax(labels))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "data_utils/tokenizer_utils.py",
+    "line": 20,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "19     else:\n20         tokenizer = AutoTokenizer.from_pretrained(model, cache_dir=transformer_cache)\n21     return tokenizer",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "experiments/dump_embedding/extractor.py",
+    "line": 231,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "230 \n231     tokenizer = AutoTokenizer.from_pretrained(\n232         args.bert_model, cache_dir=args.transformer_cache\n233     )\n234",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "experiments/dump_embedding/extractor.py",
+    "line": 285,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "284     if os.path.exists(args.checkpoint):\n285         state_dict = torch.load(args.checkpoint)\n286         config = state_dict[\"config\"]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "int_test_encoder.py",
+    "line": 19,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "18 def test_encoder(src_dir, checkpoint_path, encoder_type, target_dir, expected_dir):\n19     subprocess.call(\"rm -rf %s\" % target_dir, shell=True)\n20     assert not os.access(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "int_test_encoder.py",
+    "line": 26,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "25     print(cmd)\n26     subprocess.call(cmd, shell=True, stdout=subprocess.DEVNULL)\n27",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "int_test_encoder.py",
+    "line": 38,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "37 \n38     encoding_0 = torch.load(os.path.join(target_dir, r\"cola_encoding.pt\"))\n39     encoding_1 = torch.load(os.path.join(expected_dir, r\"cola_encoding.pt\"))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "int_test_encoder.py",
+    "line": 39,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "38     encoding_0 = torch.load(os.path.join(target_dir, r\"cola_encoding.pt\"))\n39     encoding_1 = torch.load(os.path.join(expected_dir, r\"cola_encoding.pt\"))\n40",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "int_test_prepro_std.py",
+    "line": 18,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "17 def test_prepro_std(cmd, src_dir, task_def_path, target_dir, expected_dir):\n18     subprocess.call(\"rm -rf %s\" % target_dir, shell=True)\n19     assert not os.access(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "int_test_prepro_std.py",
+    "line": 23,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "22     subprocess.call(\n23         cmd % (src_dir, task_def_path), shell=True, stdout=subprocess.DEVNULL\n24     )\n25     assert_dir_equal(target_dir, expected_dir)\n26",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "module/common.py",
+    "line": 44,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "43     try:\n44         f = eval(\"nn.{}\".format(func_a))\n45     except:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "module/common.py",
+    "line": 51,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "50 def init_wrapper(init=\"xavier_uniform\"):\n51     return eval(init)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "mt_dnn/batcher.py",
+    "line": 372,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "371                 from transformers import AutoTokenizer\n372                 tokenizer =  AutoTokenizer.from_pretrained(bert_model, cache_dir=\".cache\")\n373                 vocab_words = list(tokenizer.vocab.keys())",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "mt_dnn/model.py",
+    "line": 434,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "433                 uid = uids[0]\n434                 answer = eval(answers[0])\n435                 choice = eval(choices[0])",
+    "stage": "training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "mt_dnn/model.py",
+    "line": 435,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "434                 answer = eval(answers[0])\n435                 choice = eval(choices[0])\n436                 answers = answers[chunk:]",
+    "stage": "training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "mt_dnn/model.py",
+    "line": 465,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "464     def load(self, checkpoint):\n465         model_state_dict = torch.load(checkpoint)\n466         if \"state\" in model_state_dict:",
+    "stage": "training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "predict.py",
+    "line": 72,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "71 \n72 state_dict = torch.load(checkpoint_path, map_location=device)\n73",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "tests/_test_train.py",
+    "line": 42,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "41     subprocess.check_output(\"python train.py --epoch 1 --log_per_updates 1 --data_dir run_test/sample_data/output --output_dir %(OUTPUT_DIR)s 2>&1 > %(OUTPUT_DIR)s/log.txt\"\n42                                      % {\"OUTPUT_DIR\": OUTPUT_DIR}, stderr=subprocess.STDOUT, shell=True)\n43 \n44     compare_output(OUTPUT_DIR, EXPECTED_DIR)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "train.py",
+    "line": 600,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "599         ):\n600             state_dict = torch.load(init_model, map_location=device)\n601             config = state_dict[\"config\"]",
+    "stage": "data_acquisition+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "train.py",
+    "line": 607,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "606             model_path = \"{}/model.pt\".format(init_model)\n607             state_dict = torch.load(model_path, map_location=device)\n608             arch = state_dict[\"args\"].arch",
+    "stage": "data_acquisition+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "data_utils/__init__.py",
+    "line": 41,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "data_utils/__init__.py",
+    "line": 42,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "data_utils/__init__.py",
+    "line": 64,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "int_test_encoder.py",
+    "line": 19,
+    "message": "Found 'subprocess' function 'call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "int_test_encoder.py",
+    "line": 26,
+    "message": "Found 'subprocess' function 'call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "int_test_prepro_std.py",
+    "line": 18,
+    "message": "Found 'subprocess' function 'call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "int_test_prepro_std.py",
+    "line": 23,
+    "message": "Found 'subprocess' function 'call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "module/common.py",
+    "line": 44,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "module/common.py",
+    "line": 51,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "mt_dnn/model.py",
+    "line": 434,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "mt_dnn/model.py",
+    "line": 435,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "training"
+  }
+]

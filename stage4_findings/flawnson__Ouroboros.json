@@ -1,0 +1,272 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "main.py",
+    "line": 43,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "42     device = torch.device(\"cuda\" if config[\"device\"] == \"cuda\" and torch.cuda.is_available() else \"cpu\")\n43     logzero.loglevel(eval(config[\"log_level\"]))\n44     logger.info(f\"Successfully retrieved config json. Running {config['run_name']} on {device}.\")",
+    "stage": "data_acquisition+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "models/standard/graph_model.py",
+    "line": 36,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "35         sizes_copy.pop(\"name\", None)\n36         return eval(name)(**sizes_copy)\n37",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "models/standard/graph_model.py",
+    "line": 63,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "62                         for in_size, out_size in zip(self.layer_sizes, self.layer_sizes[1:])],\n63             pooling=[eval(pooling)(kwargs).to(device) for size in self.layer_sizes[1:]] if pooling else None,\n64             device=device)",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "models/standard/linear_model.py",
+    "line": 34,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "33         sizes_copy.pop(\"name\", None)\n34         return eval(name)(**sizes_copy)\n35",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "models/standard/linear_model.py",
+    "line": 61,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "60                         for in_size, out_size in zip(self.layer_sizes, self.layer_sizes[1:])],\n61             pooling=[eval(self.model_config[\"pooling\"]) for size in self.layer_sizes[1:]] if self.model_config[\"pooling\"] else None,\n62             normalize=[eval(self.model_config[\"normalize\"]) for size in self.layer_sizes[1:]] if self.model_config[\"normalize\"] else None,",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "models/standard/linear_model.py",
+    "line": 62,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "61             pooling=[eval(self.model_config[\"pooling\"]) for size in self.layer_sizes[1:]] if self.model_config[\"pooling\"] else None,\n62             normalize=[eval(self.model_config[\"normalize\"]) for size in self.layer_sizes[1:]] if self.model_config[\"normalize\"] else None,\n63             device=device)",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "optim/losses.py",
+    "line": 109,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "108     if type(model) == Classical:\n109         return {\"loss\": eval(optim_config[\"loss_func\"])(logits,\n110                                                         targets,",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "optim/losses.py",
+    "line": 127,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "126     elif type(model) == ResNetPrimaryNetwork:\n127         return {\"loss\": eval(optim_config[\"loss_func\"])(logits, targets, **optim_config[\"loss_kwargs\"])}\n128     else:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "optim/losses.py",
+    "line": 130,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "129         try:\n130             return {\"loss\": eval(optim_config[\"loss_func\"])(logits.unsqueeze(dim=0),\n131                                                             targets,",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "tests/test_checkpoint.py",
+    "line": 27,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "26     config: Dict = json.load(open(DEFAULT_CONFIG))\n27     logzero.loglevel(eval(config[\"log_level\"]))\n28     logger.info(f\"Successfully retrieved config json. Running {config['run_name']}.\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "tests/test_logging.py",
+    "line": 21,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "20     device = torch.device(\"cuda\" if config[\"device\"] == \"cuda\" and torch.cuda.is_available() else \"cpu\")\n21     logzero.loglevel(eval(config[\"log_level\"]))\n22     logger.info(f\"Successfully retrieved config json. Running {config['run_name']} on {device}.\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "tests/test_mlp.py",
+    "line": 55,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "54     device = torch.device(\"cuda\" if config[\"device\"] == \"cuda\" and torch.cuda.is_available() else \"cpu\")\n55     logzero.loglevel(eval(config[\"log_level\"]))\n56     tb_logger = PTTBLogger(config)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "tests/test_quine.py",
+    "line": 25,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "24     device = torch.device(\"cuda\" if config[\"device\"] == \"cuda\" and torch.cuda.is_available() else \"cpu\")\n25     logzero.loglevel(eval(config[\"log_level\"]))\n26     logger.info(f\"Successfully retrieved config json. Running {config['run_name']} on {device}.\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "tests/test_quine.py",
+    "line": 29,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "28     # In json config file, provide the name of the testing function to execute and pass the compulsory kwargs arguments\n29     eval(config[\"test_type\"])(config[\"test_params\"])\n30",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "tests/test_regeneration.py",
+    "line": 37,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "36     device = torch.device(\"cuda\" if config[\"device\"] == \"cuda\" and torch.cuda.is_available() else \"cpu\")\n37     logzero.loglevel(eval(config[\"log_level\"]))\n38     logger.info(f\"Successfully retrieved config json. Running {config['run_name']} on {device}.\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "tests/test_scores.py",
+    "line": 23,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "22     device = torch.device(\"cuda\" if config[\"device\"] == \"cuda\" and torch.cuda.is_available() else \"cpu\")\n23     logzero.loglevel(eval(config[\"log_level\"]))\n24     logger.info(f\"Successfully retrieved config json. Running {config['run_name']} on {device}.\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "utils/checkpoint.py",
+    "line": 71,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "70     elif model is None:\n71         model = torch.load(config[\"model_dir\"])\n72     else:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "utils/utilities.py",
+    "line": 92,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "91         if len(os.listdir(data_dir)) > 0:\n92             os.system(\"rm -r %s/*\" % data_dir)\n93",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "main.py",
+    "line": 43,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "models/standard/graph_model.py",
+    "line": 36,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "models/standard/graph_model.py",
+    "line": 63,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "models/standard/linear_model.py",
+    "line": 34,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "models/standard/linear_model.py",
+    "line": 61,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "models/standard/linear_model.py",
+    "line": 62,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "optim/losses.py",
+    "line": 109,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "optim/losses.py",
+    "line": 127,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "optim/losses.py",
+    "line": 130,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  }
+]

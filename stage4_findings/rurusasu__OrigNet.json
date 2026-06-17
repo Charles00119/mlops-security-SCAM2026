@@ -1,0 +1,72 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "lib/datasets/ARCdataset/ARCutils.py",
+    "line": 260,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "259                 # ディレクトリ内のすべてのデータを削除\n260                 os.system(\"rm -rf {}\".format(save_root_dir))\n261                 # ディレクトリ作成",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "lib/train/recorder.py",
+    "line": 52,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "51         if not cfg.resume:\n52             os.system(\"rm -rf {}\".format(log_dir))\n53         self.writer = SummaryWriter(log_dir)",
+    "stage": "evaluation+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "lib/utils/net_utils.py",
+    "line": 29,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "28     if not resume:\n29         os.system(\"rm -rf {}\".format(model_dir))\n30",
+    "stage": "inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "lib/utils/net_utils.py",
+    "line": 42,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "41     print(\"Load model: {}\".format(os.path.join(model_dir, \"{}.pth\".format(pth))))\n42     pretrained_model = torch.load(os.path.join(model_dir, \"{}.pth\".format(pth)))\n43     network.load_state_dict(pretrained_model[\"net\"])",
+    "stage": "inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "lib/utils/net_utils.py",
+    "line": 83,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "82     print(\"Load model: {}\".format(os.path.join(model_dir, \"{}.pth\".format(pth))))\n83     pretrained_model = torch.load(os.path.join(model_dir, \"{}.pth\".format(pth)))\n84     network.load_state_dict(pretrained_model[\"net\"], strict=strict)",
+    "stage": "inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "lib/utils/net_utils.py",
+    "line": 100,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "99     \"\"\"\n100     os.system(\"mkdir -p {}\".format(model_dir))\n101     torch.save(",
+    "stage": "inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "lib/utils/net_utils.py",
+    "line": 116,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "115         return\n116     os.system(\"rm {}\".format(os.path.join(model_dir, \"{}.pth\".format(min(pths)))))\n117",
+    "stage": "inference+modeling+training"
+  }
+]

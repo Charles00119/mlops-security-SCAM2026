@@ -1,0 +1,282 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "clip/clip.py",
+    "line": 44,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "43 \n44     with urllib.request.urlopen(url) as source, open(download_target, \"wb\") as output:\n45         with tqdm(total=int(source.info().get(\"Content-Length\")), ncols=80, unit='iB', unit_scale=True) as loop:",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "clip/clip.py",
+    "line": 118,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "117             jit = False\n118         state_dict = torch.load(model_path, map_location=\"cpu\")\n119",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "cvap/data/audio/transform.py",
+    "line": 43,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "42             if isinstance(params, DictConfig): \n43                 tfm_list.append(eval(name)(**params))\n44             else:",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "cvap/data/audio/transform.py",
+    "line": 45,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "44             else:\n45                 tfm_list.append(eval(name)(*params))\n46         if len(tfm_list) > 0:",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "cvap/data/audio/transform.py",
+    "line": 52,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "51             if isinstance(params, DictConfig): \n52                 tfm_list.append(eval(name)(**params))\n53             else:",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "cvap/data/audio/transform.py",
+    "line": 54,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "53             else:\n54                 tfm_list.append(eval(name)(*params))\n55         if len(tfm_list) > 0:",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "cvap/data/audio_text.py",
+    "line": 143,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "142     if isinstance(dataset_cls, str):\n143         dataset = eval(dataset_cls)(rcfg, data_list, train)\n144     else:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "cvap/model/helper.py",
+    "line": 13,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "12     try:\n13         checkpoint = torch.load(model_file, map_location=\"cpu\")\n14         echo(f\"Loading from {model_file}\")",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "cvap/module/encoder/clip_head.py",
+    "line": 82,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "81             ref_modules.append(module)\n82             self_module = eval(f\"self.{module}\")\n83             refr_module = eval(f\"reference.{module}\")",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "cvap/module/encoder/clip_head.py",
+    "line": 83,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "82             self_module = eval(f\"self.{module}\")\n83             refr_module = eval(f\"reference.{module}\")\n84             #print(f\"RP A {module} {self_module.hp} {refr_module.hp} {self_module == refr_module}\")",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "cvap/module/encoder/clip_head.py",
+    "line": 87,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "86                 self_module.replace_modules(refr_module, keep_hp=keep_hp)\n87                 new_self_module = eval(f\"self.{module}\")\n88                 #print(f\"RP B {module} {self_module.hp} {refr_module.hp} {self_module == refr_module} {new_self_module == refr_module}\")",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "cvap/module/encoder/clip_head.py",
+    "line": 91,
+    "message": "Use of exec detected.",
+    "snippet": "90                 hp = self_module.hp \n91                 exec(f\"self.{module} = reference.{module}\") # modified via reference\n92                 if keep_hp:",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "cvap/module/encoder/clip_head.py",
+    "line": 93,
+    "message": "Use of exec detected.",
+    "snippet": "92                 if keep_hp:\n93                     exec(f\"self.{module}.hp = {hp}\") # so the `reference` is modified\n94                 new_self_module = eval(f\"self.{module}\")",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "cvap/module/encoder/clip_head.py",
+    "line": 94,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "93                     exec(f\"self.{module}.hp = {hp}\") # so the `reference` is modified\n94                 new_self_module = eval(f\"self.{module}\")\n95                 #print(f\"RP C {module} {self_module.hp} {refr_module.hp} {self_module == refr_module} {new_self_module == refr_module}\")",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "train.py",
+    "line": 60,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "59     if isinstance(manager, str):\n60         monitor = eval(manager)(cfg, logger.info, device)\n61     else:",
+    "stage": "training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "clip/clip.py",
+    "line": 44,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "cvap/data/audio/transform.py",
+    "line": 43,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "cvap/data/audio/transform.py",
+    "line": 45,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "cvap/data/audio/transform.py",
+    "line": 52,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "cvap/data/audio/transform.py",
+    "line": 54,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "cvap/data/audio_text.py",
+    "line": 143,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "cvap/module/encoder/clip_head.py",
+    "line": 82,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "cvap/module/encoder/clip_head.py",
+    "line": 83,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "cvap/module/encoder/clip_head.py",
+    "line": 87,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "cvap/module/encoder/clip_head.py",
+    "line": 91,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "cvap/module/encoder/clip_head.py",
+    "line": 93,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "cvap/module/encoder/clip_head.py",
+    "line": 94,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "train.py",
+    "line": 60,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "training"
+  }
+]

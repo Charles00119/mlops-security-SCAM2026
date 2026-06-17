@@ -1,0 +1,112 @@
+[
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.untrusted_source_handling",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected untrusted source handling: Data is loaded from local filesystem paths only; no remote fetching, checksum verification, or authentication is performed.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_flipping_detection",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected label flipping detection: The code loads and tensorizes labels (gold_starts, gold_ends, gold_mention_cluster_map) without any validation of label distributions, expected value ranges, or noise-detection tools.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.data_poisoning_defenses",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected data poisoning defenses: The data preparation pipeline reads JSON lines and tensorizes them directly with no outlier detection, statistical anomaly checks, or filtering of suspicious inputs.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.model_integrity_verification",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected model integrity verification: The load_model_checkpoint call and AutoTokenizer usage in tensorize.py have no hash checks, signature verification, pinned revisions, or controlled-source enforcement visible in the provided code.",
+    "snippet": "",
+    "stage": "modeling"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_distribution_validation",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected label distribution validation: No code checks class balance, expected label sets, or anomalous sample distributions before or during training.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.backdoor_or_trigger_detection",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected backdoor or trigger detection: There is no trigger detection, activation analysis, or gradient anomaly detection anywhere in the training loop.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.differential_privacy",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected differential privacy: The code uses standard AdamW/Adam optimizers with no DP-SGD, Opacus, or TensorFlow Privacy integration.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.adversarial_robustness_testing",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected adversarial robustness testing: No adversarial attack libraries (Foolbox, ART, FGSM, PGD) or robustness stress-test routines are imported or invoked anywhere in the code.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_sanitization",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected input sanitization: The inference path loads pre-tensorized data from cache or files without any shape/range validation or schema checks on incoming inputs before passing them to the model.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.output_bounds_checks",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected output bounds checks: No NaN guards, probability sanity bounds, or threshold checks on model outputs are visible in the inference-related code paths shown.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.prompt_injection_defenses",
+    "file_path": "run.py",
+    "line": 0,
+    "message": "No detected prompt injection defenses: This is a coreference resolution model, not an LLM text-in/text-out system, so prompt injection defenses are not applicable and none are implemented.",
+    "snippet": "",
+    "stage": "inference"
+  }
+]

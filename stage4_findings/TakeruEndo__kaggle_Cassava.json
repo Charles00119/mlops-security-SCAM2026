@@ -1,0 +1,282 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "FMix_master/analysis/mine.py",
+    "line": 156,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "155     vgg = vgg11_bn(return_cache=True)\n156     vgg.load_state_dict(torch.load(args.model + '.pt')[torchbearer.MODEL])\n157     for param in vgg.parameters():",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "FMix_master/analysis/train_vaes.py",
+    "line": 99,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "98     if mode in ['base', 'mix', 'cutmix']:\n99         trial = trial.load_state_dict(torch.load('vaes/' + '/' + mode + '_' + str(args.i) + '.pt'))\n100",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "FMix_master/analysis/vae_mi.py",
+    "line": 39,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "38     vae1 = VAE(64)\n39     vae1.load_state_dict(torch.load('vaes3/' + args.vae1 + '.pt')[torchbearer.MODEL])\n40",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "FMix_master/analysis/vae_mi.py",
+    "line": 45,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "44     vae2 = VAE(64)\n45     vae2.load_state_dict(torch.load('vaes3/' + args.vae2 + '.pt')[torchbearer.MODEL])\n46",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "FMix_master/datasets/imagenet_hdf5.py",
+    "line": 14,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "13 \n14         self.dest = pickle.load(open(os.path.join(root, 'dest.p'), 'rb'))\n15         self.cache = {}",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "FMix_master/datasets/toxic_bert.py",
+    "line": 14,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "13         from transformers import BertTokenizer\n14         self.tokenizer = BertTokenizer.from_pretrained(bert_model)\n15         self.pad_idx = self.tokenizer.pad_token_id",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "FMix_master/models/bert.py",
+    "line": 9,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "8         from transformers import BertModel\n9         self.bert = BertModel.from_pretrained(bert_model, output_hidden_states=True)\n10         self.classifier = nn.Linear(self.bert.config.hidden_size, num_classes)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "FMix_master/trainer.py",
+    "line": 188,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "187 if args.reload:\n188     state = torch.load(args.model_file)\n189     trial.load_state_dict(state, resume=args.dataset != 'imagenet_a')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "FMix_master/utils/bengali_evaluate.py",
+    "line": 65,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "64 \n65 model_r.load_state_dict(torch.load(args.model_r, map_location='cpu')[torchbearer.MODEL])\n66 model_v.load_state_dict(torch.load(args.model_v, map_location='cpu')[torchbearer.MODEL])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "FMix_master/utils/bengali_evaluate.py",
+    "line": 66,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "65 model_r.load_state_dict(torch.load(args.model_r, map_location='cpu')[torchbearer.MODEL])\n66 model_v.load_state_dict(torch.load(args.model_v, map_location='cpu')[torchbearer.MODEL])\n67 model_c.load_state_dict(torch.load(args.model_c, map_location='cpu')[torchbearer.MODEL])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "FMix_master/utils/bengali_evaluate.py",
+    "line": 67,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "66 model_v.load_state_dict(torch.load(args.model_v, map_location='cpu')[torchbearer.MODEL])\n67 model_c.load_state_dict(torch.load(args.model_c, map_location='cpu')[torchbearer.MODEL])\n68",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "FMix_master/utils/convert_imagenet_model.py",
+    "line": 23,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "22 model = nn.DataParallel(resnet101(False))\n23 sd = torch.load(args.model_file, map_location='cpu')[torchbearer.MODEL]\n24 model.load_state_dict(sd)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "RepVGG/convert.py",
+    "line": 25,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "24         print(\"=> loading checkpoint '{}'\".format(args.load))\n25         checkpoint = torch.load(args.load)\n26         if 'state_dict' in checkpoint:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "RepVGG/repvgg.py",
+    "line": 196,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "195     if pretrained:\n196         model.load_state_dict(torch.load('../../../RepVGG/weight/RepVGG-A0-train.pth'))\n197     model.linear = nn.Linear(int(512 * model.width_multiplier[3]), 5)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "RepVGG/repvgg.py",
+    "line": 204,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "203     if pretrained:\n204         model.load_state_dict(torch.load('../../../RepVGG/weight/RepVGG-A1-train.pth'))\n205     model.linear = nn.Linear(int(512 * model.width_multiplier[3]), 5)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "RepVGG/repvgg.py",
+    "line": 225,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "224     if pretrained:\n225         model.load_state_dict(torch.load('../../../RepVGG/weight/RepVGG-B1g2-train.pth'))\n226     model.linear = nn.Linear(int(512 * model.width_multiplier[3]), 5)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "RepVGG/repvgg.py",
+    "line": 239,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "238     if pretrained:\n239         model.load_state_dict(torch.load('../../../RepVGG/weight/RepVGG-B1g4-train.pth'))\n240     model.linear = nn.Linear(int(512 * model.width_multiplier[3]), 5)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "RepVGG/test.py",
+    "line": 47,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "46         print(\"=> loading checkpoint '{}'\".format(args.weights))\n47         checkpoint = torch.load(args.weights)\n48         if 'state_dict' in checkpoint:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "RepVGG/train.py",
+    "line": 190,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "189             if args.gpu is None:\n190                 checkpoint = torch.load(args.resume)\n191             else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "RepVGG/train.py",
+    "line": 194,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "193                 loc = 'cuda:{}'.format(args.gpu)\n194                 checkpoint = torch.load(args.resume, map_location=loc)\n195             args.start_epoch = checkpoint['epoch']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "train.py",
+    "line": 262,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "261 \n262         check_point = torch.load(f'{cfg.default.model_arch}_fold_{fold}_best.pth')\n263         _oof_df = check_point['preds']",
+    "stage": "data_acquisition+data_preparation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "train_kd.py",
+    "line": 203,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "202         teacher = select_model(cfg, cfg.kd.teacher_arch, train.label.nunique()).to(device)\n203         teacher.load_state_dict(torch.load(cfg.kd.teacher_weight_path))\n204",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "train_kd.py",
+    "line": 230,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "229 \n230         check_point = torch.load(f'{cfg.default.model_arch}_fold_{fold}_best.pth')\n231         _oof_df = check_point['preds']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "train_lightning.py",
+    "line": 281,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "280 \n281         check_point = torch.load(f'{cfg.default.model_arch}_fold{fold}_best.pth')\n282         _oof_df = check_point['preds']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "train_plt.py",
+    "line": 249,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "248 \n249         check_point = torch.load(f'{cfg.default.model_arch}_fold{fold}_best.pth')\n250         _oof_df = check_point['preds']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "FMix_master/analysis/adversarial_linf.py",
+    "line": 114,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "FMix_master/datasets/imagenet_hdf5.py",
+    "line": 14,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "FMix_master/utils/imagenet_to_hdf5.py",
+    "line": 40,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

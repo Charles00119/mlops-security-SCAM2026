@@ -1,0 +1,72 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "main.py",
+    "line": 192,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "191 \t\t\t\tif weights is not None:\n192 \t\t\t\t\tmodel.load_state_dict(torch.load(weights))\n193",
+    "stage": "data_acquisition+evaluation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "src/functional/evaluation_torchvision_model.py",
+    "line": 94,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "93 \t\t\n94 \tmodel.load_state_dict(torch.load(weight))\n95 \tmodel.to(device)",
+    "stage": "data_acquisition+data_preparation+evaluation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "src/functional/evaluation_unet.py",
+    "line": 94,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "93 \n94 \tmodel.load_state_dict(torch.load(weight))\n95 \tmodel.to(device)",
+    "stage": "data_acquisition+data_preparation+evaluation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "src/segmentation_models/setup.py",
+    "line": 54,
+    "message": "Use of exec detected.",
+    "snippet": "53     with open(os.path.join(here, NAME, '__version__.py')) as f:\n54         exec(f.read(), about)\n55 else:",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "src/segmentation_models/setup.py",
+    "line": 84,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "83         self.status('Building Source and Wheel (universal) distribution...')\n84         os.system('{0} setup.py sdist bdist_wheel --universal'.format(sys.executable))\n85",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "src/segmentation_models/setup.py",
+    "line": 90,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "89         self.status('Pushing git tags...')\n90         os.system('git tag v{0}'.format(about['__version__']))\n91         os.system('git push --tags')",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "src/segmentation_models/setup.py",
+    "line": 54,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "dependencies"
+  }
+]

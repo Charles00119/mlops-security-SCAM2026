@@ -1,0 +1,42 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "get_shap.py",
+    "line": 50,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "49 net = Net()\n50 net.load_state_dict(torch.load(\"model.pth\"))\n51",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "get_shap.py",
+    "line": 88,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "87 else:\n88     shaps = torch.load('shaps.pt')\n89",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model.py",
+    "line": 58,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "57         if os.path.isfile(checkpoint):\n58             self.model = torch.load(checkpoint)\n59         else:",
+    "stage": "data_acquisition+data_preparation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model.py",
+    "line": 86,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "85         if os.path.isfile(checkpoint):\n86             self.model = torch.load(checkpoint)\n87         else:",
+    "stage": "data_acquisition+data_preparation+inference+modeling+training"
+  }
+]

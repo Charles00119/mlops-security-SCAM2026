@@ -1,0 +1,132 @@
+[
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_validation",
+    "file_path": "__main__.py",
+    "line": 0,
+    "message": "No detected input validation: The code reads the CSV via read_dataset() and calls drop_nans/drop_cols/drop_unique for cleanup, but there are no schema checks, dtype assertions, or value-range guards on the incoming data.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.untrusted_source_handling",
+    "file_path": "__main__.py",
+    "line": 0,
+    "message": "No detected untrusted source handling: Data is read from a local file path only; there is no remote fetch, and no checksum or integrity verification is performed anywhere in the visible code.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_flipping_detection",
+    "file_path": "__main__.py",
+    "line": 0,
+    "message": "No detected label flipping detection: The code only drops NaN values and unused columns; there is no check for label distribution anomalies, expected label ranges, or label-noise detection tools.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.data_poisoning_defenses",
+    "file_path": "__main__.py",
+    "line": 0,
+    "message": "No detected data poisoning defenses: Data preparation only performs column dropping (drop_cols), NaN removal (drop_nans), and deduplication (drop_unique) with no outlier detection, statistical anomaly checks, or suspicious input filtering.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.model_integrity_verification",
+    "file_path": "__main__.py",
+    "line": 0,
+    "message": "No detected model integrity verification: The code constructs models directly from scikit-learn classes (LinearRegression, Ridge, Lasso, SVR, RandomForestRegressor, MLPRegressor) without loading any serialized/pretrained weights, so there is no integrity verification mechanism present.",
+    "snippet": "",
+    "stage": "modeling"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_distribution_validation",
+    "file_path": "__main__.py",
+    "line": 0,
+    "message": "No detected label distribution validation: No code checks label distributions, class balance, or anomalous training samples before or during training; the pipeline only splits data and fits regressors directly.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.backdoor_or_trigger_detection",
+    "file_path": "__main__.py",
+    "line": 0,
+    "message": "No detected backdoor or trigger detection: There is no trigger detection, activation-pattern analysis, or gradient anomaly detection anywhere in the training pipeline.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.differential_privacy",
+    "file_path": "__main__.py",
+    "line": 0,
+    "message": "No detected differential privacy: No differential privacy library (Opacus, TensorFlow Privacy, DP-SGD, etc.) is imported or used; standard sklearn regressors are used without any privacy mechanisms.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.adversarial_robustness_testing",
+    "file_path": "__main__.py",
+    "line": 0,
+    "message": "No detected adversarial robustness testing: No adversarial robustness testing libraries or attack methods (Foolbox, ART, FGSM, PGD, etc.) are used anywhere in the evaluation code.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.metric_tampering_protection",
+    "file_path": "__main__.py",
+    "line": 0,
+    "message": "No detected metric tampering protection: While multiple metrics (RMSE, R2, R2-classic) are computed and a train/test split is performed, there is no hashing or signing of evaluation data, and no structural isolation preventing leakage between train and test sets beyond the split logic itself.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_sanitization",
+    "file_path": "__main__.py",
+    "line": 0,
+    "message": "No detected input sanitization: The code reads the dataset and drops NaNs/unique counties but performs no shape, range, or schema validation on inference inputs before passing them to the model.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.output_bounds_checks",
+    "file_path": "__main__.py",
+    "line": 0,
+    "message": "No detected output bounds checks: The inference path computes predictions and metrics but applies no NaN guards, range checks, or sanity bounds on the model's output values before returning or logging them.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.prompt_injection_defenses",
+    "file_path": "__main__.py",
+    "line": 0,
+    "message": "No detected prompt injection defenses: This is a tabular regression pipeline (crop yield prediction), not an LLM, so prompt-injection defenses are not applicable and none are present.",
+    "snippet": "",
+    "stage": "inference"
+  }
+]

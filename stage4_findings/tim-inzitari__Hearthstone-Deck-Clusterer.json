@@ -1,0 +1,92 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "CSVs/getCSVs.py",
+    "line": 22,
+    "message": "Call to requests without timeout",
+    "snippet": "21 \tprint(\"Start tourny {} id: {}\".format(count+1, tourny))\n22 \tdata= requests.get(\"https://dtmwra1jsgyb0.cloudfront.net/stages/{}/matches?roundNumber=1\".format(stage)).json()\n23 \t#print(type(data))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "CSVs/getCSVs.py",
+    "line": 43,
+    "message": "Call to requests without timeout",
+    "snippet": "42 \tfor match in matches:\n43 \t\tdata=requests.get(\"https://majestic.battlefy.com/tournaments/{}/matches/{}/deckstrings\".format(tourny, match['_id'])).json()\n44 \t\tif (len(data['top']) != 0):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "CSVs/getCSVs.py",
+    "line": 73,
+    "message": "Call to requests without timeout",
+    "snippet": "72 \ttournyIDs = []\n73 \tdata = requests.get(\"https://majestic.battlefy.com/hearthstone-masters/tournaments?start={}T08:00:42.465Z&end={}T08:00:42.465Z\".format(START_DATE, END_DATE)).json()\n74 \tfor tourny in data:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "CSVs/getCSVs.py",
+    "line": 78,
+    "message": "Call to requests without timeout",
+    "snippet": "77 \tfor tourny in getTournyIDs:\n78 \t\tdata = requests.get(\"https://majestic.battlefy.com/tournaments/{}/\".format(tourny)).json()\n79 \t\ttournyIDs.append(data['stageIDs'][0])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "decktoimagePNG.py",
+    "line": 296,
+    "message": "Call to requests without timeout",
+    "snippet": "295     bracket_url = bracketf.format(stagecode)\n296     data = json.loads(requests.get(bracket_url).text)\n297     deck_dict = {}",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "decktoimagePNG.py",
+    "line": 303,
+    "message": "Call to requests without timeout",
+    "snippet": "302             continue\n303         r = requests.get(matchf.format(x['_id']))\n304         matchdata = json.loads(r.text)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "decktoimagePNG.py",
+    "line": 336,
+    "message": "Call to requests without timeout",
+    "snippet": "335     deck_dict = {}\n336     html = requests.get(bracket_url).text\n337     parser = SmashHTMLParser()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "main.py",
+    "line": 345,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "344 \tcmd = \"python decktoImagePNG.py deckcsv outputs/tmp/tmp.csv outputs/tmp\"\n345 \tos.system(cmd)\n346 \twindow.close()",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "webscraper.py",
+    "line": 12,
+    "message": "Call to requests without timeout",
+    "snippet": "11 \turl = sourceURL\n12 \tpage = requests.get(url)\n13 \tsoup = BeautifulSoup(page.content, 'html.parser')",
+    "stage": "unreachable"
+  }
+]

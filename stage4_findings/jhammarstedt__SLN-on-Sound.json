@@ -1,0 +1,82 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "fsd50_src/multiproc_resample.py",
+    "line": 35,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "34     command = \"ffmpeg -loglevel 0 -nostats -i '{}' -ac 1 -ar {} '{}'\".format(f, SAMPLE_RATE, tgt_path)\n35     sp.call(command, shell=True)\n36     if idx % 500 == 0:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "fsd50_src/src/models/fsd50k_lightning.py",
+    "line": 21,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "20         num_classes = pretrained_fc\n21         ckpt = torch.load(pretrained)\n22         print(\"pretrained model {} with {} classes found.\".format(pretrained, pretrained_fc))",
+    "stage": "data_acquisition+evaluation+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "fsd50_src/src/models/fsd50k_lightning.py",
+    "line": 27,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "26             print(\"I'm doing stuff\")\n27             ckpt = torch.load(opt['pretrained_path'])\n28",
+    "stage": "data_acquisition+evaluation+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "fsd50_src/src/models/fsd50k_lightning.py",
+    "line": 79,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "78                 print(\"Class weights found. Training weighted cross-entropy model\")\n79                 cw = torch.load(self.hparams.cw)\n80             else:",
+    "stage": "data_acquisition+evaluation+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "fsd50_src/src/models/fsd50k_lightning.py",
+    "line": 92,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "91                 if self.hparams.cw is not None:\n92                     cw = torch.load(self.hparams.cw)\n93                     self.criterion = nn.BCEWithLogitsLoss(pos_weight=cw)",
+    "stage": "data_acquisition+evaluation+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "fsd50_src/src/utilities/config_parser.py",
+    "line": 8,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "7     with open(config_file, \"r\") as fd:\n8         cfg = yaml.load(fd, yaml.FullLoader)\n9     return cfg",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-subprocess-use-tainted-env-args.dangerous-subprocess-use-tainted-env-args",
+    "file_path": "fsd50_src/multiproc_resample.py",
+    "line": 35,
+    "message": "Detected subprocess function 'call' with user controlled data. A malicious actor could leverage this to perform command injection. You may consider using 'shlex.quote()'.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "fsd50_src/multiproc_resample.py",
+    "line": 35,
+    "message": "Found 'subprocess' function 'call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

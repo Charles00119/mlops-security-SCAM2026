@@ -1,0 +1,592 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "algorithms/dgi/dgi.py",
+    "line": 98,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "97     print('Loading {}th epoch'.format(best_t))\n98     model.load_state_dict(torch.load('output/models/best_dgi.pkl'))\n99",
+    "stage": "training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "algorithms/pointspectrum/link_prediction.py",
+    "line": 63,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "62         print('loading X...')\n63         X = pickle.load(open(x_pickle, 'rb'))\n64     else:",
+    "stage": "data_acquisition+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "algorithms/pointspectrum/link_prediction.py",
+    "line": 92,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "91         print('loading model...')\n92         model.load_state_dict(torch.load('{}/model'.format(directory)))\n93     else:",
+    "stage": "data_acquisition+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "algorithms/pointspectrum/pointspectrum.py",
+    "line": 70,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "69         print('loading X...')\n70         X = pickle.load(open(x_pickle, 'rb'))\n71     else:",
+    "stage": "data_acquisition+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "algorithms/pointspectrum/pointspectrum.py",
+    "line": 103,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "102         print('loading model...')\n103         model.load_state_dict(torch.load('{}/model'.format(directory)))\n104     else:",
+    "stage": "data_acquisition+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "utils/plots.py",
+    "line": 97,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "96         for i in range(len(closs_files[temp])):\n97             clust = pickle.load(open('../pickles/kspace_gnn/{}_a_{}_a-max_{}_temperature_{}_epochs_{}_lr_{}_dropout_{}_dims/clustlosses_{}.pickle'.format(alpha, a_max, temp, epochs, lr, dropout, dims, i), 'rb'))\n98             rec = pickle.load(open('../pickles/kspace_gnn/{}_a_{}_a-max_{}_temperature_{}_epochs_{}_lr_{}_dropout_{}_dims/reclosses",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "utils/plots.py",
+    "line": 98,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "97             clust = pickle.load(open('../pickles/kspace_gnn/{}_a_{}_a-max_{}_temperature_{}_epochs_{}_lr_{}_dropout_{}_dims/clustlosses_{}.pickle'.format(alpha, a_max, temp, epochs, lr, dropout, dims, i), 'rb'))\n98             rec = pickle.load(open('../pickles/kspace_gnn/{}_a_{}_a-max_{}_temperature_{}_epochs_{}_lr_{}_dropout_{}_dims/reclosses_{}.pickle'.format(alpha, a_max, temp, epochs, lr, ",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "utils/plots.py",
+    "line": 171,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "170         for i in range(len(acc_files[temp])):\n171             acc = pickle.load(open('../pickles/kspace_gnn/{}_a_{}_a-max_{}_temperature_{}_epochs_{}_lr_{}_dropout_{}_dims/accs_{}.pickle'.format(alpha, a_max, temp, epochs, lr, dropout, dims, i), 'rb'))\n172             ari = pickle.load(open('../pickles/kspace_gnn/{}_a_{}_a-max_{}_temperature_{}_epochs_{}_lr_{}_dropout_{}_dims/aris_{}.pickle'.f",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "utils/plots.py",
+    "line": 172,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "171             acc = pickle.load(open('../pickles/kspace_gnn/{}_a_{}_a-max_{}_temperature_{}_epochs_{}_lr_{}_dropout_{}_dims/accs_{}.pickle'.format(alpha, a_max, temp, epochs, lr, dropout, dims, i), 'rb'))\n172             ari = pickle.load(open('../pickles/kspace_gnn/{}_a_{}_a-max_{}_temperature_{}_epochs_{}_lr_{}_dropout_{}_dims/aris_{}.pickle'.format(alpha, a_max, temp, epochs, lr, dropout, dim",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "utils/plots.py",
+    "line": 173,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "172             ari = pickle.load(open('../pickles/kspace_gnn/{}_a_{}_a-max_{}_temperature_{}_epochs_{}_lr_{}_dropout_{}_dims/aris_{}.pickle'.format(alpha, a_max, temp, epochs, lr, dropout, dims, i), 'rb'))\n173             nmi = pickle.load(open('../pickles/kspace_gnn/{}_a_{}_a-max_{}_temperature_{}_epochs_{}_lr_{}_dropout_{}_dims/nmis_{}.pickle'.format(alpha, a_max, temp, epochs, lr, dropout, dim",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "utils/plots.py",
+    "line": 398,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "397             if dataset == 'cora':\n398                 loss = pickle.load(open('../pickles/pointSpectrum/{}_{}_1.0_a_const_a_fun_1.0_b _const_b_fun_10_temperature_500_epochs_0.01_lr_0.2_dropout_100_dims_8_power/losses_{}.pickle'.format(model, dataset, i), 'rb'))\n399                 r_loss = pickle.load(open('../pickles/pointSpectrum/{}_{}_1.0_a_const_a_fun_1.0_b _const_b_fun_10_temperature_500_",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "utils/plots.py",
+    "line": 399,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "398                 loss = pickle.load(open('../pickles/pointSpectrum/{}_{}_1.0_a_const_a_fun_1.0_b _const_b_fun_10_temperature_500_epochs_0.01_lr_0.2_dropout_100_dims_8_power/losses_{}.pickle'.format(model, dataset, i), 'rb'))\n399                 r_loss = pickle.load(open('../pickles/pointSpectrum/{}_{}_1.0_a_const_a_fun_1.0_b _const_b_fun_10_temperature_500_epochs_0.01_lr_0.2_dropout_100_dims_8_",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "utils/plots.py",
+    "line": 400,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "399                 r_loss = pickle.load(open('../pickles/pointSpectrum/{}_{}_1.0_a_const_a_fun_1.0_b _const_b_fun_10_temperature_500_epochs_0.01_lr_0.2_dropout_100_dims_8_power/reclosses_{}.pickle'.format(model, dataset, i), 'rb'))\n400                 c_loss = pickle.load(open('../pickles/pointSpectrum/{}_{}_1.0_a_const_a_fun_1.0_b _const_b_fun_10_temperature_500_epochs_0.01_lr_0.2_dropout_100_di",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "utils/plots.py",
+    "line": 402,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "401             elif dataset == 'citeseer':\n402                 loss = pickle.load(open('../pickles/pointSpectrum/{}_{}_1.0_a_expdec_a_fun_5.0_b _exp_b_fun_10_temperature_500_epochs_0.01_lr_0.2_dropout_100_dims_6_power/losses_{}.pickle'.format(model, dataset, i), 'rb'))\n403                 r_loss = pickle.load(open('../pickles/pointSpectrum/{}_{}_1.0_a_expdec_a_fun_5.0_b _exp_b_fun_10_temperature_",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "utils/plots.py",
+    "line": 403,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "402                 loss = pickle.load(open('../pickles/pointSpectrum/{}_{}_1.0_a_expdec_a_fun_5.0_b _exp_b_fun_10_temperature_500_epochs_0.01_lr_0.2_dropout_100_dims_6_power/losses_{}.pickle'.format(model, dataset, i), 'rb'))\n403                 r_loss = pickle.load(open('../pickles/pointSpectrum/{}_{}_1.0_a_expdec_a_fun_5.0_b _exp_b_fun_10_temperature_500_epochs_0.01_lr_0.2_dropout_100_dims_6_po",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "utils/plots.py",
+    "line": 404,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "403                 r_loss = pickle.load(open('../pickles/pointSpectrum/{}_{}_1.0_a_expdec_a_fun_5.0_b _exp_b_fun_10_temperature_500_epochs_0.01_lr_0.2_dropout_100_dims_6_power/reclosses_{}.pickle'.format(model, dataset, i), 'rb'))\n404                 c_loss = pickle.load(open('../pickles/pointSpectrum/{}_{}_1.0_a_expdec_a_fun_5.0_b _exp_b_fun_10_temperature_500_epochs_0.01_lr_0.2_dropout_100_dims",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "utils/plots.py",
+    "line": 406,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "405             elif dataset == 'pubmed':\n406                 loss = pickle.load(open('../pickles/pointSpectrum/{}_{}_1.0_a_expdec_a_fun_1.0_b _exp_b_fun_10_temperature_500_epochs_0.01_lr_0.2_dropout_100_dims_8_power/losses_{}.pickle'.format(model, dataset, i), 'rb'))\n407                 r_loss = pickle.load(open('../pickles/pointSpectrum/{}_{}_1.0_a_expdec_a_fun_1.0_b _exp_b_fun_10_temperature_50",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "utils/plots.py",
+    "line": 407,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "406                 loss = pickle.load(open('../pickles/pointSpectrum/{}_{}_1.0_a_expdec_a_fun_1.0_b _exp_b_fun_10_temperature_500_epochs_0.01_lr_0.2_dropout_100_dims_8_power/losses_{}.pickle'.format(model, dataset, i), 'rb'))\n407                 r_loss = pickle.load(open('../pickles/pointSpectrum/{}_{}_1.0_a_expdec_a_fun_1.0_b _exp_b_fun_10_temperature_500_epochs_0.01_lr_0.2_dropout_100_dims_8_po",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "utils/plots.py",
+    "line": 408,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "407                 r_loss = pickle.load(open('../pickles/pointSpectrum/{}_{}_1.0_a_expdec_a_fun_1.0_b _exp_b_fun_10_temperature_500_epochs_0.01_lr_0.2_dropout_100_dims_8_power/reclosses_{}.pickle'.format(model, dataset, i), 'rb'))\n408                 c_loss = pickle.load(open('../pickles/pointSpectrum/{}_{}_1.0_a_expdec_a_fun_1.0_b _exp_b_fun_10_temperature_500_epochs_0.01_lr_0.2_dropout_100_dims",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "utils/utils.py",
+    "line": 41,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "40             if sys.version_info > (3, 0):\n41                 objects.append(pkl.load(f, encoding='latin1'))\n42             else:",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "utils/utils.py",
+    "line": 43,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "42             else:\n43                 objects.append(pkl.load(f))\n44",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "algorithms/kspace_gnn/kspace_gnn.py",
+    "line": 149,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "algorithms/kspace_gnn/kspace_gnn.py",
+    "line": 150,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "algorithms/kspace_gnn/kspace_gnn.py",
+    "line": 151,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "algorithms/kspace_gnn/kspace_gnn.py",
+    "line": 152,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "algorithms/kspace_gnn/kspace_gnn.py",
+    "line": 153,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "algorithms/kspace_gnn/kspace_gnn.py",
+    "line": 154,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "algorithms/pointspectrum/link_prediction.py",
+    "line": 63,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "algorithms/pointspectrum/link_prediction.py",
+    "line": 71,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "algorithms/pointspectrum/link_prediction.py",
+    "line": 148,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "algorithms/pointspectrum/link_prediction.py",
+    "line": 149,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "algorithms/pointspectrum/link_prediction.py",
+    "line": 150,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "algorithms/pointspectrum/link_prediction.py",
+    "line": 151,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "algorithms/pointspectrum/link_prediction.py",
+    "line": 152,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "algorithms/pointspectrum/pointspectrum.py",
+    "line": 70,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "algorithms/pointspectrum/pointspectrum.py",
+    "line": 81,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "algorithms/pointspectrum/pointspectrum.py",
+    "line": 195,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "algorithms/pointspectrum/pointspectrum.py",
+    "line": 196,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "algorithms/pointspectrum/pointspectrum.py",
+    "line": 197,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "algorithms/pointspectrum/pointspectrum.py",
+    "line": 198,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "algorithms/pointspectrum/pointspectrum.py",
+    "line": 199,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "algorithms/pointspectrum/pointspectrum.py",
+    "line": 200,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "algorithms/pointspectrum/pointspectrum.py",
+    "line": 201,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "utils/plots.py",
+    "line": 97,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "utils/plots.py",
+    "line": 98,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "utils/plots.py",
+    "line": 171,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "utils/plots.py",
+    "line": 172,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "utils/plots.py",
+    "line": 173,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "utils/plots.py",
+    "line": 398,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "utils/plots.py",
+    "line": 399,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "utils/plots.py",
+    "line": 400,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "utils/plots.py",
+    "line": 402,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "utils/plots.py",
+    "line": 403,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "utils/plots.py",
+    "line": 404,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "utils/plots.py",
+    "line": 406,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "utils/plots.py",
+    "line": 407,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "utils/plots.py",
+    "line": 408,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "utils/utils.py",
+    "line": 41,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "utils/utils.py",
+    "line": 43,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  }
+]

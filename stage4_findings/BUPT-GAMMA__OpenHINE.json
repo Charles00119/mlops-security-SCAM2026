@@ -1,0 +1,42 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "src/model/RHINE.py",
+    "line": 390,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "389     def restore_pytorch(self):\n390         self.trainModel.load_state_dict(torch.load(self.importName))\n391",
+    "stage": "modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "src/model/mp2vec_s.py",
+    "line": 439,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "438     error_fname = 'error.%d' % pid\n439     os.system('rm -f %s' % error_fname)\n440",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-cPickle",
+    "file_path": "src/model/network.py",
+    "line": 53,
+    "message": "Avoid using `cPickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-cPickle",
+    "file_path": "src/model/network.py",
+    "line": 58,
+    "message": "Avoid using `cPickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  }
+]

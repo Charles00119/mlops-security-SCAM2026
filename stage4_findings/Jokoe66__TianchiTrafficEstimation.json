@@ -1,0 +1,132 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "demo.py",
+    "line": 158,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "157     user_data_root = '../user_data'\n158     train_json = pd.DataFrame(pd.read_pickle(os.path.join(\n159         user_data_root, \"enriched_annotations_train_final1_seg.pkl\")))\n160     test_json = train_json",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "demo.py",
+    "line": 162,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "161     # uncomment before submitting\n162     test_json = pd.DataFrame(pd.read_pickle(os.path.join(\n163         user_data_root, \"enriched_annotations_test_final_seg.pkl\")))\n164",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "e2e_demo.py",
+    "line": 63,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "62             model.load_state_dict(\n63                 torch.load(glob.glob(args.model_path)[idx],\n64                    map_location='cpu'))\n65     else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "e2e_demo.py",
+    "line": 67,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "66         self = build_classifier(cfg.model).to(args.device)\n67         self.load_state_dict(torch.load(glob.glob(args.model_path)[0],\n68             map_location='cpu'))\n69     self.eval()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "e2e_demo.py",
+    "line": 81,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "80         ann['status'] = int(results[ann['id']])\n81     mmcv.dump(result_json, '/tmp/result.pkl')\n82     mmcv.dump(result_json, './result.json')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "gen_dnn_feats.py",
+    "line": 52,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "51         models[fold].load_state_dict(\n52             torch.load(os.path.join(args.model_dir, f'best{fold+1}.pth'),\n53                map_location='cpu'))\n54         models[fold].eval()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "test.py",
+    "line": 57,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "56         models[fold].load_state_dict(\n57             torch.load(f'../user_data/res50/best{fold+1}.pth',\n58             #torch.load(f'work_dirs/classification/fold{fold+1}/classifier_epoch6.pth',\n59                map_location='cpu'))\n60         models[fold].eval()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "test.py",
+    "line": 78,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "77         labels.append(data[eval_type].cpu().item())\n78     result_file = '/tmp/tmp_result.pkl'\n79     mmcv.dump([labels, preds], result_file)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "train.py",
+    "line": 127,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "126         if kwargs.get('val_dataloader'):\n127             result = eval(self, kwargs.get('val_dataloader'), **kwargs)\n128             if rank == 0:",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "train.py",
+    "line": 137,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "136         if kwargs.get('test_dataloader'):\n137             result = eval(self, kwargs.get('test_dataloader'), **kwargs)\n138             if rank == 0:",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "cal_features.py",
+    "line": 233,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "train.py",
+    "line": 127,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "train.py",
+    "line": 137,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+training"
+  }
+]

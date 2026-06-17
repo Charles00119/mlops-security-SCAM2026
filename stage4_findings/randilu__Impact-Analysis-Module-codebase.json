@@ -1,0 +1,22 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "deployment/falsk_app/api_utils.py",
+    "line": 25,
+    "message": "Call to requests without timeout",
+    "snippet": "24             try:\n25                 r = requests.get('http://127.0.0.1:5000/')\n26                 if r.status_code == 200:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.hardcoded-config.avoid_hardcoded_config_DEBUG",
+    "file_path": "deployment/falsk_app/api/api.py",
+    "line": 14,
+    "message": "Hardcoded variable `DEBUG` detected. Set this by using FLASK_DEBUG environment variable",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

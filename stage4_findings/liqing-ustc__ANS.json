@@ -1,0 +1,42 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "baselines/train.py",
+    "line": 283,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "282     if args.perception_pretrain and not args.perception:\n283         model.embedding_in.image_encoder.load_state_dict(torch.load(args.perception_pretrain))\n284",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "jointer.py",
+    "line": 206,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "205     def load(self, load_path):\n206         model = torch.load(load_path)\n207         self.perception.load(model['perception'])",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "semantics/semantics.py",
+    "line": 213,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "212         outputDirectory = \"tmp/%s\"%timestamp\n213         os.system(\"mkdir -p %s\"%outputDirectory)\n214",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "train.py",
+    "line": 296,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "295     if args.fewshot == -1 and args.perception_pretrain and not args.perception:\n296         model.perception.load({'model': torch.load(args.perception_pretrain)})\n297         model.perception.selflabel(train_set.all_symbols())",
+    "stage": "data_acquisition+evaluation+inference"
+  }
+]

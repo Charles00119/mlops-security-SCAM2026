@@ -1,0 +1,132 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "evaluate.py",
+    "line": 20,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "19         print('加载 %s 数据' % data_type)\n20         features = torch.load(save_processed_data)\n21     else:",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "evaluate.py",
+    "line": 60,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "59             model = BertCRF(args, num_labels)\n60         model.load_state_dict(torch.load(model_path, map_location='cpu'))\n61     except FileNotFoundError as e:",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "evaluate.py",
+    "line": 141,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "140                                        model_path=model_path)\n141                     tokenizer = BertTokenizer.from_pretrained(os.path.join(args.bert_path, 'vocab.txt'))\n142                     perform = evaluate(args, model, tokenizer, processor=processor, data_type=\"dev\")",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "model/bert_crf_model.py",
+    "line": 13,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "12         # bert模型\n13         self.bert_config = AutoConfig.from_pretrained(os.path.join(args.bert_path, 'config.json'))\n14         self.bert = AutoModel.from_pretrained(os.path.join(args.bert_path, 'pytorch_model.bin'),",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "model/bert_crf_model.py",
+    "line": 14,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "13         self.bert_config = AutoConfig.from_pretrained(os.path.join(args.bert_path, 'config.json'))\n14         self.bert = AutoModel.from_pretrained(os.path.join(args.bert_path, 'pytorch_model.bin'),\n15                                               config=self.bert_config)\n16",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "model/bert_lstm_crf_model.py",
+    "line": 25,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "24         # bert模型，作为词嵌入\n25         self.bert_config = AutoConfig.from_pretrained(os.path.join(args.bert_path, 'config.json'))\n26         self.word_embeds = AutoModel.from_pretrained(os.path.join(args.bert_path, 'pytorch_model.bin'),",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "model/bert_lstm_crf_model.py",
+    "line": 26,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "25         self.bert_config = AutoConfig.from_pretrained(os.path.join(args.bert_path, 'config.json'))\n26         self.word_embeds = AutoModel.from_pretrained(os.path.join(args.bert_path, 'pytorch_model.bin'),\n27                                                      config=self.bert_config)\n28",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "predict.py",
+    "line": 96,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "95 \n96         self.tokenizer = BertTokenizer.from_pretrained(args.bert_path)\n97         self.model = load_model(args=args, num_labels=num_labels,",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "train.py",
+    "line": 27,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "26 \n27     tokenizer = BertTokenizer.from_pretrained(args.bert_path)\n28",
+    "stage": "data_acquisition+data_preparation+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "utils/logger.py",
+    "line": 17,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "16             # 根据后缀来判断加载的配置\n17             config = json.load(f) if path.endswith(\"json\") else yaml.load(stream=f, Loader=yaml.FullLoader)\n18             logging.config.dictConfig(config)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B318",
+    "file_path": "utils/xml_io.py",
+    "line": 22,
+    "message": "Using xml.dom.minidom.parse to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.dom.minidom.parse with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "21 def convert_xml2json(input_path: str, output_path: str, answers):\n22     dom_tree = parse(input_path)\n23     root_ele = dom_tree.documentElement",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml.use-defused-xml",
+    "file_path": "utils/xml_io.py",
+    "line": 2,
+    "message": "The Python documentation recommends using `defusedxml` instead of `xml` because the native Python `xml` library is vulnerable to XML External Entity (XXE) attacks. These attacks can leak confidential data and \"XML bombs\" can cause denial of service.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml.use-defused-xml",
+    "file_path": "utils/xml_io.py",
+    "line": 3,
+    "message": "The Python documentation recommends using `defusedxml` instead of `xml` because the native Python `xml` library is vulnerable to XML External Entity (XXE) attacks. These attacks can leak confidential data and \"XML bombs\" can cause denial of service.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

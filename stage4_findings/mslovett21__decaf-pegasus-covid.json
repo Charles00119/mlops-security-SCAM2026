@@ -1,0 +1,62 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "communication/communication.py",
+    "line": 38,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "37     while info_line:\n38         info_dict = eval(info_line)\n39         new_trial = create_new_trial_object(info_dict)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "manager.py",
+    "line": 31,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "30     if FIRST_COMM_FLAG:\n31         data = eval(f_receive.readline())\n32         MANAGER_MEMORY = pd.DataFrame([data], columns=data.keys())",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "manager.py",
+    "line": 38,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "37     for trial in trials:\n38         MANAGER_MEMORY  = MANAGER_MEMORY.append(eval(trial), ignore_index=True)\n39",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "communication/communication.py",
+    "line": 38,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "manager.py",
+    "line": 31,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "manager.py",
+    "line": 38,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

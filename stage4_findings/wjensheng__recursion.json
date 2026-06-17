@@ -1,0 +1,132 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "models/model_factory.py",
+    "line": 108,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "107             if torch.cuda.is_available():                \n108                 self.backbone.load_state_dict(torch.load(file_name)['state_dict'])\n109             else:",
+    "stage": "inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "models/model_factory.py",
+    "line": 110,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "109             else:\n110                 self.backbone.load_state_dict(torch.load(file_name, map_location=torch.device('cpu'))['state_dict'])\n111",
+    "stage": "inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "optimizers/optimizer_factory.py",
+    "line": 94,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "93     if isinstance(betas, str):\n94         betas = eval(betas)\n95     # print('weight decay:', weight_decay)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "schedulers/scheduler_factory.py",
+    "line": 21,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "20     if isinstance(milestones, str):\n21         milestones = eval(milestones)\n22     return lr_scheduler.MultiStepLR(optimizer, milestones=milestones, gamma=gamma,",
+    "stage": "inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "schedulers/scheduler_factory.py",
+    "line": 204,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "203                 raise RuntimeError('Failed to load state in {}. File does not exist anymore.'.format(fn))\n204             state_dict = torch.load(fn, map_location=lambda storage, location: storage)\n205             return state_dict",
+    "stage": "inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "tsfm/policy_transform.py",
+    "line": 53,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "52     with open(policies, 'r') as fid:\n53       policies = eval(fid.read())\n54       policies = itertools.chain.from_iterable(policies)",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "utils/apply_leak.py",
+    "line": 40,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "39         print(file)                                    \n40         tmp = torch.load(file)\n41         t = np.concatenate([t, tmp], axis=0)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "utils/checkpoint.py",
+    "line": 43,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "42     print('load checkpoint from', checkpoint)\n43     checkpoint = torch.load(checkpoint)\n44",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "utils/utils.py",
+    "line": 83,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "82 def load_checkpoint(path, model=None, optimizer=None, params=False, epoch=False):\n83     resume = torch.load(path)\n84     rets = dict()",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "utils/utils.py",
+    "line": 106,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "105 def load_model(path, is_inference=True):\n106     resume = torch.load(path)\n107     model = resume['arch']",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "optimizers/optimizer_factory.py",
+    "line": 94,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "schedulers/scheduler_factory.py",
+    "line": 21,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "tsfm/policy_transform.py",
+    "line": 53,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_preparation"
+  }
+]

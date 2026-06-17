@@ -1,0 +1,32 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "external/crawling/naver_stock_crawling.py",
+    "line": 89,
+    "message": "Call to requests without timeout",
+    "snippet": "88                     page_url = '{url}&page={page}'.format(url=url, page=page)\n89                     response = requests.get(page_url, headers=headers)\n90",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "external/get_holiday_date_info.py",
+    "line": 59,
+    "message": "Call to requests without timeout",
+    "snippet": "58 \n59     response = requests.get(url_holiday, params=params)\n60     xml = BeautifulSoup(response.text, 'lxml')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "utils/preprocessing.py",
+    "line": 68,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "67         with open('./data/preprocessing/' + 'iem_te.pkl', 'rb') as f:\n68             target_encoder = pickle.load(f)\n69         df['iem_cd_te'] = target_encoder.transform(df['iem_cd'])",
+    "stage": "data_acquisition+data_preparation"
+  }
+]

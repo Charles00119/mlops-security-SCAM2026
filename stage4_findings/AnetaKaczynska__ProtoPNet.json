@@ -1,0 +1,42 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "local_analysis.py",
+    "line": 78,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "77 \n78 ppnet = torch.load(load_model_path)\n79 ppnet = ppnet.cuda()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "save.py",
+    "line": 63,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "62         Tuple[int, TrainMode, int, Optional[int], str, float, Optional[float]]:\n63     data = torch.load(file_path)\n64     model.load_state_dict(data['model'])",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "save.py",
+    "line": 81,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "80 def load_config_from_train_state(file_path: str):\n81     data = torch.load(file_path)\n82     return data.get('settings', None)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "save.py",
+    "line": 86,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "85 def load_model_from_train_state(file_path: str, model: torch.nn.Module):\n86     data = torch.load(file_path)\n87     if 'model' in data:",
+    "stage": "reachable_unmapped"
+  }
+]

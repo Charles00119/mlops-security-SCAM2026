@@ -1,0 +1,192 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "hyperparameter_search.py",
+    "line": 21,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "20     MODEL_NAME = args.model_name\n21     tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)\n22",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "hyperparameter_search.py",
+    "line": 35,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "34     # setting model hyperparameter\n35     model_config = AutoConfig.from_pretrained(MODEL_NAME)\n36     model_config.num_labels = 30",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "hyperparameter_search.py",
+    "line": 39,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "38     def model_init():\n39         return AutoModelForSequenceClassification.from_pretrained(MODEL_NAME, config=model_config)\n40",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "inference.py",
+    "line": 55,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "54     Tokenizer_NAME = args.model_name\n55     tokenizer = AutoTokenizer.from_pretrained(Tokenizer_NAME)\n56     if args.tem:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "inference.py",
+    "line": 88,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "87             # typed entity marker 미적용시 학습을 통해 생성된 모델 load\n88             model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME)\n89",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "load_data.py",
+    "line": 87,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "86             # subject_entity list 에 subject_entity 단어 추가\n87             subject_entity.append(eval(row['subject_entity'])['word'])\n88             # object_entity list 에 object_entity 단어 추가",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "load_data.py",
+    "line": 89,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "88             # object_entity list 에 object_entity 단어 추가\n89             object_entity.append(eval(row['object_entity'])['word'])\n90",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "model.py",
+    "line": 33,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "32 \n33         self.model = AutoModel.from_pretrained(model_name, config=config)\n34",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "new_mlm.py",
+    "line": 117,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "116 \n117     model = AutoModelForMaskedLM.from_pretrained(config.nlp_model_name).cuda()\n118     tokenizer = AutoTokenizer.from_pretrained(config.nlp_model_name)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "new_mlm.py",
+    "line": 118,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "117     model = AutoModelForMaskedLM.from_pretrained(config.nlp_model_name).cuda()\n118     tokenizer = AutoTokenizer.from_pretrained(config.nlp_model_name)\n119",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "train.py",
+    "line": 18,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "17     # tokniezr load\n18     tokenizer = AutoTokenizer.from_pretrained('klue/roberta-large')\n19     # typed_entity_marker 적용시 special_token 추가",
+    "stage": "data_preparation+evaluation+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "train.py",
+    "line": 37,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "36     # model_config load\n37     model_config = AutoConfig.from_pretrained(MODEL_NAME)\n38     model_config.num_labels = 30",
+    "stage": "data_preparation+evaluation+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "train.py",
+    "line": 46,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "45         # typed_entity_marker 미적용시 huggingface AutoModelForSequenceClassification model load\n46         model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME, config=model_config)\n47     # print(model.config)",
+    "stage": "data_preparation+evaluation+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "utils.py",
+    "line": 97,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "96     with open('dict_label_to_num.pkl', 'rb') as f:\n97         dict_label_to_num = pickle.load(f)\n98     for v in label:",
+    "stage": "data_acquisition+evaluation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "utils.py",
+    "line": 110,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "109     with open('dict_num_to_label.pkl', 'rb') as f:\n110         dict_num_to_label = pickle.load(f)\n111     for v in label:",
+    "stage": "data_acquisition+evaluation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "load_data.py",
+    "line": 87,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "load_data.py",
+    "line": 89,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "utils.py",
+    "line": 97,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "utils.py",
+    "line": 110,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation"
+  }
+]

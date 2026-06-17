@@ -1,0 +1,32 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "src/BandC/URLArffParser.py",
+    "line": 29,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "28         # TODO Create encoding detection for online files\n29         results = req.urlopen(self.path)\n30         return arff.load(io.StringIO(results.read().decode('utf-8')))",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "src/BandC/URLCSVParser.py",
+    "line": 37,
+    "message": "Call to requests without timeout",
+    "snippet": "36         # TODO Create encoding detection for online files\n37         page = requests.get(self.path)\n38         return page.content.decode('utf-8')",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "src/BandC/URLArffParser.py",
+    "line": 29,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  }
+]

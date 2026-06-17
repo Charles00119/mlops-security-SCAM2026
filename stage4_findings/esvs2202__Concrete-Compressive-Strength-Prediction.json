@@ -1,0 +1,32 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B201",
+    "file_path": "app.py",
+    "line": 56,
+    "message": "A Flask app appears to be run with debug=True, which exposes the Werkzeug debugger and allows the execution of arbitrary code.",
+    "snippet": "55 if __name__ == \"__main__\":\n56     app.run(debug=True)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "request.py",
+    "line": 5,
+    "message": "Call to requests without timeout",
+    "snippet": "4 \n5 r = requests.post(url, json={'Age (in days) :': 28,\n6                              'Cement (in kg) : ': 540.0,\n7                              'Water (in kg) :': 162.0,\n8                              'Fly ash (in kg) :': 0.0,\n9                              'Superplasticizer (in kg) :': 2.5,\n10                              'Blast furnace slag (in kg) ': 0.0})\n11",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.debug-enabled.debug-enabled",
+    "file_path": "app.py",
+    "line": 56,
+    "message": "Detected Flask app with debug=True. Do not deploy to production with this flag enabled as it will leak sensitive information. Instead, consider using Flask configuration variables or setting 'debug' using system environment variables.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

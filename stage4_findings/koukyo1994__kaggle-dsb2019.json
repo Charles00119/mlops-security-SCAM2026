@@ -1,0 +1,102 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": ".jupyter/jupyter_notebook_config.py",
+    "line": 204,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "203 ## The IP address the notebook server will listen on.\n204 c.NotebookApp.ip = '0.0.0.0'\n205",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "others/nakama_FE/dsb-base-script-v6-base.py",
+    "line": 85,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "84     elif path.split('.')[-1]=='pkl':\n85         df = pd.read_pickle(path)\n86     # output df shape",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "others/nakama_FE/dsb-base-script-v8-inference7.py",
+    "line": 94,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "93     elif path.split('.')[-1] == 'pkl':\n94         df = pd.read_pickle(path)\n95     # output df shape",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "others/nakama_FE/dsb-base-script-v8-ratio.py",
+    "line": 85,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "84     elif path.split('.')[-1]=='pkl':\n85         df = pd.read_pickle(path)\n86     # output df shape",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "others/nakama_FE/dsb-base-script-v9-decay.py",
+    "line": 86,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "85     elif path.split('.')[-1]=='pkl':\n86         df = pd.read_pickle(path)\n87     # output df shape",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "others/nakama_model/dsb-base-script-v8-inference10.py",
+    "line": 95,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "94     elif path.split('.')[-1] == 'pkl':\n95         df = pd.read_pickle(path)\n96     # output df shape",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "src/models/nn.py",
+    "line": 433,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "432             weight = save_path / f\"best_score_fold_{self.fold}.pth\"\n433         model.load_state_dict(torch.load(weight))\n434",
+    "stage": "data_acquisition+data_preparation+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "main.py",
+    "line": 403,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "main2.py",
+    "line": 381,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "main3.py",
+    "line": 364,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "runmodel.py",
+    "line": 29,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "28      # load the model from disk\n29     loaded_model = pickle.load(open('model.sav', 'rb'))\n30",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "runmodel.py",
+    "line": 56,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "55     #show list of all reports that can be generated\n56     ls_dir=os.listdir('/tmp/data/metrics')\n57     ls_files=[x.split('.')[0] for x in ls_dir if not x.startswith('.')]",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "runmodel.py",
+    "line": 65,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "64     #get list of all reports that can be created\n65     ls_dir=os.listdir('/tmp/data/metrics')\n66     ls_files=[x.split('.')[0] for x in ls_dir if not x.startswith('.')]",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "runmodel.py",
+    "line": 73,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "72     if name in report_list:\n73         return send_from_directory('/tmp/data/visuals/', '%s_graph.html' % name, as_attachment=True)\n74         #return \"report is good\"",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "model.py",
+    "line": 27,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "runmodel.py",
+    "line": 29,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference"
+  }
+]

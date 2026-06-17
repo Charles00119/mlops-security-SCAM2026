@@ -1,0 +1,72 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B201",
+    "file_path": "hydro_viz/app.py",
+    "line": 230,
+    "message": "A Flask app appears to be run with debug=True, which exposes the Werkzeug debugger and allows the execution of arbitrary code.",
+    "snippet": "229     else:\n230         app.run(debug=True, host='0.0.0.0', port=APP_PORT, use_reloader=False)\n231",
+    "stage": "inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "hydro_viz/app.py",
+    "line": 230,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "229     else:\n230         app.run(debug=True, host='0.0.0.0', port=APP_PORT, use_reloader=False)\n231",
+    "stage": "inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "hydro_viz/utils/data_management.py",
+    "line": 188,
+    "message": "Call to requests without timeout",
+    "snippet": "187 def get_production_subsample(model_id, size=1000) -> pd.DataFrame:\n188     r = requests.get(f'{HS_CLUSTER_ADDRESS}/monitoring/checks/subsample/{model_id}?size={size}')\n189     if r.status_code != 200:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "hydro_viz/utils/data_management.py",
+    "line": 198,
+    "message": "Call to requests without timeout",
+    "snippet": "197 def model_has_production_data(model_id) -> bool:\n198     production_data_aggregates = requests.get(\n199         f\"{HS_CLUSTER_ADDRESS}/monitoring/checks/aggregates/{model_id}\",\n200         params={\"limit\": 1, \"offset\": 0}).json()\n201     number_of_production_requests = production_data_aggregates['count']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "hydro_viz/utils/data_management.py",
+    "line": 228,
+    "message": "Call to requests without timeout",
+    "snippet": "227     \"\"\"\n228     response = requests.get(f'{HS_CLUSTER_ADDRESS}/monitoring/training_data?modelVersionId={model.id}')\n229     training_data_s3 = json.loads(response.text)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.app-run-param-config.avoid_app_run_with_bad_host",
+    "file_path": "hydro_viz/app.py",
+    "line": 230,
+    "message": "Running flask app with host 0.0.0.0 could expose the server publicly.",
+    "snippet": "requires login",
+    "stage": "inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.debug-enabled.debug-enabled",
+    "file_path": "hydro_viz/app.py",
+    "line": 230,
+    "message": "Detected Flask app with debug=True. Do not deploy to production with this flag enabled as it will leak sensitive information. Instead, consider using Flask configuration variables or setting 'debug' using system environment variables.",
+    "snippet": "requires login",
+    "stage": "inference"
+  }
+]

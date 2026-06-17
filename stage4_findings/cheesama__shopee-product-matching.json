@@ -1,0 +1,22 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "models/product_feature_network.py",
+    "line": 25,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "24         self.feature_dim = feature_dim\n25         self.backbone_net = eval(backbone_net)(pretrained=True)\n26",
+    "stage": "evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "models/product_feature_network.py",
+    "line": 25,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "evaluation+inference+modeling+training"
+  }
+]

@@ -1,0 +1,392 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "irt_scripts/call_predict.py",
+    "line": 21,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "20     config_no = names[-2].split('_')[-1]\n21     os.system(\"sbatch sb_predict_results.sbatch {} {} {} {}\".format(model_name, task_name, config_no, ckpt_name))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "irt_scripts/postprocess_predictions.py",
+    "line": 53,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "52         try:\n53             test_dict = torch.load(output_file)[task]\n54             if \"responder_accuracies\" in test_dict:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/proj/main/export_model.py",
+    "line": 43,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "42     \"\"\"\n43     model = AutoModelForPreTraining.from_pretrained(hf_pretrained_model_name_or_path)\n44",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/proj/main/export_model.py",
+    "line": 55,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "54     py_io.write_json(model.config.to_dict(), model_config_path)\n55     tokenizer = AutoTokenizer.from_pretrained(hf_pretrained_model_name_or_path)\n56     tokenizer.save_pretrained(tokenizer_fol_path)",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/proj/main/modeling/model_setup.py",
+    "line": 55,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "54     \"\"\"\n55     model = transformers.AutoModel.from_pretrained(hf_pretrained_model_name_or_path)\n56     model_arch = ModelArchitectures.from_model_type(model.base_model_prefix)",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/proj/main/modeling/model_setup.py",
+    "line": 58,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "57     transformers_class_spec = TRANSFORMERS_CLASS_SPEC_DICT[model_arch]\n58     tokenizer = transformers.AutoTokenizer.from_pretrained(hf_pretrained_model_name_or_path)\n59     ancestor_model = get_ancestor_model(",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "jiant/proj/main/modeling/model_setup.py",
+    "line": 95,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "94     \"\"\"\n95     weights_dict = torch.load(weights_path)\n96     return delegate_load(jiant_model=jiant_model, weights_dict=weights_dict, load_mode=load_mode)",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "jiant/proj/main/preprocessing.py",
+    "line": 68,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "67     for chunk_i in maybe_trange(cache.num_chunks, desc=\"Smart truncate chunks\", verbose=verbose):\n68         chunk = torch.load(cache.get_chunk_path(chunk_i))\n69         new_chunk = []",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "jiant/proj/main/runscript.py",
+    "line": 250,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "249 def resume(checkpoint_path):\n250     checkpoint = torch.load(checkpoint_path)\n251     args = RunConfiguration.from_dict(checkpoint[\"metadata\"][\"args\"])",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "jiant/proj/main/scripts/configurator.py",
+    "line": 31,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "30     cache_metadata_path = os.path.join(cache_path, \"data_args.p\")\n31     return torch.load(cache_metadata_path)[\"length\"]\n32",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/proj/main/tokenize_and_cache.py",
+    "line": 145,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "144 def main(args: RunConfiguration):\n145     config = AutoConfig.from_pretrained(args.hf_pretrained_model_name_or_path)\n146     model_type = config.model_type",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/proj/main/tokenize_and_cache.py",
+    "line": 152,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "151     )\n152     tokenizer = AutoTokenizer.from_pretrained(args.hf_pretrained_model_name_or_path)\n153     if isinstance(args.phases, str):",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/proj/simple/runscript.py",
+    "line": 105,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "104 def run_simple(args: RunConfiguration, with_continue: bool = False):\n105     hf_config = AutoConfig.from_pretrained(args.hf_pretrained_model_name_or_path)\n106",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "jiant/proj/simple/runscript.py",
+    "line": 206,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "205         print(\"Resuming\")\n206         checkpoint = torch.load(os.path.join(run_output_dir, \"checkpoint.p\"))\n207         run_args = runscript.RunConfiguration.from_dict(checkpoint[\"metadata\"][\"args\"])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "jiant/scripts/benchmarks/benchmarks.py",
+    "line": 39,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "38         task = retrieval.get_task_class(task_name)\n39         task_preds = torch.load(input_filepath)[task_name]\n40         indexes, predictions = task.get_glue_preds(task_preds)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "jiant/scripts/benchmarks/benchmarks.py",
+    "line": 68,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "67         task = retrieval.get_task_class(task_name)\n68         task_preds = torch.load(input_filepath)[task_name]\n69         formatted_preds = task.super_glue_format_preds(task_preds)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jiant/scripts/download_data/utils.py",
+    "line": 28,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "27     \"\"\"\n28     dataset = datasets.load_dataset(path=path, name=name, version=version)\n29     if phase_map:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "jiant/scripts/download_data/utils.py",
+    "line": 78,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "77     with zipfile.ZipFile(zip_path) as zip_ref:\n78         zip_ref.extractall(extract_location)\n79     if delete:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "jiant/scripts/download_data/utils.py",
+    "line": 94,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "93     with tarfile.open(tar_path) as tar:\n94         tar.extractall(path=extract_location)\n95     if delete:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "jiant/scripts/download_data/utils.py",
+    "line": 101,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "100     # noinspection PyUnresolvedReferences\n101     urllib.request.urlretrieve(url, file_path)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "jiant/shared/caching.py",
+    "line": 159,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "158 \n159         self.data_args = torch.load(os.path.join(cache_fol_path, \"data_args.p\"))\n160         self.num_chunks = self.data_args[\"num_chunks\"]",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "jiant/shared/caching.py",
+    "line": 183,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "182     def load_chunk(self, i):\n183         return torch.load(self.get_chunk_path(i))\n184",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "jiant/tasks/lib/bucc2018.py",
+    "line": 131,
+    "message": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "snippet": "130                     text=text.strip(),\n131                     text_hash=hashlib.sha1(text.strip().encode(\"utf-8\")).hexdigest(),\n132                 )",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "jiant/utils/data_handlers.py",
+    "line": 18,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "17     \"\"\"\n18     hash_md5 = hashlib.md5()\n19     with open(filepath, \"rb\") as f:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "tests/proj/simple/test_runscript.py",
+    "line": 69,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "68     # assert best_model not equal to last_model\n69     best_model_weights = torch.load(\n70         os.path.join(exp_dir, \"runs\", run_name, \"best_model.p\"), map_location=torch.device(\"cpu\")\n71     )\n72     last_model_weights = torch.load(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "tests/proj/simple/test_runscript.py",
+    "line": 72,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "71     )\n72     last_model_weights = torch.load(\n73         os.path.join(exp_dir, \"runs\", run_name, \"last_model.p\"), map_location=torch.device(\"cpu\")\n74     )\n75     assert not torch_utils.eq_state_dicts(best_model_weights, last_model_weights)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tests/tasks/lib/test_mlm_premasked.py",
+    "line": 9,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "8     task = tasks.MLMPremaskedTask(name=\"mlm_premasked\", path_dict={})\n9     tokenizer = transformers.RobertaTokenizer.from_pretrained(\"roberta-base\")\n10     example = task.Example(guid=None, text=\"Hi, my name is Bob Roberts.\", masked_spans=[[15, 18]],)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tests/tasks/lib/test_mlm_pretokenized.py",
+    "line": 9,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "8     task = tasks.MLMPretokenizedTask(name=\"mlm_pretokenized\", path_dict={})\n9     tokenizer = transformers.RobertaTokenizer.from_pretrained(\"roberta-base\")\n10     example = task.Example(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tests/utils/test_tokenization_normalization.py",
+    "line": 161,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "160     space_tokenized = text.split(\" \")\n161     tokenizer = BertTokenizer.from_pretrained(\"bert-base-uncased\")\n162     target_tokenized = tokenizer.tokenize(text)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tests/utils/test_tokenization_normalization.py",
+    "line": 173,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "172     space_tokenized = text.split(\" \")\n173     tokenizer = BertTokenizer.from_pretrained(\"bert-base-cased\")\n174     target_tokenized = tokenizer.tokenize(text)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tests/utils/test_tokenization_normalization.py",
+    "line": 185,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "184     space_tokenized = text.split(\" \")\n185     tokenizer = XLMTokenizer.from_pretrained(\"xlm-mlm-en-2048\")\n186     target_tokenized = tokenizer.tokenize(text)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tests/utils/test_tokenization_normalization.py",
+    "line": 197,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "196     space_tokenized = text.split(\" \")\n197     tokenizer = RobertaTokenizer.from_pretrained(\"roberta-base\")\n198     target_tokenized = tokenizer.tokenize(text)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tests/utils/test_tokenization_normalization.py",
+    "line": 209,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "208     space_tokenized = text.split(\" \")\n209     tokenizer = AlbertTokenizer.from_pretrained(\"albert-base-v1\")\n210     target_tokenized = tokenizer.tokenize(text)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tests/utils/test_tokenization_normalization.py",
+    "line": 221,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "220     space_tokenized = text.split(\" \")\n221     tokenizer = AlbertTokenizer.from_pretrained(\"albert-base-v1\")\n222     target_tokenized = tokenizer.tokenize(text)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tests/utils/test_tokenization_normalization.py",
+    "line": 235,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "234     space_tokenized = text.split(\" \")\n235     tokenizer = RobertaTokenizer.from_pretrained(\"roberta-base\")\n236     target_tokenized = tokenizer.tokenize(text)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-system-call-tainted-env-args.dangerous-system-call-tainted-env-args",
+    "file_path": "irt_scripts/call_predict.py",
+    "line": 21,
+    "message": "Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "jiant/scripts/download_data/utils.py",
+    "line": 101,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1",
+    "file_path": "jiant/tasks/lib/bucc2018.py",
+    "line": 131,
+    "message": "Detected SHA1 hash algorithm which is considered insecure. SHA1 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "jiant/utils/data_handlers.py",
+    "line": 18,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

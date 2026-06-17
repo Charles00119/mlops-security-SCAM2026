@@ -1,0 +1,1532 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "evaluate.py",
+    "line": 153,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "152       print(cmd)\n153       os.system(cmd)\n154",
+    "stage": "inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "figure/fewshot_scs.py",
+    "line": 33,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "32   print(f\"=> Loading from {eval_file}\")\n33   z, wp = torch.load(eval_file, map_location='cpu')\n34   print(z.shape, wp.shape, target_labels.shape)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "figure/qualitative_paper.py",
+    "line": 114,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "113     for op in [\"face\", \"bedroom\", \"church\"]:\n114       os.system(f\"python figure/qualitative_paper.py {args} --op {op}\")\n115     exit(0)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "figure/train_evaluation.py",
+    "line": 28,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "27     for name in [\"face\", \"bedroom\", \"church\"]:\n28       os.system(f\"python figure/train_evaluation.py --dir {args.dir} --name {name}\")\n29     exit(0)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "figure/train_evaluation.py",
+    "line": 40,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "39     expr_dir = expr_dir[0]\n40     res = torch.load(f\"{expr_dir}/train_evaluation.pth\")\n41     if len(res) < 50:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "home/wrapper.py",
+    "line": 23,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "22         print(\"=> Loading parameter from %s\" % self.model_path)\n23         state_dict = torch.load(self.model_path, map_location='cpu')\n24         missed = self.model.load_state_dict(state_dict, strict=False)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "models/base_module.py",
+    "line": 159,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "158     self.logger.info(f'Loading pytorch weights from `{self.weight_path}`.')\n159     state_dict = torch.load(self.weight_path)\n160     for var_name in self.model_specific_vars:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "models/helper.py",
+    "line": 22,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "21   \"\"\"Load semantic extractor from a pth path.\"\"\"\n22   data = torch.load(fpath)\n23   try:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "models/helper.py",
+    "line": 27,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "26     print(f\"!> {fpath} data incomplete, use LSE data.\")\n27     lse_data = torch.load(fpath.replace(\"NSE-2\", \"LSE\"))\n28     data[\"arch\"] = {",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "models/perceptual_model.py",
+    "line": 165,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "164 \n165     self.net.load_state_dict(torch.load(self.weight_path))\n166     self.net.eval().to(self.run_device)",
+    "stage": "data_acquisition+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "models/pggan_discriminator.py",
+    "line": 60,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "59       if self.has_encoder:\n60         _, _, tf_net, _ = pickle.load(f)  # E, G, D, Gs\n61       else:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "models/pggan_discriminator.py",
+    "line": 62,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "61       else:\n62         _, tf_net, _ = pickle.load(f)  # G, D, Gs\n63     sys.path.pop(0)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "models/pggan_generator.py",
+    "line": 60,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "59       if self.has_encoder:\n60         _, _, _, tf_net = pickle.load(f)  # E, G, D, Gs\n61       else:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "models/pggan_generator.py",
+    "line": 62,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "61       else:\n62         _, _, tf_net = pickle.load(f)  # G, D, Gs\n63     sys.path.pop(0)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "models/pggan_official/dataset_tool.py",
+    "line": 333,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "332         with open(os.path.join(cifar10_dir, 'data_batch_%d' % batch), 'rb') as file:\n333             data = pickle.load(file, encoding='latin1')\n334         images.append(data['data'].reshape(-1, 3, 32, 32))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "models/pggan_official/dataset_tool.py",
+    "line": 357,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "356     with open(os.path.join(cifar100_dir, 'train'), 'rb') as file:\n357         data = pickle.load(file, encoding='latin1')\n358     images = data['data'].reshape(-1, 3, 32, 32)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "models/pggan_official/dataset_tool.py",
+    "line": 382,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "381         with open(os.path.join(svhn_dir, 'train_%d.pkl' % batch), 'rb') as file:\n382             data = pickle.load(file, encoding='latin1')\n383         images.append(data[0])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "models/pggan_official/dataset_tool.py",
+    "line": 490,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "489     img = np.array(PIL.Image.open(os.path.join(celeba_dir, 'img_celeba', '000001.jpg')))\n490     md5 = hashlib.md5()\n491     md5.update(img.tobytes())",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "models/pggan_official/dataset_tool.py",
+    "line": 563,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "562         # Verify MD5.\n563         md5 = hashlib.md5()\n564         md5.update(img.tobytes())",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "models/pggan_official/dataset_tool.py",
+    "line": 585,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "584         # Verify MD5.\n585         md5 = hashlib.md5()\n586         md5.update(img.tobytes())",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "models/pggan_official/metrics/frechet_inception_distance.py",
+    "line": 189,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "188     if inception_path is None:\n189         inception_path = '/tmp'\n190     inception_path = pathlib.Path(inception_path)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "models/pggan_official/metrics/frechet_inception_distance.py",
+    "line": 196,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "195         import tarfile\n196         fn, _ = request.urlretrieve(INCEPTION_URL)\n197         with tarfile.open(fn, mode='r') as f:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "models/pggan_official/metrics/inception_score.py",
+    "line": 34,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "33 \n34 MODEL_DIR = '/tmp/imagenet'\n35",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "models/pggan_official/metrics/inception_score.py",
+    "line": 83,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "82       sys.stdout.flush()\n83     filepath, _ = urllib.request.urlretrieve(DATA_URL, filepath, _progress)\n84     print()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "models/pggan_official/metrics/inception_score.py",
+    "line": 87,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "86     print('Succesfully downloaded', filename, statinfo.st_size, 'bytes.')\n87     tarfile.open(filepath, 'r:gz').extractall(MODEL_DIR) # EDIT: increased indent\n88   with tf.gfile.FastGFile(os.path.join(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "models/pggan_official/misc.py",
+    "line": 258,
+    "message": "Use of exec detected.",
+    "snippet": "257             if line.startswith('dataset =') or line.startswith('train ='):\n258                 exec(line, parsed_cfg, parsed_cfg)\n259     dataset_cfg = parsed_cfg.get('dataset', dict())",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "models/pggan_official/tfutil.py",
+    "line": 566,
+    "message": "Use of exec detected.",
+    "snippet": "565         module = imp.new_module('_tfutil_network_import_module_%d' % len(_network_import_modules))\n566         exec(self._build_module_src, module.__dict__)\n567         self._build_func = find_obj_in_module(module, self._build_func_name)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "models/stylegan2_discriminator.py",
+    "line": 59,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "58       if self.has_encoder:\n59         _, _, tf_net, _ = pickle.load(f)  # E, G, D, Gs\n60       else:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "models/stylegan2_discriminator.py",
+    "line": 61,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "60       else:\n61         _, tf_net, _ = pickle.load(f)  # G, D, Gs\n62     sys.path.pop(0)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "models/stylegan2_generator.py",
+    "line": 81,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "80       if self.has_encoder:\n81         _, _, _, tf_net = pickle.load(f)  # E, G, D, Gs\n82       else:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "models/stylegan2_generator.py",
+    "line": 83,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "82       else:\n83         _, _, tf_net = pickle.load(f)  # G, D, Gs\n84     sys.path.pop(0)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "models/stylegan2_official/dataset_tool.py",
+    "line": 336,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "335         with open(os.path.join(cifar10_dir, 'data_batch_%d' % batch), 'rb') as file:\n336             data = pickle.load(file, encoding='latin1')\n337         images.append(data['data'].reshape(-1, 3, 32, 32))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "models/stylegan2_official/dataset_tool.py",
+    "line": 360,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "359     with open(os.path.join(cifar100_dir, 'train'), 'rb') as file:\n360         data = pickle.load(file, encoding='latin1')\n361     images = data['data'].reshape(-1, 3, 32, 32)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "models/stylegan2_official/dataset_tool.py",
+    "line": 385,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "384         with open(os.path.join(svhn_dir, 'train_%d.pkl' % batch), 'rb') as file:\n385             data = pickle.load(file, encoding='latin1')\n386         images.append(data[0])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "models/stylegan2_official/dnnlib/tflib/custom_ops.py",
+    "line": 57,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "56 def _run_cmd(cmd):\n57     with os.popen(cmd) as pipe:\n58         output = pipe.read()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "models/stylegan2_official/dnnlib/tflib/custom_ops.py",
+    "line": 100,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "99         # Hash CUDA source.\n100         md5 = hashlib.md5()\n101         with open(cuda_file, 'rb') as f:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "models/stylegan2_official/dnnlib/tflib/network.py",
+    "line": 290,
+    "message": "Use of exec detected.",
+    "snippet": "289         _import_module_src[module] = self._build_module_src\n290         exec(self._build_module_src, module.__dict__) # pylint: disable=exec-used\n291",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "models/stylegan2_official/dnnlib/util.py",
+    "line": 356,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "355     # Lookup from cache.\n356     url_md5 = hashlib.md5(url.encode(\"utf-8\")).hexdigest()\n357     if cache_dir is not None:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "models/stylegan2_official/metrics/metric_base.py",
+    "line": 114,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "113         all_args.update(kwargs)\n114         md5 = hashlib.md5(repr(sorted(all_args.items())).encode('utf-8'))\n115         dataset_name = self._dataset_args.get('tfrecord_dir', None) or self._dataset_args.get('h5_file', None)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "models/stylegan2_official/pretrained_networks.py",
+    "line": 76,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "75     with stream:\n76         G, D, Gs = pickle.load(stream, encoding='latin1')\n77     _cached_networks[path_or_url] = G, D, Gs",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "models/stylegan2_official/training/misc.py",
+    "line": 27,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "26     with open_file_or_url(file_or_url) as file:\n27         return pickle.load(file, encoding='latin1')\n28",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "models/stylegan2_official/training/misc.py",
+    "line": 87,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "86     with open(os.path.join(run_dir, 'submit_config.pkl'), 'rb') as f:\n87         data = pickle.load(f)\n88     data = data.get('run_func_kwargs', {})",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "models/stylegan_discriminator.py",
+    "line": 61,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "60       if self.has_encoder:\n61         _, _, tf_net, _ = pickle.load(f)  # E, G, D, Gs\n62       else:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "models/stylegan_discriminator.py",
+    "line": 63,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "62       else:\n63         _, tf_net, _ = pickle.load(f)  # G, D, Gs\n64     sys.path.pop(0)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "models/stylegan_encoder.py",
+    "line": 56,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "55     with open(self.tf_weight_path, 'rb') as f:\n56       tf_net, _, _, _ = pickle.load(f)  # E, G, D, Gs\n57     sys.path.pop(0)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "models/stylegan_generator.py",
+    "line": 91,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "90       if self.has_encoder:\n91         _, _, _, tf_net = pickle.load(f)  # E, G, D, Gs\n92       else:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "models/stylegan_generator.py",
+    "line": 93,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "92       else:\n93         _, _, tf_net = pickle.load(f)  # G, D, Gs\n94     sys.path.pop(0)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "models/stylegan_official/dataset_tool.py",
+    "line": 337,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "336         with open(os.path.join(cifar10_dir, 'data_batch_%d' % batch), 'rb') as file:\n337             data = pickle.load(file, encoding='latin1')\n338         images.append(data['data'].reshape(-1, 3, 32, 32))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "models/stylegan_official/dataset_tool.py",
+    "line": 361,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "360     with open(os.path.join(cifar100_dir, 'train'), 'rb') as file:\n361         data = pickle.load(file, encoding='latin1')\n362     images = data['data'].reshape(-1, 3, 32, 32)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "models/stylegan_official/dataset_tool.py",
+    "line": 386,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "385         with open(os.path.join(svhn_dir, 'train_%d.pkl' % batch), 'rb') as file:\n386             data = pickle.load(file, encoding='latin1')\n387         images.append(data[0])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "models/stylegan_official/dnnlib/submission/_internal/run.py",
+    "line": 36,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "35 \n36     submit_config: dnnlib.SubmitConfig = pickle.load(open(submit_config_path, \"rb\"))\n37     dnnlib.submission.submit.set_user_name_override(submit_config.user_name)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "models/stylegan_official/dnnlib/tflib/network.py",
+    "line": 291,
+    "message": "Use of exec detected.",
+    "snippet": "290         _import_module_src[module] = self._build_module_src\n291         exec(self._build_module_src, module.__dict__) # pylint: disable=exec-used\n292",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "models/stylegan_official/dnnlib/util.py",
+    "line": 351,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "350     # Lookup from cache.\n351     url_md5 = hashlib.md5(url.encode(\"utf-8\")).hexdigest()\n352     if cache_dir is not None:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "models/stylegan_official/generate_figures.py",
+    "line": 34,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "33         with dnnlib.util.open_url(url, cache_dir=config.cache_dir) as f:\n34             _G, _D, Gs = pickle.load(f)\n35         _Gs_cache[url] = Gs",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "models/stylegan_official/metrics/metric_base.py",
+    "line": 97,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "96         all_args.update(kwargs)\n97         md5 = hashlib.md5(repr(sorted(all_args.items())).encode('utf-8'))\n98         dataset_name = self._dataset_args['tfrecord_dir'].replace('\\\\', '/').split('/')[-1]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "models/stylegan_official/pretrained_example.py",
+    "line": 25,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "24     with dnnlib.util.open_url(url, cache_dir=config.cache_dir) as f:\n25         _G, _D, Gs = pickle.load(f)\n26         # _G = Instantaneous snapshot of the generator. Mainly useful for resuming a previous training run.",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "models/stylegan_official/training/misc.py",
+    "line": 33,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "32     with open_file_or_url(file_or_url) as file:\n33         return pickle.load(file, encoding='latin1')\n34",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "models/stylegan_official/training/misc.py",
+    "line": 164,
+    "message": "Use of exec detected.",
+    "snippet": "163             if line.startswith('dataset =') or line.startswith('train ='):\n164                 exec(line, cfg, cfg) # pylint: disable=exec-used\n165",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "predictors/face_landmark_detector.py",
+    "line": 35,
+    "message": "Call to requests without timeout",
+    "snippet": "34     if not os.path.exists(LANDMARK_MODEL_PATH):\n35       data = requests.get(LANDMARK_MODEL_URL)\n36       data_decompressed = bz2.decompress(data.content)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "predictors/face_predictor.py",
+    "line": 48,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "47     assert os.path.isfile(self.weight_path)\n48     self.net.load_state_dict(torch.load(self.weight_path))\n49",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "predictors/face_segmenter.py",
+    "line": 33,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "32     assert os.path.isfile(self.weight_path)\n33     self.net.load_state_dict(torch.load(self.weight_path))\n34",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "predictors/scene_predictor.py",
+    "line": 90,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "89     assert os.path.isfile(self.weight_path)\n90     checkpoint = torch.load(self.weight_path,\n91                             map_location=lambda storage, loc: storage)\n92     state_dict = {k.replace('module.', ''): v",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "script/collect_env.py",
+    "line": 47,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "46     p = subprocess.Popen(command, stdout=subprocess.PIPE,\n47                          stderr=subprocess.PIPE, shell=True)\n48     raw_output, raw_err = p.communicate()\n49     rc = p.returncode",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "script/fix_pth.py",
+    "line": 7,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "6 if \".pth\" in fpath:\n7   os.system(f\"cp {fpath} {fpath}.new\")\n8   torch.save(torch.load(fpath), fpath,",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "script/fix_pth.py",
+    "line": 8,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "7   os.system(f\"cp {fpath} {fpath}.new\")\n8   torch.save(torch.load(fpath), fpath,\n9     _use_new_zipfile_serialization=False)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "script/fix_pth.py",
+    "line": 17,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "16         print(f\"=> Processing: {d}\")\n17         os.system(f\"cp {d} {d}.new\")\n18         torch.save(torch.load(d), d,",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "script/fix_pth.py",
+    "line": 18,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "17         os.system(f\"cp {d} {d}.new\")\n18         torch.save(torch.load(d), d,\n19           _use_new_zipfile_serialization=False)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "script/fix_pth.py",
+    "line": 26,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "25       print(f\"=> Processing: {fpath}\")\n26       os.system(f\"cp {fpath} {fpath}.new\")\n27       try:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "script/fix_pth.py",
+    "line": 28,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "27       try:\n28         torch.save(torch.load(fpath), fpath,\n29           _use_new_zipfile_serialization=False)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "script/sync_pth.py",
+    "line": 30,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "29 \n30 os.system(scpcmd.format(files=\" \".join(files), data_dir=args.data_dir))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "script/synthesize.py",
+    "line": 92,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "91   work_dir = args.output_dir\n92   os.system(\"mkdir \" + work_dir)\n93",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "submit.py",
+    "line": 151,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "150     print(srun)\n151     os.system(srun)\n152 else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "submit.py",
+    "line": 161,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "160     print(cmd)\n161     os.system(cmd)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-system-call-tainted-env-args.dangerous-system-call-tainted-env-args",
+    "file_path": "figure/qualitative_paper.py",
+    "line": 114,
+    "message": "Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-system-call-tainted-env-args.dangerous-system-call-tainted-env-args",
+    "file_path": "figure/train_evaluation.py",
+    "line": 28,
+    "message": "Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.django.security.audit.csrf-exempt.no-csrf-exempt",
+    "file_path": "home/views.py",
+    "line": 66,
+    "message": "Detected usage of @csrf_exempt, which indicates that there is no CSRF token set for this route. This could lead to an attacker manipulating the user's account and exfiltration of private data. Instead, create a function without this decorator.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.django.security.audit.csrf-exempt.no-csrf-exempt",
+    "file_path": "home/views.py",
+    "line": 95,
+    "message": "Detected usage of @csrf_exempt, which indicates that there is no CSRF token set for this route. This could lead to an attacker manipulating the user's account and exfiltration of private data. Instead, create a function without this decorator.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.django.security.audit.csrf-exempt.no-csrf-exempt",
+    "file_path": "home/views.py",
+    "line": 117,
+    "message": "Detected usage of @csrf_exempt, which indicates that there is no CSRF token set for this route. This could lead to an attacker manipulating the user's account and exfiltration of private data. Instead, create a function without this decorator.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.django.security.audit.csrf-exempt.no-csrf-exempt",
+    "file_path": "home/views.py",
+    "line": 144,
+    "message": "Detected usage of @csrf_exempt, which indicates that there is no CSRF token set for this route. This could lead to an attacker manipulating the user's account and exfiltration of private data. Instead, create a function without this decorator.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.django.security.audit.csrf-exempt.no-csrf-exempt",
+    "file_path": "home/views.py",
+    "line": 148,
+    "message": "Detected usage of @csrf_exempt, which indicates that there is no CSRF token set for this route. This could lead to an attacker manipulating the user's account and exfiltration of private data. Instead, create a function without this decorator.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.django.security.audit.csrf-exempt.no-csrf-exempt",
+    "file_path": "home/views.py",
+    "line": 181,
+    "message": "Detected usage of @csrf_exempt, which indicates that there is no CSRF token set for this route. This could lead to an attacker manipulating the user's account and exfiltration of private data. Instead, create a function without this decorator.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.django.security.audit.csrf-exempt.no-csrf-exempt",
+    "file_path": "home/views.py",
+    "line": 201,
+    "message": "Detected usage of @csrf_exempt, which indicates that there is no CSRF token set for this route. This could lead to an attacker manipulating the user's account and exfiltration of private data. Instead, create a function without this decorator.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "models/pggan_discriminator.py",
+    "line": 60,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "models/pggan_discriminator.py",
+    "line": 62,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "models/pggan_generator.py",
+    "line": 60,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "models/pggan_generator.py",
+    "line": 62,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "models/pggan_official/dataset_tool.py",
+    "line": 333,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "models/pggan_official/dataset_tool.py",
+    "line": 357,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "models/pggan_official/dataset_tool.py",
+    "line": 382,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "models/pggan_official/dataset_tool.py",
+    "line": 490,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "models/pggan_official/dataset_tool.py",
+    "line": 563,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "models/pggan_official/dataset_tool.py",
+    "line": 585,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "models/pggan_official/metrics/inception_score.py",
+    "line": 83,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "models/pggan_official/misc.py",
+    "line": 33,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "models/pggan_official/misc.py",
+    "line": 258,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "models/pggan_official/tfutil.py",
+    "line": 566,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "models/stylegan2_discriminator.py",
+    "line": 59,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "models/stylegan2_discriminator.py",
+    "line": 61,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "models/stylegan2_generator.py",
+    "line": 81,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "models/stylegan2_generator.py",
+    "line": 83,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "models/stylegan2_official/dataset_tool.py",
+    "line": 336,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "models/stylegan2_official/dataset_tool.py",
+    "line": 360,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "models/stylegan2_official/dataset_tool.py",
+    "line": 385,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "models/stylegan2_official/dnnlib/submission/submit.py",
+    "line": 229,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "models/stylegan2_official/dnnlib/tflib/custom_ops.py",
+    "line": 100,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "models/stylegan2_official/dnnlib/tflib/network.py",
+    "line": 290,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "models/stylegan2_official/dnnlib/util.py",
+    "line": 185,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "models/stylegan2_official/dnnlib/util.py",
+    "line": 356,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "models/stylegan2_official/metrics/metric_base.py",
+    "line": 114,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "models/stylegan2_official/pretrained_networks.py",
+    "line": 76,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "models/stylegan2_official/training/misc.py",
+    "line": 27,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "models/stylegan2_official/training/misc.py",
+    "line": 31,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "models/stylegan2_official/training/misc.py",
+    "line": 87,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "models/stylegan_discriminator.py",
+    "line": 61,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "models/stylegan_discriminator.py",
+    "line": 63,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "models/stylegan_encoder.py",
+    "line": 56,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "models/stylegan_generator.py",
+    "line": 91,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "models/stylegan_generator.py",
+    "line": 93,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "models/stylegan_official/dataset_tool.py",
+    "line": 337,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "models/stylegan_official/dataset_tool.py",
+    "line": 361,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "models/stylegan_official/dataset_tool.py",
+    "line": 386,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "models/stylegan_official/dnnlib/submission/_internal/run.py",
+    "line": 36,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "models/stylegan_official/dnnlib/submission/submit.py",
+    "line": 218,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "models/stylegan_official/dnnlib/tflib/network.py",
+    "line": 291,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "models/stylegan_official/dnnlib/util.py",
+    "line": 186,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "models/stylegan_official/dnnlib/util.py",
+    "line": 351,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "models/stylegan_official/generate_figures.py",
+    "line": 34,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "models/stylegan_official/metrics/metric_base.py",
+    "line": 97,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "models/stylegan_official/pretrained_example.py",
+    "line": 25,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "models/stylegan_official/training/misc.py",
+    "line": 33,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "models/stylegan_official/training/misc.py",
+    "line": 37,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "models/stylegan_official/training/misc.py",
+    "line": 164,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "info",
+    "rule_id": "python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http",
+    "file_path": "predictors/face_landmark_detector.py",
+    "line": 35,
+    "message": "Detected a request using 'http://'. This request will be unencrypted, and attackers could listen into traffic on the network and be able to obtain sensitive information. Use 'https://' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "script/collect_env.py",
+    "line": 47,
+    "message": "Found 'subprocess' function 'Popen' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-system-call-tainted-env-args.dangerous-system-call-tainted-env-args",
+    "file_path": "script/fix_pth.py",
+    "line": 7,
+    "message": "Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-system-call-tainted-env-args.dangerous-system-call-tainted-env-args",
+    "file_path": "script/fix_pth.py",
+    "line": 17,
+    "message": "Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-system-call-tainted-env-args.dangerous-system-call-tainted-env-args",
+    "file_path": "script/fix_pth.py",
+    "line": 26,
+    "message": "Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-system-call-tainted-env-args.dangerous-system-call-tainted-env-args",
+    "file_path": "script/sync_pth.py",
+    "line": 30,
+    "message": "Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-system-call-tainted-env-args.dangerous-system-call-tainted-env-args",
+    "file_path": "submit.py",
+    "line": 151,
+    "message": "Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2021-9",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "django 3.1.3: In Django 2.2 before 2.2.18, 3.0 before 3.0.12, and 3.1 before 3.1.6, the django.utils.archive.extract method (used by \"startapp --template\" and \"startproject --template\") allows directory traversal v (fix: 2.2.18, 3.0.12, 3.1.6)",
+    "snippet": "django==3.1.3",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2021-8",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "django 3.1.3: In Django 2.2 before 2.2.22, 3.1 before 3.1.10, and 3.2 before 3.2.2 (with Python 3.9.5+), URLValidator does not prohibit newlines and tabs (unless the URLField form field is used). If an application  (fix: 2.2.22, 3.1.10, 3.2.2)",
+    "snippet": "django==3.1.3",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2021-98",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "django 3.1.3: Django before 2.2.24, 3.x before 3.1.12, and 3.2.x before 3.2.4 has a potential directory traversal via django.contrib.admindocs. Staff members could use the TemplateDetailView view to check the exist (fix: 2.2.24, 3.1.12, 3.2.4)",
+    "snippet": "django==3.1.3",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2021-109",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "django 3.1.3: Django 3.1.x before 3.1.13 and 3.2.x before 3.2.5 allows QuerySet.order_by SQL injection if order_by is untrusted input from a client of a web application. (fix: 3.1.13, 3.2.5)",
+    "snippet": "django==3.1.3",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2021-7",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "django 3.1.3: In Django 2.2 before 2.2.21, 3.1 before 3.1.9, and 3.2 before 3.2.1, MultiPartParser, UploadedFile, and FieldFile allowed directory traversal via uploaded files with suitably crafted file names. (fix: 2.2.21, 3.1.9, 3.2.1)",
+    "snippet": "django==3.1.3",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2021-6",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "django 3.1.3: In Django 2.2 before 2.2.20, 3.0 before 3.0.14, and 3.1 before 3.1.8, MultiPartParser allowed directory traversal via uploaded files with suitably crafted file names. Built-in upload handlers were not (fix: 2.2.20, 3.0.14, 3.1.8)",
+    "snippet": "django==3.1.3",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2021-439",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "django 3.1.3: In Django 2.2 before 2.2.25, 3.1 before 3.1.14, and 3.2 before 3.2.10, HTTP requests for URLs with trailing newlines could bypass upstream access control based on URL paths. (fix: 2.2.25, 3.1.14, 3.2.10)",
+    "snippet": "django==3.1.3",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2021-99",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "django 3.1.3: In Django 2.2 before 2.2.24, 3.x before 3.1.12, and 3.2 before 3.2.4, URLValidator, validate_ipv4_address, and validate_ipv46_address do not prohibit leading zero characters in octal literals. This ma (fix: 2.2.24, 3.1.12, 3.2.4)",
+    "snippet": "django==3.1.3",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2022-245",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "django 3.1.3: An issue was discovered in the HTTP FileResponse class in Django 3.2 before 3.2.15 and 4.0 before 4.0.7. An application is vulnerable to a reflected file download (RFD) attack that sets the Content-Di (fix: 3.2.15, 4.0.7)",
+    "snippet": "django==3.1.3",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2025-47",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "django 3.1.3: An issue was discovered in Django 5.2 before 5.2.2, 5.1 before 5.1.10, and 4.2 before 4.2.22. Internal HTTP response logging does not escape request.path, which allows remote attackers to potentially  (fix: 4.2.22, 5.1.10, 5.2.2)",
+    "snippet": "django==3.1.3",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2024-45231",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "django 3.1.3: An issue was discovered in Django v5.1.1, v5.0.9, and v4.2.16. The django.contrib.auth.forms.PasswordResetForm class, when used in a view implementing password reset flows, allows remote attackers to  (fix: 4.2.16, 5.0.9, 5.1.1)",
+    "snippet": "django==3.1.3",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2025-57833",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "django 3.1.3: An issue was discovered in Django 4.2 before 4.2.24, 5.1 before 5.1.12, and 5.2 before 5.2.6. FilteredRelation is subject to SQL injection in column aliases, using a suitably crafted dictionary, with  (fix: 4.2.24, 5.1.12, 5.2.6)",
+    "snippet": "django==3.1.3",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2025-64458",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "django 3.1.3: An issue was discovered in 5.1 before 5.1.14, 4.2 before 4.2.26, and 5.2 before 5.2.8. NFKC normalization in Python is slow on Windows. As a consequence, `django.http.HttpResponseRedirect`, `django.ht (fix: 4.2.26, 5.1.14, 5.2.8)",
+    "snippet": "django==3.1.3",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2025-64459",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "django 3.1.3: An issue was discovered in 5.1 before 5.1.14, 4.2 before 4.2.26, and 5.2 before 5.2.8. The methods `QuerySet.filter()`, `QuerySet.exclude()`, and `QuerySet.get()`, and the class `Q()`, are subject to  (fix: 4.2.26, 5.1.14, 5.2.8)",
+    "snippet": "django==3.1.3",
+    "stage": "dependencies"
+  }
+]

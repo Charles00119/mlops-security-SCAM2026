@@ -1,0 +1,532 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "SentEval/examples/infersent.py",
+    "line": 63,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "62     model = InferSent(params_model)\n63     model.load_state_dict(torch.load(MODEL_PATH))\n64     model.set_w2v_path(PATH_TO_W2V)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "SentEval/senteval/engine.py",
+    "line": 98,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "97             fpath = name + '-en-test'\n98             self.evaluation = eval(name + 'Eval')(tpath + '/downstream/STS/' + fpath, seed=self.params.seed)\n99         elif name == 'ImageCaptionRetrieval':",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "demo/gradiodemo.py",
+    "line": 7,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "6 # Import our models. The package will take care of downloading the models automatically\n7 tokenizer = AutoTokenizer.from_pretrained(\"princeton-nlp/sup-simcse-bert-base-uncased\")\n8 model = AutoModel.from_pretrained(\"princeton-nlp/sup-simcse-bert-base-uncased\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "demo/gradiodemo.py",
+    "line": 8,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "7 tokenizer = AutoTokenizer.from_pretrained(\"princeton-nlp/sup-simcse-bert-base-uncased\")\n8 model = AutoModel.from_pretrained(\"princeton-nlp/sup-simcse-bert-base-uncased\")\n9",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "evaluation.py",
+    "line": 53,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "52     # Load transformers' model checkpoint\n53     model = AutoModel.from_pretrained(args.model_name_or_path)\n54     tokenizer = AutoTokenizer.from_pretrained(args.model_name_or_path)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "evaluation.py",
+    "line": 54,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "53     model = AutoModel.from_pretrained(args.model_name_or_path)\n54     tokenizer = AutoTokenizer.from_pretrained(args.model_name_or_path)\n55     device = torch.device(\"cuda:0\" if torch.cuda.is_available() else \"cpu\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "simcse/tool.py",
+    "line": 27,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "26 \n27         self.tokenizer = AutoTokenizer.from_pretrained(model_name_or_path)\n28         self.model = AutoModel.from_pretrained(model_name_or_path)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "simcse/tool.py",
+    "line": 28,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "27         self.tokenizer = AutoTokenizer.from_pretrained(model_name_or_path)\n28         self.model = AutoModel.from_pretrained(model_name_or_path)\n29         if device is None:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "simcse/trainers.py",
+    "line": 541,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "540             else:\n541                 state_dict = torch.load(os.path.join(self.state.best_model_checkpoint, WEIGHTS_NAME))\n542                 self.model.load_state_dict(state_dict)",
+    "stage": "evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "simcse_to_huggingface.py",
+    "line": 18,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "17 \n18     state_dict = torch.load(os.path.join(args.path, \"pytorch_model.bin\"), map_location=torch.device(\"cpu\"))\n19     new_state_dict = {}",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "train.py",
+    "line": 309,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "308     if extension == \"csv\":\n309         datasets = load_dataset(extension, data_files=data_files, cache_dir=\"./data/\", delimiter=\"\\t\" if \"tsv\" in data_args.train_file else \",\")\n310     else:",
+    "stage": "data_acquisition+data_preparation+evaluation+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "train.py",
+    "line": 311,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "310     else:\n311         datasets = load_dataset(extension, data_files=data_files, cache_dir=\"./data/\")\n312",
+    "stage": "data_acquisition+data_preparation+evaluation+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "train.py",
+    "line": 327,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "326     if model_args.config_name:\n327         config = AutoConfig.from_pretrained(model_args.config_name, **config_kwargs)\n328     elif model_args.model_name_or_path:",
+    "stage": "data_acquisition+data_preparation+evaluation+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "train.py",
+    "line": 329,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "328     elif model_args.model_name_or_path:\n329         config = AutoConfig.from_pretrained(model_args.model_name_or_path, **config_kwargs)\n330     else:",
+    "stage": "data_acquisition+data_preparation+evaluation+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "train.py",
+    "line": 341,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "340     if model_args.tokenizer_name:\n341         tokenizer = AutoTokenizer.from_pretrained(model_args.tokenizer_name, **tokenizer_kwargs)\n342     elif model_args.model_name_or_path:",
+    "stage": "data_acquisition+data_preparation+evaluation+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "train.py",
+    "line": 343,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "342     elif model_args.model_name_or_path:\n343         tokenizer = AutoTokenizer.from_pretrained(model_args.model_name_or_path, **tokenizer_kwargs)\n344     else:",
+    "stage": "data_acquisition+data_preparation+evaluation+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "train.py",
+    "line": 372,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "371             if model_args.do_mlm:\n372                 pretrained_model = BertForPreTraining.from_pretrained(model_args.model_name_or_path)\n373                 model.lm_head.load_state_dict(pretrained_model.cls.predictions.state_dict())",
+    "stage": "data_acquisition+data_preparation+evaluation+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "SentEval/senteval/engine.py",
+    "line": 98,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-cPickle",
+    "file_path": "SentEval/senteval/rank.py",
+    "line": 49,
+    "message": "Avoid using `cPickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "SentEval/senteval/rank.py",
+    "line": 49,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-cPickle",
+    "file_path": "SentEval/senteval/rank.py",
+    "line": 52,
+    "message": "Avoid using `cPickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "SentEval/senteval/rank.py",
+    "line": 52,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.flask.security.injection.nan-injection.nan-injection",
+    "file_path": "demo/flaskdemo.py",
+    "line": 44,
+    "message": "Found user input going directly into typecast for bool(), float(), or complex(). This allows an attacker to inject Python's not-a-number (NaN) into the typecast. This results in undefind behavior, particularly when doing comparisons. Either cast to a different type, or add a guard checking for all capitalizations of the string 'nan'.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2025-217",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "transformers 4.2.1: Hugging Face Transformers X-CLIP Checkpoint Conversion Deserialization of Untrusted Data Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on af (fix: no fix listed)",
+    "snippet": "transformers==4.2.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2023-301",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "transformers 4.2.1: Deserialization of Untrusted Data in GitHub repository huggingface/transformers prior to 4.36. (fix: 4.36.0)",
+    "snippet": "transformers==4.2.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2023-299",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "transformers 4.2.1: Insecure Temporary File in GitHub repository huggingface/transformers prior to 4.30.0. (fix: 4.30.0)",
+    "snippet": "transformers==4.2.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2023-300",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "transformers 4.2.1: Deserialization of Untrusted Data in GitHub repository huggingface/transformers prior to 4.36. (fix: 4.36.0)",
+    "snippet": "transformers==4.2.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2024-228",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "transformers 4.2.1: Hugging Face Transformers MaskFormer Model Deserialization of Untrusted Data Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected insta (fix: 4.48.0)",
+    "snippet": "transformers==4.2.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2024-227",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "transformers 4.2.1: Hugging Face Transformers MobileViTV2 Deserialization of Untrusted Data Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installati (fix: 4.48.0)",
+    "snippet": "transformers==4.2.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2024-229",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "transformers 4.2.1: Hugging Face Transformers Trax Model Deserialization of Untrusted Data Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installatio (fix: 4.48.0)",
+    "snippet": "transformers==4.2.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2024-229",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "transformers 4.2.1: Hugging Face Transformers Trax Model Deserialization of Untrusted Data Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installatio (fix: 4.48.0)",
+    "snippet": "transformers==4.2.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2024-228",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "transformers 4.2.1: Hugging Face Transformers MaskFormer Model Deserialization of Untrusted Data Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected insta (fix: 4.48.0)",
+    "snippet": "transformers==4.2.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2024-227",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "transformers 4.2.1: Hugging Face Transformers MobileViTV2 Deserialization of Untrusted Data Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installati (fix: 4.48.0)",
+    "snippet": "transformers==4.2.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2025-40",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "transformers 4.2.1: A vulnerability in the `preprocess_string()` function of the `transformers.testing_utils` module in huggingface/transformers version v4.48.3 allows for a Regular Expression Denial of Service (ReDoS) a (fix: 4.49.0)",
+    "snippet": "transformers==4.2.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2025-214",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "transformers 4.2.1: Hugging Face Transformers SEW convert_config Code Injection Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of Huggi (fix: no fix listed)",
+    "snippet": "transformers==4.2.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2025-218",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "transformers 4.2.1: Hugging Face Transformers GLM4 Deserialization of Untrusted Data Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of  (fix: no fix listed)",
+    "snippet": "transformers==4.2.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2025-211",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "transformers 4.2.1: Hugging Face Transformers Perceiver Model Deserialization of Untrusted Data Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected instal (fix: no fix listed)",
+    "snippet": "transformers==4.2.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2025-212",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "transformers 4.2.1: Hugging Face Transformers Transformer-XL Model Deserialization of Untrusted Data Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected i (fix: no fix listed)",
+    "snippet": "transformers==4.2.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2025-213",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "transformers 4.2.1: Hugging Face Transformers megatron_gpt2 Deserialization of Untrusted Data Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installa (fix: no fix listed)",
+    "snippet": "transformers==4.2.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2025-215",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "transformers 4.2.1: Hugging Face Transformers SEW-D convert_config Code Injection Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of Hug (fix: no fix listed)",
+    "snippet": "transformers==4.2.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2025-216",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "transformers 4.2.1: Hugging Face Transformers HuBERT convert_config Code Injection Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of Hu (fix: no fix listed)",
+    "snippet": "transformers==4.2.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2024-3568",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "transformers 4.2.1: The huggingface/transformers library is vulnerable to arbitrary code execution through deserialization of untrusted data within the `load_repo_checkpoint()` function of the `TFPreTrainedModel()` class (fix: 4.38.0)",
+    "snippet": "transformers==4.2.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2024-12720",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "transformers 4.2.1: A Regular Expression Denial of Service (ReDoS) vulnerability was identified in the huggingface/transformers library, specifically in the file tokenization_nougat_fast.py. The vulnerability occurs in t (fix: 4.48.0)",
+    "snippet": "transformers==4.2.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2025-1194",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "transformers 4.2.1: A Regular Expression Denial of Service (ReDoS) vulnerability was identified in the huggingface/transformers library, specifically in the file `tokenization_gpt_neox_japanese.py` of the GPT-NeoX-Japane (fix: 4.50.0)",
+    "snippet": "transformers==4.2.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2025-3263",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "transformers 4.2.1: A Regular Expression Denial of Service (ReDoS) vulnerability was discovered in the Hugging Face Transformers library, specifically in the `get_configuration_file()` function within the `transformers.c (fix: 4.51.0)",
+    "snippet": "transformers==4.2.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2025-3264",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "transformers 4.2.1: A Regular Expression Denial of Service (ReDoS) vulnerability was discovered in the Hugging Face Transformers library, specifically in the `get_imports()` function within `dynamic_module_utils.py`. Thi (fix: 4.51.0)",
+    "snippet": "transformers==4.2.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2025-3777",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "transformers 4.2.1: Hugging Face Transformers versions up to 4.49.0 are affected by an improper input validation vulnerability in the `image_utils.py` file. The vulnerability arises from insecure URL validation using the (fix: 4.52.1)",
+    "snippet": "transformers==4.2.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2025-3933",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "transformers 4.2.1: A Regular Expression Denial of Service (ReDoS) vulnerability was discovered in the Hugging Face Transformers library, specifically within the DonutProcessor class's `token2json()` method. This vulnera (fix: 4.52.1)",
+    "snippet": "transformers==4.2.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2025-5197",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "transformers 4.2.1: A Regular Expression Denial of Service (ReDoS) vulnerability exists in the Hugging Face Transformers library, specifically in the `convert_tf_weight_name_to_pt_weight_name()` function. This function,  (fix: 4.53.0)",
+    "snippet": "transformers==4.2.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2025-6638",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "transformers 4.2.1: A Regular Expression Denial of Service (ReDoS) vulnerability was discovered in the Hugging Face Transformers library, specifically affecting the MarianTokenizer's `remove_language_code()` method. This (fix: 4.53.0)",
+    "snippet": "transformers==4.2.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2025-6051",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "transformers 4.2.1: A Regular Expression Denial of Service (ReDoS) vulnerability was discovered in the Hugging Face Transformers library, specifically within the `normalize_numbers()` method of the `EnglishNormalizer` cl (fix: 4.53.0)",
+    "snippet": "transformers==4.2.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2025-6921",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "transformers 4.2.1: The huggingface/transformers library, versions prior to 4.53.0, is vulnerable to Regular Expression Denial of Service (ReDoS) in the AdamWeightDecay optimizer. The vulnerability arises from the _do_us (fix: 4.53.0)",
+    "snippet": "transformers==4.2.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2026-1839",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "transformers 4.2.1: A vulnerability in the HuggingFace Transformers library, specifically in the `Trainer` class, allows for arbitrary code execution. The `_load_rng_state()` method in `src/transformers/trainer.py` at li (fix: 5.0.0rc3)",
+    "snippet": "transformers==4.2.1",
+    "stage": "dependencies"
+  }
+]

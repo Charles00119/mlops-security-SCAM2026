@@ -1,0 +1,702 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "base/base_trainer.py",
+    "line": 134,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "133         self.logger.info(\"Loading checkpoint: {} ...\".format(resume_path))\n134         checkpoint = torch.load(resume_path)\n135         self.start_epoch = checkpoint['epoch'] + 1",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "predict.py",
+    "line": 35,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "34     # logger.info('Loading checkpoint: {} ...'.format(config.resume))\n35     checkpoint = torch.load(config.resume, map_location='cpu')\n36     state_dict = checkpoint['state_dict']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "predict_savchenko_enet.py",
+    "line": 29,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "28     logger.info('Loading checkpoint: {} ...'.format(config.resume))\n29     model = torch.load(config.resume, map_location='cpu')\n30     model.eval()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "test.py",
+    "line": 41,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "40     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')\n41     checkpoint = torch.load(config.resume, map_location=device)\n42     state_dict = checkpoint['state_dict']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "utils/video.py",
+    "line": 68,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "67 \n68         checkpoint = torch.load(model_pth, map_location='cpu')\n69         state_dict = checkpoint['state_dict']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-subprocess-use-tainted-env-args.dangerous-subprocess-use-tainted-env-args",
+    "file_path": "Scripts/phoenix_frames_to_videos.py",
+    "line": 54,
+    "message": "Detected subprocess function 'Popen' with user controlled data. A malicious actor could leverage this to perform command injection. You may consider using 'shlex.quote()'.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2021-34141",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "numpy 1.21.6: Incomplete string comparison in the numpy.core component in NumPy1.9.x, which allows attackers to fail the APIs via constructing specific string objects. (fix: 1.22)",
+    "snippet": "numpy==1.21.6",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2024-110",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "scikit-learn 1.0.2: A sensitive data leakage vulnerability was identified in scikit-learn's TfidfVectorizer, specifically in versions up to and including 1.4.1.post1, which was fixed in version 1.5.0. The vulnerability a (fix: 1.5.0)",
+    "snippet": "scikit-learn==1.0.2",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2024-110",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "scikit-learn 1.0.2: A sensitive data leakage vulnerability was identified in scikit-learn's TfidfVectorizer, specifically in versions up to and including 1.4.1.post1, which was fixed in version 1.5.0. The vulnerability a (fix: 1.5.0)",
+    "snippet": "scikit-learn==1.0.2",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2023-102",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "scipy 1.7.3: A refcounting issue which leads to potential memory leak was discovered in scipy commit 8627df31ab in Py_FindObjects() function. (fix: 1.10.0)",
+    "snippet": "scipy==1.7.3",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2023-114",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "scipy 1.7.3: ** DISPUTED ** A use-after-free issue was discovered in Py_FindObjects() function in SciPy versions prior to 1.8.0. NOTE: the vendor and discoverer indicate that this is not a security issue. (fix: 1.8.0)",
+    "snippet": "scipy==1.7.3",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2022-43015",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "torch 1.12.1: In PyTorch before trunk/89695, torch.jit.annotations.parse_type_line can cause arbitrary code execution because eval is used unsafely. (fix: 1.13.1)",
+    "snippet": "torch==1.12.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2025-41",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "torch 1.12.1: # Description I found a Remote Command Execution (RCE) vulnerability in PyTorch. When loading model using torch.load with weights_only=True, it can still achieve RCE.    # Background knowledge https:/ (fix: 2.6.0)",
+    "snippet": "torch==1.12.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2025-41",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "torch 1.12.1: PyTorch is a Python package that provides tensor computation with strong GPU acceleration and deep neural networks built on a tape-based autograd system. In version 2.5.1 and prior, a Remote Command E (fix: 2.6.0)",
+    "snippet": "torch==1.12.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2024-250",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "torch 1.12.1: Pytorch before v2.2.0 has an Out-of-bounds Read vulnerability via the component torch/csrc/jit/mobile/flatbuffer_loader.cpp. (fix: 2.2.0)",
+    "snippet": "torch==1.12.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2024-251",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "torch 1.12.1: Pytorch before version v2.2.0 was discovered to contain a use-after-free vulnerability in torch/csrc/jit/mobile/interpreter.cpp. (fix: 2.2.0)",
+    "snippet": "torch==1.12.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2024-252",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "torch 1.12.1: PyTorch before v2.2.0 was discovered to contain a heap buffer overflow vulnerability in the component /runtime/vararg_functions.cpp. This vulnerability allows attackers to cause a Denial of Service (D (fix: 2.2.0)",
+    "snippet": "torch==1.12.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2024-259",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "torch 1.12.1: In PyTorch <=2.4.1, the RemoteModule has Deserialization RCE. NOTE: this is disputed by multiple parties because this is intended behavior in PyTorch distributed computing. (fix: 2.5.0)",
+    "snippet": "torch==1.12.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2025-203",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "torch 1.12.1: An issue in the component torch.linalg.lu of pytorch v2.8.0 allows attackers to cause a Denial of Service (DoS) when performing a slice operation. (fix: 2.9.0)",
+    "snippet": "torch==1.12.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2025-205",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "torch 1.12.1: A syntax error in the component proxy_tensor.py of pytorch v2.7.0 allows attackers to cause a Denial of Service (DoS). (fix: 2.7.1)",
+    "snippet": "torch==1.12.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2025-206",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "torch 1.12.1: pytorch v2.8.0 was discovered to contain an integer overflow in the component torch.nan_to_num-.long(). (fix: 2.9.0)",
+    "snippet": "torch==1.12.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2025-207",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "torch 1.12.1: A Name Error occurs in pytorch v2.7.0 when a PyTorch model consists of torch.cummin and is compiled by Inductor, leading to a Denial of Service (DoS). (fix: 2.7.1)",
+    "snippet": "torch==1.12.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2025-204",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "torch 1.12.1: pytorch v2.8.0 was discovered to display unexpected behavior when the components torch.rot90 and torch.randn_like are used together. (fix: 2.9.0)",
+    "snippet": "torch==1.12.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2026-139",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "torch 1.12.1: A vulnerability was identified in PyTorch 2.10.0. The affected element is an unknown function of the component pt2 Loading Handler. The manipulation leads to deserialization. The attack can only be pe (fix: no fix listed)",
+    "snippet": "torch==1.12.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2025-209",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "torch 1.12.1: An issue in pytorch v2.7.0 can lead to a Denial of Service (DoS) when a PyTorch model consists of torch.Tensor.to_sparse() and torch.Tensor.to_dense() and is compiled by Inductor. (fix: 2.7.1)",
+    "snippet": "torch==1.12.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2025-208",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "torch 1.12.1: A buffer overflow occurs in pytorch v2.7.0 when a PyTorch model consists of torch.nn.Conv2d, torch.nn.functional.hardshrink, and torch.Tensor.view-torch.mv() and is compiled by Inductor, leading to a  (fix: 2.7.1)",
+    "snippet": "torch==1.12.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2025-191",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "torch 1.12.1: A vulnerability, which was classified as problematic, has been found in PyTorch 2.6.0+cu124. Affected by this issue is the function torch.mkldnn_max_pool2d. The manipulation leads to denial of service (fix: no fix listed)",
+    "snippet": "torch==1.12.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2025-198",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "torch 1.12.1: In PyTorch through 2.6.0, when eager is used, nn.PairwiseDistance(p=2) produces incorrect results. (fix: 2.7.0)",
+    "snippet": "torch==1.12.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2025-3730",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "torch 1.12.1: A vulnerability, which was classified as problematic, was found in PyTorch 2.6.0. Affected is the function torch.nn.functional.ctc_loss of the file aten/src/ATen/native/LossCTC.cpp. The manipulation l (fix: 2.8.0)",
+    "snippet": "torch==1.12.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2024-34062",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "tqdm 4.62.3: ### Impact Any optional non-boolean CLI arguments (e.g. `--delim`, `--buf-size`, `--manpath`) are passed through python's `eval`, allowing arbitrary code execution. Example:  ```sh python -m tqdm --ma (fix: 4.66.3)",
+    "snippet": "tqdm==4.62.3",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2023-183",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "opencv-python 4.6.0.66: opencv-python versions before v4.8.1.78 bundled libwebp binaries in wheels that are vulnerable to CVE-2023-4863. opencv-python v4.8.1.78 upgrades the bundled libwebp binary to v1.3.2. (fix: 4.8.1.78)",
+    "snippet": "opencv-python==4.6.0.66",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "GHSA-qr4w-53vh-m672",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "opencv-python 4.6.0.66: opencv-python versions before v4.8.1.78 bundled libwebp binaries in wheels that are vulnerable to CVE-2023-4863. opencv-python v4.8.1.78 upgrades the bundled libwebp binary to v1.3.2. (fix: 4.8.1.78)",
+    "snippet": "opencv-python==4.6.0.66",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2023-25664",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "tensorflow 2.10.1: ### Impact ```python import os os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0' import tensorflow as tf print(tf.__version__) with tf.device(\"CPU\"):     ksize = [1, 40, 128, 1]     strides = [1, 128, 128, 30 (fix: 2.11.1)",
+    "snippet": "tensorflow==2.10.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2023-25659",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "tensorflow 2.10.1: ### Impact If the parameter `indices` for `DynamicStitch` does not match the shape of the parameter `data`, it can trigger an stack OOB read.  ```python import tensorflow as tf func = tf.raw_ops.Dynam (fix: 2.11.1)",
+    "snippet": "tensorflow==2.10.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2023-25676",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "tensorflow 2.10.1: ### Impact When running with XLA, `tf.raw_ops.ParallelConcat` segfaults with a nullptr dereference when given a parameter `shape` with rank that is not greater than zero.  ```python import tensorflow  (fix: 2.11.1)",
+    "snippet": "tensorflow==2.10.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2023-25660",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "tensorflow 2.10.1: ### Impact When the parameter `summarize` of `tf.raw_ops.Print` is zero, the new method `SummarizeArray<bool>` will reference to a nullptr, leading to a seg fault.  ```python import tensorflow as tf   (fix: 2.11.1)",
+    "snippet": "tensorflow==2.10.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2023-25663",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "tensorflow 2.10.1: ### Impact When ctx->step_containter() is a null ptr, the Lookup function will be executed with a null pointer. ```python import tensorflow as tf tf.raw_ops.TensorArrayConcatV2(handle=['a', 'b'], flow (fix: 2.11.1)",
+    "snippet": "tensorflow==2.10.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2023-25668",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "tensorflow 2.10.1: ### Impact Attackers using Tensorflow can exploit the vulnerability. They can access heap memory which is not in the control of user, leading to a crash or RCE. When axis is larger than the dim of inp (fix: 2.11.1)",
+    "snippet": "tensorflow==2.10.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2023-25674",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "tensorflow 2.10.1: ### Impact NPE in RandomShuffle with XLA enable  ```python import tensorflow as tf  func = tf.raw_ops.RandomShuffle para = {'value': 1e+20, 'seed': -4294967297, 'seed2': -2147483649}  @tf.function(jit (fix: 2.11.1)",
+    "snippet": "tensorflow==2.10.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2023-25675",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "tensorflow 2.10.1: ### Impact When running with XLA, `tf.raw_ops.Bincount` segfaults when given a parameter `weights` that is neither the same shape as parameter `arr` nor a length-0 tensor.  ```python import tensorflow (fix: 2.11.1)",
+    "snippet": "tensorflow==2.10.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2023-25670",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "tensorflow 2.10.1: ### Impact NPE in QuantizedMatMulWithBiasAndDequantize with MKL enable  ```python import tensorflow as tf  func = tf.raw_ops.QuantizedMatMulWithBiasAndDequantize para={'a': tf.constant(138, dtype=tf.q (fix: 2.11.1)",
+    "snippet": "tensorflow==2.10.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2023-25672",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "tensorflow 2.10.1: ### Impact The function `tf.raw_ops.LookupTableImportV2` cannot handle scalars in the `values` parameter and gives an NPE.  ```python import tensorflow as tf  v = tf.Variable(1)  @tf.function(jit_comp (fix: 2.11.1)",
+    "snippet": "tensorflow==2.10.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2023-25671",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "tensorflow 2.10.1: ### Impact Out-of-bounds access due to mismatched integer type sizes in ValueMap::Manager::GetValueOrCreatePlaceholder. Bug with tfg-translate call to InitMlir. The problem happens with generic functi (fix: 2.11.1)",
+    "snippet": "tensorflow==2.10.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2023-25669",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "tensorflow 2.10.1: ### Impact If the stride and window size are not positive for `tf.raw_ops.AvgPoolGrad`, it can give an FPE.  ```python import tensorflow as tf import numpy as np  @tf.function(jit_compile=True) def te (fix: 2.11.1)",
+    "snippet": "tensorflow==2.10.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2023-25662",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "tensorflow 2.10.1: ### Impact TFversion 2.11.0 //tensorflow/core/ops/array_ops.cc:1067 const Tensor* hypothesis_shape_t = c->input_tensor(2); std::vector<DimensionHandle> dims(hypothesis_shape_t->NumElements() - 1); for (fix: 2.11.1)",
+    "snippet": "tensorflow==2.10.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2023-25673",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "tensorflow 2.10.1: ### Impact FPE in TensorListSplit with XLA  ```python import tensorflow as tf  func = tf.raw_ops.TensorListSplit para = {'tensor': [1], 'element_shape': -1, 'lengths': [0]}  @tf.function(jit_compile=T (fix: 2.11.1)",
+    "snippet": "tensorflow==2.10.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2023-25658",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "tensorflow 2.10.1: ### Impact Out of bounds read in GRUBlockCellGrad ```python func = tf.raw_ops.GRUBlockCellGrad  para = {'x': [[21.1, 156.2], [83.3, 115.4]], 'h_prev': array([[136.5],       [136.6]]), 'w_ru': array([[ (fix: 2.11.1)",
+    "snippet": "tensorflow==2.10.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2023-27579",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "tensorflow 2.10.1: ### Impact Constructing a tflite model with a paramater `filter_input_channel` of less than 1 gives a FPE.   ### Patches We have patched the issue in GitHub commit [34f8368c535253f5c9cb3a303297743b624 (fix: 2.11.1)",
+    "snippet": "tensorflow==2.10.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2023-25666",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "tensorflow 2.10.1: ### Impact version:2.11.0 //core/ops/audio_ops.cc:70  Status SpectrogramShapeFn(InferenceContext* c) { ShapeHandle input; TF_RETURN_IF_ERROR(c->WithRank(c->input(0), 2, &input)); int32_t window_size;  (fix: 2.11.1)",
+    "snippet": "tensorflow==2.10.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2023-25665",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "tensorflow 2.10.1: ### Impact When `SparseSparseMaximum` is given invalid sparse tensors as inputs, it can give an NPE.   ```python import tensorflow as tf tf.raw_ops.SparseSparseMaximum(  a_indices=[[1]],  a_values =[  (fix: 2.11.1)",
+    "snippet": "tensorflow==2.10.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2023-25801",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "tensorflow 2.10.1: ### Impact `nn_ops.fractional_avg_pool_v2` and `nn_ops.fractional_max_pool_v2` require the first and fourth elements of their parameter `pooling_ratio` to be equal to 1.0, as pooling on batch and chan (fix: 2.11.1)",
+    "snippet": "tensorflow==2.10.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2023-25667",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "tensorflow 2.10.1: ### Impact Integer overflow occurs when 2^31 <= num_frames * height * width * channels < 2^32, for example Full HD screencast of at least 346 frames. ```python import urllib.request dat = urllib.reque (fix: 2.11.1)",
+    "snippet": "tensorflow==2.10.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2023-25661",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "tensorflow 2.10.1: ### Impact A malicious invalid input crashes a tensorflow model (Check Failed) and can be used to trigger a denial of service attack. To minimize the bug, we built a simple single-layer TensorFlow mod (fix: 2.11.1)",
+    "snippet": "tensorflow==2.10.1",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2022-42980",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "pillow 9.2.0: Pillow before 9.3.0 allows denial of service via SAMPLESPERPIXEL. (fix: 9.3.0)",
+    "snippet": "pillow==9.2.0",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2023-175",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "pillow 9.2.0: Pillow versions before v10.0.1 bundled libwebp binaries in wheels that are vulnerable to CVE-2023-5129 (previously CVE-2023-4863). Pillow v10.0.1 upgrades the bundled libwebp binary to v1.3.2. (fix: 10.0.1)",
+    "snippet": "pillow==9.2.0",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2023-227",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "pillow 9.2.0: An issue was discovered in Pillow before 10.0.0. It is a Denial of Service that uncontrollably allocates memory to process a given task, potentially causing a service to crash by having it run out of  (fix: 10.0.0)",
+    "snippet": "pillow==9.2.0",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "OSV-2022-715",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "pillow 9.2.0: OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=50217 https://pillow.readthedocs.io/en/stable/releasenotes/9.3.0.html#decode-jpeg-compressed-blp1-data-in-original-mode  ``` Cras (fix: no fix listed)",
+    "snippet": "pillow==9.2.0",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "OSV-2022-1074",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "pillow 9.2.0: OSS-Fuzz report: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=52587  ``` Crash type: Invalid-free Crash state: _dealloc _Py_DECREF frame_dealloc ``` (fix: no fix listed)",
+    "snippet": "pillow==9.2.0",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2023-50447",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "pillow 9.2.0: Pillow through 10.1.0 allows PIL.ImageMath.eval Arbitrary Code Execution via the environment parameter, a different vulnerability than CVE-2022-22817 (which was about the expression parameter). (fix: 10.2.0)",
+    "snippet": "pillow==9.2.0",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2023-4863",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "pillow 9.2.0: Heap buffer overflow in libwebp allow a remote attacker to perform an out of bounds memory write via a crafted HTML page. (fix: 10.0.1)",
+    "snippet": "pillow==9.2.0",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2024-28219",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "pillow 9.2.0: In _imagingcms.c in Pillow before 10.3.0, a buffer overflow exists because strcpy is used instead of strncpy. (fix: 10.3.0)",
+    "snippet": "pillow==9.2.0",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2026-42308",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "pillow 9.2.0: If a font advances for each glyph by an exceeding large amount, when Pillow keeps track of the current position, it may lead to an integer overflow. This has been fixed. (fix: 12.2.0)",
+    "snippet": "pillow==9.2.0",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2026-42310",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "pillow 9.2.0: ### Impact An attacker can supply a malicious PDF that causes the process to hang indefinitely, consuming 100% CPU and making the application unresponsive.  ### Patches Patched version: 12.2.0.  PdfPa (fix: 12.2.0)",
+    "snippet": "pillow==9.2.0",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2025-121",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "keras 2.10.0: An issue in keras 3.7.0 allows attackers to write arbitrary files to the user's machine via downloading a crafted tar file through the get_file function. (fix: no fix listed)",
+    "snippet": "keras==2.10.0",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2025-9906",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "keras 2.10.0: ### Arbitrary Code Execution in Keras  Keras versions prior to 3.11.0 allow for arbitrary code execution when loading a crafted `.keras` model archive, even when `safe_mode=True`.  The issue arises be (fix: 3.11.0)",
+    "snippet": "keras==2.10.0",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2025-12058",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "keras 2.10.0: The Keras.Model.load_model method, including when executed with the intended security mitigation safe_mode=True, is vulnerable to arbitrary local file loading and Server-Side Request Forgery (SSRF).   (fix: 3.12.0)",
+    "snippet": "keras==2.10.0",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2025-12060",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "keras 2.10.0: ## Summary  Keras's `keras.utils.get_file()` function is vulnerable to directory traversal attacks despite implementing `filter_safe_paths()`. The vulnerability exists because `extract_archive()` uses (fix: 3.12.0)",
+    "snippet": "keras==2.10.0",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2026-1462",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "keras 2.10.0: A vulnerability in the `TFSMLayer` class of the `keras` package, version 3.13.0, allows attacker-controlled TensorFlow SavedModels to be loaded during deserialization of `.keras` models, even when `sa (fix: 3.13.2)",
+    "snippet": "keras==2.10.0",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2025-4565",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "protobuf 3.19.6: ### Summary Any project that uses Protobuf pure-Python backend to parse untrusted Protocol Buffers data containing an arbitrary number of **recursive groups**, **recursive messages** or **a series of  (fix: 4.25.8, 5.29.5, 6.31.1)",
+    "snippet": "protobuf==3.19.6",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2026-0994",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "protobuf 3.19.6: A denial-of-service (DoS) vulnerability exists in google.protobuf.json_format.ParseDict() in Python, where the max_recursion_depth limit can be bypassed when parsing nested google.protobuf.Any message (fix: 5.29.6, 6.33.5)",
+    "snippet": "protobuf==3.19.6",
+    "stage": "dependencies"
+  }
+]

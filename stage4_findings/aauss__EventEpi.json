@@ -1,0 +1,192 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "eventepi/classification.py",
+    "line": 246,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "245             with open(path, \"rb\") as f:\n246                 return pickle.load(f)\n247         else:",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "eventepi/corpus_reader.py",
+    "line": 146,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "145             with open(path, \"rb\") as f:\n146                 yield pickle.load(f)\n147",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "eventepi/embed.py",
+    "line": 51,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "50         with open(path, \"rb\") as f:\n51             return pickle.load(f)\n52",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "eventepi/scraper.py",
+    "line": 54,
+    "message": "Call to requests without timeout",
+    "snippet": "53     def _find_archives_by_year(self) -> List[str]:\n54         archive = requests.get(\n55             \"http://www.who.int/csr/don/archive/year/en/\", headers=self.headers\n56         )\n57         archive_soup = BeautifulSoup(archive.content, \"html.parser\")",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "eventepi/scraper.py",
+    "line": 66,
+    "message": "Call to requests without timeout",
+    "snippet": "65     def _find_urls_in_archived_year(self, url: str) -> List[str]:\n66         archive_by_year = requests.get(url)\n67         soup_by_year = BeautifulSoup(archive_by_year.content, \"html.parser\")",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "eventepi/scraper.py",
+    "line": 77,
+    "message": "Call to requests without timeout",
+    "snippet": "76         if not path.exists():\n77             page = requests.get(url, headers=self.headers).content.decode(\"utf-8\")\n78             with open(path, \"w\", encoding=\"utf-8\") as f:",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "eventepi/scraper.py",
+    "line": 162,
+    "message": "Call to requests without timeout",
+    "snippet": "161         try:\n162             return requests.post(\n163                 \"https://promedmail.org/wp-admin/admin-ajax.php\",\n164                 headers={\"User-Agent\": \"Mozilla/5.0 Gecko/20100101 Firefox/75.0\",},\n165                 data={\n166                     \"action\": \"get_promed_search_content\",\n167                     \"query[0][name]\": \"pagenum\",\n168                     f\"query[0][value]\": ",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "eventepi/scraper.py",
+    "line": 215,
+    "message": "Call to requests without timeout",
+    "snippet": "214         \"\"\"\n215         response = requests.post(\n216             \"https://promedmail.org/wp-admin/admin-ajax.php\",\n217             headers={\"User-Agent\": \"Mozilla/5.0 Gecko/20100101 Firefox/75.0\",},\n218             data={\"action\": \"get_latest_post_data\", \"alertId\": str(id_)},\n219         )\n220         try:",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "eventepi/wiki_extractor.py",
+    "line": 1772,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "1771         expr = re.sub('\\bround\\b', '|ROUND|', expr)\n1772         return text_type(eval(expr))\n1773     except:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "eventepi/wiki_util.py",
+    "line": 38,
+    "message": "Call to requests without timeout",
+    "snippet": "37     file_path: Path = wiki_folder / Path(\"enwiki-latest-pages-articles.xml.bz2\")\n38     with requests.get(wiki_dump_url, stream=True) as r:\n39         with open(file_path, \"wb\",) as f:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "eventepi/classification.py",
+    "line": 246,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "eventepi/classification.py",
+    "line": 357,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "eventepi/classification.py",
+    "line": 422,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "eventepi/classification.py",
+    "line": 490,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "eventepi/corpus_reader.py",
+    "line": 110,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "eventepi/corpus_reader.py",
+    "line": 146,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "eventepi/embed.py",
+    "line": 51,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "info",
+    "rule_id": "python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http",
+    "file_path": "eventepi/scraper.py",
+    "line": 55,
+    "message": "Detected a request using 'http://'. This request will be unencrypted, and attackers could listen into traffic on the network and be able to obtain sensitive information. Use 'https://' instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "eventepi/wiki_extractor.py",
+    "line": 1772,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

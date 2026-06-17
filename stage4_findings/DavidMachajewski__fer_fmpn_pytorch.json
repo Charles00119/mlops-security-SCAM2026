@@ -1,0 +1,442 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "datasets/masks/GTMCreator.py",
+    "line": 27,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "26     imagedir = \"../ckp/images_cropped/\"  # original images\n27     labels = pickle.load(open(\"emotion_labels.pkl\", \"rb\"))  # label = -1 means there is no label provided\n28     __bbldmk__ = pickle.load(open(\"bbox_landmark_mtcnn.pkl\", \"rb\"))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "datasets/masks/GTMCreator.py",
+    "line": 28,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "27     labels = pickle.load(open(\"emotion_labels.pkl\", \"rb\"))  # label = -1 means there is no label provided\n28     __bbldmk__ = pickle.load(open(\"bbox_landmark_mtcnn.pkl\", \"rb\"))\n29",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "datasets/masks/GTMCreator2.py",
+    "line": 14,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "13     imagedir = \"../ckp/images_cropped/\"  # original images\n14     labels = pickle.load(open(\"emotion_labels.pkl\", \"rb\")) # label = -1 means there is no label provided\n15     __bbldmk__ = pickle.load(open(\"bbox_landmark_mtcnn.pkl\", \"rb\"))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "datasets/masks/GTMCreator2.py",
+    "line": 15,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "14     labels = pickle.load(open(\"emotion_labels.pkl\", \"rb\")) # label = -1 means there is no label provided\n15     __bbldmk__ = pickle.load(open(\"bbox_landmark_mtcnn.pkl\", \"rb\"))\n16",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "datasets/masks/masks.py",
+    "line": 16,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "15 \n16 marks = pickle.load(open(path, \"rb\"))\n17",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "lib/agents/agent.py",
+    "line": 42,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "41         file_to_read = open(path)\n42         loaded_dict = pickle.load(file_to_read)\n43         return loaded_dict",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "lib/agents/densenet_agent.py",
+    "line": 77,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "76         try:\n77             ckpt = torch.load(file_name)\n78             self.tmp_epoch = ckpt['epoch']",
+    "stage": "evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "lib/agents/fmg_agent.py",
+    "line": 93,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "92             print(\"Loading checkpoint {0} for {1} model\".format(file_name, self.name))\n93             checkpoint = torch.load(file_name)\n94",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "lib/agents/fmpn_agent.py",
+    "line": 195,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "194         try:\n195             fmg_ckpt = torch.load(file_name_fmg)\n196             self.tmp_epoch = fmg_ckpt['epoch']",
+    "stage": "evaluation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "lib/agents/fmpn_agent.py",
+    "line": 209,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "208             print(file_name_cn)\n209             fmg_ckpt = torch.load(file_name_fmg)\n210             pfn_ckpt = torch.load(file_name_pfn)",
+    "stage": "evaluation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "lib/agents/fmpn_agent.py",
+    "line": 210,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "209             fmg_ckpt = torch.load(file_name_fmg)\n210             pfn_ckpt = torch.load(file_name_pfn)\n211             cn_ckpt = torch.load(file_name_cn)",
+    "stage": "evaluation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "lib/agents/fmpn_agent.py",
+    "line": 211,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "210             pfn_ckpt = torch.load(file_name_pfn)\n211             cn_ckpt = torch.load(file_name_cn)\n212",
+    "stage": "evaluation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "lib/agents/fmpn_mod_agent.py",
+    "line": 235,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "234         try:\n235             fmg_ckpt = torch.load(file_name_fmg)\n236             self.tmp_epoch = fmg_ckpt['epoch']",
+    "stage": "evaluation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "lib/agents/fmpn_mod_agent.py",
+    "line": 249,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "248             print(file_name_cn)\n249             fmg_ckpt = torch.load(file_name_fmg)\n250             pfn_ckpt = torch.load(file_name_pfn)",
+    "stage": "evaluation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "lib/agents/fmpn_mod_agent.py",
+    "line": 250,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "249             fmg_ckpt = torch.load(file_name_fmg)\n250             pfn_ckpt = torch.load(file_name_pfn)\n251             cn_ckpt = torch.load(file_name_cn)",
+    "stage": "evaluation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "lib/agents/fmpn_mod_agent.py",
+    "line": 251,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "250             pfn_ckpt = torch.load(file_name_pfn)\n251             cn_ckpt = torch.load(file_name_cn)\n252",
+    "stage": "evaluation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "lib/agents/inc_agent.py",
+    "line": 95,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "94         try:\n95             ckpt = torch.load(file_name)\n96             self.tmp_epoch = ckpt['epoch']",
+    "stage": "evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "lib/agents/resnet_agent.py",
+    "line": 77,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "76         try:\n77             ckpt = torch.load(file_name)\n78             self.tmp_epoch = ckpt['epoch']",
+    "stage": "evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "lib/agents/scnn_agent.py",
+    "line": 85,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "84         try:\n85             ckpt = torch.load(file_name)\n86             self.tmp_epoch = ckpt['epoch']",
+    "stage": "evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "lib/dataloader/datasets.py",
+    "line": 239,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "238 \n239         ds_labels = pickle.load(open(self.args.labels, \"rb\"))\n240",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "lib/eval/eval_utils.py",
+    "line": 76,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "75     file_to_read = open(path_to_dict, \"rb\")\n76     loaded_dict = load(file_to_read)\n77",
+    "stage": "data_acquisition+evaluation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "lib/eval/eval_utils.py",
+    "line": 109,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "108     file_to_read = open(path_to_dict, \"rb\")\n109     loaded_dict = load(file_to_read)\n110",
+    "stage": "data_acquisition+evaluation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "lib/eval/eval_utils.py",
+    "line": 137,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "136     file_to_read = open(path_to_dict, \"rb\")\n137     loaded_dict = load(file_to_read)\n138",
+    "stage": "data_acquisition+evaluation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "lib/eval/eval_utils.py",
+    "line": 152,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "151     file_to_read = open(path_to_dict, \"rb\")\n152     loaded_dict = load(file_to_read)\n153",
+    "stage": "data_acquisition+evaluation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "lib/models/models.py",
+    "line": 318,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "317 \n318                 pretrained_state_dict = to.load(load_path, map_location=str(self.device))\n319                 if hasattr(pretrained_state_dict, '_metadata'):",
+    "stage": "modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "datasets/masks/GTMCreator.py",
+    "line": 27,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "datasets/masks/GTMCreator.py",
+    "line": 28,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "datasets/masks/GTMCreator2.py",
+    "line": 14,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "datasets/masks/GTMCreator2.py",
+    "line": 15,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "datasets/masks/masks.py",
+    "line": 16,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "lib/agents/agent.py",
+    "line": 38,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "lib/agents/agent.py",
+    "line": 42,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "lib/agents/densenet_agent.py",
+    "line": 112,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "evaluation+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "lib/agents/fmpn_agent.py",
+    "line": 276,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "evaluation+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "lib/agents/fmpn_mod_agent.py",
+    "line": 316,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "evaluation+inference+modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "lib/agents/inc_agent.py",
+    "line": 126,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "evaluation+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "lib/agents/resnet_agent.py",
+    "line": 108,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "evaluation+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "lib/agents/scnn_agent.py",
+    "line": 116,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "evaluation+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "lib/dataloader/datasets.py",
+    "line": 239,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "lib/eval/eval_utils.py",
+    "line": 76,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "lib/eval/eval_utils.py",
+    "line": 109,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "lib/eval/eval_utils.py",
+    "line": 137,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "lib/eval/eval_utils.py",
+    "line": 152,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "lib/models/models.py",
+    "line": 548,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "modeling+training"
+  }
+]

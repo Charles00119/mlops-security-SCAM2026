@@ -1,0 +1,532 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "data/collector.py",
+    "line": 11,
+    "message": "Call to requests without timeout",
+    "snippet": "10         try:\n11             http_request = requests.get('http://data.phishtank.com/data/online-valid.csv')\n12             phish_url_list = pandas.read_csv(io.StringIO(http_request.content.decode('utf-8')), usecols=['url'])",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "extractor.py",
+    "line": 41,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "40 word_splitter = LanguageModel('data/wordlist.txt.gz')\n41 brand_filter = load(open('data/brands.pkl', 'rb'))\n42 words_filter = load(open('data/words.pkl', 'rb'))",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "extractor.py",
+    "line": 42,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "41 brand_filter = load(open('data/brands.pkl', 'rb'))\n42 words_filter = load(open('data/words.pkl', 'rb'))\n43 phish_hints = load(open('data/phish_hints.pkl', 'rb'))",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "extractor.py",
+    "line": 43,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "42 words_filter = load(open('data/words.pkl', 'rb'))\n43 phish_hints = load(open('data/phish_hints.pkl', 'rb'))\n44 classifier = load(open('data/classifier.pkl', 'rb'))",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "extractor.py",
+    "line": 44,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "43 phish_hints = load(open('data/phish_hints.pkl', 'rb'))\n44 classifier = load(open('data/classifier.pkl', 'rb'))\n45 OPR_key = open(\"data/OPR_key.txt\").read()",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "feature_extractor.py",
+    "line": 42,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "41 word_splitter = wordninja.LanguageModel('data/wordlist.txt.gz')\n42 brand_filter = pickle.load(open('data/brands.pkl', 'rb'))\n43 words_filter = pickle.load(open('data/words.pkl', 'rb'))",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "feature_extractor.py",
+    "line": 43,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "42 brand_filter = pickle.load(open('data/brands.pkl', 'rb'))\n43 words_filter = pickle.load(open('data/words.pkl', 'rb'))\n44",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "feature_extractor.py",
+    "line": 47,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "46 translator = Translator()\n47 phish_hints = pickle.load(open('data/phish_hints.pkl', 'rb'))\n48",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "feature_extractor.py",
+    "line": 53,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "52 \n53 classifier = load(open('data/classifier.pkl', 'rb'))\n54",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "final_parser.py",
+    "line": 39,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "38 word_splitter = LanguageModel('data/wordlist.txt.gz')\n39 brand_filter = load(open('data/brands.pkl', 'rb'))\n40 words_filter = load(open('data/words.pkl', 'rb'))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "final_parser.py",
+    "line": 40,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "39 brand_filter = load(open('data/brands.pkl', 'rb'))\n40 words_filter = load(open('data/words.pkl', 'rb'))\n41 phish_hints = load(open('data/phish_hints.pkl', 'rb'))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "final_parser.py",
+    "line": 41,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "40 words_filter = load(open('data/words.pkl', 'rb'))\n41 phish_hints = load(open('data/phish_hints.pkl', 'rb'))\n42 classifier = load(open('data/classifier.pkl', 'rb'))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "final_parser.py",
+    "line": 42,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "41 phish_hints = load(open('data/phish_hints.pkl', 'rb'))\n42 classifier = load(open('data/classifier.pkl', 'rb'))\n43 OPR_key = open(\"data/OPR_key.txt\").read()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ml_algs.py",
+    "line": 269,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "268     with open(\"data/trials/{}/results.pkl\".format(dir), 'rb') as f:\n269         data = pickle.load(f)\n270         data = data.results",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ml_algs.py",
+    "line": 396,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "395         with open(\"data/trials/neural_networks_kfold/results.pkl\", 'rb') as file:\n396             trials = pickle.load(file)\n397     except:",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ml_algs.py",
+    "line": 796,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "795         with open(\"data/trials/XGB/results.pkl\", 'rb') as file:\n796             trials = pickle.load(file)\n797     except:",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ml_algs.py",
+    "line": 898,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "897         with open(\"data/trials/DT/results.pkl\", 'rb') as file:\n898             trials = pickle.load(file)\n899     except:",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ml_algs.py",
+    "line": 993,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "992         with open(\"data/trials/SVM/results.pkl\", 'rb') as file:\n993             trials = pickle.load(file)\n994     except:",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ml_algs.py",
+    "line": 1084,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "1083         with open(\"data/trials/KNN/results.pkl\", 'rb') as file:\n1084             trials = pickle.load(file)\n1085     except:",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ml_algs.py",
+    "line": 1177,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "1176         with open(\"data/trials/ET/results.pkl\", 'rb') as file:\n1177             trials = pickle.load(file)\n1178     except:",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ml_algs.py",
+    "line": 1281,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "1280         with open(\"data/trials/RF/results.pkl\", 'rb') as file:\n1281             trials = pickle.load(file)\n1282     except:",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ml_algs.py",
+    "line": 1386,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "1385         with open(\"data/trials/AdaBoost_DT/results.pkl\", 'rb') as file:\n1386             trials = pickle.load(file)\n1387     except:",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ml_algs.py",
+    "line": 1494,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "1493         with open(\"data/trials/Bagging_DT/results.pkl\", 'rb') as file:\n1494             trials = pickle.load(file)\n1495     except:",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ml_algs.py",
+    "line": 1601,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "1600         with open(\"data/trials/GradientBoost/results.pkl\", 'rb') as file:\n1601             trials = pickle.load(file)\n1602     except:",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ml_algs.py",
+    "line": 1703,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "1702         with open(\"data/trials/HistGradientBoost/results.pkl\", 'rb') as file:\n1703             trials = pickle.load(file)\n1704     except:",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ml_algs.py",
+    "line": 1798,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "1797         with open(\"data/trials/logistic_regression/results.pkl\", 'rb') as file:\n1798             trials = pickle.load(file)\n1799     except:",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ml_algs.py",
+    "line": 2259,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "2258     clf = AdaBoostClassifier(\n2259         DecisionTreeClassifier().set_params(**pickle.load(open('data/trials/DT/params.pkl', 'rb'))),\n2260         n_estimators=space['n_estimators'],",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ml_algs.py",
+    "line": 2297,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "2296     clf = BaggingClassifier(\n2297         DecisionTreeClassifier().set_params(**pickle.load(open('data/trials/DT/params.pkl', 'rb'))),\n2298         n_estimators=space['n_estimators'],",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ml_algs.py",
+    "line": 2522,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "2521 \n2522 ann = KerasClassifier(build_fn=create_model, epochs=len(pickle.load(open('data/trials/neural_networks/history.pkl','rb'))['loss'])-3, batch_size=64, verbose=2)\n2523 ann._estimator_type = \"classifier\"",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ml_algs.py",
+    "line": 2552,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "2551     clfs = {\n2552         \"XGB\": xgb.XGBClassifier(**pickle.load(open('data/trials/XGB/params.pkl', 'rb'))),\n2553         'LR': LogisticRegression(**pickle.load(open('data/trials/logistic_regression/params.pkl', 'rb'))),",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ml_algs.py",
+    "line": 2553,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "2552         \"XGB\": xgb.XGBClassifier(**pickle.load(open('data/trials/XGB/params.pkl', 'rb'))),\n2553         'LR': LogisticRegression(**pickle.load(open('data/trials/logistic_regression/params.pkl', 'rb'))),\n2554         'ANN': ann,",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ml_algs.py",
+    "line": 2555,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "2554         'ANN': ann,\n2555         'SVM': SVC().set_params(**pickle.load(open('data/trials/SVM/params.pkl', 'rb'))),\n2556         'GNB': GaussianNB(),",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ml_algs.py",
+    "line": 2560,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "2559         'MNB': MultinomialNB(),\n2560         'RF': RandomForestClassifier().set_params(**pickle.load(open('data/trials/RF/params.pkl', 'rb'))),\n2561         'HGB': HistGradientBoostingClassifier().set_params(",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ml_algs.py",
+    "line": 2562,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "2561         'HGB': HistGradientBoostingClassifier().set_params(\n2562             **pickle.load(open('data/trials/HistGradientBoost/params.pkl', 'rb'))),\n2563         'GB': GradientBoostingClassifier().set_params(",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ml_algs.py",
+    "line": 2564,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "2563         'GB': GradientBoostingClassifier().set_params(\n2564             **pickle.load(open('data/trials/GradientBoost/params.pkl', 'rb'))),\n2565         'AB': AdaBoostClassifier().set_params(**pickle.load(open('data/trials/AdaBoost_DT/params.pkl', 'rb'))),",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ml_algs.py",
+    "line": 2565,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "2564             **pickle.load(open('data/trials/GradientBoost/params.pkl', 'rb'))),\n2565         'AB': AdaBoostClassifier().set_params(**pickle.load(open('data/trials/AdaBoost_DT/params.pkl', 'rb'))),\n2566         'KNN': KNeighborsClassifier().set_params(**pickle.load(open('data/trials/KNN/params.pkl', 'rb'))),",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ml_algs.py",
+    "line": 2566,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "2565         'AB': AdaBoostClassifier().set_params(**pickle.load(open('data/trials/AdaBoost_DT/params.pkl', 'rb'))),\n2566         'KNN': KNeighborsClassifier().set_params(**pickle.load(open('data/trials/KNN/params.pkl', 'rb'))),\n2567         'ET': ExtraTreesClassifier().set_params(**pickle.load(open('data/trials/ET/params.pkl', 'rb'))),",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ml_algs.py",
+    "line": 2567,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "2566         'KNN': KNeighborsClassifier().set_params(**pickle.load(open('data/trials/KNN/params.pkl', 'rb'))),\n2567         'ET': ExtraTreesClassifier().set_params(**pickle.load(open('data/trials/ET/params.pkl', 'rb'))),\n2568         'DT': DecisionTreeClassifier().set_params(**pickle.load(open('data/trials/DT/params.pkl', 'rb'))),",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ml_algs.py",
+    "line": 2568,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "2567         'ET': ExtraTreesClassifier().set_params(**pickle.load(open('data/trials/ET/params.pkl', 'rb'))),\n2568         'DT': DecisionTreeClassifier().set_params(**pickle.load(open('data/trials/DT/params.pkl', 'rb'))),\n2569         'B': BaggingClassifier().set_params(**pickle.load(open('data/trials/Bagging_DT/params.pkl', 'rb')))",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ml_algs.py",
+    "line": 2569,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "2568         'DT': DecisionTreeClassifier().set_params(**pickle.load(open('data/trials/DT/params.pkl', 'rb'))),\n2569         'B': BaggingClassifier().set_params(**pickle.load(open('data/trials/Bagging_DT/params.pkl', 'rb')))\n2570     }",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ml_algs.py",
+    "line": 2579,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "2578         estimators=models,\n2579         final_estimator=SVC().set_params(**pickle.load(open('data/trials/SVM/params.pkl', 'rb'))),\n2580         verbose=0,",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ml_algs.py",
+    "line": 2629,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "2628     clfs = {\n2629         \"XGB\": xgb.XGBClassifier(**pickle.load(open('data/trials/XGB/params.pkl', 'rb'))),\n2630         'LR': LogisticRegression(**pickle.load(open('data/trials/logistic_regression/params.pkl', 'rb'))),",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ml_algs.py",
+    "line": 2630,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "2629         \"XGB\": xgb.XGBClassifier(**pickle.load(open('data/trials/XGB/params.pkl', 'rb'))),\n2630         'LR': LogisticRegression(**pickle.load(open('data/trials/logistic_regression/params.pkl', 'rb'))),\n2631         'ANN': ann,",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ml_algs.py",
+    "line": 2632,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "2631         'ANN': ann,\n2632         'SVM': SVC().set_params(**pickle.load(open('data/trials/SVM/params.pkl', 'rb'))),\n2633         'GNB': GaussianNB(),",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ml_algs.py",
+    "line": 2637,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "2636         'MNB': MultinomialNB(),\n2637         'RF': RandomForestClassifier().set_params(**pickle.load(open('data/trials/RF/params.pkl', 'rb'))),\n2638         'HGB': HistGradientBoostingClassifier().set_params(",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ml_algs.py",
+    "line": 2639,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "2638         'HGB': HistGradientBoostingClassifier().set_params(\n2639             **pickle.load(open('data/trials/HistGradientBoost/params.pkl', 'rb'))),\n2640         'GB': GradientBoostingClassifier().set_params(",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ml_algs.py",
+    "line": 2641,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "2640         'GB': GradientBoostingClassifier().set_params(\n2641             **pickle.load(open('data/trials/GradientBoost/params.pkl', 'rb'))),\n2642         'AB': AdaBoostClassifier().set_params(**pickle.load(open('data/trials/AdaBoost_DT/params.pkl', 'rb'))),",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ml_algs.py",
+    "line": 2642,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "2641             **pickle.load(open('data/trials/GradientBoost/params.pkl', 'rb'))),\n2642         'AB': AdaBoostClassifier().set_params(**pickle.load(open('data/trials/AdaBoost_DT/params.pkl', 'rb'))),\n2643         'KNN': KNeighborsClassifier().set_params(**pickle.load(open('data/trials/KNN/params.pkl', 'rb'))),",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ml_algs.py",
+    "line": 2643,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "2642         'AB': AdaBoostClassifier().set_params(**pickle.load(open('data/trials/AdaBoost_DT/params.pkl', 'rb'))),\n2643         'KNN': KNeighborsClassifier().set_params(**pickle.load(open('data/trials/KNN/params.pkl', 'rb'))),\n2644         'ET': ExtraTreesClassifier().set_params(**pickle.load(open('data/trials/ET/params.pkl', 'rb'))),",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ml_algs.py",
+    "line": 2644,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "2643         'KNN': KNeighborsClassifier().set_params(**pickle.load(open('data/trials/KNN/params.pkl', 'rb'))),\n2644         'ET': ExtraTreesClassifier().set_params(**pickle.load(open('data/trials/ET/params.pkl', 'rb'))),\n2645         'DT': DecisionTreeClassifier().set_params(**pickle.load(open('data/trials/DT/params.pkl', 'rb'))),",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ml_algs.py",
+    "line": 2645,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "2644         'ET': ExtraTreesClassifier().set_params(**pickle.load(open('data/trials/ET/params.pkl', 'rb'))),\n2645         'DT': DecisionTreeClassifier().set_params(**pickle.load(open('data/trials/DT/params.pkl', 'rb'))),\n2646         'B': BaggingClassifier().set_params(**pickle.load(open('data/trials/Bagging_DT/params.pkl', 'rb')))",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ml_algs.py",
+    "line": 2646,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "2645         'DT': DecisionTreeClassifier().set_params(**pickle.load(open('data/trials/DT/params.pkl', 'rb'))),\n2646         'B': BaggingClassifier().set_params(**pickle.load(open('data/trials/Bagging_DT/params.pkl', 'rb')))\n2647     }",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ml_algs.py",
+    "line": 2655,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "2654                             'XGB, GB, RF'.replace(' ', '').split(',')],\n2655                 final_estimator=SVC().set_params(**pickle.load(open('data/trials/SVM/params.pkl', 'rb'))),\n2656                 verbose=0,",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  }
+]

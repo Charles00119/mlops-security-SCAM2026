@@ -1,0 +1,462 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "automl/proj_dataloader.py",
+    "line": 140,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "139         data_files = dict(data_files)\n140         datasets = load_dataset(data_dir, data_files=data_files, use_auth_token=True)\n141         dataset = get_preprocessed_data(datasets[name], name)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "automl/proj_dataloader.py",
+    "line": 216,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "215         data_files = dict(data_files)\n216         datasets = load_dataset(data_dir, data_files=data_files, use_auth_token=True)\n217         dataset = get_preprocessed_data(datasets[name], name)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "automl/src/model.py",
+    "line": 64,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "63             with open(cfg) as f:\n64                 self.cfg = yaml.load(f, Loader=yaml.FullLoader)\n65",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "automl/src/modules/bert.py",
+    "line": 35,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "34         # self.config = AutoConfig.from_pretrained(name)\n35         self.model = AutoModel.from_pretrained(name)\n36",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "automl/src/modules/electra.py",
+    "line": 35,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "34         super().__init__()\n35         self.model = AutoModel.from_pretrained(name)\n36",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "automl/src/utils/common.py",
+    "line": 14,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "13         with open(cfg) as f:\n14             config = yaml.load(f, Loader=yaml.FullLoader)\n15     else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "automl/train.py",
+    "line": 43,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "42         model_instance.model.load_state_dict(\n43             torch.load(model_path, map_location=device)\n44         )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "automl/train.py",
+    "line": 90,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "89     # evaluate model with test set\n90     model_instance.model.load_state_dict(torch.load(model_path))\n91     test_loss, test_f1, test_acc = trainer.test(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "automl/tune.py",
+    "line": 114,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "113     if module_info[\"m1\"][\"type\"] == \"Bert\":\n114         tokenizer = AutoTokenizer.from_pretrained(\"klue/bert-base\")\n115     elif module_info[\"m1\"][\"type\"] == \"Electra\":",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "automl/tune.py",
+    "line": 116,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "115     elif module_info[\"m1\"][\"type\"] == \"Electra\":\n116         tokenizer = AutoTokenizer.from_pretrained(\"beomi/beep-KcELECTRA-base-hate\")\n117",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "base/base_trainer.py",
+    "line": 146,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "145         self.logger.info(\"Loading checkpoint: {} ...\".format(resume_path))\n146         checkpoint = torch.load(resume_path)\n147         self.start_epoch = checkpoint['epoch'] + 1",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "data_loader/data_loaders.py",
+    "line": 81,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "80         data_files = dict(data_files)\n81         datasets = load_dataset(data_dir, data_files=data_files, use_auth_token=True)\n82         dataset = get_preprocessed_data(datasets[name], name)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "data_loader/kd_data_loaders.py",
+    "line": 128,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "127         data_files = dict(data_files)\n128         datasets = load_dataset(data_dir, data_files=data_files, use_auth_token=True)\n129         dataset = get_preprocessed_data(datasets[name], name)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "kd_train.py",
+    "line": 42,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "41     # build tokenizer\n42     student_tokenizer = AutoTokenizer.from_pretrained(config['tokenizer']['student']['type'])\n43     teacher_tokenizer = AutoTokenizer.from_pretrained(config['tokenizer']['teacher']['type'])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "kd_train.py",
+    "line": 43,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "42     student_tokenizer = AutoTokenizer.from_pretrained(config['tokenizer']['student']['type'])\n43     teacher_tokenizer = AutoTokenizer.from_pretrained(config['tokenizer']['teacher']['type'])\n44",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "model/model.py",
+    "line": 35,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "34         super().__init__()\n35         self.model = AutoModelForSequenceClassification.from_pretrained(name, num_labels=num_classes)\n36",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "model/model.py",
+    "line": 44,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "43         super().__init__()\n44         self.model = AutoModelForSequenceClassification.from_pretrained(name, num_labels=num_classes)\n45         self.model.electra.encoder.layer[3] = BeepKcElectraResMLayer(self.model, 3)",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "model/model.py",
+    "line": 130,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "129         \n130         self.embeddings = AutoModel.from_pretrained(name)\n131",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "model/model.py",
+    "line": 219,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "218         \n219         self.hate_embeddings = AutoModel.from_pretrained(name)\n220         self.bias_embeddings = AutoModel.from_pretrained('beomi/beep-KcELECTRA-base-bias')",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "model/model.py",
+    "line": 220,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "219         self.hate_embeddings = AutoModel.from_pretrained(name)\n220         self.bias_embeddings = AutoModel.from_pretrained('beomi/beep-KcELECTRA-base-bias')\n221",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "prototype/fullstack/app/base/base_trainer.py",
+    "line": 154,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "153         self.logger.info(\"Loading checkpoint: {} ...\".format(resume_path))\n154         checkpoint = torch.load(resume_path)\n155         self.start_epoch = checkpoint[\"epoch\"] + 1",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "prototype/fullstack/app/frontend.py",
+    "line": 18,
+    "message": "Call to requests without timeout",
+    "snippet": "17         with st.spinner('Collecting Evidence...'):\n18             response = requests.get('http://49.50.174.246:2227/get_sample/' + keyword)\n19         st.success('Done!')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "prototype/fullstack/app/load_data.py",
+    "line": 28,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "27 def load_data():\n28     dataset = load_dataset('AI-it/khs_service_test', data_files={'data':'test_data_ver2.csv'}, use_auth_token=True)\n29     return dataset['data']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "prototype/fullstack/app/main.py",
+    "line": 50,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "49 if __name__ == '__main__':\n50     uvicorn.run('main:app', host=\"0.0.0.0\", port=8000, reload=True)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "prototype/fullstack/app/model/model.py",
+    "line": 12,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "11         super().__init__()\n12         self.model = AutoModelForSequenceClassification.from_pretrained(name, num_labels=num_classes)\n13",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "prototype/fullstack/app/predict.py",
+    "line": 11,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "10 \n11     nh_model = torch.load('/opt/ml/final-project-level3-nlp-12/prototype/fullstack/app/model/nh_model.pt', map_location=device) ## 경로 맞게!\n12",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "prototype/fullstack/app/predict.py",
+    "line": 22,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "21 def load_dataloader(data):\n22     nh_tokenizer = AutoTokenizer.from_pretrained('beomi/beep-KcELECTRA-base-hate')\n23",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "prototype/streamlit/base/base_trainer.py",
+    "line": 154,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "153         self.logger.info(\"Loading checkpoint: {} ...\".format(resume_path))\n154         checkpoint = torch.load(resume_path)\n155         self.start_epoch = checkpoint[\"epoch\"] + 1",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "prototype/streamlit/model/model.py",
+    "line": 27,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "26         super().__init__()\n27         self.model = AutoModelForSequenceClassification.from_pretrained(name, num_labels=num_classes)\n28",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "prototype/streamlit/pipeline_test.py",
+    "line": 15,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "14 \n15     model = torch.load(model_path)\n16     model_config = read_json(config_path)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "prototype/streamlit/pipeline_test.py",
+    "line": 18,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "17 \n18     tokenizer = AutoTokenizer.from_pretrained(config.tokenizer)\n19",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "prototype/streamlit/predict.py",
+    "line": 14,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "13 \n14     model = torch.load(model_path, map_location=torch.device('cpu'))\n15     model_config = read_json(config_path)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "prototype/streamlit/predict.py",
+    "line": 17,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "16 \n17     tokenizer = AutoTokenizer.from_pretrained('beomi/KcELECTRA-base')\n18",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "simple_test.py",
+    "line": 16,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "15 \n16     model = torch.load(model_path)\n17     model_config = read_json(config_path)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "simple_test.py",
+    "line": 19,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "18 \n19     tokenizer = AutoTokenizer.from_pretrained(config.tokenizer)\n20",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "test.py",
+    "line": 22,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "21     # load model and tokenizer architecture\n22     model = torch.load(config['model']['type'])\n23     tokenizer = AutoTokenizer.from_pretrained(config['tokenizer']['type'])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "test.py",
+    "line": 23,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "22     model = torch.load(config['model']['type'])\n23     tokenizer = AutoTokenizer.from_pretrained(config['tokenizer']['type'])\n24",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "test.py",
+    "line": 78,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "77             \n78     dataset = load_dataset(config['data_loader']['args']['data_dir'], data_files=config['data_loader']['test_data_file'], use_auth_token=True)\n79     test_df = pd.DataFrame()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "test_automl.py",
+    "line": 28,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "27         with open(cfg) as f:\n28             config = yaml.load(f, Loader=yaml.FullLoader)\n29     else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "test_automl.py",
+    "line": 47,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "46     model.load_state_dict(\n47         torch.load(\n48             os.path.join(\n49                 config[\"saved_folder\"][\"path\"],\n50                 \"trial\" + str(config[\"saved_folder\"][\"trial\"]),\n51                 config[\"saved_folder\"][\"model_weight\"],\n52             )\n53         )\n54     )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "test_automl.py",
+    "line": 55,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "54     )\n55     tokenizer = AutoTokenizer.from_pretrained(config[\"model\"][\"args\"][\"name\"])\n56",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "test_automl.py",
+    "line": 99,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "98 \n99     dataset = load_dataset(\n100         config[\"data_dir\"], data_files=config[\"test_data_file\"], use_auth_token=True\n101     )\n102     test_df = pd.DataFrame()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "train.py",
+    "line": 42,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "41     model = config.init_obj('model', module_arch)\n42     tokenizer = AutoTokenizer.from_pretrained(config['tokenizer']['type'])\n43",
+    "stage": "data_preparation+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "utils/utils.py",
+    "line": 193,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "192         self.checklist = None\n193         self.ko_slang = load_dataset(\n194             \"AI-it/korean-hate-speech\",\n195             data_files={\"test\": \"korean_slang.json\"},\n196             use_auth_token=True,\n197         )[\"test\"][\"badwords\"][0]\n198         self.en_slang = load_dataset(",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "utils/utils.py",
+    "line": 198,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "197         )[\"test\"][\"badwords\"][0]\n198         self.en_slang = load_dataset(\n199             \"AI-it/korean-hate-speech\",\n200             data_files={\"test\": \"english_slang.json\"},\n201             use_auth_token=True,\n202         )[\"test\"][\"badwords\"][0]\n203",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "info",
+    "rule_id": "python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http",
+    "file_path": "prototype/fullstack/app/frontend.py",
+    "line": 18,
+    "message": "Detected a request using 'http://'. This request will be unencrypted, and attackers could listen into traffic on the network and be able to obtain sensitive information. Use 'https://' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

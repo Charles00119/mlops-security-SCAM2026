@@ -1,0 +1,72 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B201",
+    "file_path": "deployment/app.py",
+    "line": 29,
+    "message": "A Flask app appears to be run with debug=True, which exposes the Werkzeug debugger and allows the execution of arbitrary code.",
+    "snippet": "28         host=\"0.0.0.0\",\n29         debug=True,\n30         threaded=True,\n31         use_reloader=False,\n32         port=os.environ.get(\"PORT\", \"5000\"),\n33     )",
+    "stage": "inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "deployment/app.py",
+    "line": 28,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "27     app.run(\n28         host=\"0.0.0.0\",\n29         debug=True,",
+    "stage": "inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "pipeline_steps/bert_classifier_module.py",
+    "line": 11,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "10         super(BertHateClassifier, self).__init__()\n11         self.bert = BertModel.from_pretrained(POLBERT_PRETRAINED_ID, return_dict=True)\n12         self.classifier = nn.Linear(self.bert.config.hidden_size, NUM_HATE_CLASSES)",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "pipeline_steps/text_encoding.py",
+    "line": 11,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "10     def __init__(self, max_seq_len: int, padding: str = \"max_length\"):\n11         self.tokenizer = BertTokenizer.from_pretrained(POLBERT_PRETRAINED_ID)\n12         self.max_seq_len = max_seq_len",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "utils/pytorch.py",
+    "line": 10,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "9 def restore_weights_greedy(nn_module: torch.nn.Module, checkpoint_path: str) -> float:\n10     trained_state_dict = torch.load(checkpoint_path, map_location=\"cpu\")\n11     return restore_weights_greedy_from_state_dict(",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.app-run-param-config.avoid_app_run_with_bad_host",
+    "file_path": "deployment/app.py",
+    "line": 27,
+    "message": "Running flask app with host 0.0.0.0 could expose the server publicly.",
+    "snippet": "requires login",
+    "stage": "inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.debug-enabled.debug-enabled",
+    "file_path": "deployment/app.py",
+    "line": 27,
+    "message": "Detected Flask app with debug=True. Do not deploy to production with this flag enabled as it will leak sensitive information. Instead, consider using Flask configuration variables or setting 'debug' using system environment variables.",
+    "snippet": "requires login",
+    "stage": "inference"
+  }
+]

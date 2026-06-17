@@ -1,0 +1,32 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "main.py",
+    "line": 172,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "171     def loadCheckpoint(path, model):\n172         checkpoint = torch.load(path, map_location=device)\n173         try:",
+    "stage": "data_acquisition+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "main.py",
+    "line": 334,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "333         ##load the best checkpoint and evaulate it. \n334         checkpoint = torch.load(batchDirectory + \"saved_checkpoints/model_best.pt\", map_location=device)\n335         model.load_state_dict(checkpoint['model_state_dict'])",
+    "stage": "data_acquisition+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "train.py",
+    "line": 243,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "242 def loadCheckpoint(model, optimizer, PATH):\n243     checkpoint = torch.load(PATH)\n244     model.load_state_dict(checkpoint['model_state_dict'])",
+    "stage": "inference+training"
+  }
+]

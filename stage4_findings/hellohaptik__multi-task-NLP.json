@@ -1,0 +1,32 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "infer_pipeline.py",
+    "line": 46,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "45 \n46         loadedDict = torch.load(self.modelPath, map_location=device)\n47         self.taskParams = loadedDict['task_params']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "run_inference.py",
+    "line": 46,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "45     assert os.path.exists(args.pred_file_path), \"prediction tsv file not present at {}\".format(args.pred_file_path)\n46     loadedDict = torch.load(args.saved_model_path, map_location=device)\n47     taskParamsModel = loadedDict['task_params']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "train.py",
+    "line": 156,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "155         assert os.path.exists(args.load_saved_model), \"saved model not present at {}\".format(args.load_saved_model)\n156         loadedDict = torch.load(args.load_saved_model, map_location=device)\n157         logger.info('Saved Model loaded from {}'.format(args.load_saved_model))",
+    "stage": "data_acquisition+inference+training"
+  }
+]

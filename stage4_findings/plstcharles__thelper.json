@@ -1,0 +1,532 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "tests/test_cli.py",
+    "line": 419,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "418     model = thelper.nn.create_model(config=None, task=None, ckptdata=ckptdata)\n419     assert model(eval(export_config[\"export\"][\"trace_input\"])).shape == (1, 1000)\n420",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "tests/transforms/test_operations.py",
+    "line": 17,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "16     assert transf_inv is sample\n17     op2 = eval(repr(op))\n18     assert type(op) == type(op2)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "tests/transforms/test_operations.py",
+    "line": 42,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "41         _ = op.invert(cvt_sample)\n42     op2 = eval(repr(op))\n43     assert type(op) == type(op2)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "tests/transforms/test_operations.py",
+    "line": 108,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "107         _ = op1.invert(out1)\n108     op3 = eval(repr(op1))\n109     assert type(op1) == type(op3)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "thelper/cli.py",
+    "line": 459,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "458     if isinstance(trace_input, str):\n459         trace_input = eval(trace_input)\n460     logger.info(\"exporting model '%s'...\" % session_name)",
+    "stage": "data_acquisition+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "thelper/data/geo/bigearthnet.py",
+    "line": 128,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "127                 with open(self.metadata_cache, \"rb\") as cache:\n128                     self.samples = pickle.load(cache)\n129                 assert len(self.samples) == patch_count, \"unexpected metadata sample count\"",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "thelper/data/geo/bigearthnet.py",
+    "line": 134,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "133                     assert meta_str.startswith(\"BigEarthNetPatch(\")\n134                     self.samples.append(eval(meta_str))\n135                 if self.metadata_cache:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "thelper/data/geo/bigearthnet.py",
+    "line": 205,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "204             with open(metadata_cache_path, \"rb\") as fd:\n205                 self.patches = pickle.load(fd)\n206         else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "thelper/data/geo/gdl.py",
+    "line": 52,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "51                         if metadata.startswith(\"collections.OrderedDict\"):\n52                             metadata = eval(metadata)\n53                     self.metadata.append(metadata)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "thelper/data/geo/parsers.py",
+    "line": 208,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "207             with open(cache_file_path, \"rb\") as fd:\n208                 features = pickle.load(fd)\n209         else:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "thelper/data/geo/parsers.py",
+    "line": 233,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "232             with open(cache_file_path, \"rb\") as fd:\n233                 samples = pickle.load(fd)\n234         else:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "thelper/data/parsers.py",
+    "line": 205,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "204         self.task = thelper.tasks.create_task(self.archive.attrs[\"task\"])\n205         self.orig_config = eval(self.archive.attrs[\"config\"])\n206         compr_config = eval(self.archive.attrs[\"compression\"])",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "thelper/data/parsers.py",
+    "line": 206,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "205         self.orig_config = eval(self.archive.attrs[\"config\"])\n206         compr_config = eval(self.archive.attrs[\"compression\"])\n207         if subset not in self.archive:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B314",
+    "file_path": "thelper/data/pascalvoc.py",
+    "line": 183,
+    "message": "Using xml.etree.ElementTree.parse to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.parse with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "182                 assert os.path.isfile(annotation_file_path), \"cannot load annotation file for sample '%s'\" % sample_name\n183                 annotation = xml.etree.ElementTree.parse(annotation_file_path).getroot()\n184                 assert annotation.tag == \"annotation\", \"unexpected xml content\"",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "thelper/nn/utils.py",
+    "line": 161,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "160         if model_state is not None and isinstance(model_state, str) and os.path.isfile(model_state):\n161             model_state = torch.load(model_state)\n162     if model is None:",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "thelper/tasks/utils.py",
+    "line": 55,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "54             task_type = thelper.utils.import_class(task_type_name)\n55             task_params = eval(\": \".join(config.split(\": \")[1:]))\n56             task = task_type(**task_params)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "thelper/tasks/utils.py",
+    "line": 58,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "57         else:\n58             task = eval(config)\n59         if not isinstance(task, thelper.tasks.Task):",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "thelper/train/ae.py",
+    "line": 191,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "190                     if isinstance(self.reconstr_display_mean, str):\n191                         display_mean = eval(self.reconstr_display_mean)\n192                     else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "thelper/train/ae.py",
+    "line": 195,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "194                     if isinstance(self.reconstr_display_stddev, str):\n195                         display_stddev = eval(self.reconstr_display_stddev)\n196                     else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "thelper/utils.py",
+    "line": 239,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "238             basepath = os.path.dirname(os.path.abspath(ckpt.name))\n239     ckptdata = torch.load(ckpt, map_location=map_location)\n240     if not isinstance(ckptdata, dict):",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "thelper/utils.py",
+    "line": 279,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "278             if trace_path.endswith(\".pth\"):\n279                 ckptdata[\"model\"] = torch.load(trace_path, map_location=map_location)\n280             elif trace_path.endswith(\".zip\"):",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "thelper/utils.py",
+    "line": 572,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "571         logger.info(\"Downloading %s to %s ...\" % (url, fpath))\n572         urllib.request.urlretrieve(url, fpath, reporthook)\n573         sys.stdout.write(\"\\r\")",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "thelper/utils.py",
+    "line": 576,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "575     if md5 is not None:\n576         md5o = hashlib.md5()\n577         with open(fpath, 'rb') as f:",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "thelper/utils.py",
+    "line": 615,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "614     os.chdir(root)\n615     tar.extractall()\n616     tar.close()",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "thelper/utils.py",
+    "line": 845,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "844         if isinstance(kwargs[\"flags\"], str):  # required arg by opencv\n845             kwargs[\"flags\"] = eval(kwargs[\"flags\"])\n846         import cv2 as cv",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "thelper/utils.py",
+    "line": 1328,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "1327         with open(path, \"rb\") as fd:\n1328             config = pickle.load(fd, **kwargs)\n1329     else:",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "thelper/utils.py",
+    "line": 1473,
+    "message": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "snippet": "1472     clean_str = re.sub(r\" at 0x[a-fA-F\\d]+\", \"\", str(args) + str(kwargs))\n1473     return hashlib.sha1(clean_str.encode()).hexdigest()\n1474",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "thelper/cli.py",
+    "line": 459,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "thelper/data/geo/bigearthnet.py",
+    "line": 128,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "thelper/data/geo/bigearthnet.py",
+    "line": 134,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "thelper/data/geo/bigearthnet.py",
+    "line": 137,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "thelper/data/geo/bigearthnet.py",
+    "line": 205,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "thelper/data/geo/bigearthnet.py",
+    "line": 211,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "thelper/data/geo/gdl.py",
+    "line": 52,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "thelper/data/geo/parsers.py",
+    "line": 208,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "thelper/data/geo/parsers.py",
+    "line": 218,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "thelper/data/geo/parsers.py",
+    "line": 233,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "thelper/data/geo/parsers.py",
+    "line": 239,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "thelper/data/parsers.py",
+    "line": 205,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "thelper/data/parsers.py",
+    "line": 206,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml.use-defused-xml",
+    "file_path": "thelper/data/pascalvoc.py",
+    "line": 10,
+    "message": "The Python documentation recommends using `defusedxml` instead of `xml` because the native Python `xml` library is vulnerable to XML External Entity (XXE) attacks. These attacks can leak confidential data and \"XML bombs\" can cause denial of service.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml-parse.use-defused-xml-parse",
+    "file_path": "thelper/data/pascalvoc.py",
+    "line": 183,
+    "message": "The native Python `xml` library is vulnerable to XML External Entity (XXE) attacks.  These attacks can leak confidential data and \"XML bombs\" can cause denial of service. Do not use this library to parse untrusted input. Instead  the Python documentation recommends using `defusedxml`.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "thelper/session/base.py",
+    "line": 463,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "evaluation+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "thelper/tasks/utils.py",
+    "line": 55,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "thelper/tasks/utils.py",
+    "line": 58,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "thelper/train/ae.py",
+    "line": 191,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "thelper/train/ae.py",
+    "line": 195,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "thelper/utils.py",
+    "line": 572,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "thelper/utils.py",
+    "line": 576,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "thelper/utils.py",
+    "line": 845,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "thelper/utils.py",
+    "line": 1328,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "thelper/utils.py",
+    "line": 1367,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1",
+    "file_path": "thelper/utils.py",
+    "line": 1473,
+    "message": "Detected SHA1 hash algorithm which is considered insecure. SHA1 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference"
+  }
+]

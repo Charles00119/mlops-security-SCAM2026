@@ -1,0 +1,1522 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "app.py",
+    "line": 157,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "156         if 'loggedin' in session:\n157             query = f'''\n158             select tp.Id,tp.Name,tp.Description,tp.Cassandra_Table_Name,\n159             (Select ts.Name from tblProjectReports join tblProjectStatus as ts on ts.Id=ModuleId   Where ProjectId=tp.Id  LIMIT 1) as ModuleName,\n160             ts.Indetifier,tp.Pid,tp.TargetColumn,tpy.Name\n161             from tblProjects as tp\n162  ",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "app.py",
+    "line": 248,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "247                         status = 1\n248                         query = f\"\"\"INSERT INTO tblProjects (UserId, Name, Description, Status, \n249                        Cassandra_Table_Name,Pid,ProjectType) VALUES\n250                        (\"{userId}\", \"{name}\", \"{description}\", \"1\", \"{table_name}\",\"{project_id}\",\"{project_type}\")\"\"\"\n251",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "app.py",
+    "line": 440,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "439                             status = 1\n440                             query = f\"\"\"INSERT INTO tblProjects (UserId, Name, Description, Status, \n441                                                Cassandra_Table_Name,Pid) VALUES\n442                                                (\"{userId}\", \"{name}\", \"{description}\", \"1\", \"{table_name}\",\"{project_id}\")\"\"\"\n443",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "app.py",
+    "line": 663,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "662                 account = mysql.fetch_one(\n663                     f'SELECT * FROM tblUsers WHERE Email = \"{email}\" AND Password = \"{Hashing.hash_value(password)}\"')\n664                 if account:",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "app.py",
+    "line": 692,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "691                 email = request.form['email']\n692                 account = mysql.fetch_one(f'SELECT * FROM tblUsers WHERE Email = \"{email}\"')\n693                 logger.info('Checking Database')",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "app.py",
+    "line": 707,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "706                     rowcount = mysql.insert_record(\n707                         f'INSERT INTO tblUsers (Name, Email, Password, AuthToken) VALUES (\"{username}\", \"{email}\", \"{hashed_password}\", \"pankajtest\")')\n708                     if rowcount > 0:",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "app.py",
+    "line": 745,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "744                 \"\"\"Get Projects Actions\"\"\"\n745                 query_ = f\"\"\"\n746                         Select tblProjectActions.Name , Input,Output from  tblProject_Actions_Reports \n747                         Join tblProjectActions on tblProject_Actions_Reports.ProjectActionId=tblProjectActions.Id\n748                         join tblProjects on tblProjects.Id=tblProject_Actions_Reports.Proj",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "app.py",
+    "line": 1147,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "1146                 target_column = request.form['column']\n1147                 rows_count = mysql.delete_record(f'UPDATE tblProjects SET TargetColumn=\"{target_column}\" WHERE Id={id}')\n1148                 status = \"success\"",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "app.py",
+    "line": 1170,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "1169             if id:\n1170                 mysql.delete_record(f'UPDATE tblProjects SET IsActive=0 WHERE Pid=\"{id}\"')\n1171                 logger.info('Data Successfully Deleted From Database')",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "app.py",
+    "line": 1225,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "1224             session['pid'] = values[1]\n1225             query_ = f\"Select ProjectType, TargetColumn,Name from tblProjects  where id={session['pid']}\"\n1226             info = mysql.fetch_one(query_)",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "app.py",
+    "line": 1279,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "1278     try:\n1279         my_collection = mysql.fetch_all(f''' Select Name, Input,Output,ActionDate \n1280         from tblProject_Actions_Reports \n1281         Join tblProjectActions on tblProject_Actions_Reports.ProjectActionId=tblProjectActions.Id \n1282         where ProjectId =\"{session['pid']}\"''')\n1283",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "app.py",
+    "line": 1319,
+    "message": "Use of exec detected.",
+    "snippet": "1318                             localsParameter = {'df': df}\n1319                             exec(code, globalsParameter, localsParameter)\n1320                             update_data(df)",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "app.py",
+    "line": 1383,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "1382                     Model_Trained, model_name, TargetColumn, pid = mysql.fetch_one(\n1383                         f\"\"\"select Model_Trained, Model_Name,TargetColumn, pid  from tblProjects Where Id={session.get('pid')}\"\"\")\n1384",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "app.py",
+    "line": 1385,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "1384 \n1385                     query = f\"\"\"select a.pid ProjectId ,\n1386                                             a.TargetColumn TargetName, \n1387                                             a.Model_Name ModelName, \n1388                                             a.Model_Trained, \n1389                                             b.train_status ,\n1390                                            ",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "app.py",
+    "line": 1446,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "1445                 if action == 'deleteScheduler':\n1446                     pid = mysql.fetch_one(f\"\"\"select pid from tblProjects Where Id={session.get('pid')}\"\"\")\n1447                     query = f'DELETE FROM tblProject_scheduler WHERE ProjectId = \"{pid[0]}\" '",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "app.py",
+    "line": 1447,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "1446                     pid = mysql.fetch_one(f\"\"\"select pid from tblProjects Where Id={session.get('pid')}\"\"\")\n1447                     query = f'DELETE FROM tblProject_scheduler WHERE ProjectId = \"{pid[0]}\" '\n1448                     mysql.delete_record(query)",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "app.py",
+    "line": 1465,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "1464             Model_Trained, model_name, TargetColumn, pid = mysql.fetch_one(\n1465                 f\"\"\"select Model_Trained, Model_Name,TargetColumn, pid  from tblProjects Where Id={session.get('pid')}\"\"\")\n1466             if action == 'help':",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "app.py",
+    "line": 1473,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "1472 \n1473                 query = f''' INSERT INTO tblProject_scheduler \n1474                              (ProjectId,datetime_,email,train_status,deleted)\n1475                             values('{pid}',DATE_ADD(NOW(),INTERVAL {time_after} HOUR),'{email}' ,0,0) '''\n1476",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B201",
+    "file_path": "app.py",
+    "line": 1490,
+    "message": "A Flask app appears to be run with debug=True, which exposes the Werkzeug debugger and allows the execution of arbitrary code.",
+    "snippet": "1489     else:\n1490         app.run(host=\"0.0.0.0\", port=8080, debug=True)",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "app.py",
+    "line": 1490,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "1489     else:\n1490         app.run(host=\"0.0.0.0\", port=8080, debug=True)",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B701",
+    "file_path": "emailSender/Sender.py",
+    "line": 9,
+    "message": "By default, jinja2 sets autoescape to False. Consider using autoescape=True or use the select_autoescape function to mitigate XSS vulnerabilities.",
+    "snippet": "8 def template_loader(temp='email_template.html'):\n9     env = Environment(\n10         loader=FileSystemLoader('%s/' % os.path.dirname(__file__)))\n11     return env.get_template(temp)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "scheduler/scheduler.py",
+    "line": 57,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "56     mysql = MySqlHelper.get_connection_obj()\n57     query = f\"\"\"select Pid,Name,Id,UserId,CreateDate from auto_neuron.tblProjects \n58                where UserId = (select UserId from auto_neuron.tblProjects \n59                where Pid = '{projectId}' and IsActive = 1)\n60                \"\"\"\n61     result = mysql.fetch_all(query)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "scheduler/training_scheduler.py",
+    "line": 17,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "16     model_path = os.path.join(from_root(), 'artifacts', pid, 'model_temp.pkl')\n17     model = pickle.load(open(model_path, 'rb'))\n18     return model",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "scheduler/training_scheduler.py",
+    "line": 72,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "71         save_model(pid, trained_model, 'model.pkl')\n72         query = f'''Update tblProjects Set Model_Trained=1 Where Pid=\"{pid}\"'''\n73         mysql.update_record(query)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "scheduler/training_scheduler.py",
+    "line": 74,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "73         mysql.update_record(query)\n74         query = f''' UPDATE tblProject_scheduler set train_status=1 where ProjectId=\"{pid}\"'''\n75         mysql.update_record(query)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "scheduler/training_scheduler.py",
+    "line": 127,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "126 \n127         query = f'''Update tblProjects Set Model_Trained=1 Where Pid=\"{pid}\"'''\n128         mysql.update_record(query)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "scheduler/training_scheduler.py",
+    "line": 129,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "128         mysql.update_record(query)\n129         query = f''' UPDATE tbleProject_scheduler set train_status=1 where ProjectId=\"{pid}\"'''\n130         mysql.update_record(query)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "scheduler/training_scheduler.py",
+    "line": 140,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "139     mysql = MySqlHelper.get_connection_obj()\n140     query = f\"\"\" select a.pid ProjectId , a.TargetColumn TargetName, \n141                                 a.Model_Name ModelName, \n142                                 b.datetime_,\n143                                 a.Model_Trained, \n144                                 b.train_status ,\n145                                 b.email, \n146           ",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "scheduler/training_scheduler.py",
+    "line": 160,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "159             if email_check:\n160                 mysql.update_record(f\"\"\"DELETE FROM tblProject_scheduler WHERE ProjectID = '{process[0]}'\"\"\")\n161",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "src/routes/routes_api.py",
+    "line": 244,
+    "message": "Use of exec detected.",
+    "snippet": "243                 localsParameter = {'df': df}\n244                 exec(code,globalsParameter,localsParameter)\n245                 data = df.head(1000).to_html()",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "src/routes/routes_fe.py",
+    "line": 72,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "71                     \n72                     query_ = f\"Select * from tblProject_Actions_Reports  where ProjectId={session['pid']} and ProjectActionId=4\"\n73                     rows = mysql.fetch_all(query_)",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "src/routes/routes_fe.py",
+    "line": 101,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "100                         \"\"\" Check Scaling Already Performed or not\"\"\"\n101                         query_ = f\"Select * from tblProject_Actions_Reports  where ProjectId={session['pid']} and ProjectActionId=5\"\n102                         rows = mysql.fetch_all(query_)",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "src/routes/routes_fe.py",
+    "line": 163,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "162                     \"\"\" Check PCA Already Performed or not\"\"\"\n163                     query_ = f\"Select * from tblProject_Actions_Reports  where ProjectId={session['pid']} and ProjectActionId=6\"\n164                     rows = mysql.fetch_all(query_)",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "src/routes/routes_fe.py",
+    "line": 172,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "171                     \"\"\" Check Feature Scaling  Performed or not\"\"\"\n172                     query_ = f\"Select * from tblProject_Actions_Reports  where ProjectId={session['pid']} and ProjectActionId=5\"\n173                     rows = mysql.fetch_all(query_)",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "src/routes/routes_training.py",
+    "line": 95,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "94                 elif action == 'custom_training' or action == 'final_train_model':\n95                     query = f\"\"\" select a.pid ProjectId , a.TargetColumn TargetName, \n96                                                    a.Model_Name ModelName, \n97                                                    b.Schedule_date, \n98                                                    b.schedule_time ,\n99",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "src/routes/routes_training.py",
+    "line": 250,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "249                                 # Model Name Set in table while training\n250                                 query = f'''Update tblProjects Set Model_Name=\"{model}\", Model_Trained=0 Where Id=\"{session.get('pid')}\"'''\n251                                 mysql.update_record(query)",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "src/routes/routes_training.py",
+    "line": 268,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "267                                 # Model Name Set in table while training\n268                                 query = f'''Update tblProjects Set Model_Name=\"{model}\", Model_Trained=0 Where Id=\"{session.get('pid')}\"'''\n269                                 result = mysql.update_record(query)",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "src/routes/routes_training.py",
+    "line": 310,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "309                                 # Model Name Set in table while training\n310                                 query = f'''Update tblProjects Set Model_Name=\"{model}\", Model_Trained=0 Where Id=\"{session.get('pid')}\"'''\n311                                 result = mysql.update_record(query)",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "src/routes/routes_training.py",
+    "line": 377,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "376                         ProjectReports.insert_record_ml('Final Train Model')\n377                         query = f'''select Model_Name from tblProjects Where Id=\"{session.get('pid')}\"'''\n378                         model_name = mysql.fetch_one(query)[0]",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "src/routes/routes_training.py",
+    "line": 432,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "431                                 save_project_model(trained_model, 'model.pkl')\n432                                 query = f'''Update tblProjects Set Model_Trained=1 Where Id=\"{session.get('pid')}\"'''\n433                                 mysql.update_record(query)",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "src/routes/routes_training.py",
+    "line": 463,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "462                                 save_project_model(trained_model, 'model.pkl')\n463                                 query = f'''Update tblProjects Set Model_Trained=1 Where Id=\"{session.get('pid')}\"'''\n464                                 mysql.update_record(query)",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "src/routes/routes_training.py",
+    "line": 506,
+    "message": "Use of exec detected.",
+    "snippet": "505                     for key, value in model.get_params():\n506                         exec(key + \"=value\")\n507",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "src/routes/routes_training.py",
+    "line": 529,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "528                 is_trained = mysql.fetch_all(\n529                     f\"SELECT * FROM tblProjects WHERE Id ={session.get('pid')} AND Model_Trained=1\")\n530                 if is_trained is None:",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "src/utils/common/common_helper.py",
+    "line": 35,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "34     def hash_value(value):\n35         hash_object = hashlib.md5(value.encode('utf-8'))\n36         return hash_object.hexdigest()",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "src/utils/common/common_helper.py",
+    "line": 91,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "90         with open(path, 'rb') as pickle_file:\n91             model = pickle.load(pickle_file)\n92         return model",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "src/utils/common/common_helper.py",
+    "line": 110,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "109         with open(path, 'rb') as pickle_file:\n110             model = pickle.load(pickle_file)\n111         return model",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "src/utils/common/common_helper.py",
+    "line": 120,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "119         with open(path, 'rb') as pickle_file:\n120             model = pickle.load(pickle_file)\n121         return model",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "src/utils/common/common_helper.py",
+    "line": 130,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "129         with open(path, 'rb') as pickle_file:\n130             model = pickle.load(pickle_file)\n131         return model",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "src/utils/common/database_helper.py",
+    "line": 53,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "52             conn = self.connect_todb()\n53             data_query = f\"select * from {table_name}\"\n54             schema_query = f\"describe {table_name}\"",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "src/utils/common/database_helper.py",
+    "line": 190,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "189 \n190             insert_query = f'insert into {table_name}({\", \".join(column_names)}) values ({\"? ,\" * len(column_names)}'.strip(\", \") + \");\"\n191             prepared_query = session.prepare(insert_query)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "src/utils/common/database_helper.py",
+    "line": 218,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "217             session = self.cluster.connect(self.keyspace)\n218             dataframe = pd.DataFrame(list(session.execute(f\"select * from {table_name}\")))\n219             logger.info(f\"Dataframe created from {table_name} table!\")",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "src/utils/common/database_helper.py",
+    "line": 253,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "252             session = self.cluster.connect(self.keyspace)\n253             query = f\"SELECT * FROM system_schema.tables WHERE keyspace_name = '{self.keyspace}';\"\n254             data = session.execute(query)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "src/utils/common/prediction_helper.py",
+    "line": 31,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "30         else:\n31             query_ = f\"\"\"Select Name, Input,Output,ActionDate from  tblProject_Actions_Reports\n32                             Join tblProjectActions on tblProject_Actions_Reports.ProjectActionId=tblProjectActions.Id\n33                             where ProjectId={session['pid']}\"\"\"\n34             action_performed = mysql.fetch_all(query_)",
+    "stage": "data_preparation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "src/utils/common/prediction_helper.py",
+    "line": 71,
+    "message": "Use of exec detected.",
+    "snippet": "70                         if action[1] is not None:\n71                             exec(action[1])\n72",
+    "stage": "data_preparation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "src/utils/common/project_report_helper.py",
+    "line": 24,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "23 \n24             query = f\"\"\"INSERT INTO \n25             tblProjectReports(`Projectid`, `ModuleId`, `ActionName`, `Input`, `IsSuccessed`, `Output`, `ErrorMessage`)\n26              VALUES ('{session.get('pid')}','2','{actionName}','{input}', {isSuccessed},'{output}','{errorMessage}')\"\"\"\n27             logger.info(f\"{session.get('id')} details uploaded successfully for EDA!\")",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "src/utils/common/project_report_helper.py",
+    "line": 37,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "36 \n37             query = f\"\"\"INSERT INTO \n38             tblProjectReports(`Projectid`, `ModuleId`, `ActionName`, `Input`, `IsSuccessed`, `Output`, `ErrorMessage`)\n39             VALUES ('{session.get('pid')}','3','{actionName}','{input}',{isSuccessed},'{output}','{errorMessage}')\"\"\"\n40             logger.info(f\"{session.get('pid')} details uploaded successfully for Data Preprocessing!\")",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "src/utils/common/project_report_helper.py",
+    "line": 50,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "49 \n50             query = f\"\"\"INSERT INTO \n51             tblProjectReports(`Projectid`, `ModuleId`, `ActionName`, `Input`, `IsSuccessed`, `Output`, `ErrorMessage`)\n52             VALUES ('{session.get('pid')}','4','{actionName}','{input}',{isSuccessed},'{output}','{errorMessage}')\"\"\"\n53             logger.info(f\"{session.get('pid')} details uploaded successfully for Feature Engineering!\")",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "src/utils/common/project_report_helper.py",
+    "line": 64,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "63 \n64             query = f\"\"\"INSERT INTO \n65             tblProjectReports(`Projectid`, `ModuleId`, `ActionName`, `Input`, `IsSuccessed`, `Output`, `ErrorMessage`)\n66             VALUES ('{session.get('pid')}','5','{actionName}','{input}',{isSuccessed},'{output}','{errorMessage}')\"\"\"\n67             logger.info(f\"{session.get('pid')} details uploaded successfully for Machine Learning!\")",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "src/utils/common/project_report_helper.py",
+    "line": 80,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "79 \n80             query = f\"\"\"INSERT INTO \n81             tblProject_Actions_Reports(ProjectId, ProjectActionId, Input, Output)\n82             VALUES ({session.get('pid')},{projectActionId},\"{input}\",'{output}')\"\"\"\n83",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "src/utils/common/project_report_helper.py",
+    "line": 114,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "113 \n114             query = f'''select tblProjectStatus.Name, tblProjectReports.ActionName, tblProjectReports.Input, \n115             tblProjectReports.IsSuccessed, tblProjectReports.Output, tblProjectReports.ErrorMessage,\n116             tblProjectReports.CreateDate from tblProjectReports \n117             join tblProjectStatus on (tblProjectReports.ModuleId=tblProjectStatus.Id) \n118             ",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.flask.security.injection.tainted-sql-string.tainted-sql-string",
+    "file_path": "app.py",
+    "line": 663,
+    "message": "Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using an object-relational mapper (ORM) such as SQLAlchemy which will protect your queries.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.flask.security.injection.tainted-sql-string.tainted-sql-string",
+    "file_path": "app.py",
+    "line": 692,
+    "message": "Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using an object-relational mapper (ORM) such as SQLAlchemy which will protect your queries.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.flask.security.injection.tainted-sql-string.tainted-sql-string",
+    "file_path": "app.py",
+    "line": 707,
+    "message": "Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using an object-relational mapper (ORM) such as SQLAlchemy which will protect your queries.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.flask.security.injection.tainted-sql-string.tainted-sql-string",
+    "file_path": "app.py",
+    "line": 1147,
+    "message": "Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using an object-relational mapper (ORM) such as SQLAlchemy which will protect your queries.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.flask.security.injection.tainted-sql-string.tainted-sql-string",
+    "file_path": "app.py",
+    "line": 1170,
+    "message": "Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using an object-relational mapper (ORM) such as SQLAlchemy which will protect your queries.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.flask.security.injection.tainted-sql-string.tainted-sql-string",
+    "file_path": "app.py",
+    "line": 1225,
+    "message": "Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using an object-relational mapper (ORM) such as SQLAlchemy which will protect your queries.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.django.security.injection.code.user-exec.user-exec",
+    "file_path": "app.py",
+    "line": 1308,
+    "message": "Found user data in a call to 'exec'. This is extremely dangerous because it can enable an attacker to execute arbitrary remote code on the system. Instead, refactor your code to not use 'eval' and instead use a safe library for the specific functionality you need.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.flask.security.injection.user-exec.exec-injection",
+    "file_path": "app.py",
+    "line": 1319,
+    "message": "Detected user data flowing into exec. This is code injection and should be avoided.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "app.py",
+    "line": 1319,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.app-run-param-config.avoid_app_run_with_bad_host",
+    "file_path": "app.py",
+    "line": 1490,
+    "message": "Running flask app with host 0.0.0.0 could expose the server publicly.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.debug-enabled.debug-enabled",
+    "file_path": "app.py",
+    "line": 1490,
+    "message": "Detected Flask app with debug=True. Do not deploy to production with this flag enabled as it will leak sensitive information. Instead, consider using Flask configuration variables or setting 'debug' using system environment variables.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.jinja2.security.audit.missing-autoescape-disabled.missing-autoescape-disabled",
+    "file_path": "emailSender/Sender.py",
+    "line": 9,
+    "message": "Detected a Jinja2 environment without autoescaping. Jinja2 does not autoescape by default. This is dangerous if you are rendering to a browser because this allows for cross-site scripting (XSS) attacks. If you are in a web context, enable autoescaping by setting 'autoescape=True.' You may also consider using 'jinja2.select_autoescape()' to only enable automatic escaping for certain file extensions.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "scheduler/training_scheduler.py",
+    "line": 17,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "scheduler/training_scheduler.py",
+    "line": 43,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "src/model/custom/classification_models.py",
+    "line": 11,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "src/model/custom/clustering_models.py",
+    "line": 7,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "src/model/custom/regression_models.py",
+    "line": 10,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.django.security.injection.code.user-exec.user-exec",
+    "file_path": "src/routes/routes_api.py",
+    "line": 233,
+    "message": "Found user data in a call to 'exec'. This is extremely dangerous because it can enable an attacker to execute arbitrary remote code on the system. Instead, refactor your code to not use 'eval' and instead use a safe library for the specific functionality you need.",
+    "snippet": "requires login",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.flask.security.injection.user-exec.exec-injection",
+    "file_path": "src/routes/routes_api.py",
+    "line": 244,
+    "message": "Detected user data flowing into exec. This is code injection and should be avoided.",
+    "snippet": "requires login",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "src/routes/routes_api.py",
+    "line": 244,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.flask.security.injection.tainted-sql-string.tainted-sql-string",
+    "file_path": "src/routes/routes_training.py",
+    "line": 250,
+    "message": "Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using an object-relational mapper (ORM) such as SQLAlchemy which will protect your queries.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.flask.security.injection.tainted-sql-string.tainted-sql-string",
+    "file_path": "src/routes/routes_training.py",
+    "line": 268,
+    "message": "Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using an object-relational mapper (ORM) such as SQLAlchemy which will protect your queries.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.flask.security.injection.tainted-sql-string.tainted-sql-string",
+    "file_path": "src/routes/routes_training.py",
+    "line": 310,
+    "message": "Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using an object-relational mapper (ORM) such as SQLAlchemy which will protect your queries.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "src/routes/routes_training.py",
+    "line": 506,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "src/templates/contact.html",
+    "line": 38,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "src/templates/contact.html",
+    "line": 39,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "src/templates/contact.html",
+    "line": 40,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "src/templates/custom-script.html",
+    "line": 64,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-script-tag.var-in-script-tag",
+    "file_path": "src/templates/dp/delete_columns.html",
+    "line": 56,
+    "message": "Detected a template variable used in a script tag. Although template variables are HTML escaped, HTML escaping does not always prevent cross-site scripting (XSS) attacks when used directly in JavaScript. If you need this data on the rendered page, consider placing it in the HTML portion (outside of a script tag). Alternatively, use a JavaScript-specific encoder, such as the one available in OWASP ESAPI. For Django, you may also consider using the 'json_script' template tag and retrieving the data in your script by using the element ID (e.g., `document.getElementById`).",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "src/templates/dp/delete_columns.html",
+    "line": 56,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "src/templates/dp/duplicate.html",
+    "line": 45,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.unquoted-attribute-var.unquoted-attribute-var",
+    "file_path": "src/templates/dp/handle_imbalance.html",
+    "line": 65,
+    "message": "Detected a unquoted template variable as an attribute. If unquoted, a malicious actor could inject custom JavaScript handlers. To fix this, add quotes around the template expression, like this: \"{{ expr }}\".",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "src/templates/dp/handle_imbalance.html",
+    "line": 101,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "src/templates/dp/handle_imbalance.html",
+    "line": 108,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "src/templates/dp/missing_values.html",
+    "line": 48,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "src/templates/dp/outliers.html",
+    "line": 66,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-script-tag.var-in-script-tag",
+    "file_path": "src/templates/dp/outliers.html",
+    "line": 140,
+    "message": "Detected a template variable used in a script tag. Although template variables are HTML escaped, HTML escaping does not always prevent cross-site scripting (XSS) attacks when used directly in JavaScript. If you need this data on the rendered page, consider placing it in the HTML portion (outside of a script tag). Alternatively, use a JavaScript-specific encoder, such as the one available in OWASP ESAPI. For Django, you may also consider using the 'json_script' template tag and retrieving the data in your script by using the element ID (e.g., `document.getElementById`).",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "src/templates/dp/outliers.html",
+    "line": 140,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-script-tag.var-in-script-tag",
+    "file_path": "src/templates/dp/outliers.html",
+    "line": 143,
+    "message": "Detected a template variable used in a script tag. Although template variables are HTML escaped, HTML escaping does not always prevent cross-site scripting (XSS) attacks when used directly in JavaScript. If you need this data on the rendered page, consider placing it in the HTML portion (outside of a script tag). Alternatively, use a JavaScript-specific encoder, such as the one available in OWASP ESAPI. For Django, you may also consider using the 'json_script' template tag and retrieving the data in your script by using the element ID (e.g., `document.getElementById`).",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "src/templates/dp/outliers.html",
+    "line": 143,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "src/templates/eda/5point.html",
+    "line": 17,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "src/templates/eda/5point.html",
+    "line": 22,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-script-tag.var-in-script-tag",
+    "file_path": "src/templates/eda/correlation.html",
+    "line": 64,
+    "message": "Detected a template variable used in a script tag. Although template variables are HTML escaped, HTML escaping does not always prevent cross-site scripting (XSS) attacks when used directly in JavaScript. If you need this data on the rendered page, consider placing it in the HTML portion (outside of a script tag). Alternatively, use a JavaScript-specific encoder, such as the one available in OWASP ESAPI. For Django, you may also consider using the 'json_script' template tag and retrieving the data in your script by using the element ID (e.g., `document.getElementById`).",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "src/templates/eda/correlation.html",
+    "line": 64,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "src/templates/eda/missing_values.html",
+    "line": 18,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-script-tag.var-in-script-tag",
+    "file_path": "src/templates/eda/missing_values.html",
+    "line": 30,
+    "message": "Detected a template variable used in a script tag. Although template variables are HTML escaped, HTML escaping does not always prevent cross-site scripting (XSS) attacks when used directly in JavaScript. If you need this data on the rendered page, consider placing it in the HTML portion (outside of a script tag). Alternatively, use a JavaScript-specific encoder, such as the one available in OWASP ESAPI. For Django, you may also consider using the 'json_script' template tag and retrieving the data in your script by using the element ID (e.g., `document.getElementById`).",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "src/templates/eda/missing_values.html",
+    "line": 30,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-script-tag.var-in-script-tag",
+    "file_path": "src/templates/eda/missing_values.html",
+    "line": 33,
+    "message": "Detected a template variable used in a script tag. Although template variables are HTML escaped, HTML escaping does not always prevent cross-site scripting (XSS) attacks when used directly in JavaScript. If you need this data on the rendered page, consider placing it in the HTML portion (outside of a script tag). Alternatively, use a JavaScript-specific encoder, such as the one available in OWASP ESAPI. For Django, you may also consider using the 'json_script' template tag and retrieving the data in your script by using the element ID (e.g., `document.getElementById`).",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "src/templates/eda/missing_values.html",
+    "line": 33,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "src/templates/eda/outliers.html",
+    "line": 45,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-script-tag.var-in-script-tag",
+    "file_path": "src/templates/eda/outliers.html",
+    "line": 72,
+    "message": "Detected a template variable used in a script tag. Although template variables are HTML escaped, HTML escaping does not always prevent cross-site scripting (XSS) attacks when used directly in JavaScript. If you need this data on the rendered page, consider placing it in the HTML portion (outside of a script tag). Alternatively, use a JavaScript-specific encoder, such as the one available in OWASP ESAPI. For Django, you may also consider using the 'json_script' template tag and retrieving the data in your script by using the element ID (e.g., `document.getElementById`).",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "src/templates/eda/outliers.html",
+    "line": 72,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-script-tag.var-in-script-tag",
+    "file_path": "src/templates/eda/outliers.html",
+    "line": 75,
+    "message": "Detected a template variable used in a script tag. Although template variables are HTML escaped, HTML escaping does not always prevent cross-site scripting (XSS) attacks when used directly in JavaScript. If you need this data on the rendered page, consider placing it in the HTML portion (outside of a script tag). Alternatively, use a JavaScript-specific encoder, such as the one available in OWASP ESAPI. For Django, you may also consider using the 'json_script' template tag and retrieving the data in your script by using the element ID (e.g., `document.getElementById`).",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "src/templates/eda/outliers.html",
+    "line": 75,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-script-tag.var-in-script-tag",
+    "file_path": "src/templates/eda/plots.html",
+    "line": 61,
+    "message": "Detected a template variable used in a script tag. Although template variables are HTML escaped, HTML escaping does not always prevent cross-site scripting (XSS) attacks when used directly in JavaScript. If you need this data on the rendered page, consider placing it in the HTML portion (outside of a script tag). Alternatively, use a JavaScript-specific encoder, such as the one available in OWASP ESAPI. For Django, you may also consider using the 'json_script' template tag and retrieving the data in your script by using the element ID (e.g., `document.getElementById`).",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "src/templates/eda/plots.html",
+    "line": 61,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "src/templates/eda/showdataset.html",
+    "line": 47,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.unquoted-attribute-var.unquoted-attribute-var",
+    "file_path": "src/templates/edit_project.html",
+    "line": 22,
+    "message": "Detected a unquoted template variable as an attribute. If unquoted, a malicious actor could inject custom JavaScript handlers. To fix this, add quotes around the template expression, like this: \"{{ expr }}\".",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.unquoted-attribute-var.unquoted-attribute-var",
+    "file_path": "src/templates/edit_project.html",
+    "line": 25,
+    "message": "Detected a unquoted template variable as an attribute. If unquoted, a malicious actor could inject custom JavaScript handlers. To fix this, add quotes around the template expression, like this: \"{{ expr }}\".",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.unquoted-attribute-var.unquoted-attribute-var",
+    "file_path": "src/templates/edit_project.html",
+    "line": 28,
+    "message": "Detected a unquoted template variable as an attribute. If unquoted, a malicious actor could inject custom JavaScript handlers. To fix this, add quotes around the template expression, like this: \"{{ expr }}\".",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.unquoted-attribute-var.unquoted-attribute-var",
+    "file_path": "src/templates/edit_project.html",
+    "line": 32,
+    "message": "Detected a unquoted template variable as an attribute. If unquoted, a malicious actor could inject custom JavaScript handlers. To fix this, add quotes around the template expression, like this: \"{{ expr }}\".",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "src/templates/fe/dimension_reduction.html",
+    "line": 28,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "src/templates/fe/dimension_reduction.html",
+    "line": 134,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "src/templates/history/actions.html",
+    "line": 26,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-script-tag.var-in-script-tag",
+    "file_path": "src/templates/insights/data_insights.html",
+    "line": 203,
+    "message": "Detected a template variable used in a script tag. Although template variables are HTML escaped, HTML escaping does not always prevent cross-site scripting (XSS) attacks when used directly in JavaScript. If you need this data on the rendered page, consider placing it in the HTML portion (outside of a script tag). Alternatively, use a JavaScript-specific encoder, such as the one available in OWASP ESAPI. For Django, you may also consider using the 'json_script' template tag and retrieving the data in your script by using the element ID (e.g., `document.getElementById`).",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "src/templates/insights/data_insights.html",
+    "line": 203,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-script-tag.var-in-script-tag",
+    "file_path": "src/templates/insights/insights_.html",
+    "line": 227,
+    "message": "Detected a template variable used in a script tag. Although template variables are HTML escaped, HTML escaping does not always prevent cross-site scripting (XSS) attacks when used directly in JavaScript. If you need this data on the rendered page, consider placing it in the HTML portion (outside of a script tag). Alternatively, use a JavaScript-specific encoder, such as the one available in OWASP ESAPI. For Django, you may also consider using the 'json_script' template tag and retrieving the data in your script by using the element ID (e.g., `document.getElementById`).",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "src/templates/insights/insights_.html",
+    "line": 227,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "src/templates/model_training/ann_summary.html",
+    "line": 33,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-script-tag.var-in-script-tag",
+    "file_path": "src/templates/model_training/ann_summary.html",
+    "line": 103,
+    "message": "Detected a template variable used in a script tag. Although template variables are HTML escaped, HTML escaping does not always prevent cross-site scripting (XSS) attacks when used directly in JavaScript. If you need this data on the rendered page, consider placing it in the HTML portion (outside of a script tag). Alternatively, use a JavaScript-specific encoder, such as the one available in OWASP ESAPI. For Django, you may also consider using the 'json_script' template tag and retrieving the data in your script by using the element ID (e.g., `document.getElementById`).",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "src/templates/model_training/ann_summary.html",
+    "line": 103,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-script-tag.var-in-script-tag",
+    "file_path": "src/templates/model_training/ann_summary.html",
+    "line": 106,
+    "message": "Detected a template variable used in a script tag. Although template variables are HTML escaped, HTML escaping does not always prevent cross-site scripting (XSS) attacks when used directly in JavaScript. If you need this data on the rendered page, consider placing it in the HTML portion (outside of a script tag). Alternatively, use a JavaScript-specific encoder, such as the one available in OWASP ESAPI. For Django, you may also consider using the 'json_script' template tag and retrieving the data in your script by using the element ID (e.g., `document.getElementById`).",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "src/templates/model_training/ann_summary.html",
+    "line": 106,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "src/templates/model_training/auto_training.html",
+    "line": 37,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.unquoted-attribute-var.unquoted-attribute-var",
+    "file_path": "src/templates/model_training/cnn.html",
+    "line": 610,
+    "message": "Detected a unquoted template variable as an attribute. If unquoted, a malicious actor could inject custom JavaScript handlers. To fix this, add quotes around the template expression, like this: \"{{ expr }}\".",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "src/templates/model_training/prediction_result.html",
+    "line": 25,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "src/templates/model_training/train_test_split.html",
+    "line": 50,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "src/templates/projectReport.html",
+    "line": 36,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "src/templates/projectReport.html",
+    "line": 44,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "src/templates/projectReport.html",
+    "line": 47,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.unquoted-attribute-var.unquoted-attribute-var",
+    "file_path": "src/templates/scheduler/add_new_scheduler.html",
+    "line": 41,
+    "message": "Detected a unquoted template variable as an attribute. If unquoted, a malicious actor could inject custom JavaScript handlers. To fix this, add quotes around the template expression, like this: \"{{ expr }}\".",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "src/templates/systemlogs/terminal.html",
+    "line": 19,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "src/utils/common/common_helper.py",
+    "line": 35,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "src/utils/common/common_helper.py",
+    "line": 66,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "src/utils/common/common_helper.py",
+    "line": 75,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "src/utils/common/common_helper.py",
+    "line": 84,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "src/utils/common/common_helper.py",
+    "line": 91,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "src/utils/common/common_helper.py",
+    "line": 103,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "src/utils/common/common_helper.py",
+    "line": 110,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "src/utils/common/common_helper.py",
+    "line": 120,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "src/utils/common/common_helper.py",
+    "line": 130,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "src/utils/common/prediction_helper.py",
+    "line": 71,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_preparation+inference"
+  }
+]

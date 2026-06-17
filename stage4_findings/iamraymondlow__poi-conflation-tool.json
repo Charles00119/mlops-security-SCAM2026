@@ -1,0 +1,72 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "googlemap.py",
+    "line": 180,
+    "message": "Call to requests without timeout",
+    "snippet": "179 \n180         query_result = requests.get(url=geocode_url, params=params)\n181",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "heremap.py",
+    "line": 155,
+    "message": "Call to requests without timeout",
+    "snippet": "154 \n155         return requests.get(geocode_url).json()\n156",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "onemap.py",
+    "line": 84,
+    "message": "Call to requests without timeout",
+    "snippet": "83                 query_theme = [(theme_dict['THEMENAME'], theme_dict['QUERYNAME'])\n84                                for theme_dict in requests.get(geocode_url).json()['Theme_Names']\n85                                if theme_dict['THEMENAME'] in themes]",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "onemap.py",
+    "line": 111,
+    "message": "Call to requests without timeout",
+    "snippet": "110             try:\n111                 return requests.get(geocode_url).json()\n112",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "osm.py",
+    "line": 98,
+    "message": "Call to requests without timeout",
+    "snippet": "97             try:\n98                 query_result = requests.get(geocode_url).json()\n99                 address = ''",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "util.py",
+    "line": 145,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "144                  str(poi_dict['geometry']['lng'])\n145     hasher = hashlib.md5()\n146     hasher.update(poi_string.encode('utf-8'))",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "util.py",
+    "line": 145,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  }
+]

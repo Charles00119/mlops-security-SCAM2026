@@ -1,0 +1,112 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "request_app.py",
+    "line": 21,
+    "message": "Call to requests without timeout",
+    "snippet": "20 # response = requests.get('https://vin-project3-app.herokuapp.com/')\n21 response = requests.post(\n22     url='https://vin-project3-app.herokuapp.com/inference',\n23     json=row\n24 )\n25",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2021-100",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "fastapi 0.63.0: FastAPI is a web framework for building APIs with Python 3.6+ based on standard Python type hints. FastAPI versions lower than 0.65.2 that used cookies for authentication in path operations that recei (fix: 0.65.2)",
+    "snippet": "fastapi==0.63.0",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2021-100",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "fastapi 0.63.0: ### Impact  FastAPI versions lower than `0.65.2` that used cookies for authentication in path operations that received JSON payloads sent by browsers were vulnerable to a Cross-Site Request Forgery (C (fix: 0.65.2)",
+    "snippet": "fastapi==0.63.0",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2024-38",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "fastapi 0.63.0: FastAPI is a web framework for building APIs with Python 3.8+ based on standard Python type hints. When using form data, `python-multipart` uses a Regular Expression to parse the HTTP `Content-Type` h (fix: 0.109.1)",
+    "snippet": "fastapi==0.63.0",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2023-48",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "starlette 0.13.6: ### Impact  The `MultipartParser` using the package `python-multipart` accepts an unlimited number of multipart parts (form fields or files).  Processing too many parts results in high CPU usage and h (fix: 0.25.0)",
+    "snippet": "starlette==0.13.6",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2023-48",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "starlette 0.13.6: There MultipartParser usage in Encode's Starlette python framework before versions 0.25.0 allows an unauthenticated and remote attacker to specify any number of form fields or files which can cause ex (fix: 0.25.0)",
+    "snippet": "starlette==0.13.6",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2023-83",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "starlette 0.13.6: ### Summary When using `StaticFiles`, if there's a file or directory that starts with the same name as the `StaticFiles` directory, that file or directory is also exposed via `StaticFiles` which is a  (fix: 0.27.0)",
+    "snippet": "starlette==0.13.6",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2023-83",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "starlette 0.13.6: Directory traversal vulnerability in Starlette versions 0.13.5 and later and prior to 0.27.0 allows a remote unauthenticated attacker to view files in a web service which was built using Starlette. (fix: 0.27.0)",
+    "snippet": "starlette==0.13.6",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2026-161",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "starlette 0.13.6: Starlette reconstructs the requested URL based on the HTTP Host request header and requested path, but does not perform any validation of the Host header value. This allows attackers to inject paths i (fix: 1.0.1)",
+    "snippet": "starlette==0.13.6",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2024-47874",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "starlette 0.13.6: ### Summary Starlette treats `multipart/form-data` parts without a `filename` as text form fields and buffers those in byte strings with no size limit. This allows an attacker to upload arbitrary larg (fix: 0.40.0)",
+    "snippet": "starlette==0.13.6",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "CVE-2025-54121",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "starlette 0.13.6: ### Summary When parsing a multi-part form with large files (greater than the [default max spool size](https://github.com/encode/starlette/blob/fa5355442753f794965ae1af0f87f9fec1b9a3de/starlette/formp (fix: 0.47.2)",
+    "snippet": "starlette==0.13.6",
+    "stage": "dependencies"
+  }
+]

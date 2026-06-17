@@ -1,0 +1,12 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "fuzzytrees/util_logging.py",
+    "line": 67,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "66         with open(path, 'r', encoding='utf-8') as f:\n67             config = yaml.load(f, Loader=yaml.FullLoader)\n68             logging.config.dictConfig(config)",
+    "stage": "unreachable"
+  }
+]

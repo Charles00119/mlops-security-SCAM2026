@@ -1,0 +1,142 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "DiCE/dice_ml/explainer_interfaces/feasible_base_vae.py",
+    "line": 119,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "118         if pre_trained:\n119             self.cf_vae.load_state_dict(torch.load(self.save_path))\n120             self.cf_vae.eval()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "DiCE/dice_ml/explainer_interfaces/feasible_base_vae.py",
+    "line": 165,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "164         ## Loading the latest trained CFVAE model\n165         self.cf_vae.load_state_dict(torch.load(self.save_path))\n166         self.cf_vae.eval()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "DiCE/dice_ml/explainer_interfaces/feasible_model_approx.py",
+    "line": 72,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "71         if pre_trained:\n72             self.cf_vae.load_state_dict(torch.load(self.save_path))\n73             self.cf_vae.eval()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "DiCE/dice_ml/model_interfaces/base_model.py",
+    "line": 24,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "23             with open(self.model_path, 'rb') as filehandle:\n24                 self.model = pickle.load(filehandle)\n25",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "DiCE/dice_ml/model_interfaces/pytorch_model.py",
+    "line": 21,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "20         if self.model_path != '':\n21             self.model = torch.load(self.model_path)\n22",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "alibi/alibi/datasets.py",
+    "line": 97,
+    "message": "Call to requests without timeout",
+    "snippet": "96     try:\n97         page = requests.get(url)\n98         page.raise_for_status()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "alibi/alibi/datasets.py",
+    "line": 215,
+    "message": "Call to requests without timeout",
+    "snippet": "214     try:\n215         resp = requests.get(dataset_url)\n216         resp.raise_for_status()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "alibi/doc/source/conf.py",
+    "line": 28,
+    "message": "Use of exec detected.",
+    "snippet": "27 #import alibi\n28 exec(open('../../alibi/version.py').read())\n29",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "alibi/setup.py",
+    "line": 10,
+    "message": "Use of exec detected.",
+    "snippet": "9 # read version file\n10 exec(open('alibi/version.py').read())\n11",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "DiCE/dice_ml/model_interfaces/base_model.py",
+    "line": 24,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "info",
+    "rule_id": "python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http",
+    "file_path": "alibi/alibi/datasets.py",
+    "line": 97,
+    "message": "Detected a request using 'http://'. This request will be unencrypted, and attackers could listen into traffic on the network and be able to obtain sensitive information. Use 'https://' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "info",
+    "rule_id": "python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http",
+    "file_path": "alibi/alibi/datasets.py",
+    "line": 110,
+    "message": "Detected a request using 'http://'. This request will be unencrypted, and attackers could listen into traffic on the network and be able to obtain sensitive information. Use 'https://' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "alibi/doc/source/conf.py",
+    "line": 28,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "alibi/setup.py",
+    "line": 10,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "dependencies"
+  }
+]

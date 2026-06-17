@@ -1,0 +1,162 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "infer.py",
+    "line": 73,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "72         try:  # single GPU model_file\n73             self.model.load_state_dict(torch.load(model_file), strict=True)\n74         except:  # multi GPU model_file",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "infer.py",
+    "line": 75,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "74         except:  # multi GPU model_file\n75             state_dict = torch.load(model_file)\n76             state_dict = {k[7:] if k.startswith('module.') else k: state_dict[k] for k in state_dict.keys()}",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "qdnet/conf/config.py",
+    "line": 16,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "15 def load_yaml(yaml_name, args):\n16     config = yaml.load(open(yaml_name, 'r', encoding='utf-8'),Loader=yaml.FullLoader)\n17     config = merge_config(config, args)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "qdnet/models/resnest.py",
+    "line": 28,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "27             # self.enet = locals()[enet_type](pretrained=pretrained)\n28             self.enet = eval(enet_type)(pretrained=pretrained)\n29         self.dropouts = nn.ModuleList([ nn.Dropout(0.5) for _ in range(drop_nums) ])",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "serving/core/models.py",
+    "line": 59,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "58         try:  # single GPU model_file\n59             self.model.load_state_dict(torch.load(model_file), strict=True)\n60         except:  # multi GPU model_file",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "serving/core/models.py",
+    "line": 61,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "60         except:  # multi GPU model_file\n61             state_dict = torch.load(model_file)\n62             state_dict = {k[7:] if k.startswith('module.') else k: state_dict[k] for k in state_dict.keys()}",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "serving/core/url2img.py",
+    "line": 16,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "15     # resp = request.urlopen(url, timeout=5)\n16     resp = request.urlopen(url, timeout=3)\n17     try:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B201",
+    "file_path": "serving/flask_run.py",
+    "line": 26,
+    "message": "A Flask app appears to be run with debug=True, which exposes the Werkzeug debugger and allows the execution of arbitrary code.",
+    "snippet": "25 if __name__ == '__main__':\n26     app.run(host=\"0.0.0.0\", port=9939, debug=True)\n27",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "serving/flask_run.py",
+    "line": 26,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "25 if __name__ == '__main__':\n26     app.run(host=\"0.0.0.0\", port=9939, debug=True)\n27",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "test.py",
+    "line": 104,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "103         try:  # single GPU model_file\n104             model.load_state_dict(torch.load(model_file), strict=True)\n105         except:  # multi GPU model_file",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "test.py",
+    "line": 106,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "105         except:  # multi GPU model_file\n106             state_dict = torch.load(model_file)\n107             state_dict = {k[7:] if k.startswith('module.') else k: state_dict[k] for k in state_dict.keys()}",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "tools/data_clean.py",
+    "line": 19,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "18         except:\n19             os.system( \"rm -r {}\".format(per_img_path) )\n20             print (222)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "qdnet/models/resnest.py",
+    "line": 28,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "serving/core/url2img.py",
+    "line": 16,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.app-run-param-config.avoid_app_run_with_bad_host",
+    "file_path": "serving/flask_run.py",
+    "line": 26,
+    "message": "Running flask app with host 0.0.0.0 could expose the server publicly.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.debug-enabled.debug-enabled",
+    "file_path": "serving/flask_run.py",
+    "line": 26,
+    "message": "Detected Flask app with debug=True. Do not deploy to production with this flag enabled as it will leak sensitive information. Instead, consider using Flask configuration variables or setting 'debug' using system environment variables.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

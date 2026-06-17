@@ -1,0 +1,82 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "dataset_download.py",
+    "line": 24,
+    "message": "Call to requests without timeout",
+    "snippet": "23 \n24         response = requests.get(url, stream=True)\n25         data_file = open(os.path.join(data_directory, file_name), 'wb')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "dataset_download.py",
+    "line": 55,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "54     config_file = open('configs/data.yaml', mode='r')\n55     config = yaml.load(config_file, Loader=yaml.FullLoader)\n56",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "main.py",
+    "line": 24,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "23     model_config_file = open('configs/model.yaml', mode='r')\n24     model_cfg = yaml.load(model_config_file, Loader=yaml.FullLoader)\n25",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "preprocess/opp/data_loader.py",
+    "line": 13,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "12     data_config_file = open('configs/data.yaml', mode='r')\n13     data_config = yaml.load(data_config_file, Loader=yaml.FullLoader)\n14     config = data_config['opp']",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "preprocess/opp/data_loader.py",
+    "line": 58,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "57     config_file = open('configs/data.yaml', mode='r')\n58     config = yaml.load(config_file, Loader=yaml.FullLoader)['opp']\n59     window_size = config['window_size']",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "preprocess/pamap2/data_loader.py",
+    "line": 14,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "13     config_file = open('configs/data.yaml', mode='r')\n14     data_config = yaml.load(config_file, Loader=yaml.FullLoader)\n15     config = data_config['pamap2']",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "preprocess/skoda/data_loader.py",
+    "line": 10,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "9     data_config_file = open('configs/data.yaml', mode='r')\n10     data_config = yaml.load(data_config_file, Loader=yaml.FullLoader)\n11",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "preprocess/uschad/data_loader.py",
+    "line": 10,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "9     config_file = open('configs/data.yaml', mode='r')\n10     config = yaml.load(config_file, Loader=yaml.FullLoader)['uschad']\n11     window_size = config['window_size']",
+    "stage": "data_acquisition+data_preparation"
+  }
+]

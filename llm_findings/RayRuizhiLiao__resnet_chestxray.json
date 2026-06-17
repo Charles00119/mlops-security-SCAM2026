@@ -1,0 +1,132 @@
+[
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_validation",
+    "file_path": "test_inference.py",
+    "line": 0,
+    "message": "No detected input validation: The code loads images and metadata without any schema checks, dtype assertions, or value-range guards; load_image only branches on file extension but does not validate content, shape, or pixel range.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.untrusted_source_handling",
+    "file_path": "test_inference.py",
+    "line": 0,
+    "message": "No detected untrusted source handling: Data and model checkpoints are loaded from local filesystem paths with no checksum verification, signature validation, or authenticated source handling.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_flipping_detection",
+    "file_path": "test_inference.py",
+    "line": 0,
+    "message": "No detected label flipping detection: The only label handling is `select_valid_labels` which filters out negative labels (>=0), but there is no check for unexpected label values, distribution anomalies, or label-noise detection tools.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.data_poisoning_defenses",
+    "file_path": "test_inference.py",
+    "line": 0,
+    "message": "No detected data poisoning defenses: The code loads and normalizes images but performs no outlier detection, statistical anomaly checks, or any other mechanism to detect or filter poisoned/suspicious training samples.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.model_integrity_verification",
+    "file_path": "test_inference.py",
+    "line": 0,
+    "message": "No detected model integrity verification: The code loads pretrained weights via `pretrained_model_path=checkpoint_path` with no hash check, signature verification, or pinned revision before loading.",
+    "snippet": "",
+    "stage": "modeling"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_distribution_validation",
+    "file_path": "test_inference.py",
+    "line": 0,
+    "message": "No detected label distribution validation: The code filters labels with select_valid_labels() (>=0 check) but performs no class balance check, expected-label-set validation, or anomalous sample detection before training.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.backdoor_or_trigger_detection",
+    "file_path": "test_inference.py",
+    "line": 0,
+    "message": "No detected backdoor or trigger detection: There is no neural-cleanse-style trigger detection, activation-pattern analysis, or gradient anomaly detection anywhere in the visible training code.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.differential_privacy",
+    "file_path": "test_inference.py",
+    "line": 0,
+    "message": "No detected differential privacy: No differential privacy library (Opacus, TensorFlow Privacy, DP-SGD) or related mechanism is imported or used in any of the code slices.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.adversarial_robustness_testing",
+    "file_path": "test_inference.py",
+    "line": 0,
+    "message": "No detected adversarial robustness testing: There is no use of adversarial attack libraries (Foolbox, ART, CleverHans) or manual FGSM/PGD attack code anywhere in the evaluation pipeline.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.metric_tampering_protection",
+    "file_path": "test_inference.py",
+    "line": 0,
+    "message": "No detected metric tampering protection: The code performs single-model inference and prints a severity score with no held-out test set isolation controls, hash/signature verification of evaluation data, or use of multiple independent metrics.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_sanitization",
+    "file_path": "test_inference.py",
+    "line": 0,
+    "message": "No detected input sanitization: The load_image function simply reads and normalizes the image without checking shape, dimensions, data type validity, or rejecting malformed inputs before passing to the model.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.output_bounds_checks",
+    "file_path": "test_inference.py",
+    "line": 0,
+    "message": "No detected output bounds checks: After inference, the code directly computes severity from pred without any NaN checks, probability bounds validation, or sanity checks on the model output values.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.prompt_injection_defenses",
+    "file_path": "test_inference.py",
+    "line": 0,
+    "message": "No detected prompt injection defenses: This is a computer vision model (ResNet on chest X-rays), not an LLM, so prompt injection defenses are not applicable.",
+    "snippet": "",
+    "stage": "inference"
+  }
+]

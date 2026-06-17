@@ -1,0 +1,92 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "build_kernel.py",
+    "line": 42,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "41     os.system('mkdir -p tmp')\n42     os.system(f'rm -rf tmp/{name}')\n43     os.system(f'cd tmp && git clone --depth 1 -b {branch} {git_url}')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "build_kernel.py",
+    "line": 43,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "42     os.system(f'rm -rf tmp/{name}')\n43     os.system(f'cd tmp && git clone --depth 1 -b {branch} {git_url}')\n44     os.system(f'cp -R tmp/{name}/{get_package_name(name)} .')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "build_kernel.py",
+    "line": 44,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "43     os.system(f'cd tmp && git clone --depth 1 -b {branch} {git_url}')\n44     os.system(f'cp -R tmp/{name}/{get_package_name(name)} .')\n45     os.system(f'rm -rf tmp/{name}')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "build_kernel.py",
+    "line": 45,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "44     os.system(f'cp -R tmp/{name}/{get_package_name(name)} .')\n45     os.system(f'rm -rf tmp/{name}')\n46",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "build_kernel.py",
+    "line": 50,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "49     name = Path(git_url).name\n50     os.system(f'rm -rf {get_package_name(name)}')\n51",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "kernel_stacking_template.py",
+    "line": 22,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "21 def run(command):\n22     os.system('export PYTHONPATH=${PYTHONPATH}:/kaggle/working && '\n23               f'export KERNEL_MODE={KERNEL_MODE} && ' + command)\n24",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "kernel_template.py",
+    "line": 22,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "21 def run(command):\n22     os.system('export PYTHONPATH=${PYTHONPATH}:/kaggle/working && '\n23               f'export KERNEL_MODE={KERNEL_MODE} && ' + command)\n24",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "src/ema.py",
+    "line": 45,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "44     def _load_checkpoint(self, checkpoint_path):\n45         checkpoint = torch.load(checkpoint_path, map_location='cpu')\n46         assert isinstance(checkpoint, dict)",
+    "stage": "inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-subprocess-use-tainted-env-args.dangerous-subprocess-use-tainted-env-args",
+    "file_path": "train.py",
+    "line": 133,
+    "message": "Detected subprocess function 'Popen' with user controlled data. A malicious actor could leverage this to perform command injection. You may consider using 'shlex.quote()'.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+training"
+  }
+]

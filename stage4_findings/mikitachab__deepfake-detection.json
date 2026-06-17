@@ -1,0 +1,32 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "deepfake_detection/dataset.py",
+    "line": 117,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "116             full_path = os.path.join(self.cache_path, filename)\n117             return torch.load(full_path)\n118         return None",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "main.py",
+    "line": 85,
+    "message": "Call to requests without timeout",
+    "snippet": "84 \n85     r = requests.post(args.db_url, json=data, headers={\n86         \"X-RESULTS-SECRET\": os.getenv(\"RESULTS_SECRET\")\n87     })\n88",
+    "stage": "data_acquisition+data_preparation+evaluation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "streamlitapp.py",
+    "line": 24,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "23 def load_model():\n24     model = torch.load(\"export.pth\")\n25     model.eval()",
+    "stage": "unreachable"
+  }
+]

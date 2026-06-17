@@ -1,0 +1,112 @@
+[
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.untrusted_source_handling",
+    "file_path": "pipeline.py",
+    "line": 0,
+    "message": "No detected untrusted source handling: The code fetches articles from remote URLs via the search pipeline and Article.from_html, but there is no checksum verification, signed URL validation, pinned commit, or source authentication performed on the retrieved content.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_flipping_detection",
+    "file_path": "pipeline.py",
+    "line": 0,
+    "message": "No detected label flipping detection: The code uses label2id/id2label mappings and a label_set but never validates incoming claim labels against the expected set or checks for label distribution anomalies before training.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.data_poisoning_defenses",
+    "file_path": "pipeline.py",
+    "line": 0,
+    "message": "No detected data poisoning defenses: The code applies basic length and content checks (e.g., content < 32 chars, duplicate URL/content filtering) for deduplication purposes, but there are no outlier detection, statistical anomaly checks, or poisoning-specific defenses on the training samples.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.model_integrity_verification",
+    "file_path": "pipeline.py",
+    "line": 0,
+    "message": "No detected model integrity verification: The model is loaded via `SequenceClassificationModel.from_pretrained(pretrained_model_name_or_path)` with no hash check, signature verification, pinned revision, or controlled-source enforcement.",
+    "snippet": "",
+    "stage": "modeling"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_distribution_validation",
+    "file_path": "pipeline.py",
+    "line": 0,
+    "message": "No detected label distribution validation: The code uses stratified train/test splitting which preserves distribution but does not explicitly validate or check label distribution or class balance before training begins.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.backdoor_or_trigger_detection",
+    "file_path": "pipeline.py",
+    "line": 0,
+    "message": "No detected backdoor or trigger detection: There is no evidence of any backdoor or trigger detection mechanism such as neural cleanse, activation analysis, or gradient anomaly detection anywhere in the training pipeline.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.differential_privacy",
+    "file_path": "pipeline.py",
+    "line": 0,
+    "message": "No detected differential privacy: No differential privacy libraries (Opacus, TensorFlow Privacy, DP-SGD) or mechanisms are imported or used anywhere in the visible code.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.adversarial_robustness_testing",
+    "file_path": "pipeline.py",
+    "line": 0,
+    "message": "No detected adversarial robustness testing: No adversarial attack frameworks (Foolbox, ART, FGSM, PGD) or robustness stress tests are present anywhere in the visible code.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.metric_tampering_protection",
+    "file_path": "pipeline.py",
+    "line": 0,
+    "message": "No detected metric tampering protection: There is no evidence of hashed/signed evaluation data, a strictly isolated held-out test set enforced at evaluation time, or multiple independent metrics used to guard against manipulation; the train_test_split utility exists in datasets.py but there is no isolation enforcement or integrity check at",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.output_bounds_checks",
+    "file_path": "pipeline.py",
+    "line": 0,
+    "message": "No detected output bounds checks: The _sequence_classification function returns raw probabilities from prediction_output.predictions with no NaN checks, range validation, or threshold guards on the model outputs.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.prompt_injection_defenses",
+    "file_path": "pipeline.py",
+    "line": 0,
+    "message": "No detected prompt injection defenses: The model is a sequence classification model (not an LLM), and no prompt-injection filtering, system-prompt isolation, or jailbreak detection is present anywhere in the visible code.",
+    "snippet": "",
+    "stage": "inference"
+  }
+]

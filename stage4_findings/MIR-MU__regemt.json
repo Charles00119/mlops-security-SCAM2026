@@ -1,0 +1,192 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "bleurt_metric.py",
+    "line": 25,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "24             url = 'https://storage.googleapis.com/bleurt-oss/bleurt-base-128.zip'\n25             urlretrieve(url, zipfile_path)\n26             print(f'Extracting BLEUrt model to {model_path}')",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "embedder.py",
+    "line": 33,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "32                 base_path.mkdir(parents=False, exist_ok=True)\n33                 urlretrieve(url, path)\n34             print(f'Loading fastText embeddings for language {self.lang}')",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "embedder.py",
+    "line": 94,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "93         if self.lang not in self.diskcaches:\n94             self.diskcaches[self.lang] = shelve.open(f'embedder-diskcache-{self.lang}')\n95         return self.diskcaches[self.lang]",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "prism/paraphrase_generation/generate_paraphrases.py",
+    "line": 301,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "300         args.path.split(':'),\n301         arg_overrides=eval(args.model_overrides),\n302         task=task,",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "prism/prism.py",
+    "line": 35,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "34 def hash_model(model_dir):\n35     md5 = hashlib.md5()\n36     block_size = 2 ** 20",
+    "stage": "data_preparation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "prism_metric.py",
+    "line": 26,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "25             url = 'http://data.statmt.org/prism/m39v1.tar'\n26             urlretrieve(url, tarfile_path)\n27             print(f'Extracting Prism model to {model_path}')",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "prism_metric.py",
+    "line": 48,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "47                 \n48                     tar.extractall(path, members, numeric_owner=numeric_owner) \n49",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "scripts/merge_shelves.py",
+    "line": 18,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "17 \n18     with shelve.open(args.A[0], 'r') as A, shelve.open(args.B[0], 'r') as B, shelve.open(args.C[0]) as C:\n19         print(f'Gathering the keys stored in {args.A[0]}')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "scripts/merge_shelves.py",
+    "line": 18,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "17 \n18     with shelve.open(args.A[0], 'r') as A, shelve.open(args.B[0], 'r') as B, shelve.open(args.C[0]) as C:\n19         print(f'Gathering the keys stored in {args.A[0]}')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "scripts/merge_shelves.py",
+    "line": 18,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "17 \n18     with shelve.open(args.A[0], 'r') as A, shelve.open(args.B[0], 'r') as B, shelve.open(args.C[0]) as C:\n19         print(f'Gathering the keys stored in {args.A[0]}')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "bleurt_metric.py",
+    "line": 25,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "embedder.py",
+    "line": 33,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-shelve",
+    "file_path": "embedder.py",
+    "line": 94,
+    "message": "Avoid using `shelve`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "prism/paraphrase_generation/generate_paraphrases.py",
+    "line": 301,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "prism/prism.py",
+    "line": 35,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_preparation+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "prism_metric.py",
+    "line": 26,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-shelve",
+    "file_path": "scripts/merge_shelves.py",
+    "line": 18,
+    "message": "Avoid using `shelve`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-shelve",
+    "file_path": "scripts/merge_shelves.py",
+    "line": 18,
+    "message": "Avoid using `shelve`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-shelve",
+    "file_path": "scripts/merge_shelves.py",
+    "line": 18,
+    "message": "Avoid using `shelve`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

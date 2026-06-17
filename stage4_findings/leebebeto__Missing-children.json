@@ -1,0 +1,182 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "_evaluate_model.py",
+    "line": 78,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "77     # model.load_state(args, model_path = model_path)\n78     learner.model.load_state_dict(torch.load(args.model_path))\n79     learner.model.eval()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "_evaluate_model.py",
+    "line": 83,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "82     model_path = os.path.join(args.model_path)\n83     learner.model.load_state_dict(torch.load(model_path))\n84     learner.model.eval()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "_evaluate_model_dal.py",
+    "line": 71,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "70 model = Backbone(net_depth, drop_ratio, net_mode).to(dev)\n71 model.load_state_dict(torch.load(model_path))\n72 model.eval()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "_gradcam.py",
+    "line": 57,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "56 \n57     model.load_state_dict(torch.load(os.path.join(path_root, model_path)))\n58     head.load_state_dict(torch.load(os.path.join(path_root, head_path)))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "_gradcam.py",
+    "line": 58,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "57     model.load_state_dict(torch.load(os.path.join(path_root, model_path)))\n58     head.load_state_dict(torch.load(os.path.join(path_root, head_path)))\n59",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "evaluate_id.py",
+    "line": 78,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "77     model = Backbone(net_depth, drop_ratio, net_mode).to(dev)\n78     model.load_state_dict(torch.load(model_path))\n79     model.eval()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "evaluate_id.py",
+    "line": 201,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "200     with open(f'/home/nas3_userL/jungsoolee/Face_dataset/txt_files/lag_identification.pickle', 'rb') as f:\n201         data_dict = pickle.load(f)\n202",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "evaluate_id.py",
+    "line": 209,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "208     with open(f'/home/nas3_userL/jungsoolee/Face_dataset/txt_files/lag_identification.pickle', 'rb') as f:\n209         data_dict = pickle.load(f)\n210",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "learner.py",
+    "line": 148,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "147                 head_path = os.path.join(root_path, 'fgnetc_best_head_2021-07-01-00-29_accuracy:0.500_step:275976_casia_interclass_MSE_proto1_broad_scratch.pth')\n148                 self.model.load_state_dict(torch.load(model_path))\n149                 self.head.load_state_dict(torch.load(head_path))",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "learner.py",
+    "line": 149,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "148                 self.model.load_state_dict(torch.load(model_path))\n149                 self.head.load_state_dict(torch.load(head_path))\n150                 print('broad face loaded ...')",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "learner.py",
+    "line": 171,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "170 \n171                 self.model.load_state_dict(torch.load(model_path))\n172                 self.head.load_state_dict(torch.load(head_path))",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "learner.py",
+    "line": 172,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "171                 self.model.load_state_dict(torch.load(model_path))\n172                 self.head.load_state_dict(torch.load(head_path))\n173",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "learner.py",
+    "line": 1156,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "1155         if model_path is not None:\n1156             self.model.load_state_dict(torch.load(model_path))\n1157             print('model loaded...')",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "learner.py",
+    "line": 1159,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "1158         if head_path is not None:\n1159             self.head.load_state_dict(torch.load(head_path))\n1160             print('head loaded...')",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "temp.py",
+    "line": 7,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "6 with open(file_name, 'rb') as f:\n7     file = pickle.load(f)\n8",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "evaluate_id.py",
+    "line": 201,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "evaluate_id.py",
+    "line": 209,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "temp.py",
+    "line": 7,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

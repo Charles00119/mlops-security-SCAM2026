@@ -1,0 +1,172 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "data.py",
+    "line": 105,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "104 \n105             maps = torch.load(maps_path)\n106             ent_ids, rel_ids = maps['ent_ids'], maps['rel_ids']",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "data.py",
+    "line": 196,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "195 \n196         maps = torch.load(self.maps_path)\n197         ent_ids = maps['ent_ids']",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "data.py",
+    "line": 207,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "206             if osp.exists(cached_text_path):\n207                 self.text_data = torch.load(cached_text_path)\n208                 logger.info(f'Loaded cached text data for'",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "data.py",
+    "line": 305,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "304     def __init__(self, vocab_dict_file, uncased=True):\n305         self.word2idx = torch.load(vocab_dict_file)\n306         self.uncased = uncased",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "data.py",
+    "line": 340,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "339 \n340     tok = transformers.AlbertTokenizer.from_pretrained('albert-base-v2')\n341     gtr = TextGraphDataset('data/wikifb15k237/train-triples.txt', max_len=32,",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "models.py",
+    "line": 101,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "100         super().__init__(dim, rel_model, loss_fn, num_relations, regularizer)\n101         self.encoder = BertModel.from_pretrained(encoder_name,\n102                                                  output_attentions=False,\n103                                                  output_hidden_states=False)\n104         hidden_size = self.encoder.config.hidden_size",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "models.py",
+    "line": 124,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "123         if encoder_name is not None:\n124             encoder = BertModel.from_pretrained(encoder_name)\n125             embeddings = encoder.embeddings.word_embeddings",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "models.py",
+    "line": 127,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "126         else:\n127             emb_tensor = torch.load(embeddings)\n128             num_embeddings, embedding_dim = emb_tensor.shape",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "retrieval.py",
+    "line": 72,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "71     if model.startswith('bert') or model == 'blp':\n72         tokenizer = BertTokenizer.from_pretrained('bert-base-cased')\n73     else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "retrieval.py",
+    "line": 81,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "80     encoder = torch.nn.DataParallel(encoder)\n81     state_dict = torch.load(checkpoint, map_location=device)\n82",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "retrieval.py",
+    "line": 97,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "96         _log.info(f'Loading entity embeddings from {qent_checkpoint}')\n97         ent_embeddings = torch.load(qent_checkpoint, map_location=device)\n98         get_entity_embeddings = False",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "train.py",
+    "line": 274,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "273         if model.startswith('bert') or model == 'blp':\n274             tokenizer = BertTokenizer.from_pretrained(encoder_name)\n275         else:",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "train.py",
+    "line": 327,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "326     if checkpoint is not None:\n327         model.load_state_dict(torch.load(checkpoint, map_location='cpu'))\n328",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "train.py",
+    "line": 379,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "378     if max_epochs > 0:\n379         model.load_state_dict(torch.load(checkpoint_file))\n380",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "train.py",
+    "line": 410,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "409 def node_classification(dataset, checkpoint, _run: Run, _log: Logger):\n410     ent_emb = torch.load(f'output/ent_emb-{checkpoint}.pt', map_location='cpu')\n411     if isinstance(ent_emb, tuple):",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "train.py",
+    "line": 418,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "417 \n418     emb_ids = torch.load(f'output/ents-{checkpoint}.pt', map_location='cpu')\n419     ent2idx = utils.make_ent2idx(emb_ids, max_ent_id=emb_ids.max()).numpy()",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "train.py",
+    "line": 420,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "419     ent2idx = utils.make_ent2idx(emb_ids, max_ent_id=emb_ids.max()).numpy()\n420     maps = torch.load(f'data/{dataset}/maps.pt')\n421     ent_ids = maps['ent_ids']",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  }
+]

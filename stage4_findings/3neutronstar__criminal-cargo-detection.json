@@ -1,0 +1,92 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "Learner/indlearner.py",
+    "line": 164,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "163     def load_model(self):\n164         dict_model=torch.load(self.save_path,self.configs['file_name'],'best_{}_model.pt'.format(self.configs['mode'].split('_')[1]))\n165         self.model.load_model(dict_model)",
+    "stage": "inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "Learner/mixedlearner.py",
+    "line": 28,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "27 \n28         crime_dict=torch.load('C:\\\\anaconda3\\envs\\\\torch\\Customs_Kaggle\\crime-cargo-detection\\\\training_data\\\\07-16_15-13-31\\\\best_crime_model.pt')\n29         priority_dict=torch.load('C:\\\\anaconda3\\envs\\\\torch\\Customs_Kaggle\\crime-cargo-detection\\\\training_data\\\\07-16_15-13-31\\\\best_priority_model.pt')",
+    "stage": "inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "Learner/mixedlearner.py",
+    "line": 29,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "28         crime_dict=torch.load('C:\\\\anaconda3\\envs\\\\torch\\Customs_Kaggle\\crime-cargo-detection\\\\training_data\\\\07-16_15-13-31\\\\best_crime_model.pt')\n29         priority_dict=torch.load('C:\\\\anaconda3\\envs\\\\torch\\Customs_Kaggle\\crime-cargo-detection\\\\training_data\\\\07-16_15-13-31\\\\best_priority_model.pt')\n30         print(\"========== Performances ==========\")",
+    "stage": "inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "Learner/mixedlearner.py",
+    "line": 222,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "221     def load_model(self):\n222         crime_dict=torch.load(self.save_path,self.configs['file_name'],'best_crime_model.pt')\n223         priority_dict=torch.load(self.save_path,self.configs['file_name'],'best_priority_model.pt')",
+    "stage": "inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "Learner/mixedlearner.py",
+    "line": 223,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "222         crime_dict=torch.load(self.save_path,self.configs['file_name'],'best_crime_model.pt')\n223         priority_dict=torch.load(self.save_path,self.configs['file_name'],'best_priority_model.pt')\n224         dict_model={'crime':crime_dict,'priority':priority_dict}",
+    "stage": "inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "Learner/mixedlearner.py",
+    "line": 245,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "244             word='tmp'\n245         tmp_dict=torch.load(os.path.join(self.save_path,self.time_data,'{}_crime_model.pt'.format(word)))\n246         self.model.crime_model.cpu()",
+    "stage": "inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "Utils/record.py",
+    "line": 164,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "163         if 'mixed' not in self.configs['mode']:\n164             dict_model=torch.load(os.path.join(self.save_path,self.configs['file_name'],'best_{}_model.pt').format(self.configs['mode'].split('_')[1]))\n165             self.model.load_model(dict_model)",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "Utils/record.py",
+    "line": 167,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "166         else: \n167             crime_dict=copy.deepcopy(torch.load(os.path.join(self.save_path,self.configs['file_name'],'best_crime_model.pt')))\n168             priority_dict=copy.deepcopy(torch.load(os.path.join(self.save_path,self.configs['file_name'],'best_priority_model.pt')))",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "Utils/record.py",
+    "line": 168,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "167             crime_dict=copy.deepcopy(torch.load(os.path.join(self.save_path,self.configs['file_name'],'best_crime_model.pt')))\n168             priority_dict=copy.deepcopy(torch.load(os.path.join(self.save_path,self.configs['file_name'],'best_priority_model.pt')))\n169             # print(\"========== Performances ==========\")",
+    "stage": "data_acquisition+inference"
+  }
+]

@@ -1,0 +1,302 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "_.py",
+    "line": 491,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "490   try:\n491     urllib.request.urlretrieve(url, abs_filename)\n492     return abs_filename",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "_.py",
+    "line": 507,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "506     try:\n507       urllib.request.urlretrieve(media_url, filename)\n508       print(filename)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "_.py",
+    "line": 529,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "528       os.remove(absfilename)\n529     urllib.request.urlretrieve(media_url, absfilename)\n530     print(absfilename)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "crawling.py",
+    "line": 18,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "17 \theader = {'User-Agent': 'Mozilla/5.0'} #Needed to prevent 403 error\n18 \thtml = urllib.request.urlopen(url)\n19 \tsoup = bs4.BeautifulSoup(html, 'lxml')",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "exp/RNNtxtclass.py",
+    "line": 13,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "12 \n13 def train(DataSet, saveDIR = \"/Users/masaMikam/OneDrive/imgs/RNNtxtclass\", logdir = '/tmp/tf_examples/word_rnn', splittype = 'char'):\n14     def average_model(X, y):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "exp/filedownloader.py",
+    "line": 19,
+    "message": "Call to requests without timeout",
+    "snippet": "18     download_urls = []\n19     r = requests.get(url)\n20     soup = BeautifulSoup(r.content)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "exp/filedownloader.py",
+    "line": 40,
+    "message": "Call to requests without timeout",
+    "snippet": "39         if BASE_URL in download_url:\n40             r = requests.get(download_url)\n41         else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "exp/filedownloader.py",
+    "line": 42,
+    "message": "Call to requests without timeout",
+    "snippet": "41         else:\n42             r = requests.get(BASE_URL + download_url)\n43",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "exp/neuraltranslationdemo.py",
+    "line": 72,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "71     xpred = np.array(list(vocab_processor.transform(X_pred)))\n72     PATH = '/tmp/tf_examples/ntm/'\n73",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "exp/test.py",
+    "line": 30,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "29         command= 'echo %s | cabocha'%(s)\n30         ret = subprocess.check_output(command, shell=True)\n31         ret = ret.decode('utf-8')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "natural_language_processing.py",
+    "line": 255,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "254             cmd= 'echo %s | %s -d %s'%(s, self.mecab_place, self.mecab_dic_place)\n255             p = subprocess.Popen(cmd, shell = True, close_fds = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)\n256             stdout_data, stderr_data = p.communicate()",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "natural_language_processing.py",
+    "line": 437,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "436             cmd= 'echo \"{}\" | {} -I1 -O4 -f1'.format(s, self.cabocha_place, self.mecab_dic_place)\n437             p = subprocess.Popen(cmd, shell = True,  close_fds = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)\n438             stdout_data, stderr_data = p.communicate()",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "operate_sql.py",
+    "line": 546,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "545         _format = ''.join(folder_tree[-1].split('.')[1:])\n546     with urllib.request.urlopen(url) as response:\n547         _data = response.read()",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "setup.py",
+    "line": 50,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "49 #tempFileを読み込み or 生成\n50 TEMPJSONPLACE = DATADIR + \"/tmp.json\"\n51 bkupTEMPJSONPLACE = DATADIR + \"/tmp_bkup.json\"",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "setup.py",
+    "line": 51,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "50 TEMPJSONPLACE = DATADIR + \"/tmp.json\"\n51 bkupTEMPJSONPLACE = DATADIR + \"/tmp_bkup.json\"\n52 bkup2TEMPJSONPLACE = DATADIR + \"/tmp_bkup2.json\"",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "setup.py",
+    "line": 52,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "51 bkupTEMPJSONPLACE = DATADIR + \"/tmp_bkup.json\"\n52 bkup2TEMPJSONPLACE = DATADIR + \"/tmp_bkup2.json\"\n53 TMP_CONFIG_PLACE = DATADIR + \"/tmp_config.json\"",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "setup.py",
+    "line": 53,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "52 bkup2TEMPJSONPLACE = DATADIR + \"/tmp_bkup2.json\"\n53 TMP_CONFIG_PLACE = DATADIR + \"/tmp_config.json\"\n54 TMP_STATS_PLACE = DATADIR + \"/tmp_stats.json\"",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "setup.py",
+    "line": 54,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "53 TMP_CONFIG_PLACE = DATADIR + \"/tmp_config.json\"\n54 TMP_STATS_PLACE = DATADIR + \"/tmp_stats.json\"\n55",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-os-exec-tainted-env-args.dangerous-os-exec-tainted-env-args",
+    "file_path": "_.py",
+    "line": 307,
+    "message": "Found user controlled content when spawning a process. This is dangerous because it allows a malicious actor to execute commands.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "_.py",
+    "line": 491,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "_.py",
+    "line": 507,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "_.py",
+    "line": 529,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "crawling.py",
+    "line": 18,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "exp/NLPbkup.py",
+    "line": 47,
+    "message": "Found 'subprocess' function 'Popen' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "info",
+    "rule_id": "python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http",
+    "file_path": "exp/filedownloader.py",
+    "line": 19,
+    "message": "Detected a request using 'http://'. This request will be unencrypted, and attackers could listen into traffic on the network and be able to obtain sensitive information. Use 'https://' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "info",
+    "rule_id": "python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http",
+    "file_path": "exp/filedownloader.py",
+    "line": 42,
+    "message": "Detected a request using 'http://'. This request will be unencrypted, and attackers could listen into traffic on the network and be able to obtain sensitive information. Use 'https://' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "exp/test.py",
+    "line": 30,
+    "message": "Found 'subprocess' function 'check_output' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "natural_language_processing.py",
+    "line": 255,
+    "message": "Found 'subprocess' function 'Popen' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "natural_language_processing.py",
+    "line": 437,
+    "message": "Found 'subprocess' function 'Popen' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "operate_sql.py",
+    "line": 546,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  }
+]

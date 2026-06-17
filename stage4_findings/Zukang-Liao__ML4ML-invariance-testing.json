@@ -1,0 +1,92 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ML4MLassessor.py",
+    "line": 247,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "246         regr = regr.fit(normalize(trainingset[0][:, 1:], axis=1), trainingset[1][:, args.target_idx])\n247         acc_regr = eval(normalize(trainingset[0][:, 1:], axis=1), trainingset[1][:, args.target_idx], regr)\n248         acc_regr_t = eval(normalize(testingset[0][:, 1:], axis=1), testingset[1][:, args.target_idx], regr)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ML4MLassessor.py",
+    "line": 248,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "247         acc_regr = eval(normalize(trainingset[0][:, 1:], axis=1), trainingset[1][:, args.target_idx], regr)\n248         acc_regr_t = eval(normalize(testingset[0][:, 1:], axis=1), testingset[1][:, args.target_idx], regr)\n249         acc_results[fidx][\"reg\"][target_dict[args.target_idx]].append(acc_regr_t)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model.py",
+    "line": 190,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "189     def load(self, path=\"resnet_cifar10.pth\"):\n190         tm = torch.load(path, map_location=\"cpu\")        \n191         self.load_state_dict(tm)",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "save_invariance_results.py",
+    "line": 125,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "124         try:\n125             net.load_state_dict(torch.load(args.SAVE_PATH))\n126         except:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "save_invariance_results.py",
+    "line": 128,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "127             # in case training is done using gpu\n128             state_dict = torch.load(args.SAVE_PATH, map_location=torch.device('cpu'))\n129             new_state_dict = collections.OrderedDict()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "save_invariance_results.py",
+    "line": 137,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "136         try:\n137             net.load_state_dict(torch.load(args.SAVE_PATH))\n138         except:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "save_invariance_results.py",
+    "line": 140,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "139             # in case training is done using gpu\n140             state_dict = torch.load(args.SAVE_PATH)\n141             new_state_dict = collections.OrderedDict()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ML4MLassessor.py",
+    "line": 247,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ML4MLassessor.py",
+    "line": 248,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

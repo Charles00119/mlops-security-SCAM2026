@@ -1,0 +1,332 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "models.py",
+    "line": 29,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "28     if model_type == ModelType.Base:\n29         bert_config = BertConfig.from_pretrained(pretrained_type)\n30         bert_config.num_labels = num_classes",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "models.py",
+    "line": 31,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "30         bert_config.num_labels = num_classes\n31         model = BertModel.from_pretrained(pretrained_type, config=bert_config)\n32",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "models.py",
+    "line": 34,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "33     elif model_type == ModelType.SequenceClf:\n34         bert_config = BertConfig.from_pretrained(pretrained_type)\n35         bert_config.num_labels = num_classes",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "models.py",
+    "line": 36,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "35         bert_config.num_labels = num_classes\n36         model = BertForSequenceClassification.from_pretrained(\n37             pretrained_type, config=bert_config\n38         )\n39",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "models.py",
+    "line": 41,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "40     elif model_type == ModelType.VanillaBert:\n41         bert_config = BertConfig.from_pretrained(pretrained_type)\n42         bert_config.num_labels = num_classes",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "models.py",
+    "line": 51,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "50     elif model_type == ModelType.VanillaBert_v2:\n51         bert_config = BertConfig.from_pretrained(pretrained_type)\n52         bert_config.num_labels = num_classes",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "models.py",
+    "line": 72,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "71     if load_state_dict is not None:\n72         model.load_state_dict(torch.load(load_state_dict))\n73         print(f\"Loaded pretrained weights from {load_state_dict}\", end=\"\\t\")",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "models.py",
+    "line": 82,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "81         super(VanillaXLMSeqClf, self).__init__()\n82         self.backbone = RobertaForSequenceClassification.from_pretrained(\n83             PreTrainedType.XLMRoberta\n84         )\n85         self.backbone.classifier.out_proj = nn.Linear(",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "models.py",
+    "line": 103,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "102         super(VanillaXLMLarge, self).__init__()\n103         self.backbone = RobertaModel.from_pretrained(PreTrainedType.XLMRoberta)\n104         self.linear = nn.Linear(in_features=768, out_features=num_classes)",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "models.py",
+    "line": 121,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "120         super(VanillaXLMBase, self).__init__()\n121         self.backbone = RobertaModel.from_pretrained(PreTrainedType.XLMRoberta)\n122         self.linear = nn.Linear(in_features=768, out_features=num_classes)",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "models.py",
+    "line": 139,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "138         super(VanillaKoBert, self).__init__()\n139         self.backbone = BertModel.from_pretrained(PreTrainedType.KoBert)\n140         self.linear = nn.Linear(in_features=768, out_features=num_classes)",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "models.py",
+    "line": 160,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "159         super(VanillaKoElectra, self).__init__()\n160         config = ElectraConfig.from_pretrained(PreTrainedType.KoELECTRAv3)\n161         self.backbone = ElectraModel.from_pretrained(",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "models.py",
+    "line": 161,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "160         config = ElectraConfig.from_pretrained(PreTrainedType.KoELECTRAv3)\n161         self.backbone = ElectraModel.from_pretrained(\n162             PreTrainedType.KoELECTRAv3, config=config\n163         )\n164         self.linear = nn.Linear(in_features=768, out_features=num_classes)",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "models.py",
+    "line": 213,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "212     def load_bert(model_type, pretrained_type, num_labels):\n213         config = BertConfig.from_pretrained(pretrained_type)\n214         config.num_labels = num_labels",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "models.py",
+    "line": 216,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "215         if model_type == ModelType.SequenceClf:\n216             model = BertForSequenceClassification.from_pretrained(\n217                 pretrained_type, config=config\n218             )\n219         else:",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "models.py",
+    "line": 263,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "262         if model_type == ModelType.SequenceClf:\n263             model = BertForSequenceClassification.from_pretrained(pretrained_type)\n264             model = model.bert  # 마지막 레이어을 제외한 BERT 아키텍쳐만을 backbone으로 사용",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tokenization.py",
+    "line": 49,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "48         if preprocess_type in [PreProcessType.Base, PreProcessType.ES, PreProcessType.ESP]:\n49             tokenizer = BertTokenizer.from_pretrained(PreTrainedType.MultiLingual)\n50",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tokenization.py",
+    "line": 53,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "52         elif preprocess_type in [PreProcessType.EM, PreProcessType.EMSP]:\n53             tokenizer = BertTokenizer.from_pretrained(PreTrainedType.MultiLingual)\n54             tokenizer.add_special_tokens(",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tokenization.py",
+    "line": 69,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "68         if preprocess_type in [PreProcessType.Base, PreProcessType.ES, PreProcessType.ESP]:\n69             tokenizer = ElectraTokenizer.from_pretrained(PreTrainedType.KoELECTRAv3)\n70",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tokenization.py",
+    "line": 73,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "72         elif preprocess_type in [PreProcessType.EM, PreProcessType.EMSP]:\n73             tokenizer = ElectraTokenizer.from_pretrained(PreTrainedType.KoELECTRAv3)\n74             tokenizer.add_special_tokens(",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tokenization.py",
+    "line": 89,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "88         if preprocess_type in [PreProcessType.Base, PreProcessType.ES, PreProcessType.ESP]:\n89             tokenizer = RobertaTokenizer.from_pretrained(PreTrainedType.XLMRoberta)\n90",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tokenization.py",
+    "line": 93,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "92         elif preprocess_type in [PreProcessType.EM, PreProcessType.EMSP]:\n93             tokenizer = RobertaTokenizer.from_pretrained(PreTrainedType.XLMRoberta)\n94             tokenizer.add_special_tokens(",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "trainer.py",
+    "line": 67,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "66     with open('./input/data/label_type.pkl', 'rb') as f:\n67         label_type = pickle.load(f)\n68     dataset = pd.read_csv(dataset_dir, delimiter='\\t', header=None)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "trainer.py",
+    "line": 98,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "97     MODEL_NAME = \"bert-base-multilingual-cased\"\n98     tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)\n99",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "trainer.py",
+    "line": 112,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "111 \n112     bert_config = BertConfig.from_pretrained(MODEL_NAME)\n113     bert_config.num_labels = 42",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "trainer.py",
+    "line": 114,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "113     bert_config.num_labels = 42\n114     model = BertForSequenceClassification.from_pretrained(MODEL_NAME, config=bert_config)\n115     model.parameters",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "trainer.py",
+    "line": 149,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "148     TOK_NAME = \"bert-base-multilingual-cased\"  \n149     tokenizer = AutoTokenizer.from_pretrained(TOK_NAME)\n150",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "trainer.py",
+    "line": 153,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "152     MODEL_NAME = args.model_dir # model dir.\n153     model = BertForSequenceClassification.from_pretrained(args.model_dir)\n154     model.parameters",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "utils.py",
+    "line": 12,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "11     with open(path, \"rb\") as pkl_file:\n12         output = pickle.load(pkl_file)\n13     return output",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "load_data.py",
+    "line": 36,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "trainer.py",
+    "line": 67,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "utils.py",
+    "line": 12,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "utils.py",
+    "line": 18,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  }
+]

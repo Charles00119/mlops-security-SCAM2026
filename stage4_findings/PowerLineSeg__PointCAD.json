@@ -1,0 +1,902 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "scripts/cv_s3dis.py",
+    "line": 62,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "61     if not os.path.exists(out_file):\n62         urllib.request.urlretrieve(url, out_file)\n63     else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "scripts/datasets/download-scannet.py",
+    "line": 69,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "68         f.close()\n69         urllib.request.urlretrieve(url, out_file_tmp)\n70         #urllib.urlretrieve(url, out_file_tmp)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "scripts/find_env.py",
+    "line": 47,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "46     \"\"\"Returns (return-code, stdout, stderr)\"\"\"\n47     p = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)\n48     output, err = p.communicate()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "scripts/find_runs.py",
+    "line": 52,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "51         path_to_checkpoint = os.path.join(self._run_path, self.model_name)\n52         stats = torch.load(path_to_checkpoint)[\"stats\"]\n53         self._stats = stats",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "scripts/omegaconf2dict.py",
+    "line": 43,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "42     assert omegaconf.__version__ <= \"1.4.1\"\n43     dict_model = torch.load(args.file)\n44     if (args.old):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "scripts/test_registration_scripts/fpfh.py",
+    "line": 55,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "54         print(i, table[str(i)], list_frag[i])\n55         data = torch.load(osp.join(input_path, list_frag[i]))\n56         feat = fpfh(data)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "test/test_grid_sampling.py",
+    "line": 52,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "51         data_random = Data(pos=torch.randn(1000, 3) * 0.1, x=torch.ones((1000, 1)))\n52         data_fragment = torch.load(os.path.join(DIR_PATH, \"test_data/fragment_000003.pt\"))\n53",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "test/test_model_checkpoint.py",
+    "line": 124,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "123 \n124         ckp = torch.load(model_checkpoint.checkpoint_path)\n125",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "torch_points3d/applications/pretrained_api.py",
+    "line": 27,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "26             os.makedirs(os.path.dirname(out_file))\n27         urllib.request.urlretrieve(url, out_file)\n28     else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "torch_points3d/core/data_transform/transforms.py",
+    "line": 110,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "109     def __init__(self, radius, grid_size=None, delattr_kd_tree=True, center=True):\n110         self._radius = eval(radius) if isinstance(radius, str) else float(radius)\n111         grid_size = eval(grid_size) if isinstance(grid_size, str) else float(grid_size)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "torch_points3d/core/data_transform/transforms.py",
+    "line": 111,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "110         self._radius = eval(radius) if isinstance(radius, str) else float(radius)\n111         grid_size = eval(grid_size) if isinstance(grid_size, str) else float(grid_size)\n112         self._grid_sampling = GridSampling3D(size=grid_size if grid_size else self._radius)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "torch_points3d/core/data_transform/transforms.py",
+    "line": 178,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "177     def __init__(self, radius, grid_size=None, delattr_kd_tree=True, center=True):\n178         self._radius = eval(radius) if isinstance(radius, str) else float(radius)\n179         grid_size = eval(grid_size) if isinstance(grid_size, str) else float(grid_size)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "torch_points3d/core/data_transform/transforms.py",
+    "line": 179,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "178         self._radius = eval(radius) if isinstance(radius, str) else float(radius)\n179         grid_size = eval(grid_size) if isinstance(grid_size, str) else float(grid_size)\n180         self._grid_sampling = GridSampling3D(size=grid_size if grid_size else self._radius)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "torch_points3d/core/data_transform/transforms.py",
+    "line": 269,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "268     def __init__(self, radius, strategy=\"random\", class_weight_method=\"sqrt\", center=True):\n269         self._radius = eval(radius) if isinstance(radius, str) else float(radius)\n270         self._sampling_strategy = SamplingStrategy(strategy=strategy, class_weight_method=class_weight_method)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/datasets/classification/modelnet.py",
+    "line": 60,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "59         path = self.processed_paths[0] if train else self.processed_paths[1]\n60         self.data, self.slices = torch.load(path)\n61",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/datasets/registration/base3dmatch.py",
+    "line": 236,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "235                 for path in list_fragment_path:\n236                     data = torch.load(osp.join(in_dir, path))\n237                     if(self.pre_transform is not None):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/datasets/registration/base3dmatch.py",
+    "line": 268,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "267                                                 'matches{:06d}.npy'.format(ind))\n268                             data1 = torch.load(path1)\n269                             data2 = torch.load(path2)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/datasets/registration/base3dmatch.py",
+    "line": 269,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "268                             data1 = torch.load(path1)\n269                             data2 = torch.load(path2)\n270                             match = compute_overlap_and_matches(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/datasets/registration/base3dmatch.py",
+    "line": 300,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "299             for _ in range(self.num_random_pt):\n300                 data_source = torch.load(match['path_source'])\n301                 data_target = torch.load(match['path_target'])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/datasets/registration/base3dmatch.py",
+    "line": 301,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "300                 data_source = torch.load(match['path_source'])\n301                 data_target = torch.load(match['path_target'])\n302                 rand = np.random.randint(0, len(match['pair']))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/datasets/registration/base_kitti.py",
+    "line": 54,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "53     for name in list_name_frames:\n54         data = torch.load(osp.join(path, name))\n55         list_sensor_pos.append(data.pos_sensor)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/datasets/registration/base_kitti.py",
+    "line": 214,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "213                 path2 = osp.join(path_fragment, list_name_frames[j])\n214                 data1 = torch.load(path1)\n215                 data2 = torch.load(path2)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/datasets/registration/base_kitti.py",
+    "line": 215,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "214                 data1 = torch.load(path1)\n215                 data2 = torch.load(path2)\n216                 match = compute_overlap_and_matches(data1, data2, self.max_dist_overlap)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/datasets/registration/base_siamese_dataset.py",
+    "line": 97,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "96         if not self.self_supervised:\n97             data_source = torch.load(match[\"path_source\"]).to(torch.float)\n98             data_target = torch.load(match[\"path_target\"]).to(torch.float)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/datasets/registration/base_siamese_dataset.py",
+    "line": 98,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "97             data_source = torch.load(match[\"path_source\"]).to(torch.float)\n98             data_target = torch.load(match[\"path_target\"]).to(torch.float)\n99             new_pair = torch.from_numpy(match[\"pair\"])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/datasets/registration/base_siamese_dataset.py",
+    "line": 102,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "101             if random.random() < 0.5:\n102                 data_source_o = torch.load(match[\"path_source\"]).to(torch.float)\n103                 data_target_o = torch.load(match[\"path_source\"]).to(torch.float)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/datasets/registration/base_siamese_dataset.py",
+    "line": 103,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "102                 data_source_o = torch.load(match[\"path_source\"]).to(torch.float)\n103                 data_target_o = torch.load(match[\"path_source\"]).to(torch.float)\n104             else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/datasets/registration/base_siamese_dataset.py",
+    "line": 105,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "104             else:\n105                 data_source_o = torch.load(match[\"path_target\"]).to(torch.float)\n106                 data_target_o = torch.load(match[\"path_target\"]).to(torch.float)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/datasets/registration/base_siamese_dataset.py",
+    "line": 106,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "105                 data_source_o = torch.load(match[\"path_target\"]).to(torch.float)\n106                 data_target_o = torch.load(match[\"path_target\"]).to(torch.float)\n107             data_source, data_target, new_pair = self.unsupervised_preprocess(data_source_o, data_target_o)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/datasets/registration/basetest.py",
+    "line": 196,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "195                 path2 = osp.join(self.processed_dir, \"test\", \"fragment\", scene, \"fragment_{:06d}.pt\".format(pair[1]))\n196                 data1 = torch.load(path1)\n197                 data2 = torch.load(path2)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/datasets/registration/basetest.py",
+    "line": 197,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "196                 data1 = torch.load(path1)\n197                 data2 = torch.load(path2)\n198                 match = compute_overlap_and_matches(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/datasets/registration/basetest.py",
+    "line": 399,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "398                 )\n399                 data1 = torch.load(path1)\n400                 data2 = torch.load(path2)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/datasets/registration/basetest.py",
+    "line": 400,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "399                 data1 = torch.load(path1)\n400                 data2 = torch.load(path2)\n401                 match = compute_overlap_and_matches(data1, data2, self.max_dist_overlap)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "torch_points3d/datasets/registration/basetest.py",
+    "line": 418,
+    "message": "Call to requests without timeout",
+    "snippet": "417         log.info(\"download pairs\")\n418         req = requests.get(self.link_pairs)\n419         with open(osp.join(path, \"pairs.zip\"), \"wb\") as archive:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/datasets/registration/basetest.py",
+    "line": 434,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "433         if not self.self_supervised:\n434             data_source = torch.load(match[\"path_source\"]).to(torch.float)\n435             data_target = torch.load(match[\"path_target\"]).to(torch.float)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/datasets/registration/basetest.py",
+    "line": 435,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "434             data_source = torch.load(match[\"path_source\"]).to(torch.float)\n435             data_target = torch.load(match[\"path_target\"]).to(torch.float)\n436             new_pair = torch.from_numpy(match[\"pair\"])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/datasets/registration/basetest.py",
+    "line": 443,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "442             if random.random() < 0.5:\n443                 data_source_o = torch.load(match[\"path_source\"]).to(torch.float)\n444                 data_target_o = torch.load(match[\"path_source\"]).to(torch.float)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/datasets/registration/basetest.py",
+    "line": 444,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "443                 data_source_o = torch.load(match[\"path_source\"]).to(torch.float)\n444                 data_target_o = torch.load(match[\"path_source\"]).to(torch.float)\n445             else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/datasets/registration/basetest.py",
+    "line": 446,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "445             else:\n446                 data_source_o = torch.load(match[\"path_target\"]).to(torch.float)\n447                 data_target_o = torch.load(match[\"path_target\"]).to(torch.float)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/datasets/registration/basetest.py",
+    "line": 447,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "446                 data_source_o = torch.load(match[\"path_target\"]).to(torch.float)\n447                 data_target_o = torch.load(match[\"path_target\"]).to(torch.float)\n448             data_source, data_target, new_pair = self.unsupervised_preprocess(data_source_o, data_target_o)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/datasets/registration/general3dmatch.py",
+    "line": 132,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "131         match = np.load(osp.join(self.path_data, \"matches{:06d}.npy\".format(idx)), allow_pickle=True).item()\n132         data_source = torch.load(match[\"path_source\"]).to(torch.float)\n133         data_target = torch.load(match[\"path_target\"]).to(torch.float)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/datasets/registration/general3dmatch.py",
+    "line": 133,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "132         data_source = torch.load(match[\"path_source\"]).to(torch.float)\n133         data_target = torch.load(match[\"path_target\"]).to(torch.float)\n134",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/datasets/registration/general3dmatch.py",
+    "line": 150,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "149     def get_patch_offline(self, idx):\n150         data_source = torch.load(osp.join(self.path_data, \"patches_source{:06d}.pt\".format(idx)))\n151         data_target = torch.load(osp.join(self.path_data, \"patches_target{:06d}.pt\".format(idx)))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/datasets/registration/general3dmatch.py",
+    "line": 151,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "150         data_source = torch.load(osp.join(self.path_data, \"patches_source{:06d}.pt\".format(idx)))\n151         data_target = torch.load(osp.join(self.path_data, \"patches_target{:06d}.pt\".format(idx)))\n152         if self.transform is not None:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/datasets/registration/test3dmatch.py",
+    "line": 49,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "48         dataset at the specified indices.\"\"\"\n49         data = torch.load(\n50             osp.join(self.path_table, 'fragment_{:06d}.pt'.format(idx)))\n51         if(self.transform is not None):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/datasets/registration/test3dmatch.py",
+    "line": 59,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "58     def get_patches(self, idx):\n59         fragment = torch.load(\n60             osp.join(self.path_table, 'fragment_{:06d}.pt'.format(idx)))\n61         patch_dataset = [self.patch_extractor(fragment, fragment.keypoints[i])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "torch_points3d/datasets/registration/testeth.py",
+    "line": 106,
+    "message": "Call to requests without timeout",
+    "snippet": "105         for name, url in self.DATASETS:\n106             req = requests.get(url)\n107             with open(osp.join(folder, name+\".zip\"), \"wb\") as archive:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "torch_points3d/datasets/registration/testeth.py",
+    "line": 121,
+    "message": "Call to requests without timeout",
+    "snippet": "120         self.download_pairs(folder)\n121         req = requests.get(self.link_pose)\n122         with open(osp.join(folder, \"pose.zip\"), \"wb\") as archive:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "torch_points3d/datasets/registration/testeth.py",
+    "line": 225,
+    "message": "Call to requests without timeout",
+    "snippet": "224         log.info(\"Download elements in the file {}...\".format(folder))\n225         req = requests.get(self.url)\n226         with open(osp.join(folder, self.name+\".zip\"), \"wb\") as archive:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B402",
+    "file_path": "torch_points3d/datasets/registration/testplanetary.py",
+    "line": 19,
+    "message": "A FTP-related module is being imported.  FTP is considered insecure. Use SSH/SFTP/SCP or some other encrypted protocol.",
+    "snippet": "18 from zipfile import ZipFile\n19 from ftplib import FTP\n20",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B321",
+    "file_path": "torch_points3d/datasets/registration/testplanetary.py",
+    "line": 73,
+    "message": "FTP-related functions are being called. FTP is considered insecure. Use SSH/SFTP/SCP or some other encrypted protocol.",
+    "snippet": "72             makedirs(folder)\n73         ftp = FTP('asrl3.utias.utoronto.ca')\n74         ftp.login()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/datasets/segmentation/s3dis.py",
+    "line": 301,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "300         if split == \"test\":\n301             self.raw_test_data = torch.load(self.raw_areas_paths[test_area - 1])\n302",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "torch_points3d/datasets/segmentation/s3dis.py",
+    "line": 357,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "356             cmd = \"patch -ruN -p0 -d  {} < {}\".format(self.raw_dir, osp.join(self.raw_dir, \"s3dis.patch\"))\n357             os.system(cmd)\n358         else:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/datasets/segmentation/s3dis.py",
+    "line": 432,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "431         else:\n432             data_list = torch.load(self.pre_processed_path)\n433",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/datasets/segmentation/s3dis.py",
+    "line": 475,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "474     def _load_data(self, path):\n475         self.data, self.slices = torch.load(path)\n476",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/datasets/segmentation/s3dis.py",
+    "line": 547,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "546     def _load_data(self, path):\n547         self._datas = torch.load(path)\n548         if not isinstance(self._datas, list):",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/datasets/segmentation/s3dis.py",
+    "line": 587,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "586     def _load_data(self, path):\n587         self._datas = torch.load(path)\n588         if not isinstance(self._datas, list):",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "torch_points3d/datasets/segmentation/scannet.py",
+    "line": 143,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "142 def get_release_scans(release_file):\n143     scan_lines = urlopen(release_file)\n144     scans = []",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "torch_points3d/datasets/segmentation/scannet.py",
+    "line": 176,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "175         f.close()\n176         urllib.request.urlretrieve(url, out_file_tmp)\n177         # urllib.urlretrieve(url, out_file_tmp)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/datasets/segmentation/scannet.py",
+    "line": 483,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "482 \n483         self.data, self.slices = torch.load(path)\n484",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/datasets/segmentation/scannet.py",
+    "line": 517,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "516         )\n517         data = torch.load(path_to_raw_scan)\n518         data.scan_name = scan_name",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/datasets/segmentation/semantickitti.py",
+    "line": 94,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "93         print(\"load %s\"%(filename))\n94         self.data, self.slices = torch.load(filename)\n95",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/datasets/segmentation/semantickitti_ori.py",
+    "line": 128,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "127     def get(self, idx):\n128         data = torch.load(self._scans[idx])\n129         if data.y is not None:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/datasets/segmentation/shapenet.py",
+    "line": 151,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "150         '''\n151         data, slices = torch.load(path)\n152         data.x = data.x if include_normals else None",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/metrics/model_checkpoint.py",
+    "line": 84,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "83             log.info(\"Loading checkpoint from {}\".format(checkpoint_file))\n84             objects = torch.load(checkpoint_file, map_location=\"cpu\")\n85             for key, value in objects.items():",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/models/base_model.py",
+    "line": 152,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "151                 log.info(\"load pretrained weights from {}\".format(path_pretrained))\n152                 m = torch.load(path_pretrained, map_location=\"cpu\")[\"models\"][weight_name]\n153                 self.load_state_dict_with_same_shape(m, strict=False)",
+    "stage": "modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "torch_points3d/modules/SparseConv3d/nn/__init__.py",
+    "line": 23,
+    "message": "Use of exec detected.",
+    "snippet": "22 for val in __all__:\n23     exec(val + \"=None\")\n24",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "torch_points3d/modules/SparseConv3d/nn/__init__.py",
+    "line": 43,
+    "message": "Use of exec detected.",
+    "snippet": "42     for val in __all__:\n43         exec(\"globals()['%s'] = modules.%s\" % (val, val))\n44",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B323",
+    "file_path": "torch_points3d/utils/download.py",
+    "line": 32,
+    "message": "By default, Python will create a secure, verified ssl context for use in such classes as HTTPSConnection. However, it still allows using an insecure context via the _create_unverified_context that  reverts to the previous behavior that does not validate certificates or perform hostname checks.",
+    "snippet": "31         pass\n32     context = ssl._create_unverified_context()\n33     data = urllib.request.urlopen(url, context=context)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "torch_points3d/utils/download.py",
+    "line": 33,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "32     context = ssl._create_unverified_context()\n33     data = urllib.request.urlopen(url, context=context)\n34",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "torch_points3d/utils/model_building_utils/model_definition_resolver.py",
+    "line": 41,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "40                 try:\n41                     obj[k] = eval(obj[k], constants)\n42                 except NameError:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torch_points3d/visualization/experiment_manager.py",
+    "line": 99,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "98         path_to_checkpoint = os.path.join(self._run_path, self.model_name)\n99         stats = torch.load(path_to_checkpoint)[\"stats\"]\n100         self._stats = stats",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "find_neighbour_dist.py",
+    "line": 66,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "scripts/cv_s3dis.py",
+    "line": 62,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "scripts/datasets/download-scannet.py",
+    "line": 42,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "scripts/datasets/download-scannet.py",
+    "line": 69,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "scripts/find_env.py",
+    "line": 47,
+    "message": "Found 'subprocess' function 'Popen' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "torch_points3d/applications/pretrained_api.py",
+    "line": 27,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "torch_points3d/core/data_transform/transforms.py",
+    "line": 110,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "torch_points3d/core/data_transform/transforms.py",
+    "line": 111,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "torch_points3d/core/data_transform/transforms.py",
+    "line": 178,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "torch_points3d/core/data_transform/transforms.py",
+    "line": 179,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "torch_points3d/core/data_transform/transforms.py",
+    "line": 269,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "torch_points3d/datasets/segmentation/scannet.py",
+    "line": 143,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "torch_points3d/datasets/segmentation/scannet.py",
+    "line": 176,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "torch_points3d/modules/SparseConv3d/nn/__init__.py",
+    "line": 23,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "torch_points3d/modules/SparseConv3d/nn/__init__.py",
+    "line": 43,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.unverified-ssl-context.unverified-ssl-context",
+    "file_path": "torch_points3d/utils/download.py",
+    "line": 32,
+    "message": "Unverified SSL context detected. This will permit insecure connections without verifying SSL certificates. Use 'ssl.create_default_context' instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "torch_points3d/utils/download.py",
+    "line": 33,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "torch_points3d/utils/model_building_utils/model_definition_resolver.py",
+    "line": 41,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  }
+]

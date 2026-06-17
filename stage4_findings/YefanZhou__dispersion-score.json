@@ -1,0 +1,602 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "auxiliary/my_utils.py",
+    "line": 106,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "105     with open(path, 'r') as f:\n106         cfg_special = yaml.load(f, Loader=yaml.Loader)\n107     cfg_special = EasyDict(cfg_special)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "auxiliary/my_utils.py",
+    "line": 117,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "116         with open(default_path, 'r') as f:\n117             cfg = yaml.load(f)\n118     else:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "dataset/ShapenetRender_more_variation/blender_batch_angle_cmd.py",
+    "line": 27,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "26 \n27     os.system(COMMAND)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "dataset/ShapenetRender_more_variation/helper_scripts/render_batch.py",
+    "line": 64,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "63     obj_path = os.path.join(model_root_dir, cat_id, obj_id)\n64     os.system(FLAGS.blender_location + ' --background --python render_blender.py -- --num_views %d --obj_dir %s' % (num_views, obj_path))\n65",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "dataset/ShapenetRender_more_variation/render_batch.py",
+    "line": 64,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "63 \t\tif FLAGS.debug:\n64 \t\t\tos.system(FLAGS.blender_location + ' --background --python render_blender.py -- --views %d --obj_image_easy_dir %s --obj_albedo_easy_dir %s --obj_depth_easy_dir %s --obj_normal_easy_dir %s --obj_image_hard_dir %s --obj_albedo_hard_dir %s --obj_depth_hard_dir %s --obj_normal_hard_dir %s %s ' % (36, obj_image_easy_dir, obj_albedo_easy_dir, obj_depth_easy_dir, obj_normal_ea",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "dataset/ShapenetRender_more_variation/render_batch.py",
+    "line": 67,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "66 \t\telse:\n67 \t\t\tos.system(FLAGS.blender_location + ' --background --python render_blender.py -- --views %d --obj_image_easy_dir %s --obj_albedo_easy_dir %s --obj_depth_easy_dir %s --obj_normal_easy_dir %s --obj_image_hard_dir %s --obj_albedo_hard_dir %s --obj_depth_hard_dir %s --obj_normal_hard_dir %s %s > /dev/null 2>&1' % (36, obj_image_easy_dir, obj_albedo_easy_dir, obj_depth_easy_dir, obj_nor",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "dataset/ShapenetRender_more_variation/render_batch_anglecontrol.py",
+    "line": 67,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "66 \t\tif FLAGS.debug:\n67 \t\t\tos.system(FLAGS.blender_location + ' --background --python render_blender_anglecontrol.py -- --views %d --y_rot_range %d --obj_image_easy_dir %s %s ' % (FLAGS.views, FLAGS.y_rot_range, obj_image_easy_dir, objpath))\n68",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "dataset/ShapenetRender_more_variation/render_batch_anglecontrol.py",
+    "line": 70,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "69 \t\telse:\n70 \t\t\tos.system(FLAGS.blender_location + ' --background --python render_blender_anglecontrol.py -- --views %d --y_rot_range %d --obj_image_easy_dir %s %s > /dev/null 2>&1' % (FLAGS.views, FLAGS.y_rot_range, obj_image_easy_dir, objpath))\n71",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "dataset/ShapenetRender_more_variation/unzip_category.py",
+    "line": 12,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "11     catid = catf.split('.')[0]\n12     os.system(f\"unzip ../ShapeNetV1/ShapeNetCore.v1/{catid}.zip -d ../ShapeNetV1/ShapeNetCore.v1\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "dataset/dataset_shape_origin.py",
+    "line": 131,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "130             with open(self.path_dataset + \"info.pkl\", \"rb\") as fp:\n131                 self.data_metadata = pickle.load(fp)\n132",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "dataset/dataset_shape_origin.py",
+    "line": 133,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "132 \n133             self.data_points = torch.load(self.path_dataset + \"points.pth\")\n134         else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "dataset/dataset_shapenet.py",
+    "line": 127,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "126             with open(self.path_dataset + \"info.pkl\", \"rb\") as fp:\n127                 self.data_metadata = pickle.load(fp)\n128",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "dataset/dataset_shapenet.py",
+    "line": 129,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "128 \n129             self.data_points = torch.load(self.path_dataset + \"points.pth\")\n130         else:",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "dataset/dataset_shapenet_aug.py",
+    "line": 172,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "171             with open(self.path_dataset + \"info.pkl\", \"rb\") as fp:\n172                 self.data_metadata = pickle.load(fp)\n173",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "dataset/dataset_shapenet_aug.py",
+    "line": 174,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "173 \n174             self.data_points = torch.load(self.path_dataset + \"points.pth\")\n175         else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "dataset/dataset_shapenet_views.py",
+    "line": 167,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "166             with open(self.path_dataset + \"info.pkl\", \"rb\") as fp:\n167                 self.data_metadata = pickle.load(fp)\n168",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "dataset/dataset_shapenet_views.py",
+    "line": 169,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "168 \n169             self.data_points = torch.load(self.path_dataset + \"points.pth\")\n170         else:",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "dataset/dataset_shapenet_views_clustering.py",
+    "line": 181,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "180             with open(self.path_dataset + \"info.pkl\", \"rb\") as fp:\n181                 self.data_metadata = pickle.load(fp)\n182",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "dataset/dataset_shapenet_views_clustering.py",
+    "line": 183,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "182 \n183             self.data_points = torch.load(self.path_dataset + \"points.pth\")\n184         else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "dataset/dataset_shapenet_views_yawlimit.py",
+    "line": 155,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "154             with open(self.path_dataset + \"info.pkl\", \"rb\") as fp:\n155                 self.data_metadata = pickle.load(fp)\n156",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "dataset/dataset_shapenet_views_yawlimit.py",
+    "line": 157,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "156 \n157             self.data_points = torch.load(self.path_dataset + \"points.pth\")\n158         else:",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "eval/eval_utils.py",
+    "line": 156,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "155 \n156     network.load_state_dict(torch.load(join(opt.trained_exp_dir, \"network.pth\"), map_location='cuda'))\n157     logger.info(f\"Network weights loaded from  {opt.trained_exp_dir}!\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "eval/output_ds.py",
+    "line": 117,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "116             network.to(exp_opts.device)\n117             network.load_state_dict(torch.load(join(opt.trained_exp_dir, \"network.pth\"), map_location='cuda'))\n118             proc_logger.info(f\"Network weights loaded from  {opt.trained_exp_dir}!\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "eval/output_ds_aug.py",
+    "line": 114,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "113             network.to(exp_opts.device)\n114             network.load_state_dict(torch.load(join(opt.trained_exp_dir, \"network.pth\"), map_location='cuda'))\n115             proc_logger.info(f\"Network weights loaded from  {opt.trained_exp_dir}!\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "eval/output_ds_synthetic.py",
+    "line": 52,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "51             opt.logger.info(f\"Reloading Network Weights from {opt.reload_model_path}...\")\n52             network.load_state_dict(torch.load(opt.reload_model_path)['model_state_dict'])\n53             network.to(opt.device)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "eval/output_ds_viewer_inv.py",
+    "line": 130,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "129             network.to(exp_opts.device)\n130             network.load_state_dict(torch.load(join(opt.trained_exp_dir, \"network.pth\"), map_location='cuda'))\n131             proc_logger.info(f\"Network weights loaded from  {opt.trained_exp_dir}!\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "eval/overview_plot_toy_dataset/mitsuba_cmd.py",
+    "line": 20,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "19     cmd = f'/Applications/Mitsuba.app/Contents/MacOS/mitsuba {pts_xml_path}'\n20     os.system(cmd)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model/clustering_classifier.py",
+    "line": 123,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "122         model_path = os.path.join(opt.network_dir, 'network.pt')\n123         model.load_state_dict(torch.load(model_path))\n124         opt.logger.info(f\"Loading Network Parameters from {model_path}\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model/trainer_model.py",
+    "line": 73,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "72 \n73             self.network.load_state_dict(torch.load(self.opt.reload_model_path, map_location='cuda'))\n74",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model/trainer_model.py",
+    "line": 79,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "78             network = EncoderDecoder(opt)\n79             network.module.load_state_dict(torch.load(opt.reload_decoder_path, map_location='cuda'))\n80             self.network.module.decoder = network.module.decoder",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model/trainer_model.py",
+    "line": 99,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "98             try:\n99                 self.optimizer.load_state_dict(torch.load(self.opt.reload_optimizer_path, map_location='cuda'))\n100                 # self.opt.logger.info(f\"Reloaded optimizer {self.opt.reload_optimizer_path}\")",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "train_toydata.py",
+    "line": 26,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "25         opt.logger.info(f\"Reloading Network Weights from {opt.reload_model_path}...\")\n26         network.load_state_dict(torch.load(opt.reload_model_path)['model_state_dict'])\n27",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "training/gputracker.py",
+    "line": 136,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "135         # ACTIVATE\n136         os.system(bash_command)\n137         import time",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "training/gputracker_parallel.py",
+    "line": 128,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "127         # ACTIVATE\n128         os.system(bash_command)\n129         import time",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "training/launcher.py",
+    "line": 102,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "101             if gpu.utilization == 0 and gpu.memory_used < 12 and gpu_id == 0 and gpu.processes.__len__() == 0:\n102                 os.system(f\"tmux kill-session -t GPU{gpu_id}\")\n103             has = os.system(f\"tmux has-session -t GPU{gpu_id} 2>/dev/null\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "training/launcher.py",
+    "line": 103,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "102                 os.system(f\"tmux kill-session -t GPU{gpu_id}\")\n103             has = os.system(f\"tmux has-session -t GPU{gpu_id} 2>/dev/null\")\n104             if not int(has) == 0:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "training/launcher.py",
+    "line": 127,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "126         print(CMD)\n127         os.system(CMD)\n128         time.sleep(15)  # Sleeps for 30 sec",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "training/launcher.py",
+    "line": 143,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "142     while len(keys) > 0:\n143         has = os.system(f\"tmux has-session -t GPU{gpu_id} 2>/dev/null\")\n144         if not int(has) == 0:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "training/launcher.py",
+    "line": 151,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "150             print(CMD)\n151             os.system(CMD)\n152         time.sleep(60)  # Sleeps for 30 sec",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "training/metro.py",
+    "line": 23,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "22     cmd = f\"{metro} {path1} {path2}\"\n23     returned_output = subprocess.check_output(cmd, shell=True)\n24     returned_output = returned_output.decode(\"utf-8\")",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.deserialization.avoid-pyyaml-load.avoid-pyyaml-load",
+    "file_path": "auxiliary/my_utils.py",
+    "line": 106,
+    "message": "Detected a possible YAML deserialization vulnerability. `yaml.unsafe_load`, `yaml.Loader`, `yaml.CLoader`, and `yaml.UnsafeLoader` are all known to be unsafe methods of deserializing YAML. An attacker with control over the YAML input could create special YAML input that allows the attacker to run arbitrary Python code. This would allow the attacker to steal files, download and install malware, or otherwise take over the machine. Use `yaml.safe_load` or `yaml.SafeLoader` instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-system-call-tainted-env-args.dangerous-system-call-tainted-env-args",
+    "file_path": "dataset/ShapenetRender_more_variation/blender_batch_angle_cmd.py",
+    "line": 27,
+    "message": "Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-system-call-tainted-env-args.dangerous-system-call-tainted-env-args",
+    "file_path": "dataset/ShapenetRender_more_variation/helper_scripts/render_batch.py",
+    "line": 64,
+    "message": "Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-system-call-tainted-env-args.dangerous-system-call-tainted-env-args",
+    "file_path": "dataset/ShapenetRender_more_variation/render_batch.py",
+    "line": 64,
+    "message": "Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-system-call-tainted-env-args.dangerous-system-call-tainted-env-args",
+    "file_path": "dataset/ShapenetRender_more_variation/render_batch.py",
+    "line": 67,
+    "message": "Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-system-call-tainted-env-args.dangerous-system-call-tainted-env-args",
+    "file_path": "dataset/ShapenetRender_more_variation/render_batch_anglecontrol.py",
+    "line": 67,
+    "message": "Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-system-call-tainted-env-args.dangerous-system-call-tainted-env-args",
+    "file_path": "dataset/ShapenetRender_more_variation/render_batch_anglecontrol.py",
+    "line": 70,
+    "message": "Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "dataset/dataset_shape_origin.py",
+    "line": 131,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "dataset/dataset_shape_origin.py",
+    "line": 148,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "dataset/dataset_shapenet.py",
+    "line": 127,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "dataset/dataset_shapenet.py",
+    "line": 144,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "dataset/dataset_shapenet_aug.py",
+    "line": 172,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "dataset/dataset_shapenet_aug.py",
+    "line": 189,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "dataset/dataset_shapenet_views.py",
+    "line": 167,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "dataset/dataset_shapenet_views.py",
+    "line": 185,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "dataset/dataset_shapenet_views_clustering.py",
+    "line": 181,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "dataset/dataset_shapenet_views_clustering.py",
+    "line": 199,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "dataset/dataset_shapenet_views_yawlimit.py",
+    "line": 155,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "dataset/dataset_shapenet_views_yawlimit.py",
+    "line": 173,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "training/metro.py",
+    "line": 23,
+    "message": "Found 'subprocess' function 'check_output' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  }
+]

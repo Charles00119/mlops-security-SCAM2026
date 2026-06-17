@@ -1,0 +1,692 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "autoflow/constants.py",
+    "line": 26,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "25 VARIABLE_PATTERN = re.compile(f\"^[a-zA-Z_][a-zA-Z_0-9]*$\")\n26 JOBLIB_CACHE = \"/tmp/autoflow_joblib_cache\"\n27 ITERATIONS_BUDGET_MODE = \"iterations\"",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "autoflow/data_container/dataframe.py",
+    "line": 77,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "76         assert self.column_descriptions is not None\n77         m = hashlib.md5()\n78         get_hash_of_str(self.dataset_type, m)",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "autoflow/data_container/ndarray.py",
+    "line": 26,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "25     def get_hash(self):\n26         m = hashlib.md5()\n27         get_hash_of_str(self.dataset_type, m)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "autoflow/hdl/hdl2shps.py",
+    "line": 426,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "425             else:\n426                 return eval(f'''smac_hdl.{_type}(\"{key}\",*_value,default=_default)''')\n427         else:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "autoflow/hdl/smac/__init__.py",
+    "line": 26,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "25         try:\n26             return eval(value_)\n27         except Exception:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "autoflow/opt/core/worker.py",
+    "line": 98,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "97                 with open(fn, 'rb') as fh:\n98                     self.nameserver, self.nameserver_port = pickle.load(fh)\n99                 return",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "autoflow/resource_manager/base.py",
+    "line": 588,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "587     def upload_df_to_fs(self, df: pd.DataFrame, dataset_path):\n588         tmp_path = f\"/tmp/tmp_df_{os.getpid()}.h5\"\n589         if os.path.exists(tmp_path):",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "autoflow/resource_manager/base.py",
+    "line": 595,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "594     def upload_ndarray_to_fs(self, arr: np.ndarray, dataset_path):\n595         tmp_path = f\"/tmp/tmp_arr_{os.getpid()}.h5\"\n596         if os.path.exists(tmp_path):",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "autoflow/resource_manager/base.py",
+    "line": 643,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "642     def download_df_from_fs(self, dataset_path, columns=None):\n643         tmp_path = f\"/tmp/tmp_df_{os.getpid()}.h5\"\n644         self.file_system.download(dataset_path, tmp_path)",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "autoflow/resource_manager/base.py",
+    "line": 651,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "650     def download_arr_from_fs(self, dataset_path):\n651         tmp_path = f\"/tmp/tmp_arr_{os.getpid()}.h5\"\n652         self.file_system.download(dataset_path, tmp_path)",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "autoflow/resource_manager/base.py",
+    "line": 725,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "724         if os.path.exists(local_log_path):\n725             tmp_log_path = f\"/tmp/log\"\n726             if os.path.exists(tmp_log_path):",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "autoflow/resource_manager/base.py",
+    "line": 818,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "817         # ---task_id----------------------------------------------------\n818         m = hashlib.md5()\n819         get_hash_of_str(train_set_id, m)",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "autoflow/resource_manager/cache.py",
+    "line": 100,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "99             return None\n100         return pickle.loads(v)\n101",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "autoflow/tests/mock.py",
+    "line": 11,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "10 def get_mock_resource_manager():\n11     mock_path=\"/tmp/mock_autoflow\"\n12     if os.path.exists(mock_path):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "autoflow/utils/hash.py",
+    "line": 16,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "15 def get_hash_of_file(fname):\n16     hash_md5 = hashlib.md5()\n17     with open(fname, \"rb\") as f:",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "autoflow/utils/hash.py",
+    "line": 25,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "24     if m is None:\n25         m = hashlib.md5()\n26",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "autoflow/utils/hash.py",
+    "line": 47,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "46     if m is None:\n47         m = hashlib.md5()\n48",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "autoflow/utils/hash.py",
+    "line": 57,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "56     if m is None:\n57         m = hashlib.md5()\n58     if isinstance(x, str):",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "autoflow/utils/hash.py",
+    "line": 72,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "71     if m is None:\n72         m = hashlib.md5()\n73     df_ = deepcopy(df)",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "autoflow/utils/hash.py",
+    "line": 84,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "83     if m is None:\n84         m = hashlib.md5()\n85     sp0 = df.shape[0]",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "autoflow/utils/hash.py",
+    "line": 98,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "97     if m is None:\n98         m = hashlib.md5()\n99     cat_obj_dtypes = [\"object\", \"category\"]  # fixme : datetime 等",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "autoflow/utils/hash.py",
+    "line": 132,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "131     if m is None:\n132         m = hashlib.md5()\n133     if isinstance(s, str):",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "autoflow/utils/hash.py",
+    "line": 141,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "140     if m is None:\n141         m = hashlib.md5()\n142     if isinstance(config, Configuration):",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "autoflow/utils/sys_.py",
+    "line": 67,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "66     print(cmd)\n67     os.system(cmd)\n68",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "autoflow/workflow/ml_workflow.py",
+    "line": 121,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "120                 component_name = transformer.__class__.__name__\n121                 m = hashlib.md5()\n122                 get_hash_of_str(component_name, m)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "examples/store_data_in_remote.py",
+    "line": 20,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "19         \"user\": \"tqc\",\n20         \"host\": \"0.0.0.0\",\n21         \"port\": 5432\n22     },\n23     store_path=\"/autoflow\",\n24     file_system=\"hdfs\",\n25     should_store_intermediate_result=True,",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "generic_fs/hdfs_.py",
+    "line": 112,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "111         self.connect_fs()\n112         tmp_path = self.join(\"/tmp\", self.basename(path))\n113         dump(data, tmp_path)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "generic_fs/hdfs_.py",
+    "line": 121,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "120         self.connect_fs()\n121         tmp_path = self.join(\"/tmp\", self.basename(path))\n122         self.client.download(path, tmp_path, overwrite=True)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "generic_fs/hdfs_.py",
+    "line": 143,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "142     fs = HDFS(url='http://0.0.0.0:50070')\n143     loads(dumps(fs))",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "generic_fs/nitrogen.py",
+    "line": 38,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "37     def dump_pickle(self, data, path):\n38         tmp_path = self.join(\"/tmp\", uuid4().hex + \".bz2\")\n39         dump(data, tmp_path)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "generic_fs/nitrogen.py",
+    "line": 45,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "44     def load_pickle(self, dataset_id):\n45         tmp_path = self.join(\"/tmp\", uuid4().hex + \".bz2\")\n46         self.download(dataset_id, tmp_path)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "generic_fs/nitrogen.py",
+    "line": 72,
+    "message": "Call to requests without timeout",
+    "snippet": "71         with open(local_path, 'rb') as f:\n72             requests.put(url, data=f, headers=s3_header)\n73         response = send_requests(",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "generic_fs/nitrogen.py",
+    "line": 87,
+    "message": "Call to requests without timeout",
+    "snippet": "86         # todo: 这里报警告\n87         download_data = requests.get(url, stream=True)\n88         with open(local_path, 'wb') as f:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "generic_fs/nitrogen.py",
+    "line": 96,
+    "message": "Call to requests without timeout",
+    "snippet": "95         with open(localfile, 'wb') as f:\n96             r = requests.get(url, allow_redirects=True)\n97             f.write(r.content)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "generic_fs/utils/db.py",
+    "line": 23,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "22             user=db_params.get(\"user\", \"postgres\"),\n23             host=db_params.get(\"host\", \"0.0.0.0\"),\n24             port=db_params.get(\"port\", 5432),",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "generic_fs/utils/db.py",
+    "line": 82,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "81         try:\n82             return pickle.loads(value)\n83         except Exception as e:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "generic_fs/utils/utils.py",
+    "line": 14,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "13 def loads_pickle(bits):\n14     return pickle.loads(bits)\n15",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "main.py",
+    "line": 66,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "65         \"user\": \"tqc\",\n66         \"host\": \"0.0.0.0\",\n67         \"port\": 5432\n68     },\n69     search_record_db_name=\"autoflow_test\",\n70     config_generator=\"ET\",\n71     config_generator_params={",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "tests/hdl/test_draw_workflow_space.py",
+    "line": 32,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "31         cmd = f'''dot -Tpng -Gsize=9,15\\! -Gdpi=300 -o{name}.png {name}.gv'''\n32         os.system(cmd)\n33",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tests/run_procedure.py",
+    "line": 34,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "33 Path(\"autoflow_classification.pkl\").write_bytes(trained_pipeline.pickle())\n34 predict_pipeline = pickle.loads(Path(\"autoflow_classification.pkl\").read_bytes())\n35 _, test_df = datasets.load(\"titanic\", return_train_test=True)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "autoflow/core/base.py",
+    "line": 723,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "autoflow/data_container/base.py",
+    "line": 99,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "autoflow/data_container/dataframe.py",
+    "line": 77,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "autoflow/data_container/ndarray.py",
+    "line": 26,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "autoflow/data_manager.py",
+    "line": 442,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "autoflow/hdl/hdl2shps.py",
+    "line": 426,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "autoflow/hdl/smac/__init__.py",
+    "line": 26,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "autoflow/opt/core/nameserver.py",
+    "line": 77,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "autoflow/opt/core/worker.py",
+    "line": 98,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "autoflow/resource_manager/base.py",
+    "line": 818,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "autoflow/resource_manager/cache.py",
+    "line": 100,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "autoflow/resource_manager/cache.py",
+    "line": 104,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "autoflow/utils/hash.py",
+    "line": 16,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "autoflow/utils/hash.py",
+    "line": 25,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "autoflow/utils/hash.py",
+    "line": 47,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "autoflow/utils/hash.py",
+    "line": 57,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "autoflow/utils/hash.py",
+    "line": 72,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "autoflow/utils/hash.py",
+    "line": 84,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "autoflow/utils/hash.py",
+    "line": 98,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "autoflow/utils/hash.py",
+    "line": 132,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "autoflow/utils/hash.py",
+    "line": 141,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "autoflow/workflow/ml_workflow.py",
+    "line": 121,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.unquoted-attribute-var.unquoted-attribute-var",
+    "file_path": "docs/_templates/layout.html",
+    "line": 25,
+    "message": "Detected a unquoted template variable as an attribute. If unquoted, a malicious actor could inject custom JavaScript handlers. To fix this, add quotes around the template expression, like this: \"{{ expr }}\".",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "generic_fs/hdfs_.py",
+    "line": 143,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "generic_fs/hdfs_.py",
+    "line": 143,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "generic_fs/utils/db.py",
+    "line": 76,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "generic_fs/utils/db.py",
+    "line": 82,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "generic_fs/utils/utils.py",
+    "line": 10,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "generic_fs/utils/utils.py",
+    "line": 14,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  }
+]

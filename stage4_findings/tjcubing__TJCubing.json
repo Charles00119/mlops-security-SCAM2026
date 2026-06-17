@@ -1,0 +1,52 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "cube.py",
+    "line": 95,
+    "message": "Call to requests without timeout",
+    "snippet": "94         params = mode if isinstance(mode, dict) else {}\n95         text = requests.get(text, params=params).text\n96     elif mode == \"file\":",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "cube.py",
+    "line": 137,
+    "message": "Call to requests without timeout",
+    "snippet": "136 \n137     for i, thing in enumerate(requests.get(\"https://maps.googleapis.com/maps/api/distancematrix/json\", params=param).json()[\"rows\"][0][\"elements\"]):\n138         comps[i][\"mi\"] = thing[\"distance\"][\"text\"]",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "cube.py",
+    "line": 513,
+    "message": "Call to requests without timeout",
+    "snippet": "512     with open(\"src/img/pfps/{}.png\".format(name.replace(\" \", \"\")), \"wb\") as f:\n513         f.write(requests.get(user.photo).content)\n514     return client",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.injection.raw-html-concat.raw-html-format",
+    "file_path": "app.py",
+    "line": 688,
+    "message": "Detected user input flowing into a manually constructed HTML string. You may be accidentally bypassing secure methods of rendering HTML by manually constructing HTML and this could create a cross-site scripting vulnerability, which could let attackers steal sensitive user data. To be sure this is safe, check that the HTML is rendered safely. Otherwise, use templates (`flask.render_template`) which will safely render HTML instead.",
+    "snippet": "requires login",
+    "stage": "inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.unescaped-template-extension.unescaped-template-extension",
+    "file_path": "app.py",
+    "line": 831,
+    "message": "Flask does not automatically escape Jinja templates unless they have .html, .htm, .xml, or .xhtml extensions. This could lead to XSS attacks. Use .html, .htm, .xml, or .xhtml for your template extensions. See https://flask.palletsprojects.com/en/1.1.x/templating/#jinja-setup for more information.",
+    "snippet": "requires login",
+    "stage": "inference"
+  }
+]

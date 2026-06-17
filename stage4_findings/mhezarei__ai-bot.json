@@ -1,0 +1,142 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B501",
+    "file_path": "deepmine.py",
+    "line": 27,
+    "message": "Call to requests with verify=False disabling SSL certificate checks, security issue.",
+    "snippet": "26         try:\n27             response = rq.post('https://deepmine.ir:8095/token', data=data, verify=False)\n28         except Exception:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "deepmine.py",
+    "line": 27,
+    "message": "Call to requests without timeout",
+    "snippet": "26         try:\n27             response = rq.post('https://deepmine.ir:8095/token', data=data, verify=False)\n28         except Exception:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B501",
+    "file_path": "deepmine.py",
+    "line": 54,
+    "message": "Call to requests with verify=False disabling SSL certificate checks, security issue.",
+    "snippet": "53     \n54         response = rq.post('https://deepmine.ir:8095/file2text', headers=headers, params=params, files=files, verify=False)\n55         if response.status_code == 200:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "deepmine.py",
+    "line": 54,
+    "message": "Call to requests without timeout",
+    "snippet": "53     \n54         response = rq.post('https://deepmine.ir:8095/file2text', headers=headers, params=params, files=files, verify=False)\n55         if response.status_code == 200:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "mhr_time.py",
+    "line": 18,
+    "message": "Call to requests without timeout",
+    "snippet": "17 \t\tself.url = url\n18 \t\ttxt = requests.get(url).text\n19 \t\tsoup = BeautifulSoup(txt, \"html.parser\")",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "nevisa.py",
+    "line": 66,
+    "message": "Call to requests without timeout",
+    "snippet": "65         try:\n66             r = req.get(\"http://80.210.37.8:8087/FileAsrServlet?subject=\"+type,auth=req.auth.HTTPBasicAuth('ali', '123'))\n67         except:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "nevisa.py",
+    "line": 72,
+    "message": "Call to requests without timeout",
+    "snippet": "71         try:\n72             r = req.get(\"http://80.210.37.8:8087/FileAsrServlet?subject=\" + type + \"&uid=\" + uid,auth=req.auth.HTTPBasicAuth('ali', '123'))\n73         except:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "religious_time.py",
+    "line": 36,
+    "message": "Call to requests without timeout",
+    "snippet": "35 \t\tself.url = url\n36 \t\tresp = requests.get(url)\n37 \t\treturn resp.json()[\"data\"][int(self.day) - 1][\"timings\"]",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "weather.py",
+    "line": 36,
+    "message": "Call to requests without timeout",
+    "snippet": "35 \n36 \t\tresp = requests.get(self.url)\n37 \t\tif resp.status_code / 100 != 2:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "info",
+    "rule_id": "python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http",
+    "file_path": "aryana.py",
+    "line": 32,
+    "message": "Detected a request using 'http://'. This request will be unencrypted, and attackers could listen into traffic on the network and be able to obtain sensitive information. Use 'https://' instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.requests.security.disabled-cert-validation.disabled-cert-validation",
+    "file_path": "deepmine.py",
+    "line": 27,
+    "message": "Certificate verification has been explicitly disabled. This permits insecure connections to insecure servers. Re-enable certification validation.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.requests.security.disabled-cert-validation.disabled-cert-validation",
+    "file_path": "deepmine.py",
+    "line": 54,
+    "message": "Certificate verification has been explicitly disabled. This permits insecure connections to insecure servers. Re-enable certification validation.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "info",
+    "rule_id": "python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http",
+    "file_path": "nevisa.py",
+    "line": 66,
+    "message": "Detected a request using 'http://'. This request will be unencrypted, and attackers could listen into traffic on the network and be able to obtain sensitive information. Use 'https://' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "info",
+    "rule_id": "python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http",
+    "file_path": "nevisa.py",
+    "line": 72,
+    "message": "Detected a request using 'http://'. This request will be unencrypted, and attackers could listen into traffic on the network and be able to obtain sensitive information. Use 'https://' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

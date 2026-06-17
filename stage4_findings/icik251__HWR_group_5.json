@@ -1,0 +1,102 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "character_segmentation/utils.py",
+    "line": 91,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "90 def load_checkpoint(path_of_model, epoch_checkpoint):\n91     return torch.load(\n92         os.path.join(path_of_model, \"checkpoint_{}.pth\".format(epoch_checkpoint))\n93     )\n94",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "character_style_recognition/model.py",
+    "line": 130,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "129         if self.model_path_to_load is not None:\n130             self.checkpoint = torch.load(self.model_path_to_load)\n131             self.model.load_state_dict(self.checkpoint[\"state_dict\"])",
+    "stage": "evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "character_style_recognition/model.py",
+    "line": 140,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "139 \n140             self.checkpoint = torch.load(\n141                 self.model_path_to_load, map_location=self.device\n142             )\n143             state_dict = self.checkpoint[\"state_dict\"]",
+    "stage": "evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "character_style_recognition/result_analysis_recognition.py",
+    "line": 21,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "20             if ea_int_optimal == \"ea\" or is_check_int:\n21                 checkpoint = torch.load(\n22                     os.path.join(\n23                         path_of_model, \"checkpoint_{}.pth\".format(ea_int_optimal)\n24                     )\n25                 )\n26                 curr_results = checkpoint[\"results\"]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "character_style_recognition/result_analysis_recognition.py",
+    "line": 31,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "30     if is_ea is False:\n31         checkpoint = torch.load(os.path.join(path_of_model, \"checkpoint_optimal.pth\"))\n32         curr_results = checkpoint[\"results\"]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "character_style_recognition/result_analysis_style.py",
+    "line": 21,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "20             if ea_int_optimal == \"ea\" or is_check_int:\n21                 checkpoint = torch.load(\n22                     os.path.join(\n23                         path_of_model, \"checkpoint_{}.pth\".format(ea_int_optimal)\n24                     )\n25                 )\n26                 curr_results = checkpoint[\"results\"]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "character_style_recognition/result_analysis_style.py",
+    "line": 31,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "30     if is_ea is False:\n31         checkpoint = torch.load(os.path.join(path_of_model, \"checkpoint_optimal.pth\"))\n32         curr_results = checkpoint[\"results\"]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "character_style_recognition/utils.py",
+    "line": 91,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "90 def load_checkpoint(path_of_model, epoch_checkpoint):\n91     return torch.load(\n92         os.path.join(path_of_model, \"checkpoint_{}.pth\".format(epoch_checkpoint))\n93     )\n94",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "data_preparation/utils.py",
+    "line": 91,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "90 def load_checkpoint(path_of_model, epoch_checkpoint):\n91     return torch.load(\n92         os.path.join(path_of_model, \"checkpoint_{}.pth\".format(epoch_checkpoint))\n93     )\n94",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "utils.py",
+    "line": 94,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "93 def load_checkpoint(path_of_model, epoch_checkpoint):\n94     return torch.load(\n95         os.path.join(path_of_model, \"checkpoint_{}.pth\".format(epoch_checkpoint))\n96     )\n97",
+    "stage": "data_acquisition"
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "convert_weights.py",
+    "line": 10,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "9     \"\"\"Converts saved checkpoint to the expected format for detoxify.\"\"\"\n10     checkpoint = torch.load(ARGS.checkpoint, map_location=ARGS.device)\n11",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "detoxify/detoxify.py",
+    "line": 43,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "42     else:\n43         loaded = torch.load(checkpoint, map_location=device, weights_only=False)\n44         if \"config\" not in loaded or \"state_dict\" not in loaded:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model_eval/evaluate.py",
+    "line": 19,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "18     model = ToxicClassifier(config)\n19     checkpoint = torch.load(checkpoint_path, map_location=device)\n20     model.load_state_dict(checkpoint[\"state_dict\"])",
+    "stage": "unreachable"
+  }
+]

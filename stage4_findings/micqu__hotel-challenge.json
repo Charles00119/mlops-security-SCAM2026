@@ -1,0 +1,22 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "sweeper.py",
+    "line": 21,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "20     with open('sweep_config.yaml', 'r') as f:\n21         sweep_config = yaml.load(f, yaml.FullLoader)\n22     sweep_id = wandb.sweep(sweep_config, project=\"hotel-challenge\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "utility.py",
+    "line": 88,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "87 def load_latest_model(model, name=\"model.pt\"):\n88     model.load_state_dict(torch.load(name))\n89     return model",
+    "stage": "data_preparation+modeling"
+  }
+]

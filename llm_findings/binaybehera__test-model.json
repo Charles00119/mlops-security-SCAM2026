@@ -1,0 +1,132 @@
+[
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_validation",
+    "file_path": "runmodel.py",
+    "line": 0,
+    "message": "No detected input validation: No schema checks, type assertions, or value-range guards are performed on incoming data (e.g., 'data' in create_forecast or 'data' in post_scores) before use.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.untrusted_source_handling",
+    "file_path": "runmodel.py",
+    "line": 0,
+    "message": "No detected untrusted source handling: Data is read from local CSV files and a local pickle file with no checksum verification, authentication, or integrity checks on any source.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_flipping_detection",
+    "file_path": "runmodel.py",
+    "line": 0,
+    "message": "No detected label flipping detection: No label distribution checks, expected label set validation, or label-noise detection tools are used anywhere in the data preparation or training flow.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.data_poisoning_defenses",
+    "file_path": "runmodel.py",
+    "line": 0,
+    "message": "No detected data poisoning defenses: Data is read from CSV and fed directly into Prophet without any outlier detection, statistical anomaly checks, or filtering of suspicious input values.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.model_integrity_verification",
+    "file_path": "runmodel.py",
+    "line": 0,
+    "message": "No detected model integrity verification: The model is loaded via `pickle.load(open('model.sav', 'rb'))` with no hash check, signature verification, pinned revision, or controlled-source validation before deserialization.",
+    "snippet": "",
+    "stage": "modeling"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_distribution_validation",
+    "file_path": "runmodel.py",
+    "line": 0,
+    "message": "No detected label distribution validation: The train_model function reads the CSV and directly fits Prophet without any label distribution check, class balance validation, or anomaly detection on training samples.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.backdoor_or_trigger_detection",
+    "file_path": "runmodel.py",
+    "line": 0,
+    "message": "No detected backdoor or trigger detection: There is no activation-pattern analysis, trigger detection, or gradient anomaly detection anywhere in the training pipeline.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.differential_privacy",
+    "file_path": "runmodel.py",
+    "line": 0,
+    "message": "No detected differential privacy: No differential privacy library (Opacus, TensorFlow Privacy, DP-SGD, etc.) is imported or applied during model training.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.adversarial_robustness_testing",
+    "file_path": "runmodel.py",
+    "line": 0,
+    "message": "No detected adversarial robustness testing: There is no adversarial robustness testing of any kind; the evaluation only computes standard regression metrics (R2, MSE, MAE) on actual vs. forecast values.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.metric_tampering_protection",
+    "file_path": "runmodel.py",
+    "line": 0,
+    "message": "No detected metric tampering protection: There is no isolation of a held-out test set, no signing or hashing of evaluation data, and no guard against using training data for scoring; metrics are computed from CSV files with no integrity checks.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_sanitization",
+    "file_path": "runmodel.py",
+    "line": 0,
+    "message": "No detected input sanitization: The code directly uses user-supplied values (e.g., data['length'], data['name'], forecast_name) without any validation, schema checks, or sanitization of shape, type, or range.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.output_bounds_checks",
+    "file_path": "runmodel.py",
+    "line": 0,
+    "message": "No detected output bounds checks: The predict() function returns forecast values directly without any NaN guards, range/bounds checks, or sanity validation before saving or returning results.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.prompt_injection_defenses",
+    "file_path": "runmodel.py",
+    "line": 0,
+    "message": "No detected prompt injection defenses: This is a time-series forecasting model (fbprophet), not an LLM, so prompt injection defenses are not applicable.",
+    "snippet": "",
+    "stage": "inference"
+  }
+]

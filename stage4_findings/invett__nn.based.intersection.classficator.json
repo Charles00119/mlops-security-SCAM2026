@@ -1,0 +1,862 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "miscellaneous/reproject.py",
+    "line": 206,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "205     #os.system(\"pcl_ply2pcd out_aanet.ply out_aanet.pcd\")\n206     os.system(\"pcl_ply2pcd \" + sys.argv[3] + \" \" + sys.argv[4])\n207     os.system(\"rm \" + sys.argv[3])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "miscellaneous/reproject.py",
+    "line": 207,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "206     os.system(\"pcl_ply2pcd \" + sys.argv[3] + \" \" + sys.argv[4])\n207     os.system(\"rm \" + sys.argv[3])\n208",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "miscellaneous/test.py",
+    "line": 41,
+    "message": "Call to requests without timeout",
+    "snippet": "40 \n41     response = requests.get(URI)\n42",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "miscellaneous/test.py",
+    "line": 56,
+    "message": "Call to requests without timeout",
+    "snippet": "55     foto = {'photo': (\"Foto\", figdata.getvalue(), 'image/png')}\n56     response = requests.get(URI, files=foto)\n57",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "miscellaneous/utils.py",
+    "line": 87,
+    "message": "Call to requests without timeout",
+    "snippet": "86         datetime.datetime.now()) + \"\\n\" + message\n87     response = requests.get(URI)\n88     return json.loads(response.content)['ok']",
+    "stage": "data_acquisition+evaluation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "miscellaneous/utils.py",
+    "line": 110,
+    "message": "Call to requests without timeout",
+    "snippet": "109         pic = {'photo': (\"Foto\", figdata.getvalue(), 'image/png')}\n110         response = requests.get(URI, files=pic)\n111",
+    "stage": "data_acquisition+evaluation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "miscellaneous/utils.py",
+    "line": 527,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "526 \n527         filename = '/tmp/' + str(int(time.time())) + '_' + os.path.splitext(os.path.split(args.dataset_test)[1])[\n528             0] + '_lstm_export_svm' + \\",
+    "stage": "data_acquisition+evaluation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "miscellaneous/utils.py",
+    "line": 613,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "612         print('SVM already trained in => {}'.format(svm_path))\n613         classifier = pickle.load(open(svm_path, 'rb'))\n614     else:",
+    "stage": "data_acquisition+evaluation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "miscellaneous/utils.py",
+    "line": 868,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "867         print('Covariance matriz already saved in => {}'.format(cov_path))\n868         covariances = pickle.load(open(cov_path, 'rb'))\n869     else:",
+    "stage": "data_acquisition+evaluation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "miscellaneous/utils.py",
+    "line": 1149,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "1148 \n1149 def split_dataset(annotations, files, prefix_filename='prefix_', save_folder='/tmp',\n1150                   overwrite_i_dont_care=False, extract_field_from_path=-1, threshold=5):\n1151     '''",
+    "stage": "data_acquisition+evaluation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model/models.py",
+    "line": 241,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "240             print(\"=> loading checkpoint '{}'\".format(load_path))\n241             checkpoint = torch.load(load_path, map_location='cpu')\n242             self.model.load_state_dict(checkpoint['model_state_dict'])",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model/unet.py",
+    "line": 184,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "183         if os.path.exists(filename_rete):\n184             loaded_net = torch.load(filename_rete, map_location='cpu')\n185             net.load_state_dict(loaded_net['state_dict'])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "scripts/OSM_generator.py",
+    "line": 518,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "517         for image in range(0, 100):\n518             sample = test_crossing_pose(crossing_type=type, path=\"/tmp/minchioline-sborrilla/\",\n519                                         filenumber=i,",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "scripts/checkSequencesDataloader.py",
+    "line": 75,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "74     #\n75     ['/tmp/fixedlength6_keras_KITTI-360_train.pickle',\n76      '/tmp/fixedlength6_keras_KITTI-360_valid.pickle',\n77      '/tmp/fixedlength6_keras_KITTI-360_test.pickle',\n78      '/home/ballardini/DualBiSeNet/KITTI-360/train.prefix/prefix_train_list.txt',\n79      '/home/ballardini/DualBiSeNet/KITTI-360/validation.prefix/prefix_validation_list.txt',\n80      '/home/ballardini/DualBiSeNet/",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "scripts/checkSequencesDataloader.py",
+    "line": 76,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "75     ['/tmp/fixedlength6_keras_KITTI-360_train.pickle',\n76      '/tmp/fixedlength6_keras_KITTI-360_valid.pickle',\n77      '/tmp/fixedlength6_keras_KITTI-360_test.pickle',\n78      '/home/ballardini/DualBiSeNet/KITTI-360/train.prefix/prefix_train_list.txt',\n79      '/home/ballardini/DualBiSeNet/KITTI-360/validation.prefix/prefix_validation_list.txt',\n80      '/home/ballardini/DualBiSeNet/KITTI-360",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "scripts/checkSequencesDataloader.py",
+    "line": 77,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "76      '/tmp/fixedlength6_keras_KITTI-360_valid.pickle',\n77      '/tmp/fixedlength6_keras_KITTI-360_test.pickle',\n78      '/home/ballardini/DualBiSeNet/KITTI-360/train.prefix/prefix_train_list.txt',\n79      '/home/ballardini/DualBiSeNet/KITTI-360/validation.prefix/prefix_validation_list.txt',\n80      '/home/ballardini/DualBiSeNet/KITTI-360/test.prefix/prefix_test_list.txt',\n81      'KITTI-360']\n8",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "scripts/checkSequencesDataloader.py",
+    "line": 146,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "145 \n146     ROOT_PATH = os.path.join('/tmp/pytorchvideo', process_name)\n147     os.makedirs(ROOT_PATH)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "scripts/checkSequencesDataloader.py",
+    "line": 150,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "149 \n150     COMPOSED_BASE_PATH = os.path.join('/tmp/pytorchvideo', process_name, 'train')\n151     crossing_type = 'n'",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "scripts/checkSequencesDataloader.py",
+    "line": 186,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "185 \n186     COMPOSED_BASE_PATH = os.path.join('/tmp/pytorchvideo', process_name, 'validation')\n187     crossing_type = 'n'",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "scripts/checkSequencesDataloader.py",
+    "line": 222,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "221 \n222     COMPOSED_BASE_PATH = os.path.join('/tmp/pytorchvideo', process_name, 'test')\n223     crossing_type = 'n'",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "scripts/count_ROAD_intersections_dataset.py",
+    "line": 14,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "13 # Opening JSON file\n14 f = open('/tmp/road_trainval_v1.0.json')\n15",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "scripts/homography.py",
+    "line": 41,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "40 \n41 path = '/tmp'\n42 filename = '0000000000.png'",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "scripts/keras/CNN3DNET.py",
+    "line": 27,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "26     sequences = [] \n27     seq_player_id = eval(data[0])['player_id'] \n28     sequence = []",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "scripts/keras/CNN3DNET.py",
+    "line": 30,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "29     for frame in data: \n30         frame = eval(frame)\n31         if frame['player_id'] == seq_player_id:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "scripts/keras/CNN3DNET.py",
+    "line": 276,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "275 \n276     model.load_state_dict(torch.load('checkpoint2ndTry.pt'))\n277     real_target = []",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "scripts/keras/TestCNN3DNET.py",
+    "line": 23,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "22     sequences = [] \n23     seq_player_id = eval(data[0])['player_id'] \n24     sequence = []",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "scripts/keras/TestCNN3DNET.py",
+    "line": 26,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "25     for frame in data: \n26         frame = eval(frame) \n27         player_id = frame['player_id']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "scripts/keras/TestCNN3DNET.py",
+    "line": 226,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "225     \n226     model.load_state_dict(torch.load('checkpoint2ndTry.pt'))\n227     real_target = []",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "scripts/keras/bbdd_cooker.py",
+    "line": 26,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "25 line = line_p.readline()\n26 data = eval(line)\n27",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "scripts/keras/bbdd_cooker.py",
+    "line": 31,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "30 while len(line) != 0:\n31     data = eval(line)\n32     velocity_episode.append(data['velocity'])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "scripts/keras/bbdd_cooker_lstm.py",
+    "line": 52,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "51     line = line_p.readline()\n52     data = eval(line)\n53",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "scripts/keras/bbdd_cooker_lstm.py",
+    "line": 57,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "56     while len(line) != 0:\n57         data = eval(line)\n58         velocity_episode.append(data['velocity'])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "scripts/keras/bbdd_cooker_lstm.py",
+    "line": 122,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "121     with open(train_load, 'rb') as handle:\n122         episodes_train = pickle.load(handle)\n123     with open(valid_load, 'rb') as handle:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "scripts/keras/bbdd_cooker_lstm.py",
+    "line": 124,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "123     with open(valid_load, 'rb') as handle:\n124         episodes_valid = pickle.load(handle)\n125",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "scripts/keras/bbdd_cooker_lstm_test.py",
+    "line": 58,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "57 line = line_p.readline()\n58 data = eval(line)\n59",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "scripts/keras/bbdd_cooker_lstm_test.py",
+    "line": 64,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "63 while len(line) != 0:\n64     data = eval(line)\n65     velocity_episode.append(data['velocity'])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "scripts/keras/bbdd_cooker_lstm_validate.py",
+    "line": 40,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "39 line = line_p.readline()\n40 data = eval(line)\n41",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "scripts/keras/bbdd_cooker_lstm_validate.py",
+    "line": 45,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "44 while len(line) != 0:\n45     data = eval(line)\n46     velocity_episode.append(data['velocity'])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "scripts/labelling-script.py",
+    "line": 488,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "487 \n488 def save_csv(annotations, save_folder='/tmp'):\n489     \"\"\"",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "scripts/labelling-script.py",
+    "line": 648,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "647                 # retrieve the first element of the pickle, the labels (second is filenames)\n648                 loaded = pickle.load(f)\n649",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "scripts/labelling-script.py",
+    "line": 673,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "672                         annotations_filenames.append(os.path.join(base_folder, pickle_filename_))\n673                     check_pickle = pickle.load(open(annotations_file, 'rb'))\n674                     print('pinkle saved: ', annotations_file)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "scripts/lstm-vs-resnet.py",
+    "line": 227,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "226             lstm_seq_dict_labels[i][-1]) + '\\t >>> \\t' + str(lstm_seq_dict_labels[i]))\n227         with open(os.path.join('/tmp', 'resnet_' + str(i) + '.txt'), \"w\") as output:\n228             for j in resnet_seq_dict[i]:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "scripts/lstm-vs-resnet.py",
+    "line": 233,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "232         # ffmpeg -safe 0 -r 5 -f concat -i 3.txt  -c:v libx264 -profile:v high444 -level:v 4.0 -pix_fmt yuv420p 3.mp4\n233         ffmpeg.append('ffmpeg -safe 0 -r 5 -f concat -i ' + str(os.path.join('/tmp', 'resnet_' + str(\n234             i) + '.txt')) + ' -c:v libx264 -profile:v high444 -level:v 4.0 -pix_fmt yuv420p ' + str(\n235             os.path.join('/tmp', 'resnet_' + str(i) + '_gt' + r",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "scripts/lstm-vs-resnet.py",
+    "line": 235,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "234             i) + '.txt')) + ' -c:v libx264 -profile:v high444 -level:v 4.0 -pix_fmt yuv420p ' + str(\n235             os.path.join('/tmp', 'resnet_' + str(i) + '_gt' + resnet_GT_persequence[i] + '_pred' + str(\n236             resnet_persequence_max_accuracy_sequences[i]) + '.mp4')))\n237",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "scripts/lstm-vs-resnet.py",
+    "line": 274,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "273             resnet_persequence_max_accuracy_sequences[i]) + '\\t\\t\\t\\t\\t >>> \\t' + str(resnet_seq_dict_labels[i]))\n274         with open(os.path.join('/tmp', 'lstm_' + str(i) + '.txt'), \"w\") as output:\n275             for j in lstm_seq_dict[i]:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "scripts/lstm-vs-resnet.py",
+    "line": 279,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "278         # ffmpeg -safe 0 -r 5 -f concat -i 3.txt  -c:v libx264 -profile:v high444 -level:v 4.0 -pix_fmt yuv420p 3.mp4\n279         ffmpeg.append('ffmpeg -safe 0 -r 5 -f concat -i ' + str(os.path.join('/tmp', 'lstm_' + str(\n280             i) + '.txt')) + ' -c:v libx264 -profile:v high444 -level:v 4.0 -pix_fmt yuv420p ' + str(\n281             os.path.join('/tmp', 'lstm_' + str(i) + '_gt' + lstm_",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "scripts/lstm-vs-resnet.py",
+    "line": 281,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "280             i) + '.txt')) + ' -c:v libx264 -profile:v high444 -level:v 4.0 -pix_fmt yuv420p ' + str(\n281             os.path.join('/tmp', 'lstm_' + str(i) + '_gt' + lstm_GT_persequence[i] + '_pred' + str(\n282             lstm_persequence_max_accuracy_sequences[i]) + '.mp4')))\n283",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "scripts/lstm-vs-resnet.py",
+    "line": 296,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "295             resnet_persequence_max_accuracy_sequences[i]) + '\\t\\t\\t\\t\\t >>> \\t' + str(resnet_seq_dict_labels[i]))\n296         with open(os.path.join('/tmp', 'lstm_' + str(i) + '.txt'), \"w\") as output:\n297             for j in lstm_seq_dict[i]:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "scripts/lstm-vs-resnet.py",
+    "line": 301,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "300         # ffmpeg -safe 0 -r 5 -f concat -i 3.txt  -c:v libx264 -profile:v high444 -level:v 4.0 -pix_fmt yuv420p 3.mp4\n301         ffmpeg.append('ffmpeg -safe 0 -r 5 -f concat -i ' + str(os.path.join('/tmp', 'lstm_' + str(\n302             i) + '.txt')) + ' -c:v libx264 -profile:v high444 -level:v 4.0 -pix_fmt yuv420p ' + str(\n303             os.path.join('/tmp', 'lstm_' + str(i) + '_gt' + lstm_",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "scripts/lstm-vs-resnet.py",
+    "line": 303,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "302             i) + '.txt')) + ' -c:v libx264 -profile:v high444 -level:v 4.0 -pix_fmt yuv420p ' + str(\n303             os.path.join('/tmp', 'lstm_' + str(i) + '_gt' + lstm_GT_persequence[i] + '_pred' + str(\n304             lstm_persequence_max_accuracy_sequences[i]) + '.mp4')))\n305",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "scripts/split.kitti360.warpings-2.py",
+    "line": 35,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "34 overwrite_i_dont_care = False\n35 save_folder = '/tmp/'\n36",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "teacher_train.py",
+    "line": 214,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "213         print('load model from {} ...'.format(loadpath))\n214         model.load_state_dict(torch.load(loadpath))\n215         print('Done!')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "train.py",
+    "line": 122,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "121             print(\"=> loading checkpoint '{}'\".format(args.feature_detector_path))\n122             checkpoint = torch.load(args.feature_detector_path, map_location='cpu')\n123             feature_extractor_model.load_state_dict(checkpoint['model_state_dict'])",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "train.py",
+    "line": 139,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "138         print(\"=> Loading checkpoint '{}' ... \".format(loadpath))\n139         checkpoint = torch.load(loadpath, map_location='cpu')\n140         model.load_state_dict(checkpoint['model_state_dict'])",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "train.py",
+    "line": 230,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "229             if args.test_method == 'svm':\n230                 filename = '/tmp/' + str(int(time.time())) + '_' + os.path.splitext(os.path.split(test_path)[1])[\n231                     0] + '_resnet_export_svm' + \\",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "train.py",
+    "line": 235,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "234             elif args.test_method == 'mahalanobis':\n235                 filename = '/tmp/' + str(int(time.time())) + '_' + os.path.splitext(os.path.split(test_path)[1])[\n236                     0] + '_resnet_export_mahalanobis' + \\",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "train.py",
+    "line": 825,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "824         if os.path.isfile(args.resume):\n825             checkpoint = torch.load(args.resume, map_location='cpu')\n826             args.seed = checkpoint['epoch']",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "train.py",
+    "line": 1174,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "1173                     print(\"=> loading checkpoint '{}'\".format(args.feature_detector_path))\n1174                     checkpoint = torch.load(args.feature_detector_path, map_location='cpu')\n1175                     feature_extractor_model.load_state_dict(checkpoint['model_state_dict'])",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "train.py",
+    "line": 1195,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "1194                     print(\"=> loading checkpoint '{}'\".format(args.resume))\n1195                     checkpoint = torch.load(args.resume, map_location='cpu')\n1196                     args.start_epoch = checkpoint['epoch'] + 1",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-system-call-tainted-env-args.dangerous-system-call-tainted-env-args",
+    "file_path": "miscellaneous/reproject.py",
+    "line": 206,
+    "message": "Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-system-call-tainted-env-args.dangerous-system-call-tainted-env-args",
+    "file_path": "miscellaneous/reproject.py",
+    "line": 207,
+    "message": "Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "miscellaneous/utils.py",
+    "line": 613,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation+inference+modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "miscellaneous/utils.py",
+    "line": 629,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation+inference+modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "miscellaneous/utils.py",
+    "line": 868,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation+inference+modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "miscellaneous/utils.py",
+    "line": 890,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation+inference+modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "scripts/checkSequencesDataloader.py",
+    "line": 144,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "scripts/checkSequencesDataloader.py",
+    "line": 184,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "scripts/checkSequencesDataloader.py",
+    "line": 220,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "scripts/keras/CNN3DNET.py",
+    "line": 27,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "scripts/keras/CNN3DNET.py",
+    "line": 30,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "scripts/keras/TestCNN3DNET.py",
+    "line": 23,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "scripts/keras/TestCNN3DNET.py",
+    "line": 26,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "scripts/keras/bbdd_cooker.py",
+    "line": 26,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "scripts/keras/bbdd_cooker.py",
+    "line": 31,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "scripts/keras/bbdd_cooker_lstm.py",
+    "line": 52,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "scripts/keras/bbdd_cooker_lstm.py",
+    "line": 57,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "scripts/keras/bbdd_cooker_lstm.py",
+    "line": 122,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "scripts/keras/bbdd_cooker_lstm.py",
+    "line": 124,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "scripts/keras/bbdd_cooker_lstm_test.py",
+    "line": 58,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "scripts/keras/bbdd_cooker_lstm_test.py",
+    "line": 64,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "scripts/keras/bbdd_cooker_lstm_validate.py",
+    "line": 40,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "scripts/keras/bbdd_cooker_lstm_validate.py",
+    "line": 45,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "scripts/labelling-script.py",
+    "line": 648,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "scripts/labelling-script.py",
+    "line": 671,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "scripts/labelling-script.py",
+    "line": 673,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "scripts/labelling-script.py",
+    "line": 859,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

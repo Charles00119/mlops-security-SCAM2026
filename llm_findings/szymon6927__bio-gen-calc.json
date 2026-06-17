@@ -1,0 +1,132 @@
+[
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_validation",
+    "file_path": "entrypoint.sh",
+    "line": 0,
+    "message": "No detected input validation: The code passes request JSON data directly to calculation classes and PDF templates without any explicit schema, type, or range validation before use; only exception catching (TypeError) is used as a fallback.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.untrusted_source_handling",
+    "file_path": "entrypoint.sh",
+    "line": 0,
+    "message": "No detected untrusted source handling: The code does not fetch data from any remote source (URL, S3, HuggingFace, etc.) in the visible pipeline, so no integrity verification or source authentication is implemented.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_flipping_detection",
+    "file_path": "entrypoint.sh",
+    "line": 0,
+    "message": "No detected label flipping detection: No code checks label distributions, validates label values against an expected set, or uses any label-noise detection tool anywhere in the pipeline.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.data_poisoning_defenses",
+    "file_path": "entrypoint.sh",
+    "line": 0,
+    "message": "No detected data poisoning defenses: There is no outlier detection, statistical anomaly checking, or filtering of suspicious inputs on any incoming data; user-supplied JSON is passed directly to calculation classes without sanitization beyond type-error catching.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.model_integrity_verification",
+    "file_path": "entrypoint.sh",
+    "line": 0,
+    "message": "No detected model integrity verification: The code does not load any pretrained weights or serialized models; it is a Flask web application performing statistical calculations, so no model integrity verification is applicable or implemented.",
+    "snippet": "",
+    "stage": "modeling"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_distribution_validation",
+    "file_path": "entrypoint.sh",
+    "line": 0,
+    "message": "No detected label distribution validation: The code is a Flask web application with no ML training pipeline; there is no label distribution validation or class balance checking anywhere in the codebase.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.backdoor_or_trigger_detection",
+    "file_path": "entrypoint.sh",
+    "line": 0,
+    "message": "No detected backdoor or trigger detection: No training loop exists in this code; it is a Flask web app with no backdoor or trigger detection mechanisms.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.differential_privacy",
+    "file_path": "entrypoint.sh",
+    "line": 0,
+    "message": "No detected differential privacy: No differential privacy libraries (Opacus, TensorFlow Privacy, DP-SGD) or related mechanisms are present; the code contains no ML training at all.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.adversarial_robustness_testing",
+    "file_path": "entrypoint.sh",
+    "line": 0,
+    "message": "No detected adversarial robustness testing: No adversarial robustness testing frameworks (Foolbox, ART, FGSM, PGD) or any robustness stress tests are present in the code; it is a Flask web application performing statistical genetic calculations.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.metric_tampering_protection",
+    "file_path": "entrypoint.sh",
+    "line": 0,
+    "message": "No detected metric tampering protection: There is no held-out test set isolation, signed/hashed evaluation data, or multiple independent metrics; the code is a web application with no ML evaluation pipeline components.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_sanitization",
+    "file_path": "entrypoint.sh",
+    "line": 0,
+    "message": "No detected input sanitization: Incoming JSON is consumed directly via request.get_json() and passed to calculation classes without any schema validation, type checks, or sanitization before use.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.output_bounds_checks",
+    "file_path": "entrypoint.sh",
+    "line": 0,
+    "message": "No detected output bounds checks: Results from calculation classes (HardyWeinbergCalculation, ChiSquareCalculation, etc.) are returned directly via jsonify without any bounds, NaN, or sanity checks on the output values.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.prompt_injection_defenses",
+    "file_path": "entrypoint.sh",
+    "line": 0,
+    "message": "No detected prompt injection defenses: This pipeline does not use an LLM; it performs statistical/genetic calculations, so prompt injection defenses are not applicable and not present.",
+    "snippet": "",
+    "stage": "inference"
+  }
+]

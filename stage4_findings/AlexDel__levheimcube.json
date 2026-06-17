@@ -1,0 +1,82 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "data/caramel/loader.py",
+    "line": 33,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "32     if not force_reload and pickle_exist:\n33         return pd.read_pickle(pickle_path)\n34     else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "data/overhear/loader.py",
+    "line": 24,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "23     if not force_reload and pickle_exist:\n24         return pd.read_pickle(pickle_path)\n25     else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "data/wiki_api_data_scraper.py",
+    "line": 17,
+    "message": "Call to requests without timeout",
+    "snippet": "16         for i in range(0, count):\n17             response = requests.get(url)\n18             if response.status_code == 200:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "main.py",
+    "line": 15,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "14 model = RegressionBert.load_from_checkpoint(CHECKPOINT)\n15 tokenizer = AutoTokenizer.from_pretrained(BERT)\n16",
+    "stage": "data_preparation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "projects/regression/my_regression.py",
+    "line": 29,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "28     def __init__(self):\n29         self.tokenizer = AutoTokenizer.from_pretrained(BERT)\n30",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "projects/regression/my_regression.py",
+    "line": 53,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "52         super(RegressionBert, self).__init__()\n53         self.bert = AutoModel.from_pretrained(BERT, num_labels=1)\n54         if freeze_bert:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "projects/regression/regression_lightning.py",
+    "line": 24,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "23     def __init__(self):\n24         self.tokenizer = AutoTokenizer.from_pretrained(BERT)\n25",
+    "stage": "data_acquisition+data_preparation+evaluation+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "projects/regression/regression_lightning.py",
+    "line": 48,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "47         super(RegressionBert, self).__init__()\n48         self.bert = AutoModel.from_pretrained(BERT, num_labels=1)\n49         if freeze_bert:",
+    "stage": "data_acquisition+data_preparation+evaluation+modeling+training"
+  }
+]

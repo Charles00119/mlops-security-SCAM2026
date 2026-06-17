@@ -1,0 +1,132 @@
+[
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_validation",
+    "file_path": "predict_model.py",
+    "line": 0,
+    "message": "No detected input validation: No schema checks, dtype assertions, or value-range guards are applied to the loaded dataset or configuration parameters anywhere in the pipeline code.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.untrusted_source_handling",
+    "file_path": "predict_model.py",
+    "line": 0,
+    "message": "No detected untrusted source handling: Data and tokenizer are loaded from disk and HuggingFace Hub (AutoTokenizer.from_pretrained, datasets.load_from_disk) without any checksum verification, pinned revisions, or authentication checks.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_flipping_detection",
+    "file_path": "predict_model.py",
+    "line": 0,
+    "message": "No detected label flipping detection: The code performs no label distribution comparison, validation of label values against an expected set, or any label-noise detection tool usage before training.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.data_poisoning_defenses",
+    "file_path": "predict_model.py",
+    "line": 0,
+    "message": "No detected data poisoning defenses: There are no outlier detection, statistical anomaly checks, or suspicious-input filtering steps applied to the training samples during data preparation.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.model_integrity_verification",
+    "file_path": "predict_model.py",
+    "line": 0,
+    "message": "No detected model integrity verification: The code loads a checkpoint via a hardcoded path and loads a pretrained model from HuggingFace Hub by name without any hash check, signature verification, or pinned revision.",
+    "snippet": "",
+    "stage": "modeling"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_distribution_validation",
+    "file_path": "predict_model.py",
+    "line": 0,
+    "message": "No detected label distribution validation: No code checks class balance, expected label sets, or anomalous sample detection before or during training.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.backdoor_or_trigger_detection",
+    "file_path": "predict_model.py",
+    "line": 0,
+    "message": "No detected backdoor or trigger detection: There is no activation analysis, gradient anomaly detection, or any other backdoor/trigger defense in the training loop.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.differential_privacy",
+    "file_path": "predict_model.py",
+    "line": 0,
+    "message": "No detected differential privacy: The optimizer used is standard AdamW with no differential privacy library (e.g., Opacus, TF Privacy, DP-SGD) applied.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.adversarial_robustness_testing",
+    "file_path": "predict_model.py",
+    "line": 0,
+    "message": "No detected adversarial robustness testing: No adversarial attack frameworks (Foolbox, ART, FGSM, PGD) or robustness stress tests are used anywhere in the evaluation pipeline.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.metric_tampering_protection",
+    "file_path": "predict_model.py",
+    "line": 0,
+    "message": "No detected metric tampering protection: Only a single accuracy metric is computed, there is no data hashing/signing, no cryptographic isolation of the test set, and no use of multiple independent metrics to guard against manipulation.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_sanitization",
+    "file_path": "predict_model.py",
+    "line": 0,
+    "message": "No detected input sanitization: The inference path loads data directly from disk via HuggingFace datasets and passes it straight to the model with no shape, range, or schema validation of the input data.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.output_bounds_checks",
+    "file_path": "predict_model.py",
+    "line": 0,
+    "message": "No detected output bounds checks: Logits and predictions are used directly with torch.argmax and metric.add_batch without any NaN guards, probability bounds checks, or confidence threshold validation.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.prompt_injection_defenses",
+    "file_path": "predict_model.py",
+    "line": 0,
+    "message": "No detected prompt injection defenses: The model is a BERT-based sequence classifier (not a generative LLM), and no input filtering, system-prompt isolation, or output content moderation is implemented.",
+    "snippet": "",
+    "stage": "inference"
+  }
+]

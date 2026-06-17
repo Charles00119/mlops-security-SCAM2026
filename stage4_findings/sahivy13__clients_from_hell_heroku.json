@@ -1,0 +1,182 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "heroku_main.py",
+    "line": 280,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "279         for i,row in df_params_insert.iterrows():\n280             sql = f\"INSERT INTO params ({cols_params}) VALUES ({'%s,'*(len(row)-1)}%s);\"\n281             cur.execute(sql, tuple(row))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "heroku_main.py",
+    "line": 286,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "285         for i,row in df_scores_models_insert.iterrows():\n286             sql = f\"INSERT INTO scores_models ({cols_sm}) VALUES ({'%s,'*(len(row)-1)}%s);\"\n287             cur.execute(sql, tuple(row))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "heroku_main.py",
+    "line": 298,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "297         for i,row in global_cat_df.iterrows():\n298             sql = f\"INSERT INTO categories ({cols_cat_sql}) VALUES({'%s,'*(len(row)-1)}%s);\"\n299             cur.execute(sql, tuple(row))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "heroku_main.py",
+    "line": 302,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "301         with open('tfidf', 'rb') as f:\n302             load = pickle.load(f)\n303             f.close()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "heroku_main.py",
+    "line": 320,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "319         for i,row in df_vectorizer.iterrows():\n320             sql = f\"INSERT INTO vectorizer ({cols_v_sql}) VALUES ({'%s,'*(len(row)-1)}%s);\"\n321             cur.execute(sql, tuple(row))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "main.py",
+    "line": 273,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "272         for i,row in df_params_insert.iterrows():\n273             sql = f\"INSERT INTO params ({cols_params}) VALUES ({'%s,'*(len(row)-1)}%s);\"\n274             cur.execute(sql, tuple(row))",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "main.py",
+    "line": 279,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "278         for i,row in df_scores_models_insert.iterrows():\n279             sql = f\"INSERT INTO scores_models ({cols_sm}) VALUES ({'%s,'*(len(row)-1)}%s);\"\n280             cur.execute(sql, tuple(row))",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "main.py",
+    "line": 291,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "290         for i,row in global_cat_df.iterrows():\n291             sql = f\"INSERT INTO categories ({cols_cat_sql}) VALUES({'%s,'*(len(row)-1)}%s);\"\n292             cur.execute(sql, tuple(row))",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "main.py",
+    "line": 295,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "294         with open('tfidf', 'rb') as f:\n295             load = pickle.load(f)\n296             f.close()",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "main.py",
+    "line": 313,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "312         for i,row in df_vectorizer.iterrows():\n313             sql = f\"INSERT INTO vectorizer ({cols_v_sql}) VALUES ({'%s,'*(len(row)-1)}%s);\"\n314             cur.execute(sql, tuple(row))",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "scrapper.py",
+    "line": 14,
+    "message": "Call to requests without timeout",
+    "snippet": "13     def scrape_url(self, url):\n14         response = requests.get(url)\n15         result = self.content_parser(response.content)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "scrapper.py",
+    "line": 25,
+    "message": "Call to requests without timeout",
+    "snippet": "24 def get_categories(url):\n25     html = requests.get(url)\n26     response = bs(html.content, features=\"html.parser\")",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "scrapper.py",
+    "line": 51,
+    "message": "Call to requests without timeout",
+    "snippet": "50     for url in url_category_list:\n51         html = requests.get(url[0]+'1')\n52         response = bs(html.content, \"html.parser\")",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "clientsfh_preprocessing.py",
+    "line": 224,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "heroku_main.py",
+    "line": 302,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "heroku_main.py",
+    "line": 305,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "main.py",
+    "line": 295,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "main.py",
+    "line": 298,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference"
+  }
+]

@@ -1,0 +1,432 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "app.py",
+    "line": 124,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "123 \n124         self.tokenizer = BertTokenizer.from_pretrained(self.PRE_TRAINED_MODEL_NAME)\n125",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "app.py",
+    "line": 220,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "219         self.PRE_TRAINED_MODEL_NAME = \"bert-base-uncased\"\n220         self.bert_model = BertModel.from_pretrained(self.PRE_TRAINED_MODEL_NAME)\n221         for param in self.bert_model.parameters():",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "doccat.py",
+    "line": 83,
+    "message": "Call to requests without timeout",
+    "snippet": "82     url = \"https://www.rondhuit.com/download/ldcc-20140209.tar.gz\"\n83     response = requests.get(url)\n84     if response.ok:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "doccat.py",
+    "line": 88,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "87         with tarfile.open(filepath, \"r\") as fp:\n88             fp.extractall(data_dir)\n89         filepath.unlink()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "doccat.py",
+    "line": 229,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "228         \"\"\"\n229         self.tokenizer = BertTokenizerFast.from_pretrained(\n230             self.tokenizer_name,\n231             cache_dir=self.cache_dir,\n232             tokenize_chinese_chars=False,\n233             strip_accents=False,\n234         )\n235         df = make_livedoor_corpus_dataset(self.data_dir)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "doccat.py",
+    "line": 406,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "405         self.tokenizer_name = self.hparams.model_name_or_path\n406         self.tokenizer = BertTokenizerFast.from_pretrained(\n407             self.tokenizer_name,\n408             cache_dir=self.cache_dir,\n409             tokenize_chinese_chars=False,\n410             strip_accents=False,\n411         )\n412",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "doccat.py",
+    "line": 415,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "414         config_name = self.hparams.model_name_or_path\n415         self.config: PretrainedConfig = BertConfig.from_pretrained(\n416             config_name,\n417             **({\"num_labels\": num_labels} if num_labels is not None else {}),\n418             cache_dir=self.cache_dir,\n419         )\n420         extra_model_params = (",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "doccat.py",
+    "line": 431,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "430         # AutoModelForSequenceClassification\n431         self.model: PreTrainedModel = BertForSequenceClassification.from_pretrained(\n432             self.hparams.model_name_or_path,\n433             from_tf=bool(\".ckpt\" in self.hparams.model_name_or_path),\n434             config=self.config,\n435             cache_dir=self.cache_dir,\n436         )\n437",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "doccat_en.py",
+    "line": 94,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "93         logger.info(\"Loading features from cached file %s\", cached_features_file)\n94         features = torch.load(cached_features_file)\n95         all_input_ids = torch.tensor([f.input_ids for f in features], dtype=torch.long)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "download_glue_data.py",
+    "line": 65,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "64     data_file = \"%s.zip\" % task\n65     urllib.request.urlretrieve(TASK2PATH[task], data_file)\n66     with zipfile.ZipFile(data_file) as zip_ref:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "download_glue_data.py",
+    "line": 84,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "83         mrpc_test_file = os.path.join(mrpc_dir, \"msr_paraphrase_test.txt\")\n84         urllib.request.urlretrieve(MRPC_TRAIN, mrpc_train_file)\n85         urllib.request.urlretrieve(MRPC_TEST, mrpc_test_file)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "download_glue_data.py",
+    "line": 85,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "84         urllib.request.urlretrieve(MRPC_TRAIN, mrpc_train_file)\n85         urllib.request.urlretrieve(MRPC_TEST, mrpc_test_file)\n86     assert os.path.isfile(mrpc_train_file), (",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "download_glue_data.py",
+    "line": 90,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "89     assert os.path.isfile(mrpc_test_file), \"Test data not found at %s\" % mrpc_test_file\n90     urllib.request.urlretrieve(TASK2PATH[\"MRPC\"], os.path.join(mrpc_dir, \"dev_ids.tsv\"))\n91",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "download_glue_data.py",
+    "line": 128,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "127     data_file = os.path.join(data_dir, \"diagnostic\", \"diagnostic.tsv\")\n128     urllib.request.urlretrieve(TASK2PATH[\"diagnostic\"], data_file)\n129     print(\"\\tCompleted!\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "download_ner_data.py",
+    "line": 42,
+    "message": "Call to requests without timeout",
+    "snippet": "41 def download_data(url, filepath):\n42     response = requests.get(url)\n43     if response.ok:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "download_ner_data.py",
+    "line": 82,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "81 \n82     tokenizer = AutoTokenizer.from_pretrained(model_name_or_path)\n83",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "download_ner_data.py",
+    "line": 97,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "96         ),\n97         shell=True,\n98         encoding=\"utf-8\",\n99     ).strip()\n100     with open(datadir / \"labels.txt\", \"wt\") as ofp:\n101         ofp.write(output)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "lightning_base.py",
+    "line": 85,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "84         if config is None:\n85             self.config = AutoConfig.from_pretrained(\n86                 self.hparams.config_name\n87                 if self.hparams.config_name\n88                 else self.hparams.model_name_or_path,\n89                 **({\"num_labels\": num_labels} if num_labels is not None else {}),\n90                 cache_dir=cache_dir,\n91                 **config_kwargs,\n92  ",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "lightning_base.py",
+    "line": 110,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "109         if tokenizer is None:\n110             self.tokenizer = AutoTokenizer.from_pretrained(\n111                 self.hparams.tokenizer_name\n112                 if self.hparams.tokenizer_name\n113                 else self.hparams.model_name_or_path,\n114                 cache_dir=cache_dir,\n115             )\n116         else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "ner.py",
+    "line": 87,
+    "message": "Call to requests without timeout",
+    "snippet": "86     def _download_data(url, file_path):\n87         response = requests.get(url)\n88         if response.ok:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "ner.py",
+    "line": 455,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "454         \"\"\"\n455         self.tokenizer = BertTokenizerFast.from_pretrained(\n456             self.tokenizer_name,\n457             cache_dir=self.cache_dir,\n458             # tokenize_chinese_chars=False,  # Need to pretrain tokenzier\n459             # strip_accents=False,\n460         )\n461         data_dir = Path(self.data_dir)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "ner.py",
+    "line": 622,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "621         self.tokenizer_name = self.hparams.model_name_or_path\n622         self.tokenizer = BertTokenizerFast.from_pretrained(\n623             self.tokenizer_name,\n624             cache_dir=self.cache_dir,\n625             # tokenize_chinese_chars=False,  # Need to pretrain tokenizer\n626             # strip_accents=False,\n627         )\n628",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "ner.py",
+    "line": 631,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "630         config_name = self.hparams.model_name_or_path\n631         self.config: PretrainedConfig = BertConfig.from_pretrained(\n632             config_name,\n633             **({\"num_labels\": num_labels} if num_labels is not None else {}),\n634             cache_dir=self.cache_dir,\n635         )\n636         extra_model_params = (",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "ner.py",
+    "line": 647,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "646         # AutoModelForTokenClassification\n647         self.model: PreTrainedModel = BertForTokenClassification.from_pretrained(\n648             self.hparams.model_name_or_path,\n649             from_tf=bool(\".ckpt\" in self.hparams.model_name_or_path),\n650             config=self.config,\n651             cache_dir=self.cache_dir,\n652         )\n653         if self.hparams.freeze_pretrained:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "ner_char_crf.py",
+    "line": 69,
+    "message": "Call to requests without timeout",
+    "snippet": "68     def _download_data(url, file_path):\n69         response = requests.get(url)\n70         if response.ok:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "ner_crf.py",
+    "line": 52,
+    "message": "Call to requests without timeout",
+    "snippet": "51     def _download_data(url, file_path):\n52         response = requests.get(url)\n53         if response.ok:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "ner_ge.py",
+    "line": 348,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "347                 )\n348                 features = torch.load(cached_features_file)\n349             else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "ner_ge.py",
+    "line": 380,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "379         logger.info(\"Loading features from cached file %s\", cached_features_file)\n380         features = torch.load(cached_features_file)\n381         all_input_ids = torch.tensor([f.input_ids for f in features], dtype=torch.long)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "ner_local.py",
+    "line": 96,
+    "message": "Call to requests without timeout",
+    "snippet": "95     def _download_data(url, file_path):\n96         response = requests.get(url)\n97         if response.ok:",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "ner_local.py",
+    "line": 332,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "331     tokenizer_dir = os.path.dirname(tokenizer_file)\n332     pt_tokenizer: PreTrainedTokenizerFast = AutoTokenizer.from_pretrained(\n333         tokenizer_dir,\n334         cache_dir=cache_dir,\n335     )\n336",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "ner_local.py",
+    "line": 737,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "736         )\n737         self.config: PretrainedConfig = AutoConfig.from_pretrained(\n738             config_path,\n739             **({\"num_labels\": num_labels} if num_labels is not None else {}),\n740             cache_dir=self.cache_dir,\n741         )\n742         extra_model_params = (",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "ner_local.py",
+    "line": 753,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "752         model_name_or_path = hparams.model_name_or_path\n753         self.model: PreTrainedModel = AutoModelForTokenClassification.from_pretrained(\n754             model_name_or_path,\n755             from_tf=bool(\".ckpt\" in model_name_or_path),\n756             config=self.config,\n757             cache_dir=self.cache_dir,\n758         )\n759         if self.hparams.freeze_pretrained:",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "ner_trf.py",
+    "line": 201,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "200         # Downloading and loading a dataset from the hub.\n201         datasets = load_dataset(data_args.dataset_name, data_args.dataset_config_name)\n202     else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "ner_trf.py",
+    "line": 212,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "211         extension = data_args.train_file.split(\".\")[-1]\n212         datasets = load_dataset(extension, data_files=data_files, delimiter='\\t', quoting=csv.QUOTE_NONE, encoding='utf-8')   # .tsv\n213     # See more about loading any type of standard or custom dataset (from files, python dict, pandas DataFrame, etc) at",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "download_glue_data.py",
+    "line": 65,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "download_glue_data.py",
+    "line": 84,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "download_glue_data.py",
+    "line": 85,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "download_glue_data.py",
+    "line": 90,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "download_glue_data.py",
+    "line": 128,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-subprocess-use-tainted-env-args.dangerous-subprocess-use-tainted-env-args",
+    "file_path": "download_ner_data.py",
+    "line": 92,
+    "message": "Detected subprocess function 'check_output' with user controlled data. A malicious actor could leverage this to perform command injection. You may consider using 'shlex.quote()'.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "download_ner_data.py",
+    "line": 97,
+    "message": "Found 'subprocess' function 'check_output' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "ner_ge.py",
+    "line": 194,
+    "message": "Detected a python logger call with a potential hardcoded secret \"tokens: %s\" being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "tmp.py",
+    "line": 100,
+    "message": "Detected a python logger call with a potential hardcoded secret \"tokens: %s\" being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

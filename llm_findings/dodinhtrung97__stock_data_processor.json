@@ -1,0 +1,132 @@
+[
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_validation",
+    "file_path": "trade-advisor-ws.py",
+    "line": 0,
+    "message": "No detected input validation: The on_message handler only checks for empty string on 'value' and does no schema validation, type checking, or range guards on the parsed JSON fields; pattern_matcher_controller and scrapper_controller also directly use request parameters without structural validation.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.untrusted_source_handling",
+    "file_path": "trade-advisor-ws.py",
+    "line": 0,
+    "message": "No detected untrusted source handling: The automated scrapper fetches remote web content but there is no checksum verification, authentication, signed URL validation, or pinned revision check visible in the code.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_flipping_detection",
+    "file_path": "trade-advisor-ws.py",
+    "line": 0,
+    "message": "No detected label flipping detection: No label distribution comparison, label value validation, or label-noise detection tool (e.g., Cleanlab) is present anywhere in the code.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.data_poisoning_defenses",
+    "file_path": "trade-advisor-ws.py",
+    "line": 0,
+    "message": "No detected data poisoning defenses: The code performs web scraping and message passing without any outlier detection, statistical anomaly checks, or filtering of suspicious input data.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.model_integrity_verification",
+    "file_path": "trade-advisor-ws.py",
+    "line": 0,
+    "message": "No detected model integrity verification: No model loading, hash checking, signature verification, or pinned revision logic is present anywhere in the provided code; the modeling stage initializes runners from config but performs no integrity verification on any serialized model or weights.",
+    "snippet": "",
+    "stage": "modeling"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_distribution_validation",
+    "file_path": "trade-advisor-ws.py",
+    "line": 0,
+    "message": "No detected label distribution validation: No code in the provided slice checks label distribution, class balance, or expected label sets before or during training.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.backdoor_or_trigger_detection",
+    "file_path": "trade-advisor-ws.py",
+    "line": 0,
+    "message": "No detected backdoor or trigger detection: There is no backdoor defense, trigger detection, activation analysis, or gradient anomaly detection anywhere in the provided code.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.differential_privacy",
+    "file_path": "trade-advisor-ws.py",
+    "line": 0,
+    "message": "No detected differential privacy: No differential privacy library (Opacus, TensorFlow Privacy, DP-SGD, etc.) is imported or used anywhere in the provided code.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.adversarial_robustness_testing",
+    "file_path": "trade-advisor-ws.py",
+    "line": 0,
+    "message": "No detected adversarial robustness testing: No adversarial robustness testing frameworks (Foolbox, ART, FGSM, PGD) or any robustness stress tests are present anywhere in the code.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.metric_tampering_protection",
+    "file_path": "trade-advisor-ws.py",
+    "line": 0,
+    "message": "No detected metric tampering protection: There is no evidence of held-out test set isolation, signed/hashed evaluation data, or multiple independent metrics to protect against metric manipulation.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_sanitization",
+    "file_path": "trade-advisor-ws.py",
+    "line": 0,
+    "message": "No detected input sanitization: The on_message handler in WSHandler only checks for an empty value string and does a bare json.loads without schema validation, type checks, or sanitization of action/value fields; the REST controllers similarly extract parameters without range or format validation beyond basic type casting.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.output_bounds_checks",
+    "file_path": "trade-advisor-ws.py",
+    "line": 0,
+    "message": "No detected output bounds checks: Model/runner outputs are passed directly to jsonify or write_message with no NaN guards, probability bounds checks, or sanity validation on the returned results.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.prompt_injection_defenses",
+    "file_path": "trade-advisor-ws.py",
+    "line": 0,
+    "message": "No detected prompt injection defenses: The system does not appear to involve an LLM, and no prompt-injection filtering, system-prompt isolation, or output content moderation is present anywhere in the code.",
+    "snippet": "",
+    "stage": "inference"
+  }
+]

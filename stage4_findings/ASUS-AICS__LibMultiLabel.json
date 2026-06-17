@@ -1,0 +1,162 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "docs/examples/plot_bert_quickstart.py",
+    "line": 47,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "46 classes = load_or_build_label(datasets)\n47 tokenizer = AutoTokenizer.from_pretrained(\"bert-base-uncased\")\n48",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "docs/examples/plot_dataset_tutorial.py",
+    "line": 28,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "27 hf_datasets = dict()\n28 hf_datasets[\"train\"] = load_dataset(\"tweet_eval\", \"emoji\", split=\"train\")\n29 hf_datasets[\"val\"] = load_dataset(\"tweet_eval\", \"emoji\", split=\"validation\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "docs/examples/plot_dataset_tutorial.py",
+    "line": 29,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "28 hf_datasets[\"train\"] = load_dataset(\"tweet_eval\", \"emoji\", split=\"train\")\n29 hf_datasets[\"val\"] = load_dataset(\"tweet_eval\", \"emoji\", split=\"validation\")\n30 hf_datasets[\"test\"] = load_dataset(\"tweet_eval\", \"emoji\", split=\"test\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "docs/examples/plot_dataset_tutorial.py",
+    "line": 30,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "29 hf_datasets[\"val\"] = load_dataset(\"tweet_eval\", \"emoji\", split=\"validation\")\n30 hf_datasets[\"test\"] = load_dataset(\"tweet_eval\", \"emoji\", split=\"test\")\n31",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "libmultilabel/linear/utils.py",
+    "line": 65,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "64     with open(checkpoint_path, \"rb\") as f:\n65         pipeline = pickle.load(f)\n66     return (pipeline[\"preprocessor\"], pipeline[\"model\"])",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "libmultilabel/nn/attentionxml.py",
+    "line": 291,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "290         logger.info(\n291             f\"Predicting clusters by level-0 model. We then select {self.beam_width} clusters for each instance and \"\n292             f\"extract labels from these clusters for level 1 training.\"\n293         )",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "libmultilabel/nn/networks/bert.py",
+    "line": 31,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "30 \n31         self.lm = AutoModelForSequenceClassification.from_pretrained(\n32             lm_weight,\n33             num_labels=num_classes,\n34             hidden_dropout_prob=encoder_hidden_dropout,\n35             attention_probs_dropout_prob=encoder_attention_dropout,\n36             classifier_dropout=post_encoder_dropout,\n37             torchscript=True,\n38         )\n39",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "libmultilabel/nn/networks/bert_attention.py",
+    "line": 41,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "40 \n41         self.lm = AutoModel.from_pretrained(\n42             lm_weight,\n43             torchscript=True,\n44             hidden_dropout_prob=encoder_hidden_dropout,\n45             attention_probs_dropout_prob=encoder_attention_dropout,\n46         )\n47         self.post_encoder_dropout = nn.Dropout(p=post_encoder_dropout)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "search_params.py",
+    "line": 247,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "246         trainer = TorchTrainer(config=best_config, **data)\n247         os.popen(f\"cp {best_checkpoint} {best_model_path}\")\n248         os.popen(f\"cp {last_checkpoint} {os.path.join(checkpoint_dir, 'last.ckpt')}\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "search_params.py",
+    "line": 248,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "247         os.popen(f\"cp {best_checkpoint} {best_model_path}\")\n248         os.popen(f\"cp {last_checkpoint} {os.path.join(checkpoint_dir, 'last.ckpt')}\")\n249",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tests/compare_components.py",
+    "line": 20,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "19         master_fp = open(os.path.join(args.master_dir, f\"{name}.p\"), \"rb\")\n20         current_component = pickle.load(current_fp)\n21         master_component = pickle.load(master_fp)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tests/compare_components.py",
+    "line": 21,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "20         current_component = pickle.load(current_fp)\n21         master_component = pickle.load(master_fp)\n22         ret = compare(name, current_component, master_component)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "torch_trainer.py",
+    "line": 51,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "50         if not tokenize_text:\n51             self.tokenizer = AutoTokenizer.from_pretrained(config.network_config[\"lm_weight\"], use_fast=True)\n52         # Load dataset",
+    "stage": "data_preparation+evaluation+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "libmultilabel/linear/utils.py",
+    "line": 45,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "libmultilabel/linear/utils.py",
+    "line": 65,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "run_and_store_results.py",
+    "line": 23,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

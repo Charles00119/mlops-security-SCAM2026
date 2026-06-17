@@ -1,0 +1,32 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "mlp.py",
+    "line": 95,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "94     def load_pretrained(self):\n95         self.net.load_state_dict(torch.load(self.model_path))\n96     def classify(self, idx_test):",
+    "stage": "data_acquisition+evaluation+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "models.py",
+    "line": 149,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "148         #Load a pretrained model to test\n149         self.gcn.load_state_dict(torch.load(self.model_path))\n150",
+    "stage": "evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "models.py",
+    "line": 218,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "217         #Load a pretrained model to test\n218         self.gcn.load_state_dict(torch.load(self.model_path))\n219",
+    "stage": "evaluation+inference+modeling+training"
+  }
+]

@@ -1,0 +1,132 @@
+[
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_validation",
+    "file_path": "train_traffic_intensity_RF_model.py",
+    "line": 0,
+    "message": "No detected input validation: The code reads CSV/JSON files directly into DataFrames without any schema checks, dtype assertions, or value-range guards.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.untrusted_source_handling",
+    "file_path": "train_traffic_intensity_RF_model.py",
+    "line": 0,
+    "message": "No detected untrusted source handling: Data is loaded from local file paths only (pd.read_csv, open/json.load); no remote sources, checksums, or authentication are used.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_flipping_detection",
+    "file_path": "train_traffic_intensity_RF_model.py",
+    "line": 0,
+    "message": "No detected label flipping detection: The code only plots a normalized histogram comparing y_train and y_test distributions visually but performs no programmatic check for label-flipping anomalies, unexpected label values, or label-noise detection tools.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.data_poisoning_defenses",
+    "file_path": "train_traffic_intensity_RF_model.py",
+    "line": 0,
+    "message": "No detected data poisoning defenses: No outlier detection, statistical anomaly checks, or filtering of suspicious samples is performed anywhere in the data preparation pipeline; data is loaded and transformed without any poisoning defenses.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.model_integrity_verification",
+    "file_path": "train_traffic_intensity_RF_model.py",
+    "line": 0,
+    "message": "No detected model integrity verification: Models are saved and loaded via pickle without any hash check, signature verification, or pinned revision; no integrity verification is performed before use.",
+    "snippet": "",
+    "stage": "modeling"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_distribution_validation",
+    "file_path": "train_traffic_intensity_RF_model.py",
+    "line": 0,
+    "message": "No detected label distribution validation: The code only plots a histogram of y_train and y_test for visual inspection but performs no programmatic validation of label distribution, class balance, or anomaly detection on training labels.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.backdoor_or_trigger_detection",
+    "file_path": "train_traffic_intensity_RF_model.py",
+    "line": 0,
+    "message": "No detected backdoor or trigger detection: There is no implementation of any backdoor or trigger detection mechanism such as neural cleanse, activation analysis, or gradient anomaly detection anywhere in the code.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.differential_privacy",
+    "file_path": "train_traffic_intensity_RF_model.py",
+    "line": 0,
+    "message": "No detected differential privacy: No differential privacy libraries (Opacus, TensorFlow Privacy, DP-SGD) or any DP mechanisms are imported or used in the training code.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.adversarial_robustness_testing",
+    "file_path": "train_traffic_intensity_RF_model.py",
+    "line": 0,
+    "message": "No detected adversarial robustness testing: No adversarial robustness testing libraries or techniques (Foolbox, ART, FGSM, PGD, etc.) are imported or used anywhere in the code.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.metric_tampering_protection",
+    "file_path": "train_traffic_intensity_RF_model.py",
+    "line": 0,
+    "message": "No detected metric tampering protection: While train_test_split is used to separate data, there is no signing or hashing of evaluation data, no isolated held-out set enforced programmatically, and only a single MAPE-derived accuracy metric is computed, providing no protection against metric manipulation.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_sanitization",
+    "file_path": "train_traffic_intensity_RF_model.py",
+    "line": 0,
+    "message": "No detected input sanitization: The inference path reads CSV/JSON directly via import_dataset and load_parse_json with no shape, range, dtype, or schema validation before passing data to the model.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.output_bounds_checks",
+    "file_path": "train_traffic_intensity_RF_model.py",
+    "line": 0,
+    "message": "No detected output bounds checks: Predictions from model.predict() are used directly (e.g., in Average_Traffic_Intensity_Error and plot_map) with no NaN guards, negative-value checks, or sanity bounds on the regressor output.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.prompt_injection_defenses",
+    "file_path": "train_traffic_intensity_RF_model.py",
+    "line": 0,
+    "message": "No detected prompt injection defenses: This is a tabular Random Forest regression model, not an LLM, so prompt-injection defenses are not applicable and none are present.",
+    "snippet": "",
+    "stage": "inference"
+  }
+]

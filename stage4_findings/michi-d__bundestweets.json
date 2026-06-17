@@ -1,0 +1,102 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "farm/data_handler/utils.py",
+    "line": 105,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "104             tfile = tarfile.open(temp_file.name)\n105             tfile.extractall(datadir)\n106         # temp_file gets deleted here",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "farm/data_handler/utils.py",
+    "line": 113,
+    "message": "Call to requests without timeout",
+    "snippet": "112         # get request\n113         response = get(DOWNSTREAM_TASK_MAP[f\"conll03de{dataset}\"])\n114         # write to file",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "farm/file_utils.py",
+    "line": 180,
+    "message": "Call to requests without timeout",
+    "snippet": "179 def http_get(url, temp_file):\n180     req = requests.get(url, stream=True)\n181     content_length = req.headers.get(\"Content-Length\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "farm/file_utils.py",
+    "line": 209,
+    "message": "Call to requests without timeout",
+    "snippet": "208         try:\n209             response = requests.head(url, allow_redirects=True)\n210             if response.status_code != 200:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "farm/inference_rest_api.py",
+    "line": 85,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "84 if __name__ == \"__main__\":\n85     app.run(host=\"0.0.0.0\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "farm/modeling/prediction_head.py",
+    "line": 106,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "105         logger.info(\"Loading prediction head from {}\".format(model_file))\n106         prediction_head.load_state_dict(torch.load(model_file, map_location=torch.device(\"cpu\")))\n107         return prediction_head",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "farm/modeling/prediction_head.py",
+    "line": 406,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "405             logger.info(\"Loading prediction head from {}\".format(model_file))\n406             prediction_head.load_state_dict(torch.load(model_file, map_location=torch.device(\"cpu\")))\n407         else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "farm/modeling/prediction_head.py",
+    "line": 488,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "487             logger.info(\"Loading prediction head from {}\".format(model_file))\n488             prediction_head.load_state_dict(torch.load(model_file, map_location=torch.device(\"cpu\")))\n489         else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "farm/data_handler/utils.py",
+    "line": 153,
+    "message": "Detected a python logger call with a potential hardcoded secret \"tokens: %s\" % \" \".join([str(x) for x in tokens]) being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.app-run-param-config.avoid_app_run_with_bad_host",
+    "file_path": "farm/inference_rest_api.py",
+    "line": 85,
+    "message": "Running flask app with host 0.0.0.0 could expose the server publicly.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

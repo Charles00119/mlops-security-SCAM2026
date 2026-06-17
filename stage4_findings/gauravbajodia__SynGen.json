@@ -1,0 +1,22 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "SynGen.py",
+    "line": 397,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "396             str_insert = (\n397                 \"INSERT INTO \"\n398                 + table_name\n399                 + \" VALUES \"",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "app.py",
+    "line": 28,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "27 \n28 db = yaml.load(open('SQL_Login.yaml'))\n29",
+    "stage": "data_acquisition+inference"
+  }
+]

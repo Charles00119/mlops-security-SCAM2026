@@ -1,0 +1,102 @@
+[
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.untrusted_source_handling",
+    "file_path": "run_time_series_handler.py",
+    "line": 0,
+    "message": "No detected untrusted source handling: HTTP requests to the SIGE API are made with plain requests.get() calls without any checksum verification, authentication headers, certificate pinning, or integrity checks on the retrieved data.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_flipping_detection",
+    "file_path": "run_time_series_handler.py",
+    "line": 0,
+    "message": "No detected label flipping detection: There is no code that checks label distributions, validates label values against an expected set, or uses any label-noise detection tool before training.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.model_integrity_verification",
+    "file_path": "run_time_series_handler.py",
+    "line": 0,
+    "message": "No detected model integrity verification: The code loads both the Keras model (via `load_model`) and the scaler (via `pickle.load`) from plain file paths with no hash check, signature verification, or pinned revision before use.",
+    "snippet": "",
+    "stage": "modeling"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_distribution_validation",
+    "file_path": "run_time_series_handler.py",
+    "line": 0,
+    "message": "No detected label distribution validation: No label distribution or class balance check is performed before or during training; the only data quality step is an optional Hampel outlier filter on consumption values.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.backdoor_or_trigger_detection",
+    "file_path": "run_time_series_handler.py",
+    "line": 0,
+    "message": "No detected backdoor or trigger detection: There is no activation-pattern analysis, trigger detection, or gradient anomaly detection anywhere in the training loop or model code.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.differential_privacy",
+    "file_path": "run_time_series_handler.py",
+    "line": 0,
+    "message": "No detected differential privacy: The model is trained with a plain Keras fit() call and no differential privacy library (Opacus, TensorFlow Privacy, DP-SGD, etc.) is imported or used.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.adversarial_robustness_testing",
+    "file_path": "run_time_series_handler.py",
+    "line": 0,
+    "message": "No detected adversarial robustness testing: No adversarial robustness testing frameworks (Foolbox, ART, FGSM, PGD, etc.) are present anywhere in the code; evaluation is limited to online prediction and retraining.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.metric_tampering_protection",
+    "file_path": "run_time_series_handler.py",
+    "line": 0,
+    "message": "No detected metric tampering protection: There is no held-out test set, no signed or hashed evaluation data, and no independent metric computation; the model is continuously retrained and evaluated on streaming data without isolation.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.output_bounds_checks",
+    "file_path": "run_time_series_handler.py",
+    "line": 0,
+    "message": "No detected output bounds checks: The prediction result is used directly without any NaN guards, range/bounds checks, or sanity validation before being appended to the predictions list and published.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.prompt_injection_defenses",
+    "file_path": "run_time_series_handler.py",
+    "line": 0,
+    "message": "No detected prompt injection defenses: This is an LSTM time-series model processing numerical consumption data, not an LLM, so prompt injection defenses are not applicable and none are implemented.",
+    "snippet": "",
+    "stage": "inference"
+  }
+]

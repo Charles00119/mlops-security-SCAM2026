@@ -1,0 +1,102 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "models/bert_feature_extractor_model.py",
+    "line": 75,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "74         self.bert_reducer = bert_reducer\n75         self.config = AutoConfig.from_pretrained(self.bert_version, output_hidden_states=True, return_dict=True)\n76         self.tokenizer = AutoTokenizer.from_pretrained(self.bert_version, config=self.config)",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "models/bert_feature_extractor_model.py",
+    "line": 76,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "75         self.config = AutoConfig.from_pretrained(self.bert_version, output_hidden_states=True, return_dict=True)\n76         self.tokenizer = AutoTokenizer.from_pretrained(self.bert_version, config=self.config)\n77         self.bert = AutoModel.from_pretrained(self.bert_version, config=self.config)",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "models/bert_feature_extractor_model.py",
+    "line": 77,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "76         self.tokenizer = AutoTokenizer.from_pretrained(self.bert_version, config=self.config)\n77         self.bert = AutoModel.from_pretrained(self.bert_version, config=self.config)\n78         self.bert.to(self.device)",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "models/bert_words_embeddings_model.py",
+    "line": 36,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "35         self.bert_version = bert_version.value\n36         self.config = AutoConfig.from_pretrained(self.bert_version, output_hidden_states=True, return_dict=True)\n37         self.tokenizer = AutoTokenizer.from_pretrained(self.bert_version, config=self.config)",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "models/bert_words_embeddings_model.py",
+    "line": 37,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "36         self.config = AutoConfig.from_pretrained(self.bert_version, output_hidden_states=True, return_dict=True)\n37         self.tokenizer = AutoTokenizer.from_pretrained(self.bert_version, config=self.config)\n38         self.bert = None",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "models/bert_words_embeddings_model.py",
+    "line": 66,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "65         if self.bert is None:\n66             self.bert = AutoModel.from_pretrained(self.bert_version, config=self.config)\n67             self.bert.to(self.device)",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "models/simple_embedding_model.py",
+    "line": 18,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "17 \n18         self.tokenizer = AutoTokenizer.from_pretrained(pretrained_tokenizer_name)\n19         self.embeddings = nn.Embedding(self.tokenizer.vocab_size,",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "models/utils.py",
+    "line": 40,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "39         with file_path.open('rb') as cachefile:\n40             self.update(pickle.load(cachefile))\n41",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "models/utils.py",
+    "line": 40,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "models/utils.py",
+    "line": 68,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  }
+]

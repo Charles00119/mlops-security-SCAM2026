@@ -1,0 +1,62 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "datasets.py",
+    "line": 147,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "146         command = 'grep -rl \"  \" {}/*.dat | xargs sed -i -e \"s/  / /g\"'.format(self.path)\n147         os.system(command)\n148",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "label_predict.py",
+    "line": 199,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "198     if pretrain:\n199         model.load_state_dict(torch.load('{}-{}.pth'.format(folder_name, iteration_at)))\n200",
+    "stage": "data_acquisition+evaluation+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "run_sacred_label.py",
+    "line": 147,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "146             model = model.cpu()\n147             model.load_state_dict(torch.load(path, map_location='cpu'))\n148             model = model.cuda()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "run_sacred_label.py",
+    "line": 160,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "159             q = Inference(g_enc, network_output=g_enc.output_shape()[1], z_size=g_enc_size)\n160             q.load_state_dict(torch.load(path, map_location='cpu'))\n161             q = q.cuda()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "vae.py",
+    "line": 72,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "71         if pretrain:\n72             model.load_state_dict(torch.load('{}-{}.pth'.format(folder_name, 1000)))\n73     elif mode == 'VAE':",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "vae.py",
+    "line": 77,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "76         if pretrain:\n77             q.load_state_dict(torch.load('{}-{}-q.pth'.format(folder_name, 100)))\n78         g_enc = nn.Sequential(q.network, q.network_mu, nn.ReLU(True), nn.Dropout(0.5))",
+    "stage": "unreachable"
+  }
+]

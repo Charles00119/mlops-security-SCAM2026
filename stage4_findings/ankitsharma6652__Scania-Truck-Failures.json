@@ -1,0 +1,232 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "app.py",
+    "line": 297,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "296 if __name__ == \"__main__\":\n297     host = '0.0.0.0'\n298     httpd = simple_server.make_server(host, port, app)",
+    "stage": "inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "src/prediction/stage_02_data_preprocessing.py",
+    "line": 61,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "60             f=open(os.path.join(\"artifacts/preprocesssing_objects_dir\",self.standard_scale_file_name),'rb')\n61             scaler=pickle.load(f)\n62             self.df=scaler.transform(df)",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "src/prediction/stage_02_data_preprocessing.py",
+    "line": 98,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "97             self.df = df\n98             self.impute_median=pickle.load(open(os.path.join(\"artifacts/preprocesssing_objects_dir\",self.imputer_file_name),'rb'))\n99             self.df=self.impute_median.transform(df)",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "src/prediction/stage_02_data_preprocessing.py",
+    "line": 122,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "121 \n122             self.df_pca=pickle.load(open(os.path.join(\"artifacts/preprocesssing_objects_dir\",self.pca_file_name),'rb'))\n123             self.df=self.df_pca.transform(self.df)",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "src/prediction/stage_02_data_preprocessing.py",
+    "line": 137,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "136             self.df = df\n137             self.le=pickle.load(open(os.path.join(\"artifacts/preprocesssing_objects_dir\",self.label_encoding_file_name),'rb'))\n138             self.df['class'] = self.le.transform(self.df['class'])",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "src/prediction/stage_03_model_predictor.py",
+    "line": 57,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "56                                      f\"Entered the load_model method of the predictor class\")\n57             model= pickle.load(open(self.model_path,'rb'))\n58             self.db_logs.insert_logs(self.prediction_table_name, self.stage_name, \"load_model\",",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "src/utils/DbOperations_Logs.py",
+    "line": 86,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "85             # counter=counter+1\n86             query=f\"insert into {self.database_name}.{table_name}(time,stage_name,method_name,logs) values({unix_time_millis(datetime.datetime.now())},'{stage_name}','{method_name}','{logs}')\"\n87             logger.App_Logger().log(table_name,logs)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "src/utils/DbOperations_Logs.py",
+    "line": 95,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "94         try:\n95             return self.session.execute(f\"select * from {self.database_name}.{table_name} \")\n96         except Exception as e:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "src/utils/DbOperations_Logs.py",
+    "line": 103,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "102         try:\n103             result=self.session.execute(f\"select table_name from  system_schema.tables WHERE keyspace_name = '{self.database_name}' and table_name='{tablename}'\")\n104             if tablename in list(result.one()):",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "src/utils/DbOperations_Logs.py",
+    "line": 110,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "109                 print(\"Executed Success\")\n110                 return self.session.execute(f\"insert into {self.database_name}.{tablename}(id,status) values (1,'NS')\")\n111         except Exception as e:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "src/utils/DbOperations_Logs.py",
+    "line": 117,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "116     def update_model_training_thread_status(self,status):\n117         self.session.execute(f\"update {self.database_name}.model_training_thread set status = '{status}' where id =1\")\n118         return f\"Status update to {status}\"",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "src/utils/DbOperations_Logs.py",
+    "line": 121,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "120     def model_training_thread_status(self):\n121         return self.session.execute(f\"select status from {self.database_name}.model_training_thread\").one()\n122",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "src/utils/email_sender/email_sender.py",
+    "line": 29,
+    "message": "Call to requests without timeout",
+    "snippet": "28         try:\n29             response = requests.get(\n30                 \"https://isitarealemail.com/api/email/validate\",\n31                 params={'email': email_address})\n32",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "src/prediction/stage_02_data_preprocessing.py",
+    "line": 61,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "src/prediction/stage_02_data_preprocessing.py",
+    "line": 98,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "src/prediction/stage_02_data_preprocessing.py",
+    "line": 122,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "src/prediction/stage_02_data_preprocessing.py",
+    "line": 137,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "src/prediction/stage_03_model_predictor.py",
+    "line": 57,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "src/training/stage_02_data_preprocessing.py",
+    "line": 298,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "src/training/stage_02_data_preprocessing.py",
+    "line": 300,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "src/training/stage_02_data_preprocessing.py",
+    "line": 302,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "src/training/stage_02_data_preprocessing.py",
+    "line": 304,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "src/training/stage_03_model_training.py",
+    "line": 272,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+modeling+training"
+  }
+]

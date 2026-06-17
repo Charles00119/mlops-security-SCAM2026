@@ -1,0 +1,52 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "run.py",
+    "line": 243,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "242 \n243         config = torch.load(glob.glob(\n244             \"{}/run_config*\".format(experiment_path))[0],\n245                             map_location=lambda storage, loc: storage)\n246         config_parameters = dict(config, **kwargs)",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "run.py",
+    "line": 247,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "246         config_parameters = dict(config, **kwargs)\n247         model = torch.load(glob.glob(\n248             \"{}/run_model*\".format(experiment_path))[0],\n249                            map_location=lambda storage, loc: storage)\n250         encoder = torch.load(glob.glob(",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "run.py",
+    "line": 250,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "249                            map_location=lambda storage, loc: storage)\n250         encoder = torch.load(glob.glob(\n251             '{}/run_encoder*'.format(experiment_path))[0],\n252                              map_location=lambda storage, loc: storage)\n253         testlabel = config_parameters['testlabel']",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "utils.py",
+    "line": 25,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "24     with open(config_file) as con_read:\n25         yaml_config = yaml.load(con_read, Loader=yaml.FullLoader)\n26     # values from config file are all possible params",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-uuid-version.insecure-uuid-version",
+    "file_path": "run.py",
+    "line": 64,
+    "message": "Using UUID version 1 for UUID generation can lead to predictable UUIDs based on system information (e.g., MAC address, timestamp). This may lead to security risks such as the sandwich attack. Consider using `uuid.uuid4()` instead for better randomness and security.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation+inference+training"
+  }
+]

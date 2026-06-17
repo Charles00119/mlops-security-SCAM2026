@@ -1,0 +1,22 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "src/bert/bert_dataset.py",
+    "line": 16,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "15         self.nsamples = len(df)\n16         self.tokenizer = transformers.BertTokenizer.from_pretrained(\n17             \"bert-base-uncased\", do_lower_case=True\n18         )\n19         self.max_len = max_len",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "src/bert/bert_model.py",
+    "line": 8,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "7         super().__init__()\n8         self.bert = transformers.BertModel.from_pretrained(\"bert-base-uncased\")\n9         self.drop = nn.Dropout(0.3)",
+    "stage": "modeling"
+  }
+]

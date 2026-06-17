@@ -1,0 +1,222 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "EmotionNeuralInterface/model/classificator.py",
+    "line": 14,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "13     \"\"\"\n14     model_config = yaml.load(open(path, \"r\"), Loader=yaml.FullLoader)\n15     name = model_config[\"name\"]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "calc_conv2d.py",
+    "line": 68,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "67     with open(file) as f:\n68         model_config = yaml.load(f, Loader=yaml.FullLoader)\n69         StageNet(model_config, width=256)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "finetuning.py",
+    "line": 90,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "89             with open(config_file) as f:\n90                 return yaml.load(f, Loader=yaml.FullLoader)\n91         elif isinstance(config_file, dict):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "finetuning.py",
+    "line": 103,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "102         path = self.data['load_model']['path']\n103         self.pretrained_model = torch.load(path)\n104         metadata = open(self.data['load_model']['metadata'], \"r\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "finetuning.py",
+    "line": 237,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "236             with open(config_file) as f:\n237                 self.model_config = yaml.load(f, Loader=yaml.FullLoader)\n238                 print(self.model_config)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "run_ddp.py",
+    "line": 21,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "20     with open(args.config_yaml) as f:\n21         data = yaml.load(f, Loader=yaml.FullLoader)\n22     data = data['ddp']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "run_optuna.py",
+    "line": 10,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "9 \n10 data = yaml.load(open(DATA_YAML), Loader=yaml.FullLoader)\n11",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "run_optuna.py",
+    "line": 20,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "19 f = open(selected_model)\n20 data_model = yaml.load(f, Loader=yaml.FullLoader)\n21",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "run_optuna_finetuning.py",
+    "line": 11,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "10 \n11 data = yaml.load(open(DATA_YAML), Loader=yaml.FullLoader)\n12",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "run_optuna_finetuning.py",
+    "line": 25,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "24 f = open(\"config/models/classificator.yaml\")\n25 data_model = yaml.load(f, Loader=yaml.FullLoader)\n26",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "run_optuna_finetuning.py",
+    "line": 141,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "140     result = {}\n141     data = yaml.load(open(DATA_YAML), Loader=yaml.FullLoader)\n142     data['use_pretrained'] = True",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "tools/env2req.py",
+    "line": 24,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "23 with open(args.env) as f:\n24     data = yaml.load(f, Loader=yaml.FullLoader)\n25",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "tools/main_tiny.py",
+    "line": 134,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "133   print(\"Se cargo el modelo\")\n134   model = torch.load(full_path)\n135 else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "tools/old_main.py",
+    "line": 154,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "153   print(\"Se cargo el modelo\")\n154   model = torch.load(model_name)\n155 else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "tools/sort_experiments.py",
+    "line": 39,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "38         with open(data_path, 'r') as f:\n39             data = yaml.load(f, Loader=yaml.FullLoader)\n40             model_name = parse_model_path(data['load_model']['path'])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "tools/test.py",
+    "line": 102,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "101   print(\"Se cargo el modelo\")\n102   model = torch.load(\"models/\"+model_name)\n103 else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "workbench.py",
+    "line": 79,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "78             with open(config_file) as f:\n79                 self.data = yaml.load(f, Loader=yaml.FullLoader)\n80                 print(self.data)",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "workbench.py",
+    "line": 260,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "259             with open(config_file) as f:\n260                 self.model_config = yaml.load(f, Loader=yaml.FullLoader)\n261                 print(self.model_config)",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "workbench.py",
+    "line": 286,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "285             model = self.get_type_model()\n286             state_dict = torch.load(self.get_model_path(self.data[\"train\"][\"load_model_name\"]), map_location=self.device)\n287             model.load_state_dict(state_dict)",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "workbench.py",
+    "line": 741,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "740         with open(self.data[\"model\"][\"model_config_path\"]) as f:\n741             self.model_config = yaml.load(f, Loader=yaml.FullLoader)\n742         #######################################",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "finetuning.py",
+    "line": 631,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "workbench.py",
+    "line": 669,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+training"
+  }
+]

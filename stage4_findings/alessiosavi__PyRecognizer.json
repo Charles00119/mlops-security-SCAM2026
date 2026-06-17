@@ -1,0 +1,152 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "datastructure/Administrator.py",
+    "line": 25,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "24 \n25     def init_redis_connection(self, host: str = \"0.0.0.0\", port: str = \"6379\", db: int = 0) -> bool:\n26         log.warning(\"Initializing a new redis connection\")",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "datastructure/Classifier.py",
+    "line": 90,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "89                 with open(filename, 'rb') as f:\n90                     self.classifier = pickle.load(f)\n91                 log.debug(\"load_classifier_from_file | Classifier loaded!\")",
+    "stage": "data_acquisition+data_preparation+evaluation+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "test/test_classifier.py",
+    "line": 35,
+    "message": "Call to requests without timeout",
+    "snippet": "34         values = {\"threshold\": \"45\"}\n35         r = requests.post(url, data=values)\n36         log.debug(r.content)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "test/test_classifier.py",
+    "line": 43,
+    "message": "Call to requests without timeout",
+    "snippet": "42         files = {\"file\": image}\n43         r = requests.post(url, files=files)\n44         image.close()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "test/test_classifier.py",
+    "line": 53,
+    "message": "Call to requests without timeout",
+    "snippet": "52         data = {\"threshold\": \"a\"}\n53         r = requests.post(url, files=files, data=data)\n54         image.close()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "test/test_classifier.py",
+    "line": 63,
+    "message": "Call to requests without timeout",
+    "snippet": "62         data = {\"threshold\": \"-1\"}\n63         r = requests.post(url, files=files, data=data)\n64         image.close()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "test/test_classifier.py",
+    "line": 73,
+    "message": "Call to requests without timeout",
+    "snippet": "72         data = {\"threshold\": \"1\"}\n73         r = requests.post(url, files=files, data=data)\n74         image.close()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "test/test_classifier.py",
+    "line": 83,
+    "message": "Call to requests without timeout",
+    "snippet": "82         data = {\"threshold\": \"1\"}\n83         r = requests.post(url, files=files, data=data)\n84         image.close()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "test/test_classifier.py",
+    "line": 96,
+    "message": "Call to requests without timeout",
+    "snippet": "95         data = {\"threshold\": \"1\"}\n96         r = requests.post(url, files=files, data=data)\n97         image.close()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "test/test_classifier.py",
+    "line": 111,
+    "message": "Call to requests without timeout",
+    "snippet": "110         data = {\"threshold\": \"90\"}\n111         r = requests.post(url, files=files, data=data)\n112         image.close()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "utils/util.py",
+    "line": 287,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "286         log.debug(\"retrieve_dataset | Pickle data uploaded\")\n287         dataset = pickle.load(zip_file)\n288     else:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "datastructure/Classifier.py",
+    "line": 90,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "datastructure/Classifier.py",
+    "line": 215,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "utils/util.py",
+    "line": 212,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "utils/util.py",
+    "line": 287,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  }
+]

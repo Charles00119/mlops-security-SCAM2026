@@ -1,0 +1,42 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "app.py",
+    "line": 27,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "26 raw_labels = str({0: 'empty',1: 'half',2: 'full'})\n27 labels = [i.split(',')[0] for i in list( eval(raw_labels).values() )]\n28",
+    "stage": "data_preparation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "libs/PretrainedModels.py",
+    "line": 81,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "80         if (device == \"cpu\"):\n81             self.model.load_state_dict(torch.load(path, map_location=torch.device('cpu')), strict=False)\n82         else:",
+    "stage": "evaluation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "libs/PretrainedModels.py",
+    "line": 83,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "82         else:\n83             self.model.load_state_dict(torch.load(path), strict=False)\n84",
+    "stage": "evaluation+modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "app.py",
+    "line": 27,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_preparation+inference"
+  }
+]

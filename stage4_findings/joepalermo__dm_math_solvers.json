@@ -1,0 +1,132 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "environment/compute_graph.py",
+    "line": 91,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "90                 raise Exception(\"unreplaced params are in arb, e.g. 'p_0'\")\n91             output = eval(string_to_eval)\n92             # if output is a set, reformat as a sorted string",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "environment/typed_operators/__init__.py",
+    "line": 346,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "345     rhs_with_arg = rhs.replace(function_parameter, f'({function_argument})')\n346     return Value(eval(rhs_with_arg))\n347",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "evaluate.py",
+    "line": 42,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "41     print(\"Checkpoint found, loading checkpoints\")\n42     q1_checkpoint = torch.load(os.path.join(get_logdir(), hparams.model.q1_file))\n43     q2_checkpoint = torch.load(os.path.join(get_logdir(), hparams.model.q2_file))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "evaluate.py",
+    "line": 43,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "42     q1_checkpoint = torch.load(os.path.join(get_logdir(), hparams.model.q1_file))\n43     q2_checkpoint = torch.load(os.path.join(get_logdir(), hparams.model.q2_file))\n44     q1.load_state_dict(q1_checkpoint['model_state_dict'])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "hparams/localconfig/manager.py",
+    "line": 348,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "347                 else:\n348                     new_value = eval(value)\n349",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "train.py",
+    "line": 54,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "53     print(\"Checkpoint found, loading checkpoints\")\n54     q1_checkpoint = torch.load(os.path.join(get_logdir(), hparams.model.q1_file))\n55     q2_checkpoint = torch.load(os.path.join(get_logdir(), hparams.model.q2_file))",
+    "stage": "data_acquisition+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "train.py",
+    "line": 55,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "54     q1_checkpoint = torch.load(os.path.join(get_logdir(), hparams.model.q1_file))\n55     q2_checkpoint = torch.load(os.path.join(get_logdir(), hparams.model.q2_file))\n56     q1.load_state_dict(q1_checkpoint['model_state_dict'])",
+    "stage": "data_acquisition+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "utils.py",
+    "line": 46,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "45 def read_pickle(filepath):\n46     return pickle.load(open(filepath, \"rb\"))\n47",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "environment/compute_graph.py",
+    "line": 91,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "environment/typed_operators/__init__.py",
+    "line": 346,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "hparams/localconfig/manager.py",
+    "line": 348,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "utils.py",
+    "line": 46,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "utils.py",
+    "line": 50,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  }
+]

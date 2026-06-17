@@ -1,0 +1,532 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "data/process_data.py",
+    "line": 31,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "30     # Select only processed sentence instances\n31     sentence_cursor.execute('SELECT * FROM {} WHERE processed=1 AND LENGTH(valid_keys) > 0'.format(SENTENCE_TABLE))\n32     for row in sentence_cursor:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "data/process_data.py",
+    "line": 37,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "36         for key in valid_keys:\n37             instance_cursor.execute(\"SELECT * FROM PositiveInstance WHERE rowid={}\".format(key))\n38             instance = instance_to_iob(sentence, instance_cursor.fetchone())",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "data/process_data.py",
+    "line": 43,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "42         for key in invalid_keys:\n43             instance_cursor.execute(\"SELECT * FROM NegativeInstance WHERE rowid={}\".format(key))\n44",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "generation/allen_models.py",
+    "line": 55,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "54             print(\"Downloading archived model for %s\" % self.model_name)\n55             urllib.request.urlretrieve(self.model_url, self.model_path)\n56",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "generation/dependency_parse/tests.py",
+    "line": 15,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "14             (\"Sarah Palin is a friend of Trump\",\n15              eval(\"[('Sarah Palin', 'friend', 'Trump')]\")),\n16             (\"Yoda and ObiWan were the mentors of Skywalker.\",",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "generation/dependency_parse/tests.py",
+    "line": 17,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "16             (\"Yoda and ObiWan were the mentors of Skywalker.\",\n17              eval(\"[('Yoda', 'mentors', 'Skywalker'), ('ObiWan', 'mentors', 'Skywalker')]\")),\n18             (\"Contaldo was a good friend of Jose Calderon\",",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "generation/dependency_parse/tests.py",
+    "line": 19,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "18             (\"Contaldo was a good friend of Jose Calderon\",\n19              eval(\"[('Contaldo', 'good friend', 'Jose Calderon')]\")),\n20             (\"The first six years of Stapledon's and Magaret's life were spent with their parents at Port Tortilla.\",",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "generation/dependency_parse/tests.py",
+    "line": 21,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "20             (\"The first six years of Stapledon's and Magaret's life were spent with their parents at Port Tortilla.\",\n21              eval(\"[]\"))\n22             ]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "generation/dependency_parse/tests.py",
+    "line": 30,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "29             (\"Federer hired Annacone as his coach.\",\n30              eval(\"[('Federer', 'coach', 'Annacone')]\")),\n31             (\"Federer hired Annacone as his coach and business partner and as a best friend.\",",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "generation/dependency_parse/tests.py",
+    "line": 32,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "31             (\"Federer hired Annacone as his coach and business partner and as a best friend.\",\n32              eval(\"[('Federer', 'coach', 'Annacone'), ('Federer', 'business partner', 'Annacone'), ('Federer', 'best friend', 'Annacone')]\")),\n33             (\"Dmitry started his career in the Russian Drama Theatre of Lithuania in Vilnius.\",",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "generation/dependency_parse/tests.py",
+    "line": 34,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "33             (\"Dmitry started his career in the Russian Drama Theatre of Lithuania in Vilnius.\",\n34              eval(\"[('Dmitry', 'career', 'Drama Theatre of Lithuania'), ('Dmitry', 'career', 'Vilnius')]\")),\n35             (\"Then Dmitry directed opera and drama in many major Russian cities: Moscow, Saint Petersburg, Novosibirsk, Omsk, Samara, Kazan and others.\",",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "generation/dependency_parse/tests.py",
+    "line": 36,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "35             (\"Then Dmitry directed opera and drama in many major Russian cities: Moscow, Saint Petersburg, Novosibirsk, Omsk, Samara, Kazan and others.\",\n36              eval(\"[('Dmitry', 'opera', 'Moscow'), ('Dmitry', 'opera', 'Saint Petersburg'), ('Dmitry', 'opera', 'Novosibirsk'), ('Dmitry', 'opera', 'Omsk'), ('Dmitry', 'opera', 'Samara'), ('Dmitry', 'opera', 'Kazan'), ('Dmitry', 'drama', 'M",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "generation/dependency_parse/tests.py",
+    "line": 45,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "44             (\"Bojack Horseman resides in Hollywoo, California, and worked on Horsing Around.\",\n45              eval(\"[('Bojack Horseman', 'resides', 'Hollywoo'), ('Bojack Horseman', 'resides', 'California'), ('Bojack Horseman', 'worked', 'Horsing Around')]\")),\n46             (\"Annacone coached Federer to win multiple Wimbledon Championships, and in turn became his best friend.\",",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "generation/dependency_parse/tests.py",
+    "line": 47,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "46             (\"Annacone coached Federer to win multiple Wimbledon Championships, and in turn became his best friend.\",\n47              eval(\"[('Federer', 'win', 'Wimbledon Championships')]\")),\n48             (\"Harry was born September 4, 1946.\",",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "generation/dependency_parse/tests.py",
+    "line": 49,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "48             (\"Harry was born September 4, 1946.\",\n49              eval(\"[('Harry', 'born', '4 September, 1946')]\")),\n50             (\"Harry graduated from Maryville High School, completed his undergraduate work as a Speech and Communication major at Carson Newman College, and got his graduate degree from the University of Tennessee, Knoxville.\",",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "generation/dependency_parse/tests.py",
+    "line": 51,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "50             (\"Harry graduated from Maryville High School, completed his undergraduate work as a Speech and Communication major at Carson Newman College, and got his graduate degree from the University of Tennessee, Knoxville.\",\n51              eval(\"[('Harry', 'graduated', 'Maryville High School'), ('Harry', 'major', 'Carson Newman College'), ('Harry', 'graduate degree', 'University of Tennesse",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "generation/dependency_parse/tests.py",
+    "line": 53,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "52             (\"Harry retired from law enforcement and was a business employer before pursuing politics.\",\n53              eval(\"[]\")),\n54             (\"After a brief stint as a teacher at Manchester Grammar School, Stapledon worked in shipping offices in Liverpool and Port Tortilla from 1910 to 1913.\",",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "generation/dependency_parse/tests.py",
+    "line": 55,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "54             (\"After a brief stint as a teacher at Manchester Grammar School, Stapledon worked in shipping offices in Liverpool and Port Tortilla from 1910 to 1913.\",\n55              eval(\"[('Stapledon', 'teacher', 'Manchester Grammar School'), ('Stapledon', 'worked', 'Port Tortilla'), ('Stapledon', 'worked', 'Liverpool')]\"))\n56             ]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "generation/dependency_parse/tests.py",
+    "line": 64,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "63             (\"Annacone was hired as Federer's coach.\",\n64              eval(\"[('Annacone', 'coach', 'Federer')]\")),\n65             (\"Stapledon was born in Seacombe, Wallasey, on the Wirral Peninsula near Liverpool, the only son of William Clibbert Stapledon and Emmeline Miller.\",",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "generation/dependency_parse/tests.py",
+    "line": 66,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "65             (\"Stapledon was born in Seacombe, Wallasey, on the Wirral Peninsula near Liverpool, the only son of William Clibbert Stapledon and Emmeline Miller.\",\n66              eval(\"[('Stapledon', 'only son', 'William Clibbert Stapledon'), ('Stapledon', 'only son', 'Emmeline Miller'), ('Stapledon', 'born', 'Seacombe'), ('Stapledon', 'born', 'Wallasey'), ('Stapledon', 'born', 'Wirral Peninsula",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "generation/dependency_parse/tests.py",
+    "line": 68,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "67             (\"Stapledon was educated at Abbotsholme School and Balliol College, Oxford, where he acquired a BA in Modern History in 1909 and a MA in 1913.\",\n68              eval(\"[('Stapledon', 'educated', 'Abbotsholme School'), ('Stapledon', 'educated', 'Balliol College')]\")),\n69             (\"Dmitry was born in Moscow.\",",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "generation/dependency_parse/tests.py",
+    "line": 70,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "69             (\"Dmitry was born in Moscow.\",\n70              eval(\"[('Dmitry', 'born', 'Moscow')]\")),\n71             ]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "generation/dependency_parse/tests.py",
+    "line": 79,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "78             (\"Harry is married to Mary and has two children.\",\n79              eval(\"[('Harry', 'married', 'Mary')]\")\n80              )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "model_implementation/download.py",
+    "line": 22,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "21         print(\"Downloading GLOVE embeddings\")\n22         urllib.request.urlretrieve(glove_url, glove_zip_path)\n23",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model_implementation/model/model.py",
+    "line": 35,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "34         token_embedding_dir = self.config[\"tokens_dir\"]\n35         token_emb_weights = torch.load(Path.joinpath(token_embedding_dir, \"token_embedder\"))\n36         self.token_embedding = torch.nn.Embedding(self.config[\"num_tokens\"], self.config[\"token_embedding_dim\"],",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model_implementation/model/model.py",
+    "line": 42,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "41         if \"verb_embedding\" in self.config.keys():\n42             verb_emb_weights = torch.load(self.config[\"verb_embedding\"])\n43             self.verb_embedding = torch.nn.Embedding(2, self.config[\"token_embedding_dim\"], _weight=verb_emb_weights)",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model_implementation/model/model.py",
+    "line": 49,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "48             if \"ne_embedding\" in self.config.keys():\n49                 ne_emb_weights = torch.load(self.config[\"ne_embeddings\"])\n50                 self.ne_embedding.weight = ne_emb_weights",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model_implementation/model/model.py",
+    "line": 57,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "56             if \"pos_embedding\" in self.config.keys():\n57                 pos_emb_weights = torch.load(self.config[\"pos_embedding\"])\n58                 self.pos_embedding.weight = pos_emb_weights",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model_implementation/model/model.py",
+    "line": 82,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "81         weights_dir = self.config[\"weights_dir\"]\n82         input_weights: Tensor = torch.load(Path.joinpath(weights_dir, \"layer{}_input_weight\".format(layer_num)))\n83         input_bias: Tensor = torch.load(Path.joinpath(weights_dir, \"layer{}_input_bias\".format(layer_num)))",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model_implementation/model/model.py",
+    "line": 83,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "82         input_weights: Tensor = torch.load(Path.joinpath(weights_dir, \"layer{}_input_weight\".format(layer_num)))\n83         input_bias: Tensor = torch.load(Path.joinpath(weights_dir, \"layer{}_input_bias\".format(layer_num)))\n84         state_weights: Tensor = torch.load(Path.joinpath(weights_dir, \"layer{}_state_weight\".format(layer_num)))",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model_implementation/model/model.py",
+    "line": 84,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "83         input_bias: Tensor = torch.load(Path.joinpath(weights_dir, \"layer{}_input_bias\".format(layer_num)))\n84         state_weights: Tensor = torch.load(Path.joinpath(weights_dir, \"layer{}_state_weight\".format(layer_num)))\n85         state_bias: Tensor = torch.load(Path.joinpath(weights_dir, \"layer{}_state_bias\".format(layer_num)))",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model_implementation/model/model.py",
+    "line": 85,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "84         state_weights: Tensor = torch.load(Path.joinpath(weights_dir, \"layer{}_state_weight\".format(layer_num)))\n85         state_bias: Tensor = torch.load(Path.joinpath(weights_dir, \"layer{}_state_bias\".format(layer_num)))\n86         layer.load_weights(input_weights,",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model_implementation/model/model.py",
+    "line": 98,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "97                Path.exists(Path.joinpath(labels_dir, \"tag_layer_bias\")):\n98                 tag_layer_weights = torch.load(Path.joinpath(labels_dir, \"tag_layer_weights\"))\n99                 tag_layer_bias = torch.load(Path.joinpath(labels_dir, \"tag_layer_bias\"))",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model_implementation/model/model.py",
+    "line": 99,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "98                 tag_layer_weights = torch.load(Path.joinpath(labels_dir, \"tag_layer_weights\"))\n99                 tag_layer_bias = torch.load(Path.joinpath(labels_dir, \"tag_layer_bias\"))\n100                 self.tag_layer.weight = tag_layer_weights",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model_implementation/trainer.py",
+    "line": 172,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "171         saved_model_path = self.predict_path\n172         self.model.load_state_dict(torch.load(saved_model_path, map_location=self.device))\n173         vectorized_sentence = self.preprocessor.vectorize_sentence(sentence)",
+    "stage": "evaluation+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "server.py",
+    "line": 50,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "49     cursor = connection.cursor()\n50     cursor.execute('SELECT * FROM {} WHERE processed=0 AND length(sentence)<250 and skip=0 LIMIT 15'.format(SENTENCE_TABLE))\n51     sentence_rows = cursor.fetchall()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "server.py",
+    "line": 66,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "65     cursor = connection.cursor()\n66     cursor.execute(\"UPDATE {} SET skip=1 WHERE sentence={}\".format(SENTENCE_TABLE, quote_string(sentence)))\n67     return jsonify({",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "server.py",
+    "line": 109,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "108     # Check if sentence already exists in table\n109     cursor.execute(\"SELECT * FROM {} WHERE sentence={}\".format(SENTENCE_TABLE, quote_string(sentence)))\n110     result = cursor.fetchone()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "server.py",
+    "line": 115,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "114     for instance in valid_instances:\n115         cursor.execute(\"INSERT INTO {} ({}, {}, {}) VALUES ({}, {}, {})\"\n116                     .format(VALID_INSTANCES_TABLE,\n117                             \"entity1\", \"rel\", \"entity2\",",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "server.py",
+    "line": 121,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "120     for instance in invalid_instances:\n121         cursor.execute(\"INSERT INTO {} ({}, {}, {}) VALUES ({}, {}, {})\"\n122                     .format(INVALID_INSTANCES_TABLE,\n123                             \"entity1\", \"rel\", \"entity2\",",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "server.py",
+    "line": 146,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "145 if __name__ == '__main__':\n146     app.run(host=\"0.0.0.0\", port=8000, debug=False)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "typescript.react.security.react-insecure-request.react-insecure-request",
+    "file_path": "frontend-app/src/App.js",
+    "line": 27,
+    "message": "Unencrypted request over HTTP detected.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "typescript.react.security.react-insecure-request.react-insecure-request",
+    "file_path": "frontend-app/src/App.js",
+    "line": 138,
+    "message": "Unencrypted request over HTTP detected.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "typescript.react.security.react-insecure-request.react-insecure-request",
+    "file_path": "frontend-app/src/components/Predictor.js",
+    "line": 111,
+    "message": "Unencrypted request over HTTP detected.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "typescript.react.security.react-insecure-request.react-insecure-request",
+    "file_path": "frontend-app/src/components/Predictor.js",
+    "line": 123,
+    "message": "Unencrypted request over HTTP detected.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "generation/allen_models.py",
+    "line": 55,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "model_implementation/download.py",
+    "line": 22,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.flask.security.injection.tainted-sql-string.tainted-sql-string",
+    "file_path": "server.py",
+    "line": 66,
+    "message": "Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using an object-relational mapper (ORM) such as SQLAlchemy which will protect your queries.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.flask.security.injection.tainted-sql-string.tainted-sql-string",
+    "file_path": "server.py",
+    "line": 109,
+    "message": "Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using an object-relational mapper (ORM) such as SQLAlchemy which will protect your queries.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.flask.security.injection.tainted-sql-string.tainted-sql-string",
+    "file_path": "server.py",
+    "line": 115,
+    "message": "Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using an object-relational mapper (ORM) such as SQLAlchemy which will protect your queries.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.flask.security.injection.tainted-sql-string.tainted-sql-string",
+    "file_path": "server.py",
+    "line": 121,
+    "message": "Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using an object-relational mapper (ORM) such as SQLAlchemy which will protect your queries.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.flask.security.injection.tainted-sql-string.tainted-sql-string",
+    "file_path": "server.py",
+    "line": 128,
+    "message": "Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using an object-relational mapper (ORM) such as SQLAlchemy which will protect your queries.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.app-run-param-config.avoid_app_run_with_bad_host",
+    "file_path": "server.py",
+    "line": 146,
+    "message": "Running flask app with host 0.0.0.0 could expose the server publicly.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

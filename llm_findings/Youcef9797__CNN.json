@@ -1,0 +1,122 @@
+[
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.untrusted_source_handling",
+    "file_path": "start.sh",
+    "line": 0,
+    "message": "No detected untrusted source handling: Files are downloaded via urlretrieve from plain HTTP URLs with no checksum verification, signature validation, or authentication mechanism.",
+    "snippet": "",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_flipping_detection",
+    "file_path": "start.sh",
+    "line": 0,
+    "message": "No detected label flipping detection: No code checks label distributions, validates label values against an expected set, or uses any label-noise detection tool like Cleanlab before training.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.data_poisoning_defenses",
+    "file_path": "start.sh",
+    "line": 0,
+    "message": "No detected data poisoning defenses: No outlier detection, statistical anomaly checks, or filtering of suspicious inputs is performed on the dataset during preparation.",
+    "snippet": "",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.model_integrity_verification",
+    "file_path": "start.sh",
+    "line": 0,
+    "message": "No detected model integrity verification: The --restore argument allows loading checkpoint weights from an arbitrary path, but there is no hash check, signature verification, or pinned revision performed before loading the weights.",
+    "snippet": "",
+    "stage": "modeling"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.label_distribution_validation",
+    "file_path": "start.sh",
+    "line": 0,
+    "message": "No detected label distribution validation: The code references class balancing via inverse median frequency weights (`compute_imf_weights`) but there is no explicit validation of the label distribution or check for expected label sets before training begins.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.backdoor_or_trigger_detection",
+    "file_path": "start.sh",
+    "line": 0,
+    "message": "No detected backdoor or trigger detection: No backdoor or trigger detection mechanisms (e.g., neural cleanse, activation analysis, gradient anomaly detection) are present anywhere in the visible code.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.differential_privacy",
+    "file_path": "start.sh",
+    "line": 0,
+    "message": "No detected differential privacy: There is no use of Opacus, TensorFlow Privacy, DP-SGD, or any other differential privacy mechanism in the training code.",
+    "snippet": "",
+    "stage": "training"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.adversarial_robustness_testing",
+    "file_path": "start.sh",
+    "line": 0,
+    "message": "No detected adversarial robustness testing: No adversarial attack libraries (Foolbox, ART, CleverHans) or attack methods (FGSM, PGD) are imported or used anywhere in the pipeline code.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.metric_tampering_protection",
+    "file_path": "start.sh",
+    "line": 0,
+    "message": "No detected metric tampering protection: While a train/test split is performed via sample_gt, there is no hashing or signing of evaluation data, no isolation enforcement, and no use of multiple independent evaluation sets to guard against metric manipulation.",
+    "snippet": "",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.input_sanitization",
+    "file_path": "start.sh",
+    "line": 0,
+    "message": "No detected input sanitization: There are no input shape, range, or schema validation checks visible in the inference data-flow path; data is loaded and passed to the model without validation.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "medium",
+    "rule_id": "absent_control.output_bounds_checks",
+    "file_path": "start.sh",
+    "line": 0,
+    "message": "No detected output bounds checks: No checks on model output probabilities, NaN guards, or calibrated thresholds are present in the visible inference code.",
+    "snippet": "",
+    "stage": "inference"
+  },
+  {
+    "tool": "claude_judgment",
+    "severity": "high",
+    "rule_id": "absent_control.prompt_injection_defenses",
+    "file_path": "start.sh",
+    "line": 0,
+    "message": "No detected prompt injection defenses: This is a hyperspectral image classification pipeline, not an LLM, so prompt-injection defenses are not applicable and none are present.",
+    "snippet": "",
+    "stage": "inference"
+  }
+]

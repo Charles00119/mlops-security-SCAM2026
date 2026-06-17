@@ -1,0 +1,12 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "measure_model_metrics.py",
+    "line": 16,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "15     cmd_string = f\"python /opt/intel/openvino_2021.1.110/deployment_tools/model_optimizer/mo_tf.py --input_model {frozen_model_path} --input \\\"input_1[1 32 128 1]\\\" -n {output_name} -o {output_dir}\"\n16     os.system(cmd_string)\n17     # python /opt/intel/openvino_2021/deployment_tools/model_optimizer/mo_tf.py --input_model frozen.pb --input \"input_1[1 32 128 1]\"",
+    "stage": "unreachable"
+  }
+]

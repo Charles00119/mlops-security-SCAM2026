@@ -1,0 +1,222 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "bo_post_training_metrics.py",
+    "line": 69,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "68                     bomodel = models.three_layer_model_tunable(prune_masks, dims)  # 32b, non quantized model\n69                 bomodel.load_state_dict(torch.load(os.path.join(dir, file), map_location=device))\n70                 count, total_param, _, _ = countNonZeroWeights(bomodel)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "iter_prune.py",
+    "line": 317,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "316             # Load last/best checkpoint model saved via earlystopping\n317             model.load_state_dict(torch.load('checkpoint.pt'))\n318",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "jet_optimize.py",
+    "line": 302,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "301         # Load last/best checkpoint model saved via earlystopping\n302     model.load_state_dict(torch.load('checkpoint.pt'))\n303",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model_compare_conf_matrix.py",
+    "line": 32,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "31             try:\n32                 bopmodel.load_state_dict(torch.load(os.path.join(dir, file), map_location=device))\n33                 count, total_cnt, _, _ = countNonZeroWeights(bopmodel)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model_compare_conf_matrix.py",
+    "line": 159,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "158     m1 = models.three_layer_model_bv_batnorm_masked(masks=standard_mask, precision=6)\n159     m1.load_state_dict(torch.load(os.path.join(loadfile1), map_location=device))\n160",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model_compare_conf_matrix.py",
+    "line": 162,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "161     m2 = models.three_layer_model_bv_batnorm_masked(masks=standard_mask, precision=6)\n162     m2.load_state_dict(torch.load(os.path.join(loadfile2), map_location=device))\n163",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model_compare_conf_matrix.py",
+    "line": 166,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "165                                                             bn_stats=options.bn_stats)\n166     baseline.load_state_dict(torch.load(os.path.join(baseline_file), map_location=device))\n167",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model_compare_conf_matrix.py",
+    "line": 214,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "213             loadmodel = models.three_layer_model_masked(standard_mask)  # 32b\n214         loadmodel.load_state_dict(torch.load(os.path.join(dir, '32b', model_file), map_location=device))\n215         print('Calculating AiQ for 32b, ' + str(model_bops) + ' BOPS')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model_compare_conf_matrix.py",
+    "line": 227,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "226             loadmodel = models.three_layer_model_bv_masked(standard_mask, 6)\n227         loadmodel.load_state_dict(torch.load(os.path.join(dir, '6b', model_file), map_location=device))\n228         print('Calculating AiQ for 6b, ' + str(model_bops) + ' BOPS')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "paper_plots/model_inf_plot_scratchpad.py",
+    "line": 228,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "227 \n228     m32.load_state_dict(torch.load(os.path.join(m32_file), map_location=device))\n229     m6.load_state_dict(torch.load(os.path.join(m6_file), map_location=device))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "paper_plots/model_inf_plot_scratchpad.py",
+    "line": 229,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "228     m32.load_state_dict(torch.load(os.path.join(m32_file), map_location=device))\n229     m6.load_state_dict(torch.load(os.path.join(m6_file), map_location=device))\n230",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "post_training_metrics.py",
+    "line": 38,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "37     errors_list = []\n38     model.load_state_dict(torch.load(os.path.join(model_file), map_location=device))\n39     for test_loader in test_loaders: #Eventually evaluate the ROC if we're using the Dev set (vs Eval set), just returm MSE for now",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "post_training_metrics.py",
+    "line": 70,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "69             try:\n70                 bopmodel.load_state_dict(torch.load(os.path.join(dir, file), map_location=device))\n71                 count, total_cnt, _, _ = countNonZeroWeights(bopmodel)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "slider_autoencoder/ae_iter_prune.py",
+    "line": 23,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "22     config = open(config_file, 'r')\n23     return yaml.load(config, Loader=yaml.FullLoader)\n24",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "slider_autoencoder/ae_iter_prune.py",
+    "line": 376,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "375             # Load last/best checkpoint model saved via earlystopping\n376             model.load_state_dict(torch.load('checkpoint.pt'))\n377",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "tools/aiq.py",
+    "line": 26,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "25     if loadfile is not None:\n26         aiq_model.load_state_dict(torch.load(os.path.join(loadfile), map_location=device))\n27",
+    "stage": "data_preparation+evaluation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "tools/parse_yaml_config.py",
+    "line": 8,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "7     config = open(config_file, 'r')\n8     return yaml.load(config, Loader=yaml.FullLoader)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "train.py",
+    "line": 197,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "196         # Load last/best checkpoint model saved via earlystopping\n197     model.load_state_dict(torch.load('checkpoint.pt'))\n198",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "utilities/check_class_balance.py",
+    "line": 15,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "14     config = open(config_file, 'r')\n15     return yaml.load(config, Loader=yaml.FullLoader)\n16",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "utilities/k_fold_split.py",
+    "line": 16,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "15     config = open(config_file, 'r')\n16     return yaml.load(config, Loader=yaml.FullLoader)\n17",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "utilities/onnx_convert.py",
+    "line": 19,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "18     model = models.three_layer_model_batnorm(bn_affine=True, bn_stats=True)\n19     model.load_state_dict(torch.load(os.path.join(model_path), map_location='cpu'))\n20",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "utilities/randomize_h5_dataset.py",
+    "line": 15,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "14     config = open(config_file, 'r')\n15     return yaml.load(config, Loader=yaml.FullLoader)\n16",
+    "stage": "unreachable"
+  }
+]

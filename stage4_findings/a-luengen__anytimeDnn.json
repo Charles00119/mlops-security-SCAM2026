@@ -1,0 +1,112 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "data/downloader/downloader.py",
+    "line": 324,
+    "message": "Call to requests without timeout",
+    "snippet": "323     time.sleep(0.05)\n324     resp = requests.get(url_urls)\n325",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "data/downloader/prepare_stats.py",
+    "line": 20,
+    "message": "Call to requests without timeout",
+    "snippet": "19     print(f'Downloading {URL_WORDNET}')\n20     resp = requests.get(URL_WORDNET)\n21",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "densenet/train_imagenet.py",
+    "line": 182,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "181             if args.gpu is None:\n182                 checkpoint = torch.load(args.resume)\n183             else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "densenet/train_imagenet.py",
+    "line": 186,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "185                 loc = 'cuda:{}'.format(args.gpu)\n186                 checkpoint = torch.load(args.resume, map_location=loc)\n187             args.start_epoch = checkpoint['epoch']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "msdnet/adaptive_inference.py",
+    "line": 15,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "14         val_pred, val_target, test_pred, test_target = \\\n15             torch.load(os.path.join(args.save, 'logits_single.pth')) \n16     else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "msdnet/adaptive_inference.py",
+    "line": 22,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "21 \n22     flops = torch.load(os.path.join(args.save, 'flops.pth'))\n23",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "msdnet/dataloader.py",
+    "line": 46,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "45             logging.info('!!!!!! Load train_set_index !!!!!!')\n46             train_set_index = torch.load(os.path.join(save, 'index.pth'))\n47         else:",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "msdnet/dataloader.py",
+    "line": 147,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "146             logging.info('!!!!!! Load train_set_index !!!!!!')\n147             train_set_index = torch.load(os.path.join(save, 'index.pth'))\n148         else:",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "utils.py",
+    "line": 242,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "241     if not (torch.cuda.is_available() and isinstance(model, torch.nn.DataParallel)):\n242         checkpoint = torch.load(path, map_location=torch.device('cpu'))\n243         # remove 'module.' string before keys in state_dict",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "utils.py",
+    "line": 250,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "249     else:\n250         checkpoint = torch.load(path)\n251",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "info",
+    "rule_id": "python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http",
+    "file_path": "data/downloader/prepare_stats.py",
+    "line": 20,
+    "message": "Detected a request using 'http://'. This request will be unencrypted, and attackers could listen into traffic on the network and be able to obtain sensitive information. Use 'https://' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

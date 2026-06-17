@@ -1,0 +1,32 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "main.py",
+    "line": 17,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "16 with open('config.yml') as f:\n17     config = yaml.load(f)\n18",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "test_case/conftest.py",
+    "line": 34,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "33     with open('config.yml') as f:\n34         config = yaml.load(f)\n35",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "validate_heruku.py",
+    "line": 20,
+    "message": "Call to requests without timeout",
+    "snippet": "19 \n20 r = requests.post('https://cdudacity.herokuapp.com/', json=data)\n21",
+    "stage": "unreachable"
+  }
+]

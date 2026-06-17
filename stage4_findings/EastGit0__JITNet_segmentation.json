@@ -1,0 +1,142 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "base/base_trainer.py",
+    "line": 169,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "168         self.logger.info(f'Loading checkpoint : {resume_path}')\n169         checkpoint = torch.load(resume_path, map_location=self.device)\n170",
+    "stage": "training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "base/classroom_base_trainer.py",
+    "line": 125,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "124         self.logger.info(f'Loading checkpoint : {resume_path}')\n125         checkpoint = torch.load(resume_path, map_location=self.device)\n126",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "inference.py",
+    "line": 118,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "117 \n118     checkpoint = torch.load(args.model, map_location=device)\n119     #print(\"Checkpoint: \", checkpoint)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "inference_test.py",
+    "line": 121,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "120 \n121     checkpoint = torch.load(args.model, map_location=device)\n122     #checkpoint = model.load_state_dict(torch.load(args.model))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "models/deeplabv3_plus.py",
+    "line": 155,
+    "message": "Use of exec detected.",
+    "snippet": "154         for i in range(16):\n155             exec(f'self.block{i+4} = Block(728, 728, stride=1, dilation=mf_d)')\n156",
+    "stage": "inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "models/resnet.py",
+    "line": 300,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "299         sys.stderr.write('Downloading: \"{}\" to {}\\n'.format(url, cached_file))\n300         urlretrieve(url, cached_file)\n301         zip_ref = zipfile.ZipFile(cached_file, 'r')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "models/resnet.py",
+    "line": 306,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "305         cached_file = os.path.join(model_dir, filename+'.pth')\n306     return torch.load(cached_file, map_location=map_location)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "online_distillation.py",
+    "line": 47,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "46 def load_model(model_cfg, num_classes, num_models=1):\n47     states = torch.load(model_cfg.pretrained_ckpt)\n48     model_key = 'state_dict' if 'state_dict' in states else 'model'",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "student.py",
+    "line": 89,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "88         print(\"---------- LOADING WEIGHTS: {} ---------\".format(path))\n89         self.checkpoint = torch.load(path, map_location=self.device)\n90",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "student.py",
+    "line": 120,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "119         # delete frame and mask (no need to accumulate masks and frames)\n120         os.system(\"rm {}\".format(frame_name))\n121         os.system(\"rm {}\".format(mask_name))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "student.py",
+    "line": 121,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "120         os.system(\"rm {}\".format(frame_name))\n121         os.system(\"rm {}\".format(mask_name))\n122",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "student.py",
+    "line": 190,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "189                   self.load_weights(self.next_weight_path)\n190                   os.system(\"rm {}\".format(self.next_weight_path))\n191                   self.next_weight_id = self.next_weight_id + 1",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "models/deeplabv3_plus.py",
+    "line": 155,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "inference+modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "models/resnet.py",
+    "line": 300,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

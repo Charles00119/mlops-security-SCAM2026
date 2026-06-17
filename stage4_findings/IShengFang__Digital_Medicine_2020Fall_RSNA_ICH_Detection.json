@@ -1,0 +1,32 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "model.py",
+    "line": 36,
+    "message": "Use of exec detected.",
+    "snippet": "35         self.inception = self.model_name == 'inception_v3'\n36         exec('self.model = models.{}(pretrained=pretrained)'.format(self.model_name), {'self': self, 'models': models, 'pretrained': self.pretrained})\n37",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "test.py",
+    "line": 129,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "128     net = model.Model(args.model_name, pretrained=True)\n129     net.load_state_dict(torch.load(args.cpt_name))\n130     net = net.to(device)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "model.py",
+    "line": 36,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "modeling"
+  }
+]

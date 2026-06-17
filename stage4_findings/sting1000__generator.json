@@ -1,0 +1,242 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "src/Classifier.py",
+    "line": 97,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "96         if pretrained:\n97             self.model = AutoModelForTokenClassification.from_pretrained(self.pretrained,\n98                                                                          num_labels=len(self.label_list))\n99             self.tokenizer = AutoTokenizer.from_pretrained(self.pretrained)",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "src/Classifier.py",
+    "line": 99,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "98                                                                          num_labels=len(self.label_list))\n99             self.tokenizer = AutoTokenizer.from_pretrained(self.pretrained)\n100             self.data_collator = DataCollatorForTokenClassification(self.tokenizer)",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "src/Normalizer.py",
+    "line": 24,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "23         check_folder(normalizer_dir + '/data')\n24         check_folder(normalizer_dir + '/tmp')\n25",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "src/Normalizer.py",
+    "line": 41,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "40         print(command_build_vocab)\n41         os.system(command_build_vocab)\n42         print(\"Building Done!\")",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "src/Normalizer.py",
+    "line": 49,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "48         print(command_train)\n49         os.system(command_train)\n50         print(\"Training Done!\")",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "src/Normalizer.py",
+    "line": 80,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "79                                                                               gpu=\"-gpu 0\" if use_gpu else \"\")\n80             print(os.popen(command_pred).read())\n81             result = self.read_key_txt_files(key)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "src/Normalizer.py",
+    "line": 88,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "87         print(\"Calculate WER & SER...\")\n88         hyp_path = self.normalizer_dir + '/tmp/eval_hyp.txt'\n89         ref_path = self.normalizer_dir + '/tmp/eval_ref.txt'",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "src/Normalizer.py",
+    "line": 89,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "88         hyp_path = self.normalizer_dir + '/tmp/eval_hyp.txt'\n89         ref_path = self.normalizer_dir + '/tmp/eval_ref.txt'\n90         result[['pred']].to_csv(hyp_path, header=False, index=False)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "src/Normalizer.py",
+    "line": 95,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "94         print(command_wer)\n95         print(os.popen(command_wer).read())\n96",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "src/Normalizer.py",
+    "line": 138,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "137                                                                               gpu=\"-gpu 0\" if use_gpu else \"\")\n138             print(os.popen(command_pred).read())\n139             result = self.read_key_txt_files(key)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "src/Pipeline.py",
+    "line": 25,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "24         check_folder(self.pipeline_dir)\n25         check_folder(self.pipeline_dir + '/tmp')\n26         self.Classifier = Classifier(pretrained, prepared_dir, classifier_dir)",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "src/Pipeline.py",
+    "line": 89,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "88         print(command_wer)\n89         print(os.popen(command_wer).read())\n90",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "src/Pipeline.py",
+    "line": 92,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "91     def predict(self, input_path, output_path, normalizer_step=-1, use_gpu=True):\n92         tmp_dir = self.pipeline_dir + '/tmp'\n93         key = 'tmp'",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "src/add_rb_to_json.py",
+    "line": 10,
+    "message": "Call to requests without timeout",
+    "snippet": "9     data = {\"text\": row['src'], \"language\": row['language']}\n10     response = requests.post('https://plato-core-postprocessor-develop.scapp-corp.swisscom.com/api/compute',\n11                              headers=headers, json=data)\n12     return eval(response.text)['text']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "src/add_rb_to_json.py",
+    "line": 12,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "11                              headers=headers, json=data)\n12     return eval(response.text)['text']\n13",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "src/calculate_oter.py",
+    "line": 55,
+    "message": "Call to requests without timeout",
+    "snippet": "54                 \"contextData\": []}\n55         response = requests.post('https://plato-api-nlu-develop.scapp-corp.swisscom.com/solutions/tv/compute',\n56                                  headers=headers, params=params, json=data)\n57",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "src/calculate_oter.py",
+    "line": 67,
+    "message": "Call to requests without timeout",
+    "snippet": "66             time.sleep(1)\n67             response = requests.post('https://plato-api-nlu-develop.scapp-corp.swisscom.com/solutions/tv/compute',\n68                                      headers=headers, params=params, json=data)\n69             val = json.loads(response.text)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "src/utils.py",
+    "line": 191,
+    "message": "Call to requests without timeout",
+    "snippet": "190     data = {\"text\": text, \"language\": language}\n191     response = requests.post('https://plato-core-postprocessor-develop.scapp-corp.swisscom.com/api/compute',\n192                              headers=headers, json=data)\n193     return eval(response.text)['text']",
+    "stage": "data_acquisition+evaluation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "src/utils.py",
+    "line": 193,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "192                              headers=headers, json=data)\n193     return eval(response.text)['text']\n194",
+    "stage": "data_acquisition+evaluation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "src/utils.py",
+    "line": 348,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "347     with open(filename, 'rb') as input:\n348         obj = pickle.load(input)\n349     return obj",
+    "stage": "data_acquisition+evaluation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "src/add_rb_to_json.py",
+    "line": 12,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "src/utils.py",
+    "line": 193,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "src/utils.py",
+    "line": 343,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "src/utils.py",
+    "line": 348,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation"
+  }
+]

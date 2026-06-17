@@ -1,0 +1,402 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "env/lib/python3.8/site-packages/pkg_resources/__init__.py",
+    "line": 1462,
+    "message": "Use of exec detected.",
+    "snippet": "1461             code = compile(source, script_filename, 'exec')\n1462             exec(code, namespace, namespace)\n1463         else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "env/lib/python3.8/site-packages/pkg_resources/__init__.py",
+    "line": 1469,
+    "message": "Use of exec detected.",
+    "snippet": "1468             script_code = compile(script_text, script_filename, 'exec')\n1469             exec(script_code, namespace, namespace)\n1470",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "env/lib/python3.8/site-packages/pkg_resources/_vendor/six.py",
+    "line": 699,
+    "message": "Use of exec detected.",
+    "snippet": "698             _locs_ = _globs_\n699         exec(\"\"\"exec _code_ in _globs_, _locs_\"\"\")\n700",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "env/lib/python3.8/site-packages/setuptools/_vendor/six.py",
+    "line": 699,
+    "message": "Use of exec detected.",
+    "snippet": "698             _locs_ = _globs_\n699         exec(\"\"\"exec _code_ in _globs_, _locs_\"\"\")\n700",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "env/lib/python3.8/site-packages/setuptools/build_meta.py",
+    "line": 142,
+    "message": "Use of exec detected.",
+    "snippet": "141 \n142         exec(compile(code, __file__, 'exec'), locals())\n143",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B302",
+    "file_path": "env/lib/python3.8/site-packages/setuptools/command/bdist_egg.py",
+    "line": 422,
+    "message": "Deserialization with the marshal module is possibly dangerous.",
+    "snippet": "421     f.read(skip)\n422     code = marshal.load(f)\n423     f.close()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B302",
+    "file_path": "env/lib/python3.8/site-packages/setuptools/depends.py",
+    "line": 112,
+    "message": "Deserialization with the marshal module is possibly dangerous.",
+    "snippet": "111             f.read(8)  # skip magic & date\n112             code = marshal.load(f)\n113         elif kind == PY_FROZEN:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "env/lib/python3.8/site-packages/setuptools/launch.py",
+    "line": 31,
+    "message": "Use of exec detected.",
+    "snippet": "30     code = compile(norm_script, script_name, 'exec')\n31     exec(code, namespace)\n32",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "env/lib/python3.8/site-packages/setuptools/package_index.py",
+    "line": 870,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "869         self.info(\"Doing subversion checkout from %s to %s\", url, filename)\n870         os.system(\"svn checkout%s -q %s %s\" % (creds, url, filename))\n871         return filename",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "env/lib/python3.8/site-packages/setuptools/package_index.py",
+    "line": 896,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "895         self.info(\"Doing git clone from %s to %s\", url, filename)\n896         os.system(\"git clone --quiet %s %s\" % (url, filename))\n897",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "env/lib/python3.8/site-packages/setuptools/package_index.py",
+    "line": 900,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "899             self.info(\"Checking out %s\", rev)\n900             os.system(\"git -C %s checkout --quiet %s\" % (\n901                 filename,\n902                 rev,\n903             ))\n904",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "env/lib/python3.8/site-packages/setuptools/package_index.py",
+    "line": 912,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "911         self.info(\"Doing hg clone from %s to %s\", url, filename)\n912         os.system(\"hg clone --quiet %s %s\" % (url, filename))\n913",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "env/lib/python3.8/site-packages/setuptools/package_index.py",
+    "line": 916,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "915             self.info(\"Updating to %s\", rev)\n916             os.system(\"hg --cwd %s up -C -r %s -q\" % (\n917                 filename,\n918                 rev,\n919             ))\n920",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "env/lib/python3.8/site-packages/setuptools/sandbox.py",
+    "line": 45,
+    "message": "Use of exec detected.",
+    "snippet": "44     code = compile(script, filename, 'exec')\n45     exec(code, globals, locals)\n46",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.sha224-hash.sha224-hash",
+    "file_path": "env/lib/python3.8/site-packages/pip/_internal/cache.py",
+    "line": 36,
+    "message": "This code uses a 224-bit hash function, which is deprecated or disallowed in some security policies. Consider updating to a stronger hash function such as SHA-384 or higher to ensure compliance and security.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.sha224-hash.sha224-hash",
+    "file_path": "env/lib/python3.8/site-packages/pip/_internal/cache.py",
+    "line": 80,
+    "message": "This code uses a 224-bit hash function, which is deprecated or disallowed in some security policies. Consider updating to a stronger hash function such as SHA-384 or higher to ensure compliance and security.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml.use-defused-xml",
+    "file_path": "env/lib/python3.8/site-packages/pip/_internal/index/collector.py",
+    "line": 30,
+    "message": "The Python documentation recommends using `defusedxml` instead of `xml` because the native Python `xml` library is vulnerable to XML External Entity (XXE) attacks. These attacks can leak confidential data and \"XML bombs\" can cause denial of service.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "env/lib/python3.8/site-packages/pip/_internal/network/auth.py",
+    "line": 57,
+    "message": "Detected a python logger call with a potential hardcoded secret \"Getting credentials from keyring for %s\" being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "env/lib/python3.8/site-packages/pip/_internal/network/auth.py",
+    "line": 64,
+    "message": "Detected a python logger call with a potential hardcoded secret \"Getting password from keyring for %s\" being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "env/lib/python3.8/site-packages/pip/_internal/network/auth.py",
+    "line": 121,
+    "message": "Detected a python logger call with a potential hardcoded secret \"Found credentials in url for %s\" being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "env/lib/python3.8/site-packages/pip/_internal/network/auth.py",
+    "line": 137,
+    "message": "Detected a python logger call with a potential hardcoded secret \"Found credentials in index url for %s\" being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "env/lib/python3.8/site-packages/pip/_internal/network/auth.py",
+    "line": 144,
+    "message": "Detected a python logger call with a potential hardcoded secret \"Found credentials in netrc for %s\" being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "env/lib/python3.8/site-packages/pip/_internal/network/auth.py",
+    "line": 155,
+    "message": "Detected a python logger call with a potential hardcoded secret \"Found credentials in keyring for %s\" being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "env/lib/python3.8/site-packages/pip/_internal/network/auth.py",
+    "line": 281,
+    "message": "Detected a python logger call with a potential hardcoded secret '401 Error, Credentials not correct for %s' being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.django.security.audit.unvalidated-password.unvalidated-password",
+    "file_path": "env/lib/python3.8/site-packages/pip/_internal/network/auth.py",
+    "line": 296,
+    "message": "The password on 'keyring' is being set without validating the password. Call django.contrib.auth.password_validation.validate_password() with validation functions before setting the password. See https://docs.djangoproject.com/en/3.0/topics/auth/passwords/ for more information.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.sha224-hash.sha224-hash",
+    "file_path": "env/lib/python3.8/site-packages/pip/_internal/req/req_tracker.py",
+    "line": 93,
+    "message": "This code uses a 224-bit hash function, which is deprecated or disallowed in some security policies. Consider updating to a stronger hash function such as SHA-384 or higher to ensure compliance and security.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.sha224-hash.sha224-hash",
+    "file_path": "env/lib/python3.8/site-packages/pip/_internal/self_outdated_check.py",
+    "line": 82,
+    "message": "This code uses a 224-bit hash function, which is deprecated or disallowed in some security policies. Consider updating to a stronger hash function such as SHA-384 or higher to ensure compliance and security.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.insecure-file-permissions.insecure-file-permissions",
+    "file_path": "env/lib/python3.8/site-packages/pip/_internal/utils/unpacking.py",
+    "line": 148,
+    "message": "These permissions `$BITS` are widely permissive and grant access to more people than may be necessary. A good default is `0o644` which gives read and write access to yourself and read access to everyone else.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.insecure-file-permissions.insecure-file-permissions",
+    "file_path": "env/lib/python3.8/site-packages/pip/_internal/utils/unpacking.py",
+    "line": 232,
+    "message": "These permissions `$BITS` are widely permissive and grant access to more people than may be necessary. A good default is `0o644` which gives read and write access to yourself and read access to everyone else.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "env/lib/python3.8/site-packages/pkg_resources/__init__.py",
+    "line": 1462,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "env/lib/python3.8/site-packages/pkg_resources/__init__.py",
+    "line": 1469,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "env/lib/python3.8/site-packages/setuptools/build_meta.py",
+    "line": 142,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.marshal.marshal-usage",
+    "file_path": "env/lib/python3.8/site-packages/setuptools/command/bdist_egg.py",
+    "line": 422,
+    "message": "The marshal module is not intended to be secure against erroneous or maliciously constructed data. Never unmarshal data received from an untrusted or unauthenticated source. See more details: https://docs.python.org/3/library/marshal.html?highlight=security",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.marshal.marshal-usage",
+    "file_path": "env/lib/python3.8/site-packages/setuptools/depends.py",
+    "line": 112,
+    "message": "The marshal module is not intended to be secure against erroneous or maliciously constructed data. Never unmarshal data received from an untrusted or unauthenticated source. See more details: https://docs.python.org/3/library/marshal.html?highlight=security",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "env/lib/python3.8/site-packages/setuptools/launch.py",
+    "line": 31,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "env/lib/python3.8/site-packages/setuptools/package_index.py",
+    "line": 1113,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "env/lib/python3.8/site-packages/setuptools/sandbox.py",
+    "line": 45,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "env/lib/python3.8/site-packages/setuptools/sandbox.py",
+    "line": 107,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "env/lib/python3.8/site-packages/setuptools/sandbox.py",
+    "line": 107,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.ssl-wrap-socket-is-deprecated.ssl-wrap-socket-is-deprecated",
+    "file_path": "env/lib/python3.8/site-packages/setuptools/ssl_support.py",
+    "line": 194,
+    "message": "'ssl.wrap_socket()' is deprecated. This function creates an insecure socket without server name indication or hostname matching. Instead, create an SSL context using 'ssl.SSLContext()' and use that to wrap a socket.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

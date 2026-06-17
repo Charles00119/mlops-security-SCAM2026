@@ -1,0 +1,172 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B314",
+    "file_path": "create_csv_from_xml.py",
+    "line": 48,
+    "message": "Using xml.etree.ElementTree.parse to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.parse with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "47 \n48     tree = ET.parse(os.path.join(reports_path, report))\n49     root = tree.getroot()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "get_iu_xray.py",
+    "line": 14,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "13 # download PNG images\n14 os.system(\"wget -P {}/ https://openi.nlm.nih.gov/imgs/collections/NLMCXR_png.tgz\".format(images_path))\n15",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "get_iu_xray.py",
+    "line": 17,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "16 # download reports\n17 os.system(\"wget -P {}/ https://openi.nlm.nih.gov/imgs/collections/NLMCXR_reports.tgz\".format(reports_path))\n18",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "get_iu_xray.py",
+    "line": 20,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "19 # unzip\n20 os.system(\"tar -xzf {}/NLMCXR_png.tgz -C {}/\".format(images_path, images_path))\n21 os.system(\"tar -xzf {}/NLMCXR_reports.tgz -C {}/\".format(reports_path, reports_path))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "get_iu_xray.py",
+    "line": 21,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "20 os.system(\"tar -xzf {}/NLMCXR_png.tgz -C {}/\".format(images_path, images_path))\n21 os.system(\"tar -xzf {}/NLMCXR_reports.tgz -C {}/\".format(reports_path, reports_path))\n22 os.system(\"mv {}/ecgen-radiology/*.xml {}/\".format(reports_path, reports_path))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "get_iu_xray.py",
+    "line": 22,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "21 os.system(\"tar -xzf {}/NLMCXR_reports.tgz -C {}/\".format(reports_path, reports_path))\n22 os.system(\"mv {}/ecgen-radiology/*.xml {}/\".format(reports_path, reports_path))\n23 os.system(\"rm -rf {}/ecgen-radiology\".format(reports_path))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "get_iu_xray.py",
+    "line": 23,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "22 os.system(\"mv {}/ecgen-radiology/*.xml {}/\".format(reports_path, reports_path))\n23 os.system(\"rm -rf {}/ecgen-radiology\".format(reports_path))\n24",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "get_iu_xray.py",
+    "line": 25,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "24 \n25 os.system(\"rm {}/NLMCXR_png.tgz\".format(images_path))\n26 os.system(\"rm {}/NLMCXR_reports.tgz\".format(reports_path))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "get_iu_xray.py",
+    "line": 26,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "25 os.system(\"rm {}/NLMCXR_png.tgz\".format(images_path))\n26 os.system(\"rm {}/NLMCXR_reports.tgz\".format(reports_path))\n27",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B314",
+    "file_path": "get_iu_xray.py",
+    "line": 43,
+    "message": "Using xml.etree.ElementTree.parse to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.parse with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "42 \n43     tree = ET.parse(os.path.join(reports_path, report))\n44     root = tree.getroot()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "medical_w2v_wrapper.py",
+    "line": 11,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "10             with open('medical_word_embeddings/saved_embeddings.pickle', 'rb') as handle:\n11                 self.word_embeddings = pickle.load(handle)\n12         else:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml.use-defused-xml",
+    "file_path": "create_csv_from_xml.py",
+    "line": 2,
+    "message": "The Python documentation recommends using `defusedxml` instead of `xml` because the native Python `xml` library is vulnerable to XML External Entity (XXE) attacks. These attacks can leak confidential data and \"XML bombs\" can cause denial of service.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml-parse.use-defused-xml-parse",
+    "file_path": "create_csv_from_xml.py",
+    "line": 48,
+    "message": "The native Python `xml` library is vulnerable to XML External Entity (XXE) attacks.  These attacks can leak confidential data and \"XML bombs\" can cause denial of service. Do not use this library to parse untrusted input. Instead  the Python documentation recommends using `defusedxml`.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml.use-defused-xml",
+    "file_path": "get_iu_xray.py",
+    "line": 2,
+    "message": "The Python documentation recommends using `defusedxml` instead of `xml` because the native Python `xml` library is vulnerable to XML External Entity (XXE) attacks. These attacks can leak confidential data and \"XML bombs\" can cause denial of service.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml-parse.use-defused-xml-parse",
+    "file_path": "get_iu_xray.py",
+    "line": 43,
+    "message": "The native Python `xml` library is vulnerable to XML External Entity (XXE) attacks.  These attacks can leak confidential data and \"XML bombs\" can cause denial of service. Do not use this library to parse untrusted input. Instead  the Python documentation recommends using `defusedxml`.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "medical_w2v_wrapper.py",
+    "line": 11,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "medical_w2v_wrapper.py",
+    "line": 70,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  }
+]

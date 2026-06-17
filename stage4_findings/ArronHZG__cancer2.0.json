@@ -1,0 +1,32 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "load_paramter.py",
+    "line": 23,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "22             model_dict = model.state_dict()\n23             parameter_dict = {k: v for k, v in torch.load(pre_model).items() if k in model_dict}\n24             model_dict.update(parameter_dict)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "load_paramter.py",
+    "line": 34,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "33             model_dict = model.state_dict()\n34             parameter_dict = {k: v for k, v in torch.load(path_list[0]).items() if k in model_dict}\n35             model_dict.update(parameter_dict)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "load_paramter.py",
+    "line": 51,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "50             model_dict = model.state_dict()\n51             parameter_dict = {k: v for k, v in torch.load(path).items() if k in model_dict}\n52             model_dict.update(parameter_dict)",
+    "stage": "reachable_unmapped"
+  }
+]

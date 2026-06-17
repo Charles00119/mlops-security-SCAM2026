@@ -1,0 +1,582 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "flair/data.py",
+    "line": 105,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "104         with open(filename, \"rb\") as f:\n105             mappings = pickle.load(f, encoding=\"latin1\")\n106             idx2item = mappings[\"idx2item\"]",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B202",
+    "file_path": "flair/data_fetcher.py",
+    "line": 729,
+    "message": "Found tarfile.extractall(members=?) but couldn't identify the type of members. Check if the members were properly validated {'Other': <ast.ListComp object at 0x00000195113BB460>}).",
+    "snippet": "728                         for dataset in datasets:\n729                             f_in.extractall(\n730                                 data_path,\n731                                 members=[\n732                                     m\n733                                     for m in f_in.getmembers()\n734                                     if f\"{dataset}/{label}\" in m.name\n735                   ",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B202",
+    "file_path": "flair/datasets/document_classification.py",
+    "line": 760,
+    "message": "Found tarfile.extractall(members=?) but couldn't identify the type of members. Check if the members were properly validated {'Other': <ast.ListComp object at 0x000001951209D480>}).",
+    "snippet": "759                     for dataset in datasets:\n760                         f_in.extractall(\n761                             data_path,\n762                             members=[\n763                                 m\n764                                 for m in f_in.getmembers()\n765                                 if f\"{dataset}/{label}\" in m.name\n766                             ],\n767            ",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B202",
+    "file_path": "flair/datasets/document_classification.py",
+    "line": 866,
+    "message": "Found tarfile.extractall(members=?) but couldn't identify the type of members. Check if the members were properly validated {'Other': <ast.ListComp object at 0x000001951207E2C0>}).",
+    "snippet": "865                     for dataset in datasets:\n866                         f_in.extractall(\n867                             data_path / \"original\",\n868                             members=[\n869                                 m\n870                                 for m in f_in.getmembers()\n871                                 if f\"{dataset}/{label}\" in m.name\n872                             ],\n87",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "flair/datasets/text_image.py",
+    "line": 43,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "42             if not os.path.isfile(filename):\n43                 urllib.request.urlretrieve(image_info[\"url\"], filename)\n44             # replace image URL with local cached file",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "flair/embeddings/document.py",
+    "line": 62,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "61         # load tokenizer and transformer model\n62         self.tokenizer: PreTrainedTokenizer = AutoTokenizer.from_pretrained(model, **kwargs)\n63         if not 'config' in kwargs:",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "flair/embeddings/document.py",
+    "line": 64,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "63         if not 'config' in kwargs:\n64             config = AutoConfig.from_pretrained(model, output_hidden_states=True, **kwargs)\n65             self.model = AutoModel.from_pretrained(model, config=config, **kwargs)",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "flair/embeddings/document.py",
+    "line": 65,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "64             config = AutoConfig.from_pretrained(model, output_hidden_states=True, **kwargs)\n65             self.model = AutoModel.from_pretrained(model, config=config, **kwargs)\n66         else:",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "flair/embeddings/document.py",
+    "line": 67,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "66         else:\n67             self.model = AutoModel.from_pretrained(None, **kwargs)\n68",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "flair/embeddings/document.py",
+    "line": 246,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "245             try:\n246                 tokenizer = AutoTokenizer.from_pretrained(model_name)\n247             except:",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "flair/embeddings/legacy.py",
+    "line": 338,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "337 \n338         self.tokenizer = TransfoXLTokenizer.from_pretrained(\n339             pretrained_model_name_or_path\n340         )\n341         self.model = TransfoXLModel.from_pretrained(",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "flair/embeddings/legacy.py",
+    "line": 341,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "340         )\n341         self.model = TransfoXLModel.from_pretrained(\n342             pretrained_model_name_or_path=pretrained_model_name_or_path,\n343             output_hidden_states=True,\n344         )\n345         self.name = pretrained_model_name_or_path",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "flair/embeddings/legacy.py",
+    "line": 406,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "405 \n406         self.tokenizer = XLNetTokenizer.from_pretrained(pretrained_model_name_or_path)\n407         self.model = XLNetModel.from_pretrained(",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "flair/embeddings/legacy.py",
+    "line": 407,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "406         self.tokenizer = XLNetTokenizer.from_pretrained(pretrained_model_name_or_path)\n407         self.model = XLNetModel.from_pretrained(\n408             pretrained_model_name_or_path=pretrained_model_name_or_path,\n409             output_hidden_states=True,\n410         )\n411         self.name = pretrained_model_name_or_path",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "flair/embeddings/legacy.py",
+    "line": 475,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "474 \n475         self.tokenizer = XLMTokenizer.from_pretrained(pretrained_model_name_or_path)\n476         self.model = XLMModel.from_pretrained(",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "flair/embeddings/legacy.py",
+    "line": 476,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "475         self.tokenizer = XLMTokenizer.from_pretrained(pretrained_model_name_or_path)\n476         self.model = XLMModel.from_pretrained(\n477             pretrained_model_name_or_path=pretrained_model_name_or_path,\n478             output_hidden_states=True,\n479         )\n480         self.name = pretrained_model_name_or_path",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "flair/embeddings/legacy.py",
+    "line": 543,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "542 \n543         self.tokenizer = OpenAIGPTTokenizer.from_pretrained(\n544             pretrained_model_name_or_path\n545         )\n546         self.model = OpenAIGPTModel.from_pretrained(",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "flair/embeddings/legacy.py",
+    "line": 546,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "545         )\n546         self.model = OpenAIGPTModel.from_pretrained(\n547             pretrained_model_name_or_path=pretrained_model_name_or_path,\n548             output_hidden_states=True,\n549         )\n550         self.name = pretrained_model_name_or_path",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "flair/embeddings/legacy.py",
+    "line": 611,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "610 \n611         self.tokenizer = GPT2Tokenizer.from_pretrained(pretrained_model_name_or_path)\n612         self.model = GPT2Model.from_pretrained(",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "flair/embeddings/legacy.py",
+    "line": 612,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "611         self.tokenizer = GPT2Tokenizer.from_pretrained(pretrained_model_name_or_path)\n612         self.model = GPT2Model.from_pretrained(\n613             pretrained_model_name_or_path=pretrained_model_name_or_path,\n614             output_hidden_states=True,\n615         )\n616         self.name = pretrained_model_name_or_path",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "flair/embeddings/legacy.py",
+    "line": 673,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "672 \n673         self.tokenizer = RobertaTokenizer.from_pretrained(pretrained_model_name_or_path)\n674         self.model = RobertaModel.from_pretrained(",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "flair/embeddings/legacy.py",
+    "line": 674,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "673         self.tokenizer = RobertaTokenizer.from_pretrained(pretrained_model_name_or_path)\n674         self.model = RobertaModel.from_pretrained(\n675             pretrained_model_name_or_path=pretrained_model_name_or_path,\n676             output_hidden_states=True,\n677         )\n678         self.name = pretrained_model_name_or_path",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "flair/embeddings/legacy.py",
+    "line": 735,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "734 \n735         self.tokenizer = CamembertTokenizer.from_pretrained(\n736             pretrained_model_name_or_path\n737         )\n738         self.model = CamembertModel.from_pretrained(",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "flair/embeddings/legacy.py",
+    "line": 738,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "737         )\n738         self.model = CamembertModel.from_pretrained(\n739             pretrained_model_name_or_path=pretrained_model_name_or_path,\n740             output_hidden_states=True,\n741         )\n742         self.name = pretrained_model_name_or_path",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "flair/embeddings/legacy.py",
+    "line": 765,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "764         if any(char.isdigit() for char in self.name):\n765             self.tokenizer = CamembertTokenizer.from_pretrained(\n766                 \"-\".join(self.name.split(\"-\")[1:]))\n767         else:",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "flair/embeddings/legacy.py",
+    "line": 768,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "767         else:\n768             self.tokenizer = CamembertTokenizer.from_pretrained(self.name)\n769",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "flair/embeddings/legacy.py",
+    "line": 814,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "813 \n814         self.tokenizer = XLMRobertaTokenizer.from_pretrained(\n815             pretrained_model_name_or_path\n816         )\n817         self.model = XLMRobertaModel.from_pretrained(",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "flair/embeddings/legacy.py",
+    "line": 817,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "816         )\n817         self.model = XLMRobertaModel.from_pretrained(\n818             pretrained_model_name_or_path=pretrained_model_name_or_path,\n819             output_hidden_states=True,\n820         )\n821         self.name = pretrained_model_name_or_path",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "flair/embeddings/legacy.py",
+    "line": 843,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "842         # 1-xlm-roberta-large -> xlm-roberta-large\n843         self.tokenizer = self.tokenizer = XLMRobertaTokenizer.from_pretrained(\n844             \"-\".join(self.name.split(\"-\")[1:])\n845         )\n846",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "flair/embeddings/legacy.py",
+    "line": 1092,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "1091 \n1092             self.tokenizer = DistilBertTokenizer.from_pretrained(bert_model_or_path)\n1093             self.model = DistilBertModel.from_pretrained(",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "flair/embeddings/legacy.py",
+    "line": 1093,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "1092             self.tokenizer = DistilBertTokenizer.from_pretrained(bert_model_or_path)\n1093             self.model = DistilBertModel.from_pretrained(\n1094                 pretrained_model_name_or_path=bert_model_or_path,\n1095                 output_hidden_states=True,\n1096             )\n1097         elif \"albert\" in bert_model_or_path:",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "flair/embeddings/legacy.py",
+    "line": 1098,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "1097         elif \"albert\" in bert_model_or_path:\n1098             self.tokenizer = AlbertTokenizer.from_pretrained(bert_model_or_path)\n1099             self.model = AlbertModel.from_pretrained(",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "flair/embeddings/legacy.py",
+    "line": 1099,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "1098             self.tokenizer = AlbertTokenizer.from_pretrained(bert_model_or_path)\n1099             self.model = AlbertModel.from_pretrained(\n1100                 pretrained_model_name_or_path=bert_model_or_path,\n1101                 output_hidden_states=True,\n1102             )\n1103         else:",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "flair/embeddings/legacy.py",
+    "line": 1104,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "1103         else:\n1104             self.tokenizer = BertTokenizer.from_pretrained(bert_model_or_path)\n1105             self.model = BertModel.from_pretrained(",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "flair/embeddings/legacy.py",
+    "line": 1105,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "1104             self.tokenizer = BertTokenizer.from_pretrained(bert_model_or_path)\n1105             self.model = BertModel.from_pretrained(\n1106                 pretrained_model_name_or_path=bert_model_or_path,\n1107                 output_hidden_states=True,\n1108             )\n1109         self.layer_indexes = [int(x) for x in layers.split(\",\")]",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "flair/embeddings/token.py",
+    "line": 818,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "817         # load tokenizer and transformer model\n818         self.tokenizer: PreTrainedTokenizer = AutoTokenizer.from_pretrained(model, **kwargs)\n819         if not 'config' in kwargs:",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "flair/embeddings/token.py",
+    "line": 820,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "819         if not 'config' in kwargs:\n820             config = AutoConfig.from_pretrained(model, output_hidden_states=True, **kwargs)\n821             self.model = AutoModel.from_pretrained(model, config=config, **kwargs)",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "flair/embeddings/token.py",
+    "line": 821,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "820             config = AutoConfig.from_pretrained(model, output_hidden_states=True, **kwargs)\n821             self.model = AutoModel.from_pretrained(model, config=config, **kwargs)\n822         else:",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "flair/embeddings/token.py",
+    "line": 823,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "822         else:\n823             self.model = AutoModel.from_pretrained(None, **kwargs)\n824",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "flair/embeddings/token.py",
+    "line": 1309,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "1308             try:\n1309                 tokenizer = AutoTokenizer.from_pretrained(model_name)\n1310             except:",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "flair/file_utils.py",
+    "line": 135,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "134         with tarfile.open(file, \"r:gz\") as tarObj:\n135             tarObj.extractall(unpack_to)\n136",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "flair/file_utils.py",
+    "line": 141,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "140         with tarfile.open(file, \"r\") as tarObj:\n141             tarObj.extractall(unpack_to)\n142",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "flair/file_utils.py",
+    "line": 181,
+    "message": "Call to requests without timeout",
+    "snippet": "180     # GET file object\n181     req = requests.get(url, stream=True)\n182     content_length = req.headers.get(\"Content-Length\")",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "flair/file_utils.py",
+    "line": 217,
+    "message": "Call to requests without timeout",
+    "snippet": "216     # make HEAD request to check ETag\n217     response = requests.head(url, headers={\"User-Agent\": \"Flair\"}, allow_redirects=True)\n218     if response.status_code != 200:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "flair/file_utils.py",
+    "line": 233,
+    "message": "Call to requests without timeout",
+    "snippet": "232         # GET file object\n233         req = requests.get(url, stream=True, headers={\"User-Agent\": \"Flair\"})\n234         content_length = req.headers.get(\"Content-Length\")",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "flair/inference_utils.py",
+    "line": 204,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "203             self.db.executemany(\n204                 f\"INSERT INTO embedding(word,{','.join('v' + str(i) for i in range(self.k))}) \\\n205             values ({','.join(['?'] * (1 + self.k))})\",\n206                 tqdm(vectors_it),",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "flair/inference_utils.py",
+    "line": 217,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "216         word = word.replace('\"', '')\n217         cursor.execute(f'SELECT * FROM embedding WHERE word=\"{word}\";')\n218         result = list(cursor)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "flair/inference_utils.py",
+    "line": 240,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "239                             for key, value in cursor:\n240                                 vector = pickle.loads(value)\n241                                 self.k = vector.shape[0]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "flair/inference_utils.py",
+    "line": 277,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "276                 if vector:\n277                     word_vector = pickle.loads(vector)\n278                     vector = None",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "flair/models/language_model.py",
+    "line": 190,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "189 \n190         state = torch.load(str(model_file), map_location=flair.device)\n191",
+    "stage": "inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "flair/models/language_model.py",
+    "line": 212,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "211     def load_checkpoint(cls, model_file: Union[Path, str]):\n212         state = torch.load(str(model_file), map_location=flair.device)\n213",
+    "stage": "inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "flair/trainers/trainer.py",
+    "line": 650,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "649     def load_checkpoint(cls, checkpoint: Union[Path, str], corpus: Corpus):\n650         model: ModelTrainer = torch.load(checkpoint, map_location=flair.device)\n651         model.corpus = corpus",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "flair/data.py",
+    "line": 97,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "flair/data.py",
+    "line": 105,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "flair/datasets/text_image.py",
+    "line": 43,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "flair/inference_utils.py",
+    "line": 240,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "flair/inference_utils.py",
+    "line": 260,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "flair/inference_utils.py",
+    "line": 277,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

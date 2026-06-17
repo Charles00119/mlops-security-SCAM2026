@@ -1,0 +1,62 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "examples/rest_test_pos_query.py",
+    "line": 6,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "5 \n6 host = \"0.0.0.0\"  # mn-hdap47.x5.ru\n7 port = \"5000\"",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "examples/rest_test_pos_query.py",
+    "line": 14,
+    "message": "Call to requests without timeout",
+    "snippet": "13 \n14 r = requests.post(url=url, files=files)\n15",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "examples/serving_model_query.py",
+    "line": 20,
+    "message": "Call to requests without timeout",
+    "snippet": "19 \n20 r = requests.post(url=url, headers=headers, data=http_data)\n21 print(f\"Predictions: {r.text}\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.flask.security.open-redirect.open-redirect",
+    "file_path": "main.py",
+    "line": 94,
+    "message": "Data from request is passed to redirect(). This is an open redirect and could be exploited. Consider using 'url_for()' to generate links to known locations. If you must use a URL to unknown pages, consider using 'urlparse()' or similar and checking if the 'netloc' property is the same as your site's host name. See the references for more information.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.flask.security.open-redirect.open-redirect",
+    "file_path": "main.py",
+    "line": 100,
+    "message": "Data from request is passed to redirect(). This is an open redirect and could be exploited. Consider using 'url_for()' to generate links to known locations. If you must use a URL to unknown pages, consider using 'urlparse()' or similar and checking if the 'netloc' property is the same as your site's host name. See the references for more information.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "templates/template_field.html",
+    "line": 13,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

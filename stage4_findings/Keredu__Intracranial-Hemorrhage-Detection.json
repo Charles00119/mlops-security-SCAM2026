@@ -1,0 +1,32 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "src/config.py",
+    "line": 182,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "181             print(f'Loading weights from {path}')\n182             conf['best_weights'] = torch.load(path)\n183         else:",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "src/run_grad_cam.py",
+    "line": 12,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "11 model, input_size = initialize_model(model_name, num_classes, feature_extract, use_pretrained=True)\n12 model.load_state_dict(torch.load('./IH_resnet_weights.pt'))\n13 data_path = './imgs_to_test_grad_cam/'",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "src/testing.py",
+    "line": 18,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "17     model = conf['model']\n18     model.load_state_dict(torch.load(weights_path))\n19     model = model.to(device)",
+    "stage": "inference"
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "inference.py",
+    "line": 155,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "154     model, _, _, hyperparams = get_model(MODEL, **hyperparams)\n155     model.load_state_dict(torch.load(CHECKPOINT))\n156     probabilities = test(model, img, hyperparams)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "main.py",
+    "line": 402,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "401         if CHECKPOINT is not None:\n402             model.load_state_dict(torch.load(CHECKPOINT))\n403",
+    "stage": "data_acquisition+data_preparation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "datasets.py",
+    "line": 134,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  }
+]

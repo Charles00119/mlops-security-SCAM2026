@@ -1,0 +1,22 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "indad/data.py",
+    "line": 52,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "51             with tarfile.open(f\"{self.class_name}.tar.xz\") as tar:\n52                 tar.extractall(DATASETS_PATH)\n53             os.remove(f\"{self.class_name}.tar.xz\")",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "run.py",
+    "line": 91,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "90     method = method.lower()\n91     assert method in ALLOWED_METHODS, f\"Select from {ALLOWED_METHODS}.\"\n92",
+    "stage": "evaluation+training"
+  }
+]

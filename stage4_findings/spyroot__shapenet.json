@@ -1,0 +1,102 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "shapegnet/dataset_loaders.py",
+    "line": 77,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "76     names = ['x', 'tx', 'allx', 'graph']\n77     objects = [pkl.load(open(\"dataset/ind.{}.{}\".format(dataset, n), 'rb'),\n78                         encoding=enc) for n in range(len(names))]\n79",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "shapegnet/graph_tools.py",
+    "line": 53,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "52     with open(file_name, \"rb\") as f:\n53         graph_list = pickle.load(f)\n54         print(\"Loading {}, file contains {} graphs\".format(file_name, len(graph_list)))",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "shapegnet/model_config.py",
+    "line": 455,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "454                 fmtl_print(\"Reading... \", self.config_file_name)\n455                 self.config = yaml.load(stream, Loader=yaml.FullLoader)\n456             except yaml.YAMLError as exc:",
+    "stage": "data_acquisition+evaluation+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "shapegnet/model_config.py",
+    "line": 469,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "468                 print(\"Reading from io buffer\")\n469             self.config = yaml.load(buffer, Loader=yaml.FullLoader)\n470         except yaml.YAMLError as exc:",
+    "stage": "data_acquisition+evaluation+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "shapegnet/model_config.py",
+    "line": 1335,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "1334 \n1335             check = torch.load(models_filenames[m])\n1336             if self._verbose:",
+    "stage": "data_acquisition+evaluation+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "shapegnet/rnn_generator.py",
+    "line": 410,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "409             try:\n410                 checkpoint = torch.load(self.trainer_spec.model_node_file_name())\n411                 if 'model_state_dict' not in checkpoint:",
+    "stage": "data_acquisition+data_preparation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "shapegnet/rnn_generator.py",
+    "line": 429,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "428 \n429                 checkpoint_edge_rnn = torch.load(self.trainer_spec.model_edge_file_name())\n430                 self.edge_rnn.load_state_dict(checkpoint_edge_rnn['model_state_dict'])",
+    "stage": "data_acquisition+data_preparation+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "shapegnet/dataset_loaders.py",
+    "line": 77,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "shapegnet/generator_trainer.py",
+    "line": 33,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "shapegnet/graph_tools.py",
+    "line": 53,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  }
+]

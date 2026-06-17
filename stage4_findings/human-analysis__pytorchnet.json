@@ -1,0 +1,162 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "hal/checkpoints.py",
+    "line": 72,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "71             print(\"=> loading checkpoint '{}'\".format(filename))\n72             checkpoint = torch.load(filename, map_location='cpu')\n73             if isinstance(checkpoint, dict) and 'state_dict' in checkpoint:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "hal/dataflow/parallel.py",
+    "line": 45,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "44         if isinstance(dp, bytes) and dp.startswith(_ExceptionWrapper.MAGIC):\n45             return pickle.loads(dp[len(_ExceptionWrapper.MAGIC):])\n46",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "hal/dataflow/parallel.py",
+    "line": 482,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "481     \"\"\"\n482     def __init__(self, ds, socket=\"/tmp/plasma\"):\n483         self._socket = socket",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "hal/dataflow/parallel.py",
+    "line": 503,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "502     \"\"\"\n503     def __init__(self, ds, socket=\"/tmp/plasma\"):\n504         self._socket = socket",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "hal/dataflow/utils/concurrency.py",
+    "line": 257,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "256             cmd, stderr=subprocess.STDOUT,\n257             shell=True, timeout=timeout)\n258         return output, 0\n259     except subprocess.TimeoutExpired as e:\n260         logger.warn(\"Command '{}' timeout!\".format(cmd))",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "hal/dataflow/utils/fs.py",
+    "line": 60,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "59         with tqdm.tqdm(unit='B', unit_scale=True, miniters=1, desc=filename) as t:\n60             fpath, _ = urllib.request.urlretrieve(url, fpath, reporthook=hook(t))\n61         statinfo = os.stat(fpath)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "hal/dataflow/utils/loadcaffe.py",
+    "line": 143,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "142         cmd = 'cd {} && protoc caffe.proto --python_out .'.format(dir)\n143         ret = os.system(cmd)\n144         assert ret == 0, \\",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "hal/dataflow/utils/serialize.py",
+    "line": 93,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "92         \"\"\"\n93         return pickle.loads(buf)\n94",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "hal/dataflow/parallel.py",
+    "line": 40,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "hal/dataflow/parallel.py",
+    "line": 45,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-uuid-version.insecure-uuid-version",
+    "file_path": "hal/dataflow/parallel.py",
+    "line": 67,
+    "message": "Using UUID version 1 for UUID generation can lead to predictable UUIDs based on system information (e.g., MAC address, timestamp). This may lead to security risks such as the sandwich attack. Consider using `uuid.uuid4()` instead for better randomness and security.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-uuid-version.insecure-uuid-version",
+    "file_path": "hal/dataflow/parallel.py",
+    "line": 78,
+    "message": "Using UUID version 1 for UUID generation can lead to predictable UUIDs based on system information (e.g., MAC address, timestamp). This may lead to security risks such as the sandwich attack. Consider using `uuid.uuid4()` instead for better randomness and security.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "hal/dataflow/utils/concurrency.py",
+    "line": 257,
+    "message": "Found 'subprocess' function 'check_output' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "hal/dataflow/utils/fs.py",
+    "line": 60,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "hal/dataflow/utils/serialize.py",
+    "line": 85,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "hal/dataflow/utils/serialize.py",
+    "line": 93,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  }
+]

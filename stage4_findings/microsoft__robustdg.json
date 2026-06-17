@@ -1,0 +1,932 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "algorithms/hybrid.py",
+    "line": 78,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "77             save_path= base_res_dir + '/Model_' + self.ctr_load_post_string + '.pth'\n78             ctr_phi.load_state_dict( torch.load(save_path) )\n79             ctr_phi.eval()",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "algorithms/match_dg.py",
+    "line": 97,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "96             save_path= base_res_dir + '/Model_' + self.ctr_load_post_string + '.pth'\n97             ctr_phi.load_state_dict( torch.load(save_path) )\n98             ctr_phi.eval()",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "data/adult_loader.py",
+    "line": 40,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "39             \n40             domain_imgs = torch.load(data_dir + domain + '_' + self.data_case + '_data.pt').float()\n41             domain_labels = torch.load(data_dir + domain + '_' + self.data_case + '_label.pt').long()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "data/adult_loader.py",
+    "line": 41,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "40             domain_imgs = torch.load(data_dir + domain + '_' + self.data_case + '_data.pt').float()\n41             domain_labels = torch.load(data_dir + domain + '_' + self.data_case + '_label.pt').long()\n42             domain_spur= torch.load(data_dir + domain + '_' + self.data_case + '_spur.pt').long()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "data/adult_loader.py",
+    "line": 42,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "41             domain_labels = torch.load(data_dir + domain + '_' + self.data_case + '_label.pt').long()\n42             domain_spur= torch.load(data_dir + domain + '_' + self.data_case + '_spur.pt').long()\n43             domain_idx= list(range(len(domain_imgs)))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "data/chestxray_loader.py",
+    "line": 39,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "38             \n39             domain_imgs = torch.load(data_dir + domain + '_' + self.data_case + '_image.pt')\n40             domain_imgs_org = torch.load(data_dir + domain + '_' + self.data_case + '_image_org.pt')",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "data/chestxray_loader.py",
+    "line": 40,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "39             domain_imgs = torch.load(data_dir + domain + '_' + self.data_case + '_image.pt')\n40             domain_imgs_org = torch.load(data_dir + domain + '_' + self.data_case + '_image_org.pt')\n41             domain_labels = torch.load(data_dir + domain + '_' + self.data_case + '_label.pt')",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "data/chestxray_loader.py",
+    "line": 41,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "40             domain_imgs_org = torch.load(data_dir + domain + '_' + self.data_case + '_image_org.pt')\n41             domain_labels = torch.load(data_dir + domain + '_' + self.data_case + '_label.pt')\n42             domain_idx= list(range(len(domain_imgs)))",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "data/chestxray_loader_aug.py",
+    "line": 52,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "51             \n52             domain_imgs = torch.load(data_dir + domain + '_' + self.data_case + '_image.pt')\n53             domain_imgs_org = torch.load(data_dir + domain + '_' + self.data_case + '_image_org.pt')",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "data/chestxray_loader_aug.py",
+    "line": 53,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "52             domain_imgs = torch.load(data_dir + domain + '_' + self.data_case + '_image.pt')\n53             domain_imgs_org = torch.load(data_dir + domain + '_' + self.data_case + '_image_org.pt')\n54             domain_labels = torch.load(data_dir + domain + '_' + self.data_case + '_label.pt')",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "data/chestxray_loader_aug.py",
+    "line": 54,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "53             domain_imgs_org = torch.load(data_dir + domain + '_' + self.data_case + '_image_org.pt')\n54             domain_labels = torch.load(data_dir + domain + '_' + self.data_case + '_label.pt')\n55             domain_idx= list(range(len(domain_imgs)))",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "data/chestxray_loader_match_eval.py",
+    "line": 40,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "39             \n40             domain_imgs = torch.load(data_dir + domain + '_' + self.data_case + '_image.pt')\n41             domain_imgs_org = torch.load(data_dir + domain + '_' + self.data_case + '_image_org.pt')",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "data/chestxray_loader_match_eval.py",
+    "line": 41,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "40             domain_imgs = torch.load(data_dir + domain + '_' + self.data_case + '_image.pt')\n41             domain_imgs_org = torch.load(data_dir + domain + '_' + self.data_case + '_image_org.pt')\n42             domain_labels = torch.load(data_dir + domain + '_' + self.data_case + '_label.pt')",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "data/chestxray_loader_match_eval.py",
+    "line": 42,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "41             domain_imgs_org = torch.load(data_dir + domain + '_' + self.data_case + '_image_org.pt')\n42             domain_labels = torch.load(data_dir + domain + '_' + self.data_case + '_label.pt')\n43",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "data/mnist_loader.py",
+    "line": 38,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "37             if self.data_case =='train' and self.args.mnist_aug:                \n38                 mnist_imgs= torch.load( load_dir +  '_data.pt')\n39             else:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "data/mnist_loader.py",
+    "line": 40,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "39             else:\n40                 mnist_imgs= torch.load( load_dir +  '_org_data.pt')\n41             mnist_labels= torch.load( load_dir +  '_label.pt')",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "data/mnist_loader.py",
+    "line": 41,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "40                 mnist_imgs= torch.load( load_dir +  '_org_data.pt')\n41             mnist_labels= torch.load( load_dir +  '_label.pt')\n42             mnist_idx= list(range(len(mnist_imgs)))",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "data/mnist_loader_match_eval.py",
+    "line": 38,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "37             load_dir= data_dir + self.data_case + '/' + 'seed_' + str(self.mnist_subset) + '_domain_' + str(domain)\n38             mnist_imgs= torch.load( load_dir +  '_data.pt')\n39             mnist_imgs_org= torch.load( load_dir +  '_org_data.pt')",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "data/mnist_loader_match_eval.py",
+    "line": 39,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "38             mnist_imgs= torch.load( load_dir +  '_data.pt')\n39             mnist_imgs_org= torch.load( load_dir +  '_org_data.pt')\n40             mnist_labels= torch.load( load_dir +  '_label.pt')",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "data/mnist_loader_match_eval.py",
+    "line": 40,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "39             mnist_imgs_org= torch.load( load_dir +  '_org_data.pt')\n40             mnist_labels= torch.load( load_dir +  '_label.pt')\n41             mnist_idx= image_counter + np.array(list(range(len(mnist_imgs))))",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "data/mnist_loader_match_eval_spur.py",
+    "line": 37,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "36             load_dir= data_dir + self.data_case + '/' + 'seed_' + str(self.mnist_subset) + '_domain_' + str(domain)\n37             mnist_imgs= torch.load( load_dir +  '_data.pt')\n38             mnist_imgs_org= torch.load( load_dir +  '_org_data.pt')",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "data/mnist_loader_match_eval_spur.py",
+    "line": 38,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "37             mnist_imgs= torch.load( load_dir +  '_data.pt')\n38             mnist_imgs_org= torch.load( load_dir +  '_org_data.pt')\n39             mnist_labels= torch.load( load_dir +  '_label.pt')",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "data/mnist_loader_match_eval_spur.py",
+    "line": 39,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "38             mnist_imgs_org= torch.load( load_dir +  '_org_data.pt')\n39             mnist_labels= torch.load( load_dir +  '_label.pt')\n40             mnist_idx= image_counter + np.array(list(range(len(mnist_imgs))))",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "data/mnist_loader_spur.py",
+    "line": 39,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "38             if self.data_case =='train' and self.args.mnist_aug:                \n39                 mnist_imgs= torch.load( load_dir +  '_data.pt')\n40             else:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "data/mnist_loader_spur.py",
+    "line": 41,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "40             else:\n41                 mnist_imgs= torch.load( load_dir +  '_org_data.pt')\n42             mnist_labels= torch.load( load_dir +  '_label.pt')",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "data/mnist_loader_spur.py",
+    "line": 42,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "41                 mnist_imgs= torch.load( load_dir +  '_org_data.pt')\n42             mnist_labels= torch.load( load_dir +  '_label.pt')\n43             mnist_idx= list(range(len(mnist_imgs)))",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "evaluation/base_eval.py",
+    "line": 140,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "139         print(self.save_path)        \n140         self.phi.load_state_dict( torch.load(self.save_path + '.pth') )\n141         self.phi.eval()",
+    "stage": "inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "evaluation/base_eval.py",
+    "line": 145,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "144             self.save_path= self.base_res_dir + '/Sms_' + self.post_string \n145             self.sms= torch.load(self.save_path + '.pt')\n146",
+    "stage": "inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "evaluation/base_eval.py",
+    "line": 148,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "147             self.save_path= self.base_res_dir + '/SmBiases_' + self.post_string \n148             self.sm_biases= torch.load(self.save_path + '.pt')\n149",
+    "stage": "inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "evaluation/logit_hist.py",
+    "line": 101,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "100         # load the logits from .pkl file\n101         train_data= pickle.load(open(self.save_path + \"_train_loss.pkl\", 'rb'))\n102         test_data= pickle.load(open(self.save_path + \"_test_loss.pkl\", 'rb'))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "evaluation/logit_hist.py",
+    "line": 102,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "101         train_data= pickle.load(open(self.save_path + \"_train_loss.pkl\", 'rb'))\n102         test_data= pickle.load(open(self.save_path + \"_test_loss.pkl\", 'rb'))\n103",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "evaluation/privacy_attack.py",
+    "line": 63,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "62         # load the logits from .pkl file\n63         train_data= pickle.load(open(self.save_path + \"_train.pkl\", 'rb'))\n64         test_data= pickle.load(open(self.save_path + \"_test.pkl\", 'rb'))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "evaluation/privacy_attack.py",
+    "line": 64,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "63         train_data= pickle.load(open(self.save_path + \"_train.pkl\", 'rb'))\n64         test_data= pickle.load(open(self.save_path + \"_test.pkl\", 'rb'))\n65",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "models/alexnet.py",
+    "line": 93,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "92         if os_env:\n93             state_dict = torch.load( os.getenv('PT_DATA_DIR') + \"/pacs/alexnet_caffe.pth.tar\")\n94         else:",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "models/alexnet.py",
+    "line": 95,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "94         else:\n95             state_dict = torch.load(\"/home/t-dimaha/RobustDG/robustdg/data/datasets/pacs/alexnet_caffe.pth.tar\")\n96",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "models/resnet.py",
+    "line": 27,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "26             if pre_trained:\n27                 model.load_state_dict(torch.load( os.getenv('PT_DATA_DIR') + '/checkpoints/resnet18-5c106cde.pth' ))\n28         else:",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "models/resnet.py",
+    "line": 44,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "43             if pre_trained:\n44                 model.load_state_dict(torch.load( os.getenv('PT_DATA_DIR') + '/checkpoints/resnet50-19c8e357.pth' ))\n45         else:",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "reproduce_scripts/cxray_run.py",
+    "line": 112,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "111     script= script + ' > ' + res_dir + str(method) + '.txt'\n112     os.system(script)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "reproduce_scripts/mnist_mdg_ctr_run.py",
+    "line": 20,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "19 script= base_script + '  --method_name matchdg_ctr --pos_metric cos --match_case ' +  str(perf_init) + ' --match_flag ' + str(iterative)\n20 os.system(script)\n21",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "reproduce_scripts/mnist_run.py",
+    "line": 129,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "128         script= base_script + ' --method_name erm_match --penalty_ws 0.0 --match_case 0.0 --epochs 25 ' +  ' > ' + case + '.txt'           \n129         os.system(script)\n130",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "reproduce_scripts/mnist_run.py",
+    "line": 136,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "135             script= base_script + ' --method_name erm_match --penalty_ws 0.1 --match_case 0.0 --epochs 25 ' +  ' > ' + case + '.txt'       \n136         os.system(script)\n137",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "reproduce_scripts/mnist_run.py",
+    "line": 140,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "139         script= base_script + ' --method_name erm_match --penalty_ws 0.1 --match_case 0.25 --epochs 25 ' +  ' > ' + case + '.txt'\n140         os.system(script)\n141",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "reproduce_scripts/mnist_run.py",
+    "line": 144,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "143         script= base_script + ' --method_name erm_match --penalty_ws 0.1 --match_case 0.50 --epochs 25 ' +  ' > ' + case + '.txt'\n144         os.system(script)\n145",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "reproduce_scripts/mnist_run.py",
+    "line": 148,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "147         script= base_script + ' --method_name erm_match --penalty_ws 0.1 --match_case 0.75 --epochs 25 ' + ' > ' + case + '.txt'\n148         os.system(script)\n149",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "reproduce_scripts/mnist_run.py",
+    "line": 155,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "154             script= base_script + ' --method_name erm_match --penalty_ws 0.1 --match_case 1.0 --epochs 25 ' +  ' > ' + case + '.txt' \n155         os.system(script)\n156",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "reproduce_scripts/mnist_run.py",
+    "line": 160,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "159             script= base_script + ' --method_name matchdg_ctr --match_case 0.0 --match_flag 1 --epochs 50 --batch_size 64 --pos_metric cos  --match_func_aug_case 1 ' +  ' > ' + res_dir + 'matchdg_ctr' + '.txt'  \n160             os.system(script)\n161",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "reproduce_scripts/mnist_run.py",
+    "line": 163,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "162         script= base_script + ' --method_name matchdg_erm --penalty_ws 0.1 --match_case -1 --ctr_match_case 0.0 --ctr_match_flag 1 --ctr_match_interrupt 5 --ctr_model_name resnet18 --epochs 25 ' +  ' > ' + case + '.txt'           \n163         os.system(script)\n164",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "reproduce_scripts/mnist_run.py",
+    "line": 167,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "166         script= base_script + ' --method_name csd --penalty_ws 0.0 --match_case 0.0 --rep_dim 512 --epochs 25 ' +  ' > ' + case + '.txt'\n167         os.system(script)\n168",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "reproduce_scripts/mnist_run.py",
+    "line": 171,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "170         script= base_script + ' --method_name irm --match_case 0.0 --penalty_irm 1.0 --penalty_s 5 --epochs 25 ' + ' > ' + case + '.txt'\n171         os.system(script)        \n172",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "reproduce_scripts/pacs_run.py",
+    "line": 242,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "241     script= script + ' > ' + save_dir    \n242     os.system(script)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "reproduce_scripts/reproduce_rmnist_domainbed.py",
+    "line": 40,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "39         print('Method: ', method, ' Test Domain: ', test_domain)\n40         os.system(script)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "reproduce_scripts/reproduce_rmnist_lenet.py",
+    "line": 46,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "45         print('Method: ', method, ' Test Domain: ', test_domain)\n46         os.system(script)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "reproduce_scripts/reproduce_slab.py",
+    "line": 54,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "53     script= script + ' > ' + res_dir + str(method) + '.txt'\n54     os.system(script)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "reproduce_scripts/slab-run.py",
+    "line": 46,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "45             script = base_script + ' --method_name matchdg_ctr --batch_size 512 --match_case 0.0 --match_flag 1 --match_interrupt 5 --pos_metric cos '\n46             os.system(script)\n47",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "reproduce_scripts/slab-run.py",
+    "line": 51,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "50             \n51         os.system(script)\n52",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "reproduce_scripts/slab-run.py",
+    "line": 97,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "96                 script= upd_script + ' --test_domains ' + str(test_domain) + ' > ' + res_dir + str(method) + '-' + str(metric) + '-' + str(test_domain) + '.txt'\n97                 os.system(script)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "reproduce_scripts/slab-tune.py",
+    "line": 61,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "60                 script= script + ' > ' + res_dir + str(method) + '_' + str(penalty) + '_' + str(grad_penalty) + '_' + str(disc_steps) + '.txt'\n61                 os.system(script)\n62",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "reproduce_scripts/slab-tune.py",
+    "line": 67,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "66         script= script + ' > ' + res_dir + str(method) + '_' + str(penalty) + '.txt'\n67         os.system(script)\n68",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "utils/scripts/lms_utils.py",
+    "line": 33,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "32         try:\n33             data = torch.load(fpath, map_location=lambda storage, loc: storage)\n34         except:",
+    "stage": "evaluation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "utils/scripts/utils.py",
+    "line": 702,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "701     with open(fname, mode) as f:\n702         return pickle.load(f)\n703",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "utils/slab_data.py",
+    "line": 79,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "78     with open(data_dir + '.pickle', 'rb') as handle:\n79         data = pickle.load(handle)\n80",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "data_gen_syn.py",
+    "line": 98,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "evaluation/base_eval.py",
+    "line": 181,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "evaluation/base_eval.py",
+    "line": 199,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "evaluation/logit_hist.py",
+    "line": 62,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "evaluation/logit_hist.py",
+    "line": 79,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "evaluation/logit_hist.py",
+    "line": 101,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "evaluation/logit_hist.py",
+    "line": 102,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "evaluation/privacy_attack.py",
+    "line": 63,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "evaluation/privacy_attack.py",
+    "line": 64,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-system-call-tainted-env-args.dangerous-system-call-tainted-env-args",
+    "file_path": "reproduce_scripts/cxray_run.py",
+    "line": 112,
+    "message": "Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-system-call-tainted-env-args.dangerous-system-call-tainted-env-args",
+    "file_path": "reproduce_scripts/mnist_mdg_ctr_run.py",
+    "line": 20,
+    "message": "Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-system-call-tainted-env-args.dangerous-system-call-tainted-env-args",
+    "file_path": "reproduce_scripts/mnist_run.py",
+    "line": 129,
+    "message": "Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-system-call-tainted-env-args.dangerous-system-call-tainted-env-args",
+    "file_path": "reproduce_scripts/mnist_run.py",
+    "line": 136,
+    "message": "Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-system-call-tainted-env-args.dangerous-system-call-tainted-env-args",
+    "file_path": "reproduce_scripts/mnist_run.py",
+    "line": 140,
+    "message": "Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-system-call-tainted-env-args.dangerous-system-call-tainted-env-args",
+    "file_path": "reproduce_scripts/mnist_run.py",
+    "line": 144,
+    "message": "Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-system-call-tainted-env-args.dangerous-system-call-tainted-env-args",
+    "file_path": "reproduce_scripts/mnist_run.py",
+    "line": 148,
+    "message": "Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-system-call-tainted-env-args.dangerous-system-call-tainted-env-args",
+    "file_path": "reproduce_scripts/mnist_run.py",
+    "line": 155,
+    "message": "Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-system-call-tainted-env-args.dangerous-system-call-tainted-env-args",
+    "file_path": "reproduce_scripts/mnist_run.py",
+    "line": 160,
+    "message": "Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-system-call-tainted-env-args.dangerous-system-call-tainted-env-args",
+    "file_path": "reproduce_scripts/mnist_run.py",
+    "line": 163,
+    "message": "Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-system-call-tainted-env-args.dangerous-system-call-tainted-env-args",
+    "file_path": "reproduce_scripts/mnist_run.py",
+    "line": 167,
+    "message": "Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-system-call-tainted-env-args.dangerous-system-call-tainted-env-args",
+    "file_path": "reproduce_scripts/mnist_run.py",
+    "line": 171,
+    "message": "Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-system-call-tainted-env-args.dangerous-system-call-tainted-env-args",
+    "file_path": "reproduce_scripts/pacs_run.py",
+    "line": 242,
+    "message": "Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-system-call-tainted-env-args.dangerous-system-call-tainted-env-args",
+    "file_path": "reproduce_scripts/reproduce_rmnist_domainbed.py",
+    "line": 40,
+    "message": "Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-system-call-tainted-env-args.dangerous-system-call-tainted-env-args",
+    "file_path": "reproduce_scripts/reproduce_rmnist_lenet.py",
+    "line": 46,
+    "message": "Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-system-call-tainted-env-args.dangerous-system-call-tainted-env-args",
+    "file_path": "reproduce_scripts/slab-run.py",
+    "line": 46,
+    "message": "Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-system-call-tainted-env-args.dangerous-system-call-tainted-env-args",
+    "file_path": "reproduce_scripts/slab-run.py",
+    "line": 51,
+    "message": "Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-system-call-tainted-env-args.dangerous-system-call-tainted-env-args",
+    "file_path": "reproduce_scripts/slab-run.py",
+    "line": 97,
+    "message": "Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-system-call-tainted-env-args.dangerous-system-call-tainted-env-args",
+    "file_path": "reproduce_scripts/slab-tune.py",
+    "line": 61,
+    "message": "Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-system-call-tainted-env-args.dangerous-system-call-tainted-env-args",
+    "file_path": "reproduce_scripts/slab-tune.py",
+    "line": 67,
+    "message": "Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "utils/scripts/utils.py",
+    "line": 698,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "utils/scripts/utils.py",
+    "line": 702,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "utils/slab_data.py",
+    "line": 79,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  }
+]
