@@ -171,6 +171,33 @@ PREDICTORS = ["loc_reachable", "commit_count", "size_kb", "contributors",
 OUTCOMES = ["findings_total", "findings_pipeline",
             "density_total", "density_pipeline"]
 
+# Predictors plotted in the scatter grid. age_days is kept in PREDICTORS so its
+# correlation is still computed for the text, but excluded from the figure (its
+# signal is weak and the metric is unreliable for forks).
+PLOT_PREDICTORS = ["commit_count", "size_kb", "contributors",
+                   "stars", "forks", "closed_prs"]
+
+# Minimum plausible commit_count. The real corpus distribution starts at 50;
+# a lone repo reporting 3 commits despite 18 MB of code and 6.5k reachable LOC
+# is an incomplete GitHub metric fetch, not a small project. Values below this
+# floor are treated as missing (commit_count only), the same way non-positive
+# values are treated as missing for every predictor.
+MIN_COMMIT_COUNT = 10
+
+
+def valid_value(row: dict[str, Any], pred: str) -> float | None:
+    """Return row[pred] as a float if it passes the validity guards, else None.
+
+    Guards: must be numeric and strictly positive; commit_count must also clear
+    the MIN_COMMIT_COUNT fetch-artifact floor.
+    """
+    v = row.get(pred)
+    if not isinstance(v, (int, float)) or v <= 0:
+        return None
+    if pred == "commit_count" and v < MIN_COMMIT_COUNT:
+        return None
+    return float(v)
+
 
 def main() -> int:
     p = argparse.ArgumentParser(description=__doc__,
@@ -223,8 +250,8 @@ def main() -> int:
     results = []
     for pred in PREDICTORS:
         for out in OUTCOMES:
-            pairs = [(r[pred], r[out]) for r in table
-                     if isinstance(r.get(pred), (int, float))
+            pairs = [(valid_value(r, pred), r[out]) for r in table
+                     if valid_value(r, pred) is not None
                      and isinstance(r.get(out), (int, float))]
             if len(pairs) < 10:
                 results.append((pred, out, len(pairs), None))
@@ -249,11 +276,10 @@ def main() -> int:
     y_field = "density_pipeline" if (loc and not args.no_loc) else "findings_pipeline"
     y_label = ("pipeline findings / 1k LOC" if y_field == "density_pipeline"
                else "pipeline findings (raw count)")
-    preds_avail = [pr for pr in PREDICTORS
-                   if pr != "loc_reachable"
-                   and sum(1 for r in table
-                           if isinstance(r.get(pr), (int, float))
-                           and isinstance(r.get(y_field), (int, float))) >= 10]
+    preds_avail = [pr for pr in PLOT_PREDICTORS
+                   if sum(1 for r in table
+                          if valid_value(r, pr) is not None
+                          and isinstance(r.get(y_field), (int, float))) >= 10]
     if preds_avail:
         ncols = 3
         nrows = (len(preds_avail) + ncols - 1) // ncols
@@ -264,13 +290,16 @@ def main() -> int:
             ax = axes[idx // ncols][idx % ncols]
             xs, ys = [], []
             for r in table:
-                if isinstance(r.get(pr), (int, float)) and \
-                   isinstance(r.get(y_field), (int, float)):
-                    xs.append(r[pr]); ys.append(r[y_field])
+                xv = valid_value(r, pr)
+                yv = r.get(y_field)
+                if xv is not None and isinstance(yv, (int, float)):
+                    xs.append(xv); ys.append(yv)
             ax.scatter(xs, ys, s=12, alpha=0.5, color="#37474f",
                        edgecolors="none")
-            if any(x > 0 for x in xs) and max(xs) / max(1, min(x for x in xs if x > 0) or 1) > 100:
-                ax.set_xscale("symlog")
+            if pr in ("commit_count", "size_kb", "stars", "forks",
+                      "closed_prs", "age_days") or \
+               (xs and max(xs) / min(xs) > 100):
+                ax.set_xscale("log")
             rho = next((r4 for p4, o4, _, r4 in results
                         if p4 == pr and o4 == y_field), None)
             ax.set_title(f"{pr}  (rho={rho if rho is not None else 'n/a'})",
