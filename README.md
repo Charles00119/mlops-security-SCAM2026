@@ -68,8 +68,6 @@ python -m stage4.fetch_github_extras --mode issues --top 20
 ```bibtex
 @inproceedings{wehbe2026mlops,
   title     = {Security Threats in MLOps Pipelines: An Empirical Study},
-  author    = {Wehbe, Charles and Elia, Justin and Barrak, Amine},
-  booktitle = {Proc. IEEE Int. Symp. Software Reliability Engineering (ISSRE)},
   year      = {2026}
 }
 ```
