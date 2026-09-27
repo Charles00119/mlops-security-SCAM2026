@@ -56,6 +56,8 @@ class RepoResult:
     dockerfiles_found: int = 0
     entry_points_resolved: int = 0
     entry_files: str = ""             # ';'-joined list (multi-Dockerfile repos)
+    entry_route: str = ""             # 'dockerfile' | 'fallback_root' | 'fallback_nested' | 'fallback_console_script' | ''
+
     reachable_files: int = 0
     total_functions: int = 0
     max_depth: int = 0
@@ -155,9 +157,13 @@ def analyze_repo(repo_url: str, repo_dir: str) -> RepoResult:
     result = RepoResult(repo=repo_url, status="ok")
 
     entry_points = get_entry_points(repo_dir)
-    result.dockerfiles_found = sum(1 for ep in entry_points if ep.dockerfile_path != "(fallback)")
+    result.dockerfiles_found = sum(1 for ep in entry_points if not ep.is_fallback)
     resolved = [ep for ep in entry_points if ep.resolved]
     result.entry_points_resolved = len(resolved)
+    # Route actually used for the analysis. A Dockerfile that exists but whose
+    # CMD/ENTRYPOINT could not be resolved still ends up on a fallback route.
+    routes = sorted({ep.route for ep in resolved})
+    result.entry_route = "+".join(routes)
 
     if not entry_points:
         result.status = "no_dockerfile"

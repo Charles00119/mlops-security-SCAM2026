@@ -36,6 +36,16 @@ class EntryPoint:
     module_name: Optional[str] = None  # dotted module name, if 'python_module'
     workdir: str = "/"                 # WORKDIR in effect when CMD/ENTRYPOINT ran
     notes: list[str] = field(default_factory=list)
+    # How this entry point was obtained. One of:
+    #   'dockerfile'               resolved from a Dockerfile CMD/ENTRYPOINT
+    #   'fallback_root'            conventional entry file at the repo root
+    #   'fallback_nested'          conventional entry file one level down (src/, app/, package dir)
+    #   'fallback_console_script'  setup.py / pyproject console_scripts target
+    route: str = "dockerfile"
+
+    @property
+    def is_fallback(self) -> bool:
+        return self.route != "dockerfile"
 
     @property
     def resolved(self) -> bool:
@@ -302,24 +312,102 @@ def resolve_shell_entry(script_path: str, repo_root: str) -> tuple[Optional[str]
 
 
 # Fallback candidates when the Dockerfile yields no usable Python entry point.
-# ORDER IS PROVISIONAL — confirm against the six-repo manual look.
 _FALLBACK_FILES = ["main.py", "run.py", "app.py", "train.py", "__main__.py"]
+
+# Directories searched one level below the root for the same conventional
+# names (rule 'fallback_nested'). Kept deliberately short and conventional.
+_FALLBACK_DIRS = ["src", "app", "source", "scripts"]
+
+# Directories never treated as a package/entry location.
+_FALLBACK_SKIP_DIRS = {".git", "node_modules", "venv", ".venv", "__pycache__", "tests", "test",
+                       "docs", "doc", "examples", "example", "notebooks", "data", "build", "dist",
+                       "site-packages", ".tox", ".github", "assets", "static", "img", "images"}
+
+
+def _mk_fallback(path: str, rel: str, route: str, why: str) -> EntryPoint:
+    return EntryPoint(
+        dockerfile_path="(fallback)",
+        raw_instruction=f"(no usable CMD/ENTRYPOINT — fell back to {rel})",
+        kind="python_file",
+        entry_file=os.path.normpath(path),
+        notes=[f"resolved via fallback ({route}): {why}"],
+        route=route,
+    )
+
+
+def _console_script_entry(repo_root: str) -> Optional[EntryPoint]:
+    """Resolve a console_scripts target declared in setup.py / setup.cfg /
+    pyproject.toml (`name = "pkg.module:func"`) to pkg/module.py."""
+    candidates = []
+    for fn in ("pyproject.toml", "setup.cfg", "setup.py"):
+        p = os.path.join(repo_root, fn)
+        if os.path.isfile(p):
+            try:
+                with open(p, "r", encoding="utf-8", errors="replace") as fh:
+                    candidates.append((fn, fh.read()))
+            except OSError:
+                pass
+    # `"pkg.mod:func"` / `'pkg.mod:func'` / `pkg.mod:func` (setup.cfg style)
+    pat = re.compile(r"""["']?\s*([A-Za-z_][\w\-]*)\s*=\s*["']?\s*([A-Za-z_][\w.]*)\s*:\s*[A-Za-z_]\w*\s*["']?""")
+    for fn, text in candidates:
+        # only look inside the scripts / console_scripts region to avoid false hits
+        region = text
+        m = re.search(r"(console_scripts|\[project\.scripts\]|\[tool\.poetry\.scripts\])", text)
+        if m:
+            region = text[m.start(): m.start() + 4000]
+        elif fn != "setup.cfg":
+            continue
+        for _name, dotted in pat.findall(region):
+            f = resolve_module(dotted, repo_root)
+            if f:
+                return _mk_fallback(f, os.path.relpath(f, repo_root), "fallback_console_script",
+                                    f"{fn} declares script -> {dotted}")
+    return None
 
 
 def _fallback_entry(repo_root: str) -> Optional[EntryPoint]:
-    """Best-effort entry point when the Dockerfile doesn't give us one."""
+    """Best-effort entry point when no Dockerfile yields a usable Python entry.
+
+    Rules are tried in order and the winning rule is recorded in
+    `EntryPoint.route` so downstream analyses can split results by route:
+
+      1. fallback_root            <root>/{main,run,app,train,__main__}.py
+      2. fallback_nested          <root>/{src,app,source,scripts}/<same names>
+                                  or <root>/<pkg>/{__main__,main,app,run,train}.py
+                                  where <pkg> is a top-level package (has __init__.py)
+      3. fallback_console_script  setup.py / setup.cfg / pyproject console_scripts
+
+    Rule 1 is the original (root-only) behaviour; rules 2-3 were added so
+    projects with a src/ or package layout are not systematically excluded.
+    """
+    # 1. root
     for rel in _FALLBACK_FILES:
         p = os.path.join(repo_root, rel)
         if os.path.isfile(p):
-            return EntryPoint(
-                dockerfile_path="(fallback)",
-                raw_instruction=f"(no usable CMD/ENTRYPOINT — fell back to {rel})",
-                kind="python_file",
-                entry_file=os.path.normpath(p),
-                notes=["resolved via fallback, not the Dockerfile"],
-            )
-    # setup.py console_scripts is another fallback worth adding once confirmed.
-    return None
+            return _mk_fallback(p, rel, "fallback_root", f"{rel} at repository root")
+
+    # 2. one level down: conventional dirs first, then top-level packages
+    try:
+        top = sorted(d for d in os.listdir(repo_root)
+                     if os.path.isdir(os.path.join(repo_root, d))
+                     and d not in _FALLBACK_SKIP_DIRS and not d.startswith("."))
+    except OSError:
+        top = []
+    ordered = [d for d in _FALLBACK_DIRS if d in top] + \
+              [d for d in top if d not in _FALLBACK_DIRS
+               and os.path.isfile(os.path.join(repo_root, d, "__init__.py"))]
+    for d in ordered:
+        names = ["__main__.py"] + _FALLBACK_FILES if d not in _FALLBACK_DIRS else _FALLBACK_FILES
+        for name in names:
+            p = os.path.join(repo_root, d, name)
+            if os.path.isfile(p):
+                rel = f"{d}/{name}"
+                why = (f"{rel} in conventional source dir" if d in _FALLBACK_DIRS
+                       else f"{rel} in top-level package '{d}'")
+                return _mk_fallback(p, rel, "fallback_nested", why)
+
+    # 3. declared console script
+    return _console_script_entry(repo_root)
 
 
 def resolve_entry_point(dockerfile_path: str, repo_root: str) -> EntryPoint:
