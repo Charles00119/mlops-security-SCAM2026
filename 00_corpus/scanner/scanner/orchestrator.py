@@ -3,7 +3,9 @@ Orchestrator — clone-one-at-a-time scanner loop.
 
 For each repository in the input list:
     1. shallow-clone it to a temp dir
-    2. run Stage 1 (Dockerfile entry point) + Stage 2 (AST call graph)
+    2. run Stage 1 (Dockerfile entry point, or a conventional root entry file
+       such as main.py when no Dockerfile resolves) + Stage 2 (AST import-
+       reachability graph; see ast_callgraph.py for what that is and is not)
     3. [Stage 3 + 4 plug in here — vulnerability judgment, not yet built]
     4. append a result row to the output CSV
     5. delete the clone

@@ -1,7 +1,7 @@
 """Shared data structures for Stage 4 scanner output.
 
 Every tool wrapper returns list[Finding]. The orchestrator collects them,
-maps each finding to a pipeline stage using the call graph from Stages 1-3,
+maps each finding to a pipeline stage using the import-reachability graph from Stages 1-3,
 and writes both detailed JSON (per repo) and summary CSV (across repos).
 """
 from __future__ import annotations

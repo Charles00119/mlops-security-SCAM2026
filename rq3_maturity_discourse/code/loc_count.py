@@ -1,7 +1,7 @@
 """Count reachable lines of code per repo, for vulnerability-density analysis.
 
 For each repo in verified_corpus.csv:
-    1. Read call_graphs/{owner}__{repo}.json -> reachable_files list
+    1. Read 00_corpus/data/import_graphs/{owner}__{repo}.json -> reachable_files list
     2. Shallow-clone the repo (depth 1) to a temp dir
     3. Count lines in each reachable file
     4. Write one row to loc.csv
@@ -105,7 +105,7 @@ def main() -> int:
     p = argparse.ArgumentParser(description=__doc__,
                                 formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--corpus",          default="verified_corpus.csv")
-    p.add_argument("--call-graphs-dir", default="call_graphs")
+    p.add_argument("--call-graphs-dir", default="00_corpus/data/import_graphs")
     p.add_argument("--out",             default="loc.csv")
     p.add_argument("--limit", type=int, default=0,
                    help="only process the first N repos (0 = all)")

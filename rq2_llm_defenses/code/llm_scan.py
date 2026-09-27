@@ -48,12 +48,15 @@ import traceback
 from collections import Counter
 from typing import Any
 
-# Make scanner/ and stage4/ importable when run from project root
-PROJ = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
-if PROJ not in sys.path:
-    sys.path.insert(0, PROJ)
+# Make the sibling helpers (findings.py) and the Stage 1-3 scanner package
+# (<repo>/00_corpus/scanner) importable from the reorganized layout.
+_HERE = os.path.dirname(os.path.abspath(__file__))
+_ROOT = os.path.dirname(os.path.dirname(_HERE))
+for _p in (_HERE, os.path.join(_ROOT, "00_corpus", "scanner")):
+    if _p not in sys.path:
+        sys.path.insert(0, _p)
 
-from stage4.findings import Finding, dump_findings_json  # type: ignore
+from findings import Finding, dump_findings_json  # type: ignore  # noqa: E402
 
 
 # -- Anthropic client -------------------------------------------------------
@@ -477,10 +480,16 @@ def write_llm_findings_file(findings_dir: str, repo_url: str,
 def write_call_graph_snapshot(snapshot_dir: str, repo_url: str, repo_root: str,
                                stage_to_files: dict[str, list[str]],
                                all_reachable: list[str]) -> None:
-    """Persist the call-graph file list for this repo as a JSON artifact.
+    """Persist the import-reachability snapshot for this repo as a JSON artifact.
 
     Stored separately from findings so downstream scripts can reuse it
     without re-cloning. File paths are stored relative to repo_root.
+
+    NOTE on `rq2_context_files`: for RQ2 the same FULL reachable file list is
+    recorded under every present stage, because the LLM audit reads all
+    reachable code for each stage's question. It is *not* a per-file stage
+    attribution (RQ1 uses StageReport.evidence_files for that). The released
+    snapshots were relabelled to this schema by tools/relabel_snapshots.py.
     """
     os.makedirs(snapshot_dir, exist_ok=True)
     path = os.path.join(snapshot_dir, repo_url_to_filename(repo_url))
@@ -493,8 +502,10 @@ def write_call_graph_snapshot(snapshot_dir: str, repo_url: str, repo_root: str,
 
     payload = {
         "repo": repo_url,
+        "analysis": ("Static import-reachability from the entry point; nodes are "
+                     "files, edges are imports; not a function-level call graph."),
         "reachable_files": [to_rel(p) for p in all_reachable],
-        "stages_with_files": {
+        "rq2_context_files": {
             stage: [to_rel(p) for p in files]
             for stage, files in stage_to_files.items()
             if files

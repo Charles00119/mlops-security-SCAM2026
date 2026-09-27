@@ -1,9 +1,10 @@
 """
 Stage 3 — Pipeline-stage verifier.
 
-For each repo's call graph (built by Stage 2), determine which of the six MLOps
-pipeline stages are present *in reachable code*. A stage is present iff at least
-one signal call from its signal list appears in the call graph. Every hit is
+For each repo's import-reachability graph (built by Stage 2; file-level, not a
+function-level call graph), determine which of the six MLOps pipeline stages
+are present *in reachable code*. A stage is present iff at least one signal
+call from its signal list appears in a reachable module. Every hit is
 recorded with file + line + matched call, so every label is auditable.
 
 Strict-corpus rule: a repo "passes" only if all six stages are present in the

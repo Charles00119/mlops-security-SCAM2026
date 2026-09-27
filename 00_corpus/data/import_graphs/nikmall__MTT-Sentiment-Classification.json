@@ -1,0 +1,110 @@
+{
+  "repo": "https://github.com/nikmall/MTT-Sentiment-Classification",
+  "entry_route": "fallback_entry_file",
+  "entry_files": [
+    "main.py"
+  ],
+  "stages_present": 6,
+  "analysis": "Static import-reachability analysis. Starting from the entry point, in-repo `import` statements are followed breadth-first (Python `ast`); `reachable_files` is the resulting set of modules. Nodes are files and edges are imports; no caller->callee function edges are resolved, so this is NOT a call graph in the program-analysis sense, and import-reachable does not imply executed.",
+  "reachable_files": [
+    "main.py",
+    "tools.py",
+    "data_process.py",
+    "parameters.py",
+    "mctn_rnn/mctn.py",
+    "mtt/mtt_cyclic.py",
+    "mtt_fuse/mtt_fuse.py",
+    "dataset.py",
+    "mctn_rnn/modules_seq.py",
+    "score_metrics.py",
+    "mtt/modules_transformer.py",
+    "mtt_fuse/modules_transformer_fuse.py"
+  ],
+  "rq2_context_files_note": "For RQ2 the LLM audit is given ALL reachable files for EVERY stage that Stage 3 detected as present, because a defensive control can live anywhere in the deployed code. This key therefore lists the full reachable set under each present stage; it is not a per-file stage attribution. Per-file stage evidence used by RQ1 comes from 00_corpus/scanner/scanner/stage_verifier.py (StageReport.evidence_files).",
+  "rq2_context_files": {
+    "data_acquisition": [
+      "main.py",
+      "tools.py",
+      "data_process.py",
+      "parameters.py",
+      "mctn_rnn/mctn.py",
+      "mtt/mtt_cyclic.py",
+      "mtt_fuse/mtt_fuse.py",
+      "dataset.py",
+      "mctn_rnn/modules_seq.py",
+      "score_metrics.py",
+      "mtt/modules_transformer.py",
+      "mtt_fuse/modules_transformer_fuse.py"
+    ],
+    "data_preparation": [
+      "main.py",
+      "tools.py",
+      "data_process.py",
+      "parameters.py",
+      "mctn_rnn/mctn.py",
+      "mtt/mtt_cyclic.py",
+      "mtt_fuse/mtt_fuse.py",
+      "dataset.py",
+      "mctn_rnn/modules_seq.py",
+      "score_metrics.py",
+      "mtt/modules_transformer.py",
+      "mtt_fuse/modules_transformer_fuse.py"
+    ],
+    "modeling": [
+      "main.py",
+      "tools.py",
+      "data_process.py",
+      "parameters.py",
+      "mctn_rnn/mctn.py",
+      "mtt/mtt_cyclic.py",
+      "mtt_fuse/mtt_fuse.py",
+      "dataset.py",
+      "mctn_rnn/modules_seq.py",
+      "score_metrics.py",
+      "mtt/modules_transformer.py",
+      "mtt_fuse/modules_transformer_fuse.py"
+    ],
+    "training": [
+      "main.py",
+      "tools.py",
+      "data_process.py",
+      "parameters.py",
+      "mctn_rnn/mctn.py",
+      "mtt/mtt_cyclic.py",
+      "mtt_fuse/mtt_fuse.py",
+      "dataset.py",
+      "mctn_rnn/modules_seq.py",
+      "score_metrics.py",
+      "mtt/modules_transformer.py",
+      "mtt_fuse/modules_transformer_fuse.py"
+    ],
+    "evaluation": [
+      "main.py",
+      "tools.py",
+      "data_process.py",
+      "parameters.py",
+      "mctn_rnn/mctn.py",
+      "mtt/mtt_cyclic.py",
+      "mtt_fuse/mtt_fuse.py",
+      "dataset.py",
+      "mctn_rnn/modules_seq.py",
+      "score_metrics.py",
+      "mtt/modules_transformer.py",
+      "mtt_fuse/modules_transformer_fuse.py"
+    ],
+    "inference": [
+      "main.py",
+      "tools.py",
+      "data_process.py",
+      "parameters.py",
+      "mctn_rnn/mctn.py",
+      "mtt/mtt_cyclic.py",
+      "mtt_fuse/mtt_fuse.py",
+      "dataset.py",
+      "mctn_rnn/modules_seq.py",
+      "score_metrics.py",
+      "mtt/modules_transformer.py",
+      "mtt_fuse/modules_transformer_fuse.py"
+    ]
+  }
+}

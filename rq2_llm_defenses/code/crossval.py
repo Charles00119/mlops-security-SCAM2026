@@ -276,7 +276,10 @@ def extract_code_slice(repo_root: str, rel_files: list[str],
 
 def load_call_graph_files(call_graphs_dir: str, repo_url: str,
                            stage: str) -> list[str]:
-    """Get the file list for a given stage from call_graphs/{repo}.json."""
+    """Get the RQ2 context file list for a stage from import_graphs/{repo}.json.
+
+    Accepts both the current key (`rq2_context_files`) and the legacy one
+    (`stages_with_files`)."""
     fn = repo_url_to_filename(repo_url)
     path = os.path.join(call_graphs_dir, fn)
     if not os.path.isfile(path):
@@ -286,8 +289,8 @@ def load_call_graph_files(call_graphs_dir: str, repo_url: str,
             data = json.load(fh)
     except (OSError, json.JSONDecodeError):
         return []
-    stages_with_files = data.get("stages_with_files") or {}
-    return list(stages_with_files.get(stage) or [])
+    ctx = data.get("rq2_context_files") or data.get("stages_with_files") or {}
+    return list(ctx.get(stage) or [])
 
 
 def repo_url_to_filename(url: str) -> str:
@@ -547,7 +550,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("verified_csv",
                     help="Path to verified_corpus.csv (used for repo URL list)")
     ap.add_argument("--llm-findings-dir", default="llm_findings")
-    ap.add_argument("--call-graphs-dir", default="call_graphs")
+    ap.add_argument("--call-graphs-dir", default="00_corpus/data/import_graphs")
     ap.add_argument("--log", default="crossval_log.csv")
     ap.add_argument("--summary", default="crossval_summary.csv")
     ap.add_argument("--sample", default="crossval_sample.csv")

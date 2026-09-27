@@ -1,10 +1,22 @@
 """
-Stage 2 — AST call-graph walker.
+Stage 2 — AST import-reachability walker.
 
-Takes an EntryPoint (from Stage 1) and walks outward through in-repo imports to
-build the *reachability graph*: the set of files and functions that actually
-execute when the container starts. This replaces the old "up to 10 files by
-filename heuristic, truncated to 4000 chars" approach.
+Takes an EntryPoint (from Stage 1) and walks outward through in-repo `import`
+statements, breadth-first, to build the *import-reachability graph*: the set
+of Python modules that are statically reachable from the entry point.
+
+Terminology note (important for anyone reading the paper or the released
+data): the classes below are named `CallGraph` / `build_call_graph` for
+historical reasons, but what is built is a FILE-level graph whose nodes are
+modules and whose edges are imports. Function definitions and call-site names
+are collected per module so Stage 3 can match stage signals (`pd.read_csv`,
+`model.fit`, ...), but no caller->callee edges are resolved. It is therefore
+not a call graph in the program-analysis sense, and "import-reachable" is a
+static over-approximation of "executed": a module that is imported but whose
+functions are never invoked still counts as reachable.
+
+This replaces the old "up to 10 files by filename heuristic, truncated to
+4000 chars" approach.
 
 Standalone: stdlib only (`ast`), no network. Operates on a local repo checkout.
 

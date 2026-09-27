@@ -1,6 +1,7 @@
 """Map each finding to one or more pipeline stages.
 
-Strategy: re-run Stages 1-3 on the cloned repo to get the call graph and stage
+Strategy: re-run Stages 1-3 on the cloned repo to get the import-reachability
+graph (file-level; see 00_corpus/scanner/scanner/ast_callgraph.py) and stage
 evidence. For each finding, check which file it's in and which stages have
 evidence in that file.
 
@@ -11,7 +12,7 @@ Stage values produced:
   'dependencies'            — finding is in a dependency declaration file
                               (requirements.txt, pyproject.toml, etc.) — these
                               affect the whole environment, not a single stage
-  'unreachable'             — file is in repo but not on call graph and not
+  'unreachable'             — file is in repo but not import-reachable and not
                               a recognized dependency manifest
   'unknown'                 — finding has no usable file path
 """
@@ -24,8 +25,18 @@ from typing import Iterable
 
 from .findings import Finding
 
-# Make the sibling 'scanner' package importable.
-SCANNER_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+# Make the Stage 1-3 'scanner' package importable from the reorganized layout
+# (<repo>/00_corpus/scanner/scanner). Walk up until we find it.
+def _find_scanner_dir(start: str) -> str:
+    d = os.path.abspath(start)
+    for _ in range(6):
+        cand = os.path.join(d, "00_corpus", "scanner")
+        if os.path.isdir(os.path.join(cand, "scanner")):
+            return cand
+        d = os.path.dirname(d)
+    return os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))  # legacy fallback
+
+SCANNER_DIR = _find_scanner_dir(os.path.dirname(__file__))
 if SCANNER_DIR not in sys.path:
     sys.path.insert(0, SCANNER_DIR)
 
@@ -70,7 +81,7 @@ def build_file_to_stages(repo_root: str) -> tuple[dict[str, set[str]], set[str],
     """Build (file_to_stages, reachable_files_rel, warnings).
 
     file_to_stages: relative posix path -> set of stages with evidence in that file
-    reachable_files_rel: every file on the call graph (regardless of stage)
+    reachable_files_rel: every import-reachable file (regardless of stage)
     warnings: human-readable problems encountered (collected, not printed)
     """
     warnings: list[str] = []
@@ -155,5 +166,5 @@ def annotate_findings(
         if rel in reachable_files:
             f.stage = "reachable_unmapped"
             continue
-        # Stage 4: file exists in repo but not on call graph and not a dep manifest.
+        # Stage 4: file exists in repo but is not import-reachable and not a dep manifest.
         f.stage = "unreachable"

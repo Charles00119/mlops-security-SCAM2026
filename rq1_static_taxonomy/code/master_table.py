@@ -32,7 +32,13 @@ import sys
 
 # Reuse the locked mappings and helpers from the taxonomy script so the two
 # artifacts can never drift apart.
-from stage4.taxonomy import (
+# taxonomy.py lives next to this file in rq1_static_taxonomy/code/ (the
+# canonical copy); shared/ falls back to that location.
+_HERE = os.path.dirname(os.path.abspath(__file__))
+for _cand in (_HERE, os.path.join(os.path.dirname(_HERE), "rq1_static_taxonomy", "code")):
+    if os.path.isfile(os.path.join(_cand, "taxonomy.py")) and _cand not in sys.path:
+        sys.path.insert(0, _cand)
+from taxonomy import (  # noqa: E402
     PIPELINE_STAGES, STATIC_RULE_MAP, DROPPED_RULES,
     categorize_static, categorize_llm, load_corpus, load_json_list,
     repo_key_from_url,
@@ -65,7 +71,7 @@ def stage_fields(stage_raw: str | None) -> tuple[str, int, str]:
 def main() -> int:
     p = argparse.ArgumentParser(description=__doc__,
                                 formatter_class=argparse.RawDescriptionHelpFormatter)
-    p.add_argument("--findings-dir", default="stage4_findings")
+    p.add_argument("--findings-dir", default="rq1_static_taxonomy/data/stage4_findings")
     p.add_argument("--llm-dir",      default="llm_findings")
     p.add_argument("--corpus",       default="verified_corpus.csv")
     p.add_argument("--out",          default="master_findings.csv")

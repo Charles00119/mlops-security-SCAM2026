@@ -1,0 +1,68 @@
+{
+  "repo": "https://github.com/Hethsron/deepmwoo",
+  "entry_route": "dockerfile",
+  "entry_files": [
+    "main.py"
+  ],
+  "stages_present": 6,
+  "analysis": "Static import-reachability analysis. Starting from the entry point, in-repo `import` statements are followed breadth-first (Python `ast`); `reachable_files` is the resulting set of modules. Nodes are files and edges are imports; no caller->callee function edges are resolved, so this is NOT a call graph in the program-analysis sense, and import-reachable does not imply executed.",
+  "reachable_files": [
+    "main.py",
+    "deepmwoo/core/capture.py",
+    "deepmwoo/core/train.py",
+    "deepmwoo/core/access.py",
+    "deepmwoo/core/recognize.py",
+    "deepmwoo/core/shapes.py"
+  ],
+  "rq2_context_files_note": "For RQ2 the LLM audit is given ALL reachable files for EVERY stage that Stage 3 detected as present, because a defensive control can live anywhere in the deployed code. This key therefore lists the full reachable set under each present stage; it is not a per-file stage attribution. Per-file stage evidence used by RQ1 comes from 00_corpus/scanner/scanner/stage_verifier.py (StageReport.evidence_files).",
+  "rq2_context_files": {
+    "data_acquisition": [
+      "main.py",
+      "deepmwoo/core/capture.py",
+      "deepmwoo/core/train.py",
+      "deepmwoo/core/access.py",
+      "deepmwoo/core/recognize.py",
+      "deepmwoo/core/shapes.py"
+    ],
+    "data_preparation": [
+      "main.py",
+      "deepmwoo/core/capture.py",
+      "deepmwoo/core/train.py",
+      "deepmwoo/core/access.py",
+      "deepmwoo/core/recognize.py",
+      "deepmwoo/core/shapes.py"
+    ],
+    "modeling": [
+      "main.py",
+      "deepmwoo/core/capture.py",
+      "deepmwoo/core/train.py",
+      "deepmwoo/core/access.py",
+      "deepmwoo/core/recognize.py",
+      "deepmwoo/core/shapes.py"
+    ],
+    "training": [
+      "main.py",
+      "deepmwoo/core/capture.py",
+      "deepmwoo/core/train.py",
+      "deepmwoo/core/access.py",
+      "deepmwoo/core/recognize.py",
+      "deepmwoo/core/shapes.py"
+    ],
+    "evaluation": [
+      "main.py",
+      "deepmwoo/core/capture.py",
+      "deepmwoo/core/train.py",
+      "deepmwoo/core/access.py",
+      "deepmwoo/core/recognize.py",
+      "deepmwoo/core/shapes.py"
+    ],
+    "inference": [
+      "main.py",
+      "deepmwoo/core/capture.py",
+      "deepmwoo/core/train.py",
+      "deepmwoo/core/access.py",
+      "deepmwoo/core/recognize.py",
+      "deepmwoo/core/shapes.py"
+    ]
+  }
+}

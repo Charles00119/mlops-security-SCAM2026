@@ -8,7 +8,7 @@ Usage:
 
 For each verified repo:
   1. Shallow clone into a temp directory
-  2. Re-run Stages 1-3 to rebuild the call graph and stage mapping
+  2. Re-run Stages 1-3 to rebuild the import-reachability graph and stage mapping
   3. Run every available tool from tools.TOOLS
   4. Annotate each finding with its stage
   5. Write per-repo JSON to findings-dir, append summary row to summary CSV
