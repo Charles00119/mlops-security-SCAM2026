@@ -14,7 +14,10 @@ Outputs (written to --out-dir, default 00_corpus/data):
   scan_log_full.csv        one row per candidate: the final outcome for every repository
                            (a pass-2 success replaces the earlier failure row; a pass-2 failure
                            keeps the earlier row but records pass2_status)
-  verified_corpus.csv      every repository with all six stages reachable, with entry_route
+  verified_corpus_extended.csv
+                           every repository with all six stages reachable, with entry_route.
+                           (verified_corpus.csv stays the 408-repo corpus used by the paper's
+                           released tables until the RQ analyses are re-run on the extension.)
   corpus_funnel.md         the funnel table for the README
 
 Rules
@@ -80,8 +83,18 @@ def main() -> int:
             r = dict(r); r["repo"] = norm(r["repo"]); r["scan_source"] = os.path.basename(os.path.dirname(p) or p)
             base.setdefault(key(r["repo"]), r)          # first occurrence wins (in order given)
     n_base = len(base)
+    # Rows written by the widened scanner carry an entry_route column; rows from the
+    # original scanner do not. Split the funnel accordingly.
+    def widened(r: dict) -> bool:
+        return "entry_route" in r
+    old_rows = [r for r in base.values() if not widened(r)]
+    new_rows = [r for r in base.values() if widened(r)]
+    old_status = Counter(r["status"] for r in old_rows)
+    new_status = Counter(r["status"] for r in new_rows)
+    old_verified = sum(1 for r in old_rows if r.get("verified") == "True")
+    new_verified = sum(1 for r in new_rows if r.get("verified") == "True")
     base_status = Counter(r["status"] for r in base.values())
-    base_verified = sum(1 for r in base.values() if r.get("verified") == "True")
+    base_verified = old_verified + new_verified
 
     # ---- 2. pass 2 overlay (+ retry runs) -------------------------------------
     p2: dict[str, dict] = {}
@@ -90,8 +103,12 @@ def main() -> int:
             k = key(r["repo"])
             if k not in p2 or p2[k]["status"] == "clone_failed":
                 p2[k] = r
-    p2_status = Counter(r["status"] for r in p2.values())
-    p2_verified = sum(1 for r in p2.values() if r.get("verified") == "True")
+    # pass-2 rows for repos the widened scanner had already judged are redundant re-scans
+    already_widened = {key(r["repo"]) for r in new_rows}
+    p2_eff = {k: r for k, r in p2.items() if k not in already_widened}
+    p2_redundant = len(p2) - len(p2_eff)
+    p2_status = Counter(r["status"] for r in p2_eff.values())
+    p2_verified = sum(1 for r in p2_eff.values() if r.get("verified") == "True")
     replaced = 0
     for k, r2 in p2.items():
         r1 = base.get(k)
@@ -130,7 +147,7 @@ def main() -> int:
     write(os.path.join(args.out_dir, "scan_log_full.csv"), rows, fields)
 
     verified = [r for r in rows if r.get("verified") == "True"]
-    write(os.path.join(args.out_dir, "verified_corpus.csv"), verified, fields)
+    write(os.path.join(args.out_dir, "verified_corpus_extended.csv"), verified, fields)
 
     final_status = Counter(r["status"] for r in rows)
     routes_c = Counter(r.get("entry_route", "") for r in verified)
@@ -140,16 +157,24 @@ def main() -> int:
     lines.append("| Step | Repositories |")
     lines.append("|---|---:|")
     lines.append(f"| Candidate list (Idowu et al.) | {args.candidates_total:,} |")
-    lines.append(f"| Scanned with the original entry-point rules | {n_base:,} |")
-    lines.append(f"| ├ clone failed (repository deleted / private) | {base_status['clone_failed']:,} |")
-    lines.append(f"| ├ no Dockerfile and no root entry file | {base_status['no_dockerfile']:,} |")
-    lines.append(f"| ├ Dockerfile found, no resolvable Python entry point | {base_status['no_entry']:,} |")
-    lines.append(f"| ├ entry point resolved | {base_status['ok']:,} |")
-    lines.append(f"| └ all six stages reachable (**original rules**) | **{base_verified:,}** |")
-    if p2:
-        lines.append(f"| Re-scanned with widened fallback rules (pass 2) | {len(p2):,} |")
+    lines.append(f"| **A. Scanned with the original entry-point rule** (Dockerfile, else root entry file) | {len(old_rows):,} |")
+    lines.append(f"| ├ clone failed (repository deleted / private) | {old_status['clone_failed']:,} |")
+    lines.append(f"| ├ no Dockerfile and no root entry file | {old_status['no_dockerfile']:,} |")
+    lines.append(f"| ├ Dockerfile found, no resolvable Python entry point | {old_status['no_entry']:,} |")
+    lines.append(f"| ├ entry point resolved | {old_status['ok']:,} |")
+    lines.append(f"| └ all six stages reachable | **{old_verified:,}** |")
+    if new_rows:
+        lines.append(f"| **B. Scanned with the widened rule** (+ `src/`, `app/`, package, `console_scripts`) | {len(new_rows):,} |")
+        lines.append(f"| ├ clone failed | {new_status['clone_failed']:,} |")
+        lines.append(f"| ├ no entry point under any rule | {new_status['no_dockerfile'] + new_status['no_entry']:,} |")
+        lines.append(f"| ├ entry point resolved | {new_status['ok']:,} |")
+        lines.append(f"| └ all six stages reachable | **{new_verified:,}** |")
+    if p2_eff:
+        lines.append(f"| **C. A's failures re-scanned with the widened rule** | {len(p2_eff):,} |")
+        lines.append(f"| ├ clone failed | {p2_status['clone_failed']:,} |")
+        lines.append(f"| ├ still no entry point | {p2_status['no_dockerfile'] + p2_status['no_entry']:,} |")
         lines.append(f"| ├ entry point newly resolved | {p2_status['ok']:,} |")
-        lines.append(f"| └ all six stages reachable (**widened rules**) | **{p2_verified:,}** |")
+        lines.append(f"| └ all six stages reachable | **{p2_verified:,}** |")
     lines.append(f"| **Verified corpus (total)** | **{len(verified):,}** |")
     lines.append("")
     lines.append("Verified repositories by entry-point route:")
@@ -169,6 +194,8 @@ def main() -> int:
     print(funnel)
     print(f"final rows: {len(rows):,}  status: {dict(final_status)}")
     print(f"pass-2 successes replacing earlier failures: {replaced:,}")
+    if p2_redundant:
+        print(f"note: {p2_redundant:,} pass-2 rows re-scanned repos the widened scanner had already judged; ignored in the funnel")
     recoverable = sum(1 for r in p2.values() if r["status"] == "clone_failed"
                       and not any(t in r.get("detail", "") for t in ("Password", "not found", "denied")))
     if recoverable:
@@ -177,7 +204,7 @@ def main() -> int:
     unknown = routes_c.get("dockerfile?", 0)
     if unknown:
         print(f"NOTE: {unknown} verified repos have entry_route 'dockerfile?' — run tools/derive_entry_route.py to settle them")
-    print(f"wrote {args.out_dir}/scan_log_full.csv, verified_corpus.csv, corpus_funnel.md")
+    print(f"wrote {args.out_dir}/scan_log_full.csv, verified_corpus_extended.csv, corpus_funnel.md")
     return 0
 
 

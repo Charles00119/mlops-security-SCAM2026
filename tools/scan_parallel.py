@@ -134,6 +134,7 @@ def main() -> int:
         todo = [norm(r["repo"]) for r in failed]
         print(f"[retry] {len(todo)} recoverable clone failures in {src_log} ({gone} skipped as repository gone)")
         args.workdir = args.retry_workdir or (args.workdir.rstrip("/\\") + "_retry")
+        os.makedirs(args.workdir, exist_ok=True)
     elif args.mode == "pass1":
         if not args.candidates:
             ap.error("pass1 needs --candidates")
@@ -153,6 +154,12 @@ def main() -> int:
 
     if todo and not args.merge_only:
         env = dict(os.environ)
+        # Never let a worker block on an interactive credential prompt: a repo
+        # that has gone private/deleted must fail fast and be logged, not pop
+        # up Git Credential Manager's sign-in dialog (observed on Windows).
+        env.setdefault("GIT_TERMINAL_PROMPT", "0")
+        env.setdefault("GCM_INTERACTIVE", "Never")
+        env.setdefault("GIT_ASKPASS", "")
         if args.tmp:
             os.makedirs(args.tmp, exist_ok=True)
             env["TMPDIR"] = env["TMP"] = env["TEMP"] = os.path.abspath(args.tmp)

@@ -17,7 +17,7 @@ re-cloned and no result changed; `taxonomy.py`, `correlate.py` and
   root entry file (see *Corpus extension* below for how this was settled).
   The route is now stated in the README and recorded per repository.
 
-### Corpus extension (in progress)
+### Corpus extension (complete: 31,066 candidates scanned, 686 verified)
 - `tools/scan_parallel.py`: N-worker resumable driver for the Stage 1-3
   scanner; `scans/RUN_LOCALLY.md` documents the two passes (remaining
   candidates with original rules; widened fallback over failed repos).
@@ -31,12 +31,17 @@ re-cloned and no result changed; `taxonomy.py`, `correlate.py` and
 - `tools/build_corpus.py`: merges all scan logs into `scan_log_full.csv`,
   produces the extended `verified_corpus.csv` and the funnel table.
 - **Scan coverage completed**: all 31,066 candidates now have a Stage 1-3
-  outcome (pass 1: 10,235 previously unscanned repos, 86 verified; pass 2:
-  widened fallback over 22,467 failed repos, 179 verified so far).
+  outcome. Original rule: 20,831 scanned, 421 verified. Widened rule: the
+  remaining 10,235 candidates (86 verified) and a re-scan of the original
+  rule's 15,874 failures (179 verified). **Extended corpus: 686 repositories**
+  (`verified_corpus_extended.csv`; 30 dockerfile / 455 root / 162 nested /
+  39 console-script). `verified_corpus.csv` remains the 408-repo corpus
+  behind the paper's released tables.
 - Fixed `orchestrator.py` clone cleanup on Windows (`shutil.rmtree` could not
   delete Git's read-only pack files, so clones accumulated until the disk
   filled; ~2,800 pass-2 clone failures were caused by this and are being
-  retried with the new `scan_parallel.py retry` mode).
+  retried with the new `scan_parallel.py retry` mode; the retry confirmed all
+  of them had already been judged by the widened scanner in pass 1).
 - Fixed `build_corpus.py` ignoring `entry_routes.csv` (loader required a
   `status` column); `--pass2` is now repeatable so retry logs overlay the
   main pass-2 log.

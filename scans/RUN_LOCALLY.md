@@ -84,8 +84,8 @@ python tools/build_corpus.py `
 ```
 
 This writes `00_corpus/data/scan_log_full.csv` (final outcome for every one of
-the 31,066 candidates), `00_corpus/data/verified_corpus.csv` (the extended
-corpus, every row with `entry_route`) and `00_corpus/data/corpus_funnel.md`
+the 31,066 candidates), `00_corpus/data/verified_corpus_extended.csv` (the
+extended corpus, every row with `entry_route`) and `00_corpus/data/corpus_funnel.md`
 (the table for the README), and prints the funnel.
 
 `scans/entry_routes.csv` settles the route for repos scanned before the
@@ -94,11 +94,13 @@ through it). If `build_corpus.py` reports rows still marked `dockerfile?`,
 settle them (a handful of clones) and rebuild:
 
 ```powershell
-python tools/derive_entry_route.py --corpus 00_corpus/data/verified_corpus.csv --out scans/entry_routes.csv --tmp D:\scan_tmp
+python tools/derive_entry_route.py --corpus 00_corpus/data/verified_corpus_extended.csv --out scans/entry_routes.csv --tmp D:\scan_tmp
 ```
 
-Then re-run `python tools/relabel_snapshots.py` so the snapshots' `entry_route`
-matches, and commit `00_corpus/data/*`, `scans/pass1/{scan_log,verified}.csv`
+`00_corpus/data/verified_corpus.csv` remains the 408-repository corpus behind
+the paper's released tables (the README reproduction commands read it) until
+RQ1-RQ3 are re-run on the extension. Then re-run `python tools/relabel_snapshots.py`
+so the snapshots' `entry_route` matches, and commit `00_corpus/data/*`, `scans/pass1/{scan_log,verified}.csv`
 and `scans/pass2/{scan_log,verified}.csv`. The per-worker `log*.csv`,
 `verified*.csv`, `shard*.txt` and `worker*.out` files are intermediate.
 
@@ -108,6 +110,11 @@ and `scans/pass2/{scan_log,verified}.csv`. The per-worker `log*.csv`,
   except the ≤6 repos that were mid-clone.
 - **`clone_failed` rows with "rate limit"**: `GITHUB_TOKEN` is not set in
   that shell, or reduce `--workers`.
+- **A "Connect to GitHub" sign-in window keeps appearing**: that is Git
+  Credential Manager reacting to a repo that is now private/deleted. The
+  script sets `GIT_TERMINAL_PROMPT=0` / `GCM_INTERACTIVE=Never` so this
+  cannot block a worker; if you run the orchestrator by hand, set them
+  yourself. Also check `$env:GITHUB_TOKEN` is set in that shell.
 - **Worker crashes on one repo**: the orchestrator logs it as `error` and
   continues; nothing to do.
 - **Disk fills**: temp clones are deleted per repo; if `D:\scan_tmp` grows,
