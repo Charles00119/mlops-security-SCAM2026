@@ -40,6 +40,7 @@ import sys
 OLD_DIR = os.path.join("00_corpus", "data", "call_graphs")
 NEW_DIR = os.path.join("00_corpus", "data", "import_graphs")
 CORPUS = os.path.join("00_corpus", "data", "verified_corpus.csv")
+ROUTES = os.path.join("scans", "entry_routes.csv")   # from tools/derive_entry_route.py, if present
 
 ANALYSIS_NOTE = (
     "Static import-reachability analysis. Starting from the entry point, "
@@ -70,11 +71,17 @@ def load_corpus(path: str) -> dict[str, dict]:
         return {repo_key(r["repo"]): r for r in csv.DictReader(fh)}
 
 
-def relabel(payload: dict, meta: dict | None) -> dict:
+def relabel(payload: dict, meta: dict | None, route: str | None = None) -> dict:
     out: dict = {"repo": payload.get("repo")}
     if meta is not None:
-        n_docker = int(meta.get("dockerfiles_found") or 0)
-        out["entry_route"] = "dockerfile" if n_docker > 0 else "fallback_entry_file"
+        if meta.get("entry_route"):                      # scanner >= extension: recorded directly
+            out["entry_route"] = meta["entry_route"]
+        elif route:                                      # settled by derive_entry_route.py
+            out["entry_route"] = route
+        elif int(meta.get("dockerfiles_found") or 0) == 0:
+            out["entry_route"] = "fallback_root"         # no Dockerfile at all: unambiguous
+        else:
+            out["entry_route"] = "dockerfile?"           # Dockerfile present; resolution unknown
         out["entry_files"] = [p.strip().replace("\\", "/")
                               for p in (meta.get("entry_files") or "").split(";") if p.strip()]
         out["stages_present"] = int(meta.get("stages_present") or 0)
@@ -104,13 +111,17 @@ def main() -> int:
         return 2
 
     corpus = load_corpus(CORPUS)
+    routes: dict[str, str] = {}
+    if os.path.isfile(ROUTES):
+        with open(ROUTES, newline="", encoding="utf-8") as fh:
+            routes = {repo_key(r["repo"]): r["entry_route"] for r in csv.DictReader(fh) if r.get("entry_route")}
     files = sorted(f for f in os.listdir(src) if f.endswith(".json"))
-    print(f"{len(files)} snapshots in {src}; {len(corpus)} corpus rows")
+    print(f"{len(files)} snapshots in {src}; {len(corpus)} corpus rows; {len(routes)} settled routes")
 
     if args.dry_run:
         sample = files[0]
         with open(os.path.join(src, sample), encoding="utf-8") as fh:
-            print(json.dumps(relabel(json.load(fh), corpus.get(sample[:-5])), indent=1)[:900])
+            print(json.dumps(relabel(json.load(fh), corpus.get(sample[:-5]), routes.get(sample[:-5])), indent=1)[:900])
         print(f"\n[dry-run] would rename {src} -> {NEW_DIR} and rewrite {len(files)} files")
         return 0
 
@@ -121,7 +132,7 @@ def main() -> int:
             os.rename(OLD_DIR, NEW_DIR)
         print(f"renamed {OLD_DIR} -> {NEW_DIR}")
 
-    missing_meta, routes = [], {"dockerfile": 0, "fallback_entry_file": 0, "unknown": 0}
+    missing_meta, route_counts = [], {}
     for fn in files:
         p = os.path.join(NEW_DIR, fn)
         with open(p, encoding="utf-8") as fh:
@@ -129,13 +140,13 @@ def main() -> int:
         meta = corpus.get(fn[:-5])
         if meta is None:
             missing_meta.append(fn)
-        new = relabel(payload, meta)
-        routes[new["entry_route"]] += 1
+        new = relabel(payload, meta, routes.get(fn[:-5]))
+        route_counts[new["entry_route"]] = route_counts.get(new["entry_route"], 0) + 1
         with open(p, "w", encoding="utf-8") as fh:
             json.dump(new, fh, indent=2, ensure_ascii=False)
             fh.write("\n")
 
-    print(f"rewrote {len(files)} snapshots; entry routes: {routes}")
+    print(f"rewrote {len(files)} snapshots; entry routes: {route_counts}")
     if missing_meta:
         print(f"WARNING: {len(missing_meta)} snapshots had no corpus row: {missing_meta[:5]}")
     absent = sorted(set(corpus) - {f[:-5] for f in files})

@@ -12,9 +12,24 @@ re-cloned and no result changed; `taxonomy.py`, `correlate.py` and
   import-reachability graph** (file-level; nodes are modules, edges are
   imports; no caller→callee edges). The `CallGraph` / `build_call_graph`
   identifiers are kept for API stability and documented as historical.
-- The corpus is no longer described as "Dockerfile-rooted": 79 repositories
-  are rooted at a Dockerfile command, 329 at a conventional root entry file.
+- The corpus is no longer described as "Dockerfile-rooted": only 25
+  repositories are rooted at a Dockerfile command; 383 use a conventional
+  root entry file (see *Corpus extension* below for how this was settled).
   The route is now stated in the README and recorded per repository.
+
+### Corpus extension (in progress)
+- `tools/scan_parallel.py`: N-worker resumable driver for the Stage 1-3
+  scanner; `scans/RUN_LOCALLY.md` documents the two passes (remaining
+  candidates with original rules; widened fallback over failed repos).
+- `dockerfile_parser.py`: fallback now also checks `src/`, `app/`, top-level
+  packages and `console_scripts`, and records `EntryPoint.route`;
+  `orchestrator.py` writes `entry_route` per repo.
+- `tools/derive_entry_route.py` + `scans/entry_routes.csv`: settled the route
+  for the 79 original repos with a Dockerfile — only **25 resolve through
+  it**; the other 54 fell back to a root entry file. Corpus split corrected
+  to 25 Dockerfile-rooted / 383 fallback (README, snapshots).
+- `tools/build_corpus.py`: merges all scan logs into `scan_log_full.csv`,
+  produces the extended `verified_corpus.csv` and the funnel table.
 
 ### Data artifacts
 - `00_corpus/data/call_graphs/` → `00_corpus/data/import_graphs/`.

@@ -27,11 +27,15 @@ repository is located and its `ENTRYPOINT`/`CMD` (exec or shell form, with
 `WORKDIR`, `python -m module`, and shell-script indirection) is resolved to a
 Python file. If no Dockerfile yields a resolvable Python entry point, the
 scanner falls back to the first of `main.py`, `run.py`, `app.py`, `train.py`,
-`__main__.py` found at the repository root. In the verified corpus, **79
-repositories are Dockerfile-rooted and 329 use the fallback entry file**; the
-route is recorded per repository in `verified_corpus.csv`
-(`dockerfiles_found > 0`) and in each snapshot under `import_graphs/`
-(`entry_route`).
+`__main__.py` found at the repository root. A Dockerfile that exists but whose
+command cannot be resolved (e.g. it runs a shell script or a non-Python
+program) also ends on the fallback. In the 408-repository corpus, **25
+repositories are Dockerfile-rooted and 383 use the fallback entry file** (79
+have a Dockerfile, but only 25 of those resolve through it). The route is
+recorded per repository as `entry_route` in `verified_corpus.csv`, in each
+snapshot under `import_graphs/`, and in `scans/entry_routes.csv` (produced by
+`tools/derive_entry_route.py` for repositories scanned before the scanner
+recorded the route).
 
 **Stage 2 — import-reachability graph** (`ast_callgraph.py`). Starting from
 the entry file, in-repo `import` statements are followed breadth-first using
@@ -85,9 +89,15 @@ is `_archive/scan_log.csv`.
 | ├ entry point resolved, fewer than 6 stages reachable | 2,561 |
 | └ **all 6 stages reachable → verified corpus** | **408** |
 
-Of the 408: 79 Dockerfile-rooted, 329 fallback-entry-file; 6,121 of the
+Of the 408: 25 Dockerfile-rooted, 383 fallback-entry-file; 6,121 of the
 31,066 candidates carry a Dockerfile according to the source list, 3,587 of
 which fell inside the scanned range.
+
+The scan is being extended to the full candidate list, with a widened fallback
+rule (`src/`, `app/`, top-level package, `console_scripts`) applied to
+repositories that failed under the original rule; see `scans/RUN_LOCALLY.md`
+and `tools/build_corpus.py`. Numbers above describe the 408-repository corpus
+used by the current version of the paper.
 
 ## Repository layout
 
@@ -125,7 +135,8 @@ rq3_maturity_discourse/   RQ3: maturity vs. security + issue discourse
   figures/                correlation_plots.png
 
 shared/                   cross-RQ helpers + master_findings.csv
-tools/                    maintenance scripts (relabel_snapshots.py)
+tools/                    relabel_snapshots.py, scan_parallel.py, derive_entry_route.py, build_corpus.py
+scans/                    corpus-extension runs: RUN_LOCALLY.md, pass logs, entry_routes.csv
 _archive/                 scan_log.csv (full Stage 1-3 log) and earlier intermediate outputs
 ```
 
@@ -137,6 +148,7 @@ _archive/                 scan_log.csv (full Stage 1-3 log) and earlier intermed
 | `00_corpus/data/verified_corpus.csv` | the 408 verified repositories, with entry file(s), Dockerfile count, per-stage evidence |
 | `00_corpus/data/corpus_metrics.csv` | per-repo maturity metrics (stars, forks, contributors, closed PRs, age) |
 | `00_corpus/data/import_graphs/` | per-repo reachability snapshots: `entry_route`, `entry_files`, `reachable_files`, `rq2_context_files` (407 files; see note below) |
+| `scans/entry_routes.csv` | settled `entry_route` for the 79 pre-extension repos that carry a Dockerfile (25 resolve through it) |
 | `_archive/scan_log.csv` | Stage 1–3 outcome for every one of the 18,533 scanned candidates |
 | `rq1_static_taxonomy/data/stage4_findings/` | per-repo static-tool findings (one JSON per repo) |
 | `rq1_static_taxonomy/data/taxonomy_static_matrix.csv` | stage x 15 threat categories |
@@ -234,10 +246,12 @@ python rq3_maturity_discourse/code/fetch_github_extras.py --mode issues --top 20
   unscanned tail has a higher mean star count (102 vs 46) and holds 2,534 of
   the 6,121 Dockerfile-bearing candidates. The 408-repository corpus is
   therefore skewed toward smaller projects, which bears on RQ3.
-- **Entry-point route.** 329 of 408 repositories are rooted at a conventional
-  root entry file rather than a Dockerfile command; the fallback only inspects
-  the repository root, so projects with `src/`-style layouts and no Dockerfile
-  were excluded. All results can be split by `entry_route`.
+- **Entry-point route.** 383 of 408 repositories are rooted at a conventional
+  root entry file rather than a Dockerfile command (54 of them have a
+  Dockerfile whose command did not resolve to Python). The original fallback
+  only inspected the repository root, so projects with `src/`-style layouts
+  and no Dockerfile were excluded; the widened rule addresses this in the
+  extended corpus. All results can be split by `entry_route`.
 - **Reachability is static and file-level.** See *How reachability is
   computed*. Import-reachable code is not necessarily executed, and
   function-level reachability is not modelled.

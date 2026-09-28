@@ -53,19 +53,32 @@ Output: `scans/pass2/scan_log.csv` and `scans/pass2/verified.csv`. Every
 verified row carries `entry_route` = `fallback_nested` or
 `fallback_console_script`.
 
-## 3. When both are done
+## 3. When both are done — build the corpus files
 
-Send back (or commit) these four files:
+```powershell
+python tools/build_corpus.py `
+  --original _archive/scan_log.csv `
+  --extra scans/scan_log_pass1_partial.csv `
+  --extra scans/pass1/scan_log.csv `
+  --pass2 scans/pass2/scan_log.csv `
+  --routes scans/entry_routes.csv `
+  --out-dir 00_corpus/data
+```
 
-- `scans/pass1/scan_log.csv`
-- `scans/pass1/verified.csv`
-- `scans/pass2/scan_log.csv`
-- `scans/pass2/verified.csv`
+This writes `00_corpus/data/scan_log_full.csv` (final outcome for every one of
+the 31,066 candidates), `00_corpus/data/verified_corpus.csv` (the extended
+corpus, every row with `entry_route`) and `00_corpus/data/corpus_funnel.md`
+(the table for the README), and prints the funnel.
 
-From them the final `verified_corpus.csv`, the merged 31,066-row
-`scan_log.csv`, the funnel table and the README numbers are generated; the
-original 408 also get their `entry_route` re-derived (a 3-minute re-clone of
-the 79 Dockerfile-bearing repos).
+`scans/entry_routes.csv` settles the route for the 79 original repos that
+carry a Dockerfile (only 25 resolve through it). It is already in the repo;
+regenerate it with `python tools/derive_entry_route.py --tmp D:\scan_tmp`
+if the corpus file changes.
+
+Then re-run `python tools/relabel_snapshots.py` so the snapshots' `entry_route`
+matches, and commit `00_corpus/data/*`, `scans/pass1/{scan_log,verified}.csv`
+and `scans/pass2/{scan_log,verified}.csv`. The per-worker `log*.csv`,
+`verified*.csv`, `shard*.txt` and `worker*.out` files are intermediate.
 
 ## If something goes wrong
 
