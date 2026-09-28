@@ -99,10 +99,13 @@ def relabel(payload: dict, meta: dict | None, route: str | None = None) -> dict:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--corpus", default=CORPUS,
+                    help="corpus CSV providing entry_route/entry_files per repo "
+                         "(use 00_corpus/data/verified_corpus_extended.csv after the extension)")
     args = ap.parse_args()
 
-    if not os.path.isfile(CORPUS):
-        print(f"run from the repository root (missing {CORPUS})", file=sys.stderr)
+    if not os.path.isfile(args.corpus):
+        print(f"run from the repository root (missing {args.corpus})", file=sys.stderr)
         return 2
 
     src = OLD_DIR if os.path.isdir(OLD_DIR) else NEW_DIR
@@ -110,7 +113,7 @@ def main() -> int:
         print("no snapshot directory found", file=sys.stderr)
         return 2
 
-    corpus = load_corpus(CORPUS)
+    corpus = load_corpus(args.corpus)
     routes: dict[str, str] = {}
     if os.path.isfile(ROUTES):
         with open(ROUTES, newline="", encoding="utf-8") as fh:

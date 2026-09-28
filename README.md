@@ -115,8 +115,10 @@ The paper's released tables (RQ1–RQ3) were computed on the **408-repository
 corpus** in `verified_corpus.csv` — the repositories verified by the original
 rule in the first 18,533 candidates (25 Dockerfile-rooted, 383 root entry
 file). The extended 686-repository corpus in `verified_corpus_extended.csv`
-is released with this package; re-running RQ1–RQ3 on it is future work and
-the scripts take the corpus file as a parameter.
+is released with this package; the step-by-step procedure for re-running
+RQ1–RQ3 on it is `scans/RUN_ANALYSIS.md` (every script takes the corpus file
+as a parameter and resumes from its log, so only the added repositories are
+processed).
 
 ## Repository layout
 
