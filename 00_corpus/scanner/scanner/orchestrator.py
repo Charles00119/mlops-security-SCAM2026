@@ -82,6 +82,36 @@ class RepoResult:
 CSV_FIELDS = list(RepoResult.__dataclass_fields__.keys())
 
 
+def remove_tree(path: str, attempts: int = 3) -> bool:
+    """Delete a clone directory, robustly, on every platform.
+
+    Git marks pack files under .git/objects read-only; on Windows
+    shutil.rmtree() silently fails on those when ignore_errors=True, leaving
+    the bulk of every clone behind until the disk fills (observed: ~2,600
+    'No space left on device' clone failures in one pass). Clear the
+    read-only bit and retry; also retry briefly for files an antivirus
+    scanner may still be holding open.
+    """
+    import stat
+    import time
+
+    def _on_error(func, p, exc_info):
+        try:
+            os.chmod(p, stat.S_IWRITE)
+            func(p)
+        except OSError:
+            pass
+
+    for i in range(attempts):
+        if not os.path.exists(path):
+            return True
+        shutil.rmtree(path, onerror=_on_error)
+        if not os.path.exists(path):
+            return True
+        time.sleep(1 + i)
+    return not os.path.exists(path)
+
+
 # ---------------------------------------------------------------------------
 # Resume support
 # ---------------------------------------------------------------------------
@@ -281,7 +311,7 @@ def run(repo_list: list[str], log_path: str, verified_path: str, token: str | No
                     )
                     traceback.print_exc()
         finally:
-            shutil.rmtree(tmp, ignore_errors=True)
+            remove_tree(tmp)
 
         # Log every repo, always.
         append_result(log_path, result)

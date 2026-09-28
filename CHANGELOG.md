@@ -30,6 +30,17 @@ re-cloned and no result changed; `taxonomy.py`, `correlate.py` and
   to 25 Dockerfile-rooted / 383 fallback (README, snapshots).
 - `tools/build_corpus.py`: merges all scan logs into `scan_log_full.csv`,
   produces the extended `verified_corpus.csv` and the funnel table.
+- **Scan coverage completed**: all 31,066 candidates now have a Stage 1-3
+  outcome (pass 1: 10,235 previously unscanned repos, 86 verified; pass 2:
+  widened fallback over 22,467 failed repos, 179 verified so far).
+- Fixed `orchestrator.py` clone cleanup on Windows (`shutil.rmtree` could not
+  delete Git's read-only pack files, so clones accumulated until the disk
+  filled; ~2,800 pass-2 clone failures were caused by this and are being
+  retried with the new `scan_parallel.py retry` mode).
+- Fixed `build_corpus.py` ignoring `entry_routes.csv` (loader required a
+  `status` column); `--pass2` is now repeatable so retry logs overlay the
+  main pass-2 log.
+- `.gitignore`: per-worker scan intermediates and `*.patch` files.
 
 ### Data artifacts
 - `00_corpus/data/call_graphs/` → `00_corpus/data/import_graphs/`.

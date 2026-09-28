@@ -44,11 +44,12 @@ def key(u: str) -> str:
     return norm(u).lower()
 
 
-def load(path: str) -> list[dict]:
+def load(path: str, require_status: bool = True) -> list[dict]:
     if not path or not os.path.isfile(path):
         return []
     with open(path, newline="", encoding="utf-8") as fh:
-        return [r for r in csv.DictReader(fh) if r.get("repo") and r.get("status")]
+        return [r for r in csv.DictReader(fh)
+                if r.get("repo") and (r.get("status") or not require_status)]
 
 
 def write(path: str, rows: list[dict], fields: list[str]) -> None:
@@ -64,7 +65,9 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--original", default="_archive/scan_log.csv")
     ap.add_argument("--extra", action="append", default=[])
-    ap.add_argument("--pass2", default="scans/pass2/scan_log.csv")
+    ap.add_argument("--pass2", action="append", default=None,
+                    help="widened-fallback scan log(s); repeatable. Later files override earlier ones for the "
+                         "same repo when the earlier row was clone_failed (i.e. retry runs).")
     ap.add_argument("--routes", default="scans/entry_routes.csv")
     ap.add_argument("--candidates-total", type=int, default=31066)
     ap.add_argument("--out-dir", default="00_corpus/data")
@@ -80,8 +83,13 @@ def main() -> int:
     base_status = Counter(r["status"] for r in base.values())
     base_verified = sum(1 for r in base.values() if r.get("verified") == "True")
 
-    # ---- 2. pass 2 overlay --------------------------------------------------
-    p2 = {key(r["repo"]): r for r in load(args.pass2)}
+    # ---- 2. pass 2 overlay (+ retry runs) -------------------------------------
+    p2: dict[str, dict] = {}
+    for p in (args.pass2 or ["scans/pass2/scan_log.csv"]):
+        for r in load(p):
+            k = key(r["repo"])
+            if k not in p2 or p2[k]["status"] == "clone_failed":
+                p2[k] = r
     p2_status = Counter(r["status"] for r in p2.values())
     p2_verified = sum(1 for r in p2.values() if r.get("verified") == "True")
     replaced = 0
@@ -98,7 +106,10 @@ def main() -> int:
             r1["pass2_status"] = r2["status"]
 
     # ---- 3. entry_route for pre-extension rows -------------------------------
-    routes = {key(r["repo"]): r.get("entry_route", "") for r in load(args.routes)} if os.path.isfile(args.routes) else {}
+    routes = {key(r["repo"]): r.get("entry_route", "")
+              for r in load(args.routes, require_status=False)
+              if r.get("entry_route") and r["entry_route"] not in ("unavailable", "unresolved")}
+    print(f"settled entry routes loaded: {len(routes)}")
     for k, r in base.items():
         if r.get("entry_route"):
             continue
@@ -158,6 +169,11 @@ def main() -> int:
     print(funnel)
     print(f"final rows: {len(rows):,}  status: {dict(final_status)}")
     print(f"pass-2 successes replacing earlier failures: {replaced:,}")
+    recoverable = sum(1 for r in p2.values() if r["status"] == "clone_failed"
+                      and not any(t in r.get("detail", "") for t in ("Password", "not found", "denied")))
+    if recoverable:
+        print(f"NOTE: {recoverable:,} pass-2 rows are clone failures with a recoverable reason (disk full, timeout, path) — "
+              f"re-run them with: python tools/scan_parallel.py retry --workdir scans/pass2 --retry-workdir scans/pass2_retry ...")
     unknown = routes_c.get("dockerfile?", 0)
     if unknown:
         print(f"NOTE: {unknown} verified repos have entry_route 'dockerfile?' — run tools/derive_entry_route.py to settle them")

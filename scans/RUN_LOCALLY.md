@@ -53,6 +53,23 @@ Output: `scans/pass2/scan_log.csv` and `scans/pass2/verified.csv`. Every
 verified row carries `entry_route` = `fallback_nested` or
 `fallback_console_script`.
 
+## 2b. Retry recoverable clone failures
+
+Check the pass's merged log for `clone_failed` rows whose reason is not
+"repository gone" (disk full, timeout, path error). The first pass-2 run hit
+a full `D:` because the pre-fix orchestrator could not delete Git's read-only
+pack files on Windows; that is fixed, but always empty the temp folder first:
+
+```powershell
+Remove-Item D:\scan_tmp\* -Recurse -Force
+python tools/scan_parallel.py retry `
+  --workdir scans/pass2 --retry-workdir scans/pass2_retry --workers 6 --tmp D:\scan_tmp
+```
+
+Output: `scans/pass2_retry/scan_log.csv` and `verified.csv`. Pass both pass-2
+logs to `build_corpus.py` (later `--pass2` files override earlier
+`clone_failed` rows).
+
 ## 3. When both are done — build the corpus files
 
 ```powershell
@@ -61,6 +78,7 @@ python tools/build_corpus.py `
   --extra scans/scan_log_pass1_partial.csv `
   --extra scans/pass1/scan_log.csv `
   --pass2 scans/pass2/scan_log.csv `
+  --pass2 scans/pass2_retry/scan_log.csv `
   --routes scans/entry_routes.csv `
   --out-dir 00_corpus/data
 ```
@@ -70,10 +88,14 @@ the 31,066 candidates), `00_corpus/data/verified_corpus.csv` (the extended
 corpus, every row with `entry_route`) and `00_corpus/data/corpus_funnel.md`
 (the table for the README), and prints the funnel.
 
-`scans/entry_routes.csv` settles the route for the 79 original repos that
-carry a Dockerfile (only 25 resolve through it). It is already in the repo;
-regenerate it with `python tools/derive_entry_route.py --tmp D:\scan_tmp`
-if the corpus file changes.
+`scans/entry_routes.csv` settles the route for repos scanned before the
+scanner recorded it (79 original repos with a Dockerfile: only 25 resolve
+through it). If `build_corpus.py` reports rows still marked `dockerfile?`,
+settle them (a handful of clones) and rebuild:
+
+```powershell
+python tools/derive_entry_route.py --corpus 00_corpus/data/verified_corpus.csv --out scans/entry_routes.csv --tmp D:\scan_tmp
+```
 
 Then re-run `python tools/relabel_snapshots.py` so the snapshots' `entry_route`
 matches, and commit `00_corpus/data/*`, `scans/pass1/{scan_log,verified}.csv`

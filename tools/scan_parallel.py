@@ -11,6 +11,10 @@ Two passes are supported:
           the given --done logs. Only useful with the widened fallback rules
           (dockerfile_parser._fallback_entry, routes fallback_nested /
           fallback_console_script); repos that already resolved are skipped.
+  retry   re-scan the repos whose row in --workdir/scan_log.csv is a
+          clone_failed with a recoverable reason (disk full, timeout, path
+          error, LFS) into --retry-workdir. Repos that are gone ("Password",
+          "not found", "denied") are not retried.
 
 Each worker writes its own log; when all workers exit the logs are merged
 into --out-log (and verified rows into --out-verified). Re-running the same
@@ -30,6 +34,10 @@ Examples (run from the repository root; set GITHUB_TOKEN first):
       --done _archive/scan_log.csv --done scans/pass1/scan_log.csv \
       --workdir scans/pass2 --workers 6 --tmp D:/scan_tmp
 
+  # retry recoverable clone failures of pass 2
+  python tools/scan_parallel.py retry \
+      --workdir scans/pass2 --retry-workdir scans/pass2_retry --workers 6 --tmp D:/scan_tmp
+
 Windows: run `git config --global core.longpaths true` once beforehand.
 """
 from __future__ import annotations
@@ -45,6 +53,7 @@ import time
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ORCH = os.path.join(ROOT, "00_corpus", "scanner", "scanner", "orchestrator.py")
 FAIL_STATUSES = {"no_entry", "no_dockerfile"}
+GONE_MARKERS = ("Password", "not found", "denied", "does not exist")   # clone failures that are not worth retrying
 
 
 def norm(u: str) -> str:
@@ -96,11 +105,13 @@ def merge_logs(paths: list[str], out: str) -> list[dict]:
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("mode", choices=["pass1", "pass2"])
+    ap.add_argument("mode", choices=["pass1", "pass2", "retry"])
     ap.add_argument("--candidates", help="pass1: .xlsx/.csv/.txt of candidate repos")
     ap.add_argument("--done", action="append", default=[],
                     help="existing scan log(s); repeatable. pass1 skips these, pass2 selects failures from them")
-    ap.add_argument("--workdir", required=True, help="where shard lists, worker logs and merged output go")
+    ap.add_argument("--workdir", required=True, help="where shard lists, worker logs and merged output go "
+                                                        "(retry: the workdir whose clone failures to retry)")
+    ap.add_argument("--retry-workdir", help="retry: where the retry run's shards/logs go (default <workdir>_retry)")
     ap.add_argument("--workers", type=int, default=6)
     ap.add_argument("--tmp", help="directory for temporary clones (fast local disk recommended)")
     ap.add_argument("--merge-only", action="store_true", help="skip scanning; just merge existing worker logs")
@@ -113,7 +124,17 @@ def main() -> int:
     done_rows = [r for p in args.done for r in load_log(p)]
     done_keys = {norm(r["repo"]).lower() for r in done_rows}
 
-    if args.mode == "pass1":
+    if args.mode == "retry":
+        src_log = os.path.join(args.workdir, "scan_log.csv")
+        if not os.path.isfile(src_log):
+            ap.error(f"retry: {src_log} not found (run the pass to completion first; it writes the merged log)")
+        failed = [r for r in load_log(src_log) if r["status"] == "clone_failed"
+                  and not any(m in r.get("detail", "") for m in GONE_MARKERS)]
+        gone = sum(1 for r in load_log(src_log) if r["status"] == "clone_failed") - len(failed)
+        todo = [norm(r["repo"]) for r in failed]
+        print(f"[retry] {len(todo)} recoverable clone failures in {src_log} ({gone} skipped as repository gone)")
+        args.workdir = args.retry_workdir or (args.workdir.rstrip("/\\") + "_retry")
+    elif args.mode == "pass1":
         if not args.candidates:
             ap.error("pass1 needs --candidates")
         todo = [u for u in load_candidates(args.candidates) if u.lower() not in done_keys]

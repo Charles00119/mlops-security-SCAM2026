@@ -74,7 +74,7 @@ def load_corpus(path: str) -> dict[str, dict]:
 def relabel(payload: dict, meta: dict | None, route: str | None = None) -> dict:
     out: dict = {"repo": payload.get("repo")}
     if meta is not None:
-        if meta.get("entry_route"):                      # scanner >= extension: recorded directly
+        if meta.get("entry_route") and meta["entry_route"] != "dockerfile?":   # recorded by the scanner
             out["entry_route"] = meta["entry_route"]
         elif route:                                      # settled by derive_entry_route.py
             out["entry_route"] = route
@@ -151,7 +151,8 @@ def main() -> int:
         print(f"WARNING: {len(missing_meta)} snapshots had no corpus row: {missing_meta[:5]}")
     absent = sorted(set(corpus) - {f[:-5] for f in files})
     if absent:
-        print(f"NOTE: {len(absent)} corpus repos have no snapshot: {absent}")
+        print(f"NOTE: {len(absent)} corpus repos have no snapshot yet (e.g. {', '.join(absent[:4])}, ...). "
+              f"Snapshots are written by rq2_llm_defenses/code/llm_scan.py when a repo is audited.")
     return 0
 
 
