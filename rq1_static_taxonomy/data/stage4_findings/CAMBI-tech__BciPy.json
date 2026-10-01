@@ -1,0 +1,532 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "bcipy/acquisition/demo/demo_eeg_with_switch.py",
+    "line": 15,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "14     return subprocess.Popen(f'python {BCIPY_ROOT}/acquisition/datastream/mock/switch.py',\n15                             shell=True)\n16 \n17",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "bcipy/acquisition/demo/demo_switch.py",
+    "line": 15,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "14         f'python {BCIPY_ROOT}/acquisition/datastream/mock/switch.py',\n15         shell=True)\n16 \n17 \n18 def main(debug: bool = False):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "bcipy/core/session.py",
+    "line": 145,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "144     placeholders = ['?' for _ in fields(cls)]\n145     return f\"INSERT INTO {table_name} VALUES ({','.join(placeholders)})\"\n146",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "bcipy/gui/BCInterface.py",
+    "line": 215,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "214                 f'python {BCIPY_ROOT}/gui/experiments/ExperimentRegistry.py',\n215                 shell=True)\n216 \n217             self.update_experiment_list()\n218",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "bcipy/gui/BCInterface.py",
+    "line": 419,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "418             f'bcipy-params -p \"{self.parameter_location}\"',\n419             shell=True)\n420         if output:\n421             self.parameter_location = output.decode().strip()\n422",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "bcipy/gui/BCInterface.py",
+    "line": 562,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "561         \"\"\"\n562         output = subprocess.run(cmd, shell=True)\n563         if output.returncode != 0:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "bcipy/gui/BCInterface.py",
+    "line": 577,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "576             cmd = f'bcipy-train --alert --p \"{self.parameter_location}\" -v -s'\n577             subprocess.Popen(cmd, shell=True)\n578",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "bcipy/gui/experiments/ExperimentRegistry.py",
+    "line": 227,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "226         subprocess.call(\n227             f\"python {BCIPY_ROOT}/gui/experiments/FieldRegistry.py\", shell=True\n228         )\n229 \n230         self.update_field_list()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "bcipy/helpers/acquisition.py",
+    "line": 296,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "295     cmd = f'python {viewer} -m {display_screen} -p {parameter_location}'\n296     subprocess.Popen(cmd, shell=True)\n297",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "bcipy/io/load.py",
+    "line": 218,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "217         with open(file_path, \"rb\") as signal_file:\n218             model = pickle.load(signal_file)\n219             log.info(f\"Loading model {model}\")",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "bcipy/io/load.py",
+    "line": 251,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "250     with open(file_path, \"rb\") as signal_file:\n251         model = pickle.load(signal_file)\n252         log.info(f\"Loading model {model}\")",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "bcipy/signal/model/gaussian_mixture/gaussian_mixture.py",
+    "line": 134,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "133         with open(path, \"rb\") as f:\n134             model = pickle.load(f)\n135",
+    "stage": "data_acquisition+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "bcipy/signal/model/gaussian_mixture/gaussian_mixture.py",
+    "line": 293,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "292         with open(path, \"rb\") as f:\n293             model = pickle.load(f)\n294",
+    "stage": "data_acquisition+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "bcipy/signal/model/offline_analysis.py",
+    "line": 229,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "228             cmd,\n229             shell=True\n230         )\n231     return model\n232 \n233",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "bcipy/signal/model/pca_rda_kde/pca_rda_kde.py",
+    "line": 231,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "230         with open(path, \"rb\") as f:\n231             model = pickle.load(f)\n232",
+    "stage": "data_acquisition+data_preparation+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "bcipy/signal/model/rda_kde/rda_kde.py",
+    "line": 179,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "178         with open(path, \"rb\") as f:\n179             self.model = pickle.load(f)\n180         self._ready_to_predict = True",
+    "stage": "data_acquisition+data_preparation+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "bcipy/simulator/ui/gui.py",
+    "line": 759,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "758         print(command, file=sys.stdout)\n759         subprocess.run(command, shell=True)\n760     return command",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "bcipy/task/actions.py",
+    "line": 82,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "81             if self.subprocess:\n82                 subprocess.Popen(self.code_hook, shell=True)\n83             else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "bcipy/task/actions.py",
+    "line": 84,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "83             else:\n84                 subprocess.run(self.code_hook, shell=True)\n85         return TaskData()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "bcipy/task/actions.py",
+    "line": 154,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "153                 cmd,\n154                 shell=True,\n155                 check=True,\n156             )\n157         except Exception as e:\n158             logger.exception(f\"Error running offline analysis: {e}\")\n159             raise e",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "bcipy/task/orchestrator/orchestrator.py",
+    "line": 234,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "233                                 f'--parameters \"{self.parameters_path}\" --show --save',\n234                                 shell=True)\n235                         except Exception as e:\n236                             self.logger.info(\n237                                 f'Error visualizing session data: {e}')\n238",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B604",
+    "file_path": "bcipy/task/tests/core/test_actions.py",
+    "line": 24,
+    "message": "Function call with shell=True parameter identified, possible security issue.",
+    "snippet": "23         code_hook = 'code_hook'\n24         when(subprocess).Popen(code_hook, shell=True).thenReturn(None)\n25         action = CodeHookAction(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B604",
+    "file_path": "bcipy/task/tests/core/test_actions.py",
+    "line": 33,
+    "message": "Function call with shell=True parameter identified, possible security issue.",
+    "snippet": "32         self.assertIsInstance(response, TaskData)\n33         verify(subprocess, times=1).Popen(code_hook, shell=True)\n34",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B604",
+    "file_path": "bcipy/task/tests/core/test_actions.py",
+    "line": 37,
+    "message": "Function call with shell=True parameter identified, possible security issue.",
+    "snippet": "36         code_hook = 'code_hook'\n37         when(subprocess).run(code_hook, shell=True).thenReturn(None)\n38         action = CodeHookAction(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B604",
+    "file_path": "bcipy/task/tests/core/test_actions.py",
+    "line": 46,
+    "message": "Function call with shell=True parameter identified, possible security issue.",
+    "snippet": "45         self.assertIsInstance(response, TaskData)\n46         verify(subprocess, times=1).run(code_hook, shell=True)\n47",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B604",
+    "file_path": "bcipy/task/tests/core/test_actions.py",
+    "line": 52,
+    "message": "Function call with shell=True parameter identified, possible security issue.",
+    "snippet": "51         when(subprocess).run(cmd_expected,\n52                              shell=True, check=True).thenReturn(None)\n53         action = OfflineAnalysisAction(\n54             parameters=self.parameters,",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B604",
+    "file_path": "bcipy/task/tests/core/test_actions.py",
+    "line": 60,
+    "message": "Function call with shell=True parameter identified, possible security issue.",
+    "snippet": "59         self.assertIsInstance(response, TaskData)\n60         verify(subprocess, times=1).run(cmd_expected, shell=True, check=True)\n61",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-uuid-version.insecure-uuid-version",
+    "file_path": "bcipy/acquisition/datastream/lsl_server.py",
+    "line": 69,
+    "message": "Using UUID version 1 for UUID generation can lead to predictable UUIDs based on system information (e.g., MAC address, timestamp). This may lead to security risks such as the sandwich attack. Consider using `uuid.uuid4()` instead for better randomness and security.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "bcipy/acquisition/demo/demo_eeg_with_switch.py",
+    "line": 15,
+    "message": "Found 'subprocess' function 'Popen' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "bcipy/acquisition/demo/demo_switch.py",
+    "line": 15,
+    "message": "Found 'subprocess' function 'Popen' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "bcipy/gui/BCInterface.py",
+    "line": 215,
+    "message": "Found 'subprocess' function 'call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "bcipy/gui/BCInterface.py",
+    "line": 419,
+    "message": "Found 'subprocess' function 'check_output' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "bcipy/gui/BCInterface.py",
+    "line": 562,
+    "message": "Found 'subprocess' function 'run' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "bcipy/gui/BCInterface.py",
+    "line": 577,
+    "message": "Found 'subprocess' function 'Popen' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "bcipy/gui/experiments/ExperimentRegistry.py",
+    "line": 227,
+    "message": "Found 'subprocess' function 'call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "bcipy/helpers/acquisition.py",
+    "line": 296,
+    "message": "Found 'subprocess' function 'Popen' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "bcipy/io/load.py",
+    "line": 218,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "bcipy/io/load.py",
+    "line": 251,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "bcipy/io/save.py",
+    "line": 212,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "bcipy/signal/model/gaussian_mixture/gaussian_mixture.py",
+    "line": 129,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "bcipy/signal/model/gaussian_mixture/gaussian_mixture.py",
+    "line": 134,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "bcipy/signal/model/gaussian_mixture/gaussian_mixture.py",
+    "line": 288,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "bcipy/signal/model/gaussian_mixture/gaussian_mixture.py",
+    "line": 293,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "bcipy/signal/model/offline_analysis.py",
+    "line": 229,
+    "message": "Found 'subprocess' function 'run' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "bcipy/signal/model/pca_rda_kde/pca_rda_kde.py",
+    "line": 226,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "bcipy/signal/model/pca_rda_kde/pca_rda_kde.py",
+    "line": 231,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "bcipy/signal/model/rda_kde/rda_kde.py",
+    "line": 174,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "bcipy/signal/model/rda_kde/rda_kde.py",
+    "line": 179,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "bcipy/simulator/ui/gui.py",
+    "line": 759,
+    "message": "Found 'subprocess' function 'run' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "bcipy/task/actions.py",
+    "line": 82,
+    "message": "Found 'subprocess' function 'Popen' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "bcipy/task/actions.py",
+    "line": 84,
+    "message": "Found 'subprocess' function 'run' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "bcipy/task/actions.py",
+    "line": 154,
+    "message": "Found 'subprocess' function 'run' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "bcipy/task/orchestrator/orchestrator.py",
+    "line": 234,
+    "message": "Found 'subprocess' function 'run' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "disent/dataset/data/_episodes__custom.py",
+    "line": 76,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "75             # ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~\n76             raw_episodes = pickle.load(f)\n77         # check variables",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "disent/dataset/transform/_augment.py",
+    "line": 282,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "281     if os.path.isfile(name_or_path):\n282         return torch.load(name_or_path)\n283     raise KeyError(",
+    "stage": "inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "disent/util/inout/files.py",
+    "line": 149,
+    "message": "Call to requests without timeout",
+    "snippet": "148     with AtomicSaveFile(file=save_path, open_mode=\"wb\", overwrite=overwrite_existing) as (_, file):\n149         response = requests.get(url, stream=True)\n150         total_length = response.headers.get(\"content-length\")",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "disent/util/inout/tar.py",
+    "line": 48,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "47         _is_safe_to_extract(f)\n48         f.extractall(out_dir)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "disent/dataset/data/_episodes__custom.py",
+    "line": 76,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  }
+]

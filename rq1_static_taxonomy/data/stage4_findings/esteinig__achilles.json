@@ -1,0 +1,72 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "achilles/achilles.py",
+    "line": 302,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "301         with yaml_file.open('r') as fstream:\n302             yml = yaml.load(fstream, Loader=yaml.FullLoader)\n303",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "achilles/dataset.py",
+    "line": 81,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "80         with file.open() as conf:\n81             config = yaml.load(conf)\n82",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "achilles/experiment.py",
+    "line": 25,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "24             with open(config, \"r\") as config_file:\n25                 self.config = yaml.load(config_file)\n26",
+    "stage": "data_acquisition+data_preparation+evaluation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "achilles/experiment.py",
+    "line": 137,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "136         with open(file, \"rb\") as infile:\n137             return pickle.load(infile)\n138",
+    "stage": "data_acquisition+data_preparation+evaluation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "achilles/experiment.py",
+    "line": 130,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "achilles/experiment.py",
+    "line": 137,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "achilles/model.py",
+    "line": 199,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "inference+modeling+training"
+  }
+]

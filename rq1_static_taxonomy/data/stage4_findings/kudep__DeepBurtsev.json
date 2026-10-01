@@ -1,0 +1,72 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "deepburtsev/core/utils.py",
+    "line": 768,
+    "message": "Call to requests without timeout",
+    "snippet": "767 \n768     r = requests.get(source_url, stream=True)\n769     total_length = int(r.headers.get('content-length', 0))",
+    "stage": "data_acquisition+data_preparation+evaluation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "deepburtsev/core/utils.py",
+    "line": 788,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "787     tar = tarfile.open(file_path)\n788     tar.extractall(extract_folder)\n789     tar.close()",
+    "stage": "data_acquisition+data_preparation+evaluation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deepburtsev/models/spellers/utils.py",
+    "line": 38,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "37     with open(fpath, 'rb') as fin:\n38         return pickle.load(fin)\n39",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "deepburtsev/models/spellers/utils.py",
+    "line": 155,
+    "message": "Call to requests without timeout",
+    "snippet": "154         url = 'https://github.com/danakt/russian-words/raw/master/russian.txt'\n155         page = requests.get(url)\n156         return [word.strip() for word in page.content.decode('cp1251').split('\\n')]",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "deepburtsev/models/spellers/utils.py",
+    "line": 169,
+    "message": "Call to requests without timeout",
+    "snippet": "168             url = 'https://en.wiktionary.org/wiki/Wiktionary:Frequency_lists/PG/2005/08/{}-{}'.format(i, k)\n169             page = requests.get(url)\n170             tree = html.fromstring(page.content)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deepburtsev/models/spellers/utils.py",
+    "line": 33,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deepburtsev/models/spellers/utils.py",
+    "line": 38,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  }
+]

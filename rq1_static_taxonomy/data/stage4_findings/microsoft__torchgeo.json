@@ -1,0 +1,342 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "docs/user/metrics/update_downloads.py",
+    "line": 35,
+    "message": "Call to requests without timeout",
+    "snippet": "34     while True:\n35         response = requests.get(url)\n36         match response.status_code:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "docs/user/metrics/update_downloads.py",
+    "line": 66,
+    "message": "Call to requests without timeout",
+    "snippet": "65     while True:\n66         response = requests.get(url, headers=headers)\n67         match response.status_code:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "docs/user/metrics/update_downloads.py",
+    "line": 94,
+    "message": "Call to requests without timeout",
+    "snippet": "93     url = f'https://cranlogs.r-pkg.org/downloads/total/last-week/{package}'\n94     response = requests.get(url)\n95     week = response.json()[0]['downloads']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "docs/user/metrics/update_downloads.py",
+    "line": 98,
+    "message": "Call to requests without timeout",
+    "snippet": "97     url = f'https://cranlogs.r-pkg.org/downloads/total/last-month/{package}'\n98     response = requests.get(url)\n99     month = response.json()[0]['downloads']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "docs/user/metrics/update_downloads.py",
+    "line": 103,
+    "message": "Call to requests without timeout",
+    "snippet": "102     url = f'https://cranlogs.r-pkg.org/downloads/total/1970-01-01:2100-01-01/{package}'\n103     response = requests.get(url)\n104     total = response.json()[0]['downloads']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "docs/user/metrics/update_downloads.py",
+    "line": 119,
+    "message": "Call to requests without timeout",
+    "snippet": "118     url = f'https://api.anaconda.org/repocore/channels/conda-forge/artifacts/conda/{package}'\n119     response = requests.get(url)\n120     return response.json()['download_count']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "docs/user/metrics/update_github.py",
+    "line": 67,
+    "message": "Call to requests without timeout",
+    "snippet": "66         url = f'https://api.github.com/repos/{owner}/{repo}'\n67         response = requests.get(url, headers=headers)\n68         data = response.json()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "docs/user/metrics/update_github.py",
+    "line": 77,
+    "message": "Call to requests without timeout",
+    "snippet": "76         params: dict[str, int | str] = {'per_page': 1}\n77         response = requests.get(url, params=params, headers=headers)\n78         df.loc[name, 'Commits'] = page_count(response)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "docs/user/metrics/update_github.py",
+    "line": 82,
+    "message": "Call to requests without timeout",
+    "snippet": "81         params = {'per_page': 1}\n82         response = requests.get(url, params=params, headers=headers)\n83         df.loc[name, 'Contributors'] = page_count(response)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "docs/user/metrics/update_github.py",
+    "line": 87,
+    "message": "Call to requests without timeout",
+    "snippet": "86         params = {'per_page': 1, 'state': 'all'}\n87         response = requests.get(url, params=params, headers=headers)\n88         df.loc[name, 'PRs'] = page_count(response)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "docs/user/metrics/update_github.py",
+    "line": 92,
+    "message": "Call to requests without timeout",
+    "snippet": "91         params = {'per_page': 1}\n92         response = requests.get(url, params=params, headers=headers)\n93         df.loc[name, 'Releases'] = page_count(response)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "docs/user/metrics/update_github.py",
+    "line": 102,
+    "message": "Call to requests without timeout",
+    "snippet": "101         )\n102         response = requests.get(url, headers=headers)\n103         df.loc[name, 'Test Coverage'] = response.json()[0]['coverage'] / 100",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "docs/user/metrics/update_timeline.py",
+    "line": 34,
+    "message": "Call to requests without timeout",
+    "snippet": "33         params = {'per_page': 1}\n34         response = requests.get(url, params=params, headers=headers)\n35         timestamp = response.json()[0]['commit']['author']['date']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "docs/user/metrics/update_timeline.py",
+    "line": 39,
+    "message": "Call to requests without timeout",
+    "snippet": "38         params['page'] = page_count(response)\n39         response = requests.get(url, params=params, headers=headers)\n40         timestamp = response.json()[0]['commit']['author']['date']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "tests/conftest.py",
+    "line": 17,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "16 ) -> Any:\n17     return torch.load(*args, **kwargs)\n18",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "tests/data/openstreetmap/data.py",
+    "line": 107,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "106     cache_str = json.dumps(cache_key, sort_keys=True)\n107     cache_hash = hashlib.md5(cache_str.encode()).hexdigest()[:16]\n108     return f'osm_features_{cache_hash}.geojson'",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tests/datasets/test_geo.py",
+    "line": 193,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "192         x = pickle.dumps(dataset)\n193         y = pickle.loads(x)\n194         assert dataset.crs == y.crs",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tests/datasets/test_utils.py",
+    "line": 318,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "317         x = pickle.dumps(bbox)\n318         y = pickle.loads(x)\n319         assert bbox == y",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B314",
+    "file_path": "torchgeo/datasets/dior.py",
+    "line": 41,
+    "message": "Using xml.etree.ElementTree.parse to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.parse with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "40     \"\"\"\n41     et = ElementTree.parse(path)\n42     element = et.getroot()",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B314",
+    "file_path": "torchgeo/datasets/fair1m.py",
+    "line": 34,
+    "message": "Using xml.etree.ElementTree.parse to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.parse with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "33     \"\"\"\n34     et = parse(path)\n35     element = et.getroot()",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B314",
+    "file_path": "torchgeo/datasets/forestdamage.py",
+    "line": 40,
+    "message": "Using xml.etree.ElementTree.parse to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.parse with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "39     \"\"\"\n40     et = ElementTree.parse(path)\n41     element = et.getroot()",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "torchgeo/datasets/meta_chm.py",
+    "line": 72,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "71         request = urllib.request.Request(self.url, headers={'User-Agent': 'torchgeo'})\n72         with urllib.request.urlopen(request) as response:\n73             buffer = io.BytesIO(response.read())",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "torchgeo/datasets/openstreetmap.py",
+    "line": 181,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "180         cache_str = json.dumps(cache_key, sort_keys=True)\n181         cache_hash = hashlib.md5(cache_str.encode()).hexdigest()[:16]\n182         return self.root / f'osm_features_{cache_hash}.geojson'",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "torchgeo/datasets/utils.py",
+    "line": 375,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "374         with zipfile.ZipFile(from_path, 'r') as z:\n375             z.extractall(to_path)\n376     elif suffixes[-1] == '.bz2' and '.tar' not in suffixes:",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "torchgeo/datasets/utils.py",
+    "line": 434,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "433         try:\n434             with urllib.request.urlopen(request) as response:\n435                 total = response.headers.get('Content-Length')",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml.use-defused-xml",
+    "file_path": "torchgeo/datasets/dior.py",
+    "line": 9,
+    "message": "The Python documentation recommends using `defusedxml` instead of `xml` because the native Python `xml` library is vulnerable to XML External Entity (XXE) attacks. These attacks can leak confidential data and \"XML bombs\" can cause denial of service.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml-parse.use-defused-xml-parse",
+    "file_path": "torchgeo/datasets/dior.py",
+    "line": 41,
+    "message": "The native Python `xml` library is vulnerable to XML External Entity (XXE) attacks.  These attacks can leak confidential data and \"XML bombs\" can cause denial of service. Do not use this library to parse untrusted input. Instead  the Python documentation recommends using `defusedxml`.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml.use-defused-xml",
+    "file_path": "torchgeo/datasets/fair1m.py",
+    "line": 10,
+    "message": "The Python documentation recommends using `defusedxml` instead of `xml` because the native Python `xml` library is vulnerable to XML External Entity (XXE) attacks. These attacks can leak confidential data and \"XML bombs\" can cause denial of service.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml-parse.use-defused-xml-parse",
+    "file_path": "torchgeo/datasets/fair1m.py",
+    "line": 34,
+    "message": "The native Python `xml` library is vulnerable to XML External Entity (XXE) attacks.  These attacks can leak confidential data and \"XML bombs\" can cause denial of service. Do not use this library to parse untrusted input. Instead  the Python documentation recommends using `defusedxml`.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml.use-defused-xml",
+    "file_path": "torchgeo/datasets/forestdamage.py",
+    "line": 10,
+    "message": "The Python documentation recommends using `defusedxml` instead of `xml` because the native Python `xml` library is vulnerable to XML External Entity (XXE) attacks. These attacks can leak confidential data and \"XML bombs\" can cause denial of service.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml-parse.use-defused-xml-parse",
+    "file_path": "torchgeo/datasets/forestdamage.py",
+    "line": 40,
+    "message": "The native Python `xml` library is vulnerable to XML External Entity (XXE) attacks.  These attacks can leak confidential data and \"XML bombs\" can cause denial of service. Do not use this library to parse untrusted input. Instead  the Python documentation recommends using `defusedxml`.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "torchgeo/datasets/meta_chm.py",
+    "line": 72,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "torchgeo/datasets/openstreetmap.py",
+    "line": 181,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "torchgeo/datasets/utils.py",
+    "line": 434,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  }
+]

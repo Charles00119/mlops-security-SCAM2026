@@ -1,0 +1,102 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "bin/ensemble.py",
+    "line": 67,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "66                                      logger=evaluator.logger,\n67                                      state_dict=torch.load(ckpt)).cuda().eval() for ckpt in ckpts]\n68",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "model/datasets/base/TextDataset.py",
+    "line": 33,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "32         # Create tokenizer from pretrained or vocabulary file\n33         self.tokenizer = AutoTokenizer.from_pretrained(tokenizer)\n34",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model/executors/trainor.py",
+    "line": 21,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "20         if opts.ckpt is not None:\n21             self.state = torch.load(opts.ckpt)\n22",
+    "stage": "training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "model/executors/utils.py",
+    "line": 54,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "53     opts = copy.deepcopy(opts.model)\n54     model = eval(opts.pop('proto'))(**opts, dl=dl, logger=logger)\n55     logger.settings('Model {} created'.format(type(model).__name__))",
+    "stage": "data_acquisition+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "model/executors/utils.py",
+    "line": 77,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "76     dataset_opts = copy.deepcopy(opts.dataset)\n77     dataset = eval(dataset_opts.proto)(\n78         split=split, ckpt_dir=opts.ckpt_dir, **dataset_opts)",
+    "stage": "data_acquisition+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "model/executors/utils.py",
+    "line": 179,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "178 \n179         self.scheduler = eval(lr_decay_func)(optimizer, **lr_decay_params)\n180",
+    "stage": "data_acquisition+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model/networks/models/rrs/SumHugMono.py",
+    "line": 10,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "9 def create_state_dict(ckpt, diff, replace):\n10     weights = torch.load(ckpt)[\"model\"]\n11     new_dict = set()",
+    "stage": "modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "model/executors/utils.py",
+    "line": 54,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "model/executors/utils.py",
+    "line": 77,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "model/executors/utils.py",
+    "line": 179,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+training"
+  }
+]

@@ -1,0 +1,392 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "docs/conf.py",
+    "line": 73,
+    "message": "Use of exec detected.",
+    "snippet": "72 __version__ = None\n73 exec(open('../rasa_nlu/version.py').read())\n74 version = \".\".join(__version__.split(\".\")[:2])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "rasa_bert_demos.py",
+    "line": 218,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "217     cmdline_args = create_argument_parser().parse_args()\n218     is_train = eval(cmdline_args.train)\n219     if cmdline_args.model == \"lm_spell_checker\":",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "rasa_nlu/bert_source_code/download_glue_data.py",
+    "line": 44,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "43     data_file = \"%s.zip\" % task\n44     urllib.request.urlretrieve(TASK2PATH[task], data_file)\n45     with zipfile.ZipFile(data_file) as zip_ref:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "rasa_nlu/bert_source_code/download_glue_data.py",
+    "line": 61,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "60         mrpc_test_file = os.path.join(mrpc_dir, \"msr_paraphrase_test.txt\")\n61         urllib.request.urlretrieve(MRPC_TRAIN, mrpc_train_file)\n62         urllib.request.urlretrieve(MRPC_TEST, mrpc_test_file)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "rasa_nlu/bert_source_code/download_glue_data.py",
+    "line": 62,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "61         urllib.request.urlretrieve(MRPC_TRAIN, mrpc_train_file)\n62         urllib.request.urlretrieve(MRPC_TEST, mrpc_test_file)\n63     assert os.path.isfile(mrpc_train_file), \"Train data not found at %s\" % mrpc_train_file",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "rasa_nlu/bert_source_code/download_glue_data.py",
+    "line": 65,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "64     assert os.path.isfile(mrpc_test_file), \"Test data not found at %s\" % mrpc_test_file\n65     urllib.request.urlretrieve(TASK2PATH[\"MRPC\"], os.path.join(mrpc_dir, \"dev_ids.tsv\"))\n66",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "rasa_nlu/bert_source_code/download_glue_data.py",
+    "line": 99,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "98     data_file = os.path.join(data_dir, \"diagnostic\", \"diagnostic.tsv\")\n99     urllib.request.urlretrieve(TASK2PATH[\"diagnostic\"], data_file)\n100     print(\"\\tCompleted!\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "rasa_nlu/classifiers/bert_intent_classifier.py",
+    "line": 236,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "235                 cls.name + \"_inv_intent_dict.pkl\"), 'rb') as f:\n236             inv_intent_dict = pickle.load(f)\n237         print(\"loading finish.\")",
+    "stage": "data_acquisition+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "rasa_nlu/extractors/bert_entity_extractor.py",
+    "line": 282,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "281                 cls.name + \"_inv_entity.pkl\"), 'rb') as f:\n282             inv_entity_dict = pickle.load(f)\n283         print(\"loading finish.\")",
+    "stage": "data_acquisition+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "rasa_nlu/extractors/duckling_http_extractor.py",
+    "line": 95,
+    "message": "Call to requests without timeout",
+    "snippet": "94                                        \"charset=UTF-8\"}\n95             response = requests.post(self._url() + \"/parse\",\n96                                      data=payload,\n97                                      headers=headers)\n98             if response.status_code == 200:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "rasa_nlu/mycomponent/bert_auto_keras.py",
+    "line": 144,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "143                 cls.name + \"_inv_intent_dict.pkl\"), 'rb') as f:\n144             inv_intent_dict = pickle.load(f)\n145         print(\"loading finish.\")",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "rasa_nlu/persistor.py",
+    "line": 133,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "132         with tarfile.open(compressed_path, \"r:gz\") as tar:\n133             tar.extractall(\n134                 target_path)  # project dir will be created if it not exists\n135",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "rasa_nlu/server.py",
+    "line": 465,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "464     logger.info('Started http server on port %s' % cmdline_args.port)\n465     rasa.app.run('0.0.0.0', cmdline_args.port)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "setup.py",
+    "line": 10,
+    "message": "Use of exec detected.",
+    "snippet": "9 __version__ = None\n10 exec(open('rasa_nlu/version.py').read())\n11",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "docs/conf.py",
+    "line": 73,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "rasa_bert_demos.py",
+    "line": 218,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "rasa_nlu/bert_source_code/download_glue_data.py",
+    "line": 44,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "rasa_nlu/bert_source_code/download_glue_data.py",
+    "line": 61,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "rasa_nlu/bert_source_code/download_glue_data.py",
+    "line": 62,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "rasa_nlu/bert_source_code/download_glue_data.py",
+    "line": 65,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "rasa_nlu/bert_source_code/download_glue_data.py",
+    "line": 99,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "rasa_nlu/classifiers/bert_intent_classifier.py",
+    "line": 220,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "rasa_nlu/classifiers/bert_intent_classifier.py",
+    "line": 236,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-cPickle",
+    "file_path": "rasa_nlu/classifiers/embedding_intent_classifier.py",
+    "line": 681,
+    "message": "Avoid using `cPickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "rasa_nlu/classifiers/embedding_intent_classifier.py",
+    "line": 681,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-cPickle",
+    "file_path": "rasa_nlu/classifiers/embedding_intent_classifier.py",
+    "line": 685,
+    "message": "Avoid using `cPickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "rasa_nlu/classifiers/embedding_intent_classifier.py",
+    "line": 685,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-cPickle",
+    "file_path": "rasa_nlu/classifiers/embedding_intent_classifier.py",
+    "line": 721,
+    "message": "Avoid using `cPickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "rasa_nlu/classifiers/embedding_intent_classifier.py",
+    "line": 721,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-cPickle",
+    "file_path": "rasa_nlu/classifiers/embedding_intent_classifier.py",
+    "line": 725,
+    "message": "Avoid using `cPickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "rasa_nlu/classifiers/embedding_intent_classifier.py",
+    "line": 725,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-uuid-version.insecure-uuid-version",
+    "file_path": "rasa_nlu/emulators/dialogflow.py",
+    "line": 37,
+    "message": "Using UUID version 1 for UUID generation can lead to predictable UUIDs based on system information (e.g., MAC address, timestamp). This may lead to security risks such as the sandwich attack. Consider using `uuid.uuid4()` instead for better randomness and security.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-uuid-version.insecure-uuid-version",
+    "file_path": "rasa_nlu/emulators/dialogflow.py",
+    "line": 47,
+    "message": "Using UUID version 1 for UUID generation can lead to predictable UUIDs based on system information (e.g., MAC address, timestamp). This may lead to security risks such as the sandwich attack. Consider using `uuid.uuid4()` instead for better randomness and security.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-uuid-version.insecure-uuid-version",
+    "file_path": "rasa_nlu/emulators/dialogflow.py",
+    "line": 58,
+    "message": "Using UUID version 1 for UUID generation can lead to predictable UUIDs based on system information (e.g., MAC address, timestamp). This may lead to security risks such as the sandwich attack. Consider using `uuid.uuid4()` instead for better randomness and security.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "rasa_nlu/extractors/bert_entity_extractor.py",
+    "line": 266,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "rasa_nlu/extractors/bert_entity_extractor.py",
+    "line": 282,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "rasa_nlu/mycomponent/bert_auto_keras.py",
+    "line": 128,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "rasa_nlu/mycomponent/bert_auto_keras.py",
+    "line": 144,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "setup.py",
+    "line": 10,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "dependencies"
+  }
+]

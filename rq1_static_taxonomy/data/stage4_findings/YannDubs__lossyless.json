@@ -1,0 +1,82 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "hub/compressor.py",
+    "line": 54,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "53         if not isinstance(pretrained_state_dict, dict):\n54             pretrained_state_dict = torch.load(pretrained_path)\n55",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "lossyless/learnable_compressors.py",
+    "line": 73,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "72             logger.info(f\"Loading staggered encoder at {stag_save}.\")\n73             encoder.load_state_dict(torch.load(stag_save))\n74",
+    "stage": "evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "utils/data/helpers.py",
+    "line": 44,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "43 \n44         urllib.request.urlretrieve(\n45             url, filename=save_dir / filename, reporthook=t.update_to\n46         )\n47",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "utils/postplotting/decorators.py",
+    "line": 74,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "73         for kw in kws:\n74             kwargs[kw] = eval(kw)\n75",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "utils/postplotting/decorators.py",
+    "line": 150,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "149         for kw in kws:\n150             kwargs[kw] = eval(kw)  # put back in kwargs\n151",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "utils/data/helpers.py",
+    "line": 44,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "utils/postplotting/decorators.py",
+    "line": 74,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "utils/postplotting/decorators.py",
+    "line": 150,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

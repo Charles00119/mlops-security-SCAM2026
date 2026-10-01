@@ -1,0 +1,252 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "distribute.py",
+    "line": 166,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "165         my_env = os.environ.copy()\n166         my_env[\"PYTHON_EGG_CACHE\"] = \"/tmp/tmp{}\".format(i)\n167         command[-1] = '--rank={}'.format(i)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "server/server.py",
+    "line": 80,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "79 if __name__ == '__main__':\n80     app.run(debug=args.debug, host='0.0.0.0', port=args.port)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "server/synthesizer.py",
+    "line": 71,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "70         # load model state\n71         cp = torch.load(tts_checkpoint, map_location=torch.device('cpu'))\n72         # load the model",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "server/synthesizer.py",
+    "line": 109,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "108 \n109         check = torch.load(model_file, map_location=\"cpu\")\n110         self.wavernn.load_state_dict(check['model'])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "server/synthesizer.py",
+    "line": 123,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "122         with open(model_config) as f:\n123             self.pwgan_config = yaml.load(f, Loader=yaml.Loader)\n124         self.pwgan = ParallelWaveGANGenerator(**self.pwgan_config[\"generator_params\"])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "server/synthesizer.py",
+    "line": 125,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "124         self.pwgan = ParallelWaveGANGenerator(**self.pwgan_config[\"generator_params\"])\n125         self.pwgan.load_state_dict(torch.load(model_file, map_location=\"cpu\")[\"model\"][\"generator\"])\n126         self.pwgan.remove_weight_norm()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "speaker_encoder/compute_embeddings.py",
+    "line": 77,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "76 model = SpeakerEncoder(**c.model)\n77 model.load_state_dict(torch.load(args.model_path)['model'])\n78 model.eval()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "speaker_encoder/train.py",
+    "line": 140,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "139     if args.restore_path:\n140         checkpoint = torch.load(args.restore_path)\n141         try:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "synthesize.py",
+    "line": 125,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "124     model = setup_model(num_chars, num_speakers, C)\n125     cp = torch.load(args.model_path)\n126     model.load_state_dict(cp['model'])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "synthesize.py",
+    "line": 152,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "151 \n152         check = torch.load(args.vocoder_path)\n153         vocoder_model.load_state_dict(check['model'])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/generic_utils_text.py",
+    "line": 7,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "6 \n7 OUT_PATH = '/tmp/test.pth.tar'\n8",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "tests/generic_utils_text.py",
+    "line": 20,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "19         # load the model to CPU\n20         model_dict = T.load(\n21             MODEL_PATH, map_location=lambda storage, loc: storage) #FIXME: undefined variable MODEL_PATH\n22         model.load_state_dict(model_dict['model'])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "tests/generic_utils_text.py",
+    "line": 33,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "32         # load the model to CPU\n33         model_dict = T.load(\n34             MODEL_PATH, map_location=lambda storage, loc: storage)\n35         model.load_state_dict(model_dict['model'])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "tf/convert_tacotron2_torch_to_tf.py",
+    "line": 40,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "39 model = setup_model(num_chars, num_speakers, c)\n40 checkpoint = torch.load(args.torch_model_path,\n41                         map_location=torch.device('cpu'))\n42 state_dict = checkpoint['model']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tf/utils/generic_utils.py",
+    "line": 25,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "24 def load_checkpoint(model, checkpoint_path):\n25     checkpoint = pickle.load(open(checkpoint_path, 'rb'))\n26     chkp_var_dict = {var.name: var.numpy() for var in checkpoint['model']}",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "train.py",
+    "line": 534,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "533     if args.restore_path:\n534         checkpoint = torch.load(args.restore_path, map_location='cpu')\n535         try:",
+    "stage": "data_acquisition+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B103",
+    "file_path": "train.py",
+    "line": 666,
+    "message": "Chmod setting a permissive mask 0o775 on file (AUDIO_PATH).",
+    "snippet": "665                          os.path.join(OUT_PATH, 'config.json'), new_fields)\n666         os.chmod(AUDIO_PATH, 0o775)\n667         os.chmod(OUT_PATH, 0o775)",
+    "stage": "data_acquisition+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B103",
+    "file_path": "train.py",
+    "line": 667,
+    "message": "Chmod setting a permissive mask 0o775 on file (OUT_PATH).",
+    "snippet": "666         os.chmod(AUDIO_PATH, 0o775)\n667         os.chmod(OUT_PATH, 0o775)\n668",
+    "stage": "data_acquisition+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "utils/io.py",
+    "line": 40,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "39 def load_checkpoint(model, checkpoint_path, use_cuda=False):\n40     state = torch.load(checkpoint_path, map_location=torch.device('cpu'))\n41     model.load_state_dict(state['model'])",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.app-run-param-config.avoid_app_run_with_bad_host",
+    "file_path": "server/server.py",
+    "line": 80,
+    "message": "Running flask app with host 0.0.0.0 could expose the server publicly.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.deserialization.avoid-pyyaml-load.avoid-pyyaml-load",
+    "file_path": "server/synthesizer.py",
+    "line": 123,
+    "message": "Detected a possible YAML deserialization vulnerability. `yaml.unsafe_load`, `yaml.Loader`, `yaml.CLoader`, and `yaml.UnsafeLoader` are all known to be unsafe methods of deserializing YAML. An attacker with control over the YAML input could create special YAML input that allows the attacker to run arbitrary Python code. This would allow the attacker to steal files, download and install malware, or otherwise take over the machine. Use `yaml.safe_load` or `yaml.SafeLoader` instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "tf/utils/generic_utils.py",
+    "line": 21,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "tf/utils/generic_utils.py",
+    "line": 25,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.insecure-file-permissions.insecure-file-permissions",
+    "file_path": "train.py",
+    "line": 666,
+    "message": "These permissions `0o775` are widely permissive and grant access to more people than may be necessary. A good default is `0o644` which gives read and write access to yourself and read access to everyone else.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.insecure-file-permissions.insecure-file-permissions",
+    "file_path": "train.py",
+    "line": 667,
+    "message": "These permissions `0o775` are widely permissive and grant access to more people than may be necessary. A good default is `0o644` which gives read and write access to yourself and read access to everyone else.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference+training"
+  }
+]

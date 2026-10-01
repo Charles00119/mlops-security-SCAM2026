@@ -1,0 +1,82 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "fltk/__main__.py",
+    "line": 28,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "27         cfg = BareConfig()\n28         yaml_data = yaml.load(file, Loader=yaml.FullLoader)\n29         cfg.merge_yaml(yaml_data)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "fltk/client.py",
+    "line": 157,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "156             try:\n157                 model.load_state_dict(torch.load(model_file_path))\n158             except:",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "fltk/client.py",
+    "line": 161,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "160 \n161                 model.load_state_dict(torch.load(model_file_path, map_location=torch.device('cpu')))\n162         else:",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "fltk/launch.py",
+    "line": 26,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "25     else:\n26         os.environ['MASTER_ADDR'] = '0.0.0.0'\n27     os.environ['MASTER_PORT'] = '5000'",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "fltk/util/base_config.py",
+    "line": 65,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "64 \n65         self.federator_host = '0.0.0.0'\n66         self.rank = 0",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "fltk/util/data_loader_utils.py",
+    "line": 87,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "86 def load_saved_data_loader(file_obj):\n87     return pickle.load(file_obj)\n88",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "fltk/util/data_loader_utils.py",
+    "line": 87,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "fltk/util/data_loader_utils.py",
+    "line": 90,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  }
+]

@@ -1,0 +1,1092 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "aitlas/base/metrics.py",
+    "line": 33,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "32         new_state = state\n33         new_state[\"confusion_matrix\"] = dill.loads(state[\"confusion_matrix\"])\n34         self.__dict__.update(new_state)",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/base/models.py",
+    "line": 778,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "777             logging.info(f\"Loading checkpoint {file_path}\")\n778             checkpoint = torch.load(file_path, map_location=self.device)  # Can be either CPU or GPU\n779",
+    "stage": "evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "aitlas/datasets/big_earth_net.py",
+    "line": 165,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "164     \"\"\"\n165     return pickle.loads(buf)\n166",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "aitlas/datasets/breizhcrops.py",
+    "line": 53,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "52         ) as t:\n53             urllib.request.urlretrieve(url, filename=output_path, reporthook=t.update_to)\n54     else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "aitlas/datasets/eopatch_crops.py",
+    "line": 34,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "33         ) as t:\n34             urllib.request.urlretrieve(url, filename=output_path, reporthook=t.update_to)\n35     else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B314",
+    "file_path": "aitlas/datasets/object_detection.py",
+    "line": 142,
+    "message": "Using xml.etree.ElementTree.parse to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.parse with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "141         labels = []\n142         tree = et.parse(annot_file_path)\n143         root = tree.getroot()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B314",
+    "file_path": "aitlas/datasets/object_detection.py",
+    "line": 183,
+    "message": "Using xml.etree.ElementTree.parse to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.parse with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "182             annot_file_path = os.path.join(data_dir, f\"{img}.xml\")\n183             tree = et.parse(annot_file_path)\n184             root = tree.getroot()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B314",
+    "file_path": "aitlas/datasets/rfi_ai4qc.py",
+    "line": 51,
+    "message": "Using xml.etree.ElementTree.parse to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.parse with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "50         labels = []\n51         tree = et.parse(annot_file_path)\n52         root = tree.getroot()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B314",
+    "file_path": "aitlas/datasets/rfi_ai4qc.py",
+    "line": 88,
+    "message": "Using xml.etree.ElementTree.parse to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.parse with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "87             annot_file_path = os.path.join(data_dir, img)\n88             tree = et.parse(annot_file_path)\n89             root = tree.getroot()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/Galileo/galileo.py",
+    "line": 1106,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "1105 \n1106         state_dict = torch.load(folder / ENCODER_FILENAME, map_location=device)\n1107         for key in list(state_dict.keys()):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/TerraMind/tokenizer/models/vit_models.py",
+    "line": 530,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "529             print(f\"Loading checkpoint from {ckpt_path}\")\n530             ckpt = torch.load(ckpt_path)\n531             ckpt[\"model\"][\"pos_emb\"] = rearrange(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "aitlas/models/TerraMind/tokenizer/tokenizer_backbones_register.py",
+    "line": 110,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in hf_hub_download()",
+    "snippet": "109         # Load model from Hugging Face\n110         state_dict_file = hf_hub_download(\n111             repo_id=pretrained_weights[variant][\"hf_hub_id\"],\n112             filename=pretrained_weights[variant][\"hf_hub_filename\"],\n113         )\n114         state_dict = torch.load(state_dict_file, map_location=\"cpu\", weights_only=True)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "aitlas/models/TerraMind/tokenizer/tokenizer_register.py",
+    "line": 109,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in hf_hub_download()",
+    "snippet": "108         # Load model from Hugging Face\n109         state_dict_file = hf_hub_download(\n110             repo_id=pretrained_weights[variant][\"hf_hub_id\"],\n111             filename=pretrained_weights[variant][\"hf_hub_filename\"],\n112         )\n113         state_dict = torch.load(state_dict_file, map_location=\"cpu\", weights_only=True)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "aitlas/models/TerraMind/tokenizer/tokenizer_register.py",
+    "line": 285,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in hf_hub_download()",
+    "snippet": "284     if pretrained and tokenizer_file is None:\n285         tokenizer_file = hf_hub_download(\n286             repo_id=pretrained_weights[\"terramind_v1_coords_tokenizer\"][\"hf_hub_id\"],\n287             filename=pretrained_weights[\"terramind_v1_coords_tokenizer\"][\"hf_hub_filename\"],\n288         )\n289",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/TerraMind/tokenizer/vqvae.py",
+    "line": 250,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "249         \"\"\"\n250         ckpt = torch.load(path, map_location=\"cpu\")\n251         sd = ckpt[\"model\"] if \"model\" in ckpt else ckpt[\"state_dict\"]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "aitlas/models/anysat_wrapper.py",
+    "line": 84,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in hf_hub_download()",
+    "snippet": "83                         repo_id = temp_checkpoint_name[\"repo_id\"]\n84                         downloaded_path = hf_hub_download(\n85                             repo_id=repo_id,\n86                             filename=checkpoint_name,\n87                             subfolder=\"models\",\n88                             local_dir=os.path.dirname(self.config.local_model_path),\n89                       ",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/anysat_wrapper.py",
+    "line": 95,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "94                         # Load the checkpoint from the corrected local path\n95                         checkpoint = torch.load(self.config.local_model_path, weights_only=False)\n96                         state_dict = checkpoint[\"state_dict\"]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/anysat_wrapper.py",
+    "line": 104,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "103                     )\n104                     checkpoint = torch.load(self.config.local_model_path, weights_only=False)\n105                     state_dict = checkpoint[\"state_dict\"]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/atss.py",
+    "line": 611,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "610                 if isinstance(checkpoint_path, dict)\n611                 else torch.load(checkpoint_path, map_location=self.device)\n612             )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/atss.py",
+    "line": 614,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "613         else:\n614             state_dict = torch.load(checkpoint_path, map_location=self.device)\n615",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/caco_wrapper.py",
+    "line": 83,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "82                         )\n83                         checkpoint = torch.load(\n84                             self.config.local_model_path,\n85                             map_location=\"cpu\",\n86                             weights_only=False,\n87                         )\n88                         backbone = globals()[self.config.backbone_name]()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/caco_wrapper.py",
+    "line": 100,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "99                     )\n100                     checkpoint = torch.load(\n101                         self.config.local_model_path,\n102                         map_location=\"cpu\",\n103                         weights_only=False,\n104                     )\n105                     checkpoint_name = os.path.basename(self.config.local_model_path)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "aitlas/models/caco_wrapper.py",
+    "line": 172,
+    "message": "Call to requests without timeout",
+    "snippet": "171             # Use requests to download the weights\n172             with requests.get(download_url, stream=True) as r:\n173                 r.raise_for_status()  # Check for HTTP errors",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/centernet.py",
+    "line": 569,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "568         \"\"\"\n569         state_dict = torch.load(checkpoint_path, map_location=self.device)\n570",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "aitlas/models/copernicusfm_wrapper.py",
+    "line": 77,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in hf_hub_download()",
+    "snippet": "76                         repo_id = temp_checkpoint_name[\"repo_id\"]\n77                         self.config.local_model_path = hf_hub_download(\n78                             repo_id=repo_id,\n79                             filename=checkpoint_name,\n80                             local_dir=os.path.dirname(self.config.local_model_path),\n81                         )\n82                         checkpo",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/copernicusfm_wrapper.py",
+    "line": 82,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "81                         )\n82                         checkpoint = torch.load(self.config.local_model_path, weights_only=False)\n83                         backbone = globals()[self.config.backbone_name]()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/copernicusfm_wrapper.py",
+    "line": 90,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "89                     )\n90                     checkpoint = torch.load(self.config.local_model_path, weights_only=False)\n91                     checkpoint_name = os.path.basename(self.config.local_model_path)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "aitlas/models/croma_wrapper.py",
+    "line": 73,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in hf_hub_download()",
+    "snippet": "72                         repo_id = temp_checkpoint_name[\"repo_id\"]\n73                         self.config.local_model_path = hf_hub_download(\n74                             repo_id=repo_id,\n75                             filename=checkpoint_name,\n76                             local_dir=os.path.dirname(self.config.local_model_path),\n77                         )\n78                         checkpo",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/croma_wrapper.py",
+    "line": 78,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "77                         )\n78                         checkpoint = torch.load(self.config.local_model_path, weights_only=False)\n79                         backbone = globals()[self.config.backbone_name]()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/croma_wrapper.py",
+    "line": 86,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "85                     )\n86                     checkpoint = torch.load(self.config.local_model_path, weights_only=False)\n87                     checkpoint_name = os.path.basename(self.config.local_model_path)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/densenet.py",
+    "line": 24,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "23             if self.config.local_model_path:\n24                 checkpoint = torch.load(self.config.local_model_path)\n25                 last_layer_key = next(reversed(checkpoint[\"state_dict\"]))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/densenet.py",
+    "line": 66,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "65             if self.config.local_model_path:\n66                 checkpoint = torch.load(self.config.local_model_path)\n67                 last_layer_key = next(reversed(checkpoint[\"state_dict\"]))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "aitlas/models/dofa_v2_wrapper.py",
+    "line": 97,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in hf_hub_download()",
+    "snippet": "96                         repo_id = temp_checkpoint_name[\"repo_id\"]\n97                         self.config.local_model_path = hf_hub_download(\n98                             repo_id=repo_id,\n99                             filename=checkpoint_name,\n100                             local_dir=os.path.dirname(self.config.local_model_path),\n101                         )\n102                         chec",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/dofa_v2_wrapper.py",
+    "line": 102,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "101                         )\n102                         checkpoint = torch.load(self.config.local_model_path, weights_only=False)\n103                         backbone = globals()[self.config.backbone_name]()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/dofa_v2_wrapper.py",
+    "line": 110,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "109                     )\n110                     checkpoint = torch.load(self.config.local_model_path)\n111                     checkpoint_name = os.path.basename(self.config.local_model_path)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/efficientdet.py",
+    "line": 990,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "989             # We MUST use weights_only=False because the file contains full model objects\n990             data = torch.load(cached_file, map_location=self.device, weights_only=False)\n991",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "aitlas/models/galileo_wrapper.py",
+    "line": 105,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in hf_hub_download()",
+    "snippet": "104                         subfolder = temp_checkpoint_name[\"subfolder\"]\n105                         downloaded_path = hf_hub_download(\n106                             repo_id=repo_id,\n107                             filename=checkpoint_name,\n108                             subfolder=subfolder,\n109                             local_dir=os.path.dirname(self.config.local_model_path),\n110           ",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "aitlas/models/galileo_wrapper.py",
+    "line": 111,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in hf_hub_download()",
+    "snippet": "110                         )\n111                         downloaded_cfg_path = hf_hub_download(\n112                             repo_id=repo_id,\n113                             filename=config_name,\n114                             subfolder=subfolder,\n115                             local_dir=os.path.dirname(self.config.local_model_path),\n116                         )\n117                         ",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/gassl_wrapper.py",
+    "line": 90,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "89                         )\n90                         raw_checkpoint = torch.load(\n91                             self.config.local_model_path, map_location=\"cpu\"\n92                         )\n93                         checkpoint = self._clean_checkpoint(raw_checkpoint)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/gassl_wrapper.py",
+    "line": 101,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "100                     )\n101                     raw_checkpoint = torch.load(self.config.local_model_path, map_location=\"cpu\")\n102                     checkpoint_name = os.path.basename(self.config.local_model_path)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "aitlas/models/gassl_wrapper.py",
+    "line": 176,
+    "message": "Call to requests without timeout",
+    "snippet": "175         zenodo_url = f\"https://zenodo.org/api/records/{record_id}\"\n176         response = requests.get(zenodo_url)\n177         record_data = response.json()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "aitlas/models/gassl_wrapper.py",
+    "line": 182,
+    "message": "Call to requests without timeout",
+    "snippet": "181 \n182         with requests.get(download_url, stream=True) as r:\n183             r.raise_for_status()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "aitlas/models/panopticon_wrapper.py",
+    "line": 66,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in hf_hub_download()",
+    "snippet": "65                         repo_id = temp_checkpoint_name[\"repo_id\"]\n66                         self.config.local_model_path = hf_hub_download(\n67                             repo_id=repo_id,\n68                             filename=checkpoint_name,\n69                             local_dir=os.path.dirname(self.config.local_model_path),\n70                         )\n71                         checkpo",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/panopticon_wrapper.py",
+    "line": 71,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "70                         )\n71                         checkpoint = torch.load(self.config.local_model_path, weights_only=False)\n72                         backbone = globals()[self.config.backbone_name]()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/panopticon_wrapper.py",
+    "line": 79,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "78                     )\n79                     checkpoint = torch.load(self.config.local_model_path, weights_only=False)\n80                     checkpoint_name = os.path.basename(self.config.local_model_path)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "aitlas/models/presto_wrapper.py",
+    "line": 79,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in hf_hub_download()",
+    "snippet": "78                         repo_id = temp_checkpoint_name[\"repo_id\"]\n79                         self.config.local_model_path = hf_hub_download(\n80                             repo_id=repo_id,\n81                             filename=checkpoint_name,\n82                             local_dir=os.path.dirname(self.config.local_model_path),\n83                         )\n84                         checkpo",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/presto_wrapper.py",
+    "line": 84,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "83                         )\n84                         checkpoint = torch.load(self.config.local_model_path, weights_only=False)\n85                         backbone = globals()[self.config.backbone_name]()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/presto_wrapper.py",
+    "line": 92,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "91                     )\n92                     checkpoint = torch.load(self.config.local_model_path, weights_only=False)\n93                     checkpoint_name = os.path.basename(self.config.local_model_path)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "aitlas/models/prithvi_wrapper.py",
+    "line": 132,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in hf_hub_download()",
+    "snippet": "131                         repo_id = temp_checkpoint_name[\"repo_id\"]\n132                         self.config.local_model_path = hf_hub_download(\n133                             repo_id=repo_id,\n134                             filename=checkpoint_name,\n135                             local_dir=os.path.dirname(self.config.local_model_path),\n136                         )\n137                         ",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/prithvi_wrapper.py",
+    "line": 137,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "136                         )\n137                         checkpoint = torch.load(self.config.local_model_path, weights_only=False)\n138                         backbone = globals()[self.config.backbone_name]()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/prithvi_wrapper.py",
+    "line": 145,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "144                     )\n145                     checkpoint = torch.load(self.config.local_model_path, weights_only=False)\n146                     checkpoint_name = os.path.basename(self.config.local_model_path)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/resnet.py",
+    "line": 29,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "28             if self.config.local_model_path:\n29                 checkpoint = torch.load(self.config.local_model_path)\n30",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/resnet.py",
+    "line": 131,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "130             if self.config.local_model_path:\n131                 checkpoint = torch.load(self.config.local_model_path)\n132                 last_layer_key = next(reversed(checkpoint[\"state_dict\"]))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "aitlas/models/satmae_plusplus_wrapper.py",
+    "line": 89,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in hf_hub_download()",
+    "snippet": "88                         repo_id = temp_checkpoint_name[\"repo_id\"]\n89                         self.config.local_model_path = hf_hub_download(\n90                             repo_id=repo_id,\n91                             filename=checkpoint_name,\n92                             local_dir=os.path.dirname(self.config.local_model_path),\n93                         )\n94                         checkpo",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/satmae_plusplus_wrapper.py",
+    "line": 94,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "93                         )\n94                         checkpoint = torch.load(self.config.local_model_path, weights_only=False)\n95                         backbone = globals()[self.config.backbone_name]()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/satmae_plusplus_wrapper.py",
+    "line": 102,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "101                     )\n102                     checkpoint = torch.load(self.config.local_model_path, weights_only=False)\n103                     checkpoint_name = os.path.basename(self.config.local_model_path)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/satmae_wrapper.py",
+    "line": 121,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "120                         )\n121                         checkpoint = torch.load(self.config.local_model_path, weights_only=False)\n122                         backbone = globals()[self.config.backbone_name]()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/satmae_wrapper.py",
+    "line": 129,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "128                     )\n129                     checkpoint = torch.load(self.config.local_model_path, weights_only=False)\n130                     checkpoint_name = os.path.basename(self.config.local_model_path)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "aitlas/models/satmae_wrapper.py",
+    "line": 198,
+    "message": "Call to requests without timeout",
+    "snippet": "197         zenodo_url = f\"https://zenodo.org/api/records/{record_id}\"\n198         response = requests.get(zenodo_url)\n199         record_data = response.json()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "aitlas/models/satmae_wrapper.py",
+    "line": 204,
+    "message": "Call to requests without timeout",
+    "snippet": "203 \n204         with requests.get(download_url, stream=True) as r:\n205             r.raise_for_status()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "aitlas/models/scale_mae_wrapper.py",
+    "line": 73,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in hf_hub_download()",
+    "snippet": "72                         repo_id = temp_checkpoint_name[\"repo_id\"]\n73                         self.config.local_model_path = hf_hub_download(\n74                             repo_id=repo_id,\n75                             filename=checkpoint_name,\n76                             local_dir=os.path.dirname(self.config.local_model_path),\n77                         )\n78                         checkpo",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/scale_mae_wrapper.py",
+    "line": 78,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "77                         )\n78                         checkpoint = torch.load(self.config.local_model_path, weights_only=False)\n79                         backbone = globals()[self.config.backbone_name](",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/scale_mae_wrapper.py",
+    "line": 88,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "87                     )\n88                     checkpoint = torch.load(self.config.local_model_path, weights_only=False)\n89                     checkpoint_name = os.path.basename(self.config.local_model_path)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/seco_wrapper.py",
+    "line": 96,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "95                         )\n96                         raw_checkpoint = torch.load(\n97                             self.config.local_model_path,\n98                             map_location=\"cpu\",\n99                             weights_only=False,\n100                         )\n101                         checkpoint = self._clean_checkpoint(raw_checkpoint)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/seco_wrapper.py",
+    "line": 109,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "108                     )\n109                     raw_checkpoint = torch.load(\n110                         self.config.local_model_path,\n111                         map_location=\"cpu\",\n112                         weights_only=False,\n113                     )\n114                     checkpoint_name = os.path.basename(self.config.local_model_path)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "aitlas/models/seco_wrapper.py",
+    "line": 173,
+    "message": "Call to requests without timeout",
+    "snippet": "172         zenodo_url = f\"https://zenodo.org/api/records/{record_id}\"\n173         response = requests.get(zenodo_url)\n174         record_data = response.json()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "aitlas/models/seco_wrapper.py",
+    "line": 179,
+    "message": "Call to requests without timeout",
+    "snippet": "178 \n179         with requests.get(download_url, stream=True) as r:\n180             r.raise_for_status()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "aitlas/models/terrafm_wrapper.py",
+    "line": 65,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in hf_hub_download()",
+    "snippet": "64                         repo_id = temp_checkpoint_name[\"repo_id\"]\n65                         self.config.local_model_path = hf_hub_download(\n66                             repo_id=repo_id,\n67                             filename=checkpoint_name,\n68                             local_dir=os.path.dirname(self.config.local_model_path),\n69                         )\n70                         checkpo",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/terrafm_wrapper.py",
+    "line": 70,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "69                         )\n70                         checkpoint = torch.load(self.config.local_model_path, weights_only=False)\n71                         backbone = globals()[self.config.backbone_name]()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/terrafm_wrapper.py",
+    "line": 78,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "77                     )\n78                     checkpoint = torch.load(self.config.local_model_path, weights_only=False)\n79                     checkpoint_name = os.path.basename(self.config.local_model_path)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "aitlas/models/terramind_wrapper.py",
+    "line": 163,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in hf_hub_download()",
+    "snippet": "162                         repo_id = temp_checkpoint_name[\"repo_id\"]\n163                         self.config.local_model_path = hf_hub_download(\n164                             repo_id=repo_id,\n165                             filename=checkpoint_name,\n166                             local_dir=os.path.dirname(self.config.local_model_path),\n167                         )\n168                         ",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/terramind_wrapper.py",
+    "line": 168,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "167                         )\n168                         checkpoint = torch.load(self.config.local_model_path, weights_only=False)\n169                         # Check which TerraMind model type to use",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/terramind_wrapper.py",
+    "line": 203,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "202                     )\n203                     checkpoint = torch.load(self.config.local_model_path, weights_only=False)\n204                     checkpoint_name = os.path.basename(self.config.local_model_path)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/vision_transformer.py",
+    "line": 27,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "26         if self.config.pretrained and self.config.local_model_path:\n27             checkpoint = torch.load(self.config.local_model_path)\n28             if \"state_dict\" in checkpoint:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "aitlas/models/vision_transformer.py",
+    "line": 81,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "80         if self.config.pretrained and self.config.local_model_path:\n81             checkpoint = torch.load(self.config.local_model_path)\n82             if \"state_dict\" in checkpoint:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "aitlas/tasks/schemas.py",
+    "line": 115,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "114         required=True,\n115         metadata={\"description\": \"Directory of the model output\", \"example\": \"/tmp/model/\"},\n116     )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "aitlas/tasks/schemas.py",
+    "line": 131,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "130             \"description\": \"File path to the model to be resumed\",\n131             \"example\": \"/tmp/model/checkpoint.pth.tar\",\n132         },\n133     )\n134 \n135",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "aitlas/tasks/schemas.py",
+    "line": 167,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "166         required=True,\n167         metadata={\"description\": \"Directory of the model output\", \"example\": \"/tmp/model/\"},\n168     )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "aitlas/tasks/schemas.py",
+    "line": 183,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "182             \"description\": \"File path to the model to be resumed\",\n183             \"example\": \"/tmp/model/checkpoint.pth.tar\",\n184         },\n185     )\n186     train_dataset_config = fields.Nested(\n187         ObjectConfig,",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "aitlas/tasks/schemas.py",
+    "line": 224,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "223         required=True,\n224         metadata={\"description\": \"Directory of the model output\", \"example\": \"/tmp/model/\"},\n225     )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "aitlas/tasks/schemas.py",
+    "line": 276,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "275         required=True,\n276         metadata={\"description\": \"Path to the model\", \"example\": \"/tmp/model/checkpoint.pth.tar\"},\n277     )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "aitlas/tasks/schemas.py",
+    "line": 333,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "332             \"description\": \"Directory with the image to perform prediction on\",\n333             \"example\": \"/tmp/test/\",\n334         },\n335     )\n336     model_path = fields.String(\n337         required=True,",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "aitlas/tasks/schemas.py",
+    "line": 338,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "337         required=True,\n338         metadata={\"description\": \"Path to the model\", \"example\": \"/tmp/model/checkpoint.pth.tar\"},\n339     )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "aitlas/tasks/schemas.py",
+    "line": 401,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "400             \"description\": \"Directory with images to extract features from\",\n401             \"example\": \"/tmp/test/\",\n402         },\n403     )\n404     output_dir = fields.String(\n405         load_default=\"predictions.csv\",",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "aitlas/tasks/schemas.py",
+    "line": 412,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "411             \"description\": \"Path to the model that will generate the features\",\n412             \"example\": \"/tmp/model/extractor.pth.tar\",\n413         },\n414     )\n415     transforms = fields.List(\n416         fields.String,",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/test_copernicusfm_wrapper.py",
+    "line": 80,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "79     return {\n80         \"local_model_path\": \"/tmp/mock_path/CopernicusFM_ViT_base_varlang_e100.pth\",\n81         \"backbone_name\": \"copernicusfm_base\",\n82         \"pretrained\": True,\n83     }\n84 \n85",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/test_copernicusfm_wrapper.py",
+    "line": 138,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "137     mock_os_exists.return_value = False  # Trigger download\n138     expected_download_path = \"/tmp/cache/CopernicusFM_ViT_base_varlang_e100.pth\"\n139     mock_hf_download.return_value = expected_download_path",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/test_croma_wrapper.py",
+    "line": 85,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "84     return {\n85         \"local_model_path\": \"/tmp/mock_path/CROMA_base.pt\",\n86         \"backbone_name\": \"croma_base\",\n87         \"pretrained\": True,\n88     }\n89 \n90",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/test_croma_wrapper.py",
+    "line": 134,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "133     mock_os_exists.return_value = False  # Trigger download\n134     expected_download_path = \"/tmp/cache/CROMA_base.pt\"\n135     mock_hf_download.return_value = expected_download_path",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/test_panopticon_wrapper.py",
+    "line": 61,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "60     return {\n61         \"local_model_path\": \"/tmp/mock_path/panopticon_vitb14.pth\",\n62         \"backbone_name\": \"panopticon_base\",\n63         \"pretrained\": True,\n64     }\n65 \n66",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/test_panopticon_wrapper.py",
+    "line": 116,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "115     mock_os_exists.return_value = False  # Trigger download\n116     expected_download_path = \"/tmp/cache/panopticon_vitb14.pth\"\n117     mock_hf_download.return_value = expected_download_path",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/test_terrafm_wrapper.py",
+    "line": 58,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "57     return {\n58         \"local_model_path\": \"/tmp/mock_path/TerraFM-B.pth\",\n59         \"backbone_name\": \"terrafm_base\",\n60         \"pretrained\": True,\n61     }\n62 \n63",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/test_terrafm_wrapper.py",
+    "line": 70,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "69     return {\n70         \"local_model_path\": \"/tmp/cache/TerraFM-B.pth\",\n71         \"backbone_name\": \"terrafm_base\",\n72         \"pretrained\": True,\n73     }\n74 \n75",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/test_terrafm_wrapper.py",
+    "line": 125,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "124     mock_os_exists.return_value = False  # Trigger download\n125     expected_download_path = \"/tmp/cache/TerraFM-B.pth\"\n126     mock_hf_download.return_value = expected_download_path",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/test_terramind_wrapper.py",
+    "line": 107,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "106     return {\n107         \"local_model_path\": \"/tmp/mock/TerraMind_v1_tiny.pt\",\n108         \"backbone_name\": \"terramind_v1_tiny\",\n109         \"pretrained\": True,\n110         \"modalities\": [\"S2L2A\"],\n111     }\n112 \n113",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/test_terramind_wrapper.py",
+    "line": 118,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "117     return {\n118         \"local_model_path\": \"/tmp/mock/TerraMind_v1_tiny.pt\",\n119         \"backbone_name\": \"terramind_v1_tiny_generate\",\n120         \"pretrained\": True,\n121         \"modalities\": [\"S2L2A\"],\n122         \"output_modalities\": [\"S1RTC\"],\n123     }\n124 \n125",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/test_terramind_wrapper.py",
+    "line": 130,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "129     return {\n130         \"local_model_path\": \"/tmp/mock/TerraMind_v1_tiny.pt\",\n131         \"backbone_name\": \"terramind_v1_tiny_tim\",\n132         \"pretrained\": True,\n133         \"modalities\": [\"S2L2A\"],\n134         \"tim_modalities\": [\"S1RTC\"],\n135     }\n136 \n137",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-dill",
+    "file_path": "aitlas/base/metrics.py",
+    "line": 28,
+    "message": "Avoid using `dill`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-dill",
+    "file_path": "aitlas/base/metrics.py",
+    "line": 33,
+    "message": "Avoid using `dill`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "aitlas/datasets/big_earth_net.py",
+    "line": 165,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "aitlas/datasets/big_earth_net.py",
+    "line": 176,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "aitlas/datasets/breizhcrops.py",
+    "line": 53,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "aitlas/datasets/eopatch_crops.py",
+    "line": 34,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml.use-defused-xml",
+    "file_path": "aitlas/datasets/object_detection.py",
+    "line": 4,
+    "message": "The Python documentation recommends using `defusedxml` instead of `xml` because the native Python `xml` library is vulnerable to XML External Entity (XXE) attacks. These attacks can leak confidential data and \"XML bombs\" can cause denial of service.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml-parse.use-defused-xml-parse",
+    "file_path": "aitlas/datasets/object_detection.py",
+    "line": 142,
+    "message": "The native Python `xml` library is vulnerable to XML External Entity (XXE) attacks.  These attacks can leak confidential data and \"XML bombs\" can cause denial of service. Do not use this library to parse untrusted input. Instead  the Python documentation recommends using `defusedxml`.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml-parse.use-defused-xml-parse",
+    "file_path": "aitlas/datasets/object_detection.py",
+    "line": 183,
+    "message": "The native Python `xml` library is vulnerable to XML External Entity (XXE) attacks.  These attacks can leak confidential data and \"XML bombs\" can cause denial of service. Do not use this library to parse untrusted input. Instead  the Python documentation recommends using `defusedxml`.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml.use-defused-xml",
+    "file_path": "aitlas/datasets/rfi_ai4qc.py",
+    "line": 3,
+    "message": "The Python documentation recommends using `defusedxml` instead of `xml` because the native Python `xml` library is vulnerable to XML External Entity (XXE) attacks. These attacks can leak confidential data and \"XML bombs\" can cause denial of service.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml-parse.use-defused-xml-parse",
+    "file_path": "aitlas/datasets/rfi_ai4qc.py",
+    "line": 51,
+    "message": "The native Python `xml` library is vulnerable to XML External Entity (XXE) attacks.  These attacks can leak confidential data and \"XML bombs\" can cause denial of service. Do not use this library to parse untrusted input. Instead  the Python documentation recommends using `defusedxml`.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml-parse.use-defused-xml-parse",
+    "file_path": "aitlas/datasets/rfi_ai4qc.py",
+    "line": 88,
+    "message": "The native Python `xml` library is vulnerable to XML External Entity (XXE) attacks.  These attacks can leak confidential data and \"XML bombs\" can cause denial of service. Do not use this library to parse untrusted input. Instead  the Python documentation recommends using `defusedxml`.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

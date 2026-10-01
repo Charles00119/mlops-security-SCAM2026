@@ -1,0 +1,32 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "phenotrex/transforms/annotation.py",
+    "line": 166,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "165     )\n166     model_dict = torch.load(weights_path, map_location=device)\n167     model = load_nn(",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "phenotrex/util/external_data.py",
+    "line": 21,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "20         try:\n21             response = urllib.request.urlopen(http_path, timeout=5)\n22             gz = io.BytesIO(response.read())",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "phenotrex/util/external_data.py",
+    "line": 21,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  }
+]

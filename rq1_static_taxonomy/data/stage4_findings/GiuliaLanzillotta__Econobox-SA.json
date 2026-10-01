@@ -1,0 +1,402 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "classifier/Adaboost_classi.py",
+    "line": 73,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "72         with open(os.path.join(abs_path, path), 'rb') as f:\n73             self.model = pickle.load(f)",
+    "stage": "data_acquisition+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "classifier/HF_BERT_TORCH.py",
+    "line": 94,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "93         #Instantiate BERT model\n94         self.bert = BertModel.from_pretrained('bert-base-uncased')\n95",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "classifier/HF_BERT_TORCH.py",
+    "line": 321,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "320         path = models_store_path + self.name\n321         model.load_state_dict(torch.load(os.path.join(abs_path, path), map_location=self.device))\n322         model.to(self.device)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "classifier/HUGGINGFACE_BERT_NN.py",
+    "line": 18,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "17     def build(self, input_shape):\n18         self.tokenizer = AutoTokenizer.from_pretrained('bert-base-cased')\n19         self.trans_model = TFBertModel.from_pretrained('bert-base-cased')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "classifier/HUGGINGFACE_BERT_NN.py",
+    "line": 19,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "18         self.tokenizer = AutoTokenizer.from_pretrained('bert-base-cased')\n19         self.trans_model = TFBertModel.from_pretrained('bert-base-cased')\n20",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "classifier/HUGGINGFACE_BERT_NN.py",
+    "line": 70,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "69         #bert_layer = Lambda_Bert_Layer(trainable=False, dynamic=True)\n70         bert_layer = TFBertForSequenceClassification.from_pretrained('bert-base-uncased')\n71         bert_layer.bert.trainable=False",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "data/tweets_data.py",
+    "line": 135,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "134             print(\"Applying Bert embedding to the dataset.\")\n135             self.tokenizer = AutoTokenizer.from_pretrained('bert-base-cased')\n136             self.trans_model = TFBertModel.from_pretrained('bert-base-cased')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "data/tweets_data.py",
+    "line": 136,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "135             self.tokenizer = AutoTokenizer.from_pretrained('bert-base-cased')\n136             self.trans_model = TFBertModel.from_pretrained('bert-base-cased')\n137             def tf_encode(sentence):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "data/tweets_data.py",
+    "line": 242,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "241         # these are Bert parameters\n242         self.tokenizer = AutoTokenizer.from_pretrained('bert-base-cased')\n243         self.trans_model = TFBertModel.from_pretrained('bert-base-cased')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "data/tweets_data.py",
+    "line": 243,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "242         self.tokenizer = AutoTokenizer.from_pretrained('bert-base-cased')\n243         self.trans_model = TFBertModel.from_pretrained('bert-base-cased')\n244         # ---------------------------",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "embedding/glove.py",
+    "line": 51,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "50         with open(cooc_folder+self.cooc, 'rb') as f:\n51             cooc = pickle.load(f)\n52         # start glove training",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "embedding/negative_sampling.py",
+    "line": 60,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "59         with open(cooc_folder+self.cooc, 'rb') as f:\n60             cooc = pickle.load(f)\n61",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "embedding/negative_sampling.py",
+    "line": 63,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "62         with open(cooc_folder+self.neg_cooc, 'rb') as f:\n63             neg_cooc = pickle.load(f)\n64         # start glove training",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "preprocessing/TFIDF_preprocessing.py",
+    "line": 72,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "71     with open(os.path.join(abs_path, \"../data/tfidf.pkl\"), 'rb') as f:\n72         vectorizer = pickle.load(f)\n73     X_test_tfidf = vectorizer.transform(X_test_preprocessed)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "preprocessing/bert_torch_preprocessing.py",
+    "line": 61,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "60 # Load the BERT tokenizer\n61 tokenizer = BertTokenizer.from_pretrained('bert-base-uncased', do_lower_case=True)\n62",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "preprocessing/cooc.py",
+    "line": 90,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "89   with open(cooc_folder + file_name, 'rb') as f:\n90     cooc = pickle.load(f)\n91   return cooc",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "preprocessing/neg_cooc.py",
+    "line": 150,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "149   with open(cooc_folder + file_name, 'rb') as f:\n150     neg_cooc = pickle.load(f)\n151   return neg_cooc",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "preprocessing/pipeline.py",
+    "line": 22,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "21         with open(dictionary, \"rb\") as f:\n22             dictionary = pickle.load(f)\n23",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "preprocessing/tokenizer.py",
+    "line": 111,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "110     with open(os.path.join(abs_path,vocabularies_folder+file_name), 'rb') as f:\n111         vocab = pickle.load(f)\n112     return vocab",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "preprocessing/tweetDF.py",
+    "line": 35,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "34     with open(os.path.join(abs_path,\"../data/tweetDF.pkl\"), 'rb') as f:\n35         tweetDF = pickle.load(f)\n36     return tweetDF",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "preprocessing/tweetDF.py",
+    "line": 41,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "40     with open(os.path.join(abs_path,\"../data/predDF.pkl\"), 'rb') as f:\n41         predDF = pickle.load(f)\n42     return predDF",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "classifier/Adaboost_classi.py",
+    "line": 66,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "classifier/Adaboost_classi.py",
+    "line": 73,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "classifier/NaiveBayes_classi.py",
+    "line": 53,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "embedding/glove.py",
+    "line": 51,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "embedding/negative_sampling.py",
+    "line": 60,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "embedding/negative_sampling.py",
+    "line": 63,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "preprocessing/TFIDF_preprocessing.py",
+    "line": 61,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "preprocessing/TFIDF_preprocessing.py",
+    "line": 72,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "preprocessing/cooc.py",
+    "line": 82,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "preprocessing/cooc.py",
+    "line": 90,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "preprocessing/lemmatizer.py",
+    "line": 62,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "preprocessing/neg_cooc.py",
+    "line": 143,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "preprocessing/neg_cooc.py",
+    "line": 150,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "preprocessing/pipeline.py",
+    "line": 22,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "preprocessing/tokenizer.py",
+    "line": 46,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "preprocessing/tokenizer.py",
+    "line": 101,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "preprocessing/tokenizer.py",
+    "line": 111,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "preprocessing/tweetDF.py",
+    "line": 35,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "preprocessing/tweetDF.py",
+    "line": 41,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  }
+]

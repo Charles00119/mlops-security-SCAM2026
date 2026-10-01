@@ -1,0 +1,122 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "app/scraping_script.py",
+    "line": 111,
+    "message": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "snippet": "110         if os.path.exists(folder_path):\n111             file_path = os.path.join(folder_path,hashlib.sha1(image_content).hexdigest()[:10] + '.jpg')\n112         else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "app/scraping_script.py",
+    "line": 114,
+    "message": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "snippet": "113             os.mkdir(folder_path)\n114             file_path = os.path.join(folder_path,hashlib.sha1(image_content).hexdigest()[:10] + '.jpg')\n115         with open(file_path, 'wb') as f:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "google_image_scraping_script.py",
+    "line": 94,
+    "message": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "snippet": "93         if os.path.exists(folder_path):\n94             file_path = os.path.join(folder_path,hashlib.sha1(image_content).hexdigest()[:10] + '.jpg')\n95         else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "google_image_scraping_script.py",
+    "line": 97,
+    "message": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "snippet": "96             os.mkdir(folder_path)\n97             file_path = os.path.join(folder_path,hashlib.sha1(image_content).hexdigest()[:10] + '.jpg')\n98         with open(file_path, 'wb') as f:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "scrapper_intgrated_to_app/scraping_script.py",
+    "line": 108,
+    "message": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "snippet": "107         if os.path.exists(folder_path):\n108             file_path = os.path.join(folder_path,hashlib.sha1(image_content).hexdigest()[:10] + '.jpg')\n109         else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "scrapper_intgrated_to_app/scraping_script.py",
+    "line": 111,
+    "message": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "snippet": "110             os.mkdir(folder_path)\n111             file_path = os.path.join(folder_path,hashlib.sha1(image_content).hexdigest()[:10] + '.jpg')\n112         with open(file_path, 'wb') as f:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1",
+    "file_path": "app/scraping_script.py",
+    "line": 111,
+    "message": "Detected SHA1 hash algorithm which is considered insecure. SHA1 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1",
+    "file_path": "app/scraping_script.py",
+    "line": 114,
+    "message": "Detected SHA1 hash algorithm which is considered insecure. SHA1 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1",
+    "file_path": "google_image_scraping_script.py",
+    "line": 94,
+    "message": "Detected SHA1 hash algorithm which is considered insecure. SHA1 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1",
+    "file_path": "google_image_scraping_script.py",
+    "line": 97,
+    "message": "Detected SHA1 hash algorithm which is considered insecure. SHA1 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1",
+    "file_path": "scrapper_intgrated_to_app/scraping_script.py",
+    "line": 108,
+    "message": "Detected SHA1 hash algorithm which is considered insecure. SHA1 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1",
+    "file_path": "scrapper_intgrated_to_app/scraping_script.py",
+    "line": 111,
+    "message": "Detected SHA1 hash algorithm which is considered insecure. SHA1 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

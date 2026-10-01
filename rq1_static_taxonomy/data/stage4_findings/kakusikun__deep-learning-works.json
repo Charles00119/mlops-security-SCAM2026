@@ -1,0 +1,32 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "src/base_graph.py",
+    "line": 106,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "105             \n106         state = torch.load(path, map_location = torch.device('cpu'))\n107",
+    "stage": "inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "tools/deepfashiontools/coco.py",
+    "line": 379,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "378             if not os.path.exists(fname):\n379                 urlretrieve(img['coco_url'], fname)\n380             print('downloaded {}/{} images (t={:0.1f}s)'.format(i, N, time.time()- tic))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "tools/deepfashiontools/coco.py",
+    "line": 379,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

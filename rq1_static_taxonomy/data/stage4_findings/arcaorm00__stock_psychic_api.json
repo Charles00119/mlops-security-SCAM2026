@@ -1,0 +1,132 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "com_stock_api/resources/board.py",
+    "line": 224,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "223         try:\n224             db.engine.execute(f'delete from comments where board_id = {id}')\n225             data = cls.query.get(id)",
+    "stage": "data_acquisition+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "com_stock_api/resources/investingnews.py",
+    "line": 90,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "89         request = Request('https://www.investing.com/equities/' + stock_string + '-news/' + str(n), headers={\"User-Agent\": \"Mozilla/5.0\"})\n90         content = urlopen(request).read()\n91         # pages.append(bs(content, 'html.parser'))",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "com_stock_api/resources/investingnews.py",
+    "line": 113,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "112         request = Request(article_link, headers={\"User-Agent\": \"Mozilla/5.0\"})\n113         content = urlopen(request).read()\n114         try:",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "com_stock_api/resources/korea_finance.py",
+    "line": 57,
+    "message": "Call to requests without timeout",
+    "snippet": "56                 pass\n57             response=requests.get(url)\n58             text=response.text",
+    "stage": "data_acquisition+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "com_stock_api/resources/korea_news_recent.py",
+    "line": 61,
+    "message": "Call to requests without timeout",
+    "snippet": "60             #print(f'url : {url}')\n61             source_code = requests.get(url).text\n62             html = BeautifulSoup(source_code, \"lxml\")",
+    "stage": "data_acquisition+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "com_stock_api/resources/korea_news_recent.py",
+    "line": 76,
+    "message": "Call to requests without timeout",
+    "snippet": "75                     lis =  'https://finance.naver.com' + li.find('a')['href']\n76                     articles_code = requests.get(lis).text\n77                     htmls = BeautifulSoup(articles_code,\"lxml\")",
+    "stage": "data_acquisition+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "com_stock_api/resources/recent_news.py",
+    "line": 56,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "55         req = Request(url=url, headers={'user-agent': user_agent})\n56         resp = urlopen(req)\n57         html = bs(resp, features=\"lxml\")",
+    "stage": "data_acquisition+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "com_stock_api/resources/recent_news.py",
+    "line": 131,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "130         request = Request(link, headers={\"User-Agent\": 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'})\n131         content = urlopen(request).read()\n132         return bs(content, 'lxml')",
+    "stage": "data_acquisition+modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "com_stock_api/resources/investingnews.py",
+    "line": 90,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "com_stock_api/resources/investingnews.py",
+    "line": 113,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "com_stock_api/resources/recent_news.py",
+    "line": 56,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "com_stock_api/resources/recent_news.py",
+    "line": 131,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.app-run-security-config.avoid_using_app_run_directly",
+    "file_path": "run.py",
+    "line": 3,
+    "message": "top-level app.run(...) is ignored by flask. Consider putting app.run(...) behind a guard, like inside a function",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

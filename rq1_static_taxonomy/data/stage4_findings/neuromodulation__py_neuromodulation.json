@@ -1,0 +1,132 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "py_neuromodulation/analysis/RMAP.py",
+    "line": 278,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "277 \n278         urlretrieve(\n279             f\"https://zenodo.org/api/records/{record_id}/files/{file_name}/content\",\n280             filepath / f\"{self.connectome_name}.mat\",\n281         )\n282",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "py_neuromodulation/analysis/feature_reader.py",
+    "line": 770,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "769         with open(PATH_ML_, \"rb\") as input:\n770             ML_res = pickle.load(input)\n771             if self.decoder is None:",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "py_neuromodulation/gui/backend/app_manager.py",
+    "line": 86,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "85         creationflags=subprocess_flags,\n86         shell=True,\n87     )\n88 \n89     logging_thread = threading.Thread(\n90         target=output_reader,\n91         args=(shutdown_event, process),\n92     )\n93     logging_thread.start()\n94 \n95     shutdown_event.wait()  # Wait for shutdown",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "py_neuromodulation/stream/settings.py",
+    "line": 290,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "289                 with open(path) as f:\n290                     model_dict = yaml.load(f, Loader=yaml.Loader)\n291",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "py_neuromodulation/utils/database.py",
+    "line": 109,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "108 \n109         insert_sql = f'INSERT INTO \"{self.table_name}\" ({self.columns}) VALUES ({self.placeholders})'\n110",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "py_neuromodulation/utils/database.py",
+    "line": 124,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "123         \"\"\"\n124         return pd.read_sql_query(f'SELECT * FROM \"{self.table_name}\"', self.conn)\n125",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "py_neuromodulation/utils/database.py",
+    "line": 138,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "137         return pd.read_sql_query(\n138             f'SELECT * FROM \"{self.table_name}\" LIMIT {n}', self.conn\n139         )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "tests/test_database.py",
+    "line": 21,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "20     # read table\n21     table = nm_db.cursor.execute(f\"SELECT * FROM {nm_db.table_name}\")\n22",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "py_neuromodulation/analysis/RMAP.py",
+    "line": 278,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "py_neuromodulation/analysis/decode.py",
+    "line": 971,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "py_neuromodulation/analysis/feature_reader.py",
+    "line": 770,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "py_neuromodulation/gui/backend/app_manager.py",
+    "line": 86,
+    "message": "Found 'subprocess' function 'Popen' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.deserialization.avoid-pyyaml-load.avoid-pyyaml-load",
+    "file_path": "py_neuromodulation/stream/settings.py",
+    "line": 290,
+    "message": "Detected a possible YAML deserialization vulnerability. `yaml.unsafe_load`, `yaml.Loader`, `yaml.CLoader`, and `yaml.UnsafeLoader` are all known to be unsafe methods of deserializing YAML. An attacker with control over the YAML input could create special YAML input that allows the attacker to run arbitrary Python code. This would allow the attacker to steal files, download and install malware, or otherwise take over the machine. Use `yaml.safe_load` or `yaml.SafeLoader` instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  }
+]

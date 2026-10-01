@@ -1,0 +1,72 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "main.py",
+    "line": 335,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "334     if i + 1 != nr_splits:\n335         subprocess.call('rm -rf {}/transformers'.format(params.experiment_dir), shell=True)\n336",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "pipeline_config.py",
+    "line": 358,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "357                          'n_jobs': params.num_workers},\n358     'clipper': {'lower': eval(params.clipper__lower),\n359                 'upper': eval(params.clipper__upper)}",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "pipeline_config.py",
+    "line": 359,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "358     'clipper': {'lower': eval(params.clipper__lower),\n359                 'upper': eval(params.clipper__upper)}\n360 })",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "utils.py",
+    "line": 24,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "23     with open(filepath) as f:\n24         config = yaml.load(f)\n25     return AttrDict(config)",
+    "stage": "data_acquisition+data_preparation+evaluation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "main.py",
+    "line": 335,
+    "message": "Found 'subprocess' function 'call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "pipeline_config.py",
+    "line": 358,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "pipeline_config.py",
+    "line": 359,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  }
+]

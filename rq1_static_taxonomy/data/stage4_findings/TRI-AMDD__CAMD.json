@@ -1,0 +1,332 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "camd/agent/tests/test_m3gnet.py",
+    "line": 15,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "14     def setUpClass(cls):\n15         test_data = pd.read_pickle(os.path.join(CAMD_TEST_FILES, \"test_m3gnet.pickle\"))\n16         cls.test_data = test_data",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "camd/agent/tests/test_m3gnet.py",
+    "line": 76,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "75     def setUpClass(cls):\n76         test_data = pd.read_pickle(os.path.join(CAMD_TEST_FILES, \"test_m3gnet.pickle\"))\n77         print(test_data.columns)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "camd/campaigns/MProtoDFTCampaign.py",
+    "line": 50,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "49     # return entries\n50     data = pd.read_pickle(\"mp_binary.pickle\")\n51     data = data.rename(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "camd/campaigns/meta_agent.py",
+    "line": 136,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "135                 )\n136             obj = pickle.loads(raw_obj.read())\n137             all_objs.append(obj)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "camd/campaigns/meta_agent.py",
+    "line": 257,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "256         # load seed data\n257         df = pd.read_pickle(\"seed_data.pickle\")\n258         self._plot(df)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "camd/campaigns/structure_discovery.py",
+    "line": 86,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "85             download_s3_file(cache_key, CAMD_S3_BUCKET, \"candidate_data.pickle\")\n86             candidate_data = pd.read_pickle(\"candidate_data.pickle\")\n87             logger.info(\"Loaded cached {}.\".format(cache_key))",
+    "stage": "data_acquisition+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "camd/campaigns/tests/test_structure_discovery.py",
+    "line": 40,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "39         # be completely compatible with latest version of pymatgen\n40         exp_dataframe = pd.read_pickle(\n41             os.path.join(CAMD_TEST_FILES, \"mn-ni-o-sb.pickle\")\n42         )\n43         experiment = ATFSampler(exp_dataframe)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "camd/campaigns/tests/test_structure_discovery.py",
+    "line": 77,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "76     def test_sim_m3gnet(self):\n77         exp_dataframe = pd.read_pickle(\n78             os.path.join(CAMD_TEST_FILES, \"test_m3gnet_featurized.pickle\")\n79         )\n80         seed_data = pd.read_pickle(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "camd/campaigns/tests/test_structure_discovery.py",
+    "line": 80,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "79         )\n80         seed_data = pd.read_pickle(\n81             os.path.join(CAMD_TEST_FILES, \"mp_test_data.pickle\")\n82         )\n83         seed_data = seed_data.rename(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "camd/experiment/tests/test_atomate.py",
+    "line": 75,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "74         lpad.auto_load()\n75         current_data = pd.read_pickle(os.path.join(TEST_DIR, \"Si_test.p\"))\n76         experiment = AtomateExperiment(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "camd/tests/test_analysis.py",
+    "line": 65,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "64     def test_analyze_vaspqmpy_jobs(self):\n65         jobs = pd.read_pickle(os.path.join(CAMD_TEST_FILES, \"mn-ni-o-sb.pickle\"))\n66         analyzer = AnalyzeStructures()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "camd/tests/test_analysis.py",
+    "line": 78,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "77         exploration_df = pd.read_csv(os.path.join(CAMD_TEST_FILES, \"test_df_ATF.csv\"))\n78         record = pickle.load(open(os.path.join(CAMD_TEST_FILES, \"seed_data_ATF.pickle\"), \"rb\"))\n79         analyzer = GenericATFAnalyzer(percentile=0.01)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "camd/utils/data.py",
+    "line": 52,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "51     cache_matrio_data(filename)\n52     return pd.read_pickle(os.path.join(CAMD_CACHE, filename))\n53",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "camd/utils/data.py",
+    "line": 444,
+    "message": "Call to requests without timeout",
+    "snippet": "443         makedirs_p(os.path.split(cache_path)[0])\n444         r = requests.get(url, stream=True)\n445         total_size = int(r.headers.get(\"content-length\", 0))",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "examples/analysis_GeneraticATFAnalyzer/analysis_GeneraticATFAnalyzer.py",
+    "line": 34,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "33     for i in range(num_cycle):\n34         record = pickle.load(open(path+\"/seed_data_%s_%s.pickle\" % (scenario, str(i)), \"rb\"))\n35         record_list.append(record)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "scripts/add_plots.py",
+    "line": 28,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "27     local_folder = local_folder or \".\"\n28     os.system('aws s3 sync s3://{}/{} {}'.format(\n29         bucket, s3_folder, local_folder))\n30     return True",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "scripts/add_plots.py",
+    "line": 58,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "57                 with open(os.path.join(str(iteration), \"seed_data.pickle\"), \"rb\") as f:\n58                     result_df = pickle.load(f)\n59                 all_result_ids = loadfn(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "scripts/add_plots.py",
+    "line": 77,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "76     local_folder = local_folder or \".\"\n77     os.system('aws s3 sync {} s3://{}/{}'.format(\n78         local_folder, bucket, s3_folder))\n79",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "scripts/add_structure_analysis.py",
+    "line": 19,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "18     local_folder = local_folder or \".\"\n19     os.system('aws s3 sync s3://{}/{} {}'.format(\n20         bucket, s3_folder, local_folder))\n21     return True",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "scripts/add_structure_analysis.py",
+    "line": 27,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "26     local_folder = local_folder or \".\"\n27     os.system('aws s3 sync {} s3://{}/{}'.format(\n28         local_folder, bucket, s3_folder))\n29",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "scripts/summarize.py",
+    "line": 39,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "38         with open(os.path.join(\"seed_data.pickle\"), \"rb\") as f:\n39             result_df = pickle.load(f)\n40",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "scripts/summarize.py",
+    "line": 54,
+    "message": "Call to requests without timeout",
+    "snippet": "53         # Get all DFT data\n54         response = requests.get('{}/synthesis-discovery/{}/dft-results'.format(\n55             API_URL, chemsys))\n56         data = json.loads(response.content.decode('utf-8'))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "tasks.py",
+    "line": 89,
+    "message": "Call to requests without timeout",
+    "snippet": "88     }\n89     response = requests.post(\n90         \"https://api.github.com/repos/TRI-AMDD/camd/releases\",\n91         data=json.dumps(payload),\n92         headers={\"Authorization\": \"token \" + os.environ[\"GITHUB_RELEASES_TOKEN\"]})\n93     print(response.text)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "camd/campaigns/meta_agent.py",
+    "line": 61,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "camd/campaigns/meta_agent.py",
+    "line": 67,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "camd/campaigns/meta_agent.py",
+    "line": 75,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "camd/campaigns/meta_agent.py",
+    "line": 102,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "camd/campaigns/meta_agent.py",
+    "line": 136,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-subprocess-use-tainted-env-args.dangerous-subprocess-use-tainted-env-args",
+    "file_path": "camd/experiment/dft.py",
+    "line": 621,
+    "message": "Detected subprocess function 'call' with user controlled data. A malicious actor could leverage this to perform command injection. You may consider using 'shlex.quote()'.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "examples/analysis_GeneraticATFAnalyzer/analysis_GeneraticATFAnalyzer.py",
+    "line": 34,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "scripts/add_plots.py",
+    "line": 58,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "scripts/summarize.py",
+    "line": 39,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "info",
+    "rule_id": "python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http",
+    "file_path": "scripts/summarize.py",
+    "line": 54,
+    "message": "Detected a request using 'http://'. This request will be unencrypted, and attackers could listen into traffic on the network and be able to obtain sensitive information. Use 'https://' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

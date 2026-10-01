@@ -1,0 +1,132 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "linc_cv/images.py",
+    "line": 19,
+    "message": "Call to requests without timeout",
+    "snippet": "18     try:\n19         r = requests.get(image_url)\n20     except SSLError:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "linc_cv/modality_cv/predict.py",
+    "line": 35,
+    "message": "Call to requests without timeout",
+    "snippet": "34         cv_nn_model = CV_NN_Model(use_cuda=False)\n35     r = requests.get(image_url)\n36     if not r.ok:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "linc_cv/modality_whisker/predict.py",
+    "line": 115,
+    "message": "Call to requests without timeout",
+    "snippet": "114 \n115     r = requests.get(test_image_url)\n116     if not r.ok:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "linc_cv/parse_lion_db.py",
+    "line": 21,
+    "message": "Call to requests without timeout",
+    "snippet": "20     urldbdump = 'https://linc-api.herokuapp.com/lions/'\n21     resp = post(urllogin, data=dumps(body), headers=headers)\n22     if resp.status_code == 200:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "linc_cv/parse_lion_db.py",
+    "line": 25,
+    "message": "Call to requests without timeout",
+    "snippet": "24         headers['Linc-Api-AuthToken'] = resp.json()['data']['token']\n25         respdb = get(urldbdump, headers=headers)\n26         if respdb.status_code == 403:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "linc_cv/parse_lion_db.py",
+    "line": 35,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "34             with NamedTemporaryFile(suffix='.zip') as ntf:\n35                 download_it(url, ntf.name)\n36                 ntf.seek(0)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "linc_cv/predict.py",
+    "line": 18,
+    "message": "Call to requests without timeout",
+    "snippet": "17 def predict_on_url(*, image_url, clf, num_results=20):\n18     r = requests.get(image_url)\n19     if not r.ok:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "linc_cv/web.py",
+    "line": 131,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "130 if __name__ == '__main__':\n131     app.run(debug=False, host='0.0.0.0')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "tests/test_web.py",
+    "line": 28,
+    "message": "Call to requests without timeout",
+    "snippet": "27     # 1. Submit the classification job\n28     response = requests.post(f'{HOST}/linc/v1/classify', json=data, headers=headers)\n29     assert response.status_code == 200, f\"Failed to submit job. Status: {response.status_code}, Response: {response.text}\"",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "tests/test_web.py",
+    "line": 42,
+    "message": "Call to requests without timeout",
+    "snippet": "41 \n42         result_response = requests.get(f'{HOST}/linc/v1/results/{result_id}', headers=headers)\n43         assert result_response.status_code == 200, f\"Failed to get result. Status: {result_response.status_code}, Response: {result_response.text}\"",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "tests/test_web.py",
+    "line": 62,
+    "message": "Call to requests without timeout",
+    "snippet": "61     \"\"\"\n62     response = requests.get(f'{HOST}/linc/v1/capabilities', headers=headers)\n63     assert response.status_code == 200, f\"Expected status code 200, but got {response.status_code}. Response: {response.text}\"",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "linc_cv/parse_lion_db.py",
+    "line": 35,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.app-run-param-config.avoid_app_run_with_bad_host",
+    "file_path": "linc_cv/web.py",
+    "line": 131,
+    "message": "Running flask app with host 0.0.0.0 could expose the server publicly.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

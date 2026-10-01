@@ -1,0 +1,272 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "paper/benchmark/adapters/data.py",
+    "line": 54,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "53     \"\"\"\n54     cache_dir = Path(\"/tmp/citrees-data\")\n55     cache_dir.mkdir(parents=True, exist_ok=True)",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "paper/benchmark/cli/cluster.py",
+    "line": 29,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "28         ),\n29     ] = \"0.0.0.0\",\n30     port: Annotated[\n31         int,\n32         typer.Option(\n33             \"--port\",\n34             \"-p\",\n35             help=\"Bind port\",\n36         ),\n37     ] = 8000,\n38 ) -> None:\n39     \"\"\"Start the API queue server.\n40 \n41     The server auto-discovers the configured experiment set and checks S3 for\n42     completed work on startup. No configuration n",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "paper/benchmark/infra/aws.py",
+    "line": 60,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "59         try:\n60             with urllib.request.urlopen(url, timeout=10) as response:\n61                 return response.read().decode(\"utf-8\").strip()",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "paper/benchmark/infra/aws.py",
+    "line": 319,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "318             \"--output-dir\",\n319             \"/tmp/jss-selector-smoke\",\n320         ],\n321         [\n322             \"docker\",\n323             \"run\",\n324             \"--rm\",\n325             \"--init\",\n326             \"-e\",\n327             f\"GIT_SHA={git_sha}\",\n328             \"-e\",\n329             \"CITREES_SOURCE_CLEAN=1\",\n330             image_tag,\n331             \"python\",\n332             \"-m\"",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "paper/benchmark/infra/aws.py",
+    "line": 342,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "341             \"--output-dir\",\n342             \"/tmp/jss-behavior-smoke\",\n343         ],\n344         [\n345             \"docker\",\n346             \"run\",\n347             \"--rm\",\n348             \"--init\",\n349             image_tag,\n350             \"pytest\",\n351             \"tests/paper/test_stage1.py\",\n352             \"tests/paper/test_provenance.py\",\n353             \"-q\",\n354             \"-rs\",\n355",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "paper/benchmark/infra/aws.py",
+    "line": 841,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "840         raise RuntimeError(f\"ECR config {config_digest} has no HTTPS download URL\")\n841     with urllib.request.urlopen(download_url, timeout=30) as remote:\n842         payload = remote.read()",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "paper/benchmark/pipeline/instance_identity.py",
+    "line": 764,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "763     try:\n764         with urllib.request.urlopen(request, timeout=2) as response:\n765             if response.status != 200:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B413",
+    "file_path": "paper/benchmark/pipeline/operator_attestation.py",
+    "line": 17,
+    "message": "The pyCrypto library and its module ECC are no longer actively maintained and have been deprecated. Consider using pyca/cryptography library.",
+    "snippet": "16 \n17 from Crypto.PublicKey import ECC\n18 from Crypto.Signature import eddsa",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B413",
+    "file_path": "paper/benchmark/pipeline/operator_attestation.py",
+    "line": 18,
+    "message": "The pyCrypto library and its module eddsa are no longer actively maintained and have been deprecated. Consider using pyca/cryptography library.",
+    "snippet": "17 from Crypto.PublicKey import ECC\n18 from Crypto.Signature import eddsa\n19",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "paper/benchmark/pipeline/types.py",
+    "line": 61,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "60         payload = json.dumps(dict(self.params), sort_keys=True, default=str)\n61         digest = hashlib.md5(payload.encode(\"utf-8\")).hexdigest()[:16]\n62         return f\"{self.name}__{digest}\"",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "paper/jss/replication/nhanes_diabetes.py",
+    "line": 85,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "84             print(f\"  downloading {name}\", flush=True)\n85             urllib.request.urlretrieve(url, path)  # noqa: S310 - pinned https URL, digest verified below\n86         actual = _sha256(path)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "paper/maintenance/audit_hash_alias_manifest.py",
+    "line": 53,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "52     filtered = {k: v for k, v in sorted(params.items()) if k not in (\"method\", \"random_state\")}\n53     digest = hashlib.md5(json.dumps(filtered, sort_keys=True, default=str).encode()).hexdigest()[\n54         :16",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "paper/maintenance/audit_hash_alias_manifest.py",
+    "line": 110,
+    "message": "Use of exec detected.",
+    "snippet": "109     }\n110     exec(source, namespace)\n111     return {task: namespace[\"get_configs\"](task) for task in (\"classification\", \"regression\")}",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tests/integration/test_sklearn_compat.py",
+    "line": 425,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "424             f.seek(0)\n425             clf2 = pickle.load(f)\n426",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tests/integration/test_sklearn_compat.py",
+    "line": 446,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "445             f.seek(0)\n446             reg2 = pickle.load(f)\n447",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tests/integration/test_sklearn_compat.py",
+    "line": 461,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "460             f.seek(0)\n461             clf2 = pickle.load(f)\n462",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tests/integration/test_sklearn_compat.py",
+    "line": 476,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "475             f.seek(0)\n476             reg2 = pickle.load(f)\n477",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tests/integration/test_sklearn_compat.py",
+    "line": 489,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "488             f.seek(0)\n489             clf2 = pickle.load(f)\n490",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B413",
+    "file_path": "tests/paper/operator_attestation_fixtures.py",
+    "line": 5,
+    "message": "The pyCrypto library and its module ECC are no longer actively maintained and have been deprecated. Consider using pyca/cryptography library.",
+    "snippet": "4 \n5 from Crypto.PublicKey import ECC\n6",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tests/paper/test_store.py",
+    "line": 251,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "250 \n251     restored = pickle.loads(pickle.dumps(store))\n252",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "paper/benchmark/infra/aws.py",
+    "line": 60,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "paper/benchmark/infra/aws.py",
+    "line": 841,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "paper/benchmark/pipeline/instance_identity.py",
+    "line": 764,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "paper/benchmark/pipeline/types.py",
+    "line": 61,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "paper/jss/replication/nhanes_diabetes.py",
+    "line": 85,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "paper/maintenance/audit_hash_alias_manifest.py",
+    "line": 53,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "paper/maintenance/audit_hash_alias_manifest.py",
+    "line": 110,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

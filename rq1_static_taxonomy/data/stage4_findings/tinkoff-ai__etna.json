@@ -1,0 +1,312 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "etna/auto/runner/utils.py",
+    "line": 6,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "5     \"\"\"Unpickle paylod and call function.\"\"\"\n6     fun, args, kwargs = dill.loads(payload)\n7     return fun(*args, **kwargs)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "etna/auto/utils.py",
+    "line": 20,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "19     \"\"\"Compute hash of given ``config``.\"\"\"\n20     return md5(json.dumps(config, sort_keys=True).encode()).hexdigest()\n21",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "etna/core/mixins.py",
+    "line": 273,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "272         with archive.open(\"object.pkl\", \"r\") as input_file:\n273             return dill.load(input_file)\n274",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "etna/experimental/classification/base.py",
+    "line": 23,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "22         with open(path, \"rb\") as file:\n23             clf = pickle.load(file, *args, **kwargs)\n24         return clf",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "etna/experimental/classification/predictability.py",
+    "line": 96,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "95         try:\n96             request.urlretrieve(url=url, filename=path)\n97         except Exception:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "etna/models/mixins.py",
+    "line": 653,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "652         with archive.open(\"object.pt\", \"r\") as input_file:\n653             return torch.load(input_file, pickle_module=dill)",
+    "stage": "data_preparation+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "scripts/cache_cleaner.py",
+    "line": 25,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "24 \n25 output = subprocess.check_output(COMMAND_GET_LIST, shell=True)\n26",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "scripts/cache_cleaner.py",
+    "line": 32,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "31 \n32 list(map(lambda x: subprocess.check_output(COMMAND_DELETE(x.id), shell=True), cache_list))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "scripts/remove_old_images.py",
+    "line": 20,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "19             ),\n20             shell=True,\n21             check=True,\n22             stdout=subprocess.PIPE,\n23         )\n24         parsed_result = json.loads(result.stdout.decode(\"utf-8\"))\n25         if len(parsed_result) == 0:\n26             break\n27         else:\n28             image_versions += parsed_result\n29             page += 1\n30     # filter out tagged images\n31     image_versions = ",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "scripts/remove_old_images.py",
+    "line": 59,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "58             ),\n59             shell=True,\n60             check=True,\n61         )\n62 \n63 \n64 def delete_pipe(image_name: str, leave_last_n_images: int):\n65     image_versions = get_untagged_images(image_name)\n66     image_versions_to_remove = get_list_to_remove(leave_last_n_images, image_versions)\n67     remove_images(image_versions_to_remove)\n68 \n69 \n70 if __name__ == \"__main__\":\n71     delete",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tests/test_clustering/test_clustering.py",
+    "line": 64,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "63     dumped = pickle.dumps(clustering)\n64     clustering_undumped = pickle.loads(dumped)\n65     centroids_after_pickle = clustering_undumped.get_centroids()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tests/test_core/test_mixins.py",
+    "line": 43,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "42         with archive.open(\"object.pkl\", \"r\") as input_file:\n43             loaded_dummy = pickle.load(input_file)\n44         assert loaded_dummy.a == dummy.a",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tests/test_ensembles/test_mixins.py",
+    "line": 68,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "67         with archive.open(\"object.pkl\", \"r\") as input_file:\n68             loaded_obj = pickle.load(input_file)\n69         assert loaded_obj.a == dummy.a",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "tests/test_models/test_mixins.py",
+    "line": 173,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "172         with zip_file.open(\"object.pt\", \"r\") as input_file:\n173             loaded_dummy = torch.load(input_file, pickle_module=dill)\n174         assert loaded_dummy.a == dummy.a",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tests/test_pipeline/test_mixins.py",
+    "line": 291,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "290         with archive.open(\"object.pkl\", \"r\") as input_file:\n291             loaded_obj = pickle.load(input_file)\n292         assert loaded_obj.a == dummy.a",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "tests/test_transforms/test_math/test_lag_transform.py",
+    "line": 88,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "87         # check that a transform can be created from column name and it generates the same results\n88         transform_temp = eval(column)\n89         df_temp = transform_temp.fit_transform(ts=deepcopy(int_ts_two_segments)).to_pandas()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "tests/test_transforms/test_math/test_sklearn_transform_interface.py",
+    "line": 190,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "189         # create transform from column\n190         transform_temp = eval(column)\n191         df_temp = transform_temp.fit_transform(deepcopy(multicolumn_ts)).to_pandas()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "tests/test_transforms/test_timestamp/test_dateflags_transform.py",
+    "line": 239,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "238         # check that a transform can be created from column name and it generates the same results\n239         transform_temp = eval(column)\n240         df_temp = transform_temp.fit_transform(deepcopy(train_ts)).to_pandas()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "tests/test_transforms/test_timestamp/test_fourier_transform.py",
+    "line": 109,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "108     for column in columns:\n109         transform_temp = eval(column)\n110         df_temp = transform_temp.fit_transform(deepcopy(example_ts)).to_pandas()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "tests/test_transforms/test_timestamp/test_timeflags_transform.py",
+    "line": 178,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "177         # check that a transform can be created from column name and it generates the same results\n178         transform_temp = eval(column)\n179         df_temp = transform_temp.fit_transform(deepcopy(train_ts)).to_pandas()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-dill",
+    "file_path": "etna/auto/runner/local.py",
+    "line": 65,
+    "message": "Avoid using `dill`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-dill",
+    "file_path": "etna/auto/runner/utils.py",
+    "line": 6,
+    "message": "Avoid using `dill`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "etna/auto/utils.py",
+    "line": 20,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-dill",
+    "file_path": "etna/core/mixins.py",
+    "line": 234,
+    "message": "Avoid using `dill`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-dill",
+    "file_path": "etna/core/mixins.py",
+    "line": 273,
+    "message": "Avoid using `dill`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "etna/experimental/classification/base.py",
+    "line": 10,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "etna/experimental/classification/base.py",
+    "line": 23,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "etna/experimental/classification/predictability.py",
+    "line": 96,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "scripts/cache_cleaner.py",
+    "line": 32,
+    "message": "Found 'subprocess' function 'check_output' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "scripts/remove_old_images.py",
+    "line": 20,
+    "message": "Found 'subprocess' function 'run' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "scripts/remove_old_images.py",
+    "line": 59,
+    "message": "Found 'subprocess' function 'run' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

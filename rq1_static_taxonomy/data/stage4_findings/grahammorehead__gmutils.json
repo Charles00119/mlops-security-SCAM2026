@@ -1,0 +1,82 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "gmutils/pytorch_utils.py",
+    "line": 101,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "100             filepath = dirpath +'/'+ name + '.pth'\n101             state_dict = torch.load(filepath, map_location=lambda storage, loc: storage)\n102             self.load_state_dict(state_dict)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "gmutils/utils.py",
+    "line": 769,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "768             try:\n769                 thing = dill.load(FH)\n770                 return thing",
+    "stage": "data_acquisition+evaluation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "gmutils/utils.py",
+    "line": 775,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "774         with open(file,'rb') as FH:\n775             thing = pickle.load(FH)\n776             return thing",
+    "stage": "data_acquisition+evaluation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "gmutils/utils.py",
+    "line": 862,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "861     \"\"\"\n862     for line in os.popen(\"wc -l %s\"% file):\n863         if re.search('^\\s*\\d', line):",
+    "stage": "data_acquisition+evaluation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-dill",
+    "file_path": "gmutils/utils.py",
+    "line": 728,
+    "message": "Avoid using `dill`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "gmutils/utils.py",
+    "line": 731,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-dill",
+    "file_path": "gmutils/utils.py",
+    "line": 769,
+    "message": "Avoid using `dill`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "gmutils/utils.py",
+    "line": 775,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation"
+  }
+]

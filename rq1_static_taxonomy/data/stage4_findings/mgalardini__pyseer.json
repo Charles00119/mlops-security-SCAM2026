@@ -1,0 +1,262 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "pyseer/__main__.py",
+    "line": 343,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "342             if options.load_m and os.path.isfile(options.load_m):\n343                 m = pd.read_pickle(options.load_m)\n344                 sys.stderr.write(\"Loaded projection with dimension \" + str(m.shape) + \"\\n\")",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "pyseer/__main__.py",
+    "line": 605,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "604             with open(options.load_vars + \".pkl\", 'rb') as pickle_obj:\n605                 var_file_original, var_indices, saved_samples, loaded = pickle.load(pickle_obj)\n606                 if var_file_original != file_hash(var_file):",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "pyseer/enet_predict.py",
+    "line": 98,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "97     with open(options.model, 'rb') as pickle_obj:\n98         model_dict, continuous = pickle.load(pickle_obj)\n99     try:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "pyseer/fastlmm/util.py",
+    "line": 162,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "161     import sys\n162     seed=int(hashlib.md5(str(seed1) + \"_\" + str(seed2)).hexdigest()[-8:], 16)    #as of numpy 1.9, seeds must be 32-bit, so keep only the 8 right-most hex digits\n163     return seed",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "pyseer/input.py",
+    "line": 722,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "721     pattern = k.view(np.uint8)\n722     hashed = hashlib.md5(pattern)\n723     return (binascii.b2a_base64(hashed.digest()))",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "pyseer/kmer_mapping/annotate_hits.py",
+    "line": 141,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "140         try:\n141             subprocess.run(\"gff2bed < \\\"\" + ref_gff + \"\\\" > \\\"\" + tmp_bed.name + \"\\\"\", shell=True, check=True)\n142         except AttributeError:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "pyseer/kmer_mapping/annotate_hits.py",
+    "line": 144,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "143             # python prior to 3.5\n144             subprocess.check_call(\"gff2bed < \\\"\" + ref_gff + \"\\\" > \\\"\" + tmp_bed.name + \"\\\"\", shell=True)\n145         ref_annotation = pybedtools.BedTool(tmp_bed.name)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "pyseer/kmer_mapping/bwa.py",
+    "line": 28,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "27         try:\n28             subprocess.run(command, shell=True, check=True, stderr=subprocess.DEVNULL)\n29         except AttributeError:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "pyseer/kmer_mapping/bwa.py",
+    "line": 32,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "31             devnull = open(os.devnull, 'w')\n32             subprocess.check_call(command, shell=True, stderr=devnull)\n33",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "pyseer/kmer_mapping/bwa.py",
+    "line": 44,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "43 \n44     bwa_p = subprocess.Popen(command, stdout=subprocess.PIPE, shell=True, universal_newlines=True)\n45     prev_record = None",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "scripts/count_patterns.py",
+    "line": 33,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "32     parser.add_argument('--temp',\n33                         default='/tmp',\n34                         help='Directory to write tmp files to')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "scripts/count_patterns.py",
+    "line": 54,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "53 \n54     p = subprocess.check_output(command, shell=True, universal_newlines=True)\n55     if not options.threshold:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "pyseer/__main__.py",
+    "line": 605,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "pyseer/__main__.py",
+    "line": 633,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "pyseer/__main__.py",
+    "line": 711,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "pyseer/__main__.py",
+    "line": 752,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "pyseer/enet_predict.py",
+    "line": 98,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "pyseer/fastlmm/util.py",
+    "line": 162,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "pyseer/input.py",
+    "line": 722,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "pyseer/kmer_mapping/annotate_hits.py",
+    "line": 141,
+    "message": "Found 'subprocess' function 'run' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "pyseer/kmer_mapping/annotate_hits.py",
+    "line": 144,
+    "message": "Found 'subprocess' function 'check_call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "pyseer/kmer_mapping/bwa.py",
+    "line": 28,
+    "message": "Found 'subprocess' function 'run' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "pyseer/kmer_mapping/bwa.py",
+    "line": 32,
+    "message": "Found 'subprocess' function 'check_call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "pyseer/kmer_mapping/bwa.py",
+    "line": 44,
+    "message": "Found 'subprocess' function 'Popen' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "scripts/count_patterns.py",
+    "line": 54,
+    "message": "Found 'subprocess' function 'check_output' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "scripts/save_model.py",
+    "line": 47,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

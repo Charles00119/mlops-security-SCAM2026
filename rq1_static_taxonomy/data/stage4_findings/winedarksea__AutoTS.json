@@ -1,0 +1,102 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "autots/evaluator/auto_model.py",
+    "line": 152,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "151     str_repr = ''.join(str_repr.split())\n152     hashed = md5(str_repr.encode('utf-8')).hexdigest()\n153     return hashed",
+    "stage": "data_acquisition+data_preparation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "autots/evaluator/auto_model.py",
+    "line": 1231,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "1230 \n1231             new_obj = pickle.load(open(filename, \"rb\"))\n1232         else:",
+    "stage": "data_acquisition+data_preparation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "autots/evaluator/auto_ts.py",
+    "line": 2972,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "2971 \n2972                 new_obj = pickle.load(open(filename, \"rb\"))\n2973             else:",
+    "stage": "data_acquisition+data_preparation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/test_fast_kalman.py",
+    "line": 7,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "6 \n7 os.environ.setdefault(\"MPLCONFIGDIR\", \"/tmp/matplotlib\")\n8",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/test_mcp_server.py",
+    "line": 1722,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "1721         result = await get_prompt(\n1722             \"explainable_forecast\", {\"filepath\": \"/tmp/test.csv\", \"forecast_length\": \"14\"}\n1723         )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/test_mcp_server.py",
+    "line": 1726,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "1725         text = result.messages[0].content.text\n1726         self.assertIn(\"/tmp/test.csv\", text)\n1727         self.assertIn(\"14\", text)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "autots/evaluator/auto_model.py",
+    "line": 152,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "autots/evaluator/auto_model.py",
+    "line": 1220,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "autots/evaluator/auto_model.py",
+    "line": 1231,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "autots/evaluator/auto_ts.py",
+    "line": 2972,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+inference+modeling+training"
+  }
+]

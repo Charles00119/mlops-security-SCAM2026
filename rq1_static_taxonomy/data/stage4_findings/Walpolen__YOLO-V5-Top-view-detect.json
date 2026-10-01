@@ -1,0 +1,562 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "detect.py",
+    "line": 82,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "81             modelc = load_classifier(name='resnet50', n=2)  # initialize\n82             modelc.load_state_dict(torch.load('resnet50.pt', map_location=device)['model']).to(device).eval()\n83     elif onnx:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "hubconf.py",
+    "line": 51,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "50             if pretrained:\n51                 ckpt = torch.load(attempt_download(path), map_location=device)  # load\n52                 msd = model.state_dict()  # model state_dict",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "models/common.py",
+    "line": 314,
+    "message": "Call to requests without timeout",
+    "snippet": "313             if isinstance(im, (str, Path)):  # filename or uri\n314                 im, f = Image.open(requests.get(im, stream=True).raw if str(im).startswith('http') else im), im\n315                 im = np.asarray(exif_transpose(im))",
+    "stage": "data_acquisition+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "models/experimental.py",
+    "line": 94,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "93     for w in weights if isinstance(weights, list) else [weights]:\n94         ckpt = torch.load(attempt_download(w), map_location=map_location)  # load\n95         if fuse:",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "models/tf.py",
+    "line": 289,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "288         m_str = m\n289         m = eval(m) if isinstance(m, str) else m  # eval strings\n290         for j, a in enumerate(args):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "models/tf.py",
+    "line": 292,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "291             try:\n292                 args[j] = eval(a) if isinstance(a, str) else a  # eval strings\n293             except:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "models/tf.py",
+    "line": 316,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "315 \n316         tf_m = eval('tf_' + m_str.replace('nn.', ''))\n317         m_ = keras.Sequential([tf_m(*args, w=model.model[i][j]) for j in range(n)]) if n > 1 \\",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "models/tf.py",
+    "line": 340,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "339             with open(cfg) as f:\n340                 self.yaml = yaml.load(f, Loader=yaml.FullLoader)  # model dict\n341",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "models/tf.py",
+    "line": 538,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "537                     with open(check_file(opt.source)) as f:\n538                         data = yaml.load(f, Loader=yaml.FullLoader)  # data dict\n539                         check_dataset(data)  # check",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "models/yolo.py",
+    "line": 232,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "231     for i, (f, n, m, args) in enumerate(d['backbone'] + d['head']):  # from, number, module, args\n232         m = eval(m) if isinstance(m, str) else m  # eval strings\n233         for j, a in enumerate(args):",
+    "stage": "data_acquisition+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "models/yolo.py",
+    "line": 235,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "234             try:\n235                 args[j] = eval(a) if isinstance(a, str) else a  # eval strings\n236             except:",
+    "stage": "data_acquisition+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "train.py",
+    "line": 112,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "111             weights = attempt_download(weights)  # download if not found locally\n112         ckpt = torch.load(weights, map_location=device)  # load checkpoint\n113         model = Model(cfg or ckpt['model'].yaml, ch=3, nc=nc, anchors=hyp.get('anchors')).to(device)  # create",
+    "stage": "data_acquisition+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "train.py",
+    "line": 553,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "552         if opt.bucket:\n553             os.system(f'gsutil cp gs://{opt.bucket}/evolve.csv {save_dir}')  # download evolve.csv if exists\n554",
+    "stage": "data_acquisition+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "utils/aws/resume.py",
+    "line": 16,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "15 for last in path.rglob('*/**/last.pt'):\n16     ckpt = torch.load(last)\n17     if ckpt['optimizer'] is None:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "utils/aws/resume.py",
+    "line": 37,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "36     print(cmd)\n37     os.system(cmd)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "utils/datasets.py",
+    "line": 48,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "47     size = sum(os.path.getsize(p) for p in paths if os.path.exists(p))  # sizes\n48     h = hashlib.md5(str(size).encode())  # hash sizes\n49     h.update(''.join(paths).encode())  # hash paths",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "utils/datasets.py",
+    "line": 242,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "241         self.stride = stride\n242         self.pipe = eval(pipe) if pipe.isnumeric() else pipe\n243         self.cap = cv2.VideoCapture(self.pipe)  # video capture object",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "utils/datasets.py",
+    "line": 302,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "301                 s = pafy.new(s).getbest(preftype=\"mp4\").url  # YouTube URL\n302             s = eval(s) if s.isnumeric() else s  # i.e. s = '0' local webcam\n303             cap = cv2.VideoCapture(s)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "utils/datasets.py",
+    "line": 926,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "925             assert Path(path).is_file(), f'Error unzipping {path}, file not found'\n926             assert os.system(f'unzip -q {path} -d {path.parent}') == 0, f'Error unzipping {path}'\n927             dir = path.with_suffix('')  # dataset directory",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "utils/downloads.py",
+    "line": 19,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "18     # gs://bucket/file size https://cloud.google.com/storage/docs/gsutil/commands/du\n19     s = subprocess.check_output(f'gsutil du {url}', shell=True).decode('utf-8')\n20     return eval(s.split(' ')[0]) if len(s) else 0  # bytes",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "utils/downloads.py",
+    "line": 20,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "19     s = subprocess.check_output(f'gsutil du {url}', shell=True).decode('utf-8')\n20     return eval(s.split(' ')[0]) if len(s) else 0  # bytes\n21",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "utils/downloads.py",
+    "line": 34,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "33         print(f'ERROR: {e}\\nRe-attempting {url2 or url} to {file}...')\n34         os.system(f\"curl -L '{url2 or url}' -o '{file}' --retry 3 -C -\")  # curl download, retry and resume on fail\n35     finally:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "utils/downloads.py",
+    "line": 58,
+    "message": "Call to requests without timeout",
+    "snippet": "57         try:\n58             response = requests.get(f'https://api.github.com/repos/{repo}/releases/latest').json()  # github api\n59             assets = [x['name'] for x in response['assets']]  # release assets, i.e. ['yolov5s.pt', 'yolov5m.pt', ...]",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "utils/downloads.py",
+    "line": 90,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "89     out = \"NUL\" if platform.system() == \"Windows\" else \"/dev/null\"\n90     os.system(f'curl -c ./cookie -s -L \"drive.google.com/uc?export=download&id={id}\" > {out}')\n91     if os.path.exists('cookie'):  # large file",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "utils/downloads.py",
+    "line": 95,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "94         s = f'curl -s -L -o {file} \"drive.google.com/uc?export=download&id={id}\"'\n95     r = os.system(s)  # execute, capture return\n96     cookie.unlink(missing_ok=True)  # remove existing cookie",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "utils/downloads.py",
+    "line": 107,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "106         print('unzipping... ', end='')\n107         os.system(f'unzip -q {file}')  # unzip\n108         file.unlink()  # remove zip to free space",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "utils/flask_rest_api/example_request.py",
+    "line": 11,
+    "message": "Call to requests without timeout",
+    "snippet": "10 \n11 response = requests.post(DETECTION_URL, files={\"image\": image_data}).json()\n12",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "utils/flask_rest_api/restapi.py",
+    "line": 37,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "36     model = torch.hub.load(\"ultralytics/yolov5\", \"yolov5s\", force_reload=True)  # force_reload to recache\n37     app.run(host=\"0.0.0.0\", port=args.port)  # debug=True causes Restarting with stat",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "utils/general.py",
+    "line": 161,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "160     cmd = 'git fetch && git config --get remote.origin.url'\n161     url = check_output(cmd, shell=True, timeout=5).decode().strip().rstrip('.git')  # git fetch\n162     branch = check_output('git rev-parse --abbrev-ref HEAD', shell=True).decode().strip()  # checked out",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "utils/general.py",
+    "line": 163,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "162     branch = check_output('git rev-parse --abbrev-ref HEAD', shell=True).decode().strip()  # checked out\n163     n = int(check_output(f'git rev-list {branch}..origin/master --count', shell=True))  # commits behind\n164     if n > 0:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "utils/general.py",
+    "line": 205,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "204                     assert check_online(), f\"'pip install {r}' skipped (offline)\"\n205                     print(check_output(f\"pip install '{r}'\", shell=True).decode())\n206                     n += 1",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "utils/general.py",
+    "line": 301,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "300                     Path(root).mkdir(parents=True, exist_ok=True)  # create root\n301                     r = os.system(f'unzip -q {f} -d {root} && rm {f}')  # unzip\n302                 elif s.startswith('bash '):  # bash script",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "utils/general.py",
+    "line": 304,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "303                     print(f'Running {s} ...')\n304                     r = os.system(s)\n305                 else:  # python script",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "utils/general.py",
+    "line": 306,
+    "message": "Use of exec detected.",
+    "snippet": "305                 else:  # python script\n306                     r = exec(s, {'yaml': data})  # return None\n307                 print('Dataset autodownload %s\\n' % ('success' if r in (0, None) else 'failure'))  # print result",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "utils/general.py",
+    "line": 324,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "323             if curl:\n324                 os.system(f\"curl -L '{url}' -o '{f}' --retry 9 -C -\")  # curl download, retry and resume on fail\n325             else:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "utils/general.py",
+    "line": 335,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "334                 s += f' && rm {f}'\n335             os.system(s)\n336",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "utils/general.py",
+    "line": 628,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "627     # Strip optimizer from 'f' to finalize training, optionally save as 's'\n628     x = torch.load(f, map_location=torch.device('cpu'))\n629     if x.get('ema'):",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "utils/general.py",
+    "line": 654,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "653         if gsutil_getsize(url) > (os.path.getsize(evolve_csv) if os.path.exists(evolve_csv) else 0):\n654             os.system(f'gsutil cp {url} {save_dir}')  # download evolve.csv if larger than local\n655",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "utils/general.py",
+    "line": 678,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "677     if bucket:\n678         os.system(f'gsutil cp {evolve_csv} {evolve_yaml} gs://{bucket}')  # upload\n679",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "utils/loggers/__init__.py",
+    "line": 60,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "59             wandb_artifact_resume = isinstance(self.opt.resume, str) and self.opt.resume.startswith('wandb-artifact://')\n60             run_id = torch.load(self.weights).get('wandb_id') if self.opt.resume and not wandb_artifact_resume else None\n61             self.opt.hyp = self.hyp  # add hyperparameters",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "utils/torch_utils.py",
+    "line": 63,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "62     try:\n63         return subprocess.check_output(s, shell=True, stderr=subprocess.STDOUT).decode()[:-1]\n64     except subprocess.CalledProcessError as e:",
+    "stage": "inference+modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "models/tf.py",
+    "line": 289,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "models/tf.py",
+    "line": 292,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "models/tf.py",
+    "line": 316,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "models/yolo.py",
+    "line": 232,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "models/yolo.py",
+    "line": 235,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "utils/datasets.py",
+    "line": 48,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "utils/datasets.py",
+    "line": 242,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "utils/datasets.py",
+    "line": 302,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "utils/downloads.py",
+    "line": 19,
+    "message": "Found 'subprocess' function 'check_output' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "utils/downloads.py",
+    "line": 20,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.app-run-param-config.avoid_app_run_with_bad_host",
+    "file_path": "utils/flask_rest_api/restapi.py",
+    "line": 37,
+    "message": "Running flask app with host 0.0.0.0 could expose the server publicly.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "utils/general.py",
+    "line": 163,
+    "message": "Found 'subprocess' function 'check_output' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "utils/general.py",
+    "line": 205,
+    "message": "Found 'subprocess' function 'check_output' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "utils/general.py",
+    "line": 306,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "utils/torch_utils.py",
+    "line": 63,
+    "message": "Found 'subprocess' function 'check_output' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "inference+modeling"
+  }
+]

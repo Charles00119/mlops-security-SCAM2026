@@ -1,0 +1,742 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B402",
+    "file_path": "sina/documents/__init__.py",
+    "line": 86,
+    "message": "A FTP-related module is being imported.  FTP is considered insecure. Use SSH/SFTP/SCP or some other encrypted protocol.",
+    "snippet": "85     def retrieve_documents(self, ftplocation='pubmed/baseline', check_md5=False):\n86         import ftplib\n87         import hashlib",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B321",
+    "file_path": "sina/documents/__init__.py",
+    "line": 89,
+    "message": "FTP-related functions are being called. FTP is considered insecure. Use SSH/SFTP/SCP or some other encrypted protocol.",
+    "snippet": "88         from sina.config import secrets\n89         ftp = ftplib.FTP(\n90             host='ftp.ncbi.nlm.nih.gov',\n91             user='anonymous',\n92             passwd=secrets.getsecret('email')\n93         )\n94         ftp.cwd(ftplocation)",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "sina/documents/__init__.py",
+    "line": 106,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "105                     with open(localfilename, 'rb') as file_to_check:\n106                         md5_returned = hashlib.md5(file_to_check.read()).hexdigest()\n107                         if md5 != md5_returned:",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "sina/documents/__init__.py",
+    "line": 165,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "164             with open(xmlfilename, 'rb') as file_to_check:\n165                 md5_returned = hashlib.md5(file_to_check.read()).hexdigest()\n166                 if md5 != md5_returned:",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B314",
+    "file_path": "sina/documents/__init__.py",
+    "line": 170,
+    "message": "Using xml.etree.ElementTree.iterparse to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.iterparse with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "169             with gzip.open(xmlfilename) as xmlfilehandler:\n170                 context = iter(ET.iterparse(xmlfilehandler, events=(\"start\", \"end\")))\n171                 event, root = next(context)",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "sina/documents/__init__.py",
+    "line": 233,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "232             # shelve <> for time issues avoiding create sqlite db\n233             dbshelve = shelve.open(os.path.join(indexdir, str(shardnumber), 'pmid.shelve'))\n234             # conn = sqlite3.connect(",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "sina/documents/__init__.py",
+    "line": 434,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "433         pmidre = re.compile(b'<PMID.+?>(.+)</PMID>')\n434         locshelve = shelve.open(os.path.join(self.location, 'pmid_locations.shelve'))\n435         # Chose a shelve instead of sqlite db for time reasons",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "sina/documents/__init__.py",
+    "line": 471,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "470         import shelve  # sqlite3\n471         locshelve = shelve.open(os.path.join(self.location, 'pmid_locations.shelve'))\n472         # conn = sqlite3.connect(os.path.join(self.location,'pmid_locations.db'))",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B314",
+    "file_path": "sina/documents/__init__.py",
+    "line": 481,
+    "message": "Using xml.etree.ElementTree.fromstring to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.fromstring with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "480                 xmlcontent = xmlfilehandler.read(abref[3])\n481                 articles[pmid] = ET.fromstring(xmlcontent)\n482         locshelve.close()",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B402",
+    "file_path": "sina/documents/__init__.py",
+    "line": 495,
+    "message": "A FTP-related module is being imported.  FTP is considered insecure. Use SSH/SFTP/SCP or some other encrypted protocol.",
+    "snippet": "494     def retrieve_documents(self):\n495         import ftplib\n496         from sina.config import secrets",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B321",
+    "file_path": "sina/documents/__init__.py",
+    "line": 503,
+    "message": "FTP-related functions are being called. FTP is considered insecure. Use SSH/SFTP/SCP or some other encrypted protocol.",
+    "snippet": "502         ]\n503         ftp = ftplib.FTP(\n504             host='ftp.ncbi.nlm.nih.gov',\n505             user='anonymous',\n506             passwd=secrets.getsecret('email')\n507         )\n508         for ftplocation in ftplocations:",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "sina/documents/__init__.py",
+    "line": 710,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "709         pmiddbs = [\n710             shelve.open(\n711                 os.path.join(self.corpus.location, '.index', str(i), 'pmid.shelve'),\n712                 flag='r') for i in range(lenshards)\n713         ]",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B402",
+    "file_path": "sina/documents/__init__.py",
+    "line": 732,
+    "message": "A FTP-related module is being imported.  FTP is considered insecure. Use SSH/SFTP/SCP or some other encrypted protocol.",
+    "snippet": "731             if not os.path.exists(meshfile):\n732                 from ftplib import FTP\n733                 ftp = FTP('nlmpubs.nlm.nih.gov')",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B321",
+    "file_path": "sina/documents/__init__.py",
+    "line": 733,
+    "message": "FTP-related functions are being called. FTP is considered insecure. Use SSH/SFTP/SCP or some other encrypted protocol.",
+    "snippet": "732                 from ftplib import FTP\n733                 ftp = FTP('nlmpubs.nlm.nih.gov')\n734                 ftp.login(user='anonymous')",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B314",
+    "file_path": "sina/documents/__init__.py",
+    "line": 748,
+    "message": "Using xml.etree.ElementTree.parse to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.parse with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "747             with gzip.open(meshfile) as xmlfilehandle:\n748                 xml = ET.parse(xmlfilehandle)\n749                 root = xml.getroot()",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "sina/documents/utils.py",
+    "line": 85,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "84 def download_docs(pmids):\n85 \treturn urlopen(get_url(pmids=pmids)).read()\n86",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B314",
+    "file_path": "sina/documents/utils.py",
+    "line": 228,
+    "message": "Using xml.etree.ElementTree.fromstring to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.fromstring with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "227 def parse_docs(xml_articles):\n228 \tsuper_root = ET.fromstring(xml_articles.decode('utf-8'))\n229 \tdocs = []",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "sina/nomenclatures/bioportal.py",
+    "line": 20,
+    "message": "Call to requests without timeout",
+    "snippet": "19     # Get the available resources\n20     resources = requests.get(\n21         BIOPORTAL_REST_URL,\n22         headers = headers\n23     ).json()\n24",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "sina/nomenclatures/bioportal.py",
+    "line": 28,
+    "message": "Call to requests without timeout",
+    "snippet": "27         o['acronym']: o\n28         for o in requests.get(resources[\"links\"][\"ontologies\"], headers=headers).json()\n29     }",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "sina/nomenclatures/bioportal.py",
+    "line": 55,
+    "message": "Call to requests without timeout",
+    "snippet": "54     # Using the hypermedia link called `classes`, get the first page\n55     page = requests.get(ontology[\"links\"][\"classes\"], headers=headers).json()\n56",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "sina/nomenclatures/bioportal.py",
+    "line": 63,
+    "message": "Call to requests without timeout",
+    "snippet": "62         if page[\"links\"][\"nextPage\"]:\n63             page = requests.get(ontology[\"links\"][\"classes\"], headers=headers).json()\n64",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "sina/nomenclatures/bioportal.py",
+    "line": 90,
+    "message": "Call to requests without timeout",
+    "snippet": "89         \"\"\"\n90         r = requests.get(url, headers = self.__headers)\n91         return r.json() if returnJSON else r",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "sina/nomenclatures/icd.py",
+    "line": 23,
+    "message": "Call to requests without timeout",
+    "snippet": "22     if includeShortName: url+='&ef=short_name'\n23     r = requests.get(url.format(term = icd9code))\n24     return json.loads(r.content)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "sina/paperwork/pancancer.py",
+    "line": 188,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "187         # Load cancertypes from cache\n188         cancertypes = pickle.load(\n189             open(os.path.join(cachedir, 'cancertypes.pckl'), 'rb'))\n190",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "sina/paperwork/pancancer.py",
+    "line": 201,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "200         }\n201         corpora_shelve = shelve.open(os.path.join(saveloc, 'corpora.shlv'))\n202         for ct in corpora:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "sina/paperwork/pancancer.py",
+    "line": 206,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "205         if settings.downsample_evolution:  # make available readonly shelve\n206             corpora_shelve = shelve.open(\n207                 os.path.join(saveloc, 'corpora.shlv'), flag='r')\n208         corpora_sizes = pd.DataFrame(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "sina/paperwork/pancancer.py",
+    "line": 218,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "217         # include also corpora_shelve as some code uses that to get a clean original copy\n218         corpora = corpora_shelve = shelve.open(os.path.join(saveloc, 'corpora.shlv'), flag='r')\n219         corpora_sizes = pd.read_csv(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "sina/paperwork/pancancer.py",
+    "line": 271,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "270     else:\n271         allcancers = pickle.load(\n272             open(os.path.join(cachedir, 'allcancers.pckl'), 'rb'))\n273",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "sina/paperwork/pancancer.py",
+    "line": 284,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "283         gloveurl = \"http://nlp.stanford.edu/data/glove.6B.zip\"\n284         urllib.request.urlretrieve(gloveurl, glovepth)\n285         # Convert to gensim word2vec format",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "sina/paperwork/pancancer.py",
+    "line": 389,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "388         corpora = {\n389             ct: pickle.load(\n390                 open(\n391                     os.path.join(\n392                         saveloc, ct.replace(' ', ''), 'processed_corpus.pckl'),\n393                     'rb'\n394                 )\n395             )\n396             for ct in cancertypes",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "sina/ranking/ligsea.py",
+    "line": 299,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "298                     os.path.expanduser(self.corpus.location),\n299                     hashlib.md5((self.topic+self.assoc.pattern).encode()).hexdigest()+'.annotations.wui.shelve'\n300                 )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "sina/ranking/ligsea.py",
+    "line": 334,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "333             # TODO .annotations.shelve not unique filename as now implemented for flask server version FIX\n334             with shelve.open(os.path.join(os.path.expanduser(self.corpus.location),'.annotations.shelve')) as stored_annots:\n335                 for geni,gene in enumerate(self.gene_association):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "sina/ranking/ligsea.py",
+    "line": 343,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "342                             sent_store_key = str((\n343                                 hashlib.md5(self.gene_association_sents[sent_assoc['sent']].text.encode()).hexdigest(),\n344                                 gene, assoc[2], assoc[3] # gene alias and regex match positions",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "sina/ranking/ligsea.py",
+    "line": 801,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "800             import shelve\n801             self.shelve = shelve.open(cache)\n802             # Reload earlier annotations",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml.use-defused-xml",
+    "file_path": "sina/documents/__init__.py",
+    "line": 32,
+    "message": "The Python documentation recommends using `defusedxml` instead of `xml` because the native Python `xml` library is vulnerable to XML External Entity (XXE) attacks. These attacks can leak confidential data and \"XML bombs\" can cause denial of service.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "sina/documents/__init__.py",
+    "line": 106,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "sina/documents/__init__.py",
+    "line": 165,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-shelve",
+    "file_path": "sina/documents/__init__.py",
+    "line": 233,
+    "message": "Avoid using `shelve`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-shelve",
+    "file_path": "sina/documents/__init__.py",
+    "line": 434,
+    "message": "Avoid using `shelve`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-shelve",
+    "file_path": "sina/documents/__init__.py",
+    "line": 471,
+    "message": "Avoid using `shelve`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-shelve",
+    "file_path": "sina/documents/__init__.py",
+    "line": 710,
+    "message": "Avoid using `shelve`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml.use-defused-xml",
+    "file_path": "sina/documents/__init__.py",
+    "line": 729,
+    "message": "The Python documentation recommends using `defusedxml` instead of `xml` because the native Python `xml` library is vulnerable to XML External Entity (XXE) attacks. These attacks can leak confidential data and \"XML bombs\" can cause denial of service.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml-parse.use-defused-xml-parse",
+    "file_path": "sina/documents/__init__.py",
+    "line": 748,
+    "message": "The native Python `xml` library is vulnerable to XML External Entity (XXE) attacks.  These attacks can leak confidential data and \"XML bombs\" can cause denial of service. Do not use this library to parse untrusted input. Instead  the Python documentation recommends using `defusedxml`.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml.use-defused-xml",
+    "file_path": "sina/documents/utils.py",
+    "line": 7,
+    "message": "The Python documentation recommends using `defusedxml` instead of `xml` because the native Python `xml` library is vulnerable to XML External Entity (XXE) attacks. These attacks can leak confidential data and \"XML bombs\" can cause denial of service.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "sina/documents/utils.py",
+    "line": 85,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "info",
+    "rule_id": "python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http",
+    "file_path": "sina/nomenclatures/bioportal.py",
+    "line": 21,
+    "message": "Detected a request using 'http://'. This request will be unencrypted, and attackers could listen into traffic on the network and be able to obtain sensitive information. Use 'https://' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "info",
+    "rule_id": "python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http",
+    "file_path": "sina/nomenclatures/bioportal.py",
+    "line": 28,
+    "message": "Detected a request using 'http://'. This request will be unencrypted, and attackers could listen into traffic on the network and be able to obtain sensitive information. Use 'https://' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-dill",
+    "file_path": "sina/paperwork/pancancer.py",
+    "line": 182,
+    "message": "Avoid using `dill`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "sina/paperwork/pancancer.py",
+    "line": 182,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-dill",
+    "file_path": "sina/paperwork/pancancer.py",
+    "line": 188,
+    "message": "Avoid using `dill`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "sina/paperwork/pancancer.py",
+    "line": 188,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-shelve",
+    "file_path": "sina/paperwork/pancancer.py",
+    "line": 201,
+    "message": "Avoid using `shelve`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-shelve",
+    "file_path": "sina/paperwork/pancancer.py",
+    "line": 206,
+    "message": "Avoid using `shelve`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-shelve",
+    "file_path": "sina/paperwork/pancancer.py",
+    "line": 218,
+    "message": "Avoid using `shelve`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-dill",
+    "file_path": "sina/paperwork/pancancer.py",
+    "line": 264,
+    "message": "Avoid using `dill`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "sina/paperwork/pancancer.py",
+    "line": 264,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-dill",
+    "file_path": "sina/paperwork/pancancer.py",
+    "line": 271,
+    "message": "Avoid using `dill`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "sina/paperwork/pancancer.py",
+    "line": 271,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "sina/paperwork/pancancer.py",
+    "line": 284,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-dill",
+    "file_path": "sina/paperwork/pancancer.py",
+    "line": 357,
+    "message": "Avoid using `dill`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "sina/paperwork/pancancer.py",
+    "line": 357,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-dill",
+    "file_path": "sina/paperwork/pancancer.py",
+    "line": 389,
+    "message": "Avoid using `dill`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "sina/paperwork/pancancer.py",
+    "line": 389,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "sina/ranking/ligsea.py",
+    "line": 299,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-shelve",
+    "file_path": "sina/ranking/ligsea.py",
+    "line": 334,
+    "message": "Avoid using `shelve`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "sina/ranking/ligsea.py",
+    "line": 343,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml.use-defused-xml",
+    "file_path": "sina/ranking/ligsea.py",
+    "line": 716,
+    "message": "The Python documentation recommends using `defusedxml` instead of `xml` because the native Python `xml` library is vulnerable to XML External Entity (XXE) attacks. These attacks can leak confidential data and \"XML bombs\" can cause denial of service.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-shelve",
+    "file_path": "sina/ranking/ligsea.py",
+    "line": 801,
+    "message": "Avoid using `shelve`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "sina/templates/index.html",
+    "line": 19,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "sina/templates/index.html",
+    "line": 22,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "sina/templates/index.html",
+    "line": 37,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "sina/templates/index.html",
+    "line": 40,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "sina/templates/index.html",
+    "line": 46,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "sina/templates/index.html",
+    "line": 49,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

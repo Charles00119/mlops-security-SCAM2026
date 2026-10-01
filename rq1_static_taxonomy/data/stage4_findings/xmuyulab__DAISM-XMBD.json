@@ -1,0 +1,32 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "daism/modules/prediction.py",
+    "line": 61,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "60         model = model.cuda(ncuda)\n61         model.load_state_dict(torch.load(modelpath))\n62     else:",
+    "stage": "data_preparation+evaluation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "daism/modules/prediction.py",
+    "line": 63,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "62     else:\n63         model.load_state_dict(torch.load(modelpath, map_location='cpu'))\n64",
+    "stage": "data_preparation+evaluation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "daism/modules/training.py",
+    "line": 215,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "214         sys.stdout.flush()\n215     model.load_state_dict(torch.load(modelpath+'DAISM_model.pkl'))\n216",
+    "stage": "data_acquisition+data_preparation+inference+modeling+training"
+  }
+]

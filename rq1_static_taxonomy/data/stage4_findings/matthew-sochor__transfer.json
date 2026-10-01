@@ -1,0 +1,72 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "transfer/project.py",
+    "line": 32,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "31         with open(os.path.join(home, '.transfer', 'config.yaml'), 'r') as fp:\n32             config = yaml.load(fp.read())\n33     else:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "transfer/project.py",
+    "line": 154,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "153         with open(os.path.join(home, '.transfer', 'config.yaml'), 'r') as fp:\n154             config = yaml.load(fp.read())\n155     else:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "transfer/project.py",
+    "line": 277,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "276         with open(os.path.join(home, '.transfer', 'config.yaml'), 'r') as fp:\n277             projects = yaml.load(fp.read())\n278         if len(projects) == 1:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "transfer/project.py",
+    "line": 346,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "345     with open(os.path.join(project_path, 'config.yaml'), 'r') as fp:\n346         import_project = yaml.load(fp.read())\n347     import_project['name'] = project_name",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "transfer/project.py",
+    "line": 411,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "410     with tarfile.open(config_file, mode = \"r:gz\") as tf:\n411         tf.extractall(path = import_temp_path)\n412",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "transfer/project.py",
+    "line": 427,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "426         with open(os.path.join(transfer_path, 'config.yaml'), 'r') as fp:\n427             projects = yaml.load(fp.read())\n428",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "transfer/project.py",
+    "line": 522,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "521         with open(os.path.join(home, '.transfer', 'config.yaml'), 'r') as fp:\n522             projects = yaml.load(fp.read())\n523         replace_index = -1",
+    "stage": "data_acquisition"
+  }
+]

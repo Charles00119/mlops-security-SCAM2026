@@ -1,0 +1,162 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "getCCA.py",
+    "line": 57,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "56 \n57 first=pickle.load(open(args.firstfile, \"rb\"))\n58 second=pickle.load(open(args.secondfile, \"rb\"))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "getCCA.py",
+    "line": 58,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "57 first=pickle.load(open(args.firstfile, \"rb\"))\n58 second=pickle.load(open(args.secondfile, \"rb\"))\n59 third=pickle.load(open(args.thirdfile, \"rb\"))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "getCCA.py",
+    "line": 59,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "58 second=pickle.load(open(args.secondfile, \"rb\"))\n59 third=pickle.load(open(args.thirdfile, \"rb\"))\n60 fourth=pickle.load(open(args.fourthfile, \"rb\"))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "getCCA.py",
+    "line": 60,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "59 third=pickle.load(open(args.thirdfile, \"rb\"))\n60 fourth=pickle.load(open(args.fourthfile, \"rb\"))\n61",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "plot/plotconfig_ci.py",
+    "line": 117,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "116 task_order=show_config.split(\"_\")[1:]\n117 df=pd.read_pickle('cnn_9_aug_2019.df')\n118 for l_id,layer_ in enumerate(show_layer):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "plot/plotcorr.py",
+    "line": 194,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "193 fig=plta.figure()\n194 df=pd.read_pickle('final_corrv2.df')\n195 for i,met in enumerate(args.data):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "standard_update.py",
+    "line": 64,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "63         for fm_pth, dg_pth, se_pth, av_ac_pth in zip(self.fm_path, self.dg_path, self.se_path, self.avg_acc_path):\n64             self.ltotal.append(pd.read_pickle(fm_pth))\n65             self.ltask_diag.append(pd.read_pickle(dg_pth))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "standard_update.py",
+    "line": 65,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "64             self.ltotal.append(pd.read_pickle(fm_pth))\n65             self.ltask_diag.append(pd.read_pickle(dg_pth))\n66             self.lavg_acc.append(pd.read_pickle(av_ac_pth))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "standard_update.py",
+    "line": 66,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "65             self.ltask_diag.append(pd.read_pickle(dg_pth))\n66             self.lavg_acc.append(pd.read_pickle(av_ac_pth))\n67             for task in self.tasks:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "standard_update.py",
+    "line": 68,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "67             for task in self.tasks:\n68                 self.ldf[task].append(pd.read_pickle(se_pth + task + '.df'))\n69",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tensorboard-aggregator/aggregator.py",
+    "line": 170,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "169         if os.path.isfile(df_path):\n170             key_df = pd.read_pickle(df_path)\n171         else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "train.py",
+    "line": 226,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "225         print(\"Best of last task\", best_save.last_checkpoint)\n226         best_save.load_objects({'model': model}, {'model': torch.load(run_name + \"/\" + best_save.last_checkpoint)})\n227         best_save._saved = []",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "getCCA.py",
+    "line": 57,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "getCCA.py",
+    "line": 58,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "getCCA.py",
+    "line": 59,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "getCCA.py",
+    "line": 60,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

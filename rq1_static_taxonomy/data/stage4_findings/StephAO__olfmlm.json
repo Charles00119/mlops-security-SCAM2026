@@ -1,0 +1,502 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "convert_state_dict.py",
+    "line": 16,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "15 new_pathname = '.'.join(new_pathname[:-1]) + \"_converted.\" + new_pathname[-1]\n16 model_state = torch.load(state_path, map_location='cpu')['sd']\n17 new_model_state = {}",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "data_utils/__init__.py",
+    "line": 68,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "67     if isinstance(process_fn, str):\n68         process_fn = eval(process_fn)\n69     if non_binary_cols is not None:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "data_utils/datasets.py",
+    "line": 493,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "492         with open(self.idf_path, \"rb\") as f:\n493             self.idfs = pickle.load(f)\n494         self._all_tf = []",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "data_utils/file_utils.py",
+    "line": 167,
+    "message": "Call to requests without timeout",
+    "snippet": "166 def http_get(url, temp_file):\n167     req = requests.get(url, stream=True)\n168     content_length = req.headers.get('Content-Length')",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "data_utils/file_utils.py",
+    "line": 195,
+    "message": "Call to requests without timeout",
+    "snippet": "194     else:\n195         response = requests.head(url, allow_redirects=True)\n196         if response.status_code != 200:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "data_utils/lazy_loader.py",
+    "line": 114,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "113         lenpath = os.path.join(lazypath, data_type+'.len.pkl')\n114         self.lens = pkl.load(open(lenpath, 'rb'))\n115         self.ends = list(accumulate(self.lens))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "data_utils/tokenization.py",
+    "line": 34,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "33     if isinstance(tokenizer_class, str):\n34         tokenizer_class = eval(tokenizer_class)\n35     if tokenizer_class is BertWordPieceTokenizer:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "evaluate/download_glue_data.py",
+    "line": 53,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "52     data_file = \"%s.zip\" % task\n53     urllib.request.urlretrieve(TASK2PATH[task], data_file)\n54     with zipfile.ZipFile(data_file) as zip_ref:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "evaluate/download_glue_data.py",
+    "line": 72,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "71         mrpc_test_file = os.path.join(mrpc_dir, \"msr_paraphrase_test.txt\")\n72         urllib.request.urlretrieve(MRPC_TRAIN, mrpc_train_file)\n73         urllib.request.urlretrieve(MRPC_TEST, mrpc_test_file)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "evaluate/download_glue_data.py",
+    "line": 73,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "72         urllib.request.urlretrieve(MRPC_TRAIN, mrpc_train_file)\n73         urllib.request.urlretrieve(MRPC_TEST, mrpc_test_file)\n74     assert os.path.isfile(mrpc_train_file), \"Train data not found at %s\" % mrpc_train_file",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "evaluate/download_glue_data.py",
+    "line": 76,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "75     assert os.path.isfile(mrpc_test_file), \"Test data not found at %s\" % mrpc_test_file\n76     urllib.request.urlretrieve(TASK2PATH[\"MRPC\"], os.path.join(mrpc_dir, \"dev_ids.tsv\"))\n77",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "evaluate/download_glue_data.py",
+    "line": 112,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "111     data_file = os.path.join(data_dir, \"MNLI\", \"diagnostic.tsv\")\n112     urllib.request.urlretrieve(TASK2PATH[\"diagnostic\"][0], data_file)\n113     data_file = os.path.join(data_dir, \"MNLI\", \"diagnostic-full.tsv\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "evaluate/download_glue_data.py",
+    "line": 114,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "113     data_file = os.path.join(data_dir, \"MNLI\", \"diagnostic-full.tsv\")\n114     urllib.request.urlretrieve(TASK2PATH[\"diagnostic\"][1], data_file)\n115     print(\"\\tCompleted!\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "evaluate/download_superglue_data.py",
+    "line": 36,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "35     data_file = os.path.join(data_dir, \"%s.zip\" % task)\n36     urllib.request.urlretrieve(TASK2PATH[task], data_file)\n37     with zipfile.ZipFile(data_file) as zip_ref:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "evaluate/download_superglue_data.py",
+    "line": 52,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "51     data_file = os.path.join(diagnostic_dir, \"broadcoverage.zip\")\n52     urllib.request.urlretrieve(TASK2PATH[\"broadcoverage-diagnostic\"], data_file)\n53     with zipfile.ZipFile(data_file) as zip_ref:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "evaluate/download_superglue_data.py",
+    "line": 60,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "59     data_file = os.path.join(diagnostic_dir, \"winogender.zip\")\n60     urllib.request.urlretrieve(TASK2PATH[\"winogender-diagnostic\"], data_file)\n61     with zipfile.ZipFile(data_file) as zip_ref:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "evaluate/trainer.py",
+    "line": 1150,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "1149 \n1150         model_state = torch.load(model_path, map_location=device_mapping(self._cuda_device))\n1151",
+    "stage": "inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "evaluate/trainer.py",
+    "line": 1159,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "1158         self._model.load_state_dict(model_state, strict=False)\n1159         task_states = torch.load(task_state_path)\n1160         for task_name, task_state in task_states.items():",
+    "stage": "inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "evaluate/trainer.py",
+    "line": 1176,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "1175         self._scheduler.lr_scheduler.load_state_dict(task_states[\"global\"][\"scheduler\"])\n1176         metric_states = torch.load(metric_state_path)\n1177         for metric_name, metric_state in metric_states.items():",
+    "stage": "inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "evaluate/trainer.py",
+    "line": 1182,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "1181 \n1182         training_state = torch.load(training_state_path)\n1183         return training_state[\"step\"], training_state[\"should_stop\"]",
+    "stage": "inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "evaluate/utils/gcp.py",
+    "line": 13,
+    "message": "Call to requests without timeout",
+    "snippet": "12     metadata_flavor = {\"Metadata-Flavor\": \"Google\"}\n13     gce_id = requests.get(metadata_server + \"id\", headers=metadata_flavor).text\n14     return gce_id",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "evaluate/utils/utils.py",
+    "line": 265,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "264     \"\"\"\n265     model_state = torch.load(state_path, map_location=device_mapping(gpu_id))\n266",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "model/modeling.py",
+    "line": 647,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "646             with tarfile.open(resolved_archive_file, 'r:gz') as archive:\n647                 archive.extractall(tempdir)\n648             serialization_dir = tempdir",
+    "stage": "data_acquisition+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model/modeling.py",
+    "line": 661,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "660             weights_path = os.path.join(serialization_dir, WEIGHTS_NAME)\n661             state_dict = torch.load(weights_path)\n662",
+    "stage": "data_acquisition+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "utils.py",
+    "line": 111,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "110     model_path = checkpoint_path\n111     model_sd = torch.load(model_path, map_location='cpu')\n112     epoch = model_sd['epoch']",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "utils.py",
+    "line": 118,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "117         optim_path = os.path.join(checkpoint_path, 'optim.pt')\n118         optim_sd, lr_sd = torch.load(optim_path, map_location='cpu')\n119         optimizer.load_state_dict(optim_sd)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "utils.py",
+    "line": 129,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "128     if rng_path is not None:\n129         rng_state = torch.load(rng_path)\n130         torch.cuda.set_rng_state(rng_state[0])",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "data_utils/__init__.py",
+    "line": 68,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "data_utils/datasets.py",
+    "line": 493,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "data_utils/lazy_loader.py",
+    "line": 65,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "data_utils/lazy_loader.py",
+    "line": 114,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "data_utils/make_dataset.py",
+    "line": 218,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "data_utils/tokenization.py",
+    "line": 34,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "evaluate/download_glue_data.py",
+    "line": 53,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "evaluate/download_glue_data.py",
+    "line": 72,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "evaluate/download_glue_data.py",
+    "line": 73,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "evaluate/download_glue_data.py",
+    "line": 76,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "evaluate/download_glue_data.py",
+    "line": 112,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "evaluate/download_glue_data.py",
+    "line": 114,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "evaluate/download_superglue_data.py",
+    "line": 36,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "evaluate/download_superglue_data.py",
+    "line": 52,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "evaluate/download_superglue_data.py",
+    "line": 60,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "evaluate/preprocess.py",
+    "line": 205,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "evaluate/preprocess.py",
+    "line": 315,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "evaluate/preprocess.py",
+    "line": 404,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "evaluate/preprocess.py",
+    "line": 423,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "info",
+    "rule_id": "python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http",
+    "file_path": "evaluate/utils/gcp.py",
+    "line": 13,
+    "message": "Detected a request using 'http://'. This request will be unencrypted, and attackers could listen into traffic on the network and be able to obtain sensitive information. Use 'https://' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "evaluate/utils/serialize.py",
+    "line": 12,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "evaluate/utils/serialize.py",
+    "line": 83,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "idf.py",
+    "line": 90,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

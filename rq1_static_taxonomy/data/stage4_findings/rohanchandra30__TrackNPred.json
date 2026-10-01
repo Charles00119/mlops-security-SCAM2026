@@ -1,0 +1,112 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "model/Detection/Mask/mrcnn/utils.py",
+    "line": 858,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "857     # with urllib.request.urlopen(COCO_MODEL_URL) as resp, open(coco_model_path, 'wb') as out:\n858     with urllib.request.urlopen(COCO_MODEL_URL) as resp, open(coco_model_path, 'wb') as out:\n859",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model/Prediction/evaluate_old.py",
+    "line": 39,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "38 batch_size = 128\n39 net.load_state_dict(torch.load(args['model_path']),strict=False)\n40 if args['use_cuda']:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model/Prediction/sganEval.py",
+    "line": 137,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "136         for path in paths:\n137             checkpoint = torch.load(path)\n138             if \"_no_model.pt\" not in path:",
+    "stage": "inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model/Prediction/sganTrain.py",
+    "line": 126,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "125         logger.info('Restoring from checkpoint {}'.format(restore_path))\n126         checkpoint = torch.load(restore_path)\n127         generator.load_state_dict(checkpoint['g_state'])",
+    "stage": "inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "model/Prediction/sgan/utils.py",
+    "line": 68,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "67     ps = subprocess.Popen(\n68         cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)\n69     output = ps.communicate()[0].decode('utf-8')\n70     output = output.split(\"\\n\")[0].split(\":\")",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model/Prediction/train.py",
+    "line": 102,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "101 \n102     net.load_state_dict(torch.load(\"model/Prediction/trained_models/{}_{}.tar\".format(args['model'], args['name'])))\n103",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model/Prediction/train_cmd.py",
+    "line": 103,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "102 \n103     net.load_state_dict(torch.load(\"model/Prediction/trained_models/{}_{}.tar\".format(args['model'], args['name'])))\n104",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "model/Tracking/DensePeds.py",
+    "line": 260,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "259         \" contain the tracking results on completion.\",\n260         default=\"/tmp/hypotheses.txt\")\n261     parser.add_argument(",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "model/Tracking/DensePeds_temp.py",
+    "line": 252,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "251         \" contain the tracking results on completion.\",\n252         default=\"/tmp/hypotheses.txt\")\n253     parser.add_argument(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model/model.py",
+    "line": 291,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "290         if os.path.exists(d):\n291             net.load_state_dict(torch.load(d))\n292             if thread:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "model/Prediction/sgan/utils.py",
+    "line": 68,
+    "message": "Found 'subprocess' function 'Popen' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  }
+]

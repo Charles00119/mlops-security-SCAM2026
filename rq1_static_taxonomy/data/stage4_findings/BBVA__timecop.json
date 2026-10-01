@@ -1,0 +1,62 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "app.py",
+    "line": 257,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "256         try:\n257             engines_output[engine_name] = eval(engine_function)\n258             debug[engine_name] = engines_output[engine_name]['debug']",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "app.py",
+    "line": 883,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "882     db.init_database()\n883     app.run(host = '0.0.0.0',port=PORT)",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "app.py",
+    "line": 257,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.app-run-param-config.avoid_app_run_with_bad_host",
+    "file_path": "app.py",
+    "line": 883,
+    "message": "Running flask app with host 0.0.0.0 could expose the server publicly.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "engines/auto_arima.py",
+    "line": 62,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "engines/var.py",
+    "line": 509,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "evaluation+inference+training"
+  }
+]

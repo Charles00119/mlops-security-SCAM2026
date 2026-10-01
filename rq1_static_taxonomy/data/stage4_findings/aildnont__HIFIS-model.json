@@ -1,0 +1,52 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "src/interpretability/cluster.py",
+    "line": 108,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "107         ohe_ct_sv = load(cfg['PATHS']['OHE_COL_TRANSFORMER_SV'])\n108         explainer = dill.load(open(cfg['PATHS']['LIME_EXPLAINER'], 'rb'))\n109         model = load_model(cfg['PATHS']['MODEL_TO_LOAD'], compile=False)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "src/predict.py",
+    "line": 62,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "61     # Restore the model and LIME explainer from their respective serializations\n62     explainer = dill.load(open(cfg['PATHS']['LIME_EXPLAINER'], 'rb'))\n63     model = load_model(cfg['PATHS']['MODEL_TO_LOAD'], compile=False)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-dill",
+    "file_path": "src/interpretability/cluster.py",
+    "line": 108,
+    "message": "Avoid using `dill`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-dill",
+    "file_path": "src/interpretability/lime_explain.py",
+    "line": 137,
+    "message": "Avoid using `dill`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-dill",
+    "file_path": "src/predict.py",
+    "line": 62,
+    "message": "Avoid using `dill`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

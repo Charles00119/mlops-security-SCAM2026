@@ -1,0 +1,1062 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "bin/ensemble.py",
+    "line": 77,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "76                                      from_training=False,\n77                                      state_dict=torch.load(ckpt)).cuda().eval() for ckpt in ckpts]\n78",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "data/make_datasets/padchest/make_padchest.py",
+    "line": 182,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "181         _open('train.label.tok', 'w', method_label).write(\n182             '\\n'.join([','.join([w.strip() for w in eval(label)]) for label in labels[:int(l_rep * 0.8)]]))\n183",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "data/make_datasets/padchest/make_padchest.py",
+    "line": 191,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "190             '\\n'.join(\n191                 [','.join([w.strip() for w in eval(label)]) for label in labels[int(l_rep * 0.8):int(l_rep * 0.9)]]))\n192",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "data/make_datasets/padchest/make_padchest.py",
+    "line": 199,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "198         _open('test.label.tok', 'w', method_label).write(\n199             '\\n'.join([','.join([w.strip() for w in eval(label)]) for label in labels[int(l_rep * 0.9):]]))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "hf_trainer/dataset copy/text_dataset.py",
+    "line": 49,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "48         self.ckpt_dir = ckpt_dir\n49         self.processing = eval(processing or 'lambda x: x')\n50         self.tokenizer_max_len = tokenizer_max_len",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "hf_trainer/dataset copy/text_dataset.py",
+    "line": 58,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "57         if tokenizer is not None:\n58             self.tokenizer = AutoTokenizer.from_pretrained(tokenizer)\n59         else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "hf_trainer/dataset copy/utils_hf.py",
+    "line": 20,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "19         for fil in hf_filter:\n20             ds = ds.filter(eval(fil))\n21         # Select only the required field",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "hf_trainer/dataset/text_dataset.py",
+    "line": 49,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "48         self.ckpt_dir = ckpt_dir\n49         self.processing = eval(processing or 'lambda x: x')\n50         self.tokenizer_max_len = tokenizer_max_len",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "hf_trainer/dataset/text_dataset.py",
+    "line": 58,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "57         if tokenizer is not None:\n58             self.tokenizer = AutoTokenizer.from_pretrained(tokenizer)\n59         else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "hf_trainer/dataset/utils_hf.py",
+    "line": 20,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "19         for fil in hf_filter:\n20             ds = ds.filter(eval(fil))\n21         # Select only the required field",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "hf_trainer/datasets/text/dataset.py",
+    "line": 49,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "48         self.ckpt_dir = ckpt_dir\n49         self.processing = eval(processing or 'lambda x: x')\n50         self.tokenizer_max_len = tokenizer_max_len",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "hf_trainer/datasets/text/dataset.py",
+    "line": 58,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "57         if tokenizer is not None:\n58             self.tokenizer = AutoTokenizer.from_pretrained(tokenizer)\n59         else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "hf_trainer/datasets/utils_hf.py",
+    "line": 20,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "19         for fil in hf_filter:\n20             ds = ds.filter(eval(fil))\n21         # Select only the required field",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "hf_trainer/models/encoder_decoder_hf/model.py",
+    "line": 20,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "19         if encoderdecoder_config:\n20             self.model = VisionEncoderDecoderModel.from_pretrained(encoderdecoder_config)\n21         else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "hf_trainer/models/encoder_decoder_hf/model.py",
+    "line": 26,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "25             elif isinstance(vision_config, str):\n26                 encoder = AutoModel.from_pretrained(vision_config)\n27             else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "hf_trainer/models/encoder_decoder_hf/model.py",
+    "line": 38,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "37             elif isinstance(decoder_config, str):\n38                 decoder = AutoModelForCausalLM.from_pretrained(decoder_config, add_cross_attention=True)\n39             else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "hf_trainer/models/vision_language_modernbert/model.py",
+    "line": 28,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "27         if text_model_config is None:\n28             self.text_config = ModernBertDecoderConfig.from_pretrained(\n29                 \"jhu-clsp/ettin-decoder-17m\",\n30                 attn_implementation=attn_implementation\n31             )\n32         else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "hf_trainer/models/vision_language_modernbert/model.py",
+    "line": 53,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "52         # Vision encoder\n53         self.vision_encoder = AutoBackbone.from_pretrained(config.vision_model_name)\n54         for p in self.vision_encoder.parameters():",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "hf_trainer/models/vision_language_modernbert/model.py",
+    "line": 249,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "248         # Build decoder config with overrides\n249         decoder_config = ModernBertDecoderConfig.from_pretrained(\n250             config.get('decoder_config_name', 'jhu-clsp/ettin-decoder-17m')\n251         )\n252         decoder_config.vocab_size = tokenizer.vocab_size",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "vilmedic/blocks/huggingface/decoder/decoder_model.py",
+    "line": 18,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "17             path = decoder.pop('proto')\n18             dec_config = AutoConfig.from_pretrained(path)\n19             dec_config.is_decoder = True",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "vilmedic/blocks/huggingface/decoder/decoder_model.py",
+    "line": 21,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "20             dec_config.add_cross_attention = True\n21             self.decoder = AutoModelForCausalLM.from_pretrained(path, config=dec_config)\n22         else:",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "vilmedic/blocks/huggingface/encoder/encoder_model.py",
+    "line": 20,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "19             path = encoder.pop('proto')\n20             enc_config = AutoConfig.from_pretrained(path)\n21             self.encoder = AutoModel.from_pretrained(path, config=enc_config)",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "vilmedic/blocks/huggingface/encoder/encoder_model.py",
+    "line": 21,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "20             enc_config = AutoConfig.from_pretrained(path)\n21             self.encoder = AutoModel.from_pretrained(path, config=enc_config)\n22         else:",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "vilmedic/blocks/losses/mvqa/LabelSmoothingCrossEntropyLoss.py",
+    "line": 99,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "98             try:\n99                 loss_func = eval(loss_func)(**loss_args)\n100             except NameError:",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "vilmedic/blocks/scorers/NLG/ciderD_RL/ciderD_RL.py",
+    "line": 26,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "25         # set which where to compute document frequencies from\n26         refs = [eval(processing or 'lambda x: x')(ref.strip()) for ref in open(df).readlines()]\n27         scorer = CiderScorer(refs=refs)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "vilmedic/blocks/scorers/NLG/green/green.py",
+    "line": 24,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "23         self.return_0_if_no_green_score = return_0_if_no_green_score\n24         self.model = AutoModelForCausalLM.from_pretrained(\n25             pretrained_model_name_or_path=model_id_or_path,\n26             trust_remote_code=True,\n27             device_map={\"\": \"cuda:{}\".format(torch.cuda.current_device())},\n28             torch_dtype=torch.float16,\n29         )\n30         self.model.eval()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "vilmedic/blocks/scorers/NLG/green/green.py",
+    "line": 32,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "31 \n32         self.tokenizer = AutoTokenizer.from_pretrained(\n33             pretrained_model_name_or_path=model_id_or_path,\n34             add_eos_token=True,\n35             use_fast=True,\n36             trust_remote_code=True,\n37             padding_side=\"left\",\n38         )\n39         self.tokenizer.pad_token = self.tokenizer.eos_token",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "vilmedic/blocks/scorers/RadEntityNLI/BERTNLI.py",
+    "line": 33,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "32         self.force_lowercase = force_lowercase\n33         self.bert = AutoModel.from_pretrained(name_or_path)\n34         self.tokenizer = AutoTokenizer.from_pretrained(name_or_path)",
+    "stage": "data_preparation+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "vilmedic/blocks/scorers/RadEntityNLI/BERTNLI.py",
+    "line": 34,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "33         self.bert = AutoModel.from_pretrained(name_or_path)\n34         self.tokenizer = AutoTokenizer.from_pretrained(name_or_path)\n35         self.dropout = Dropout(0.1)",
+    "stage": "data_preparation+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "vilmedic/blocks/scorers/RadEntityNLI/nli.py",
+    "line": 199,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "198         if model_type.startswith('scibert'):\n199             tokenizer = AutoTokenizer.from_pretrained(cache_scibert(model_type))\n200         else:",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "vilmedic/blocks/scorers/RadEntityNLI/nli.py",
+    "line": 201,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "200         else:\n201             tokenizer = AutoTokenizer.from_pretrained(model_type)\n202         model = get_model(model_type, num_layers, all_layers)",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "vilmedic/blocks/scorers/RadEntityNLI/nli.py",
+    "line": 283,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "282         with gzip.open(states, 'rb') as f:\n283             states_dict = torch.load(f, map_location=torch.device('cpu'))\n284         bertnli.load_state_dict(states_dict, strict=False)",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "vilmedic/blocks/vision/visual_encoder.py",
+    "line": 71,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "70 \n71     network = eval(backbone)(pretrained=pretrained, **kwargs)\n72",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "vilmedic/datasets/base/AnyDataset.py",
+    "line": 26,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "25         self.name = name or \"any\"\n26         self.processing = eval(processing or 'lambda x: x')\n27         self.lines = make_lines(root, split, file, self.processing)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "vilmedic/datasets/base/ImageDataset.py",
+    "line": 89,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "88     if custom_transform_train is not None and split == \"train\":\n89         return eval(custom_transform_train)\n90",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "vilmedic/datasets/base/ImageDataset.py",
+    "line": 92,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "91     if custom_transform_validate is not None and not split == \"train\":\n92         return eval(custom_transform_validate)\n93",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "vilmedic/datasets/base/ImageDataset.py",
+    "line": 185,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "184         self.image_path = image_path\n185         self.resize = eval(str(resize))\n186         self.crop = eval(str(crop))",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "vilmedic/datasets/base/ImageDataset.py",
+    "line": 186,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "185         self.resize = eval(str(resize))\n186         self.crop = eval(str(crop))\n187         self.ext = ext",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "vilmedic/datasets/base/TextDataset.py",
+    "line": 63,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "62         self.ckpt_dir = ckpt_dir\n63         self.processing = eval(processing or 'lambda x: x')\n64         self.tokenizer_max_len = tokenizer_max_len",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "vilmedic/datasets/base/TextDataset.py",
+    "line": 82,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "81         if tokenizer is not None:\n82             self.tokenizer = AutoTokenizer.from_pretrained(tokenizer)\n83         else:",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "vilmedic/datasets/base/papers/IndexDataset.py",
+    "line": 27,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "26 def IndexDataset(dataset, **kwargs):\n27     return type('ActualIndexDataset', (ActualIndexDataset, eval(dataset), object), {})(**kwargs)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "vilmedic/datasets/base/utils.py",
+    "line": 45,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "44         self.labels = [w.strip() for w in open(path, \"r\").readlines()]\n45         self.multi_label = eval(self.labels.pop(0).split(':')[-1])\n46         assert isinstance(self.multi_label, bool), 'Bad formatting'",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "vilmedic/datasets/base/utils.py",
+    "line": 83,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "82         for fil in hf_filter:\n83             dataset = dataset.filter(eval(fil))\n84",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "vilmedic/executors/trainor.py",
+    "line": 34,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "33         if self.ckpt is not None:\n34             self.state = torch.load(self.ckpt)\n35",
+    "stage": "training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "vilmedic/executors/trainor_accelerate.py",
+    "line": 48,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "47         if self.ckpt is not None:\n48             self.state = torch.load(self.ckpt, map_location='cpu')\n49",
+    "stage": "inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "vilmedic/executors/utils.py",
+    "line": 110,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "109     # Create the model instance\n110     model = eval(proto)(**config_dict, dl=dl, logger=logger, from_training=from_training)\n111     logger.settings('Model {} created'.format(type(model).__name__))",
+    "stage": "data_acquisition+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "vilmedic/executors/utils.py",
+    "line": 153,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "152     dataset_kwargs = {k: v for k, v in dataset_config.items() if k != 'proto'}\n153     dataset = eval(proto)(split=split,\n154                          ckpt_dir=config.ckpt_dir,",
+    "stage": "data_acquisition+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "vilmedic/executors/utils.py",
+    "line": 387,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "386             self.lr_decay_params = self._filter_scheduler_params(lr_decay_func, self.lr_decay_params)\n387             base_scheduler = eval(lr_decay_func)(optimizer, **self.lr_decay_params)\n388         else:",
+    "stage": "data_acquisition+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "vilmedic/executors/utils.py",
+    "line": 398,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "397         \"\"\"Filter parameters to only include those accepted by the scheduler.\"\"\"\n398         scheduler_class = eval(scheduler_name)\n399         if scheduler_class is None:",
+    "stage": "data_acquisition+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "vilmedic/models/mvqa/MVQA.py",
+    "line": 22,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "21 \n22         self.cnn = eval(cnn_func)(**cnn)\n23         self.adapter = nn.Sequential(",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "vilmedic/models/mvqa/MVQA.py",
+    "line": 32,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "31 \n32         self.classifier = eval(classifier_func)(**classifier)\n33",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "vilmedic/models/mvqa/MVQA.py",
+    "line": 34,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "33 \n34         self.loss_func = eval(loss_func)(**loss).cuda()\n35",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "vilmedic/models/rrg/RRG.py",
+    "line": 20,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "19         # Encoder\n20         self.enc = eval(cnn.pop('proto'))(**cnn)\n21",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "vilmedic/models/rrg/RRG_FORCE.py",
+    "line": 21,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "20         # Encoder\n21         self.enc = eval(cnn.pop('proto'))(**cnn)\n22",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "vilmedic/models/rrg/RRG_HF.py",
+    "line": 25,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "24         if encoderdecoder is not None:\n25             self.model = VisionEncoderDecoderModel.from_pretrained(encoderdecoder)\n26         else:",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "vilmedic/models/rrg/RRG_HF.py",
+    "line": 50,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "49             elif isinstance(vision, str):\n50                 encoder = AutoModel.from_pretrained(vision)\n51             else:",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "vilmedic/models/rrg/RRG_HF.py",
+    "line": 88,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "87             elif isinstance(decoder, str):\n88                 decoder = AutoModelForCausalLM.from_pretrained(decoder, add_cross_attention=True)\n89             else:",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "vilmedic/models/rrg/RRG_SCST.py",
+    "line": 32,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "31     from vilmedic.executors.utils import vilmedic_state_dict_versioning\n32     state_dict = torch.load(ckpt)\n33     params = vilmedic_state_dict_versioning(state_dict[\"model\"], state_dict.get('__version__', None))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "vilmedic/models/rrs/RRS_HF.py",
+    "line": 22,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "21         if encoderdecoder is not None:\n22             self.model = EncoderDecoderModel.from_pretrained(encoderdecoder)\n23         else:",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "vilmedic/models/rrs/RRS_HF.py",
+    "line": 47,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "46             elif isinstance(encoder, str):\n47                 encoder = AutoModel.from_pretrained(encoder)\n48             else:",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "vilmedic/models/rrs/RRS_HF.py",
+    "line": 85,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "84             elif isinstance(decoder, str):\n85                 decoder = AutoModel.from_pretrained(decoder)\n86             else:",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "vilmedic/models/rrs/RRS_SCST.py",
+    "line": 24,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "23         # Models\n24         state_dict = torch.load(ckpt)[\"model\"]\n25         self.model = RRS(copy.deepcopy(encoder), copy.deepcopy(decoder), dl, **kwargs)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "vilmedic/models/selfsup/GLoRIA.py",
+    "line": 58,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "57         # Visual Encoder\n58         self.visual = eval(cnn.pop('proto'))(**cnn)\n59         self.global_embedder = nn.Linear(visual_embedder.feature_dim, self.linguistic.encoder.config.hidden_size)",
+    "stage": "inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "vilmedic/models/selfsup/conVIRT.py",
+    "line": 55,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "54         # Visual Encoder\n55         self.visual = eval(cnn.pop('proto'))(**cnn)\n56",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "vilmedic/models/selfsup/conVIRT.py",
+    "line": 69,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "68 \n69         self.loss_fn = eval(loss.pop(\"proto\"))(**loss)\n70         self.fbs = forward_batch_size",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "vilmedic/zoo/modeling_auto.py",
+    "line": 71,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "70 \n71         state_dict = torch.load(checkpoint[0]) if torch.cuda.is_available() else torch.load(checkpoint[0], map_location=torch.device('cpu'))\n72",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "vilmedic/zoo/modeling_auto.py",
+    "line": 71,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "70 \n71         state_dict = torch.load(checkpoint[0]) if torch.cuda.is_available() else torch.load(checkpoint[0], map_location=torch.device('cpu'))\n72",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "vilmedic/zoo/modeling_auto.py",
+    "line": 91,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "90 \n91             dataset = eval(classname)(split='test', ckpt_dir=None, **dataset_config)\n92         except NameError:",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "vilmedic/zoo/modeling_auto.py",
+    "line": 98,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "97             classname = model_config.pop(\"proto\")\n98             model: nn.Module = eval(classname)(**model_config, dl=DataLoader(dataset), logger=None)\n99         except NameError:",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "vilmedic/zoo/utils.py",
+    "line": 52,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in hf_hub_download()",
+    "snippet": "51             try:\n52                 hf_hub_download(repo_id=repo_id, filename=f, cache_dir=cache_dir, force_filename=f)\n53             except Exception as e:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.deserialization.avoid-pyyaml-load.avoid-pyyaml-load",
+    "file_path": "bin/utils.py",
+    "line": 91,
+    "message": "Detected a possible YAML deserialization vulnerability. `yaml.unsafe_load`, `yaml.Loader`, `yaml.CLoader`, and `yaml.UnsafeLoader` are all known to be unsafe methods of deserializing YAML. An attacker with control over the YAML input could create special YAML input that allows the attacker to run arbitrary Python code. This would allow the attacker to steal files, download and install malware, or otherwise take over the machine. Use `yaml.safe_load` or `yaml.SafeLoader` instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "data/make_datasets/padchest/make_padchest.py",
+    "line": 182,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "data/make_datasets/padchest/make_padchest.py",
+    "line": 191,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "data/make_datasets/padchest/make_padchest.py",
+    "line": 199,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "hf_trainer/dataset copy/text_dataset.py",
+    "line": 49,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "hf_trainer/dataset copy/utils_hf.py",
+    "line": 20,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "hf_trainer/dataset/text_dataset.py",
+    "line": 49,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "hf_trainer/dataset/utils_hf.py",
+    "line": 20,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "hf_trainer/datasets/text/dataset.py",
+    "line": 49,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "hf_trainer/datasets/utils_hf.py",
+    "line": 20,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "vilmedic/blocks/losses/mvqa/LabelSmoothingCrossEntropyLoss.py",
+    "line": 99,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "vilmedic/blocks/scorers/NLG/ciderD_RL/ciderD_RL.py",
+    "line": 26,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "vilmedic/blocks/vision/visual_encoder.py",
+    "line": 71,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "vilmedic/datasets/base/AnyDataset.py",
+    "line": 26,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "vilmedic/datasets/base/ImageDataset.py",
+    "line": 89,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "vilmedic/datasets/base/ImageDataset.py",
+    "line": 92,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "vilmedic/datasets/base/ImageDataset.py",
+    "line": 185,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "vilmedic/datasets/base/ImageDataset.py",
+    "line": 186,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "vilmedic/datasets/base/TextDataset.py",
+    "line": 63,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "vilmedic/datasets/base/papers/IndexDataset.py",
+    "line": 27,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "vilmedic/datasets/base/utils.py",
+    "line": 45,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "vilmedic/datasets/base/utils.py",
+    "line": 83,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "vilmedic/executors/utils.py",
+    "line": 110,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "vilmedic/executors/utils.py",
+    "line": 153,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "vilmedic/executors/utils.py",
+    "line": 387,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "vilmedic/executors/utils.py",
+    "line": 398,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "vilmedic/models/mvqa/MVQA.py",
+    "line": 22,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "vilmedic/models/mvqa/MVQA.py",
+    "line": 32,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "vilmedic/models/mvqa/MVQA.py",
+    "line": 34,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "vilmedic/models/rrg/RRG.py",
+    "line": 20,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "vilmedic/models/rrg/RRG_FORCE.py",
+    "line": 21,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "vilmedic/models/selfsup/GLoRIA.py",
+    "line": 58,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "inference+modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "vilmedic/models/selfsup/conVIRT.py",
+    "line": 55,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "vilmedic/models/selfsup/conVIRT.py",
+    "line": 69,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "vilmedic/zoo/modeling_auto.py",
+    "line": 91,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "vilmedic/zoo/modeling_auto.py",
+    "line": 98,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference"
+  }
+]

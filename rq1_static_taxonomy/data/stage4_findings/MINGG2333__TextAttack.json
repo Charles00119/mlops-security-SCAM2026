@@ -1,0 +1,962 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "examples/attack/attack_camembert.py",
+    "line": 41,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "40 # see https://github.com/TheophileBlard/french-sentiment-analysis-with-bert\n41 model = TFAutoModelForSequenceClassification.from_pretrained(\"tblard/tf-allocine\")\n42 tokenizer = AutoTokenizer.from_pretrained(\"tblard/tf-allocine\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "examples/attack/attack_camembert.py",
+    "line": 42,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "41 model = TFAutoModelForSequenceClassification.from_pretrained(\"tblard/tf-allocine\")\n42 tokenizer = AutoTokenizer.from_pretrained(\"tblard/tf-allocine\")\n43 pipeline = pipeline(\"sentiment-analysis\", model=model, tokenizer=tokenizer)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jxy/queryatt.py",
+    "line": 16,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "15 from textattack.models.wrappers import HuggingFaceModelWrapper\n16 model = transformers.AutoModelForSequenceClassification.from_pretrained(\"textattack/bert-base-uncased-imdb\")\n17 tokenizer = transformers.AutoTokenizer.from_pretrained(\"textattack/bert-base-uncased-imdb\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "jxy/queryatt.py",
+    "line": 17,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "16 model = transformers.AutoModelForSequenceClassification.from_pretrained(\"textattack/bert-base-uncased-imdb\")\n17 tokenizer = transformers.AutoTokenizer.from_pretrained(\"textattack/bert-base-uncased-imdb\")\n18 model_wrapper = HuggingFaceModelWrapper(model, tokenizer)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tests/sample_inputs/sst_model_and_dataset.py",
+    "line": 7,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "6 \n7 tokenizer = transformers.AutoTokenizer.from_pretrained(model_path)\n8 model = transformers.AutoModelForSequenceClassification.from_pretrained(model_path)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tests/sample_inputs/sst_model_and_dataset.py",
+    "line": 8,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "7 tokenizer = transformers.AutoTokenizer.from_pretrained(model_path)\n8 model = transformers.AutoModelForSequenceClassification.from_pretrained(model_path)\n9",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tests/test_metric_api.py",
+    "line": 36,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "35 \n36     model = transformers.AutoModelForSequenceClassification.from_pretrained(\n37         \"distilbert-base-uncased-finetuned-sst-2-english\"\n38     )\n39     tokenizer = transformers.AutoTokenizer.from_pretrained(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tests/test_metric_api.py",
+    "line": 39,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "38     )\n39     tokenizer = transformers.AutoTokenizer.from_pretrained(\n40         \"distilbert-base-uncased-finetuned-sst-2-english\"\n41     )\n42     model_wrapper = HuggingFaceModelWrapper(model, tokenizer)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tests/test_tokenizers.py",
+    "line": 34,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "33 def bert_tokenizer():\n34     return transformers.AutoTokenizer.from_pretrained(\"bert-base-uncased\")\n35",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "textattack/attack_args.py",
+    "line": 592,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "591             if transformation_name in WHITE_BOX_TRANSFORMATION_CLASS_NAMES:\n592                 transformation = eval(\n593                     f\"{WHITE_BOX_TRANSFORMATION_CLASS_NAMES[transformation_name]}(model_wrapper.model, {params})\"\n594                 )\n595             elif transformation_name in BLACK_BOX_TRANSFORMATION_CLASS_NAMES:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "textattack/attack_args.py",
+    "line": 596,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "595             elif transformation_name in BLACK_BOX_TRANSFORMATION_CLASS_NAMES:\n596                 transformation = eval(\n597                     f\"{BLACK_BOX_TRANSFORMATION_CLASS_NAMES[transformation_name]}({params})\"\n598                 )\n599             else:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "textattack/attack_args.py",
+    "line": 605,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "604             if transformation_name in WHITE_BOX_TRANSFORMATION_CLASS_NAMES:\n605                 transformation = eval(\n606                     f\"{WHITE_BOX_TRANSFORMATION_CLASS_NAMES[transformation_name]}(model_wrapper.model)\"\n607                 )\n608             elif transformation_name in BLACK_BOX_TRANSFORMATION_CLASS_NAMES:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "textattack/attack_args.py",
+    "line": 609,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "608             elif transformation_name in BLACK_BOX_TRANSFORMATION_CLASS_NAMES:\n609                 transformation = eval(\n610                     f\"{BLACK_BOX_TRANSFORMATION_CLASS_NAMES[transformation_name]}()\"\n611                 )\n612             else:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "textattack/attack_args.py",
+    "line": 630,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "629                 )\n630             goal_function = eval(\n631                 f\"{GOAL_FUNCTION_CLASS_NAMES[goal_function_name]}(model_wrapper, {params})\"\n632             )\n633         elif goal_function in GOAL_FUNCTION_CLASS_NAMES:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "textattack/attack_args.py",
+    "line": 634,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "633         elif goal_function in GOAL_FUNCTION_CLASS_NAMES:\n634             goal_function = eval(\n635                 f\"{GOAL_FUNCTION_CLASS_NAMES[goal_function]}(model_wrapper)\"\n636             )\n637         else:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "textattack/attack_args.py",
+    "line": 659,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "658                 _constraints.append(\n659                     eval(f\"{CONSTRAINT_CLASS_NAMES[constraint_name]}({params})\")\n660                 )",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "textattack/attack_args.py",
+    "line": 662,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "661             elif constraint in CONSTRAINT_CLASS_NAMES:\n662                 _constraints.append(eval(f\"{CONSTRAINT_CLASS_NAMES[constraint]}()\"))\n663             else:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "textattack/attack_args.py",
+    "line": 682,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "681                     raise ValueError(f\"Error: unsupported recipe {recipe_name}\")\n682                 recipe = eval(\n683                     f\"{ATTACK_RECIPE_NAMES[recipe_name]}.build(model_wrapper, {params})\"\n684                 )\n685             elif args.attack_recipe in ATTACK_RECIPE_NAMES:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "textattack/attack_args.py",
+    "line": 687,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "686                 if args.attention_model is None:\n687                     recipe = eval(\n688                         f\"{ATTACK_RECIPE_NAMES[args.attack_recipe]}.build(model_wrapper)\"\n689                     )\n690                 else:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "textattack/attack_args.py",
+    "line": 691,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "690                 else:\n691                     recipe = eval(\n692                         f\"{ATTACK_RECIPE_NAMES[args.attack_recipe]}.build(model_wrapper, args.attention_model)\"\n693                     )\n694             else:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "textattack/attack_args.py",
+    "line": 721,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "720                     raise ValueError(f\"Error: unsupported search {search_name}\")\n721                 search_method = eval(\n722                     f\"{SEARCH_METHOD_CLASS_NAMES[search_name]}({params})\"\n723                 )\n724             elif args.search_method in SEARCH_METHOD_CLASS_NAMES:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "textattack/attack_args.py",
+    "line": 725,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "724             elif args.search_method in SEARCH_METHOD_CLASS_NAMES:\n725                 search_method = eval(\n726                     f\"{SEARCH_METHOD_CLASS_NAMES[args.search_method]}()\"\n727                 )\n728             else:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "textattack/attack_recipes/clare_li_2020.py",
+    "line": 52,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "51 \n52         shared_masked_lm = transformers.AutoModelForCausalLM.from_pretrained(\n53             \"distilroberta-base\"\n54         )\n55         shared_tokenizer = transformers.AutoTokenizer.from_pretrained(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "textattack/attack_recipes/clare_li_2020.py",
+    "line": 55,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "54         )\n55         shared_tokenizer = transformers.AutoTokenizer.from_pretrained(\n56             \"distilroberta-base\"\n57         )\n58         transformation = CompositeTransformation(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "textattack/attention_models/utils.py",
+    "line": 227,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "226     # Read data\n227     sentences = torch.load(os.path.join(data_folder, 'word2vec_data.pth.tar'))\n228     sentences = list(itertools.chain.from_iterable(sentences))",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "textattack/augmentation/recipes.py",
+    "line": 214,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "213 \n214         shared_masked_lm = transformers.AutoModelForCausalLM.from_pretrained(model)\n215         shared_tokenizer = transformers.AutoTokenizer.from_pretrained(tokenizer)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "textattack/augmentation/recipes.py",
+    "line": 215,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "214         shared_masked_lm = transformers.AutoModelForCausalLM.from_pretrained(model)\n215         shared_tokenizer = transformers.AutoTokenizer.from_pretrained(tokenizer)\n216",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "textattack/commands/augment_command.py",
+    "line": 37,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "36             print(\"\\nRunning in interactive mode...\\n\")\n37             augmenter = eval(AUGMENTATION_RECIPE_NAMES[args.recipe])(\n38                 pct_words_to_swap=args.pct_words_to_swap,",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "textattack/commands/augment_command.py",
+    "line": 85,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "84                         print(\"\\nGenerating new augmenter...\\n\")\n85                         augmenter = eval(AUGMENTATION_RECIPE_NAMES[args.recipe])(\n86                             pct_words_to_swap=args.pct_words_to_swap,",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "textattack/commands/augment_command.py",
+    "line": 161,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "160 \n161             augmenter = eval(AUGMENTATION_RECIPE_NAMES[args.recipe])(\n162                 pct_words_to_swap=args.pct_words_to_swap,",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "textattack/constraints/grammaticality/cola.py",
+    "line": 47,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "46         self._reference_score_cache = lru.LRU(2 ** 10)\n47         model = AutoModelForSequenceClassification.from_pretrained(model_name)\n48         tokenizer = AutoTokenizer.from_pretrained(model_name)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "textattack/constraints/grammaticality/cola.py",
+    "line": 48,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "47         model = AutoModelForSequenceClassification.from_pretrained(model_name)\n48         tokenizer = AutoTokenizer.from_pretrained(model_name)\n49         self.model = HuggingFaceModelWrapper(model, tokenizer)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "textattack/constraints/grammaticality/language_models/gpt2.py",
+    "line": 35,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "34         os.environ[\"WANDB_SILENT\"] = \"0\"\n35         self.model = transformers.GPT2LMHeadModel.from_pretrained(model_name)\n36         self.model.to(utils.device)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "textattack/constraints/grammaticality/language_models/gpt2.py",
+    "line": 37,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "36         self.model.to(utils.device)\n37         self.tokenizer = transformers.GPT2Tokenizer.from_pretrained(model_name)\n38         super().__init__(**kwargs)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "textattack/constraints/grammaticality/language_models/learning_to_write/language_model_helpers.py",
+    "line": 122,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "121 \n122         model.load_state_dict(torch.load(model_file, map_location=device))\n123         model.full = True  # Use real softmax--important!",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "textattack/constraints/semantics/sentence_encoders/infer_sent/infer_sent.py",
+    "line": 48,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "47         infersent = InferSentModel(params_model)\n48         infersent.load_state_dict(torch.load(model_path))\n49         word_embedding_path = utils.download_from_s3(InferSent.WORD_EMBEDDING_PATH)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "textattack/dataset_args.py",
+    "line": 243,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "242                 # ex: dataset = ('textattack.datasets.helpers.TedMultiTranslationDataset', 'en', 'de')\n243                 dataset = eval(f\"{dataset[0]}\")(*dataset[1:])\n244                 return dataset",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "textattack/datasets/helpers/ted_multi.py",
+    "line": 24,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "23     def __init__(self, source_lang=\"en\", target_lang=\"de\", split=\"test\"):\n24         self._dataset = datasets.load_dataset(\"ted_multi\")[split]\n25         self.examples = self._dataset[\"translations\"]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "textattack/datasets/huggingface_dataset.py",
+    "line": 113,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "112             self._subset = subset\n113             self._dataset = datasets.load_dataset(self._name, subset)[split]\n114             subset_print_str = f\", subset {_cb(subset)}\" if subset else \"\"",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "textattack/metrics/quality_metrics/perplexity.py",
+    "line": 25,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "24 \n25             self.ppl_model = GPT2LMHeadModel.from_pretrained(\"gpt2\")\n26             self.ppl_model.to(textattack.shared.utils.device)",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "textattack/metrics/quality_metrics/perplexity.py",
+    "line": 27,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "26             self.ppl_model.to(textattack.shared.utils.device)\n27             self.ppl_tokenizer = GPT2Tokenizer.from_pretrained(\"gpt2\")\n28             self.ppl_model.eval()",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "textattack/metrics/quality_metrics/perplexity.py",
+    "line": 33,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "32 \n33             self.ppl_model = AutoModelForMaskedLM.from_pretrained(model_name)\n34             self.ppl_tokenizer = AutoTokenizer.from_pretrained(model_name)",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "textattack/metrics/quality_metrics/perplexity.py",
+    "line": 34,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "33             self.ppl_model = AutoModelForMaskedLM.from_pretrained(model_name)\n34             self.ppl_tokenizer = AutoTokenizer.from_pretrained(model_name)\n35             self.ppl_model.to(textattack.shared.utils.device)",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "textattack/model_args.py",
+    "line": 222,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "221             )\n222             model = transformers.AutoModelForSequenceClassification.from_pretrained(\n223                 model_name\n224             )\n225             tokenizer = transformers.AutoTokenizer.from_pretrained(",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "textattack/model_args.py",
+    "line": 225,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "224             )\n225             tokenizer = transformers.AutoTokenizer.from_pretrained(\n226                 model_name, use_fast=True\n227             )\n228             model = textattack.models.wrappers.HuggingFaceModelWrapper(model, tokenizer)",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "textattack/model_args.py",
+    "line": 286,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "285                 ):\n286                     model = eval(\n287                         f\"textattack.models.helpers.{model_class}.from_pretrained({args.model})\"\n288                     )\n289                     model = textattack.models.wrappers.PyTorchModelWrapper(",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "textattack/model_args.py",
+    "line": 295,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "294                     model = (\n295                         transformers.AutoModelForSequenceClassification.from_pretrained(\n296                             args.model\n297                         )\n298                     )",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "textattack/model_args.py",
+    "line": 299,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "298                     )\n299                     tokenizer = transformers.AutoTokenizer.from_pretrained(\n300                         args.model, use_fast=True\n301                     )\n302                     model = textattack.models.wrappers.HuggingFaceModelWrapper(",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "textattack/models/helpers/t5_for_text_to_text.py",
+    "line": 48,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "47         super().__init__()\n48         self.model = transformers.T5ForConditionalGeneration.from_pretrained(\"t5-base\")\n49         self.model.eval()",
+    "stage": "data_acquisition+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "textattack/models/helpers/t5_for_text_to_text.py",
+    "line": 101,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "100                 setattr(t5, key, config[key])\n101             t5.model = transformers.T5ForConditionalGeneration.from_pretrained(\n102                 name_or_path\n103             )\n104             t5.tokenizer = T5Tokenizer(t5.mode, max_length=t5.output_max_length)",
+    "stage": "data_acquisition+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "textattack/models/helpers/utils.py",
+    "line": 22,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "21     model_path = model_path_list[0]\n22     state_dict = torch.load(model_path, map_location=torch.device(\"cpu\"))\n23     return state_dict",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "textattack/models/tokenizers/t5_tokenizer.py",
+    "line": 38,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "37 \n38         self.tokenizer = transformers.AutoTokenizer.from_pretrained(\n39             \"t5-base\", use_fast=True\n40         )\n41         self.max_length = max_length",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "textattack/shared/checkpoint.py",
+    "line": 225,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "224         with open(path, \"rb\") as f:\n225             checkpoint = pickle.load(f)\n226         assert isinstance(checkpoint, cls)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "textattack/shared/utils/install.py",
+    "line": 126,
+    "message": "Call to requests without timeout",
+    "snippet": "125     logger.info(f\"Downloading {url}.\")\n126     req = requests.get(url, stream=True, proxies=proxies)\n127     content_length = req.headers.get(\"Content-Length\")",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "textattack/shared/word_embeddings.py",
+    "line": 298,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "297         with open(mse_dist_file, \"rb\") as f:\n298             mse_dist_mat = pickle.load(f)\n299         with open(cos_sim_file, \"rb\") as f:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "textattack/shared/word_embeddings.py",
+    "line": 300,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "299         with open(cos_sim_file, \"rb\") as f:\n300             cos_sim_mat = pickle.load(f)\n301",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "textattack/trainer.py",
+    "line": 817,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "816                 model = model.load_state_dict(\n817                     torch.load(os.path.join(best_model_path, \"pytorch_model.bin\"))\n818                 )",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "textattack/training_args.py",
+    "line": 472,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "471             num_labels = args.model_num_labels if args.model_num_labels else 2\n472             config = transformers.AutoConfig.from_pretrained(\n473                 args.model_name_or_path,\n474                 num_labels=num_labels,\n475             )\n476             model = transformers.AutoModelForSequenceClassification.from_pretrained(",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "textattack/training_args.py",
+    "line": 476,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "475             )\n476             model = transformers.AutoModelForSequenceClassification.from_pretrained(\n477                 args.model_name_or_path,\n478                 config=config,\n479             )\n480             tokenizer = transformers.AutoTokenizer.from_pretrained(",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "textattack/training_args.py",
+    "line": 480,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "479             )\n480             tokenizer = transformers.AutoTokenizer.from_pretrained(\n481                 args.model_name_or_path,\n482                 model_max_length=max_seq_len,\n483             )\n484             model = HuggingFaceModelWrapper(model, tokenizer)",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "textattack/training_args.py",
+    "line": 554,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "553         ), f\"Unavailable attack recipe {args.attack}\"\n554         attack = eval(f\"{ATTACK_RECIPE_NAMES[args.attack]}.build(model_wrapper)\")\n555         assert isinstance(",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "textattack/transformations/sentence_transformations/back_translation.py",
+    "line": 55,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "54         self.target_lang = target_lang\n55         self.target_model = MarianMTModel.from_pretrained(target_model)\n56         self.target_tokenizer = MarianTokenizer.from_pretrained(target_model)",
+    "stage": "inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "textattack/transformations/sentence_transformations/back_translation.py",
+    "line": 56,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "55         self.target_model = MarianMTModel.from_pretrained(target_model)\n56         self.target_tokenizer = MarianTokenizer.from_pretrained(target_model)\n57         self.src_model = MarianMTModel.from_pretrained(src_model)",
+    "stage": "inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "textattack/transformations/sentence_transformations/back_translation.py",
+    "line": 57,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "56         self.target_tokenizer = MarianTokenizer.from_pretrained(target_model)\n57         self.src_model = MarianMTModel.from_pretrained(src_model)\n58         self.src_tokenizer = MarianTokenizer.from_pretrained(src_model)",
+    "stage": "inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "textattack/transformations/sentence_transformations/back_translation.py",
+    "line": 58,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "57         self.src_model = MarianMTModel.from_pretrained(src_model)\n58         self.src_tokenizer = MarianTokenizer.from_pretrained(src_model)\n59         self.chained_back_translation = chained_back_translation",
+    "stage": "inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "textattack/transformations/word_insertions/word_insertion_masked_lm.py",
+    "line": 55,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "54         if isinstance(masked_language_model, str):\n55             self._language_model = AutoModelForMaskedLM.from_pretrained(\n56                 masked_language_model\n57             )\n58             self._lm_tokenizer = AutoTokenizer.from_pretrained(",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "textattack/transformations/word_insertions/word_insertion_masked_lm.py",
+    "line": 58,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "57             )\n58             self._lm_tokenizer = AutoTokenizer.from_pretrained(\n59                 masked_language_model, use_fast=True\n60             )\n61         else:",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "textattack/transformations/word_merges/word_merge_masked_lm.py",
+    "line": 54,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "53         if isinstance(masked_language_model, str):\n54             self._language_model = AutoModelForMaskedLM.from_pretrained(\n55                 masked_language_model\n56             )\n57             self._lm_tokenizer = AutoTokenizer.from_pretrained(",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "textattack/transformations/word_merges/word_merge_masked_lm.py",
+    "line": 57,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "56             )\n57             self._lm_tokenizer = AutoTokenizer.from_pretrained(\n58                 masked_language_model, use_fast=True\n59             )\n60         else:",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "textattack/transformations/word_swaps/word_swap_hownet.py",
+    "line": 31,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "30         with open(cache_path, \"rb\") as fp:\n31             self.candidates_bank = pickle.load(fp)\n32",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "textattack/transformations/word_swaps/word_swap_masked_lm.py",
+    "line": 73,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "72         if isinstance(masked_language_model, str):\n73             self._language_model = AutoModelForMaskedLM.from_pretrained(\n74                 masked_language_model\n75             )\n76             self._lm_tokenizer = AutoTokenizer.from_pretrained(",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "textattack/transformations/word_swaps/word_swap_masked_lm.py",
+    "line": 76,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "75             )\n76             self._lm_tokenizer = AutoTokenizer.from_pretrained(\n77                 masked_language_model, use_fast=True\n78             )\n79         else:",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "textattack/attack_args.py",
+    "line": 592,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "textattack/attack_args.py",
+    "line": 596,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "textattack/attack_args.py",
+    "line": 605,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "textattack/attack_args.py",
+    "line": 609,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "textattack/attack_args.py",
+    "line": 630,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "textattack/attack_args.py",
+    "line": 634,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "textattack/attack_args.py",
+    "line": 659,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "textattack/attack_args.py",
+    "line": 662,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "textattack/attack_args.py",
+    "line": 682,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "textattack/attack_args.py",
+    "line": 687,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "textattack/attack_args.py",
+    "line": 691,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "textattack/attack_args.py",
+    "line": 721,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "textattack/attack_args.py",
+    "line": 725,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "textattack/commands/augment_command.py",
+    "line": 37,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "textattack/commands/augment_command.py",
+    "line": 85,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "textattack/commands/augment_command.py",
+    "line": 161,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "textattack/dataset_args.py",
+    "line": 243,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "textattack/model_args.py",
+    "line": 286,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "textattack/shared/checkpoint.py",
+    "line": 220,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "textattack/shared/checkpoint.py",
+    "line": 225,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "textattack/shared/word_embeddings.py",
+    "line": 298,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "textattack/shared/word_embeddings.py",
+    "line": 300,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "textattack/training_args.py",
+    "line": 554,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "textattack/transformations/word_swaps/word_swap_hownet.py",
+    "line": 31,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  }
+]

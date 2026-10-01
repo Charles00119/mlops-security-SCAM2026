@@ -37,6 +37,28 @@ import subprocess
 import sys
 import tempfile
 
+def _remove_tree(path: str, attempts: int = 3) -> None:
+    """Delete a clone directory robustly. Git marks pack files read-only; on
+    Windows shutil.rmtree(ignore_errors=True) silently leaves them behind and
+    the temp folder grows until the disk fills. Clear the bit and retry."""
+    import stat
+    import time
+
+    def _on_error(func, p, exc_info):
+        try:
+            os.chmod(p, stat.S_IWRITE)
+            func(p)
+        except OSError:
+            pass
+
+    for i in range(attempts):
+        if not os.path.exists(path):
+            return
+        shutil.rmtree(path, onerror=_on_error)
+        if os.path.exists(path):
+            time.sleep(1 + i)
+
+
 
 def repo_key_from_url(url: str) -> str:
     parts = url.rstrip("/").split("/")
@@ -148,7 +170,7 @@ def main() -> int:
                       f"{'OK' if ok else 'CLONE-FAILED'} "
                       f"files={n_found}/{len(files)} loc={loc}")
             finally:
-                shutil.rmtree(tmp, ignore_errors=True)
+                _remove_tree(tmp)
 
     print(f"[ok] wrote {args.out}")
     return 0

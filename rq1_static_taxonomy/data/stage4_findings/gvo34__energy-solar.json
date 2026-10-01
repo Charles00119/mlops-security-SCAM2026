@@ -1,0 +1,22 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B201",
+    "file_path": "app.py",
+    "line": 325,
+    "message": "A Flask app appears to be run with debug=True, which exposes the Werkzeug debugger and allows the execution of arbitrary code.",
+    "snippet": "324 if __name__ == \"__main__\":\n325     app.run(debug=True)",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.debug-enabled.debug-enabled",
+    "file_path": "app.py",
+    "line": 325,
+    "message": "Detected Flask app with debug=True. Do not deploy to production with this flag enabled as it will leak sensitive information. Instead, consider using Flask configuration variables or setting 'debug' using system environment variables.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  }
+]

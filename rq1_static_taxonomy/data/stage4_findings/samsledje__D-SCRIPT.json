@@ -1,0 +1,122 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "dscript/commands/evaluate.py",
+    "line": 207,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "206     if use_cuda:\n207         model = torch.load(model_path).cuda()\n208         model.use_cuda = True",
+    "stage": "data_acquisition+evaluation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "dscript/commands/evaluate.py",
+    "line": 210,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "209     else:\n210         model = torch.load(\n211             model_path, map_location=torch.device(\"cpu\"), weights_only=False\n212         ).cpu()\n213         model.use_cuda = False",
+    "stage": "data_acquisition+evaluation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "dscript/commands/par_worker.py",
+    "line": 40,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "39         if modelPath.endswith(\".sav\") or modelPath.endswith(\".pt\"):\n40             model = torch.load(\n41                 modelPath, map_location=torch.device(device), weights_only=False\n42             )  # Check moved to main\n43             model.use_cuda = use_cuda",
+    "stage": "inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "dscript/commands/predict_serial.py",
+    "line": 146,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "145             if use_cuda:\n146                 model = torch.load(modelPath).cuda()\n147                 model.use_cuda = True",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "dscript/commands/predict_serial.py",
+    "line": 149,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "148             else:\n149                 model = torch.load(\n150                     modelPath,\n151                     map_location=torch.device(\"cpu\"),\n152                     weights_only=False,\n153                 ).cpu()\n154                 model.use_cuda = False",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "dscript/commands/train.py",
+    "line": 692,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "691         )\n692         model = torch.load(args.checkpoint)\n693         model.use_cuda = use_cuda",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "dscript/pretrained.py",
+    "line": 19,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "18     model = SkipLSTM(21, 100, 1024, 3)\n19     state_dict = torch.load(state_dict_path)\n20     model.load_state_dict(state_dict)",
+    "stage": "inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "dscript/pretrained.py",
+    "line": 40,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "39     )\n40     state_dict = torch.load(state_dict_path)\n41     model.load_state_dict(state_dict)",
+    "stage": "inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "dscript/pretrained.py",
+    "line": 61,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "60     )\n61     state_dict = torch.load(state_dict_path)\n62     model.load_state_dict(state_dict)",
+    "stage": "inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "dscript/pretrained.py",
+    "line": 116,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "115             with (\n116                 urllib.request.urlopen(state_dict_url) as response,\n117                 open(state_dict_fullname, \"wb\") as out_file,",
+    "stage": "inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "scripts/push_huggingface.py",
+    "line": 19,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "18     # Load the state dict\n19     model_old = torch.load(model_pt, map_location=torch.device(\"cpu\"))\n20     state_dict = model_old.state_dict()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "dscript/pretrained.py",
+    "line": 116,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "inference"
+  }
+]

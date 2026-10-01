@@ -1,0 +1,42 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nnattack/attacks/blackbox/blackbox_attack.py",
+    "line": 233,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "232         if hasattr(self.model, 'model') and isinstance(self.model.model, keras.models.Model):\n233             filen = tempfile.mkdtemp(prefix=\"/tmp2/aptemp/\")\n234             filen = os.path.join(filen, \"model\")",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nnattack/attacks/blackbox/blackbox_attack.py",
+    "line": 241,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "240         elif 'faiss' in self.model.__module__:\n241             _, filen = tempfile.mkstemp(prefix=\"/tmp2/aptemp/\")\n242             self.model.save(filen)",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nnattack/attacks/blackbox/blackbox_attack.py",
+    "line": 244,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "243             inf = np.inf\n244             temp_model = eval(self.model.__repr__())\n245             temp_model.trnX = self.model.trnX",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nnattack/attacks/blackbox/blackbox_attack.py",
+    "line": 244,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference"
+  }
+]

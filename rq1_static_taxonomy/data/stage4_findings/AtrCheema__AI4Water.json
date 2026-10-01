@@ -1,0 +1,92 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B314",
+    "file_path": "ai4water/datasets/download_pangaea.py",
+    "line": 233,
+    "message": "Using xml.etree.ElementTree.fromstring to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.fromstring with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "232                 xmlText = r.text\n233                 xml = ET.fromstring(xmlText)\n234                 self.metadata['loginstatus'] = xml.find('./md:technicalInfo/md:entry[@key=\"loginOption\"]', self.ns).get('value')",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "ai4water/datasets/utils.py",
+    "line": 69,
+    "message": "Call to requests without timeout",
+    "snippet": "68 \n69     r = requests.get(url)\n70     data = bs4.BeautifulSoup(r.text, \"html.parser\")",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "ai4water/datasets/utils.py",
+    "line": 127,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "126 \n127     (tmpfile, headers) = ulib.urlretrieve(binurl, tmpfile, callback)\n128     filename = filename_from_url(url)",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "ai4water/envs/swat/_swat.py",
+    "line": 415,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "414         os.chdir(self.path)\n415         os.system(executable)\n416",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ai4water/preprocessing/transformations/_transformations.py",
+    "line": 789,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "788                 else:\n789                     func = eval(func)\n790             elif isinstance(func, np.ufunc):  # np.log2",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml.use-defused-xml",
+    "file_path": "ai4water/datasets/download_pangaea.py",
+    "line": 6,
+    "message": "The Python documentation recommends using `defusedxml` instead of `xml` because the native Python `xml` library is vulnerable to XML External Entity (XXE) attacks. These attacks can leak confidential data and \"XML bombs\" can cause denial of service.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.unverified-ssl-context.unverified-ssl-context",
+    "file_path": "ai4water/datasets/utils.py",
+    "line": 65,
+    "message": "Unverified SSL context detected. This will permit insecure connections without verifying SSL certificates. Use 'ssl.create_default_context' instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "ai4water/datasets/utils.py",
+    "line": 127,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ai4water/preprocessing/transformations/_transformations.py",
+    "line": 789,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_preparation"
+  }
+]

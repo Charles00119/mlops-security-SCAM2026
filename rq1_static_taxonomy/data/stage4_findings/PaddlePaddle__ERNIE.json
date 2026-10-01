@@ -1,0 +1,732 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "cookbook/advanced_search_demo.py",
+    "line": 199,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "198     parser.add_argument(\"--server-port\", type=int, default=8733, help=\"Demo server port.\")\n199     parser.add_argument(\"--server-name\", type=str, default=\"0.0.0.0\", help=\"Demo server name.\")\n200     parser.add_argument(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "cookbook/bot_requests.py",
+    "line": 389,
+    "message": "Call to requests without timeout",
+    "snippet": "388             }\n389             response = requests.post(\n390                 self.web_search_service_url, headers=headers, json=payload\n391             )\n392",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "cookbook/conversation_demo.py",
+    "line": 54,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "53     parser.add_argument(\n54         \"--server-name\", type=str, default=\"0.0.0.0\", help=\"Demo server name.\"\n55     )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "cookbook/knowledge_retrieval_demo.py",
+    "line": 116,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "115     parser.add_argument(\n116         \"--server-name\", type=str, default=\"0.0.0.0\", help=\"Demo server name.\"\n117     )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "cookbook/knowledge_retrieval_demo.py",
+    "line": 256,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "255         with open(file_path, \"rb\") as f:\n256             return hashlib.md5(f.read()).hexdigest()\n257",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "cookbook/simple_ernie_bot_demo.py",
+    "line": 109,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "108     parser.add_argument(\n109         \"--server-name\", type=str, default=\"0.0.0.0\", help=\"Demo server name.\"\n110     )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "cookbook/web_search_demo.py",
+    "line": 106,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "105     parser.add_argument(\n106         \"--server-name\", type=str, default=\"0.0.0.0\", help=\"Demo server name.\"\n107     )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "data_processor/utils/image_enhance.py",
+    "line": 783,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "782                     with RandomSeedContext(seed):\n783                         img = getattr(eval(cls_name), func_name)([img], effect[\"args\"])[\n784                             0",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "data_processor/utils/image_enhance.py",
+    "line": 808,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "807             cls_name, func_name = trans[\"func_name\"].split(\".\")\n808             all_quad, _ = getattr(eval(cls_name), func_name)(all_quad, trans[\"args\"])\n809",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "data_processor/utils/io_utils.py",
+    "line": 52,
+    "message": "Call to requests without timeout",
+    "snippet": "51     elif url.startswith(\"http\"):\n52         response = requests.get(url)\n53         bytes_data = response.content",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "data_processor/utils/io_utils.py",
+    "line": 80,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "79 \n80     md5_hash = hashlib.md5(url).hexdigest()\n81     pid = os.getpid()",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "data_processor/utils/io_utils.py",
+    "line": 226,
+    "message": "Call to requests without timeout",
+    "snippet": "225     \"\"\"http_to_pil_image\"\"\"\n226     response = requests.get(url)\n227     image_data = io.BytesIO(response.content)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "data_processor/utils/io_utils.py",
+    "line": 234,
+    "message": "Call to requests without timeout",
+    "snippet": "233     \"\"\"http_to_image_base64\"\"\"\n234     response = requests.get(url)\n235     image_data = io.BytesIO(response.content)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "ernie/callbacks/logging_callback.py",
+    "line": 50,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "49         def _log(x):\n50             return os.popen(x).read()\n51",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "ernie/callbacks/moe_logging_callback.py",
+    "line": 54,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "53     array_bytes = numpy_array.tobytes()\n54     return hashlib.md5(array_bytes).hexdigest()\n55",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "ernie/comm_utils.py",
+    "line": 40,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "39     array_bytes = numpy_array.tobytes()\n40     return hashlib.md5(array_bytes).hexdigest()\n41",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "ernie/dataset/hf/hf_parser.py",
+    "line": 403,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in snapshot_download()",
+    "snippet": "402         \"\"\"\n403         snapshot_download(\n404             repo_id=self.repo_id, repo_type=\"dataset\", local_dir=self.download_path\n405         )\n406",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "ernie/dataset/vl_sft_reader/vl_sft_dataset_json.py",
+    "line": 212,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "211     # 计算MD5\n212     return hashlib.md5(bytes_data).hexdigest()\n213",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "ernie/sequence_parallel_utils.py",
+    "line": 50,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "49         array_bytes = numpy_array.tobytes()\n50         return hashlib.md5(array_bytes).hexdigest()\n51",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "erniekit/chat/chat.py",
+    "line": 40,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "39 \n40     ip = \"0.0.0.0\"\n41     service_http_port = str(server_args.port)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "erniekit/eval/eval.py",
+    "line": 297,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "296             _attn_implementation = \"sdpa\"\n297         model_config = AutoConfig.from_pretrained(\n298             model_args.model_name_or_path,\n299             _attn_implementation=_attn_implementation,\n300             dtype=dtype,\n301             quantization_config=quantization_config,\n302             use_fused_head_and_loss_fn=model_args.use_fused_head_and_loss_fn,\n303             use_filte",
+    "stage": "data_acquisition+evaluation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "erniekit/train/dpo/workflow.py",
+    "line": 361,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "360             _attn_implementation = \"sdpa\"\n361         config = AutoConfig.from_pretrained(\n362             _attn_implementation=_attn_implementation,\n363             use_filtered_label_loss=model_args.use_sparse_head_and_loss_fn,\n364             loss_subbatch_sequence_length=1024,\n365             attention_dropout_prob=finetuning_args.attention_probs_dropout_prob,\n366             **convert_fro",
+    "stage": "evaluation+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "erniekit/train/dpo/workflow.py",
+    "line": 422,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "421         if finetuning_args.use_huggingface_model:\n422             ref_config = AutoConfig.from_pretrained(\n423                 _attn_implementation=_attn_implementation,\n424                 use_filtered_label_loss=model_args.use_sparse_head_and_loss_fn,\n425                 loss_subbatch_sequence_length=1024,\n426                 **model_kwargs,\n427             )\n428             ref_config.use_f",
+    "stage": "evaluation+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "erniekit/train/ocr_vl_sft/workflow.py",
+    "line": 508,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "507         modality_ratio = (\n508             eval(str(finetuning_args.modality_ratio))\n509             if finetuning_args.modality_ratio is not None",
+    "stage": "evaluation+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "erniekit/train/sft/workflow.py",
+    "line": 337,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "336             _attn_implementation = \"sdpa\"\n337         model_config = AutoConfig.from_pretrained(\n338             model_args.model_name_or_path,\n339             _attn_implementation=_attn_implementation,\n340             attention_dropout_prob=finetuning_args.attention_probs_dropout_prob,\n341             dtype=dtype,\n342             quantization_config=quantization_config,\n343             use_fu",
+    "stage": "evaluation+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "erniekit/train/vl_sft/workflow.py",
+    "line": 393,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "392         finetuning_args.use_huggingface_model = True\n393         cfg = AutoConfig.from_pretrained(\n394             os.path.join(model_args.model_name_or_path),\n395             quantization_config=quantization_config,\n396         )\n397     else:",
+    "stage": "data_acquisition+evaluation+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "erniekit/train/vl_sft/workflow.py",
+    "line": 588,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "587         modality_ratio = (\n588             eval(str(finetuning_args.modality_ratio))\n589             if finetuning_args.modality_ratio is not None",
+    "stage": "data_acquisition+evaluation+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "erniekit/webui/chatbot.py",
+    "line": 1051,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "1050     ):\n1051         self.default_ip = \"0.0.0.0\"\n1052         self.debug_logger = DebugLogger()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "erniekit/webui/webui.py",
+    "line": 65,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "64     demo = create_ui()\n65     demo.queue().launch(server_name=\"0.0.0.0\", share=False)\n66",
+    "stage": "inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "examples/pre-training/ernie/src/callbacks/moe_logging_callback.py",
+    "line": 45,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "44     array_bytes = numpy_array.tobytes()\n45     return hashlib.md5(array_bytes).hexdigest()\n46",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "examples/pre-training/ernie/src/trainers/pretraining_trainer.py",
+    "line": 490,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "489             with open(indices_file, \"rb\") as of:\n490                 return pickle.load(of)\n491         return None",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "examples/pre-training/tools/sharded_to_uc/gather_all_ckpt.py",
+    "line": 149,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "148             text=True,\n149             shell=True,\n150         )\n151         if i != 0:\n152             subprocess.run(\n153                 f\"rm -rf {tgt_path}_{i}/scheduler.pdparams\",\n154                 capture_output=True,\n155                 text=True,",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "examples/pre-training/tools/sharded_to_uc/gather_all_ckpt.py",
+    "line": 156,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "155                 text=True,\n156                 shell=True,\n157             )\n158 \n159         # moving ckpt\n160         print(f\"moving ckpt from {tgt_path}_{i} to {tgt_path}\")\n161         subprocess.run(\n162             f\"mv {tgt_path}_{i}/* {tgt_path}\",",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "examples/pre-training/tools/sharded_to_uc/gather_all_ckpt.py",
+    "line": 165,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "164             text=True,\n165             shell=True,\n166         )\n167 \n168         # clear local path\n169         subprocess.run([\"rm\", \"-rf\", f\"{tgt_path}_{i}\"], capture_output=True, text=True)\n170 \n171",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "examples/pre-training/tools/sharded_to_uc/merge_sharding_ep.py",
+    "line": 79,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "78         cmd = \" \".join([quote(str(c)) for c in cmd])\n79     exitcode = os.system(cmd)\n80     if not ignore_error:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "examples/pre-training/tools/sharded_to_uc/merge_sharding_ep.py",
+    "line": 855,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "854         with open(os.path.join(self.base_path, opt_path), \"rb\") as f:\n855             opt = pickle.load(f)\n856         master_weights = opt[MASTER_WEIGHT_KEY]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "examples/pre-training/tools/sharded_to_uc/merge_sharding_ep.py",
+    "line": 861,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "860         with open(os.path.join(self.base_path, param_path), \"rb\") as f:\n861             params = pickle.load(f)\n862",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "tests/gpu/test_dense_model.py",
+    "line": 62,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "61     try:\n62         result = subprocess.check_output(f\"ps -ef | grep {PORT}\", shell=True).decode()\n63         for line in result.strip().split(\"\\n\"):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "tests/gpu/test_moe_model.py",
+    "line": 60,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "59     try:\n60         result = subprocess.check_output(f\"ps -ef | grep {PORT}\", shell=True).decode()\n61         for line in result.strip().split(\"\\n\"):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "tests/gpu/test_vl_model.py",
+    "line": 59,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "58         print(\"Downloading DoclingMatix.tar.gz...\")\n59         urllib.request.urlretrieve(url, tar_path)\n60         print(\"Download completed.\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "tests/gpu/test_vl_model.py",
+    "line": 63,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "62         with tarfile.open(tar_path, \"r:gz\") as tar:\n63             tar.extractall(path=data_dir)\n64         print(\"Extraction completed.\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "tests/gpu/test_vl_model.py",
+    "line": 79,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "78     try:\n79         result = subprocess.check_output(f\"ps -ef | grep {PORT}\", shell=True).decode()\n80         for line in result.strip().split(\"\\n\"):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "tests/iluvatar_gpu/test_iluvatar_gpu_vl_model.py",
+    "line": 54,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "53         print(\"Downloading DoclingMatix.tar.gz...\")\n54         urllib.request.urlretrieve(url, tar_path)\n55         print(\"Download completed.\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "tests/iluvatar_gpu/test_iluvatar_gpu_vl_model.py",
+    "line": 58,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "57         with tarfile.open(tar_path, \"r:gz\") as tar:\n58             tar.extractall(path=data_dir)\n59         print(\"Extraction completed.\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "tests/iluvatar_gpu/test_iluvatar_gpu_vl_model.py",
+    "line": 74,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "73     try:\n74         result = subprocess.check_output(f\"ps -ef | grep {PORT}\", shell=True).decode()\n75         for line in result.strip().split(\"\\n\"):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "tests/iluvatar_gpu/test_iluvatar_gpu_vl_model.py",
+    "line": 229,
+    "message": "Call to requests without timeout",
+    "snippet": "228                 url = part[\"image_url\"][\"url\"]\n229                 image_bytes = requests.get(url).content\n230                 img = Image.open(io.BytesIO(image_bytes))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "tests/iluvatar_gpu/test_iluvatar_gpu_vl_model.py",
+    "line": 234,
+    "message": "Call to requests without timeout",
+    "snippet": "233                 url = part[\"video_url\"][\"url\"]\n234                 video_bytes = requests.get(url).content\n235                 videos.append({\"video\": video_bytes, \"max_frames\": 30})",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "tests/npu/test_moe_model.py",
+    "line": 57,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "56     try:\n57         result = subprocess.check_output(f\"ps -ef | grep {PORT}\", shell=True).decode()\n58         for line in result.strip().split(\"\\n\"):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "tests/xpu/test_dense_model.py",
+    "line": 62,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "61     try:\n62         result = subprocess.check_output(f\"ps -ef | grep {PORT}\", shell=True).decode()\n63         for line in result.strip().split(\"\\n\"):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "tests/xpu/test_moe_model.py",
+    "line": 60,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "59     try:\n60         result = subprocess.check_output(f\"ps -ef | grep {PORT}\", shell=True).decode()\n61         for line in result.strip().split(\"\\n\"):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "cookbook/knowledge_retrieval_demo.py",
+    "line": 256,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "data_processor/utils/image_enhance.py",
+    "line": 783,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "data_processor/utils/image_enhance.py",
+    "line": 808,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "data_processor/utils/io_utils.py",
+    "line": 80,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "data_processor/utils/logger_utils.py",
+    "line": 63,
+    "message": "Detected a python logger call with a potential hardcoded secret \"real image token length (%s) != input image token length (%s)\" being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "ernie/callbacks/moe_logging_callback.py",
+    "line": 54,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "ernie/comm_utils.py",
+    "line": 40,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "ernie/dataset/vl_sft_reader/vl_sft_dataset_json.py",
+    "line": 210,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "ernie/dataset/vl_sft_reader/vl_sft_dataset_json.py",
+    "line": 212,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "ernie/sequence_parallel_utils.py",
+    "line": 50,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-subprocess-use-tainted-env-args.dangerous-subprocess-use-tainted-env-args",
+    "file_path": "erniekit/cli.py",
+    "line": 194,
+    "message": "Detected subprocess function 'Popen' with user controlled data. A malicious actor could leverage this to perform command injection. You may consider using 'shlex.quote()'.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "erniekit/train/ocr_vl_sft/workflow.py",
+    "line": 508,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "evaluation+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "erniekit/train/vl_sft/workflow.py",
+    "line": 588,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "examples/pre-training/ernie/src/callbacks/moe_logging_callback.py",
+    "line": 45,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "examples/pre-training/ernie/src/trainers/pretraining_trainer.py",
+    "line": 490,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "examples/pre-training/ernie/src/trainers/pretraining_trainer.py",
+    "line": 640,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "examples/pre-training/ernie/src/trainers/pretraining_trainer.py",
+    "line": 677,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "examples/pre-training/tools/sharded_to_uc/gather_all_ckpt.py",
+    "line": 149,
+    "message": "Found 'subprocess' function 'run' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "examples/pre-training/tools/sharded_to_uc/gather_all_ckpt.py",
+    "line": 156,
+    "message": "Found 'subprocess' function 'run' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "examples/pre-training/tools/sharded_to_uc/gather_all_ckpt.py",
+    "line": 165,
+    "message": "Found 'subprocess' function 'run' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "examples/pre-training/tools/sharded_to_uc/merge_sharding_ep.py",
+    "line": 124,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "examples/pre-training/tools/sharded_to_uc/merge_sharding_ep.py",
+    "line": 855,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "examples/pre-training/tools/sharded_to_uc/merge_sharding_ep.py",
+    "line": 861,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

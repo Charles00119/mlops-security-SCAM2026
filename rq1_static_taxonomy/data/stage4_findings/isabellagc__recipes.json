@@ -1,0 +1,132 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "data/epicurious/recipe.py",
+    "line": 52,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "51         try:\n52             self.build_recipie(bs(url(page), 'html.parser'))\n53         except Exception as x:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "data/epicurious/recipe.py",
+    "line": 164,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "163     # pickle.dump(output,open('epi_recipes.final','wb'))\n164     data = pickle.load(open('epi_recipes.final','rb'))\n165     ar = []",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "linreg.py",
+    "line": 353,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "352 def linreg():\n353     recipes = pd.read_pickle('final_dataframe.pkl')\n354",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "main.py",
+    "line": 130,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "129 def get_var():\n130     recipes = pd.read_pickle('final_dataframe.pkl')\n131     print(\"CURRENT DIMENSIONS WE ARE WORKING WITH: \" + str(recipes.shape))",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "main.py",
+    "line": 145,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "144 def svr():\n145     recipes = pd.read_pickle('final_dataframe.pkl')\n146     print(\"CURRENT DIMENSIONS WE ARE WORKING WITH: \" + str(recipes.shape))",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "main.py",
+    "line": 214,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "213 def svr_grid_search():\n214     recipes = pd.read_pickle('final_dataframe.pkl')\n215     print(\"CURRENT DIMENSIONS WE ARE WORKING WITH: \" + str(recipes.shape))",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "main.py",
+    "line": 627,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "626 def rf_grid_search():\n627     recipes = pd.read_pickle('final_dataframe.pkl')\n628     print(\"CURRENT DIMENSIONS WE ARE WORKING WITH: \" + str(recipes.shape))",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "main.py",
+    "line": 661,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "660 def graphrating():\n661     recipes = pd.read_pickle('final_dataframe.pkl')\n662     ratings=recipes[['rating']].copy()",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "main.py",
+    "line": 672,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "671 def neuralnetfiltered(epoch,drop):\n672     recipes = pd.read_pickle('final_dataframe.pkl')\n673     print(\"CURRENT DIMENSIONS WE ARE WORKING WITH: \" + str(recipes.shape))",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "nettygridsearch.py",
+    "line": 34,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "33 # X_train, X_val, y_train, y_val = train_test_split(train, y_train_full, test_size = 0.15)\n34 recipes = pd.read_pickle('final_dataframe.pkl')\n35 print(\"CURRENT DIMENSIONS WE ARE WORKING WITH: \" + str(recipes.shape))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "data/epicurious/recipe.py",
+    "line": 52,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "data/epicurious/recipe.py",
+    "line": 164,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "data/epicurious/recipe.py",
+    "line": 168,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

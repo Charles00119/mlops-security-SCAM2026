@@ -1,0 +1,92 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model/net.py",
+    "line": 34,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "33             if self.gpu and torch.cuda.is_available():\n34                 data = torch.load(checkpoint)\n35             else:",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model/net.py",
+    "line": 36,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "35             else:\n36                 data = torch.load(checkpoint, map_location=lambda storage, loc: storage)\n37",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model/net.py",
+    "line": 52,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "51                     if self.gpu and torch.cuda.is_available():\n52                         data = torch.load(checkpoint)\n53                     else:",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "model/net.py",
+    "line": 54,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "53                     else:\n54                         data = torch.load(checkpoint, map_location=lambda storage, loc: storage)\n55",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "predict.py",
+    "line": 83,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "82         if config['gpu'] and torch.cuda.is_available():\n83             data = torch.load(checkpoint)\n84         else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "predict.py",
+    "line": 85,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "84         else:\n85             data = torch.load(checkpoint, map_location=lambda storage, loc: storage)\n86",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "predict.py",
+    "line": 106,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "105                 if config['gpu'] and torch.cuda.is_available():\n106                     data = torch.load(checkpoint)\n107                 else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "predict.py",
+    "line": 108,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "107                 else:\n108                     data = torch.load(checkpoint, map_location=lambda storage, loc: storage)\n109",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "utils/general.py",
+    "line": 7,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "6         pretty_config = f.read()\n7         config = yaml.load(pretty_config, yaml.Loader)\n8     return config, pretty_config",
+    "stage": "data_acquisition"
+  }
+]

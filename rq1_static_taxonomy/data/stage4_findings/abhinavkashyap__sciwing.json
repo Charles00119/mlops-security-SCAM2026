@@ -1,0 +1,182 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "sciwing/api/conf.py",
+    "line": 9,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "8 \n9 PDF_STORE_LOCATION = pathlib.Path(\"/tmp/sciwing_pdf_cache\")\n10 BIN_FOLDER = pathlib.Path(CURRENT_DIR, \"bin\")",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "sciwing/app/all_apps.py",
+    "line": 68,
+    "message": "Use of exec detected.",
+    "snippet": "67 \n68     exec(filebody, {})\n69",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "sciwing/app/citation_intent_demo.py",
+    "line": 51,
+    "message": "Call to requests without timeout",
+    "snippet": "50 with st.spinner(\"Please wait... Classifying the Citation Intent\"):\n51     response = requests.get(f\"http://localhost:8000/cit_int_clf/{text_selected}\")\n52 json = response.json()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "sciwing/app/ner_demo.py",
+    "line": 95,
+    "message": "Call to requests without timeout",
+    "snippet": "94     if model_selected == \"Citation String Parsing\":\n95         response = requests.get(f\"http://localhost:8000/parscit/{text_selected}\")\n96     elif model_selected == \"I2B2 Clinical Notes Tagging\":",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "sciwing/app/ner_demo.py",
+    "line": 97,
+    "message": "Call to requests without timeout",
+    "snippet": "96     elif model_selected == \"I2B2 Clinical Notes Tagging\":\n97         response = requests.get(f\"http://localhost:8000/i2b2/{text_selected}\")\n98",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "sciwing/app/pipeline_demo.py",
+    "line": 23,
+    "message": "Call to requests without timeout",
+    "snippet": "22     with st.spinner(\"Extracting insights\"):\n23         response = requests.post(\n24             f\"http://localhost:8000/pdf_pipeline/uploadfile\", files={\"file\": content}\n25         )\n26         json = response.json()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "sciwing/app/scientific_articles_abstract.py",
+    "line": 21,
+    "message": "Call to requests without timeout",
+    "snippet": "20     with st.spinner(\"Please wait... Extracting abstract.\"):\n21         response = requests.post(\n22             f\"http://localhost:8000/sectlabel/abstract\", files={\"file\": content}\n23         )\n24         json = response.json()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "sciwing/engine/engine.py",
+    "line": 169,
+    "message": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "snippet": "168         if experiment_name is None:\n169             hash_ = hashlib.sha1()\n170             hash_.update(str(time.time()).encode(\"utf-8\"))",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "sciwing/engine/engine.py",
+    "line": 705,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "704         with self.msg_printer.loading(f\"Loading Pytorch Model from file {filename}\"):\n705             model_chkpoint = torch.load(filename)\n706",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "sciwing/infer/classification/BaseClassificationInference.py",
+    "line": 49,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "48         if self.device.type != \"cpu\":\n49             model_chkpoint = torch.load(self.model_filepath)\n50         else:",
+    "stage": "inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "sciwing/infer/classification/BaseClassificationInference.py",
+    "line": 53,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "52             # is trained on gpu but runs on cpu\n53             model_chkpoint = torch.load(self.model_filepath, map_location=self.device)\n54         model_state_dict = model_chkpoint[\"model_state\"]",
+    "stage": "inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "sciwing/infer/seq_label_inference/BaseSeqLabelInference.py",
+    "line": 62,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "61         \"\"\"\n62         model_chkpoint = torch.load(self.model_filepath, map_location=self.device)\n63         model_state_dict = model_chkpoint[\"model_state\"]",
+    "stage": "inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "sciwing/metrics/conll_2003_metrics.py",
+    "line": 83,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "82             msg = \"\\nStandard CoNNL perl script (author: Erik Tjong Kim Sang <erikt@uia.ua.ac.be>, version: 2004-01-26):\\n\"\n83             msg += \"\".join(os.popen(command).readlines())\n84",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "sciwing/utils/common.py",
+    "line": 320,
+    "message": "Call to requests without timeout",
+    "snippet": "319     block_size = 65536\n320     r = requests.get(url, stream=True)\n321     total_size = int(r.headers.get(\"content-length\", 0))",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "sciwing/utils/common.py",
+    "line": 351,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "350             with zipfile.ZipFile(filename, \"r\") as z:\n351                 z.extractall(destination_dir)\n352",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "sciwing/utils/common.py",
+    "line": 380,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "379             with tarfile.open(filename, mode) as t:\n380                 t.extractall(destination_dir)\n381",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "sciwing/app/all_apps.py",
+    "line": 68,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1",
+    "file_path": "sciwing/engine/engine.py",
+    "line": 169,
+    "message": "Detected SHA1 hash algorithm which is considered insecure. SHA1 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation+inference+training"
+  }
+]

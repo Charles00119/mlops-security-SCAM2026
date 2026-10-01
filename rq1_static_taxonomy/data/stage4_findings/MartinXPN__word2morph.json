@@ -1,0 +1,22 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "word2morph/util/utils.py",
+    "line": 28,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "27     with DownloadProgressBar(unit='B', unit_scale=True, miniters=1, desc=description, disable=verbose < 2) as t:\n28         urllib.request.urlretrieve(url=url, filename=save_path, reporthook=t.update_to)\n29",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "word2morph/util/utils.py",
+    "line": 28,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  }
+]

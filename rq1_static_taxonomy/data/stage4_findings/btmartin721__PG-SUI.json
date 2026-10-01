@@ -1,0 +1,102 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "pgsui/electron/app/__main__.py",
+    "line": 5,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "4 \n5 uvicorn.run(app, host=\"0.0.0.0\", port=8765, log_level=\"info\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "pgsui/training_data/datadryad_data_final.py",
+    "line": 14,
+    "message": "Call to requests without timeout",
+    "snippet": "13     # GET request\n14     r = requests.get(PCurl, headers=Bheaders)\n15",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "pgsui/training_data/datadryad_data_final.py",
+    "line": 27,
+    "message": "Call to requests without timeout",
+    "snippet": "26 \n27     r2 = requests.get(Pcurl2, headers=Bheaders2)\n28",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "pgsui/training_data/datadryad_data_final_speciesdelimitation.py",
+    "line": 16,
+    "message": "Call to requests without timeout",
+    "snippet": "15 \t#GET request\n16 \tr = requests.get(PCurl, headers=Bheaders)\n17",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "pgsui/training_data/datadryad_data_final_speciesdelimitation.py",
+    "line": 28,
+    "message": "Call to requests without timeout",
+    "snippet": "27 \n28 \tr2 = requests.get(Pcurl2, headers=Bheaders2, stream=True)\n29",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "pgsui/validation/dryad_inputs.py",
+    "line": 283,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "282             try:\n283                 response = urllib.request.urlopen(request, timeout=self.timeout)\n284                 self._last_request_at = time.monotonic()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "javascript.lang.security.detect-child-process.detect-child-process",
+    "file_path": "pgsui/electron/app/main.js",
+    "line": 32,
+    "message": "Detected calls to child_process from a function argument `candidates`. This could lead to a command injection if the input is user controllable. Try to avoid calls to child_process, and if it is needed ensure user input is correctly sanitized or sandboxed.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "javascript.lang.security.detect-child-process.detect-child-process",
+    "file_path": "pgsui/electron/app/main.js",
+    "line": 101,
+    "message": "Detected calls to child_process from a function argument `cmd`. This could lead to a command injection if the input is user controllable. Try to avoid calls to child_process, and if it is needed ensure user input is correctly sanitized or sandboxed.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "javascript.lang.security.detect-child-process.detect-child-process",
+    "file_path": "pgsui/electron/app/main.js",
+    "line": 146,
+    "message": "Detected calls to child_process from a function argument `payload`. This could lead to a command injection if the input is user controllable. Try to avoid calls to child_process, and if it is needed ensure user input is correctly sanitized or sandboxed.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "pgsui/validation/dryad_inputs.py",
+    "line": 283,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

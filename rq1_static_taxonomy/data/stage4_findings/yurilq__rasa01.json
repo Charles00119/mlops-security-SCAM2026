@@ -1,0 +1,582 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "docs/conf.py",
+    "line": 62,
+    "message": "Use of exec detected.",
+    "snippet": "61 __version__ = None\n62 exec (open(\"../rasa/version.py\").read())\n63 version = \".\".join(__version__.split(\".\")[:2])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "examples/nlg_server/nlg_server.py",
+    "line": 73,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "72 \n73     app.run(host=\"0.0.0.0\", port=port, workers=workers)\n74",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "rasa/core/agent.py",
+    "line": 694,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "693 \n694         app.run(host=\"0.0.0.0\", port=http_port)\n695",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "rasa/core/channels/botframework.py",
+    "line": 58,
+    "message": "Call to requests without timeout",
+    "snippet": "57 \n58             token_response = requests.post(uri, data=payload)\n59",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "rasa/core/channels/botframework.py",
+    "line": 96,
+    "message": "Call to requests without timeout",
+    "snippet": "95         headers = await self._get_headers()\n96         send_response = requests.post(\n97             post_message_uri, headers=headers, data=json.dumps(message_data)\n98         )\n99",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "rasa/core/featurizers.py",
+    "line": 422,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "421         if os.path.isfile(featurizer_file):\n422             return jsonpickle.decode(rasa.utils.io.read_file(featurizer_file))\n423         else:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "rasa/core/policies/sklearn_policy.py",
+    "line": 209,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "208         with open(filename, \"rb\") as f:\n209             state = pickle.load(f)\n210         vars(policy).update(state)",
+    "stage": "data_acquisition+data_preparation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "rasa/core/run.py",
+    "line": 150,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "149 \n150     app.run(host=\"0.0.0.0\", port=port)\n151",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "rasa/core/tracker_store.py",
+    "line": 114,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "113     def deserialise_tracker(self, sender_id, _json):\n114         dialogue = pickle.loads(_json)\n115         tracker = self.init_tracker(sender_id)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "rasa/core/tracker_store.py",
+    "line": 371,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "370         cursor.execute(\n371             (\"SELECT 1 FROM pg_catalog.pg_database WHERE datname = '{}'\".format(db))\n372         )",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "rasa/core/training/interactive.py",
+    "line": 1410,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "1409 \n1410     app.run(host=\"0.0.0.0\", port=DEFAULT_SERVER_PORT)\n1411",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "rasa/core/training/interactive.py",
+    "line": 1441,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "1440 \n1441     app.run(host=\"0.0.0.0\", port=DEFAULT_SERVER_PORT + 1, access_log=False)\n1442",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "rasa/core/utils.py",
+    "line": 226,
+    "message": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "snippet": "225         self.__wrapped = array(wrapped) if tight else wrapped\n226         self.__hash = int(sha1(wrapped.view()).hexdigest(), 16)\n227",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "rasa/core/utils.py",
+    "line": 425,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "424     \"\"\"Calculate the md5 hash of a file.\"\"\"\n425     return md5(file_as_bytes(path)).hexdigest()\n426",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "rasa/core/utils.py",
+    "line": 430,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "429     \"\"\"Calculate the md5 hash of a file.\"\"\"\n430     return md5(text.encode(encoding)).hexdigest()\n431",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "rasa/model.py",
+    "line": 138,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "137     # All files are in a subdirectory.\n138     tar.extractall(working_directory)\n139     tar.close()",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "rasa/nlu/classifiers/embedding_intent_classifier.py",
+    "line": 715,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "714             ) as f:\n715                 inv_intent_dict = pickle.load(f)\n716             with io.open(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "rasa/nlu/classifiers/embedding_intent_classifier.py",
+    "line": 719,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "718             ) as f:\n719                 encoded_all_intents = pickle.load(f)\n720",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "rasa/nlu/extractors/duckling_http_extractor.py",
+    "line": 114,
+    "message": "Call to requests without timeout",
+    "snippet": "113             }\n114             response = requests.post(\n115                 self._url() + \"/parse\", data=payload, headers=headers\n116             )\n117             if response.status_code == 200:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "rasa/nlu/persistor.py",
+    "line": 104,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "103         with tarfile.open(compressed_path, \"r:gz\") as tar:\n104             tar.extractall(target_path)  # target dir will be created if it not exists\n105",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "rasa/utils/io.py",
+    "line": 147,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "146         tar = tarfile.open(fileobj=IOReader(byte_array))\n147         tar.extractall(directory)\n148         tar.close()",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "rasa/utils/io.py",
+    "line": 152,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "151         zip_ref = zipfile.ZipFile(IOReader(byte_array))\n152         zip_ref.extractall(directory)\n153         zip_ref.close()",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "setup.py",
+    "line": 10,
+    "message": "Use of exec detected.",
+    "snippet": "9 with open(\"rasa/version.py\") as f:\n10     exec (f.read())\n11",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "docs/conf.py",
+    "line": 62,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.app-run-param-config.avoid_app_run_with_bad_host",
+    "file_path": "examples/nlg_server/nlg_server.py",
+    "line": 73,
+    "message": "Running flask app with host 0.0.0.0 could expose the server publicly.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.app-run-param-config.avoid_app_run_with_bad_host",
+    "file_path": "rasa/core/agent.py",
+    "line": 694,
+    "message": "Running flask app with host 0.0.0.0 could expose the server publicly.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-uuid-version.insecure-uuid-version",
+    "file_path": "rasa/core/events/__init__.py",
+    "line": 578,
+    "message": "Using UUID version 1 for UUID generation can lead to predictable UUIDs based on system information (e.g., MAC address, timestamp). This may lead to security risks such as the sandwich attack. Consider using `uuid.uuid4()` instead for better randomness and security.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-cPickle",
+    "file_path": "rasa/core/policies/embedding_policy.py",
+    "line": 1446,
+    "message": "Avoid using `cPickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "rasa/core/policies/embedding_policy.py",
+    "line": 1446,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-cPickle",
+    "file_path": "rasa/core/policies/embedding_policy.py",
+    "line": 1450,
+    "message": "Avoid using `cPickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "rasa/core/policies/embedding_policy.py",
+    "line": 1450,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-cPickle",
+    "file_path": "rasa/core/policies/embedding_policy.py",
+    "line": 1483,
+    "message": "Avoid using `cPickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "rasa/core/policies/embedding_policy.py",
+    "line": 1483,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-cPickle",
+    "file_path": "rasa/core/policies/embedding_policy.py",
+    "line": 1521,
+    "message": "Avoid using `cPickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "rasa/core/policies/embedding_policy.py",
+    "line": 1521,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-cPickle",
+    "file_path": "rasa/core/policies/keras_policy.py",
+    "line": 284,
+    "message": "Avoid using `cPickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "rasa/core/policies/keras_policy.py",
+    "line": 284,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-cPickle",
+    "file_path": "rasa/core/policies/keras_policy.py",
+    "line": 304,
+    "message": "Avoid using `cPickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "rasa/core/policies/keras_policy.py",
+    "line": 304,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "rasa/core/policies/sklearn_policy.py",
+    "line": 182,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "rasa/core/policies/sklearn_policy.py",
+    "line": 209,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.app-run-param-config.avoid_app_run_with_bad_host",
+    "file_path": "rasa/core/run.py",
+    "line": 150,
+    "message": "Running flask app with host 0.0.0.0 could expose the server publicly.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "rasa/core/tracker_store.py",
+    "line": 111,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "rasa/core/tracker_store.py",
+    "line": 114,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.app-run-param-config.avoid_app_run_with_bad_host",
+    "file_path": "rasa/core/training/interactive.py",
+    "line": 1410,
+    "message": "Running flask app with host 0.0.0.0 could expose the server publicly.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.app-run-param-config.avoid_app_run_with_bad_host",
+    "file_path": "rasa/core/training/interactive.py",
+    "line": 1441,
+    "message": "Running flask app with host 0.0.0.0 could expose the server publicly.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1",
+    "file_path": "rasa/core/utils.py",
+    "line": 226,
+    "message": "Detected SHA1 hash algorithm which is considered insecure. SHA1 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.django.security.injection.request-data-write.request-data-write",
+    "file_path": "rasa/core/utils.py",
+    "line": 348,
+    "message": "Found user-controlled request data passed into '.write(...)'. This could be dangerous if a malicious actor is able to control data into sensitive files. For example, a malicious actor could force rolling of critical log files, or cause a denial-of-service by using up available disk space. Instead, ensure that request data is properly escaped or sanitized.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "rasa/core/utils.py",
+    "line": 425,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "rasa/core/utils.py",
+    "line": 430,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "rasa/nlu/classifiers/embedding_intent_classifier.py",
+    "line": 676,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "rasa/nlu/classifiers/embedding_intent_classifier.py",
+    "line": 680,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "rasa/nlu/classifiers/embedding_intent_classifier.py",
+    "line": 715,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "rasa/nlu/classifiers/embedding_intent_classifier.py",
+    "line": 719,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-uuid-version.insecure-uuid-version",
+    "file_path": "rasa/nlu/emulators/dialogflow.py",
+    "line": 27,
+    "message": "Using UUID version 1 for UUID generation can lead to predictable UUIDs based on system information (e.g., MAC address, timestamp). This may lead to security risks such as the sandwich attack. Consider using `uuid.uuid4()` instead for better randomness and security.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-uuid-version.insecure-uuid-version",
+    "file_path": "rasa/nlu/emulators/dialogflow.py",
+    "line": 37,
+    "message": "Using UUID version 1 for UUID generation can lead to predictable UUIDs based on system information (e.g., MAC address, timestamp). This may lead to security risks such as the sandwich attack. Consider using `uuid.uuid4()` instead for better randomness and security.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-uuid-version.insecure-uuid-version",
+    "file_path": "rasa/nlu/emulators/dialogflow.py",
+    "line": 45,
+    "message": "Using UUID version 1 for UUID generation can lead to predictable UUIDs based on system information (e.g., MAC address, timestamp). This may lead to security risks such as the sandwich attack. Consider using `uuid.uuid4()` instead for better randomness and security.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "setup.py",
+    "line": 10,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "dependencies"
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "aichemy/controller.py",
+    "line": 249,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "248                     try:\n249                         value = eval(f\"{value_type}({value})\")\n250                     except ValueError:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "aichemy/controller.py",
+    "line": 255,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "254 \n255             obj = eval(f\"self.{attr_pos}\")\n256             print(f\"Changed configuration for '{key}' from '{old_value}' to '{value}'\")",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "aichemy/models.py",
+    "line": 397,
+    "message": "Use of exec detected.",
+    "snippet": "396         if self.config.optimizer in PYTORCH_OPTIMIZERS:\n397             exec(f\"from torch.optim import {self.config.optimizer}\")\n398         elif self.config.optimizer in TORCHTOOLS_OPTIMIZERS:",
+    "stage": "data_preparation+evaluation+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "aichemy/models.py",
+    "line": 399,
+    "message": "Use of exec detected.",
+    "snippet": "398         elif self.config.optimizer in TORCHTOOLS_OPTIMIZERS:\n399             exec(f\"from libs.torchtools.optim import {self.config.optimizer}\")\n400         else:",
+    "stage": "data_preparation+evaluation+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "aichemy/models.py",
+    "line": 404,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "403 \n404         self.optimizer = eval(self.config.optimizer)\n405",
+    "stage": "data_preparation+evaluation+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "aichemy/controller.py",
+    "line": 249,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "aichemy/models.py",
+    "line": 397,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_preparation+evaluation+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "aichemy/models.py",
+    "line": 399,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_preparation+evaluation+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "aichemy/models.py",
+    "line": 404,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_preparation+evaluation+training"
+  }
+]

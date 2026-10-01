@@ -1,0 +1,12 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "model/cnn/supervisor.py",
+    "line": 192,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "191             with open(\"config/conv2d_gsmap.yaml\") as f:\n192                 config = yaml.load(f)    \n193             config['base_dir'] = \"log/conv2d/\" + str(count) + '/'",
+    "stage": "data_acquisition+data_preparation+modeling+training"
+  }
+]

@@ -1,0 +1,382 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "npyx/behav.py",
+    "line": 68,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "67         print(f'Behavioural data found at {fn}.')\n68         return pickle.load(open(str(fn),\"rb\"))\n69",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "npyx/behav.py",
+    "line": 265,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "264         print(f'Paq aligned data found at {fn}.')\n265         return pickle.load(open(str(fn),\"rb\"))\n266",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "npyx/behav.py",
+    "line": 367,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "366     if fn.exists() and not again:\n367         rawPAQVariables = pickle.load(open(fn,\"rb\"))\n368         if type(variables) is str: assert variables=='all'",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "npyx/c4/dataset_init.py",
+    "line": 139,
+    "message": "Call to requests without timeout",
+    "snippet": "138 \n139     response = requests.get(download_url, stream=True)\n140     response.raise_for_status()",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "npyx/c4/dl_utils.py",
+    "line": 220,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "219         def load_weights(self, encoder_path, decoder_path):\n220             self.encoder.load_state_dict(torch.load(encoder_path, map_location=self.device))\n221             self.decoder.load_state_dict(torch.load(decoder_path, map_location=self.device))",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "npyx/c4/dl_utils.py",
+    "line": 221,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "220             self.encoder.load_state_dict(torch.load(encoder_path, map_location=self.device))\n221             self.decoder.load_state_dict(torch.load(decoder_path, map_location=self.device))\n222",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "npyx/c4/dl_utils.py",
+    "line": 545,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "544     if initialise:\n545         enc.load_state_dict(torch.load(encoder_path, map_location=device))\n546",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "npyx/c4/predict_cell_types.py",
+    "line": 420,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "419     with open(filepath, \"rb\") as inpt:\n420         la = dill.load(inpt)\n421     return la",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "npyx/c4/run_deep_classifier.py",
+    "line": 645,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "644 \n645                 model.load_state_dict(torch.load(model_path, map_location=device), strict=True)\n646                 model.eval()",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "npyx/c4/run_deep_classifier.py",
+    "line": 655,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "654     if laplace:\n655         hessians = torch.load(\n656             file_path.replace(\"trained_models.tar.gz\", \"hessians.pt\"),\n657             map_location=device,\n658         )\n659",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "npyx/circuitProphyler.py",
+    "line": 887,
+    "message": "Use of exec detected.",
+    "snippet": "886         for p in dir(params):\n887             exec(\"if '__'not in '{}': self.params['{}']=params.{}\".format(p, p, p))\n888         self.fs=self.meta['highpass']['sampling_rate']",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "npyx/corr.py",
+    "line": 1138,
+    "message": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "snippet": "1137     periods_str = str(periods).replace(' ', '').replace('\\n','')\n1138     periods_hash = hashlib.sha1(periods_str.encode()).hexdigest()[:20]\n1139     fn=f\"ccgstack_{name}_{norm}_{cbin}_{cwin}_{periods_hash}\"",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "npyx/datasets.py",
+    "line": 99,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "98     with open(file_name, \"rb\") as fobj:\n99         return pickle.load(fobj)\n100",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "npyx/gl.py",
+    "line": 259,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "258         assert saveDir.exists(), f\"WARNING : {saveDir} does not exist. Run monosynapticity_exploration notebook first.\"\n259         df_ = pd.read_pickle(saveDir / f\"{connected_pairs_df_fn}.pkl\")\n260",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "npyx/metrics.py",
+    "line": 49,
+    "message": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "snippet": "48         units = list(np.sort(units).astype(int))\n49         units_hash = hashlib.sha1(str(units).encode()).hexdigest()[:20]\n50     else:",
+    "stage": "data_acquisition+data_preparation+evaluation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "npyx/metrics.py",
+    "line": 51,
+    "message": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "snippet": "50     else:\n51         units_hash = hashlib.sha1(str(np.unique(spike_clusters)).encode()).hexdigest()[:20]\n52",
+    "stage": "data_acquisition+data_preparation+evaluation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "npyx/plot_utils.py",
+    "line": 1111,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "1110     ), 'WARNING provided figure file path does not end with .pkl!'\n1111     return pkl.load(  open(fig_path,  'rb')  )\n1112",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "npyx/plot_utils.py",
+    "line": 1176,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "1175     output_ext = os.path.splitext(output)[1]\n1176     os.system(command[output_ext])\n1177",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "npyx/plot_utils.py",
+    "line": 1187,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "1186     loop = -1 if repeat else 0\n1187     os.system('convert -delay %d -loop %d %s %s'\n1188               %(delay,loop,\" \".join(files),output))\n1189",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "npyx/plot_utils.py",
+    "line": 1199,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "1198 \n1199     os.system(f'montage -tile 1x -geometry +0+0 {\" \".join(files)} {output}')\n1200",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "npyx/behav.py",
+    "line": 68,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "npyx/behav.py",
+    "line": 251,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "npyx/behav.py",
+    "line": 265,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "npyx/behav.py",
+    "line": 338,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "npyx/behav.py",
+    "line": 367,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "npyx/behav.py",
+    "line": 420,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "npyx/c4/dataset_init.py",
+    "line": 169,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-dill",
+    "file_path": "npyx/c4/predict_cell_types.py",
+    "line": 414,
+    "message": "Avoid using `dill`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-dill",
+    "file_path": "npyx/c4/predict_cell_types.py",
+    "line": 420,
+    "message": "Avoid using `dill`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "npyx/circuitProphyler.py",
+    "line": 887,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1",
+    "file_path": "npyx/corr.py",
+    "line": 1138,
+    "message": "Detected SHA1 hash algorithm which is considered insecure. SHA1 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "npyx/datasets.py",
+    "line": 94,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "npyx/datasets.py",
+    "line": 99,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "npyx/datasets.py",
+    "line": 861,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1",
+    "file_path": "npyx/metrics.py",
+    "line": 49,
+    "message": "Detected SHA1 hash algorithm which is considered insecure. SHA1 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1",
+    "file_path": "npyx/metrics.py",
+    "line": 51,
+    "message": "Detected SHA1 hash algorithm which is considered insecure. SHA1 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "npyx/plot_utils.py",
+    "line": 1103,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "npyx/plot_utils.py",
+    "line": 1111,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  }
+]

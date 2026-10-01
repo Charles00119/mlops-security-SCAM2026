@@ -1,0 +1,542 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "examples/embeddings_extraction_s3e_pooling.py",
+    "line": 81,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "80     with open(load_dir / \"s3e_stats.pkl\", \"rb\") as f:\n81         s3e_stats = pickle.load(f)\n82",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "examples/train_from_scratch.py",
+    "line": 48,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "47     # 1.Create a tokenizer\n48     tokenizer = BertTokenizer.from_pretrained(\"bert-base-uncased\")\n49",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "farm/data_handler/data_silo.py",
+    "line": 252,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "251         logger.info(f\"Loading datasets from cache at {cache_dir}\")\n252         self.data[\"train\"] = torch.load(cache_dir / \"train_dataset\")\n253",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "farm/data_handler/data_silo.py",
+    "line": 256,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "255         if dev_dataset_path.exists():\n256             self.data[\"dev\"] = torch.load(dev_dataset_path)\n257         else:",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "farm/data_handler/data_silo.py",
+    "line": 262,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "261         if test_dataset_path.exists():\n262             self.data[\"test\"] = torch.load(test_dataset_path)\n263         else:",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "farm/data_handler/data_silo.py",
+    "line": 266,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "265 \n266         self.tensor_names = torch.load(cache_dir / \"tensor_names\")\n267",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "farm/data_handler/utils.py",
+    "line": 244,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "243     # solution from stackoverflow: https://stackoverflow.com/a/3431838\n244     hash_md5 = hashlib.md5()\n245     with open(fname, \"rb\") as f:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "farm/data_handler/utils.py",
+    "line": 296,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "295             tfile = tarfile.open(temp_file.name)\n296             tfile.extractall(datadir)\n297         # temp_file gets deleted here",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "farm/data_handler/utils.py",
+    "line": 304,
+    "message": "Call to requests without timeout",
+    "snippet": "303         # get request\n304         response = get(DOWNSTREAM_TASK_MAP[f\"conll03{language}{dataset}\"])\n305         # write to file",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "farm/file_utils.py",
+    "line": 144,
+    "message": "Call to requests without timeout",
+    "snippet": "143 def http_get(url, temp_file, proxies=None):\n144     req = requests.get(url, stream=True, proxies=proxies)\n145     content_length = req.headers.get(\"Content-Length\")",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "farm/infer.py",
+    "line": 210,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "209             model = AdaptiveModel.convert_from_transformers(model_name_or_path, device, task_type)\n210             config = AutoConfig.from_pretrained(model_name_or_path)\n211             tokenizer = Tokenizer.load(model_name_or_path)",
+    "stage": "inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "farm/inference_rest_api.py",
+    "line": 91,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "90 if __name__ == \"__main__\":\n91     app.run(host=\"0.0.0.0\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "farm/modeling/language_model.py",
+    "line": 384,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "383             # FARM style\n384             bert_config = BertConfig.from_pretrained(farm_lm_config)\n385             farm_lm_model = Path(pretrained_model_name_or_path) / \"language_model.bin\"",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "farm/modeling/language_model.py",
+    "line": 386,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "385             farm_lm_model = Path(pretrained_model_name_or_path) / \"language_model.bin\"\n386             bert.model = BertModel.from_pretrained(farm_lm_model, config=bert_config, **kwargs)\n387             bert.language = bert.model.config.language",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "farm/modeling/language_model.py",
+    "line": 390,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "389             # Pytorch-transformer Style\n390             bert.model = BertModel.from_pretrained(str(pretrained_model_name_or_path), **kwargs)\n391             bert.language = cls._get_or_infer_language_from_name(language, pretrained_model_name_or_path)",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "farm/modeling/language_model.py",
+    "line": 470,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "469             # FARM style\n470             config = AlbertConfig.from_pretrained(farm_lm_config)\n471             farm_lm_model = Path(pretrained_model_name_or_path) / \"language_model.bin\"",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "farm/modeling/language_model.py",
+    "line": 472,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "471             farm_lm_model = Path(pretrained_model_name_or_path) / \"language_model.bin\"\n472             albert.model = AlbertModel.from_pretrained(farm_lm_model, config=config, **kwargs)\n473             albert.language = albert.model.config.language",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "farm/modeling/language_model.py",
+    "line": 476,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "475             # Huggingface transformer Style\n476             albert.model = AlbertModel.from_pretrained(str(pretrained_model_name_or_path), **kwargs)\n477             albert.language = cls._get_or_infer_language_from_name(language, pretrained_model_name_or_path)",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "farm/modeling/language_model.py",
+    "line": 557,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "556             # FARM style\n557             config = RobertaConfig.from_pretrained(farm_lm_config)\n558             farm_lm_model = Path(pretrained_model_name_or_path) / \"language_model.bin\"",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "farm/modeling/language_model.py",
+    "line": 559,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "558             farm_lm_model = Path(pretrained_model_name_or_path) / \"language_model.bin\"\n559             roberta.model = RobertaModel.from_pretrained(farm_lm_model, config=config, **kwargs)\n560             roberta.language = roberta.model.config.language",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "farm/modeling/language_model.py",
+    "line": 563,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "562             # Huggingface transformer Style\n563             roberta.model = RobertaModel.from_pretrained(str(pretrained_model_name_or_path), **kwargs)\n564             roberta.language = cls._get_or_infer_language_from_name(language, pretrained_model_name_or_path)",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "farm/modeling/language_model.py",
+    "line": 644,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "643             # FARM style\n644             config = XLMRobertaConfig.from_pretrained(farm_lm_config)\n645             farm_lm_model = Path(pretrained_model_name_or_path) / \"language_model.bin\"",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "farm/modeling/language_model.py",
+    "line": 646,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "645             farm_lm_model = Path(pretrained_model_name_or_path) / \"language_model.bin\"\n646             xlm_roberta.model = XLMRobertaModel.from_pretrained(farm_lm_model, config=config, **kwargs)\n647             xlm_roberta.language = xlm_roberta.model.config.language",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "farm/modeling/language_model.py",
+    "line": 650,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "649             # Huggingface transformer Style\n650             xlm_roberta.model = XLMRobertaModel.from_pretrained(str(pretrained_model_name_or_path), **kwargs)\n651             xlm_roberta.language = cls._get_or_infer_language_from_name(language, pretrained_model_name_or_path)",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "farm/modeling/language_model.py",
+    "line": 737,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "736             # FARM style\n737             config = AlbertConfig.from_pretrained(farm_lm_config)\n738             farm_lm_model = Path(pretrained_model_name_or_path) / \"language_model.bin\"",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "farm/modeling/language_model.py",
+    "line": 739,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "738             farm_lm_model = Path(pretrained_model_name_or_path) / \"language_model.bin\"\n739             distilbert.model = DistilBertModel.from_pretrained(farm_lm_model, config=config, **kwargs)\n740             distilbert.language = distilbert.model.config.language",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "farm/modeling/language_model.py",
+    "line": 743,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "742             # Pytorch-transformer Style\n743             distilbert.model = DistilBertModel.from_pretrained(str(pretrained_model_name_or_path), **kwargs)\n744             distilbert.language = cls._get_or_infer_language_from_name(language, pretrained_model_name_or_path)",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "farm/modeling/language_model.py",
+    "line": 831,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "830             # FARM style\n831             config = XLNetConfig.from_pretrained(farm_lm_config)\n832             farm_lm_model = Path(pretrained_model_name_or_path) / \"language_model.bin\"",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "farm/modeling/language_model.py",
+    "line": 833,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "832             farm_lm_model = Path(pretrained_model_name_or_path) / \"language_model.bin\"\n833             xlnet.model = XLNetModel.from_pretrained(farm_lm_model, config=config, **kwargs)\n834             xlnet.language = xlnet.model.config.language",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "farm/modeling/language_model.py",
+    "line": 837,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "836             # Pytorch-transformer Style\n837             xlnet.model = XLNetModel.from_pretrained(str(pretrained_model_name_or_path), **kwargs)\n838             xlnet.language = cls._get_or_infer_language_from_name(language, pretrained_model_name_or_path)",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "farm/modeling/prediction_head.py",
+    "line": 117,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "116             logger.info(\"Loading prediction head from {}\".format(model_file))\n117             prediction_head.load_state_dict(torch.load(model_file, map_location=torch.device(\"cpu\")), strict=strict)\n118         return prediction_head",
+    "stage": "data_acquisition+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "farm/modeling/prediction_head.py",
+    "line": 322,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "321             # load all weights from model\n322             full_model = AutoModelForSequenceClassification.from_pretrained(pretrained_model_name_or_path)\n323             # init empty head",
+    "stage": "data_acquisition+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "farm/modeling/prediction_head.py",
+    "line": 561,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "560             # load all weights from model\n561             full_model = AutoModelForTokenClassification.from_pretrained(pretrained_model_name_or_path)\n562             # init empty head",
+    "stage": "data_acquisition+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "farm/modeling/prediction_head.py",
+    "line": 755,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "754             # (we might change this later to load directly from a state_dict to generalize for other language models)\n755             bert_with_lm = BertForPreTraining.from_pretrained(pretrained_model_name_or_path)\n756",
+    "stage": "data_acquisition+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "farm/modeling/prediction_head.py",
+    "line": 859,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "858             # (we might change this later to load directly from a state_dict to generalize for other language models)\n859             bert_with_lm = BertForPreTraining.from_pretrained(pretrained_model_name_or_path)\n860",
+    "stage": "data_acquisition+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "farm/modeling/prediction_head.py",
+    "line": 972,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "971             # load all weights from model\n972             full_qa_model = AutoModelForQuestionAnswering.from_pretrained(pretrained_model_name_or_path)\n973             # init empty head",
+    "stage": "data_acquisition+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "farm/modeling/tokenization.py",
+    "line": 89,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "88         if tokenizer_class == \"AlbertTokenizer\":\n89             ret = AlbertTokenizer.from_pretrained(pretrained_model_name_or_path, keep_accents=True,  **kwargs)\n90         elif tokenizer_class == \"XLMRobertaTokenizer\":",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "farm/modeling/tokenization.py",
+    "line": 91,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "90         elif tokenizer_class == \"XLMRobertaTokenizer\":\n91             ret = XLMRobertaTokenizer.from_pretrained(pretrained_model_name_or_path, **kwargs)\n92         elif tokenizer_class == \"RobertaTokenizer\":",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "farm/modeling/tokenization.py",
+    "line": 93,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "92         elif tokenizer_class == \"RobertaTokenizer\":\n93             ret = RobertaTokenizer.from_pretrained(pretrained_model_name_or_path, **kwargs)\n94         elif tokenizer_class == \"DistilBertTokenizer\":",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "farm/modeling/tokenization.py",
+    "line": 95,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "94         elif tokenizer_class == \"DistilBertTokenizer\":\n95             ret = DistilBertTokenizer.from_pretrained(pretrained_model_name_or_path, **kwargs)\n96         elif tokenizer_class == \"BertTokenizer\":",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "farm/modeling/tokenization.py",
+    "line": 97,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "96         elif tokenizer_class == \"BertTokenizer\":\n97             ret = BertTokenizer.from_pretrained(pretrained_model_name_or_path, **kwargs)\n98         elif tokenizer_class == \"XLNetTokenizer\":",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "farm/modeling/tokenization.py",
+    "line": 99,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "98         elif tokenizer_class == \"XLNetTokenizer\":\n99             ret = XLNetTokenizer.from_pretrained(pretrained_model_name_or_path, keep_accents=True, **kwargs)\n100         elif tokenizer_class == \"EmbeddingTokenizer\":",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "farm/modeling/wordembedding_utils.py",
+    "line": 226,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "225             {pretrained_model_name_or_path: PRETRAINED_INIT_CONFIGURATION.get(pretrained_model_name_or_path, None)})\n226     ret = BertTokenizer.from_pretrained(pretrained_model_name_or_path, **kwargs)\n227     return ret",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "farm/train.py",
+    "line": 397,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "396 \n397         trainer_checkpoint = torch.load(path / \"trainer\")\n398         trainer_state_dict = trainer_checkpoint[\"trainer_state_dict\"]",
+    "stage": "training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "farm/utils.py",
+    "line": 285,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "284     \"\"\"\n285     checksum = hashlib.md5(json.dumps(payload_dict, sort_keys=True).encode(\"utf-8\")).hexdigest()\n286     return checksum",
+    "stage": "data_acquisition+evaluation+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "farm/utils.py",
+    "line": 303,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "302     \"\"\"\n303     checksum = hashlib.md5(json.dumps(payload_dict, sort_keys=True).encode(\"utf-8\")).hexdigest()\n304     return checksum",
+    "stage": "data_acquisition+evaluation+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "test/test_conversion.py",
+    "line": 18,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "17     transformer_model = model.convert_to_transformers()\n18     transformer_model2 = AutoModelForQuestionAnswering.from_pretrained(\"deepset/bert-base-cased-squad2\")\n19     # compare weights",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "test/test_s3e_pooling.py",
+    "line": 82,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "81     with open(load_dir / \"s3e_stats.pkl\", \"rb\") as f:\n82         s3e_stats = pickle.load(f)\n83",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "examples/embeddings_extraction_s3e_pooling.py",
+    "line": 61,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "examples/embeddings_extraction_s3e_pooling.py",
+    "line": 81,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "farm/data_handler/utils.py",
+    "line": 244,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.app-run-param-config.avoid_app_run_with_bad_host",
+    "file_path": "farm/inference_rest_api.py",
+    "line": 91,
+    "message": "Running flask app with host 0.0.0.0 could expose the server publicly.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "farm/utils.py",
+    "line": 285,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "farm/utils.py",
+    "line": 303,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation+training"
+  }
+]

@@ -1,0 +1,182 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "AberdeenProject/core/dataPipelines.py",
+    "line": 116,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "115         filePath = os.path.join(pickleDir, pickleFile)\n116         data = pickle.load(open(filePath,'rb'))\n117",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "AberdeenProject/core/dataPipelines.py",
+    "line": 190,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "189         filePath = os.path.join(pickleDir, pickleFile)\n190         data = pickle.load(open(filePath,'rb'))\n191",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "AberdeenProject/core/modelFitting.py",
+    "line": 180,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "179         try:\n180             subprocess.check_call(command, shell=True)\n181         except:",
+    "stage": "evaluation+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "AberdeenProject/main.py",
+    "line": 35,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "34     print('Loading the dataframe from the pickle file ...')\n35     data = pickle.load(open(filePath, 'rb'))\n36",
+    "stage": "data_acquisition+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "AberdeenProject/miscellaneous/tests/testAberdeen_EndVersion.py",
+    "line": 25,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "24 # loading the data from the pickle file\n25 data = pickle.load(open(file,'rb'))\n26",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "AberdeenProject/miscellaneous/tests/testDataframe_v1.py",
+    "line": 14,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "13 with open(\"config.yml\", \"r\") as ymlfile:\n14     cfg = yaml.load(ymlfile, Loader=yaml.FullLoader)\n15",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "AberdeenProject/miscellaneous/tests/testDataframe_v1.py",
+    "line": 21,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "20 with open(os.path.join(pklDir,dataFile), 'rb') as f:\n21     data = pickle.load(f)\n22",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "AberdeenProject/miscellaneous/tests/testMissingValuesPipeline.py",
+    "line": 21,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "20 # loading the data from the pickle file\n21 data = pickle.load(open(file,'rb'))\n22",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "AberdeenProject/miscellaneous/tests/testModelFitting_aberdeen.py",
+    "line": 23,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "22 # loading the data from the pickle file\n23 data = pickle.load(open(file,'rb'))\n24",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "AberdeenProject/utilities/loadConfigFile.py",
+    "line": 12,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "11     with open(\"config.yml\", \"r\") as ymlfile:\n12         cfg = yaml.load(ymlfile, Loader=yaml.FullLoader)\n13     return cfg",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "AberdeenProject/utilities/loadPickledData.py",
+    "line": 15,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "14     with open(filepath, 'rb') as f:\n15         dataframe = pickle.load(f)\n16     return dataframe",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "AberdeenProject/utilities/pklToCsv.py",
+    "line": 15,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "14 \n15     data = pickle.load(open(pathToPklFile, 'rb'))\n16",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "AberdeenProject/core/dataPipelines.py",
+    "line": 116,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "AberdeenProject/core/dataPipelines.py",
+    "line": 190,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "AberdeenProject/core/modelFitting.py",
+    "line": 180,
+    "message": "Found 'subprocess' function 'check_call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "evaluation+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "AberdeenProject/main.py",
+    "line": 35,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "AberdeenProject/utilities/loadPickledData.py",
+    "line": 15,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "AberdeenProject/utilities/pklToCsv.py",
+    "line": 15,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  }
+]

@@ -47,6 +47,28 @@ import traceback
 from collections import Counter, defaultdict
 from typing import Any
 
+def _remove_tree(path: str, attempts: int = 3) -> None:
+    """Delete a clone directory robustly. Git marks pack files read-only; on
+    Windows shutil.rmtree(ignore_errors=True) silently leaves them behind and
+    the temp folder grows until the disk fills. Clear the bit and retry."""
+    import stat
+    import time
+
+    def _on_error(func, p, exc_info):
+        try:
+            os.chmod(p, stat.S_IWRITE)
+            func(p)
+        except OSError:
+            pass
+
+    for i in range(attempts):
+        if not os.path.exists(path):
+            return
+        shutil.rmtree(path, onerror=_on_error)
+        if os.path.exists(path):
+            time.sleep(1 + i)
+
+
 # Make scanner/stage4 importable when run from project root
 PROJ = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 if PROJ not in sys.path:
@@ -520,7 +542,7 @@ def run(llm_findings_dir: str, call_graphs_dir: str, log_path: str,
                       f"{category[:30]:30s} claude=absent gpt={'present' if present else 'absent':7s} "
                       f"{marker}  t={dt:4.1f}s", flush=True)
         finally:
-            shutil.rmtree(tmp, ignore_errors=True)
+            _remove_tree(tmp)
 
     # Final stats
     overall_k = cohens_kappa(pairs)

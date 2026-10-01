@@ -1,0 +1,52 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "perception/corner_net_lite/core/nnet/py_factory.py",
+    "line": 122,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "121         with open(pretrained_model, \"rb\") as f:\n122             params = torch.load(f)\n123             self.model.load_state_dict(params)",
+    "stage": "inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "perception/corner_net_lite/core/nnet/py_factory.py",
+    "line": 129,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "128         with open(cache_file, \"rb\") as f:\n129             params = torch.load(f)\n130             self.model.load_state_dict(params)",
+    "stage": "inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "scripts/encode_bag.py",
+    "line": 35,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "34         image = Image.fromarray(image)\n35         image.save('/tmp/encode_bags_tmp/{}/{:05}.png'.format(folder, item['i']))\n36         print('Writing /tmp/encode_bags_tmp/{}/{:05}.png'.format(folder, item['i']), end='\\r')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "scripts/encode_bag.py",
+    "line": 155,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "154     def __enter__(self):\n155         os.makedirs('/tmp/encode_bags_tmp', exist_ok=True)\n156         os.makedirs(self.flags.out, exist_ok=True)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "scripts/encode_bag.py",
+    "line": 160,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "159     def __exit__(self, *args):\n160         shutil.rmtree('/tmp/encode_bags_tmp')\n161",
+    "stage": "unreachable"
+  }
+]

@@ -1,0 +1,2892 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B701",
+    "file_path": "docs/scripts/make_model_zoo_docs.py",
+    "line": 499,
+    "message": "By default, jinja2 sets autoescape to False. Consider using autoescape=True or use the select_autoescape function to mitigate XSS vulnerabilities.",
+    "snippet": "498     \"\"\"Main function to generate model zoo documentation.\"\"\"\n499     environment = Environment(\n500         loader=BaseLoader,\n501         trim_blocks=True,\n502         lstrip_blocks=True,\n503     )\n504",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "docs/source/recipes/image_deduplication_helpers.py",
+    "line": 35,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "34 DATASET_SIZE = 1000\n35 DATASET_DIR = os.path.join(\"/tmp/fiftyone/cifar100_with_duplicates\")\n36 CORRUPTION_RATE = 0.05",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "fiftyone/core/map/process.py",
+    "line": 245,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "244 \n245     process_map_fcn = pickle.loads(map_fcn)\n246     process_iter_fcn = pickle.loads(iter_fcn)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "fiftyone/core/map/process.py",
+    "line": 246,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "245     process_map_fcn = pickle.loads(map_fcn)\n246     process_iter_fcn = pickle.loads(iter_fcn)\n247     process_sample_count = sample_count",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "fiftyone/core/metadata.py",
+    "line": 75,
+    "message": "Call to requests without timeout",
+    "snippet": "74 \n75         with requests.get(url, stream=True) as r:\n76             r.raise_for_status()",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "fiftyone/core/metadata.py",
+    "line": 140,
+    "message": "Call to requests without timeout",
+    "snippet": "139 \n140         with requests.get(url, stream=True) as r:\n141             r.raise_for_status()",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "fiftyone/core/session/client.py",
+    "line": 37,
+    "message": "Call to requests without timeout",
+    "snippet": "36 def _ping(url: str) -> None:\n37     requests.get(url)\n38",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "fiftyone/core/session/client.py",
+    "line": 76,
+    "message": "Call to requests without timeout",
+    "snippet": "75             def subscribe() -> None:\n76                 response = requests.post(\n77                     f\"{self.origin}/events\",\n78                     stream=True,\n79                     headers={\n80                         \"Accept\": \"text/event-stream\",\n81                         \"Content-type\": \"application/json\",\n82                     },\n83                     data=json_util.dumps(\n84    ",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "fiftyone/core/session/client.py",
+    "line": 190,
+    "message": "Call to requests without timeout",
+    "snippet": "189 \n190         response = requests.post(\n191             f\"{self.origin}/event\",\n192             headers={\"Content-type\": \"application/json\"},\n193             data=json_util.dumps(\n194                 {\n195                     \"event\": event.get_event_name(),\n196                     \"data\": asdict(event, dict_factory=dict_factory),\n197                     \"subscription\": self._subscription,\n198 ",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "fiftyone/core/session/session.py",
+    "line": 377,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "376             address is not None\n377             and address != \"0.0.0.0\"\n378             and focx.is_databricks_context()",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "fiftyone/core/session/session.py",
+    "line": 387,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "386             if fou.is_container() or focx.is_databricks_context():\n387                 address = \"0.0.0.0\"\n388             else:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "fiftyone/core/utils.py",
+    "line": 233,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "232         [\"less\", \"-F\", \"-R\", \"-S\", \"-X\", \"-K\"],\n233         shell=True,\n234         stdin=subprocess.PIPE,\n235     )\n236 \n237     try:\n238         with io.TextIOWrapper(p.stdin, errors=\"backslashreplace\") as pipe:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "fiftyone/core/utils.py",
+    "line": 2311,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "2310         # Get a string representation fo the constructor parameters\n2311         hashed_params = hashlib.md5(\n2312             \"|\".join(\n2313                 str(value)\n2314                 for value in (\n2315                     output_dir,\n2316                     rel_dir,\n2317                     alt_dir,\n2318                     default_ext,\n2319                     ignore_exts,\n2320     ",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "fiftyone/plugins/definitions.py",
+    "line": 186,
+    "message": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "snippet": "185             with open(self.js_bundle_path, \"rb\") as f:\n186                 h = hashlib.sha1()\n187                 h.update(f.read())",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "fiftyone/service/ipc.py",
+    "line": 92,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "91         try:\n92             message = pickle.load(self.rfile)\n93             reply = self.server.on_message(message)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "fiftyone/service/ipc.py",
+    "line": 115,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "114         pickle.dump(message, s.makefile(\"wb\"))\n115         return pickle.load(s.makefile(\"rb\"))",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B701",
+    "file_path": "fiftyone/utils/cvat.py",
+    "line": 2980,
+    "message": "By default, jinja2 sets autoescape to False. Consider using autoescape=True or use the select_autoescape function to mitigate XSS vulnerabilities.",
+    "snippet": "2979     def __init__(self):\n2980         environment = jinja2.Environment(\n2981             loader=jinja2.FileSystemLoader(foc.RESOURCES_DIR),\n2982             trim_blocks=True,\n2983             lstrip_blocks=True,\n2984         )\n2985         self.template = environment.get_template(",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B701",
+    "file_path": "fiftyone/utils/cvat.py",
+    "line": 3024,
+    "message": "By default, jinja2 sets autoescape to False. Consider using autoescape=True or use the select_autoescape function to mitigate XSS vulnerabilities.",
+    "snippet": "3023     def __init__(self):\n3024         environment = jinja2.Environment(\n3025             loader=jinja2.FileSystemLoader(foc.RESOURCES_DIR),\n3026             trim_blocks=True,\n3027             lstrip_blocks=True,\n3028         )\n3029         self.template = environment.get_template(",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "fiftyone/utils/data/base.py",
+    "line": 388,
+    "message": "Call to requests without timeout",
+    "snippet": "387     url, outpath = args\n388     img_bytes = requests.get(url).content\n389     etau.write_file(img_bytes, outpath)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "fiftyone/utils/depth_anything.py",
+    "line": 422,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in snapshot_download()",
+    "snippet": "421 \n422         snapshot_download(config.name_or_path)\n423",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "fiftyone/utils/huggingface.py",
+    "line": 890,
+    "message": "Call to requests without timeout",
+    "snippet": "889     headers = _get_headers(**kwargs)\n890     response = requests.get(api_url, headers=headers).json()[\"splits\"]\n891     return [(ss[\"split\"], ss[\"config\"]) for ss in response]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "fiftyone/utils/huggingface.py",
+    "line": 961,
+    "message": "Call to requests without timeout",
+    "snippet": "960     headers = _get_headers(**kwargs)\n961     response = requests.get(api_url, headers=headers)\n962     features = response.json()[\"dataset_info\"][\"features\"]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "fiftyone/utils/huggingface.py",
+    "line": 977,
+    "message": "Call to requests without timeout",
+    "snippet": "976     headers = _get_headers(**kwargs)\n977     response = requests.get(api_url, headers=headers)\n978     splits = response.json()[\"dataset_info\"][\"splits\"]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "fiftyone/utils/huggingface.py",
+    "line": 1010,
+    "message": "Call to requests without timeout",
+    "snippet": "1009     headers = _get_headers(**kwargs)\n1010     response = requests.get(url, headers=headers)\n1011     return response.json()[\"rows\"]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "fiftyone/utils/huggingface.py",
+    "line": 1018,
+    "message": "Call to requests without timeout",
+    "snippet": "1017         if not os.path.exists(filepath):\n1018             with requests.get(url, stream=True) as r:\n1019                 r.raise_for_status()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "fiftyone/utils/labelbox.py",
+    "line": 1083,
+    "message": "Call to requests without timeout",
+    "snippet": "1082         headers = {\"Authorization\": \"Bearer %s\" % self._api_key}\n1083         response = requests.get(url, headers=headers)\n1084         return etas.load_ndjson(response.text)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "fiftyone/utils/labelbox.py",
+    "line": 2883,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "2882         req = urllib.request.Request(instance_uri, headers=headers)\n2883         open_url = urllib.request.urlopen(req)\n2884         return np.array(Image.open(open_url))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "fiftyone/utils/moge.py",
+    "line": 347,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in hf_hub_download()",
+    "snippet": "346 \n347         hf_hub_download(repo_id=config.name_or_path, filename=\"model.pt\")\n348",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "fiftyone/utils/pe.py",
+    "line": 29,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in hf_hub_download()",
+    "snippet": "28 \n29     return hf_hub_download(repo_id=repo, filename=file, local_dir=local_dir)\n30",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "fiftyone/utils/ptv3.py",
+    "line": 459,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "458 \n459     state = torch.load(model_path, map_location=\"cpu\", weights_only=False)\n460     state_dict = state.get(\"state_dict\", state)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "fiftyone/utils/qwen3_vl.py",
+    "line": 127,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in hf_hub_download()",
+    "snippet": "126         try:\n127             path = hf_hub_download(name_or_path, _SAFETENSORS_INDEX)\n128         except Exception as e:  # pylint: disable=broad-except",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "fiftyone/utils/qwen3_vl.py",
+    "line": 146,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in hf_hub_download()",
+    "snippet": "145 \n146     return hf_hub_download(name_or_path, filename)\n147",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "fiftyone/utils/qwen3_vl.py",
+    "line": 233,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "232 \n233     config = transformers.AutoConfig.from_pretrained(name_or_path)\n234     text_config = getattr(config, \"text_config\", config)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "fiftyone/utils/qwen3_vl.py",
+    "line": 563,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "562             # chat template and tokenizer, which are kilobytes\n563             self._processor = transformers.AutoProcessor.from_pretrained(\n564                 config.name_or_path\n565             )\n566             return load_text_model(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "fiftyone/utils/qwen3_vl.py",
+    "line": 588,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "587 \n588         self._processor = transformers.AutoProcessor.from_pretrained(\n589             config.name_or_path\n590         )\n591",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "fiftyone/utils/radio.py",
+    "line": 373,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "372 \n373         model = AutoModel.from_pretrained(config.hf_repo, **load_kwargs)\n374         model = model.to(self._device)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "fiftyone/utils/radio.py",
+    "line": 385,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "384 \n385         return CLIPImageProcessor.from_pretrained(\n386             config.hf_repo, **load_kwargs\n387         )\n388",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "fiftyone/utils/sam3.py",
+    "line": 404,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in hf_hub_download()",
+    "snippet": "403 \n404             config.entrypoint_args[\"checkpoint_path\"] = hf_hub_download(\n405                 repo_id=\"facebook/sam3\",\n406                 filename=os.path.basename(config.model_path),\n407                 local_dir=os.path.dirname(config.model_path),\n408             )\n409",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "fiftyone/utils/sam3.py",
+    "line": 900,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in hf_hub_download()",
+    "snippet": "899             model_filename = \"sam3.pt\"\n900             _ = hf_hub_download(repo_id=repo_id, filename=\"config.json\")\n901             hf_zoo_path = hf_hub_download(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "fiftyone/utils/sam3.py",
+    "line": 901,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in hf_hub_download()",
+    "snippet": "900             _ = hf_hub_download(repo_id=repo_id, filename=\"config.json\")\n901             hf_zoo_path = hf_hub_download(\n902                 repo_id=repo_id,\n903                 filename=model_filename,\n904                 local_dir=zoo_dir,\n905             )\n906             if not os.path.isfile(config.model_path):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "fiftyone/utils/super_gradients.py",
+    "line": 112,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "111             if url.startswith(\"file://\") or os.path.exists(url):\n112                 pretrained_state_dict = torch.load(\n113                     url.replace(\"file://\", \"\"), map_location=\"cpu\"\n114                 )\n115             else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "fiftyone/utils/torch.py",
+    "line": 2829,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "2828         bytes = memoryview(self._lst[start_addr:end_addr])\n2829         return pickle.loads(bytes)\n2830",
+    "stage": "data_acquisition+data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "fiftyone/utils/torch.py",
+    "line": 2842,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "2841         bytes = memoryview(self._lst[start_addr:end_addr].numpy())\n2842         return pickle.loads(bytes)\n2843",
+    "stage": "data_acquisition+data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "fiftyone/utils/transformers.py",
+    "line": 308,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "307         self.name_or_path = self.parse_string(d, \"name_or_path\", default=None)\n308         self.hf_config = transformers.AutoConfig.from_pretrained(\n309             self.name_or_path, cache_dir=fo.config.model_zoo_dir\n310         )\n311",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "fiftyone/utils/transformers.py",
+    "line": 817,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "816             proc_cls = PROCESSOR_MAPPING.get(\n817                 type(transformers.AutoConfig.from_pretrained(name, **ta)), None\n818             )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "fiftyone/utils/transformers.py",
+    "line": 826,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "825                 processor = proc_cls(\n826                     image_processor=transformers.AutoImageProcessor.from_pretrained(\n827                         name, **ta\n828                     ),\n829                     tokenizer=transformers.PreTrainedTokenizerFast.from_pretrained(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "fiftyone/utils/transformers.py",
+    "line": 829,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "828                     ),\n829                     tokenizer=transformers.PreTrainedTokenizerFast.from_pretrained(\n830                         name, **ta\n831                     ),\n832                 )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B701",
+    "file_path": "fiftyone/utils/voc.py",
+    "line": 714,
+    "message": "By default, jinja2 sets autoescape to False. Consider using autoescape=True or use the select_autoescape function to mitigate XSS vulnerabilities.",
+    "snippet": "713     def __init__(self):\n714         environment = jinja2.Environment(\n715             loader=jinja2.FileSystemLoader(foc.RESOURCES_DIR),\n716             trim_blocks=True,\n717             lstrip_blocks=True,\n718         )\n719         self.template = environment.get_template(\"voc_annotation_template.xml\")",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "package/db/setup.py",
+    "line": 259,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "258             if not os.path.exists(mongo_zip_dest):\n259                 with urlopen(mongo_zip_url) as conn, open(\n260                     mongo_zip_dest, \"wb\"",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "plugins/utils/model_evaluation/__init__.py",
+    "line": 18,
+    "message": "Use of exec detected.",
+    "snippet": "17         local_vars = {}\n18         exec(custom_code, {\"ctx\": ctx}, local_vars)\n19         data = local_vars.get(\"subsets\", {})",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/intensive/evaluation_tests.py",
+    "line": 730,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "729     # Store segmentations on disk rather than in-database\n730     etau.ensure_empty_dir(\"/tmp/resnet50\", cleanup=True)\n731     model = foz.load_zoo_model(\"deeplabv3-resnet50-coco-torch\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/intensive/evaluation_tests.py",
+    "line": 732,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "731     model = foz.load_zoo_model(\"deeplabv3-resnet50-coco-torch\")\n732     dataset.apply_model(model, \"resnet50\", output_dir=\"/tmp/resnet50\")\n733     print(dataset.values(\"resnet50.mask_path\"))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/intensive/evaluation_tests.py",
+    "line": 736,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "735     # Store segmentations on disk rather than in-database\n736     etau.ensure_empty_dir(\"/tmp/resnet101\", cleanup=True)\n737     model = foz.load_zoo_model(\"deeplabv3-resnet101-coco-torch\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/intensive/evaluation_tests.py",
+    "line": 738,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "737     model = foz.load_zoo_model(\"deeplabv3-resnet101-coco-torch\")\n738     dataset.apply_model(model, \"resnet101\", output_dir=\"/tmp/resnet101\")\n739     print(dataset.values(\"resnet101.mask_path\"))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/intensive/labelbox_tests.py",
+    "line": 225,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "224     # Download a video to work with\n225     filepath = \"/tmp/road.mp4\"\n226     etaw.download_google_drive_file(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/intensive/labelbox_tests.py",
+    "line": 257,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "256 def _test_labelbox_image(dataset, label_field):\n257     labelbox_export_path = \"/tmp/labelbox-image-export.json\"\n258     labelbox_import_path = \"/tmp/labelbox-image-import.json\"",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/intensive/labelbox_tests.py",
+    "line": 258,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "257     labelbox_export_path = \"/tmp/labelbox-image-export.json\"\n258     labelbox_import_path = \"/tmp/labelbox-image-import.json\"\n259     labelbox_id_field = \"labelbox_id\"",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/intensive/labelbox_tests.py",
+    "line": 293,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "292 def _test_labelbox_video(dataset, frame_labels_field):\n293     labelbox_export_dir = \"/tmp/labelbox-video-export\"\n294     labelbox_export_path = \"/tmp/labelbox-video-export.json\"",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/intensive/labelbox_tests.py",
+    "line": 294,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "293     labelbox_export_dir = \"/tmp/labelbox-video-export\"\n294     labelbox_export_path = \"/tmp/labelbox-video-export.json\"\n295     labelbox_import_dir = \"/tmp/labelbox-video-import\"",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/intensive/labelbox_tests.py",
+    "line": 295,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "294     labelbox_export_path = \"/tmp/labelbox-video-export.json\"\n295     labelbox_import_dir = \"/tmp/labelbox-video-import\"\n296     labelbox_import_path = \"/tmp/labelbox-video-import.json\"",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/intensive/labelbox_tests.py",
+    "line": 296,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "295     labelbox_import_dir = \"/tmp/labelbox-video-import\"\n296     labelbox_import_path = \"/tmp/labelbox-video-import.json\"\n297     labelbox_id_field = \"labelbox_id\"",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/intensive/lightning_flash_tests.py",
+    "line": 107,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "106         # 6 Save it!\n107         trainer.save_checkpoint(\"/tmp/image_classification_model.pt\")\n108",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/intensive/lightning_flash_tests.py",
+    "line": 176,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "175         # 6 Save it!\n176         trainer.save_checkpoint(\"/tmp/object_detection_model.pt\")\n177",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/intensive/lightning_flash_tests.py",
+    "line": 201,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "200             \"https://github.com/ongchinkiat/LyftPerceptionChallenge/releases/download/v0.1/carla-capture-20180513A.zip\",\n201             \"/tmp/carla_data/\",\n202         )\n203 \n204         dataset = fo.Dataset.from_dir(\n205             dataset_dir=\"/tmp/carla_data\",",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/intensive/lightning_flash_tests.py",
+    "line": 205,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "204         dataset = fo.Dataset.from_dir(\n205             dataset_dir=\"/tmp/carla_data\",\n206             dataset_type=fo.types.ImageSegmentationDirectory,",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/intensive/lightning_flash_tests.py",
+    "line": 244,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "243         # 6 Save it!\n244         trainer.save_checkpoint(\"/tmp/semantic_segmentation_model.pt\")\n245",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/intensive/lightning_flash_tests.py",
+    "line": 319,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "318         # 6 Save it!\n319         trainer.save_checkpoint(\"/tmp/video_classification.pt\")\n320",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/intensive/lightning_flash_tests.py",
+    "line": 413,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "412             \"https://pl-flash-data.s3.amazonaws.com/hymenoptera_data.zip\",\n413             \"/tmp\",\n414         )\n415 \n416         # 2 Load data into FiftyOne\n417         dataset = fo.Dataset.from_dir(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/intensive/lightning_flash_tests.py",
+    "line": 418,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "417         dataset = fo.Dataset.from_dir(\n418             \"/tmp/hymenoptera_data/test/\",\n419             fo.types.ImageClassificationDirectoryTree,\n420         )\n421         datamodule = ImageClassificationData.from_fiftyone(\n422             predict_dataset=dataset,",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/intensive/scale_tests.py",
+    "line": 51,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "50     # Download a video to work with\n51     filepath = \"/tmp/road.mp4\"\n52     etaw.download_google_drive_file(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/intensive/scale_tests.py",
+    "line": 83,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "82 def _test_scale_image(dataset, label_field):\n83     scale_export_path = \"/tmp/scale-image-export.json\"\n84     scale_import_path = \"/tmp/scale-image-import.json\"",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/intensive/scale_tests.py",
+    "line": 84,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "83     scale_export_path = \"/tmp/scale-image-export.json\"\n84     scale_import_path = \"/tmp/scale-image-import.json\"\n85     scale_id_field = \"scale_id\"",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/intensive/scale_tests.py",
+    "line": 118,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "117 def _test_scale_video(dataset, frame_labels_field):\n118     scale_export_path = \"/tmp/scale-video-export.json\"\n119     scale_import_path = \"/tmp/scale-video-import.json\"",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/intensive/scale_tests.py",
+    "line": 119,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "118     scale_export_path = \"/tmp/scale-video-export.json\"\n119     scale_import_path = \"/tmp/scale-video-import.json\"\n120",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/intensive/scale_tests.py",
+    "line": 121,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "120 \n121     scale_video_labels_dir = \"/tmp/scale-video-labels\"\n122     scale_video_events_dir = \"/tmp/scale-video-events\"",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/intensive/scale_tests.py",
+    "line": 122,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "121     scale_video_labels_dir = \"/tmp/scale-video-labels\"\n122     scale_video_events_dir = \"/tmp/scale-video-events\"\n123",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tests/ipc_tests.py",
+    "line": 77,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "76         s.send(b\"foo\")\n77         res = pickle.loads(s.recv(2048))\n78         assert isinstance(res, pickle.UnpicklingError)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "tests/isolated/service_tests.py",
+    "line": 68,
+    "message": "Call to requests without timeout",
+    "snippet": "67 def get_json_retry(url):\n68     return requests.get(url).json()\n69",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/annotation/dataset_label_schemas_tests.py",
+    "line": 311,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "310         dataset = fo.Dataset()\n311         dataset.add_sample(fo.Sample(filepath=\"/tmp/video.mp4\"))\n312         self.assertEqual(dataset.media_type, \"video\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/annotation/dataset_label_schemas_tests.py",
+    "line": 657,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "656         dataset = _make_video_dataset()\n657         sample = fo.Sample(filepath=\"/tmp/video.mp4\")\n658         sample.frames[1] = fo.Frame(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/annotation/dataset_label_schemas_tests.py",
+    "line": 702,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "701         dataset = _make_video_dataset()\n702         sample = fo.Sample(filepath=\"/tmp/video.mp4\")\n703         sample.frames[1] = fo.Frame(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/annotation/dataset_label_schemas_tests.py",
+    "line": 728,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "727         existing = fol.Instance()\n728         sample = fo.Sample(filepath=\"/tmp/video.mp4\")\n729         sample.frames[1] = fo.Frame(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/converted_subsets_tests.py",
+    "line": 29,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "28         sample = fo.Sample(\n29             filepath=\"/tmp/converted-subsets.mp4\",\n30             metadata=fo.VideoMetadata(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/converted_subsets_tests.py",
+    "line": 301,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "300         sample = self.dataset.first().copy()\n301         sample.filepath = \"/tmp/new-video.mp4\"\n302         self.dataset.add_sample(sample)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/converted_subsets_tests.py",
+    "line": 424,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "423         for frame in sample.frames.values():\n424             frame[\"filepath\"] = \"/tmp/native-%d.jpg\" % frame.frame_number\n425         sample.save()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/converted_subsets_tests.py",
+    "line": 447,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "446             image = fo.Sample(\n447                 filepath=\"/tmp/grouped-still.jpg\", group=group.element(\"image\")\n448             )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/converted_subsets_tests.py",
+    "line": 609,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "608         try:\n609             unrelated.add_sample(fo.Sample(filepath=\"/tmp/unrelated.jpg\"))\n610             reopened = self.open(subset)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "tests/unittests/fcv_tests.py",
+    "line": 381,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "380         mock_logger.error.assert_any_call(\n381             \"Operation failed while updating database's feature \"\n382             \"compatibility version - Could not update FCV. \"\n383             f\"Please manually set it to {foc.MONGODB_MIN_VERSION.major + 1}.0. \"\n384             \"You can suppress this exception by setting your \"\n385             \"`database_validation` config parameter to `False`",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "tests/unittests/fcv_tests.py",
+    "line": 415,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "414         mock_logger.error.assert_any_call(\n415             \"MongoDB error while updating database's feature \"\n416             \"compatibility version - Could not update FCV. \"\n417             f\"Please manually set it to {foc.MONGODB_MIN_VERSION.major + 1}.0. \"\n418             \"You can suppress this exception by setting your \"\n419             \"`database_validation` config parameter to `False`. S",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/group_selection_tests.py",
+    "line": 26,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "25                 fo.Sample(\n26                     filepath=\"/tmp/group-%d.jpg\" % i, scene=i // 3, score=i % 3\n27                 )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/group_selection_tests.py",
+    "line": 152,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "151         self.dataset.add_sample(\n152             fo.Sample(filepath=\"/tmp/new.jpg\", scene=0, score=0)\n153         )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/group_selection_tests.py",
+    "line": 298,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "297             [\n298                 fo.Sample(filepath=\"/tmp/large-%d.jpg\" % i, scene=5, score=0)\n299                 for i in range(1200)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/group_selection_tests.py",
+    "line": 317,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "316                 fo.Sample(\n317                     filepath=\"/tmp/%s.jpg\" % name,\n318                     group=self.group.element(name),",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/group_selection_tests.py",
+    "line": 340,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "339             fo.Sample(\n340                 filepath=\"/tmp/later.jpg\", group=self.group.element(\"later\")\n341             )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/group_selection_tests.py",
+    "line": 449,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "448                 fo.Sample(\n449                     filepath=\"/tmp/group-patches.jpg\",\n450                     predictions=fo.Detections(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/group_selection_tests.py",
+    "line": 490,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "489         sample = fo.Sample(\n490             filepath=\"/tmp/group-video.mp4\",\n491             metadata=fo.VideoMetadata(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/multimodal/lerobot_tests.py",
+    "line": 1243,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "1242             [\n1243                 fo.Sample(filepath=\"/tmp/one.png\"),\n1244                 fo.Sample(filepath=\"/tmp/one.png\"),",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/multimodal/lerobot_tests.py",
+    "line": 1244,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "1243                 fo.Sample(filepath=\"/tmp/one.png\"),\n1244                 fo.Sample(filepath=\"/tmp/one.png\"),\n1245                 fo.Sample(filepath=\"/tmp/two.png\"),",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/multimodal/lerobot_tests.py",
+    "line": 1245,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "1244                 fo.Sample(filepath=\"/tmp/one.png\"),\n1245                 fo.Sample(filepath=\"/tmp/two.png\"),\n1246             ]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/multimodal/lerobot_tests.py",
+    "line": 1255,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "1254             assert filepath_dataset._get_media_paths() == [\n1255                 os.path.abspath(\"/tmp/one.png\"),\n1256                 os.path.abspath(\"/tmp/one.png\"),",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/multimodal/lerobot_tests.py",
+    "line": 1256,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "1255                 os.path.abspath(\"/tmp/one.png\"),\n1256                 os.path.abspath(\"/tmp/one.png\"),\n1257                 os.path.abspath(\"/tmp/two.png\"),",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/multimodal/lerobot_tests.py",
+    "line": 1257,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "1256                 os.path.abspath(\"/tmp/one.png\"),\n1257                 os.path.abspath(\"/tmp/two.png\"),\n1258             ]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/multimodal/media_reference_tests.py",
+    "line": 113,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "112     dataset._record_media_sources(\n113         [fmm._media_source(kind, key, \"/tmp/media-source-%s\" % key)]\n114     )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tests/unittests/multimodal/media_reference_tests.py",
+    "line": 213,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "212         self.assertEqual(first.episode, 17)\n213         self.assertEqual(pickle.loads(pickle.dumps(first)), first)\n214",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/multimodal/media_reference_tests.py",
+    "line": 283,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "282         with self.assertRaises(ValueError):\n283             sample.filepath = \"/tmp/episode.mcap\"\n284",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/multimodal/media_reference_tests.py",
+    "line": 311,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "310         both = foo.DatasetSampleDocument(\n311             filepath=\"/tmp/episode.mcap\",\n312             media_reference=reference,",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/multimodal/media_reference_tests.py",
+    "line": 877,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "876             _located(recorded[bundled_key][\"loc\"]),\n877             _located(\"/tmp/media-source-%s\" % bundled_key),\n878         )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/multimodal/media_reference_tests.py",
+    "line": 1065,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "1064         filepath_dataset = fo.Dataset()\n1065         filepath_dataset.add_sample(fo.Sample(filepath=\"/tmp/episode.mcap\"))\n1066         indexes_before = set(filepath_dataset.list_indexes())",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/multimodal/media_reference_tests.py",
+    "line": 1084,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "1083             destination.merge_samples(\n1084                 [fo.Sample(filepath=\"/tmp/incompatible.mcap\")]\n1085             )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/multimodal/media_reference_tests.py",
+    "line": 1368,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "1367             key,\n1368             \"/tmp/sources/%s\" % key,\n1369             episode_shards=[{\"path\": \"meta/e.parquet\", \"episodes\": [0, 2]}],",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/multimodal/media_reference_tests.py",
+    "line": 1410,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "1409         self.assertEqual(\n1410             _located(entries[\"a\"][\"loc\"]), _located(\"/tmp/sources/a\")\n1411         )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/multimodal/media_reference_tests.py",
+    "line": 1543,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "1542             with self.assertRaises(UnsupportedMediaReferenceOperation):\n1543                 dataset.set_values(\"filepath\", [\"/tmp/replacement.mcap\"])\n1544             # no operation may overwrite, rename or remove the media",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/multimodal/temporal_tags_tests.py",
+    "line": 1001,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "1000         sample = fo.Sample(\n1001             filepath=\"/tmp/multimodal-temporal-tag-patches.jpg\",\n1002             detections=fo.Detections(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/multimodal/temporal_tags_tests.py",
+    "line": 1218,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "1217     samples = [\n1218         fo.Sample(filepath=\"/tmp/multimodal-temporal-tag-%d.jpg\" % idx)\n1219         for idx in range(num_samples)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/multimodal/temporal_tags_view_tests.py",
+    "line": 247,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "246             fo.Sample(\n247                 filepath=\"/tmp/temporal-tag-group-%d.jpg\" % idx,\n248                 group=group.element(\"image\"),",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/multimodal/temporal_tags_view_tests.py",
+    "line": 253,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "252             fo.Sample(\n253                 filepath=\"/tmp/temporal-tag-group-%d.mp4\" % idx,\n254                 group=group.element(\"video\"),",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/multimodal/temporal_tags_view_tests.py",
+    "line": 277,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "276     samples = [\n277         fo.Sample(filepath=\"/tmp/temporal-tag-grid-%d.jpg\" % idx)\n278         for idx in range(3)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/selection_jobs_tests.py",
+    "line": 38,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "37         self.dataset.add_samples(\n38             [fo.Sample(filepath=\"/tmp/job-%d.jpg\" % i) for i in range(12)]\n39         )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/selection_jobs_tests.py",
+    "line": 133,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "132         )\n133         self.dataset.add_sample(fo.Sample(filepath=\"/tmp/after-capture.jpg\"))\n134         retry = jobs.retry_job(self.dataset, job[\"id\"])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/selection_scope_tests.py",
+    "line": 96,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "95                 fo.Sample(\n96                     filepath=\"/tmp/selection-%d.mp4\" % i,\n97                     batch=i % 2,",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/selection_scope_tests.py",
+    "line": 324,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "323         self.dataset.add_samples(\n324             [fo.Sample(filepath=\"/tmp/image-%d.jpg\" % i) for i in range(3)]\n325         )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/selection_scope_tests.py",
+    "line": 336,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "335             sorted(group[\"filepath\"] for group in result[\"groups\"]),\n336             [os.path.abspath(\"/tmp/image-%d.jpg\" % i) for i in range(3)],\n337         )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/selection_scope_tests.py",
+    "line": 373,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "372                 fo.Sample(\n373                     filepath=\"/tmp/patches-%d.jpg\" % i,\n374                     ground_truth=fo.Detections(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/selection_scope_tests.py",
+    "line": 397,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "396             sorted({group[\"filepath\"] for group in result[\"groups\"]}),\n397             [os.path.abspath(\"/tmp/patches-%d.jpg\" % i) for i in range(2)],\n398         )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/selection_scope_tests.py",
+    "line": 493,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "492         self.dataset.add_samples(\n493             [fo.Sample(filepath=\"/tmp/lazy-%d.jpg\" % i) for i in range(3)]\n494         )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/selection_scope_tests.py",
+    "line": 510,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "509             described[\"groups\"][0][\"filepath\"],\n510             os.path.abspath(\"/tmp/lazy-0.jpg\"),\n511         )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/selection_scope_tests.py",
+    "line": 544,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "543             [\n544                 fo.Sample(filepath=\"/tmp/dg-%d.jpg\" % i, scene=i % 2)\n545                 for i in range(5)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/selection_scope_tests.py",
+    "line": 582,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "581             [\n582                 fo.Sample(filepath=\"/tmp/position-%d.jpg\" % i, score=i % 3)\n583                 for i in range(7)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/selection_tags_tests.py",
+    "line": 38,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "37         self.ids = self.dataset.add_samples(\n38             [fo.Sample(filepath=\"/tmp/tag-%d.mp4\" % i) for i in range(45)]\n39         )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/selection_tags_tests.py",
+    "line": 178,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "177         self.ids = self.dataset.add_samples(\n178             [fo.Sample(filepath=\"/tmp/image-%d.jpg\" % i) for i in range(2)]\n179         )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/selection_tags_tests.py",
+    "line": 202,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "201             fo.Sample(\n202                 filepath=\"/tmp/patches.jpg\",\n203                 ground_truth=fo.Detections(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/selection_tags_tests.py",
+    "line": 290,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "289                     fo.Sample(\n290                         filepath=\"/tmp/left-%d.jpg\" % i,\n291                         group=group.element(\"left\"),",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/selection_tags_tests.py",
+    "line": 294,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "293                     fo.Sample(\n294                         filepath=\"/tmp/right-%d.jpg\" % i,\n295                         group=group.element(\"right\"),",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/selection_tags_tests.py",
+    "line": 312,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "311             [g[\"filepath\"] for g in described[\"groups\"]],\n312             [os.path.abspath(\"/tmp/right-0.jpg\")],\n313         )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/selection_tags_tests.py",
+    "line": 335,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "334                 fo.Sample(\n335                     filepath=\"/tmp/applied-%d.jpg\" % i,\n336                     tags=[\"reviewed\"] if i < 2 else [],",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/server/routes/dynamic_group_fixtures.py",
+    "line": 46,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "45             sample = fo.Sample(\n46                 filepath=f\"/tmp/{scene}-{frame_number}.jpg\",\n47                 scene_id=scene,",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/server/routes/test_camera.py",
+    "line": 31,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "30 \n31     sample = fo.Sample(filepath=\"/tmp/test_camera.jpg\")\n32     dataset.add_sample(sample)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/server/routes/test_camera.py",
+    "line": 428,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "427     samples = [\n428         fo.Sample(filepath=\"/tmp/test_left.jpg\", group=group.element(\"left\")),\n429         fo.Sample(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/server/routes/test_camera.py",
+    "line": 430,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "429         fo.Sample(\n430             filepath=\"/tmp/test_right.jpg\", group=group.element(\"right\")\n431         ),",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/server/routes/test_camera.py",
+    "line": 433,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "432         fo.Sample(\n433             filepath=\"/tmp/test_lidar.pcd\", group=group.element(\"lidar\")\n434         ),",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/server/routes/test_dynamic_group_frames.py",
+    "line": 35,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "34             fo.Sample(\n35                 filepath=f\"/tmp/{SCENE}-{frame_number}.jpg\",\n36                 scene_id=SCENE,",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/server/routes/test_dynamic_group_token.py",
+    "line": 193,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "192         sample = fo.Sample(\n193             filepath=\"/tmp/late.jpg\",\n194             scene_id=SCENE,",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/server/routes/test_groups.py",
+    "line": 29,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "28         fo.Sample(\n29             filepath=f\"/tmp/test_{slice_name}.jpg\",\n30             group=group.element(slice_name),",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/server/routes/test_groups.py",
+    "line": 286,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "285         dataset.persistent = True\n286         sample = fo.Sample(filepath=\"/tmp/test.jpg\")\n287         dataset.add_sample(sample)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/server/routes/test_multimodal_temporal_tags.py",
+    "line": 49,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "48         [\n49             fo.Sample(filepath=\"/tmp/temporal-tags-1.mp4\"),\n50             fo.Sample(filepath=\"/tmp/temporal-tags-2.mp4\"),",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/server/routes/test_multimodal_temporal_tags.py",
+    "line": 50,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "49             fo.Sample(filepath=\"/tmp/temporal-tags-1.mp4\"),\n50             fo.Sample(filepath=\"/tmp/temporal-tags-2.mp4\"),\n51             fo.Sample(filepath=\"/tmp/temporal-tags-3.mp4\"),",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/server/routes/test_multimodal_temporal_tags.py",
+    "line": 51,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "50             fo.Sample(filepath=\"/tmp/temporal-tags-2.mp4\"),\n51             fo.Sample(filepath=\"/tmp/temporal-tags-3.mp4\"),\n52         ]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/server/routes/test_sample.py",
+    "line": 102,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "101         \"\"\"Creates a persistent dataset for testing.\"\"\"\n102         sample = fo.Sample(filepath=\"/tmp/test_sample.jpg\", tags=[\"initial\"])\n103",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/server/routes/test_sample.py",
+    "line": 928,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "927         \"\"\"Creates a sample with a detection that has no mask.\"\"\"\n928         sample = fo.Sample(filepath=\"/tmp/test_mask.jpg\")\n929         sample[\"ground_truth\"] = fol.Detections(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/server/routes/test_sample.py",
+    "line": 1004,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "1003         \"\"\"Creates a sample with a Detection that has a mask_path.\"\"\"\n1004         sample = fo.Sample(filepath=\"/tmp/test_commit.jpg\")\n1005         sample[\"ground_truth\"] = fol.Detections(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/server/routes/test_sample.py",
+    "line": 1042,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "1041         \"\"\"Helper to create a sample with a single Detection.\"\"\"\n1042         sample = fo.Sample(filepath=\"/tmp/test_commit.jpg\")\n1043         sample[field_name] = fol.Detections(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/server/routes/test_sample.py",
+    "line": 1179,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "1178         if setup.get(\"classification\"):\n1179             sample = fo.Sample(filepath=\"/tmp/test_err.jpg\")\n1180             sample[setup[\"field\"]] = fol.Classification(label=\"dog\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/server/routes/test_sample.py",
+    "line": 1152,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "1151                     \"det_kwargs\": {\n1152                         \"mask_path\": \"/tmp/_placeholder.png\",\n1153                     },\n1154                 },\n1155                 400,",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/server/routes/test_sample.py",
+    "line": 1208,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "1207             mask=np.ones((5, 5), dtype=np.uint8),\n1208             mask_path=\"/tmp/_write_fail.png\",\n1209         )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/server/routes/test_sample.py",
+    "line": 1243,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "1242         \"\"\"Creates a sample with two detections for basic tests.\"\"\"\n1243         sample = fo.Sample(filepath=\"/tmp/test_sample_field.jpg\")\n1244",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/server/routes/test_sample.py",
+    "line": 1274,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "1273         \"\"\"Creates a sample for patches view tests.\"\"\"\n1274         sample = fo.Sample(filepath=\"/tmp/test_patches.jpg\")\n1275",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/server/routes/test_sample.py",
+    "line": 1300,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "1299         \"\"\"Creates a sample with ground truth and predictions for evaluation.\"\"\"\n1300         sample = fo.Sample(filepath=\"/tmp/test_eval_patches.jpg\")\n1301",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/server/routes/test_sample.py",
+    "line": 1969,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "1968     def fixture_sample(self, dataset):\n1969         sample = fo.Sample(filepath=\"/tmp/test_ensure_field.jpg\")\n1970         dataset.add_sample(sample)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/server/routes/test_sample.py",
+    "line": 2032,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "2031         try:\n2032             sample = fo.Sample(filepath=\"/tmp/test_ensure_frame.mp4\")\n2033             sample.frames[2]  # materialize a frame with null detections",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/server/routes/test_sample.py",
+    "line": 2059,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "2058         try:\n2059             sample = fo.Sample(filepath=\"/tmp/test_ensure_docless.mp4\")\n2060             sample.frames[1]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/server/utils/test_datasets.py",
+    "line": 58,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "57         \"\"\"Tests successfully retrieving a sample.\"\"\"\n58         sample = fo.Sample(filepath=\"/tmp/test.jpg\")\n59         dataset.add_sample(sample)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/server/utils/test_datasets.py",
+    "line": 83,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "82         \"\"\"Creates a sample with a detection.\"\"\"\n83         sample = fo.Sample(filepath=\"/tmp/test_sync.jpg\")\n84         sample[\"ground_truth\"] = fol.Detections(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/server/utils/test_datasets.py",
+    "line": 195,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "194 \n195         sample = fo.Sample(filepath=\"/tmp/test_eval.jpg\")\n196         sample[\"ground_truth\"] = fol.Detections(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/server_embeddings_v2_tests.py",
+    "line": 60,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "59             fo.Sample(\n60                 filepath=f\"/tmp/img{i}.png\",\n61                 cluster=f\"c{i % 3}\",",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/server_embeddings_v2_tests.py",
+    "line": 84,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "83             fo.Sample(\n84                 filepath=f\"/tmp/img{i}.png\",\n85                 ground_truth=fo.Detections(detections=detections),",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/server_embeddings_v2_tests.py",
+    "line": 547,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "546             fo.Sample(\n547                 filepath=\"/tmp/img0.png\",\n548                 shapes=fo.Polylines(polylines=[polyline]),",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/server_embeddings_v2_tests.py",
+    "line": 597,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "596             [\n597                 fo.Sample(filepath=f\"/tmp/img{i}.png\", name=f\"unique_{i:04d}\")\n598                 for i in range(n)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/server_embeddings_v2_tests.py",
+    "line": 622,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "621         dataset.add_samples(\n622             [fo.Sample(filepath=f\"/tmp/img{i}.png\", index=i) for i in range(n)]\n623         )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/server_embeddings_v2_tests.py",
+    "line": 639,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "638             [\n639                 fo.Sample(filepath=\"/tmp/a.png\", letters=[\"a\", \"b\"]),\n640                 fo.Sample(filepath=\"/tmp/b.png\", letters=[\"c\"]),",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/server_embeddings_v2_tests.py",
+    "line": 640,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "639                 fo.Sample(filepath=\"/tmp/a.png\", letters=[\"a\", \"b\"]),\n640                 fo.Sample(filepath=\"/tmp/b.png\", letters=[\"c\"]),\n641                 fo.Sample(filepath=\"/tmp/c.png\", letters=[]),",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/server_embeddings_v2_tests.py",
+    "line": 641,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "640                 fo.Sample(filepath=\"/tmp/b.png\", letters=[\"c\"]),\n641                 fo.Sample(filepath=\"/tmp/c.png\", letters=[]),\n642             ]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/server_embeddings_v2_tests.py",
+    "line": 673,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "672                 fo.Sample(\n673                     filepath=\"/tmp/a.png\",\n674                     gt=fo.Detections(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/server_embeddings_v2_tests.py",
+    "line": 681,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "680                 ),\n681                 fo.Sample(filepath=\"/tmp/b.png\", gt=fo.Detections()),\n682             ]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/server_embeddings_v2_tests.py",
+    "line": 705,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "704             [\n705                 fo.Sample(filepath=\"/tmp/a.png\", grade=\"x\", score=1.0),\n706                 fo.Sample(filepath=\"/tmp/b.png\"),",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/server_embeddings_v2_tests.py",
+    "line": 706,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "705                 fo.Sample(filepath=\"/tmp/a.png\", grade=\"x\", score=1.0),\n706                 fo.Sample(filepath=\"/tmp/b.png\"),\n707             ]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/server_embeddings_v2_tests.py",
+    "line": 732,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "731         dataset = fo.Dataset()\n732         dataset.add_sample(fo.Sample(filepath=\"/tmp/clip.mp4\"))\n733         points = np.zeros((1, 2))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/server_embeddings_v2_tests.py",
+    "line": 775,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "774         dataset = fo.Dataset()\n775         dataset.add_sample(fo.Sample(filepath=\"/tmp/a.png\"))\n776",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/subsets_tests.py",
+    "line": 54,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "53             [\n54                 fo.Sample(filepath=\"/tmp/subset-%d.mp4\" % i, rank=i)\n55                 for i in range(45)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/subsets_tests.py",
+    "line": 352,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "351         self.dataset.add_sample(\n352             fo.Sample(filepath=\"/tmp/arrived-after-capture.mp4\")\n353         )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/subsets_tests.py",
+    "line": 480,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "479         sample = self.dataset[self.ids[0]]\n480         sample.filepath = \"/tmp/updated.mp4\"\n481         sample.save()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/subsets_tests.py",
+    "line": 487,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "486         self.assertEqual(result[\"counts\"][\"unavailable\"], 1)\n487         self.assertEqual(result[\"groups\"][0][\"filepath\"], \"/tmp/updated.mp4\")\n488         self.assertTrue(result[\"unavailableGroups\"][0][\"unavailable\"])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/subsets_tests.py",
+    "line": 955,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "954         self.dataset.add_samples(\n955             [fo.Sample(filepath=\"/tmp/missing-%s.mp4\" % i) for i in range(80)]\n956         )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/subsets_tests.py",
+    "line": 996,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "995         self.dataset = fo.Dataset()\n996         self.dataset.add_sample(fo.Sample(filepath=\"/tmp/async-subset.mp4\"))\n997         self.subset = fosub.create_subset(self.dataset, \"Review\")[\"id\"]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/subsets_tests.py",
+    "line": 1093,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "1092             fo.Sample(\n1093                 filepath=\"/tmp/patch-subset.jpg\",\n1094                 ground_truth=fo.Detections(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tests/unittests/utils/test_paddleocr_vl.py",
+    "line": 130,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "129             cls.image_processor = (\n130                 transformers.AutoImageProcessor.from_pretrained(\n131                     \"PaddlePaddle/PaddleOCR-VL-1.6\"\n132                 )\n133             )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/utils/test_ptv3.py",
+    "line": 267,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "266             \"config\": {\n267                 \"model_path\": \"/tmp/ptv3.pth\",\n268                 \"grid_size\": 0.05,\n269                 \"feature_keys\": [\"coord\", \"strength\"],\n270             },\n271         }\n272         model_config = fomo.ModelConfig(deployment)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/utils_tests.py",
+    "line": 544,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "543             self.assertEqual(\n544                 fou.get_module_name(\"/tmp/test/module\"),\n545                 \"tmp.test.module\",",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/utils_tests.py",
+    "line": 548,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "547             self.assertEqual(\n548                 fou.get_module_name(\"/tmp/test/module.py\"),\n549                 \"tmp.test.module\",",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/utils_tests.py",
+    "line": 552,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "551             self.assertEqual(\n552                 fou.get_module_name(\"/tmp/test/module\", \"/tmp\"),\n553                 \"test.module\",",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/utils_tests.py",
+    "line": 552,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "551             self.assertEqual(\n552                 fou.get_module_name(\"/tmp/test/module\", \"/tmp\"),\n553                 \"test.module\",",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/utils_tests.py",
+    "line": 556,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "555             self.assertEqual(\n556                 fou.get_module_name(\"/tmp/test/module.py\", \"/tmp\"),\n557                 \"test.module\",",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/utils_tests.py",
+    "line": 556,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "555             self.assertEqual(\n556                 fou.get_module_name(\"/tmp/test/module.py\", \"/tmp\"),\n557                 \"test.module\",",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/utils_tests.py",
+    "line": 560,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "559             self.assertEqual(\n560                 fou.get_module_name(\"/tmp/test/module\", \"/\"),\n561                 \"tmp.test.module\",",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/utils_tests.py",
+    "line": 564,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "563             self.assertEqual(\n564                 fou.get_module_name(\"/tmp/test/module.py\", \"/\"),\n565                 \"tmp.test.module\",",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/utils_tests.py",
+    "line": 568,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "567             self.assertEqual(\n568                 fou.get_module_name(\"/tmp/test/module\", \"/foo\"),\n569                 \"tmp.test.module\",",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/unittests/utils_tests.py",
+    "line": 572,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "571             self.assertEqual(\n572                 fou.get_module_name(\"/tmp/test/module.py\", \"/foo\"),\n573                 \"tmp.test.module\",",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "tests/utils/interactive_python.py",
+    "line": 23,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "22         code = compile(message, \"\", \"exec\")\n23     return eval(code, env)\n24",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "typescript.react.security.audit.react-dangerouslysetinnerhtml.react-dangerouslysetinnerhtml",
+    "file_path": "app/packages/components/src/components/HelpPanel/HelpPanel.tsx",
+    "line": 124,
+    "message": "Detection of dangerouslySetInnerHTML from non-constant definition. This can inadvertently expose users to cross-site scripting (XSS) attacks if this comes from user-provided input. If you have to use dangerouslySetInnerHTML, consider using a sanitization library such as DOMPurify to sanitize your HTML.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.jinja2.security.audit.missing-autoescape-disabled.missing-autoescape-disabled",
+    "file_path": "docs/scripts/make_model_zoo_docs.py",
+    "line": 499,
+    "message": "Detected a Jinja2 environment without autoescaping. Jinja2 does not autoescape by default. This is dangerous if you are rendering to a browser because this allows for cross-site scripting (XSS) attacks. If you are in a web context, enable autoescaping by setting 'autoescape=True.' You may also consider using 'jinja2.select_autoescape()' to only enable automatic escaping for certain file extensions.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/footer.html",
+    "line": 5,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/footer.html",
+    "line": 8,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/navbar-links.html",
+    "line": 8,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/navbar-links.html",
+    "line": 9,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/navbar-links.html",
+    "line": 10,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/navbar-links.html",
+    "line": 11,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/navbar-links.html",
+    "line": 12,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/navbar-links.html",
+    "line": 20,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/navbar-links.html",
+    "line": 21,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/navbar-links.html",
+    "line": 22,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/navbar-links.html",
+    "line": 23,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/navbar-links.html",
+    "line": 24,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/navbar-links.html",
+    "line": 25,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/navbar-links.html",
+    "line": 26,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/navbar-links.html",
+    "line": 27,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/navbar-links.html",
+    "line": 28,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/navbar-links.html",
+    "line": 29,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/navbar-links.html",
+    "line": 30,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/navbar-links.html",
+    "line": 36,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/navbar-links.html",
+    "line": 45,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/navbar-links.html",
+    "line": 46,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/navbar-links.html",
+    "line": 47,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/navbar-links.html",
+    "line": 48,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/navbar-links.html",
+    "line": 49,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/navbar-links.html",
+    "line": 50,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/navbar-links.html",
+    "line": 51,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/navbar-links.html",
+    "line": 57,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/sections/footer.html",
+    "line": 5,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/sections/footer.html",
+    "line": 17,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/sections/footer.html",
+    "line": 18,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/sections/footer.html",
+    "line": 19,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/sections/footer.html",
+    "line": 20,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/sections/footer.html",
+    "line": 21,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/sections/footer.html",
+    "line": 22,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/sections/footer.html",
+    "line": 26,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/sections/footer.html",
+    "line": 27,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/sections/footer.html",
+    "line": 28,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/sections/footer.html",
+    "line": 29,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/sections/footer.html",
+    "line": 30,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/sections/footer.html",
+    "line": 31,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/sections/footer.html",
+    "line": 32,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/sections/footer.html",
+    "line": 33,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/sections/footer.html",
+    "line": 37,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/sections/footer.html",
+    "line": 38,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/sections/footer.html",
+    "line": 39,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/sections/footer.html",
+    "line": 40,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/sections/footer.html",
+    "line": 44,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/sections/footer.html",
+    "line": 45,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/sections/footer.html",
+    "line": 46,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/sections/footer.html",
+    "line": 47,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/sections/footer.html",
+    "line": 48,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/sections/footer.html",
+    "line": 52,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/sections/footer.html",
+    "line": 53,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/sections/footer.html",
+    "line": 54,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/sections/footer.html",
+    "line": 57,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/sections/footer.html",
+    "line": 62,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/sections/footer.html",
+    "line": 67,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "docs/source/_templates/sections/footer.html",
+    "line": 72,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "javascript.lang.security.detect-child-process.detect-child-process",
+    "file_path": "e2e-pw/src/shared/media-factory/pcd.ts",
+    "line": 83,
+    "message": "Detected calls to child_process from a function argument `options`. This could lead to a command injection if the input is user controllable. Try to avoid calls to child_process, and if it is needed ensure user input is correctly sanitized or sandboxed.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "javascript.lang.security.detect-child-process.detect-child-process",
+    "file_path": "e2e-pw/src/shared/media-factory/ply.ts",
+    "line": 121,
+    "message": "Detected calls to child_process from a function argument `options`. This could lead to a command injection if the input is user controllable. Try to avoid calls to child_process, and if it is needed ensure user input is correctly sanitized or sandboxed.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "javascript.lang.security.detect-child-process.detect-child-process",
+    "file_path": "e2e-pw/src/shared/media-factory/video.ts",
+    "line": 104,
+    "message": "Detected calls to child_process from a function argument `options`. This could lead to a command injection if the input is user controllable. Try to avoid calls to child_process, and if it is needed ensure user input is correctly sanitized or sandboxed.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "javascript.lang.security.detect-child-process.detect-child-process",
+    "file_path": "e2e-pw/src/shared/python-runner/python-runner.ts",
+    "line": 28,
+    "message": "Detected calls to child_process from a function argument `sourceCode`. This could lead to a command injection if the input is user controllable. Try to avoid calls to child_process, and if it is needed ensure user input is correctly sanitized or sandboxed.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "fiftyone/core/config.py",
+    "line": 633,
+    "message": "Detected a python logger call with a potential hardcoded secret \"Failed to set mapbox token: %s\" being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-dill",
+    "file_path": "fiftyone/core/map/process.py",
+    "line": 119,
+    "message": "Avoid using `dill`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "fiftyone/core/map/process.py",
+    "line": 119,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-dill",
+    "file_path": "fiftyone/core/map/process.py",
+    "line": 120,
+    "message": "Avoid using `dill`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "fiftyone/core/map/process.py",
+    "line": 120,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-dill",
+    "file_path": "fiftyone/core/map/process.py",
+    "line": 245,
+    "message": "Avoid using `dill`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "fiftyone/core/map/process.py",
+    "line": 245,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-dill",
+    "file_path": "fiftyone/core/map/process.py",
+    "line": 246,
+    "message": "Avoid using `dill`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "fiftyone/core/map/process.py",
+    "line": 246,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "info",
+    "rule_id": "python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http",
+    "file_path": "fiftyone/core/service.py",
+    "line": 314,
+    "message": "Detected a request using 'http://'. This request will be unencrypted, and attackers could listen into traffic on the network and be able to obtain sensitive information. Use 'https://' instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml.use-defused-xml",
+    "file_path": "fiftyone/core/utils.py",
+    "line": 45,
+    "message": "The Python documentation recommends using `defusedxml` instead of `xml` because the native Python `xml` library is vulnerable to XML External Entity (XXE) attacks. These attacks can leak confidential data and \"XML bombs\" can cause denial of service.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "fiftyone/core/utils.py",
+    "line": 233,
+    "message": "Found 'subprocess' function 'Popen' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "fiftyone/core/utils.py",
+    "line": 2311,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1",
+    "file_path": "fiftyone/plugins/definitions.py",
+    "line": 186,
+    "message": "Detected SHA1 hash algorithm which is considered insecure. SHA1 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "fiftyone/service/ipc.py",
+    "line": 92,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "fiftyone/service/ipc.py",
+    "line": 99,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "fiftyone/service/ipc.py",
+    "line": 114,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "fiftyone/service/ipc.py",
+    "line": 115,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.jinja2.security.audit.missing-autoescape-disabled.missing-autoescape-disabled",
+    "file_path": "fiftyone/utils/cvat.py",
+    "line": 2980,
+    "message": "Detected a Jinja2 environment without autoescaping. Jinja2 does not autoescape by default. This is dangerous if you are rendering to a browser because this allows for cross-site scripting (XSS) attacks. If you are in a web context, enable autoescaping by setting 'autoescape=True.' You may also consider using 'jinja2.select_autoescape()' to only enable automatic escaping for certain file extensions.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.jinja2.security.audit.missing-autoescape-disabled.missing-autoescape-disabled",
+    "file_path": "fiftyone/utils/cvat.py",
+    "line": 3024,
+    "message": "Detected a Jinja2 environment without autoescaping. Jinja2 does not autoescape by default. This is dangerous if you are rendering to a browser because this allows for cross-site scripting (XSS) attacks. If you are in a web context, enable autoescaping by setting 'autoescape=True.' You may also consider using 'jinja2.select_autoescape()' to only enable automatic escaping for certain file extensions.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "fiftyone/utils/labelbox.py",
+    "line": 2883,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "fiftyone/utils/sam3.py",
+    "line": 50,
+    "message": "Detected a python logger call with a potential hardcoded secret \"Downloading SAM3 tokenizer vocab (%s)...\" being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "fiftyone/utils/torch.py",
+    "line": 2799,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+inference+modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "fiftyone/utils/torch.py",
+    "line": 2829,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+inference+modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "fiftyone/utils/torch.py",
+    "line": 2842,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+inference+modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.jinja2.security.audit.missing-autoescape-disabled.missing-autoescape-disabled",
+    "file_path": "fiftyone/utils/voc.py",
+    "line": 714,
+    "message": "Detected a Jinja2 environment without autoescaping. Jinja2 does not autoescape by default. This is dangerous if you are rendering to a browser because this allows for cross-site scripting (XSS) attacks. If you are in a web context, enable autoescaping by setting 'autoescape=True.' You may also consider using 'jinja2.select_autoescape()' to only enable automatic escaping for certain file extensions.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "package/db/setup.py",
+    "line": 259,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "plugins/utils/model_evaluation/__init__.py",
+    "line": 18,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  }
+]

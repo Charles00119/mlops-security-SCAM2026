@@ -1,0 +1,302 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "covid_event/finetune_pt.py",
+    "line": 61,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "60 \n61     dataset = load_dataset(f\"{args.dataset_name}.py\")\n62",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "covid_event/finetune_pt.py",
+    "line": 64,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "63     if args.load_train_num > 0:\n64         train = load_dataset(f\"{args.dataset_name}.py\", split=f\"train[:{args.load_train_num}]\")\n65         dataset[\"train\"] = train",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "covid_event/finetune_pt.py",
+    "line": 68,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "67     if args.load_val_num > 0:\n68         val = load_dataset(f\"{args.dataset_name}.py\", split=f\"validation[:{args.load_val_num}]\")\n69         dataset[\"validation\"] = val",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "covid_event/finetune_pt.py",
+    "line": 71,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "70 \n71     tokenizer = T5Tokenizer.from_pretrained(args.model_select)\n72",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "covid_event/finetune_pt.py",
+    "line": 104,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "103     if args.from_pretrained:\n104         model = T5ForConditionalGeneration.from_pretrained(args.model_select)\n105     else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "covid_event/finetune_pt.py",
+    "line": 106,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "105     else:\n106         config = T5Config.from_pretrained(args.model_select)\n107         model = T5ForConditionalGeneration(config)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "covid_event/inference.py",
+    "line": 5,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "4 # Tensorflow2.0\n5 model = TFT5ForConditionalGeneration.from_pretrained(model_name_or_path)\n6",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "covid_event/inference.py",
+    "line": 10,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "9 \n10 tokenizer = T5Tokenizer.from_pretrained(model_name_or_path)\n11",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "covid_event/subs/post_process.py",
+    "line": 85,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "84     dir = \"subs\"\n85     id2condidates = pickle.load(open(os.path.join(dir, \"testid2candidates.pkl\"), \"rb\"))\n86     # the testid2candidates.pkl can also obtained by calling read_id2text()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "ttt/args.py",
+    "line": 59,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "58         try:\n59             dataset = load_dataset(*set_name)\n60             target_examples_dict = {}",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "ttt/args.py",
+    "line": 76,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "75                     # for model testing\n76                     sst2_test = urllib.request.urlopen(\"https://ucdcs-student.ucd.ie/~cwang/sst2-test.json\")\n77                     for line in sst2_test:",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "ttt/args.py",
+    "line": 109,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "108             if set_name[0] in ADDITIONAL_DATA_SUPPORT.keys():\n109                 fstream = urllib.request.urlopen(ADDITIONAL_DATA_SUPPORT[set_name[0]])\n110                 tfile = tarfile.open(fileobj=fstream, mode=\"r|gz\")",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "ttt/args.py",
+    "line": 111,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "110                 tfile = tarfile.open(fileobj=fstream, mode=\"r|gz\")\n111                 tfile.extractall(path=\"data\")\n112                 if set_name[0] == \"wmt_en_ro\":",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ttt/inputs.py",
+    "line": 302,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "301                     f\"if you changed the max_seq_length/max_src_length/max_tgt_length, this may not correctly loaded, since the {data_cache_path} is pickled based on first time loading\")\n302                 to_return = pickle.load(f)\n303         else:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "ttt/models.py",
+    "line": 18,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "17     ## transformer encoder\n18     encoder = TFAutoModel.from_pretrained(model_name_or_path)\n19",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "ttt/models.py",
+    "line": 65,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "64     if from_pretrained:\n65         encoder = TFT5ForConditionalGeneration.from_pretrained(model_name_or_path)\n66         encoder_config = encoder.config",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "ttt/models.py",
+    "line": 68,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "67     else:\n68         encoder_config = T5Config.from_pretrained(args.model_select)\n69         if tokenizer!=None:",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "ttt/utils.py",
+    "line": 137,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "136 def get_tokenizer(args):\n137     tokenizer = AutoTokenizer.from_pretrained(args.model_select)\n138     tokenizer.save_pretrained(args.output_path)",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "ttt/utils.py",
+    "line": 248,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "247     if is_tf:\n248         model = TFAutoModel.from_pretrained(model_name)\n249     else:",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "ttt/utils.py",
+    "line": 250,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "249     else:\n250         model = AutoModel.from_pretrained(model_name)\n251",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "ttt/utils.py",
+    "line": 253,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "252     # Load pretrained model/tokenizer\n253     tokenizer = AutoTokenizer.from_pretrained(model_name)\n254     if not os.path.isdir(save_path):",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "ttt/utils.py",
+    "line": 342,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "341 \n342     model = TFT5ForConditionalGeneration.from_pretrained(model_name_or_path)\n343     state_dict = load_torch_state_dict_from_h5_weights(model)",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "use_tpu_tutorial/run_train_test.py",
+    "line": 124,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "123 \n124     tokenizer = AutoTokenizer.from_pretrained(args.model_select)\n125     dataset = load_dataset(*args.dataset_name.split(\", \"))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "use_tpu_tutorial/run_train_test.py",
+    "line": 125,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "124     tokenizer = AutoTokenizer.from_pretrained(args.model_select)\n125     dataset = load_dataset(*args.dataset_name.split(\", \"))\n126     # use num_proc = 6 can give 6x speedup ideally as compared to 1 proc, which is really good stuff for tokenizing many examples",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "use_tpu_tutorial/run_train_test.py",
+    "line": 137,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "136             # from_pt to aovid repeated downloading\n137             model = TFAutoModelWithLMHead.from_pretrained(args.model_select, from_pt=True)\n138             train_dataset = get_dataset(encoded[\"train\"], tag=\"train\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "use_tpu_tutorial/run_train_test.py",
+    "line": 160,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "159                     model_path = index2path[sorted_indices[args.ck_index_select]]\n160             model = TFAutoModelWithLMHead.from_pretrained(model_path)\n161             logger.info(f\"-------------------eval and predict on {test_set} set-------------------\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "covid_event/subs/post_process.py",
+    "line": 85,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "ttt/args.py",
+    "line": 109,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "ttt/inputs.py",
+    "line": 302,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "ttt/inputs.py",
+    "line": 308,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  }
+]

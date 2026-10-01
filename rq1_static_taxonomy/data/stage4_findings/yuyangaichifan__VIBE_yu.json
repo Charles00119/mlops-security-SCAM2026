@@ -1,0 +1,352 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "demo.py",
+    "line": 61,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "60         print(f'Donwloading YouTube video \\\"{video_file}\\\"')\n61         video_file = download_youtube_clip(video_file, '/tmp')\n62",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "demo.py",
+    "line": 115,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "114     pretrained_file = download_ckpt(use_3dpw=False)\n115     ckpt = torch.load(pretrained_file)\n116     print(f'Performance of pretrained model on 3DPW: {ckpt[\"performance\"]}')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "eval.py",
+    "line": 26,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "25     if cfg.TRAIN.PRETRAINED != '' and os.path.isfile(cfg.TRAIN.PRETRAINED):\n26         checkpoint = torch.load(cfg.TRAIN.PRETRAINED)\n27         best_performance = checkpoint['performance']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "lib/core/trainer.py",
+    "line": 374,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "373         if osp.isfile(model_path):\n374             checkpoint = torch.load(model_path)\n375             self.start_epoch = checkpoint['epoch']",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "lib/data_utils/kp_utils.py",
+    "line": 29,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "28 def convert_kps(joints2d, src, dst):\n29     src_names = eval(f'get_{src}_joint_names')()\n30     dst_names = eval(f'get_{dst}_joint_names')()",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "lib/data_utils/kp_utils.py",
+    "line": 30,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "29     src_names = eval(f'get_{src}_joint_names')()\n30     dst_names = eval(f'get_{dst}_joint_names')()\n31",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "lib/data_utils/kp_utils.py",
+    "line": 41,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "40 def get_perm_idxs(src, dst):\n41     src_names = eval(f'get_{src}_joint_names')()\n42     dst_names = eval(f'get_{dst}_joint_names')()",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "lib/data_utils/kp_utils.py",
+    "line": 42,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "41     src_names = eval(f'get_{src}_joint_names')()\n42     dst_names = eval(f'get_{dst}_joint_names')()\n43     idxs = [src_names.index(h) for h in dst_names if h in src_names]",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "lib/data_utils/threedpw_utils.py",
+    "line": 71,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "70 \n71         data = pkl.load(open(data_file, 'rb'), encoding='latin1')\n72",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "lib/dataset/loaders.py",
+    "line": 26,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "25         for dataset_name in dataset_names:\n26             db = eval(dataset_name)(seqlen=cfg.DATASET.SEQLEN, debug=cfg.DEBUG)\n27             datasets.append(db)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "lib/dataset/loaders.py",
+    "line": 33,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "32         for dataset_name in dataset_names:\n33             db = eval(dataset_name)(set='train', seqlen=cfg.DATASET.SEQLEN, debug=cfg.DEBUG)\n34             datasets.append(db)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "lib/dataset/loaders.py",
+    "line": 73,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "72     # ===== Evaluation dataset =====\n73     valid_db = eval(cfg.TRAIN.DATASET_EVAL)(set='val', seqlen=cfg.DATASET.SEQLEN, debug=cfg.DEBUG)\n74",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "lib/models/spin.py",
+    "line": 359,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "358     model = hmr().to(device)\n359     checkpoint = torch.load(osp.join(VIBE_DATA_DIR, 'spin_model_checkpoint.pth.tar'))\n360     model.load_state_dict(checkpoint['model'], strict=False)",
+    "stage": "data_acquisition+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "lib/models/vibe.py",
+    "line": 96,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "95         if pretrained and os.path.isfile(pretrained):\n96             pretrained_dict = torch.load(pretrained)['model']\n97",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "lib/models/vibe.py",
+    "line": 147,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "146         self.hmr = hmr()\n147         checkpoint = torch.load(pretrained)\n148         self.hmr.load_state_dict(checkpoint['model'], strict=False)",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "lib/models/vibe.py",
+    "line": 154,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "153         if pretrained and os.path.isfile(pretrained):\n154             pretrained_dict = torch.load(pretrained)['model']\n155",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "lib/smplify/prior.py",
+    "line": 127,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "126         with open(full_gmm_fn, 'rb') as f:\n127             gmm = pickle.load(f, encoding='latin1')\n128",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "lib/utils/demo_utils.py",
+    "line": 185,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "184     if img_folder is None:\n185         img_folder = osp.join('/tmp', osp.basename(vid_file).replace('.', '_'))\n186",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "lib/utils/pose_tracker.py",
+    "line": 81,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "80 \n81 def run_posetracker(video_file, staf_folder, posetrack_output_folder='/tmp', display=False):\n82     posetrack_output_folder = os.path.join(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "lib/utils/utils.py",
+    "line": 82,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "81 def read_yaml(filename):\n82     return yaml.load(open(filename, 'r'))\n83",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "lib/utils/vis.py",
+    "line": 390,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "389 \n390     skeleton = eval(f'kp_utils.get_{dataset}_skeleton')()\n391     common_lr = [0,0,1,1,0,0,0,0,1,0,0,1,1,1,0]",
+    "stage": "inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "lib/utils/vis.py",
+    "line": 448,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "447     smpl = SMPL(SMPL_MODEL_DIR).to(device)\n448     pretrained = torch.load('models/model_best.pth.tar')['gen_state_dict']\n449",
+    "stage": "inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "tests/test_2d_datasets.py",
+    "line": 18,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "17     batch_size = 1\n18     db = eval(dataset)(seqlen=seqlen, debug=DEBUG)\n19",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "tests/test_3d_datasets.py",
+    "line": 14,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "13 \n14 db = eval(dataset)(set='val', seqlen=seqlen, debug=DEBUG)\n15",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "train.py",
+    "line": 84,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "83     if cfg.TRAIN.PRETRAINED != '' and os.path.isfile(cfg.TRAIN.PRETRAINED):\n84         checkpoint = torch.load(cfg.TRAIN.PRETRAINED)\n85         best_performance = checkpoint['performance']",
+    "stage": "training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "lib/data_utils/kp_utils.py",
+    "line": 29,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "lib/data_utils/kp_utils.py",
+    "line": 30,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "lib/data_utils/kp_utils.py",
+    "line": 41,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "lib/data_utils/kp_utils.py",
+    "line": 42,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "lib/data_utils/threedpw_utils.py",
+    "line": 71,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "lib/dataset/loaders.py",
+    "line": 26,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "lib/dataset/loaders.py",
+    "line": 33,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "lib/dataset/loaders.py",
+    "line": 73,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "lib/smplify/prior.py",
+    "line": 127,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "lib/utils/vis.py",
+    "line": 390,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "inference"
+  }
+]

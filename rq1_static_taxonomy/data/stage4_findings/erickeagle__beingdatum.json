@@ -1,0 +1,52 @@
+[
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.flask.security.injection.path-traversal-open.path-traversal-open",
+    "file_path": "app.py",
+    "line": 77,
+    "message": "Found request data in a call to 'open'. Ensure the request data is validated or sanitized, otherwise it could result in path traversal attacks.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.flask.security.injection.path-traversal-open.path-traversal-open",
+    "file_path": "hr_1.py",
+    "line": 46,
+    "message": "Found request data in a call to 'open'. Ensure the request data is validated or sanitized, otherwise it could result in path traversal attacks.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "templates/model.html",
+    "line": 73,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "templates/step1.html",
+    "line": 117,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.xss.audit.template-unescaped-with-safe.template-unescaped-with-safe",
+    "file_path": "templates/step1_img.html",
+    "line": 117,
+    "message": "Detected a segment of a Flask template where autoescaping is explicitly disabled with '| safe' filter. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

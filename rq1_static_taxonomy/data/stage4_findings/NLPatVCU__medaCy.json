@@ -1,0 +1,62 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "medacy/pipeline_components/feature_overlayers/metamap/metamap.py",
+    "line": 124,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "123         bash_command = 'bash %s %s' % (self.metamap_path, args)\n124         process = subprocess.Popen(bash_command, shell=True, stdout=subprocess.PIPE, stdin=subprocess.PIPE, stderr=subprocess.PIPE)\n125         output, error = process.communicate(input=bytes(document, 'UTF-8'))",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "medacy/pipeline_components/learners/bert_learner.py",
+    "line": 167,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "166         self.model.to(device=self.device)\n167         self.tokenizer = BertTokenizer.from_pretrained(self.pretrained_model)\n168",
+    "stage": "data_acquisition+data_preparation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "medacy/pipeline_components/learners/bert_learner.py",
+    "line": 293,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "292         \"\"\"\n293         self.tokenizer = BertTokenizer.from_pretrained(self.pretrained_model)\n294         vectorizer_values = torch.load(path + '/vectorizer.pt')",
+    "stage": "data_acquisition+data_preparation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "medacy/pipeline_components/learners/bert_learner.py",
+    "line": 294,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "293         self.tokenizer = BertTokenizer.from_pretrained(self.pretrained_model)\n294         vectorizer_values = torch.load(path + '/vectorizer.pt')\n295         self.vectorizer = Vectorizer(device=self.device)",
+    "stage": "data_acquisition+data_preparation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "medacy/pipeline_components/learners/bilstm_crf_learner.py",
+    "line": 152,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "151         \"\"\"\n152         saved_data = torch.load(path, map_location=self.device)\n153",
+    "stage": "inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "medacy/pipeline_components/feature_overlayers/metamap/metamap.py",
+    "line": 124,
+    "message": "Found 'subprocess' function 'Popen' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  }
+]

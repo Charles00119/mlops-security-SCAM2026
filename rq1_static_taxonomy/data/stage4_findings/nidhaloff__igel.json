@@ -1,0 +1,92 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "deprecated/old_cli.py",
+    "line": 258,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "257 \n258         subprocess.Popen([\"node\", \"npm\", \"install\", \"open\"], shell=True)\n259         subprocess.Popen(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "deprecated/old_cli.py",
+    "line": 260,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "259         subprocess.Popen(\n260             [\"node\", \"npm\", \"install electron\", \"open\"], shell=True\n261         )\n262         logger.info(\"installing dependencies ...\")\n263         logger.info(f\"dependencies installed successfully\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "examples/python_client.py",
+    "line": 28,
+    "message": "Call to requests without timeout",
+    "snippet": "27         output_json = self.process_data(data_file)\n28         res = requests.post(self.url, data=output_json)\n29         print(f\"{res}: {res.text}\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "igel/__main__.py",
+    "line": 211,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "210 \n211     subprocess.Popen([\"node\", \"npm\", \"install\", \"open\"], shell=True)\n212     subprocess.Popen([\"node\", \"npm\", \"install electron\", \"open\"], shell=True)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "igel/__main__.py",
+    "line": 212,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "211     subprocess.Popen([\"node\", \"npm\", \"install\", \"open\"], shell=True)\n212     subprocess.Popen([\"node\", \"npm\", \"install electron\", \"open\"], shell=True)\n213     logger.info(\"installing dependencies ...\")",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "deprecated/old_cli.py",
+    "line": 258,
+    "message": "Found 'subprocess' function 'Popen' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "deprecated/old_cli.py",
+    "line": 260,
+    "message": "Found 'subprocess' function 'Popen' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "igel/__main__.py",
+    "line": 211,
+    "message": "Found 'subprocess' function 'Popen' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "igel/__main__.py",
+    "line": 212,
+    "message": "Found 'subprocess' function 'Popen' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  }
+]

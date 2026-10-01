@@ -1,0 +1,682 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B314",
+    "file_path": "mne/channels/_dig_montage_utils.py",
+    "line": 33,
+    "message": "Using xml.etree.ElementTree.parse to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.parse with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "32 \n33     root = ElementTree.parse(fname).getroot()\n34     ns = root.tag[root.tag.index('{'):root.tag.index('}') + 1]",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B314",
+    "file_path": "mne/channels/_dig_montage_utils.py",
+    "line": 76,
+    "message": "Using xml.etree.ElementTree.parse to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.parse with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "75 \n76     root = ElementTree.parse(fname).getroot()\n77     sensors = root.find('CapTrakElectrodeList')",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B314",
+    "file_path": "mne/channels/_standard_montage_utils.py",
+    "line": 329,
+    "message": "Using xml.etree.ElementTree.parse to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.parse with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "328     # idealized (when radius=1), specified in millimeters\n329     root = ElementTree.parse(fname).getroot()\n330     ch_names = [s.text for s in root.findall(\"./Electrode/Name\")]",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "mne/datasets/_fetch.py",
+    "line": 279,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "278         warn(\n279             \"The {name} dataset (version {current}) is older than \"\n280             \"mne-python (version {newest}). If the examples fail, \"\n281             \"you may need to update the {name} dataset by using \"\n282             \"mne.datasets.{name}.data_path(force_update=True)\".format(\n283                 name=name, current=data_version, newest=mne_version",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "mne/externals/decorator.py",
+    "line": 185,
+    "message": "Use of exec detected.",
+    "snippet": "184             code = compile(src, filename, 'single')\n185             exec(code, evaldict)\n186         except Exception:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "mne/externals/tempita/__init__.py",
+    "line": 304,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "303             try:\n304                 value = eval(code, self.default_namespace, ns)\n305             except SyntaxError as e:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "mne/externals/tempita/__init__.py",
+    "line": 322,
+    "message": "Use of exec detected.",
+    "snippet": "321         try:\n322             exec(code, self.default_namespace, ns)\n323         except:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "mne/externals/tempita/__init__.py",
+    "line": 1286,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "1285             name = name[:3]\n1286             value = eval(value)\n1287         vars[name] = value",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "mne/externals/tqdm/_tqdm/cli.py",
+    "line": 29,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "28     try:\n29         return eval(typ + '(\"' + val + '\")')\n30     except:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "mne/externals/tqdm/_tqdm/cli.py",
+    "line": 32,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "31         if typ == 'chr':\n32             return chr(ord(eval('\"' + val + '\"')))\n33         else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "mne/fixes.py",
+    "line": 55,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "54 \n55     return eval(f'parse(\"{version_a}\") {operator} parse(\"{version_b}\")')\n56",
+    "stage": "data_acquisition+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B318",
+    "file_path": "mne/io/egi/egimff.py",
+    "line": 106,
+    "message": "Using xml.dom.minidom.parse to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.dom.minidom.parse with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "105     sensor_layout_file = op.join(filepath, 'sensorLayout.xml')\n106     sensor_layout_obj = parse(sensor_layout_file)\n107     summaryinfo['device'] = (sensor_layout_obj.getElementsByTagName('name')",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B318",
+    "file_path": "mne/io/egi/egimff.py",
+    "line": 145,
+    "message": "Using xml.dom.minidom.parse to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.dom.minidom.parse with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "144         pns_file = op.join(filepath, 'pnsSet.xml')\n145         pns_obj = parse(pns_file)\n146         sensors = pns_obj.getElementsByTagName('sensor')",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B318",
+    "file_path": "mne/io/egi/egimff.py",
+    "line": 268,
+    "message": "Using xml.dom.minidom.parse to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.dom.minidom.parse with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "267     numbers = np.array(egi_info['numbers'])\n268     coordinates = parse(fname)\n269     sensors = coordinates.getElementsByTagName('sensor')",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B314",
+    "file_path": "mne/io/egi/events.py",
+    "line": 81,
+    "message": "Using xml.etree.ElementTree.parse to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.parse with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "80     \"\"\"Parse XML file.\"\"\"\n81     xml = parse(xml_file)\n82     root = xml.getroot()",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B318",
+    "file_path": "mne/io/egi/general.py",
+    "line": 19,
+    "message": "Using xml.dom.minidom.parse to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.dom.minidom.parse with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "18     elif filepath is not None:\n19         fileobj = parse(filepath)\n20     else:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B318",
+    "file_path": "mne/io/egi/general.py",
+    "line": 33,
+    "message": "Using xml.dom.minidom.parse to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.dom.minidom.parse with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "32     \"\"\"Parse gains.\"\"\"\n33     file_obj = parse(filepath)\n34     objects = file_obj.getElementsByTagName('calibration')",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B318",
+    "file_path": "mne/io/egi/general.py",
+    "line": 50,
+    "message": "Using xml.dom.minidom.parse to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.dom.minidom.parse with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "49     epochfile = filepath + '/epochs.xml'\n50     epochlist = parse(epochfile)\n51     epochs = epochlist.getElementsByTagName('epoch')",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B318",
+    "file_path": "mne/io/egi/general.py",
+    "line": 137,
+    "message": "Using xml.dom.minidom.parse to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.dom.minidom.parse with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "136         infobjfile = os.path.join(filepath, infofile)\n137         infobj = parse(infobjfile)\n138         if len(infobj.getElementsByTagName('EEG')):",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "mne/io/kit/coreg.py",
+    "line": 60,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "59         with open(fname, 'rb') as fid:\n60             food = pickle.load(fid)\n61         try:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B314",
+    "file_path": "mne/io/nedf/nedf.py",
+    "line": 71,
+    "message": "Using xml.etree.ElementTree.fromstring to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.fromstring with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "70         raise RuntimeError('End of header null not found')\n71     headerxml = ElementTree.fromstring(header[:headerend])\n72     nedfversion = headerxml.findtext('NEDFversion', '')",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "mne/io/tests/test_meas_info.py",
+    "line": 276,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "275     # Test that writing twice produces the same file\n276     m1 = hashlib.md5()\n277     with open(temp_file, 'rb') as fid:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "mne/io/tests/test_meas_info.py",
+    "line": 283,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "282     write_info(temp_file_2, info)\n283     m2 = hashlib.md5()\n284     with open(str(temp_file_2), 'rb') as fid:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "mne/io/tests/test_meas_info.py",
+    "line": 1037,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "1036     data = pickle.dumps(info)\n1037     info_un = pickle.loads(data)\n1038     assert isinstance(info_un, Info)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "mne/preprocessing/maxfilter.py",
+    "line": 189,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "188     if os.getenv('_MNE_MAXFILTER_TEST', '') != 'true':  # fake maxfilter\n189         st = os.system(cmd)\n190     else:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "mne/report/tests/test_report.py",
+    "line": 674,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "673     pickled_report = pickle.dumps(report)\n674     report = pickle.loads(pickled_report)\n675",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "mne/tests/test_label.py",
+    "line": 333,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "332     with open(dest, 'rb') as fid:\n333         label2 = pickle.load(fid)\n334     assert_labels_equal(label, label2)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "mne/time_frequency/tests/test_csd.py",
+    "line": 247,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "246     with open(fname, 'rb') as f:\n247         csd2 = pickle.load(f)\n248     assert_array_equal(csd._data, csd2._data)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "mne/utils/_testing.py",
+    "line": 100,
+    "message": "Use of exec detected.",
+    "snippet": "99     try:\n100         exec(call) in globals(), locals()\n101     except Exception as exc:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "mne/utils/numerics.py",
+    "line": 413,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "412     if hash_type == \"md5\":\n413         hasher = hashlib.md5()\n414     elif hash_type == \"sha1\":",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "mne/utils/numerics.py",
+    "line": 415,
+    "message": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "snippet": "414     elif hash_type == \"sha1\":\n415         hasher = hashlib.sha1()\n416     with open(fname, 'rb') as fid:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "mne/utils/numerics.py",
+    "line": 637,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "636     if h is None:\n637         h = hashlib.md5()\n638     if hasattr(x, 'keys'):",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "mne/utils/tests/test_bunch.py",
+    "line": 24,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "23 \n24     b2 = pickle.loads(pickle.dumps(b1))\n25     assert b1 == b2",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "mne/viz/_brain/_scraper.py",
+    "line": 47,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "46                         assert line.startswith('(') and line.endswith(')')\n47                         kwargs.update(eval(f'dict{line}'))\n48                 for key, default in [('time_dilation', 4),",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "doc/_templates/homepage.html",
+    "line": 7,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "doc/_templates/homepage.html",
+    "line": 25,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "doc/_templates/homepage.html",
+    "line": 38,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "doc/_templates/sidebar-quicklinks.html",
+    "line": 5,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "doc/_templates/sidebar-quicklinks.html",
+    "line": 6,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "doc/_templates/sidebar-quicklinks.html",
+    "line": 7,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "doc/_templates/sidebar-quicklinks.html",
+    "line": 8,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "doc/_templates/sidebar-quicklinks.html",
+    "line": 9,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml.use-defused-xml",
+    "file_path": "mne/channels/_dig_montage_utils.py",
+    "line": 14,
+    "message": "The Python documentation recommends using `defusedxml` instead of `xml` because the native Python `xml` library is vulnerable to XML External Entity (XXE) attacks. These attacks can leak confidential data and \"XML bombs\" can cause denial of service.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml-parse.use-defused-xml-parse",
+    "file_path": "mne/channels/_dig_montage_utils.py",
+    "line": 33,
+    "message": "The native Python `xml` library is vulnerable to XML External Entity (XXE) attacks.  These attacks can leak confidential data and \"XML bombs\" can cause denial of service. Do not use this library to parse untrusted input. Instead  the Python documentation recommends using `defusedxml`.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml-parse.use-defused-xml-parse",
+    "file_path": "mne/channels/_dig_montage_utils.py",
+    "line": 76,
+    "message": "The native Python `xml` library is vulnerable to XML External Entity (XXE) attacks.  These attacks can leak confidential data and \"XML bombs\" can cause denial of service. Do not use this library to parse untrusted input. Instead  the Python documentation recommends using `defusedxml`.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml.use-defused-xml",
+    "file_path": "mne/channels/_standard_montage_utils.py",
+    "line": 12,
+    "message": "The Python documentation recommends using `defusedxml` instead of `xml` because the native Python `xml` library is vulnerable to XML External Entity (XXE) attacks. These attacks can leak confidential data and \"XML bombs\" can cause denial of service.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml-parse.use-defused-xml-parse",
+    "file_path": "mne/channels/_standard_montage_utils.py",
+    "line": 329,
+    "message": "The native Python `xml` library is vulnerable to XML External Entity (XXE) attacks.  These attacks can leak confidential data and \"XML bombs\" can cause denial of service. Do not use this library to parse untrusted input. Instead  the Python documentation recommends using `defusedxml`.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "mne/externals/decorator.py",
+    "line": 185,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "mne/externals/tempita/__init__.py",
+    "line": 304,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "mne/externals/tempita/__init__.py",
+    "line": 322,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "mne/externals/tempita/__init__.py",
+    "line": 1286,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "mne/externals/tqdm/_tqdm/cli.py",
+    "line": 29,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "mne/externals/tqdm/_tqdm/cli.py",
+    "line": 32,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "mne/fixes.py",
+    "line": 55,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml.use-defused-xml",
+    "file_path": "mne/io/egi/egimff.py",
+    "line": 9,
+    "message": "The Python documentation recommends using `defusedxml` instead of `xml` because the native Python `xml` library is vulnerable to XML External Entity (XXE) attacks. These attacks can leak confidential data and \"XML bombs\" can cause denial of service.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml.use-defused-xml",
+    "file_path": "mne/io/egi/events.py",
+    "line": 8,
+    "message": "The Python documentation recommends using `defusedxml` instead of `xml` because the native Python `xml` library is vulnerable to XML External Entity (XXE) attacks. These attacks can leak confidential data and \"XML bombs\" can cause denial of service.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml-parse.use-defused-xml-parse",
+    "file_path": "mne/io/egi/events.py",
+    "line": 81,
+    "message": "The native Python `xml` library is vulnerable to XML External Entity (XXE) attacks.  These attacks can leak confidential data and \"XML bombs\" can cause denial of service. Do not use this library to parse untrusted input. Instead  the Python documentation recommends using `defusedxml`.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml.use-defused-xml",
+    "file_path": "mne/io/egi/general.py",
+    "line": 6,
+    "message": "The Python documentation recommends using `defusedxml` instead of `xml` because the native Python `xml` library is vulnerable to XML External Entity (XXE) attacks. These attacks can leak confidential data and \"XML bombs\" can cause denial of service.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "mne/io/kit/coreg.py",
+    "line": 60,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml.use-defused-xml",
+    "file_path": "mne/io/nedf/nedf.py",
+    "line": 6,
+    "message": "The Python documentation recommends using `defusedxml` instead of `xml` because the native Python `xml` library is vulnerable to XML External Entity (XXE) attacks. These attacks can leak confidential data and \"XML bombs\" can cause denial of service.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-script-tag.var-in-script-tag",
+    "file_path": "mne/report/templates/header.html",
+    "line": 8,
+    "message": "Detected a template variable used in a script tag. Although template variables are HTML escaped, HTML escaping does not always prevent cross-site scripting (XSS) attacks when used directly in JavaScript. If you need this data on the rendered page, consider placing it in the HTML portion (outside of a script tag). Alternatively, use a JavaScript-specific encoder, such as the one available in OWASP ESAPI. For Django, you may also consider using the 'json_script' template tag and retrieving the data in your script by using the element ID (e.g., `document.getElementById`).",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.unquoted-attribute-var.unquoted-attribute-var",
+    "file_path": "mne/report/templates/image.html",
+    "line": 2,
+    "message": "Detected a unquoted template variable as an attribute. If unquoted, a malicious actor could inject custom JavaScript handlers. To fix this, add quotes around the template expression, like this: \"{{ expr }}\".",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.unquoted-attribute-var.unquoted-attribute-var",
+    "file_path": "mne/report/templates/image.html",
+    "line": 2,
+    "message": "Detected a unquoted template variable as an attribute. If unquoted, a malicious actor could inject custom JavaScript handlers. To fix this, add quotes around the template expression, like this: \"{{ expr }}\".",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "mne/utils/_testing.py",
+    "line": 100,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "mne/utils/numerics.py",
+    "line": 413,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1",
+    "file_path": "mne/utils/numerics.py",
+    "line": 415,
+    "message": "Detected SHA1 hash algorithm which is considered insecure. SHA1 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "mne/utils/numerics.py",
+    "line": 637,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "mne/viz/_brain/_scraper.py",
+    "line": 47,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  }
+]

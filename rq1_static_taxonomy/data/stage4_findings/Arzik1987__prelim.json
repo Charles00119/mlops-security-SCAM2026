@@ -1,0 +1,82 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "experiments/get_data.py",
+    "line": 76,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "75     with DownloadProgressBar(unit=\"B\", unit_scale=True, miniters=1, desc=dname) as progress:\n76         urllib.request.urlretrieve(url, filename=str(output_path), reporthook=progress.update_to)\n77",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "experiments/get_data.py",
+    "line": 321,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "320     with zipfile.ZipFile(archive_path, \"r\") as zip_ref:\n321         zip_ref.extractall(output_dir)\n322",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "experiments/get_data.py",
+    "line": 327,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "326     with tarfile.open(archive_path, \"r:gz\") as tar_ref:\n327         tar_ref.extractall(output_dir)\n328",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "scripts/benchmark_generator_timings.py",
+    "line": 221,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "220 def main():\n221     os.environ.setdefault(\"MPLCONFIGDIR\", \"/tmp/matplotlib\")\n222     args = parse_args()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "src/prelim/generators/part.py",
+    "line": 57,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "56 \n57         weka_home = Path(os.environ.get(\"WEKA_HOME\", \"/tmp/prelim-weka\"))\n58         weka_home.mkdir(parents=True, exist_ok=True)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "src/prelim/generators/tabddpm.py",
+    "line": 237,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "236         env[\"PYTHONPATH\"] = os.pathsep.join(pythonpath_entries)\n237         env.setdefault(\"MPLCONFIGDIR\", str(Path(\"/tmp\") / \"prelim-tabddpm-mpl\"))\n238         try:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "src/prelim/generators/tabsyn.py",
+    "line": 228,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "227         env[\"PYTHONPATH\"] = os.pathsep.join(pythonpath_entries)\n228         env.setdefault(\"MPLCONFIGDIR\", str(Path(\"/tmp\") / \"prelim-tabsyn-mpl\"))\n229         return env",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "experiments/get_data.py",
+    "line": 76,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

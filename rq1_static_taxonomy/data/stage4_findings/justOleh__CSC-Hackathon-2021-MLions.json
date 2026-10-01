@@ -1,0 +1,62 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "src/post_processors/abstract.py",
+    "line": 16,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "15         with open(config_path) as file:\n16             config = yaml.load(file)\n17             return config",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "src/post_processors/blur_removal.py",
+    "line": 24,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "23         self.device = torch.device(\"cuda:0\" if torch.cuda.is_available() else \"cpu\")\n24         self.model.load_state_dict(torch.load(model_weights_path, map_location=self.device))\n25         self.model.eval()",
+    "stage": "data_acquisition+data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "src/sorters/abstract.py",
+    "line": 24,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "23         with open(config_path) as file:\n24             config = yaml.load(file)\n25             return config",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "src/sorters/segmentation/regression.py",
+    "line": 91,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "90 \t\t# load the model from the filename\n91 \t\tself.log_reg = pickle.load(open(filename, 'rb'))\n92 \t\tself.classes_num = len(self.CLASSES_DICT)",
+    "stage": "data_acquisition+data_preparation+evaluation+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "src/sorters/segmentation/regression.py",
+    "line": 87,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "src/sorters/segmentation/regression.py",
+    "line": 91,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+modeling+training"
+  }
+]

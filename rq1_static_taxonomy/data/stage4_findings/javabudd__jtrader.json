@@ -1,0 +1,132 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "jtrader/core/machine_learning/data_loader.py",
+    "line": 80,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "79             return self._data\n80         self._data = pd.read_pickle(\n81             self.local_data_location\n82         )\n83         return self._data",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "jtrader/core/machine_learning/local/linear_learner.py",
+    "line": 68,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "67         if path.is_file():\n68             model = pd.read_pickle(f\"{MODEL_FOLDER}/{model_name}.pkl\")\n69         else:",
+    "stage": "data_acquisition+data_preparation+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "jtrader/core/machine_learning/local/linear_learner.py",
+    "line": 105,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "104 \n105                 param_hash = hashlib.md5(json.dumps(params, sort_keys=True).encode('utf-8')).hexdigest()\n106                 model = self.get_prophet_model(params, extra_features)",
+    "stage": "data_acquisition+data_preparation+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "jtrader/core/machine_learning/local/linear_learner.py",
+    "line": 128,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "127             self._model = fitted_models[\n128                 hashlib.md5(json.dumps(best_params, sort_keys=True).encode('utf-8')).hexdigest()\n129             ]",
+    "stage": "data_acquisition+data_preparation+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "jtrader/core/ml.py",
+    "line": 72,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "71         if path.is_file():\n72             model = pd.read_pickle(f\"{API_RESULT_FOLDER}/{name}.pkl\")\n73         else:",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "jtrader/core/ml.py",
+    "line": 81,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "80         if path.is_file():\n81             prediction = pd.read_pickle(f\"{PREDICTION_FOLDER}/{name}.pkl\")\n82         else:",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "jtrader/core/ml.py",
+    "line": 90,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "89         if path.is_file():\n90             model = pd.read_pickle(f\"{name}\")\n91         else:",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "jtrader/core/machine_learning/local/linear_learner.py",
+    "line": 105,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "jtrader/core/machine_learning/local/linear_learner.py",
+    "line": 128,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+modeling+training"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2026-113",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "pyarrow 22.0.0: Use After Free vulnerability in Apache Arrow C++.  This issue affects Apache Arrow C++ from 15.0.0 through 23.0.0. It can be triggered when reading an Arrow IPC file (but not an IPC stream) with pre-b (fix: 23.0.1)",
+    "snippet": "pyarrow==22.0.0",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2026-113",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "pyarrow 22.0.0: Use After Free vulnerability in Apache Arrow C++.  This issue affects Apache Arrow C++ from 15.0.0 through 23.0.0. It can be triggered when reading an Arrow IPC file (but not an IPC stream) with pre-b (fix: 23.0.1)",
+    "snippet": "pyarrow==22.0.0",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2026-113",
+    "file_path": "requirements-dev.txt",
+    "line": 0,
+    "message": "pyarrow 22.0.0: Use After Free vulnerability in Apache Arrow C++.  This issue affects Apache Arrow C++ from 15.0.0 through 23.0.0. It can be triggered when reading an Arrow IPC file (but not an IPC stream) with pre-b (fix: 23.0.1)",
+    "snippet": "pyarrow==22.0.0",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2026-113",
+    "file_path": "requirements-dev.txt",
+    "line": 0,
+    "message": "pyarrow 22.0.0: Use After Free vulnerability in Apache Arrow C++.  This issue affects Apache Arrow C++ from 15.0.0 through 23.0.0. It can be triggered when reading an Arrow IPC file (but not an IPC stream) with pre-b (fix: 23.0.1)",
+    "snippet": "pyarrow==22.0.0",
+    "stage": "dependencies"
+  }
+]

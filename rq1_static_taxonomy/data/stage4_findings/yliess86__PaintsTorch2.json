@@ -1,0 +1,42 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "evaluation/benchmark.py",
+    "line": 70,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "69 \n70     ckpt = torch.load(args.model)\n71",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "evaluation/examples.py",
+    "line": 21,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "20 \n21 ckpt = torch.load(args.model)\n22",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "evaluation/export.py",
+    "line": 23,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "22 \n23         ckpt = torch.load(g)\n24         G = nn.DataParallel(Generator(features, bn=bn))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "paintstorch/network.py",
+    "line": 64,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "63         )\n64         model.load_state_dict(torch.load(path))\n65         model = nn.Sequential(*list(model.children())[:15])",
+    "stage": "modeling"
+  }
+]

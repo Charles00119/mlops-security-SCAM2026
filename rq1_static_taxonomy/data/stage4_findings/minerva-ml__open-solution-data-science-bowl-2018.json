@@ -1,0 +1,42 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "src/steppy/pytorch/models.py",
+    "line": 155,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "154             self.model.cpu()\n155             self.model.load_state_dict(torch.load(filepath))\n156             self.model = self.model.cuda()",
+    "stage": "inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "src/steppy/pytorch/models.py",
+    "line": 158,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "157         else:\n158             self.model.load_state_dict(torch.load(filepath, map_location=lambda storage, loc: storage))\n159         return self",
+    "stage": "inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "src/unet_models.py",
+    "line": 120,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "119     if pretrained == 'carvana':\n120         state = torch.load('TernausNet.pt')\n121         model.load_state_dict(state['model'])",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "src/utils.py",
+    "line": 21,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "20     with open(filepath) as f:\n21         config = yaml.load(f)\n22     return AttrDict(config)",
+    "stage": "data_acquisition"
+  }
+]

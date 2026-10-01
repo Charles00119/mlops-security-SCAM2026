@@ -1,0 +1,282 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "dvha/db/sql_connector.py",
+    "line": 129,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "128         self.cursor.execute(\n129             \"\"\"\n130             SELECT COUNT(*)\n131             FROM information_schema.tables\n132             WHERE table_name = '{0}'\n133             \"\"\".format(\n134                 table_name.replace(\"'\", \"''\")",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "dvha/db/sql_connector.py",
+    "line": 168,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "167 \n168         query = \"Select %s from %s;\" % (return_col_str, table_name)\n169         if condition_str and condition_str[0]:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "dvha/db/sql_connector.py",
+    "line": 170,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "169         if condition_str and condition_str[0]:\n170             query = \"Select %s from %s where %s;\" % (\n171                 return_col_str,\n172                 table_name,\n173                 condition_str[0],\n174             )\n175         if order and order_by:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "dvha/db/sql_connector.py",
+    "line": 301,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "300         set_str = ','.join(set_str)\n301         update = f\"Update {table_name} SET {set_str} WHERE {condition_str}\"\n302",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "dvha/db/sql_connector.py",
+    "line": 328,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "327         query = (\n328             \"SELECT DISTINCT study_instance_uid FROM %s WHERE \"\n329             \"study_instance_uid LIKE '%s%%';\"\n330             % (table_name, study_instance_uid)\n331         )",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "dvha/db/sql_connector.py",
+    "line": 371,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "370         \"\"\"\n371         query = \"Select Distinct %s from %s where %s = '%s';\" % (\n372             column,\n373             table_name,\n374             column,\n375             value,\n376         )\n377         self.cursor.execute(query)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "dvha/db/sql_connector.py",
+    "line": 442,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "441 \n442         cmd = \"INSERT INTO %s (%s) VALUES (%s);\\n\" % (\n443             table,\n444             \",\".join(used_columns),\n445             \",\".join(values),\n446         )\n447         self.execute_str(cmd)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "dvha/db/sql_connector.py",
+    "line": 513,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "512             self.cursor.execute(\n513                 \"DELETE FROM %s WHERE %s;\" % (table, condition_str)\n514             )",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "dvha/db/sql_connector.py",
+    "line": 559,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "558         self.cursor.execute(\n559             \"DELETE FROM DVHs WHERE roi_name = '%s' and \"\n560             \"study_instance_uid = '%s';\" % (roi_name, study_instance_uid)\n561         )",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "dvha/db/sql_connector.py",
+    "line": 642,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "641             line = (\n642                 \"SELECT datname FROM pg_catalog.pg_database WHERE \"\n643                 \"lower(datname) = lower('%s');\" % self.db_name\n644             )",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "dvha/db/sql_connector.py",
+    "line": 665,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "664         \"\"\"\n665         line = \"SELECT COUNT(*) FROM %s;\" % table\n666         self.cursor.execute(line)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "dvha/db/sql_connector.py",
+    "line": 692,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "691         if condition and condition[0]:\n692             query = \"select distinct %s from %s where %s;\" % (\n693                 column,\n694                 table,\n695                 str(condition[0]),\n696             )\n697         else:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "dvha/db/sql_connector.py",
+    "line": 698,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "697         else:\n698             query = \"select distinct %s from %s;\" % (column, table)\n699         self.cursor.execute(query)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "dvha/db/sql_connector.py",
+    "line": 728,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "727             query = (\n728                 \"select column_name from information_schema.columns where \"\n729                 \"table_name = '%s';\" % table_name.lower()\n730             )",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "dvha/db/sql_connector.py",
+    "line": 837,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "836         if condition:\n837             query = \"SELECT %s(%s) FROM %s WHERE %s;\" % (\n838                 func,\n839                 column,\n840                 table,\n841                 condition,\n842             )\n843         else:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "dvha/db/sql_connector.py",
+    "line": 844,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "843         else:\n844             query = \"SELECT %s(%s) FROM %s;\" % (func, column, table)\n845         self.cursor.execute(query)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "dvha/db/sql_connector.py",
+    "line": 1056,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "1055                     row_str = row_str.replace(\"'None'\", \"NULL\")\n1056                     cmd = \"INSERT INTO %s (%s) VALUES (%s);\\n\" % (\n1057                         table,\n1058                         \",\".join(columns),\n1059                         row_str,\n1060                     )\n1061                     cnx_dst.execute_str(cmd)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "dvha/db/sql_connector.py",
+    "line": 1229,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "1228     condition_str = \"%s = '%s'\" % (column, value)\n1229     insert_cmd = \"INSERT INTO %s (%s) VALUES ('%s');\" % (table, column, value)\n1230     delete_cmd = \"DELETE FROM %s WHERE %s;\" % (table, condition_str)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "dvha/db/sql_connector.py",
+    "line": 1230,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "1229     insert_cmd = \"INSERT INTO %s (%s) VALUES ('%s');\" % (table, column, value)\n1230     delete_cmd = \"DELETE FROM %s WHERE %s;\" % (table, condition_str)\n1231",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "dvha/options.py",
+    "line": 326,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "325                 with open(OPTIONS_PATH, \"rb\") as infile:\n326                     loaded_options = pickle.load(infile)\n327                 self.upgrade_options(loaded_options)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "dvha/options.py",
+    "line": 381,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "380                 options_str = str(infile.read())\n381             return hashlib.md5(options_str.encode(\"utf-8\")).hexdigest()\n382         return None",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "dvha/tools/roi_name_manager.py",
+    "line": 1471,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "1470                     sql_query = (\n1471                         \"SELECT DISTINCT study_instance_uid, roi_name FROM DVHs WHERE %s;\"\n1472                         % condition\n1473                     )",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "dvha/tools/utilities.py",
+    "line": 975,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "974         with open(abs_file_path, \"rb\") as infile:\n975             obj = pickle.load(infile)\n976         return obj",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "dvha/options.py",
+    "line": 326,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "dvha/options.py",
+    "line": 354,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "dvha/options.py",
+    "line": 381,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "dvha/tools/utilities.py",
+    "line": 958,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "dvha/tools/utilities.py",
+    "line": 975,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  }
+]

@@ -58,6 +58,28 @@ for _p in (_HERE, os.path.join(_ROOT, "00_corpus", "scanner")):
 
 from findings import Finding, dump_findings_json  # type: ignore  # noqa: E402
 
+def _remove_tree(path: str, attempts: int = 3) -> None:
+    """Delete a clone directory robustly. Git marks pack files read-only; on
+    Windows shutil.rmtree(ignore_errors=True) silently leaves them behind and
+    the temp folder grows until the disk fills. Clear the bit and retry."""
+    import stat
+    import time
+
+    def _on_error(func, p, exc_info):
+        try:
+            os.chmod(p, stat.S_IWRITE)
+            func(p)
+        except OSError:
+            pass
+
+    for i in range(attempts):
+        if not os.path.exists(path):
+            return
+        shutil.rmtree(path, onerror=_on_error)
+        if os.path.exists(path):
+            time.sleep(1 + i)
+
+
 
 # -- Anthropic client -------------------------------------------------------
 
@@ -585,7 +607,7 @@ def scan_one_repo(url: str, client, *, token: str | None = None,
                              detail=f"{type(exc).__name__}: {exc}\n"
                                     f"{traceback.format_exc()[:400]}")
     finally:
-        shutil.rmtree(tmp, ignore_errors=True)
+        _remove_tree(tmp)
 
 
 # -- Logging and resume ---------------------------------------------------

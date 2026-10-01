@@ -1,0 +1,102 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "ssc_scoring/mymodules/inference.py",
+    "line": 263,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "262 def record_best_preds(net: torch.nn.Module, data_dict: Dict[str, DataLoader], mypath: Path, args):\n263     net.load_state_dict(torch.load(mypath.model_fpath))  # load the best weights to do evaluation\n264     for mode, data in data_dict.items():",
+    "stage": "data_preparation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "ssc_scoring/mymodules/networks/kd.py",
+    "line": 24,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "23     except:\n24         os.system(\"pip install \" + package)\n25",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "ssc_scoring/mymodules/networks/kd.py",
+    "line": 76,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "75         enc = generate_model(opt)  # generate resnet encoder\n76         enc.load_state_dict(torch.load(opt.pretrain_path))\n77",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "ssc_scoring/mymodules/networks/kd.py",
+    "line": 85,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "84         # Load pre-trained weights\n85         checkpoint = torch.load(weights_fpath)\n86         state_dict = checkpoint['state_dict']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "ssc_scoring/mymodules/tool.py",
+    "line": 271,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "270                 jobid = row['outfile'].split('-')[-1].split('_')[0]  # extract job id from outfile name\n271                 seff = os.popen('seff ' + jobid)  # get job information\n272                 for line in seff.readlines():",
+    "stage": "data_acquisition+evaluation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "ssc_scoring/mymodules/visualization/attention_map.py",
+    "line": 39,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "38 \n39         self.net.load_state_dict(torch.load(self.mypath.model_fpath, map_location=self.device))\n40         self.net.to(self.device)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "ssc_scoring/occlusion_sensitivity.py",
+    "line": 470,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "469     net = get_net('vgg11_bn', 3, args)  # get network architecture\n470     net.load_state_dict(torch.load(mypath.model_fpath, map_location=device))  # load trained weights\n471     net.eval()  # 8",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "ssc_scoring/run.py",
+    "line": 275,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "274             net_recon = ReconNet(net)\n275             net_recon.load_state_dict(torch.load(mypath2.model_fpath, map_location=torch.device(\"cpu\")))\n276             net.features = copy.deepcopy(net_recon.features)  # only use the pretrained features",
+    "stage": "evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "ssc_scoring/run.py",
+    "line": 282,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "281             valid_mae_best = eval_net_mae(mypath, Path(args.eval_id))\n282             net.load_state_dict(torch.load(mypath.model_fpath, map_location=device))  # model_fpath need to exist\n283         else:",
+    "stage": "evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "ssc_scoring/run_pos.py",
+    "line": 233,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "232         valid_mae_best = eval_net_mae(mypath, PathPos(args.eval_id))\n233         net.load_state_dict(torch.load(mypath.model_fpath, map_location=device))  # model_fpath need to exist\n234     else:",
+    "stage": "unreachable"
+  }
+]

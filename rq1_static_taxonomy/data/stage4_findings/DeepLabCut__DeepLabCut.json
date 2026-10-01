@@ -1,0 +1,1762 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deeplabcut/benchmark/metrics.py",
+    "line": 256,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "255     with Path(shuffle_metadata_path).open(\"rb\") as f:\n256         test_indices = set([int(i) for i in pickle.load(f)[2]])\n257     return list(sorted(test_indices))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deeplabcut/core/crossvalutils.py",
+    "line": 408,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "407     with Path(full_data_file).open(\"rb\") as file:\n408         data = pickle.load(file)\n409     with Path(metadata_file).open(\"rb\") as file:",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deeplabcut/core/crossvalutils.py",
+    "line": 410,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "409     with Path(metadata_file).open(\"rb\") as file:\n410         metadata = pickle.load(file)\n411",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deeplabcut/core/inferenceutils.py",
+    "line": 833,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "832         with Path(pickle_path).open(\"rb\") as file:\n833             data = pickle.load(file)\n834         self.unique = data.pop(\"single\", {})",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "deeplabcut/create_project/add.py",
+    "line": 110,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "109 \n110                     subprocess.check_call(f\"mklink {os.fspath(dst)} {os.fspath(src)}\", shell=True)\n111                 except (OSError, subprocess.CalledProcessError):",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "deeplabcut/create_project/new.py",
+    "line": 189,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "188 \n189                     subprocess.check_call(f\"mklink {os.fspath(dst)} {os.fspath(src)}\", shell=True)\n190                 except (OSError, subprocess.CalledProcessError):",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deeplabcut/generate_training_dataset/metadata.py",
+    "line": 84,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "83         with doc_path.open(\"rb\") as f:\n84             _, train_idx, test_idx, _ = pickle.load(f)\n85         return ShuffleMetadata(",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deeplabcut/generate_training_dataset/metadata.py",
+    "line": 310,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "309             with doc_path.open(\"rb\") as f:\n310                 _, train_idx, test_idx, train_frac = pickle.load(f)\n311",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deeplabcut/generate_training_dataset/multiple_individuals_trainingsetmanipulation.py",
+    "line": 652,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "651                 with p.open(\"rb\") as f:\n652                     _, train_inds, test_inds, train_frac = pickle.load(f)\n653                     train_inds_temp = np.flatnonzero(np.isin(img_names, img_names_old[train_inds]))",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "deeplabcut/gui/tracklet_toolbox.py",
+    "line": 472,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "471         else:\n472             print(f\"Invalid ID. Please select a valid ID from the list of individuals: {set(self.manager.tracklet2id)}\")\n473             self.swap_id1 = None",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "deeplabcut/gui/tracklet_toolbox.py",
+    "line": 481,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "480         else:\n481             print(f\"Invalid ID. Please select a valid ID from the list of individuals: {set(self.manager.tracklet2id)}\")\n482             self.swap_id2 = None",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "deeplabcut/gui/utils.py",
+    "line": 102,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "101 \n102     with urllib.request.urlopen(url, timeout=timeout) as response:\n103         contents = response.read()",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deeplabcut/modelzoo/generalized_data_converter/datasets/base_dlc.py",
+    "line": 60,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "59         with path_dlc_document.open(\"rb\") as f:\n60             document_data = pickle.load(f)\n61",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deeplabcut/modelzoo/generalized_data_converter/datasets/materialize.py",
+    "line": 409,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "408     with Path(metafilename).open(\"rb\") as f:\n409         metafile = pickle.load(f)\n410",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deeplabcut/modelzoo/generalized_data_converter/datasets/materialize.py",
+    "line": 622,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "621     with Path(metafilename).open(\"rb\") as f:\n622         metafile = pickle.load(f)\n623",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deeplabcut/modelzoo/generalized_data_converter/utils.py",
+    "line": 102,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "101     with Path(reference_pickle).open(\"rb\") as f:\n102         pickle.load(f)\n103",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deeplabcut/modelzoo/generalized_data_converter/utils.py",
+    "line": 137,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "136     with Path(reference_pickle).open(\"rb\") as f:\n137         pickle_obj = pickle.load(f)\n138",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "deeplabcut/modelzoo/video_inference.py",
+    "line": 49,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "48     # For reading metadata, it is recommended to load onto the CPU\n49     checkpoint = torch.load(checkpoint_path, map_location=\"cpu\")\n50     if \"metadata\" in checkpoint and \"epoch\" in checkpoint[\"metadata\"]:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "deeplabcut/pose_estimation_pytorch/apis/export.py",
+    "line": 124,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "123         if det_snapshot is not None:\n124             detector_weights = torch.load(det_snapshot.path, **load_kwargs)[\"model\"]\n125",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "deeplabcut/pose_estimation_pytorch/apis/export.py",
+    "line": 141,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "140 \n141             pose_weights = torch.load(snapshot.path, **load_kwargs)[\"model\"]\n142             export_dict = dict(config=model_cfg, pose=pose_weights)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deeplabcut/pose_estimation_pytorch/apis/videos.py",
+    "line": 776,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "775         with full_data_path.open(\"rb\") as f:\n776             data = pickle.load(f)\n777",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deeplabcut/pose_estimation_pytorch/data/ctd.py",
+    "line": 393,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "392         with Path(filepath).open(\"rb\") as f:\n393             data = pickle.load(f)\n394",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deeplabcut/pose_estimation_pytorch/data/dlcloader.py",
+    "line": 291,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "290         with doc_path.open(\"rb\") as f:\n291             meta = pickle.load(f)\n292",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deeplabcut/pose_estimation_pytorch/data/dlcloader.py",
+    "line": 587,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "586     with Path(file).open(\"rb\") as f:\n587         raw_data = pickle.load(f)\n588",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deeplabcut/pose_estimation_pytorch/metrics/scoring.py",
+    "line": 25,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "24     with Path(full_pickle_path).open(\"rb\") as f:\n25         data = pickle.load(f)\n26     metadata = data.pop(\"metadata\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "deeplabcut/pose_estimation_pytorch/models/backbones/base.py",
+    "line": 124,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in hf_hub_download()",
+    "snippet": "123         self.backbone_weight_folder.mkdir(exist_ok=True, parents=False)\n124         output_path = Path(hf_hub_download(self.repo_id, filename, cache_dir=self.backbone_weight_folder))\n125",
+    "stage": "inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "deeplabcut/pose_estimation_pytorch/models/detectors/base.py",
+    "line": 48,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "47         logging.info(f\"Loading detector checkpoint from {weight_init.detector_snapshot_path}\")\n48         snapshot = torch.load(weight_init.detector_snapshot_path, map_location=\"cpu\")\n49         detector.load_state_dict(snapshot[\"model\"])",
+    "stage": "inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "deeplabcut/pose_estimation_pytorch/models/model.py",
+    "line": 206,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "205             logging.info(f\"The pose model is loading from {weight_init.snapshot_path}\")\n206             snapshot = torch.load(weight_init.snapshot_path, map_location=\"cpu\")\n207             state_dict = snapshot[\"model\"]",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "deeplabcut/pose_estimation_pytorch/models/modules/conv_block.py",
+    "line": 61,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "60         if pretrained:\n61             self.load_state_dict(torch.load(pretrained))\n62",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "deeplabcut/pose_estimation_pytorch/models/necks/base.py",
+    "line": 47,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "46         if pretrained:\n47             self.model.load_state_dict(torch.load(pretrained))",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "deeplabcut/pose_estimation_pytorch/runners/base.py",
+    "line": 150,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "149 \n150         snapshot = torch.load(path, map_location=device, weights_only=weights_only)\n151     except pickle.UnpicklingError as err:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "deeplabcut/pose_estimation_pytorch/runners/base.py",
+    "line": 203,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "202     \"\"\"\n203     snapshot = torch.load(path, map_location=\"cpu\", weights_only=False)\n204",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deeplabcut/pose_estimation_pytorch/runners/shelving.py",
+    "line": 32,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "31         \"\"\"Opens the shelf.\"\"\"\n32         self._db = shelve.open(\n33             str(self.filepath),\n34             flag=self.flag,\n35             protocol=pickle.DEFAULT_PROTOCOL,\n36         )\n37         self._open = True",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deeplabcut/pose_estimation_tensorflow/datasets/pose_imgaug.py",
+    "line": 115,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "114             with (Path(self.cfg[\"project_path\"]) / file_name).open(\"rb\") as f:\n115                 pickledata = pickle.load(f)\n116",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deeplabcut/pose_estimation_tensorflow/datasets/pose_multianimal_imgaug.py",
+    "line": 92,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "91             # Pickle the 'data' dictionary using the highest protocol available.\n92             pickledata = pickle.load(f)\n93",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deeplabcut/pose_estimation_tensorflow/predict_multianimal.py",
+    "line": 46,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "45 \n46     feature_dict = shelve.open(\n47         str(destfolder / f\"{basename}_bpt_features.pickle\"),\n48         protocol=pickle.DEFAULT_PROTOCOL,\n49     )\n50",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deeplabcut/pose_estimation_tensorflow/predict_multianimal.py",
+    "line": 52,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "51     with (destfolder / f\"{basename}_assemblies.pickle\").open(\"rb\") as f:\n52         assemblies = pickle.load(f)\n53",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deeplabcut/pose_estimation_tensorflow/predict_multianimal.py",
+    "line": 362,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "361     if shelf_path:\n362         db = shelve.open(\n363             shelf_path,\n364             protocol=pickle.DEFAULT_PROTOCOL,\n365         )\n366     else:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deeplabcut/pose_estimation_tensorflow/predict_multianimal.py",
+    "line": 438,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "437     if shelf_path:\n438         db = shelve.open(\n439             shelf_path,\n440             protocol=pickle.DEFAULT_PROTOCOL,\n441         )\n442     else:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deeplabcut/pose_tracking_pytorch/create_dataset.py",
+    "line": 36,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "35 \n36     feature_dict = shelve.open(feature_fname, protocol=pickle.DEFAULT_PROTOCOL)\n37",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "deeplabcut/pose_tracking_pytorch/inference.py",
+    "line": 31,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "30 \n31         ckpt_dict = torch.load(self.checkpoint)\n32",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "deeplabcut/pose_tracking_pytorch/model/backbones/vit_pytorch.py",
+    "line": 311,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "310         # will have to change some of these\n311         param_dict = torch.load(model_path, map_location=\"cpu\")\n312         if \"model\" in param_dict:",
+    "stage": "inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "deeplabcut/pose_tracking_pytorch/model/make_model.py",
+    "line": 53,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "52         device = \"cuda\" if torch.cuda.is_available() else \"cpu\"\n53         param_dict = torch.load(trained_path, map_location=device)\n54         for i in param_dict:",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deeplabcut/refine_training_dataset/outlier_frames.py",
+    "line": 78,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "77     with Path(pickle_file).open(\"rb\") as file:\n78         data = pickle.load(file)\n79     if pickle_file.endswith(\"_full.pickle\"):",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deeplabcut/refine_training_dataset/stitch.py",
+    "line": 496,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "495         with Path(pickle_file).open(\"rb\") as file:\n496             tracklets = pickle.load(file)\n497         class_ = cls.from_dict_of_dict(tracklets, n_tracks, min_length, split_tracklets, prestitch_residuals)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deeplabcut/refine_training_dataset/stitch.py",
+    "line": 1141,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "1140             try:\n1141                 feature_dict = shelve.open(feature_dict_path, flag=\"r\")\n1142             except dbm.error as err:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deeplabcut/refine_training_dataset/tracklets.py",
+    "line": 216,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "215         with Path(filename).open(\"rb\") as file:\n216             tracklets = pickle.load(file)\n217         self._load_tracklets(tracklets, auto_fill)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "deeplabcut/utils/auxfun_models.py",
+    "line": 96,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "95         print(f\"Downloading a ImageNet-pretrained model from {url}....\")\n96         response = urllib.request.urlopen(url)\n97         with tarfile.open(fileobj=BytesIO(response.read()), mode=\"r:gz\") as tar:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "deeplabcut/utils/auxfun_models.py",
+    "line": 98,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "97         with tarfile.open(fileobj=BytesIO(response.read()), mode=\"r:gz\") as tar:\n98             tar.extractall(path=target_dir)\n99     except KeyError:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "deeplabcut/utils/auxfun_models.py",
+    "line": 133,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "132         url = neturls[modelname]\n133         response = urllib.request.urlopen(url)\n134         print(f\"Downloading the model from the DeepLabCut server @Harvard -> Go Crimson!!! {url}....\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "deeplabcut/utils/auxfun_models.py",
+    "line": 137,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "136         pbar = tqdm(unit=\"B\", total=total_size, position=0)\n137         filename, _ = urllib.request.urlretrieve(url, reporthook=show_progress)\n138         with tarfile.open(filename, mode=\"r:gz\") as tar:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deeplabcut/utils/auxfun_multianimal.py",
+    "line": 211,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "210         with data_file.open(\"rb\") as handle:\n211             data = pickle.load(handle)\n212     except (pickle.UnpicklingError, FileNotFoundError):",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deeplabcut/utils/auxfun_multianimal.py",
+    "line": 213,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "212     except (pickle.UnpicklingError, FileNotFoundError):\n213         data = shelve.open(data_file, flag=\"r\")\n214     with metadata_file.open(\"rb\") as handle:",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deeplabcut/utils/auxfun_multianimal.py",
+    "line": 215,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "214     with metadata_file.open(\"rb\") as handle:\n215         metadata = pickle.load(handle)\n216     return data, metadata",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "deeplabcut/utils/auxfun_videos.py",
+    "line": 64,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "63         command = f'ffmpeg -v error -i \"{self.video_path}\" -f null - 2>\"{dest}\"'\n64         subprocess.call(command, shell=True)\n65         if Path(dest).stat().st_size != 0:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "deeplabcut/utils/auxfun_videos.py",
+    "line": 102,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "101             )\n102             output = subprocess.check_output(command, shell=True, stderr=subprocess.STDOUT)\n103             self._n_frames_robust = int(output)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "deeplabcut/utils/auxfun_videos.py",
+    "line": 109,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "108             command = f'ffprobe -i \"{self.video_path}\" -show_entries format=duration -v quiet -of csv=\"p=0\"'\n109             output = subprocess.check_output(command, shell=True, stderr=subprocess.STDOUT)\n110             return float(output)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "deeplabcut/utils/auxfun_videos.py",
+    "line": 243,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "242         command = f'ffmpeg -n -i \"{self.video_path}\" -ss {start} -to {end} -c:a copy \"{output_path}\"'\n243         subprocess.call(command, shell=True)\n244         return output_path",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "deeplabcut/utils/auxfun_videos.py",
+    "line": 288,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "287         )\n288         subprocess.call(command, shell=True)\n289         return output_path",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "deeplabcut/utils/auxfun_videos.py",
+    "line": 303,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "302         command += f'-c:a copy \"{output_path}\"'\n303         subprocess.call(command, shell=True)\n304         return output_path",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "deeplabcut/utils/auxfun_videos.py",
+    "line": 326,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "325             command = command.format(\"\")\n326         subprocess.call(command, shell=True)\n327         return output_path",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deeplabcut/utils/auxiliaryfunctions.py",
+    "line": 145,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "144     with Path(filename).open(\"rb\") as handle:\n145         return pickle.load(handle)\n146",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deeplabcut/utils/auxiliaryfunctions.py",
+    "line": 202,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "201             testFraction_data,\n202         ] = pickle.load(f)\n203         return trainingdata_details, trainIndices, testIndices, testFraction_data",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deeplabcut/utils/auxiliaryfunctions_3d.py",
+    "line": 245,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "244     with Path(metadatafilename).open(\"rb\") as f:\n245         metadata = pickle.load(f)\n246         return metadata",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deeplabcut/utils/plotting.py",
+    "line": 426,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "425     with eval_pickle_file.open(\"rb\") as file:\n426         data = pickle.load(file)\n427     meta_pickle_file = eval_pickle_file.with_name(eval_pickle_file.name.replace(\"_full.\", \"_meta.\"))",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deeplabcut/utils/plotting.py",
+    "line": 429,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "428     with meta_pickle_file.open(\"rb\") as file:\n429         metadata = pickle.load(file)\n430     (w_train, _), (b_train, _) = crossvalutils._calc_within_between_pafs(",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "examples/testscript_tensorflow_multi_animal.py",
+    "line": 136,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "135     with open(os.path.join(cfg[\"project_path\"], datafile), \"rb\") as f:\n136         pickledata = pickle.load(f)\n137     num_images = len(pickledata)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "examples/testscript_transreid.py",
+    "line": 117,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "116     with open(os.path.join(cfg[\"project_path\"], datafile), \"rb\") as f:\n117         pickledata = pickle.load(f)\n118     num_images = len(pickledata)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "tests/conftest.py",
+    "line": 46,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "45     os.makedirs(dest_folder, exist_ok=True)\n46     resp = urllib.request.urlopen(url)\n47     with zipfile.ZipFile(BytesIO(resp.read())) as zf:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tests/conftest.py",
+    "line": 83,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "82     with open(os.path.join(TEST_DATA_DIR, \"dets.pickle\"), \"rb\") as file:\n83         return pickle.load(file)\n84",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tests/conftest.py",
+    "line": 89,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "88     with open(os.path.join(TEST_DATA_DIR, \"outputs.pickle\"), \"rb\") as file:\n89         scmaps, locrefs, pafs = pickle.load(file)\n90     locrefs = np.reshape(locrefs, (*locrefs.shape[:3], -1, 2))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tests/conftest.py",
+    "line": 104,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "103     with open(os.path.join(TEST_DATA_DIR, \"trimouse_assemblies.pickle\"), \"rb\") as file:\n104         temp = pickle.load(file)\n105     return np.concatenate(temp[0])[:, :2]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tests/conftest.py",
+    "line": 111,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "110     with open(os.path.join(TEST_DATA_DIR, \"trimouse_assemblies.pickle\"), \"rb\") as file:\n111         temp = pickle.load(file)\n112     data = np.stack(list(temp.values()))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tests/conftest.py",
+    "line": 119,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "118     with open(os.path.join(TEST_DATA_DIR, \"montblanc_assemblies.pickle\"), \"rb\") as file:\n119         temp = pickle.load(file)\n120     single = temp.pop(\"single\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tests/conftest.py",
+    "line": 131,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "130     with open(os.path.join(TEST_DATA_DIR, \"trimouse_tracklets.pickle\"), \"rb\") as file:\n131         return pickle.load(file)\n132",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tests/conftest.py",
+    "line": 137,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "136     with open(os.path.join(TEST_DATA_DIR, \"montblanc_tracklets.pickle\"), \"rb\") as file:\n137         return pickle.load(file)\n138",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tests/conftest.py",
+    "line": 145,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "144     with open(full_data_file, \"rb\") as file:\n145         data = pickle.load(file)\n146     with open(metadata_file, \"rb\") as file:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tests/conftest.py",
+    "line": 147,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "146     with open(metadata_file, \"rb\") as file:\n147         metadata = pickle.load(file)\n148     return data, metadata",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tests/conftest.py",
+    "line": 156,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "155     with open(full_data_file, \"rb\") as file:\n156         data = pickle.load(file)\n157     with open(metadata_file, \"rb\") as file:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tests/conftest.py",
+    "line": 158,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "157     with open(metadata_file, \"rb\") as file:\n158         metadata = pickle.load(file)\n159     return data, metadata",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/core/config/test_project_config.py",
+    "line": 41,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "40                 \"date\": \"Jan01\",\n41                 \"project_path\": \"/tmp/project\",\n42             }\n43         )\n44         assert cfg.Task == \"mytask\"\n45         assert cfg.project_path == Path(\"/tmp/project\")\n46 \n47     def test_from_dict_rejects_unknown_keys(self):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/core/config/test_project_config.py",
+    "line": 45,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "44         assert cfg.Task == \"mytask\"\n45         assert cfg.project_path == Path(\"/tmp/project\")\n46",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/core/debug/test_debug_logger.py",
+    "line": 261,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "260         lambda module_name: {\n261             \"alpha\": \"/tmp/site-packages/alpha/__init__.py\",\n262             \"cv2\": \"/tmp/site-packages/cv2/__init__.py\",\n263         }.get(module_name, \"unknown\"),\n264     )\n265",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/core/debug/test_debug_logger.py",
+    "line": 262,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "261             \"alpha\": \"/tmp/site-packages/alpha/__init__.py\",\n262             \"cv2\": \"/tmp/site-packages/cv2/__init__.py\",\n263         }.get(module_name, \"unknown\"),\n264     )\n265 \n266     monkeypatch.setattr(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/generate_training_dataset/test_trainset_metadata.py",
+    "line": 342,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "341     cfg = {\n342         \"project_path\": \"/tmp/dlc-nonexistent-project-path\",\n343         \"TrainingFraction\": [0.95],\n344         \"Task\": \"t\",\n345         \"date\": \"d\",\n346         \"scorer\": \"s\",\n347         \"iteration\": 0,\n348     }\n349 \n350     meta_path_mock = MagicMock()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/pose_estimation_pytorch/config/test_pose_config_creation.py",
+    "line": 205,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "204     }\n205     snapshot_path = Path(\"/tmp/snapshot-010.pt\")\n206     weight_init = WeightInitialization(snapshot_path=snapshot_path)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/pose_estimation_pytorch/modelzoo/test_inference_helpers.py",
+    "line": 57,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "56         detector_name=\"fasterrcnn_resnet50_fpn_v2\",\n57         customized_model_config=\"/tmp/custom_model_cfg.yaml\",\n58     )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/pose_estimation_pytorch/modelzoo/test_inference_helpers.py",
+    "line": 60,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "59 \n60     assert read_calls == [\"/tmp/custom_model_cfg.yaml\"]\n61     assert pose_runner == \"pose_runner\"",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tests/test_crossvalutils.py",
+    "line": 99,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "98     with open(\"tests/data/montblanc_map.pickle\", \"rb\") as f:\n99         results_gt = pickle.load(f)\n100     np.testing.assert_equal(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tests/test_inferenceutils.py",
+    "line": 136,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "135     with open(os.path.join(test_data_dir, \"trimouse_full.pickle\"), \"rb\") as file:\n136         data = pickle.load(file)\n137     with pytest.warns(UserWarning):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tests/test_inferenceutils.py",
+    "line": 174,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "173     with open(os.path.join(test_data_dir, \"trimouse_full.pickle\"), \"rb\") as file:\n174         temp = pickle.load(file)\n175     data = {\"metadata\": temp.pop(\"metadata\")}",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tests/test_inferenceutils.py",
+    "line": 200,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "199     with open(os.path.join(test_data_dir, \"montblanc_full.pickle\"), \"rb\") as file:\n200         data = pickle.load(file)\n201     ass = inferenceutils.Assembler(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tests/test_inferenceutils.py",
+    "line": 231,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "230     with open(os.path.join(test_data_dir, \"trimouse_full.pickle\"), \"rb\") as file:\n231         data = pickle.load(file)\n232",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tests/test_inferenceutils.py",
+    "line": 286,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "285     with open(os.path.join(test_data_dir, \"trimouse_full.pickle\"), \"rb\") as file:\n286         data = pickle.load(file)\n287     ass = inferenceutils.Assembler(data, max_n_individuals=3, n_multibodyparts=12)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "tools/knowledge_indexing/docs_index.py",
+    "line": 430,
+    "message": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "snippet": "429         return slug\n430     return f\"section-{hashlib.sha1(text.encode('utf-8')).hexdigest()[:10]}\"\n431",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/benchmark/metrics.py",
+    "line": 256,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/core/crossvalutils.py",
+    "line": 408,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/core/crossvalutils.py",
+    "line": 410,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/core/crossvalutils.py",
+    "line": 459,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/core/inferenceutils.py",
+    "line": 833,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/core/inferenceutils.py",
+    "line": 881,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "deeplabcut/create_project/add.py",
+    "line": 110,
+    "message": "Found 'subprocess' function 'check_call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "deeplabcut/create_project/new.py",
+    "line": 189,
+    "message": "Found 'subprocess' function 'check_call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/generate_training_dataset/metadata.py",
+    "line": 84,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/generate_training_dataset/metadata.py",
+    "line": 310,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/generate_training_dataset/multiple_individuals_trainingsetmanipulation.py",
+    "line": 443,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/generate_training_dataset/multiple_individuals_trainingsetmanipulation.py",
+    "line": 652,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "deeplabcut/gui/utils.py",
+    "line": 102,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/modelzoo/generalized_data_converter/datasets/base_dlc.py",
+    "line": 60,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/modelzoo/generalized_data_converter/datasets/materialize.py",
+    "line": 399,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/modelzoo/generalized_data_converter/datasets/materialize.py",
+    "line": 409,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/modelzoo/generalized_data_converter/datasets/materialize.py",
+    "line": 415,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/modelzoo/generalized_data_converter/datasets/materialize.py",
+    "line": 433,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/modelzoo/generalized_data_converter/datasets/materialize.py",
+    "line": 612,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/modelzoo/generalized_data_converter/datasets/materialize.py",
+    "line": 622,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/modelzoo/generalized_data_converter/datasets/materialize.py",
+    "line": 628,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/modelzoo/generalized_data_converter/utils.py",
+    "line": 102,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/modelzoo/generalized_data_converter/utils.py",
+    "line": 137,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/modelzoo/generalized_data_converter/utils.py",
+    "line": 208,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/pose_estimation_3d/camera_calibration.py",
+    "line": 181,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/pose_estimation_pytorch/apis/tracklets.py",
+    "line": 186,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/pose_estimation_pytorch/apis/videos.py",
+    "line": 598,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/pose_estimation_pytorch/apis/videos.py",
+    "line": 606,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/pose_estimation_pytorch/apis/videos.py",
+    "line": 776,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/pose_estimation_pytorch/apis/videos.py",
+    "line": 827,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/pose_estimation_pytorch/data/ctd.py",
+    "line": 393,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/pose_estimation_pytorch/data/dlcloader.py",
+    "line": 291,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/pose_estimation_pytorch/data/dlcloader.py",
+    "line": 587,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/pose_estimation_pytorch/metrics/scoring.py",
+    "line": 25,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-shelve",
+    "file_path": "deeplabcut/pose_estimation_pytorch/runners/shelving.py",
+    "line": 32,
+    "message": "Avoid using `shelve`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/pose_estimation_tensorflow/core/evaluate_multianimal.py",
+    "line": 605,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/pose_estimation_tensorflow/datasets/pose_imgaug.py",
+    "line": 115,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/pose_estimation_tensorflow/datasets/pose_multianimal_imgaug.py",
+    "line": 92,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/pose_estimation_tensorflow/modelzoo/api/superanimal_inference.py",
+    "line": 382,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-shelve",
+    "file_path": "deeplabcut/pose_estimation_tensorflow/predict_multianimal.py",
+    "line": 46,
+    "message": "Avoid using `shelve`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/pose_estimation_tensorflow/predict_multianimal.py",
+    "line": 52,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/pose_estimation_tensorflow/predict_multianimal.py",
+    "line": 207,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-shelve",
+    "file_path": "deeplabcut/pose_estimation_tensorflow/predict_multianimal.py",
+    "line": 362,
+    "message": "Avoid using `shelve`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-shelve",
+    "file_path": "deeplabcut/pose_estimation_tensorflow/predict_multianimal.py",
+    "line": 438,
+    "message": "Avoid using `shelve`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/pose_estimation_tensorflow/predict_videos.py",
+    "line": 1405,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/pose_estimation_tensorflow/predict_videos.py",
+    "line": 1708,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-shelve",
+    "file_path": "deeplabcut/pose_tracking_pytorch/create_dataset.py",
+    "line": 36,
+    "message": "Avoid using `shelve`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/pose_tracking_pytorch/processor/processor.py",
+    "line": 197,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/refine_training_dataset/outlier_frames.py",
+    "line": 78,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/refine_training_dataset/stitch.py",
+    "line": 496,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-shelve",
+    "file_path": "deeplabcut/refine_training_dataset/stitch.py",
+    "line": 1141,
+    "message": "Avoid using `shelve`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/refine_training_dataset/tracklets.py",
+    "line": 216,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "deeplabcut/utils/auxfun_models.py",
+    "line": 96,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "deeplabcut/utils/auxfun_models.py",
+    "line": 133,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "deeplabcut/utils/auxfun_models.py",
+    "line": 137,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/utils/auxfun_multianimal.py",
+    "line": 198,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/utils/auxfun_multianimal.py",
+    "line": 200,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/utils/auxfun_multianimal.py",
+    "line": 211,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-shelve",
+    "file_path": "deeplabcut/utils/auxfun_multianimal.py",
+    "line": 213,
+    "message": "Avoid using `shelve`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/utils/auxfun_multianimal.py",
+    "line": 215,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "deeplabcut/utils/auxfun_videos.py",
+    "line": 64,
+    "message": "Found 'subprocess' function 'call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "deeplabcut/utils/auxfun_videos.py",
+    "line": 102,
+    "message": "Found 'subprocess' function 'check_output' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "deeplabcut/utils/auxfun_videos.py",
+    "line": 109,
+    "message": "Found 'subprocess' function 'check_output' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "deeplabcut/utils/auxfun_videos.py",
+    "line": 243,
+    "message": "Found 'subprocess' function 'call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "deeplabcut/utils/auxfun_videos.py",
+    "line": 288,
+    "message": "Found 'subprocess' function 'call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "deeplabcut/utils/auxfun_videos.py",
+    "line": 303,
+    "message": "Found 'subprocess' function 'call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "deeplabcut/utils/auxfun_videos.py",
+    "line": 326,
+    "message": "Found 'subprocess' function 'call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/utils/auxiliaryfunctions.py",
+    "line": 145,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/utils/auxiliaryfunctions.py",
+    "line": 151,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/utils/auxiliaryfunctions.py",
+    "line": 180,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/utils/auxiliaryfunctions.py",
+    "line": 192,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/utils/auxiliaryfunctions.py",
+    "line": 202,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/utils/auxiliaryfunctions_3d.py",
+    "line": 240,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/utils/auxiliaryfunctions_3d.py",
+    "line": 245,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/utils/plotting.py",
+    "line": 426,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deeplabcut/utils/plotting.py",
+    "line": 429,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "dev-docs/docs/theme/main.html",
+    "line": 5,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-subprocess-use-tainted-env-args.dangerous-subprocess-use-tainted-env-args",
+    "file_path": "docker/package/deeplabcut_docker.py",
+    "line": 212,
+    "message": "Detected subprocess function 'run' with user controlled data. A malicious actor could leverage this to perform command injection. You may consider using 'shlex.quote()'.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "examples/testscript_tensorflow_multi_animal.py",
+    "line": 136,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "examples/testscript_transreid.py",
+    "line": 117,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1",
+    "file_path": "tools/knowledge_indexing/docs_index.py",
+    "line": 430,
+    "message": "Detected SHA1 hash algorithm which is considered insecure. SHA1 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

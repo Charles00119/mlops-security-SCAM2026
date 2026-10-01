@@ -1,0 +1,1382 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "deploy/cpp_shitu/tools/transform_id_map.py",
+    "line": 18,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "17     with open(args.config) as fd:\n18         config = yaml.load(fd.read(), yaml.FullLoader)\n19     index_dir = \"\"",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deploy/cpp_shitu/tools/transform_id_map.py",
+    "line": 30,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "29     with open(id_map_path, \"rb\") as fd:\n30         ids = pickle.load(fd)\n31     with open(os.path.join(index_dir, \"id_map.txt\"), \"w\") as fd:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "deploy/fastdeploy/sophgo/python/infer.py",
+    "line": 31,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "30     if not os.path.exists('ResNet50_vd_infer.tgz'):\n31         run(cmd_str, shell=True)\n32     if not os.path.exists('ILSVRC2012_val_00000010.jpeg'):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "deploy/fastdeploy/sophgo/python/infer.py",
+    "line": 33,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "32     if not os.path.exists('ILSVRC2012_val_00000010.jpeg'):\n33         run(jpg_str, shell=True)\n34     run(tar_str, shell=True)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "deploy/fastdeploy/sophgo/python/infer.py",
+    "line": 34,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "33         run(jpg_str, shell=True)\n34     run(tar_str, shell=True)\n35",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "deploy/fastdeploy/sophgo/python/infer.py",
+    "line": 45,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "44     print(cmd_str)\n45     run(cmd_str, shell=True)\n46",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "deploy/fastdeploy/sophgo/python/infer.py",
+    "line": 60,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "59         print(str)\n60         run(str, shell=True)\n61",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "deploy/fastdeploy/sophgo/python/infer.py",
+    "line": 79,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "78     os.chdir('./ResNet50/workspace/')\n79     run(cmd_str, shell=True)\n80     os.chdir('../../')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "deploy/fastdeploy/sophgo/python/infer.py",
+    "line": 94,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "93     os.chdir('./ResNet50/workspace')\n94     run(cmd_str, shell=True)\n95     os.chdir('../../')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "deploy/hubserving/test_hubserving.py",
+    "line": 125,
+    "message": "Call to requests without timeout",
+    "snippet": "124             try:\n125                 r = requests.post(\n126                     url=args.server_url,\n127                     headers=headers,\n128                     data=json.dumps(data))\n129                 r.raise_for_status",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "deploy/lite_shitu/transform_id_map.py",
+    "line": 18,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "17     with open(args.config) as fd:\n18         config = yaml.load(fd.read(), yaml.FullLoader)\n19     index_dir = \"\"",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deploy/lite_shitu/transform_id_map.py",
+    "line": 30,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "29     with open(id_map_path, \"rb\") as fd:\n30         ids = pickle.load(fd)\n31     with open(os.path.join(index_dir, \"id_map.txt\"), \"w\") as fd:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "deploy/paddleserving/pipeline_http_client.py",
+    "line": 19,
+    "message": "Call to requests without timeout",
+    "snippet": "18     for i in range(1):\n19         r = requests.post(url=url, data=json.dumps(data))\n20         print(r.json())",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "deploy/paddleserving/recognition/pipeline_http_client.py",
+    "line": 45,
+    "message": "Call to requests without timeout",
+    "snippet": "44     for i in range(1):\n45         r = requests.post(url=url, data=json.dumps(data))\n46         print(r.json())",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deploy/paddleserving/recognition/recognition_web_service.py",
+    "line": 125,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "124         with open(os.path.join(index_dir, \"id_map.pkl\"), \"rb\") as fd:\n125             self.id_map = pickle.load(fd)\n126",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deploy/paddleserving/recognition/test_cpp_serving_client.py",
+    "line": 39,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "38     with open(os.path.join(index_dir, \"id_map.pkl\"), \"rb\") as fd:\n39         id_map = pickle.load(fd)\n40     return searcher, id_map",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deploy/python/build_gallery.py",
+    "line": 164,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "163                   'rb') as fd:\n164             ids = pickle.load(fd)\n165         assert index.ntotal == len(ids.keys(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deploy/python/eval_shitu_pipeline.py",
+    "line": 32,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "31         with open(os.path.join(self.index_dir, \"id_map.pkl\"), \"rb\") as fd:\n32             self.id_map = pickle.load(fd)\n33",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deploy/python/predict_system.py",
+    "line": 60,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "59         with open(os.path.join(index_dir, \"id_map.pkl\"), \"rb\") as fd:\n60             self.id_map = pickle.load(fd)\n61",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "deploy/python/preprocess.py",
+    "line": 316,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "315         if isinstance(scale, str):\n316             scale = eval(scale)\n317         assert channel_num in [",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "deploy/shitu_index_manager/mod/index_http_client.py",
+    "line": 56,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "55         if isinstance(result, str):\n56             result = eval(result)\n57         msg = result[\"error_message\"]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "deploy/shitu_index_manager/mod/utils.py",
+    "line": 18,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "17     \"\"\"计算文件的MD5值\"\"\"\n18     md5 = hashlib.md5()\n19     with open(file_path, 'rb') as f:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "deploy/shitu_index_manager/server.py",
+    "line": 63,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "62         if os.path.exists(path):\n63             return pickle.load(open(path, 'rb'))\n64         else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "deploy/utils/config.py",
+    "line": 108,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "107         try:\n108             return eval(v)\n109         except Exception:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "deploy/utils/predictor.py",
+    "line": 60,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "59         for v in paddle.__version__.split(\".\")[:3]:\n60             pd_version = 10 * pd_version + eval(v)\n61",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "paddleclas.py",
+    "line": 496,
+    "message": "Call to requests without timeout",
+    "snippet": "495         os.remove(save_path)\n496     response = requests.get(url, stream=True)\n497     total_size_in_bytes = int(response.headers.get(\"content-length\", 0))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/arch/__init__.py",
+    "line": 79,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "78         backbone_name = backbone_config.pop(\"name\")\n79         self.backbone = eval(backbone_name)(**backbone_config)\n80         self.head_feature_from = config.get('head_feature_from', 'neck')",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/arch/__init__.py",
+    "line": 135,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "134             model_name = model_config.pop(\"name\")\n135             model = eval(model_name)(**model_config)\n136",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/arch/backbone/legendary_models/pp_hgnet_v2.py",
+    "line": 294,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "293             self.layers.append(\n294                 eval(block_type)(in_channels=in_channels\n295                                  if i == 0 else mid_channels,",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/arch/backbone/legendary_models/pp_lcnet.py",
+    "line": 228,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "227         if isinstance(self.lr_mult_list, str):\n228             self.lr_mult_list = eval(self.lr_mult_list)\n229",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/arch/backbone/model_zoo/foundation_vit.py",
+    "line": 484,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "483         if isinstance(norm_layer, str):\n484             self.norm1 = eval(norm_layer)(dim, epsilon=epsilon)\n485         elif isinstance(norm_layer, Callable):",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/arch/backbone/model_zoo/foundation_vit.py",
+    "line": 517,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "516         if isinstance(norm_layer, str):\n517             self.norm2 = eval(norm_layer)(dim, epsilon=epsilon)\n518         elif isinstance(norm_layer, Callable):",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/arch/backbone/model_zoo/foundation_vit.py",
+    "line": 636,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "635 \n636         self.fc_norm = eval(norm_layer)(\n637             embed_dim,",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/arch/backbone/model_zoo/foundation_vit.py",
+    "line": 706,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "705         _model_size = self.model_size\n706         _model_diff = eval(f'_{self.model_name}_diff')\n707",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/arch/backbone/model_zoo/foundation_vit.py",
+    "line": 795,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "794 \n795         self.norm = eval(norm_layer)(embed_dim, epsilon=epsilon)\n796",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/arch/backbone/model_zoo/svtrnet.py",
+    "line": 285,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "284         if isinstance(norm_layer, str):\n285             self.norm1 = eval(norm_layer)(dim, epsilon=epsilon)\n286         else:",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/arch/backbone/model_zoo/svtrnet.py",
+    "line": 307,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "306         if isinstance(norm_layer, str):\n307             self.norm2 = eval(norm_layer)(dim, epsilon=epsilon)\n308         else:",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/arch/backbone/model_zoo/svtrnet.py",
+    "line": 434,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "433                 weight_attr=ParamAttr(initializer=KaimingNormal()))\n434         self.norm = eval(sub_norm)(out_channels)\n435         if act is not None:",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/arch/backbone/model_zoo/svtrnet.py",
+    "line": 508,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "507         self.pos_drop = nn.Dropout(p=drop_rate)\n508         Block_unit = eval(block_unit)\n509",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/arch/backbone/model_zoo/svtrnet.py",
+    "line": 522,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "521                 drop=drop_rate,\n522                 act_layer=eval(act),\n523                 attn_drop=attn_drop_rate,",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/arch/backbone/model_zoo/svtrnet.py",
+    "line": 551,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "550                 drop=drop_rate,\n551                 act_layer=eval(act),\n552                 attn_drop=attn_drop_rate,",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/arch/backbone/model_zoo/svtrnet.py",
+    "line": 579,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "578                 drop=drop_rate,\n579                 act_layer=eval(act),\n580                 attn_drop=attn_drop_rate,",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/arch/backbone/model_zoo/svtrnet.py",
+    "line": 602,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "601         if not prenorm:\n602             self.norm = eval(norm_layer)(embed_dim[-1], epsilon=epsilon)\n603         self.use_lenhead = use_lenhead",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/arch/backbone/model_zoo/vision_transformer.py",
+    "line": 165,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "164         if isinstance(norm_layer, str):\n165             self.norm1 = eval(norm_layer)(dim, epsilon=epsilon)\n166         elif isinstance(norm_layer, Callable):",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/arch/backbone/model_zoo/vision_transformer.py",
+    "line": 181,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "180         if isinstance(norm_layer, str):\n181             self.norm2 = eval(norm_layer)(dim, epsilon=epsilon)\n182         elif isinstance(norm_layer, Callable):",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/arch/backbone/model_zoo/vision_transformer.py",
+    "line": 282,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "281 \n282         self.norm = eval(norm_layer)(embed_dim, epsilon=epsilon)\n283",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/arch/gears/__init__.py",
+    "line": 38,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "37         'head only support {}'.format(support_dict))\n38     module_class = eval(module_name)(**config)\n39     return module_class",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/data/__init__.py",
+    "line": 116,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "115 \n116     dataset = eval(dataset_name)(**config_dataset)\n117",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/data/__init__.py",
+    "line": 129,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "128         sampler_name = config_sampler.pop(\"name\")\n129         sampler_argspec = inspect.getfullargspec(eval(sampler_name)\n130                                                  .__init__).args",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/data/__init__.py",
+    "line": 133,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "132             config_sampler.update({\"total_epochs\": epochs})\n133         batch_sampler = eval(sampler_name)(dataset, **config_sampler)\n134",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/data/dataloader/dali.py",
+    "line": 172,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "171         if isinstance(scale, str):\n172             scale = eval(scale)\n173         mean = op_cfg.get(\"mean\", [0.485, 0.456, 0.406])",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/data/dataloader/dali.py",
+    "line": 260,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "259         if isinstance(scale, str):\n260             scale = eval(scale)\n261         mean = op_cfg.get(\"mean\", [0.485, 0.456, 0.406])",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/data/dataloader/dali.py",
+    "line": 337,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "336                         })\n337                     fused_dali_op = eval(fused_op_name)(**fused_op_param)\n338                     idx += 2",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/data/dataloader/dali.py",
+    "line": 357,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "356                         })\n357                     fused_dali_op = eval(fused_op_name)(**fused_op_param)\n358                     idx += 2",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/data/dataloader/dali.py",
+    "line": 377,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "376                         })\n377                     fused_dali_op = eval(fused_op_name)(**fused_op_param)\n378                     idx += 2",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/data/dataloader/dali.py",
+    "line": 393,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "392             dali_param = convert_cfg_to_dali(op_name, device, **op_param)\n393             dali_op = eval(op_name)(**dali_param)\n394             dali_op_list.append(dali_op)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ppcls/data/dataloader/face_dataset.py",
+    "line": 115,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "114             with open(os.path.join(val_data_path, dataname+\".bin\"), 'rb') as f:\n115                 img_buffs, issame = pickle.load(f, encoding='bytes')\n116             for i in range(0, len(img_buffs), 2):",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/data/postprocess/__init__.py",
+    "line": 36,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "35         super().__init__()\n36         self.func = eval(func)(**kargs)\n37         self.model_name = model_name",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/data/preprocess/batch_ops/batch_operators.py",
+    "line": 219,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "218             param.update({\"class_num\": class_num})\n219             op = eval(op_name)(**param)\n220             self.ops.update({op: prob})",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/data/preprocess/ops/operators.py",
+    "line": 574,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "573         if isinstance(scale, str):\n574             scale = eval(scale)\n575         assert channel_num in [",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/data/preprocess/ops/randaugment.py",
+    "line": 167,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "166             for key in t.keys():\n167                 ts.append(eval(key)(**t[key]))\n168",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/data/preprocess/ops/random_erasing.py",
+    "line": 65,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "64                  mode='const'):\n65         self.EPSILON = eval(EPSILON) if isinstance(EPSILON, str) else EPSILON\n66         self.sl = eval(sl) if isinstance(sl, str) else sl",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/data/preprocess/ops/random_erasing.py",
+    "line": 66,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "65         self.EPSILON = eval(EPSILON) if isinstance(EPSILON, str) else EPSILON\n66         self.sl = eval(sl) if isinstance(sl, str) else sl\n67         self.sh = eval(sh) if isinstance(sh, str) else sh",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/data/preprocess/ops/random_erasing.py",
+    "line": 67,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "66         self.sl = eval(sl) if isinstance(sl, str) else sl\n67         self.sh = eval(sh) if isinstance(sh, str) else sh\n68         r1 = eval(r1) if isinstance(r1, str) else r1",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/data/preprocess/ops/random_erasing.py",
+    "line": 68,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "67         self.sh = eval(sh) if isinstance(sh, str) else sh\n68         r1 = eval(r1) if isinstance(r1, str) else r1\n69         self.r1 = (math.log(r1), math.log(1 / r1)) if use_log_aspect else (",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/loss/__init__.py",
+    "line": 66,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "65             self.loss_weight.append(param.pop(\"weight\"))\n66             self.loss_func.append(eval(name)(**param))\n67             self.loss_func = nn.LayerList(self.loss_func)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/loss/distillationloss.py",
+    "line": 400,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "399         super().__init__()\n400         self.loss_func = eval(base_loss_name)(**kwargs)\n401         assert type(s_key) == type(t_key)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/metric/__init__.py",
+    "line": 42,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "41                 self.metric_func_list.append(\n42                     eval(metric_name)(**metric_params))\n43             else:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/metric/__init__.py",
+    "line": 44,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "43             else:\n44                 self.metric_func_list.append(eval(metric_name)())\n45         self.reset()",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "ppcls/utils/config.py",
+    "line": 135,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "134         try:\n135             return eval(v)\n136         except Exception:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "ppcls/utils/download.py",
+    "line": 151,
+    "message": "Call to requests without timeout",
+    "snippet": "150         try:\n151             req = requests.get(url, stream=True)\n152         except Exception as e:  # requests.exceptions.ConnectionError",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "ppcls/utils/download.py",
+    "line": 188,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "187     logger.info(\"File {} md5 checking...\".format(fullname))\n188     md5 = hashlib.md5()\n189     with open(fullname, 'rb') as f:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "ppcls/utils/model_zoo.py",
+    "line": 111,
+    "message": "Call to requests without timeout",
+    "snippet": "110 \n111         req = requests.get(url, stream=True)\n112         if req.status_code != 200:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "ppcls/utils/model_zoo.py",
+    "line": 154,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "153         with tarfile.open(fname) as tf:\n154             tf.extractall(path=fpath_tmp)\n155     elif fname.find('zip') >= 0:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "ppcls/utils/model_zoo.py",
+    "line": 157,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "156         with zipfile.ZipFile(fname) as zf:\n157             zf.extractall(path=fpath_tmp)\n158     else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "ppcls/utils/profiler.py",
+    "line": 56,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "55             'tracer_option': 'Default',\n56             'profile_path': '/tmp/profile',\n57             'exit_on_finished': True,\n58             'timer_only': True\n59         }\n60         self._parse_from_string(options_str)\n61 \n62     def _parse_from_string(self, options_str):\n63         for kv in options_str.replace(' ', '').split(';'):\n64             key, value = kv.split('=')\n65             i",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "test_tipc/compare_results.py",
+    "line": 27,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "26     p = subprocess.Popen(\n27         cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)\n28     out, err = p.communicate()\n29",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "test_tipc/generate_cpp_yaml.py",
+    "line": 50,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "49         fd = open(args.shitu_yaml_path)\n50     config = yaml.load(fd, yaml.FullLoader)\n51     fd.close()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deploy/cpp_shitu/tools/transform_id_map.py",
+    "line": 30,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "deploy/fastdeploy/sophgo/python/infer.py",
+    "line": 60,
+    "message": "Found 'subprocess' function 'run' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deploy/lite_shitu/transform_id_map.py",
+    "line": 30,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deploy/paddleserving/recognition/recognition_web_service.py",
+    "line": 125,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deploy/paddleserving/recognition/test_cpp_serving_client.py",
+    "line": 39,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deploy/python/build_gallery.py",
+    "line": 164,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deploy/python/build_gallery.py",
+    "line": 236,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deploy/python/eval_shitu_pipeline.py",
+    "line": 32,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deploy/python/predict_system.py",
+    "line": 60,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "deploy/python/preprocess.py",
+    "line": 316,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-subprocess-use-tainted-env-args.dangerous-subprocess-use-tainted-env-args",
+    "file_path": "deploy/shitu_index_manager/index_manager.py",
+    "line": 54,
+    "message": "Detected subprocess function 'Popen' with user controlled data. A malicious actor could leverage this to perform command injection. You may consider using 'shlex.quote()'.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "deploy/shitu_index_manager/mod/index_http_client.py",
+    "line": 56,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "deploy/shitu_index_manager/mod/utils.py",
+    "line": 18,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deploy/shitu_index_manager/server.py",
+    "line": 63,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "deploy/shitu_index_manager/server.py",
+    "line": 71,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "deploy/utils/config.py",
+    "line": 108,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "deploy/utils/predictor.py",
+    "line": 60,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ppcls/arch/__init__.py",
+    "line": 79,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ppcls/arch/__init__.py",
+    "line": 135,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ppcls/arch/backbone/legendary_models/pp_hgnet_v2.py",
+    "line": 294,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ppcls/arch/backbone/legendary_models/pp_lcnet.py",
+    "line": 228,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ppcls/arch/backbone/model_zoo/foundation_vit.py",
+    "line": 484,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ppcls/arch/backbone/model_zoo/foundation_vit.py",
+    "line": 517,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ppcls/arch/backbone/model_zoo/foundation_vit.py",
+    "line": 636,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ppcls/arch/backbone/model_zoo/foundation_vit.py",
+    "line": 706,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ppcls/arch/backbone/model_zoo/foundation_vit.py",
+    "line": 795,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ppcls/arch/backbone/model_zoo/svtrnet.py",
+    "line": 285,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ppcls/arch/backbone/model_zoo/svtrnet.py",
+    "line": 307,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ppcls/arch/backbone/model_zoo/svtrnet.py",
+    "line": 434,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ppcls/arch/backbone/model_zoo/svtrnet.py",
+    "line": 508,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ppcls/arch/backbone/model_zoo/svtrnet.py",
+    "line": 522,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ppcls/arch/backbone/model_zoo/svtrnet.py",
+    "line": 551,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ppcls/arch/backbone/model_zoo/svtrnet.py",
+    "line": 579,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ppcls/arch/backbone/model_zoo/svtrnet.py",
+    "line": 602,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ppcls/arch/backbone/model_zoo/vision_transformer.py",
+    "line": 165,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ppcls/arch/backbone/model_zoo/vision_transformer.py",
+    "line": 181,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ppcls/arch/backbone/model_zoo/vision_transformer.py",
+    "line": 282,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ppcls/arch/gears/__init__.py",
+    "line": 38,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ppcls/data/__init__.py",
+    "line": 116,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ppcls/data/__init__.py",
+    "line": 129,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ppcls/data/__init__.py",
+    "line": 133,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ppcls/data/dataloader/dali.py",
+    "line": 172,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ppcls/data/dataloader/dali.py",
+    "line": 260,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ppcls/data/dataloader/dali.py",
+    "line": 393,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "ppcls/data/dataloader/face_dataset.py",
+    "line": 115,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ppcls/data/postprocess/__init__.py",
+    "line": 36,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ppcls/data/preprocess/batch_ops/batch_operators.py",
+    "line": 219,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ppcls/data/preprocess/ops/operators.py",
+    "line": 574,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ppcls/data/preprocess/ops/randaugment.py",
+    "line": 167,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ppcls/data/preprocess/ops/random_erasing.py",
+    "line": 65,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ppcls/data/preprocess/ops/random_erasing.py",
+    "line": 66,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ppcls/data/preprocess/ops/random_erasing.py",
+    "line": 67,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ppcls/data/preprocess/ops/random_erasing.py",
+    "line": 68,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ppcls/loss/__init__.py",
+    "line": 66,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ppcls/loss/distillationloss.py",
+    "line": 400,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ppcls/metric/__init__.py",
+    "line": 42,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ppcls/metric/__init__.py",
+    "line": 44,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "ppcls/utils/config.py",
+    "line": 135,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "ppcls/utils/download.py",
+    "line": 188,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "test_tipc/compare_results.py",
+    "line": 27,
+    "message": "Found 'subprocess' function 'Popen' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

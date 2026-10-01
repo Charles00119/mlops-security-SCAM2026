@@ -1,0 +1,22 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "tools.py",
+    "line": 20,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "19                 ruta = g[0]+\"/\"+s\n20                 os.system('ffmpeg -i \"' + ruta +\n21                 '\" -acodec pcm_s16le -ar 22050 -ac 1 \"' + ruta + '.wav\"')\n22                 os.remove(ruta)",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "tools.py",
+    "line": 207,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "206                 newfile = new + g + \"/\" + g + str(count/100) + str((count%100)/10) + str(count%10)\n207                 os.system('ffmpeg -i \"' + oldfile +\n208                 '\" -acodec pcm_s16le -ar 22050 -ac 1 \"' + newfile + '.wav\"')\n209                 songsListFile.write(newfile+\";\"+s+\"\\n\")",
+    "stage": "data_preparation"
+  }
+]

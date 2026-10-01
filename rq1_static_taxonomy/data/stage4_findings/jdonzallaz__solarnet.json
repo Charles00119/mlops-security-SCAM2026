@@ -1,0 +1,32 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "solarnet/models/model_utils.py",
+    "line": 136,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "135             raise AttributeError(f\"Model {pretrained_model_name_or_path} is not compatible with class {cls}.\")\n136         state_dict = torch.load(path)\n137         incompatible_keys = model.load_state_dict(state_dict, strict=strict)",
+    "stage": "inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "solarnet/models/model_utils.py",
+    "line": 185,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "184 \n185         state_dict = torch.load(path)\n186",
+    "stage": "inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "solarnet/utils/pytorch.py",
+    "line": 41,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "40 \n41     model_checkpoint_step = torch.load(checkpoint_callback.best_model_path)[\"global_step\"]\n42",
+    "stage": "reachable_unmapped"
+  }
+]

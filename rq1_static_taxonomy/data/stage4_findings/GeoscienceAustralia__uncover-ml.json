@@ -1,0 +1,372 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/scripts/test_superlearn_cli.py",
+    "line": 302,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "301     'config': type('Config', (), {'n_subchunks': 4})(),\n302     'outdir': '/tmp',\n303     'mfile': 'dummy.model'\n304     }\n305     targets_shp = type('Targets', (), {\n306         'observations': np.array([1.0, 2.0]),\n307         'weights': np.array([1.0, 1.0])\n308     })()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tests/test_features.py",
+    "line": 319,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "318     with open(featurevec_path, \"rb\") as f:\n319         fv = pickle.load(f)\n320     assert isinstance(fv, dict)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/test_geoio.py",
+    "line": 290,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "289     conf.group_col = 'region'\n290     conf.target_groups_file = '/tmp/test_groups.png'\n291     mock_plt.rcParams = {",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/test_geoio.py",
+    "line": 309,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "308     conf.groups_eps = 0.5\n309     conf.target_groups_file = '/tmp/test_groups_dbscan.png'\n310",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/test_geoio.py",
+    "line": 453,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "452     mock_mpiops.chunks = 1\n453     dummy_file = '/tmp/fake_output_band1.tif'\n454     writer = ImageWriter.__new__(ImageWriter)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/test_geoio.py",
+    "line": 457,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "456     writer.output_thumbnails(ratio=20)\n457     mock_resample.assert_called_with(dummy_file, output_tif='/tmp/fake_output_band1_thumbnail.tif', ratio=20)\n458",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tests/test_models.py",
+    "line": 55,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "54     mod_str = pickle.dumps(mod)\n55     mod_pic = pickle.loads(mod_str)\n56     assert mod.__dict__.keys() == mod_pic.__dict__.keys()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tests/test_models.py",
+    "line": 101,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "100     mod_str = pickle.dumps(mlk)\n101     mod_pic = pickle.loads(mod_str)\n102     assert mlk.__dict__.keys() == mod_pic.__dict__.keys()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/test_shapely.py",
+    "line": 185,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "184     class DummyMainConfig:\n185         feature_sets = [DummySet(files=['/tmp/feat1.tif', '/tmp/feat2.tif'])]\n186         final_transform = None",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/test_shapely.py",
+    "line": 185,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "184     class DummyMainConfig:\n185         feature_sets = [DummySet(files=['/tmp/feat1.tif', '/tmp/feat2.tif'])]\n186         final_transform = None",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/test_shapely.py",
+    "line": 188,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "187     class DummyShapConfig:\n188         feature_path = '/tmp/'\n189     gdf = gpd.GeoDataFrame({'geometry': [Point(0, 0)]}, geometry='geometry')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/test_shapely.py",
+    "line": 217,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "216     with patch('uncoverml.shapley.rasterio.transform.xy', side_effect=lambda t, r, c, offset: (c + 0.5, r + 0.5)):\n217         out_image, lon_lat = sm.intersect_point_neighbourhood(gdf, 2, '/tmp/fake.tif')\n218",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/test_shapely.py",
+    "line": 452,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "451     caplog.set_level(logging.WARNING, logger=\"uncoverml.shapley\")\n452     sc = sm.ShapConfig(\"/tmp/conf.yml\", main_config)\n453     assert sc.explainer is None",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/test_shapely.py",
+    "line": 719,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "718     shap_vals_point = PointContainer(n_points=n_points, n_features=3)\n719     shap_cfg = SimpleNamespace(feature_names=[\"F1\", \"F2\", \"F3\"], output_path=\"/tmp/out\")\n720     name_list = [\"P1\", \"P2\"]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/test_targets.py",
+    "line": 55,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "54     mock_config = MagicMock()\n55     mock_config.output_dir = '/tmp'\n56     targets.save_dropped_targets(mock_config, keep, targets_obj)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/test_validate.py",
+    "line": 314,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "313     targets = MagicMock()\n314     config = DummyCfg(\"DummyAlg\", \"/tmp\", \"skip\", \"dummy_transform\")\n315     result = local_rank_features(image_chunk_sets, transform_sets, targets, config)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/test_validate.py",
+    "line": 336,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "335     targets = DummyTargets()\n336     cfg = DummyCfg(\"DummyAlg\", \"/tmp\", \"xvaltest\", \"dummy_transform\")\n337     cfg.folds = 2",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "uncoverml/cubist.py",
+    "line": 384,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "383 \n384         results = check_output(command, shell=True).decode()\n385",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "uncoverml/cubist.py",
+    "line": 572,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "571             with open(pk_f, 'rb') as fp:\n572                 c = pickle.load(fp)\n573                 for m, model in enumerate(c.models):",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "uncoverml/hyopt.py",
+    "line": 46,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "45     trials = Trials()\n46     search_space = {k: eval(v) for k, v in conf.hp_params_space.items()}\n47",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "uncoverml/interface_utils.py",
+    "line": 132,
+    "message": "Call to requests without timeout",
+    "snippet": "131             upload_files = {'file': (str(local_upload_file), file_to_upload)}\n132             upload_resp = requests.post(url_info['url'], data=url_info['fields'],\n133                                         files=upload_files)\n134",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "uncoverml/models.py",
+    "line": 567,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "566             with open(pk_f, 'rb') as fp:\n567                 f = pickle.load(fp)\n568                 for m, dt in enumerate(f.estimators_):",
+    "stage": "data_acquisition+data_preparation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "uncoverml/optimisation.py",
+    "line": 46,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "45     reg = modelmaps[conf.algorithm](** conf.algorithm_args)\n46     search_space = {k: eval(v) for k, v in conf.opt_params_space.items()}\n47     cv_folds = conf.opt_searchcv_params.pop('cv') if 'cv' in conf.opt_searchcv_params else 5",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "uncoverml/scripts/uncoverml.py",
+    "line": 594,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "593     with open(covariates_file_path_pickle, 'rb') as in_file:\n594         covariate_list = pickle.load(in_file)\n595         for covariate in covariate_list:",
+    "stage": "data_acquisition+modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "scripts/check_covariates.py",
+    "line": 56,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "uncoverml/cubist.py",
+    "line": 384,
+    "message": "Found 'subprocess' function 'check_output' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "uncoverml/cubist.py",
+    "line": 511,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "uncoverml/cubist.py",
+    "line": 572,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "uncoverml/features.py",
+    "line": 97,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "uncoverml/geoio.py",
+    "line": 620,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "uncoverml/hyopt.py",
+    "line": 46,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "uncoverml/hyopt.py",
+    "line": 109,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "evaluation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "uncoverml/models.py",
+    "line": 544,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "uncoverml/models.py",
+    "line": 567,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "uncoverml/optimisation.py",
+    "line": 46,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "uncoverml/scripts/uncoverml.py",
+    "line": 594,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "uncoverml/scripts/uncoverml.py",
+    "line": 600,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+modeling"
+  }
+]

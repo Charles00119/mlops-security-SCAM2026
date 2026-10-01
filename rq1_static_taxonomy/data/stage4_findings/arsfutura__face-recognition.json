@@ -1,0 +1,22 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "api/app.py",
+    "line": 81,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "80 if __name__ == '__main__':\n81     app.run(host='0.0.0.0')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.app-run-param-config.avoid_app_run_with_bad_host",
+    "file_path": "api/app.py",
+    "line": 81,
+    "message": "Running flask app with host 0.0.0.0 could expose the server publicly.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

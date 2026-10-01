@@ -1,0 +1,422 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "examples/nlg_server/nlg_server.py",
+    "line": 74,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "73     app.run(\n74         host=\"0.0.0.0\",\n75         port=port,",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "examples/reminderbot/callback_server.py",
+    "line": 27,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "26     print(f\"Starting callback server on port {port}.\")\n27     app.run(\"0.0.0.0\", port)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "rasa/core/channels/botframework.py",
+    "line": 61,
+    "message": "Call to requests without timeout",
+    "snippet": "60 \n61             token_response = requests.post(uri, data=payload)\n62",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "rasa/core/channels/botframework.py",
+    "line": 99,
+    "message": "Call to requests without timeout",
+    "snippet": "98         headers = await self._get_headers()\n99         send_response = requests.post(\n100             post_message_uri, headers=headers, data=json.dumps(message_data)\n101         )\n102",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "rasa/core/channels/mattermost.py",
+    "line": 33,
+    "message": "Call to requests without timeout",
+    "snippet": "32         data = {\"login_id\": user, \"password\": password}\n33         r = requests.post(url + \"/users/login\", data=json.dumps(data))\n34         if r.status_code == 200:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "rasa/core/channels/mattermost.py",
+    "line": 59,
+    "message": "Call to requests without timeout",
+    "snippet": "58         headers = {\"Authorization\": \"Bearer \" + self.token}\n59         r = requests.post(self.url + \"/posts\", headers=headers, data=json.dumps(data))\n60         if not r.status_code == 200:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "rasa/core/featurizers/tracker_featurizers.py",
+    "line": 318,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "317         if featurizer_file.is_file():\n318             return jsonpickle.decode(rasa.shared.utils.io.read_file(featurizer_file))\n319",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "rasa/core/run.py",
+    "line": 222,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "221     app.run(\n222         host=\"0.0.0.0\",\n223         port=port,",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "rasa/core/tracker_store.py",
+    "line": 258,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "257 \n258         return pickle.loads(serialised_tracker)\n259",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "rasa/core/training/interactive.py",
+    "line": 1587,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "1586 \n1587     app.run(host=\"0.0.0.0\", port=port)\n1588",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "rasa/core/training/interactive.py",
+    "line": 1618,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "1617 \n1618     app.run(host=\"0.0.0.0\", port=port, access_log=False)\n1619",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "rasa/model.py",
+    "line": 211,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "210         with tarfile.open(model_file, mode=\"r:gz\") as tar:\n211             tar.extractall(working_directory)\n212             logger.debug(f\"Extracted model to '{working_directory}'.\")",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "rasa/nlu/extractors/duckling_entity_extractor.py",
+    "line": 132,
+    "message": "Call to requests without timeout",
+    "snippet": "131             }\n132             response = requests.post(\n133                 parse_url,\n134                 data=payload,\n135                 headers=headers,\n136                 timeout=self.component_config.get(\"timeout\"),\n137             )\n138             if response.status_code == 200:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "rasa/nlu/persistor.py",
+    "line": 120,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "119         with tarfile.open(compressed_path, \"r:gz\") as tar:\n120             tar.extractall(target_path)  # target dir will be created if it not exists\n121",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "rasa/utils/io.py",
+    "line": 80,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "79     with open(filename, \"rb\") as f:\n80         return pickle.load(f)\n81",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "rasa/utils/io.py",
+    "line": 90,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "89         tar = tarfile.open(fileobj=IOReader(byte_array))\n90         tar.extractall(directory)\n91         tar.close()",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "rasa/utils/io.py",
+    "line": 95,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "94         zip_ref = zipfile.ZipFile(IOReader(byte_array))\n95         zip_ref.extractall(directory)\n96         zip_ref.close()",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "rasa_addons/core/policies/disambiguation.py",
+    "line": 128,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "127 \n128         return eval(eval_string, {\"__builtins__\": {}})\n129",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "rasa_addons/nlu/components/duckling_http_extractor.py",
+    "line": 26,
+    "message": "Call to requests without timeout",
+    "snippet": "25             }\n26             response = requests.post(\n27                 self._url() + \"/parse\",\n28                 data=payload,\n29                 headers=headers,\n30                 timeout=self.component_config.get(\"timeout\"),\n31             )\n32             if response.status_code == 200:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "scripts/release.py",
+    "line": 106,
+    "message": "Use of exec detected.",
+    "snippet": "105     with version_file_path().open() as f:\n106         exec(f.read(), _globals)\n107",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "tests/core/test_broker.py",
+    "line": 335,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "334             \"dialect\": \"postgresql\",\n335             \"url\": \"0.0.0.0\",\n336             \"port\": 42,\n337             \"db\": \"boom\",\n338             \"username\": \"user\",\n339             \"password\": \"pw\",\n340         }\n341     )\n342     with pytest.raises(ConnectionException):\n343         await EventBroker.create(cfg)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "tests/import_time.py",
+    "line": 18,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "17     for _ in range(n):\n18         lines = subprocess.getoutput(\n19             f'{sys.executable} -X importtime -c \"import {module}\"'\n20         ).splitlines()\n21",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "tests/test_server.py",
+    "line": 259,
+    "message": "Call to requests without timeout",
+    "snippet": "258 \n259         response = requests.post(\n260             \"http://localhost:5005/model/train\",\n261             data=payload_as_yaml,\n262             headers={\"Content-type\": rasa.server.YAML_CONTENT_TYPE},\n263             params={\"force_training\": True},\n264         )\n265         shared_statuses[\"training_result\"] = response.status_code",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "tests/test_server.py",
+    "line": 287,
+    "message": "Call to requests without timeout",
+    "snippet": "286             return (\n287                 requests.get(\"http://localhost:5005/status\").status_code\n288                 == HTTPStatus.OK",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "tests/test_server.py",
+    "line": 310,
+    "message": "Call to requests without timeout",
+    "snippet": "309     # Check if the number of currently running trainings was incremented\n310     response = requests.get(\"http://localhost:5005/status\")\n311     assert response.status_code == HTTPStatus.OK",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "tests/test_server.py",
+    "line": 326,
+    "message": "Call to requests without timeout",
+    "snippet": "325     # Check if the number of currently running trainings was decremented\n326     response = requests.get(\"http://localhost:5005/status\")\n327     assert response.status_code == HTTPStatus.OK",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.app-run-param-config.avoid_app_run_with_bad_host",
+    "file_path": "examples/nlg_server/nlg_server.py",
+    "line": 73,
+    "message": "Running flask app with host 0.0.0.0 could expose the server publicly.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.app-run-param-config.avoid_app_run_with_bad_host",
+    "file_path": "examples/reminderbot/callback_server.py",
+    "line": 27,
+    "message": "Running flask app with host 0.0.0.0 could expose the server publicly.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.app-run-param-config.avoid_app_run_with_bad_host",
+    "file_path": "rasa/core/run.py",
+    "line": 221,
+    "message": "Running flask app with host 0.0.0.0 could expose the server publicly.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "rasa/core/tracker_store.py",
+    "line": 258,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.sqlalchemy.security.audit.avoid-sqlalchemy-text.avoid-sqlalchemy-text",
+    "file_path": "rasa/core/tracker_store.py",
+    "line": 790,
+    "message": "sqlalchemy.text passes the constructed SQL statement to the database mostly unchanged. This means that the usual SQL injection protections are not applied and this function is vulnerable to SQL injection if user input can reach here. Use normal SQLAlchemy operators (such as `or_()`, `and_()`, etc.) to construct SQL.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.app-run-param-config.avoid_app_run_with_bad_host",
+    "file_path": "rasa/core/training/interactive.py",
+    "line": 1587,
+    "message": "Running flask app with host 0.0.0.0 could expose the server publicly.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.app-run-param-config.avoid_app_run_with_bad_host",
+    "file_path": "rasa/core/training/interactive.py",
+    "line": 1618,
+    "message": "Running flask app with host 0.0.0.0 could expose the server publicly.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1",
+    "file_path": "rasa/core/utils.py",
+    "line": 127,
+    "message": "Detected SHA1 hash algorithm which is considered insecure. SHA1 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "rasa/core/utils.py",
+    "line": 271,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-uuid-version.insecure-uuid-version",
+    "file_path": "rasa/nlu/emulators/dialogflow.py",
+    "line": 40,
+    "message": "Using UUID version 1 for UUID generation can lead to predictable UUIDs based on system information (e.g., MAC address, timestamp). This may lead to security risks such as the sandwich attack. Consider using `uuid.uuid4()` instead for better randomness and security.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-uuid-version.insecure-uuid-version",
+    "file_path": "rasa/shared/core/events.py",
+    "line": 1056,
+    "message": "Using UUID version 1 for UUID generation can lead to predictable UUIDs based on system information (e.g., MAC address, timestamp). This may lead to security risks such as the sandwich attack. Consider using `uuid.uuid4()` instead for better randomness and security.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "rasa/shared/utils/io.py",
+    "line": 279,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "rasa/utils/io.py",
+    "line": 68,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "rasa/utils/io.py",
+    "line": 80,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "rasa_addons/core/policies/disambiguation.py",
+    "line": 128,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "scripts/release.py",
+    "line": 106,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

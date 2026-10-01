@@ -1,0 +1,852 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "capreolus/benchmark/codesearchnet.py",
+    "line": 85,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "84 \n85         tmp_dir = Path(\"/tmp\")\n86         zip_fn = tmp_dir / f\"{lang}.zip\"",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "capreolus/benchmark/codesearchnet.py",
+    "line": 95,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "94         pkl_fn = tmp_dir / f\"{lang}_dedupe_definitions_v2.pkl\"\n95         doc_objs = pickle.load(open(pkl_fn, \"rb\"))\n96         self._docid_map = self._prep_docid_map(doc_objs)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "capreolus/benchmark/codesearchnet.py",
+    "line": 205,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "204 \n205         tmp_dir = Path(\"/tmp\")\n206         tmp_dir.mkdir(exist_ok=True, parents=True)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "capreolus/collection/codesearchnet.py",
+    "line": 60,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "59         with open(pkl_path, \"rb\") as f:\n60             codes = pickle.load(f)\n61",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "capreolus/collection/covid.py",
+    "line": 51,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "50         cachedir = self.get_cache_path()\n51         tmp_dir, document_dir = Path(\"/tmp\"), cachedir / \"documents\"\n52         expected_fns = [document_dir / \"metadata.csv\", document_dir / \"document_parses\"]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "capreolus/collection/covid.py",
+    "line": 62,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "61         with tarfile.open(tar_file) as f:\n62             f.extractall(path=cachedir)  # emb.tar.gz, metadata.csv, doc.tar.gz, changelog\n63             os.rename(cachedir / self.date, document_dir)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "capreolus/collection/covid.py",
+    "line": 68,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "67             with tarfile.open(document_dir / f\"{doc_fn}.tar.gz\") as f:\n68                 f.extractall(path=document_dir)\n69         else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "capreolus/collection/covid.py",
+    "line": 111,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "110             with tarfile.open(str(tar_fn)) as f:\n111                 f.extractall(path=root_path)\n112                 os.remove(tar_fn)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "capreolus/collection/msmarco.py",
+    "line": 37,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "36                 with tarfile.open(output_gz, \"r:gz\") as f:\n37                     f.extractall(path=tmp_dir)\n38",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "capreolus/collection/nf.py",
+    "line": 38,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "37         with tarfile.open(tmp_tar_fn) as f:\n38             f.extractall(tmp_dir)\n39         return tmp_corpus_dir",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "capreolus/collection/robust04.py",
+    "line": 81,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "80         with tarfile.open(archive_file) as tar:\n81             tar.extractall(path=tmp_dir)\n82",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "capreolus/extractor/__init__.py",
+    "line": 54,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "53         sorted_docids = sorted(docids)\n54         return self.get_cache_path() / hashlib.md5(str(sorted_qids + sorted_docids).encode(\"utf-8\")).hexdigest()\n55",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "capreolus/extractor/bagofwords.py",
+    "line": 42,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "41         with open(self.get_state_cache_file_path(qids, docids), \"rb\") as f:\n42             state_dict = pickle.load(f)\n43             self.qid2toks = state_dict[\"qid2toks\"]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "capreolus/extractor/bertpassage.py",
+    "line": 69,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "68         with open(cache_fn, \"rb\") as f:\n69             state_dict = pickle.load(f)\n70             self.qid2toks = state_dict[\"qid2toks\"]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "capreolus/extractor/berttext.py",
+    "line": 35,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "34         with open(self.get_state_cache_file_path(qids, docids), \"rb\") as f:\n35             state_dict = pickle.load(f)\n36             self.qid2toks = state_dict[\"qid2toks\"]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "capreolus/extractor/deeptileextractor.py",
+    "line": 65,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "64         with open(self.get_state_cache_file_path(qids, docids), \"rb\") as f:\n65             state_dict = pickle.load(f)\n66             self.qid2toks = state_dict[\"qid2toks\"]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "capreolus/extractor/slowembedtext.py",
+    "line": 43,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "42         with open(self.get_state_cache_file_path(qids, docids), \"rb\") as f:\n43             state_dict = pickle.load(f)\n44             self.qid2toks = state_dict[\"qid2toks\"]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "capreolus/reranker/CEDRKNRM.py",
+    "line": 21,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "20         if config[\"pretrained\"] == \"electra-base-msmarco\":\n21             self.bert = ElectraModel.from_pretrained(\n22                 \"Capreolus/electra-base-msmarco\", hidden_dropout_prob=config[\"hidden_dropout_prob\"], output_hidden_states=True\n23             )\n24         elif config[\"pretrained\"] == \"electra-base\":",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "capreolus/reranker/CEDRKNRM.py",
+    "line": 25,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "24         elif config[\"pretrained\"] == \"electra-base\":\n25             self.bert = ElectraModel.from_pretrained(\n26                 \"google/electra-base-discriminator\", hidden_dropout_prob=config[\"hidden_dropout_prob\"], output_hidden_states=True\n27             )\n28         elif config[\"pretrained\"] == \"bert-base-msmarco\":",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "capreolus/reranker/CEDRKNRM.py",
+    "line": 29,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "28         elif config[\"pretrained\"] == \"bert-base-msmarco\":\n29             self.bert = BertModel.from_pretrained(\n30                 \"Capreolus/bert-base-msmarco\", hidden_dropout_prob=config[\"hidden_dropout_prob\"], output_hidden_states=True\n31             )\n32         elif config[\"pretrained\"] == \"bert-base-uncased\":",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "capreolus/reranker/CEDRKNRM.py",
+    "line": 33,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "32         elif config[\"pretrained\"] == \"bert-base-uncased\":\n33             self.bert = BertModel.from_pretrained(\n34                 \"bert-base-uncased\", hidden_dropout_prob=config[\"hidden_dropout_prob\"], output_hidden_states=True\n35             )\n36         else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "capreolus/reranker/CEDRKNRM.py",
+    "line": 37,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "36         else:\n37             self.bert = AutoModel.from_pretrained(\n38                 config[\"pretrained\"], hidden_dropout_prob=config[\"hidden_dropout_prob\"], output_hidden_states=True\n39             )\n40",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "capreolus/reranker/TFBERTMaxP.py",
+    "line": 30,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "29         if config[\"pretrained\"] == \"electra-base-msmarco\":\n30             self.bert = TFAutoModelForSequenceClassification.from_pretrained(\"Capreolus/electra-base-msmarco\")\n31             dropout, fc = self.bert.classifier.dropout, self.bert.classifier.out_proj",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "capreolus/reranker/TFBERTMaxP.py",
+    "line": 34,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "33         elif config[\"pretrained\"] == \"electra-base\":\n34             self.bert = TFAutoModelForSequenceClassification.from_pretrained(\"google/electra-base-discriminator\")\n35             dropout, fc = self.bert.classifier.dropout, self.bert.classifier.out_proj",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "capreolus/reranker/TFBERTMaxP.py",
+    "line": 38,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "37         elif config[\"pretrained\"] == \"bert-base-msmarco\":\n38             self.bert = TFAutoModelForSequenceClassification.from_pretrained(\"Capreolus/bert-base-msmarco\")\n39         else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "capreolus/reranker/TFBERTMaxP.py",
+    "line": 40,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "39         else:\n40             self.bert = TFAutoModelForSequenceClassification.from_pretrained(\n41                 config[\"pretrained\"], hidden_dropout_prob=config[\"hidden_dropout_prob\"], from_pt=True\n42             )\n43",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "capreolus/reranker/TFCEDRKNRM.py",
+    "line": 20,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "19         if config[\"pretrained\"] == \"electra-base-msmarco\":\n20             self.bert = TFAutoModel.from_pretrained(\n21                 \"Capreolus/electra-base-msmarco\", hidden_dropout_prob=config[\"hidden_dropout_prob\"], output_hidden_states=True\n22             )\n23         elif config[\"pretrained\"] == \"electra-base\":",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "capreolus/reranker/TFCEDRKNRM.py",
+    "line": 24,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "23         elif config[\"pretrained\"] == \"electra-base\":\n24             self.bert = TFAutoModel.from_pretrained(\n25                 \"google/electra-base-discriminator\", hidden_dropout_prob=config[\"hidden_dropout_prob\"], output_hidden_states=True\n26             )\n27         elif config[\"pretrained\"] == \"bert-base-msmarco\":",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "capreolus/reranker/TFCEDRKNRM.py",
+    "line": 28,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "27         elif config[\"pretrained\"] == \"bert-base-msmarco\":\n28             self.bert = TFAutoModel.from_pretrained(\n29                 \"Capreolus/bert-base-msmarco\", hidden_dropout_prob=config[\"hidden_dropout_prob\"], output_hidden_states=True\n30             )\n31         elif config[\"pretrained\"] == \"bert-base-uncased\":",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "capreolus/reranker/TFCEDRKNRM.py",
+    "line": 32,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "31         elif config[\"pretrained\"] == \"bert-base-uncased\":\n32             self.bert = TFAutoModel.from_pretrained(\n33                 \"bert-base-uncased\", hidden_dropout_prob=config[\"hidden_dropout_prob\"], output_hidden_states=True\n34             )\n35",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "capreolus/reranker/TFVanillaBert.py",
+    "line": 17,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "16         # TFBertForSequenceClassification contains both the BERT and the linear classifier layers\n17         self.bert = TFBertForSequenceClassification.from_pretrained(config[\"pretrained\"], hidden_dropout_prob=0.1)\n18",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "capreolus/reranker/__init__.py",
+    "line": 44,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "43         with open(weights_fn, \"rb\") as f:\n44             d = pickle.load(f)\n45",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "capreolus/reranker/__init__.py",
+    "line": 55,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "54         with open(optimizer_fn, \"rb\") as f:\n55             optimizer.load_state_dict(pickle.load(f))\n56",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "capreolus/reranker/birch.py",
+    "line": 64,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "63         # also /GW/NeuralIR/nobackup/birch-emnlp_bert4ir_v2/models/export/birch-bert-base-kevin\n64         self.bert = BertForNextSentencePrediction.from_pretrained(f\"Capreolus/birch-bert-large-{config['pretrained']}\")\n65",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "capreolus/reranker/parade.py",
+    "line": 16,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "15         if config[\"pretrained\"] == \"electra-base-msmarco\":\n16             self.bert = TFElectraModel.from_pretrained(\"Capreolus/electra-base-msmarco\")\n17         elif config[\"pretrained\"] == \"bert-base-msmarco\":",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "capreolus/reranker/parade.py",
+    "line": 18,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "17         elif config[\"pretrained\"] == \"bert-base-msmarco\":\n18             self.bert = TFBertModel.from_pretrained(\"Capreolus/bert-base-msmarco\")\n19         elif config[\"pretrained\"] == \"bert-base-uncased\":",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "capreolus/reranker/parade.py",
+    "line": 20,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "19         elif config[\"pretrained\"] == \"bert-base-uncased\":\n20             self.bert = TFBertModel.from_pretrained(\"bert-base-uncased\")\n21         else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "capreolus/reranker/ptBERTMaxP.py",
+    "line": 36,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "35         if config[\"pretrained\"] == \"electra-base-msmarco\":\n36             self.bert = AutoModelForSequenceClassification.from_pretrained(\"Capreolus/electra-base-msmarco\")\n37             dropout, fc = self.bert.classifier.dropout, self.bert.classifier.out_proj",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "capreolus/reranker/ptBERTMaxP.py",
+    "line": 40,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "39         elif config[\"pretrained\"] == \"electra-base\":\n40             self.bert = AutoModelForSequenceClassification.from_pretrained(\"google/electra-base-discriminator\")\n41             dropout, fc = self.bert.classifier.dropout, self.bert.classifier.out_proj",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "capreolus/reranker/ptBERTMaxP.py",
+    "line": 44,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "43         elif config[\"pretrained\"] == \"bert-base-msmarco\":\n44             self.bert = AutoModelForSequenceClassification.from_pretrained(\"Capreolus/bert-base-msmarco\")\n45         else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "capreolus/reranker/ptBERTMaxP.py",
+    "line": 46,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "45         else:\n46             self.bert = AutoModelForSequenceClassification.from_pretrained(\n47                 config[\"pretrained\"], hidden_dropout_prob=config[\"hidden_dropout_prob\"]\n48             )\n49",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "capreolus/reranker/ptparade.py",
+    "line": 17,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "16         if config[\"pretrained\"] == \"electra-base-msmarco\":\n17             self.bert = ElectraModel.from_pretrained(\"Capreolus/electra-base-msmarco\")\n18         elif config[\"pretrained\"] == \"bert-base-msmarco\":",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "capreolus/reranker/ptparade.py",
+    "line": 19,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "18         elif config[\"pretrained\"] == \"bert-base-msmarco\":\n19             self.bert = BertModel.from_pretrained(\"Capreolus/bert-base-msmarco\")\n20         elif config[\"pretrained\"] == \"bert-base-uncased\":",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "capreolus/reranker/ptparade.py",
+    "line": 21,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "20         elif config[\"pretrained\"] == \"bert-base-uncased\":\n21             self.bert = BertModel.from_pretrained(\"bert-base-uncased\")\n22         else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "capreolus/sampler/__init__.py",
+    "line": 103,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "102         key_content = \"{0}{1}\".format(self.extractor.get_cache_path(), str(sorted_rep))\n103         key = hashlib.md5(key_content.encode(\"utf-8\")).hexdigest()\n104         return \"triplet_{0}\".format(key)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "capreolus/sampler/__init__.py",
+    "line": 145,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "144         key_content = \"{0}{1}\".format(self.extractor.get_cache_path(), str(sorted_rep))\n145         key = hashlib.md5(key_content.encode(\"utf-8\")).hexdigest()\n146         return \"pair_{0}\".format(key)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "capreolus/sampler/__init__.py",
+    "line": 180,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "179         key_content = \"{0}{1}\".format(self.extractor.get_cache_path(), str(sorted_rep))\n180         key = hashlib.md5(key_content.encode(\"utf-8\")).hexdigest()\n181         return f\"lce_{key}_nneg_{nneg}\"",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "capreolus/sampler/__init__.py",
+    "line": 218,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "217         key_content = \"{0}{1}\".format(self.extractor.get_cache_path(), str(sorted_rep))\n218         key = hashlib.md5(key_content.encode(\"utf-8\")).hexdigest()\n219",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "capreolus/tests/test_benchmark.py",
+    "line": 89,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "88 \n89         raw_data = pickle.load(open(pkl_path, \"rb\"))\n90         doc_coll = _load_trec_doc(coll_path)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "capreolus/tests/test_benchmark.py",
+    "line": 124,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "123 \n124     docid_map_tmp = \"/tmp/docid.map\"\n125     newdocid_qrels_fn = \"/tmp/new.docid.qrels\"",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "capreolus/tests/test_benchmark.py",
+    "line": 125,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "124     docid_map_tmp = \"/tmp/docid.map\"\n125     newdocid_qrels_fn = \"/tmp/new.docid.qrels\"\n126     qrel_url = \"https://ir.nist.gov/covidSubmit/data/qrels-covid_d3_j0.5-3.txt\"",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "capreolus/tests/test_collection.py",
+    "line": 24,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "23     # check for /tmp to reduce the impact of an invalid constants[\"CACHE_BASE_PATH\"]\n24     if path.startswith(\"/tmp\") and path.startswith(constants[\"CACHE_BASE_PATH\"].as_posix()):\n25         if os.path.exists(path):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "capreolus/tokenizer/bert.py",
+    "line": 17,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "16     def build(self):\n17         self.bert_tokenizer = AutoTokenizer.from_pretrained(self.config[\"pretrained\"], use_fast=True)\n18         # see supported tokenizers here: https://huggingface.co/transformers/model_doc/auto.html#transformers.AutoTokenizer",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "capreolus/tokenizer/bert.py",
+    "line": 29,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "28             logger.debug(\"adding missing tokens to vocab: %s\", kwargs)\n29             self.bert_tokenizer = AutoTokenizer.from_pretrained(self.config[\"pretrained\"], use_fast=True, **kwargs)\n30",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "capreolus/trainer/tensorflow.py",
+    "line": 126,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "125                 \"{0}/{1}/{2}\".format(\n126                     self.config[\"storage\"], \"train_output\", hashlib.md5(str(train_output_path).encode(\"utf-8\")).hexdigest()\n127                 )",
+    "stage": "evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "capreolus/trainer/tensorflow.py",
+    "line": 587,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "586             train_output_path = \"{0}/{1}/{2}\".format(\n587                 self.config[\"storage\"], \"train_output\", hashlib.md5(str(train_output_path).encode(\"utf-8\")).hexdigest()\n588             )",
+    "stage": "evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "capreolus/utils/common.py",
+    "line": 67,
+    "message": "Call to requests without timeout",
+    "snippet": "66 \n67     head = requests.head(url)\n68     size = int(head.headers.get(\"content-length\", 0))",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "capreolus/utils/common.py",
+    "line": 71,
+    "message": "Call to requests without timeout",
+    "snippet": "70     with open(outfn, \"wb\") as outf:\n71         r = requests.get(url, stream=True)\n72         with tqdm(total=size, unit=\"B\", unit_scale=True, unit_divisor=1024, desc=f\"downloading {url}\", miniters=1) as pbar:",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B314",
+    "file_path": "capreolus/utils/trec.py",
+    "line": 26,
+    "message": "Using xml.etree.ElementTree.parse to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.parse with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "25 \n26     tree = ET.parse(fn)\n27     for child in tree.getroot():",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "capreolus/benchmark/codesearchnet.py",
+    "line": 95,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "capreolus/collection/codesearchnet.py",
+    "line": 60,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "capreolus/extractor/__init__.py",
+    "line": 54,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "capreolus/extractor/bagofwords.py",
+    "line": 42,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "capreolus/extractor/bagofwords.py",
+    "line": 59,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "capreolus/extractor/bertpassage.py",
+    "line": 69,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "capreolus/extractor/bertpassage.py",
+    "line": 76,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "capreolus/extractor/berttext.py",
+    "line": 35,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "capreolus/extractor/berttext.py",
+    "line": 45,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "capreolus/extractor/deeptileextractor.py",
+    "line": 65,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "capreolus/extractor/deeptileextractor.py",
+    "line": 82,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "capreolus/extractor/slowembedtext.py",
+    "line": 43,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "capreolus/extractor/slowembedtext.py",
+    "line": 53,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "capreolus/reranker/__init__.py",
+    "line": 36,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "capreolus/reranker/__init__.py",
+    "line": 40,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "capreolus/reranker/__init__.py",
+    "line": 44,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "capreolus/reranker/__init__.py",
+    "line": 55,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "capreolus/sampler/__init__.py",
+    "line": 103,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "capreolus/sampler/__init__.py",
+    "line": 145,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "capreolus/sampler/__init__.py",
+    "line": 180,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "capreolus/sampler/__init__.py",
+    "line": 218,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "capreolus/tokenizer/bert.py",
+    "line": 28,
+    "message": "Detected a python logger call with a potential hardcoded secret \"adding missing tokens to vocab: %s\" being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "capreolus/trainer/tensorflow.py",
+    "line": 126,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "evaluation+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "capreolus/trainer/tensorflow.py",
+    "line": 587,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "evaluation+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml.use-defused-xml",
+    "file_path": "capreolus/utils/trec.py",
+    "line": 3,
+    "message": "The Python documentation recommends using `defusedxml` instead of `xml` because the native Python `xml` library is vulnerable to XML External Entity (XXE) attacks. These attacks can leak confidential data and \"XML bombs\" can cause denial of service.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml-parse.use-defused-xml-parse",
+    "file_path": "capreolus/utils/trec.py",
+    "line": 26,
+    "message": "The native Python `xml` library is vulnerable to XML External Entity (XXE) attacks.  These attacks can leak confidential data and \"XML bombs\" can cause denial of service. Do not use this library to parse untrusted input. Instead  the Python documentation recommends using `defusedxml`.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  }
+]

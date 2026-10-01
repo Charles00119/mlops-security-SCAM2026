@@ -34,6 +34,28 @@ from .findings import Finding, dump_findings_json
 from .stage_mapping import annotate_findings, build_file_to_stages
 from .tools import TOOLS
 
+def _remove_tree(path: str, attempts: int = 3) -> None:
+    """Delete a clone directory robustly. Git marks pack files read-only; on
+    Windows shutil.rmtree(ignore_errors=True) silently leaves them behind and
+    the temp folder grows until the disk fills. Clear the bit and retry."""
+    import stat
+    import time
+
+    def _on_error(func, p, exc_info):
+        try:
+            os.chmod(p, stat.S_IWRITE)
+            func(p)
+        except OSError:
+            pass
+
+    for i in range(attempts):
+        if not os.path.exists(path):
+            return
+        shutil.rmtree(path, onerror=_on_error)
+        if os.path.exists(path):
+            time.sleep(1 + i)
+
+
 
 STAGES = ("data_acquisition", "data_preparation", "modeling",
           "training", "evaluation", "inference")
@@ -136,7 +158,7 @@ def scan_one_repo(url: str, *, token: str | None = None,
                           detail=f"{type(exc).__name__}: {exc}\n"
                                  f"{traceback.format_exc()[:500]}")
     finally:
-        shutil.rmtree(tmp, ignore_errors=True)
+        _remove_tree(tmp)
 
 
 def already_done(log_path: str) -> set[str]:

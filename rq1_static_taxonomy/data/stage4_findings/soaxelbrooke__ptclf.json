@@ -1,0 +1,122 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "ptclf/experiment.py",
+    "line": 58,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "57                 hparam_values[idx] = ','.join(map(str, hparam))\n58         self.db.execute('''\n59 insert into hparams values ({})\n60         '''.format(', '.join(['?'] * len(hparam_values))), hparam_values)\n61         self.db.commit()",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "ptclf/experiment.py",
+    "line": 79,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "78         self.db.execute(\n79             '''\n80 insert into metrics ({}) values ({})\n81             '''.format(', '.join(self.metric_names), ', '.join(['?'] * len(metric_values))),\n82             metric_values)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "ptclf/hyperopt.py",
+    "line": 35,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "34         results = con.execute(\n35             \"select dev_loss from metrics where experiment_id='{}' and dev_loss not null order by epoch desc limit 1\".format(\n36                 experiment_id))",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "ptclf/models.py",
+    "line": 120,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "119         model = cls(settings)\n120         torch_data = torch.load(settings.model_path + '.bin', map_location=None)\n121         model.load_state_dict(torch_data)",
+    "stage": "data_acquisition+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "ptclf/models.py",
+    "line": 207,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "206     tokenizer = get_tokenizer(settings)\n207     embeddings_query = \"\"\"select * from vectors where token in ({})\"\"\".format(', '.join(\n208         \"'{}'\".format(token) for token in tokenizer.word_index if \"'\" not in token))",
+    "stage": "data_acquisition+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "ptclf/settings.py",
+    "line": 114,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "113         col_stmt = ', '.join(all_columns)\n114         insert_statement = \"insert into settings ({}) values ({})\".format(col_stmt, placeholders)\n115         values = []",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "ptclf/settings.py",
+    "line": 138,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "137         \"\"\" Read settings from specified path \"\"\"\n138         model_params_query = \"select {} from settings\".format(', '.join(cls._model_param_names))\n139         model_params = dict(zip(cls._model_param_names,",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "ptclf/settings.py",
+    "line": 141,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "140                                 list(sqlite_con.execute(model_params_query))[0]))\n141         defaults_query = \"select {} from settings\".format(', '.join(cls._default_names))\n142         defaults = dict(zip(cls._default_names, list(sqlite_con.execute(defaults_query))[0]))",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "ptclf/train.py",
+    "line": 52,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "51         model = WordRnn(settings)\n52         model.load_state_dict(torch.load(args.model_path + '.bin'))\n53         logging.debug('Model loaded from {}, continuing training'.format(settings.model_path))",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "ptclf/train.py",
+    "line": 134,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "133                 logging.debug('Executing epoch callback: {}'.format(settings.epoch_shell_callback))\n134                 check_output(settings.epoch_shell_callback, shell=True)\n135     except KeyboardInterrupt:",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "ptclf/util.py",
+    "line": 128,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "127     \"\"\".format(', '.join(\"d{} real\".format(idx) for idx in range(embed_dim)))\n128     insert_query = \"\"\"\n129         insert into vectors values ({});\n130     \"\"\".format(', '.join(['?'] * (embed_dim + 1)))\n131",
+    "stage": "data_acquisition+evaluation+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "ptclf/train.py",
+    "line": 134,
+    "message": "Found 'subprocess' function 'check_output' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation+inference+training"
+  }
+]

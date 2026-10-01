@@ -1,0 +1,222 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "bcn/bcn.py",
+    "line": 238,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "237       \"\"\"\n238       self.__dict__.update(torch.load(path))\n239",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "bcn/bcn.py",
+    "line": 393,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "392          # yay!\n393          self.network = torch.load(fname, map_location=device)\n394       else:",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "bcn/bcn.py",
+    "line": 717,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "716          if self.verbose: print(f\"Loading weights from {from_weights}.\")\n717          self.load_state_dict(torch.load(from_weights, map_location=self.device))\n718       if from_results:",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "bcn/bcn.py",
+    "line": 900,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "899          try:\n900             response = urllib.request.urlopen(req, data)\n901          except (urllib.error.HTTPError,):",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "bcn/bcn.py",
+    "line": 1227,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "1226          try:\n1227             response = urllib.request.urlopen(req, data)\n1228          except (urllib.error.HTTPError,):",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "bcn/v0/compat.py",
+    "line": 62,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "61       \"\"\"\n62       self.__dict__ = torch.load(path)\n63",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "bcn/v0/compat.py",
+    "line": 141,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "140 \n141    W = torch.load(file, map_location=\"cpu\")\n142",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "scripts/fig_bcn_correlation.py",
+    "line": 87,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "86    \"\"\"\n87    cache = pickle.load(open(f\"./{FOLDER_NAME}/cache.pkl\", \"rb\"))\n88    f1 = pickle.load(open(f\"./{FOLDER_NAME}/f1.{DATASET}.pkl\", \"rb\"))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "scripts/fig_bcn_correlation.py",
+    "line": 88,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "87    cache = pickle.load(open(f\"./{FOLDER_NAME}/cache.pkl\", \"rb\"))\n88    f1 = pickle.load(open(f\"./{FOLDER_NAME}/f1.{DATASET}.pkl\", \"rb\"))\n89",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "scripts/fig_bcn_correlation.py",
+    "line": 109,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "108 def plot_data():\n109    data_m = pickle.load(open(f\"./{FOLDER_NAME}/data.MNIST.pkl\", \"rb\"))\n110    data_f = pickle.load(open(f\"./{FOLDER_NAME}/data.FASHION.pkl\", \"rb\"))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "scripts/fig_bcn_correlation.py",
+    "line": 110,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "109    data_m = pickle.load(open(f\"./{FOLDER_NAME}/data.MNIST.pkl\", \"rb\"))\n110    data_f = pickle.load(open(f\"./{FOLDER_NAME}/data.FASHION.pkl\", \"rb\"))\n111    data = data_m + data_f",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "scripts/fig_wp_confusion.py",
+    "line": 97,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "96    )\n97    fault = torch.load(WP_PATH / fname)\n98",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "scripts/fig_wp_fault.py",
+    "line": 50,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "49 \n50    fault = torch.load(WP_PATH / fname)\n51    model = BCN(w, d, connections=connections, branches=ALL_BRANCHES[branches])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "bcn/bcn.py",
+    "line": 900,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "bcn/bcn.py",
+    "line": 1227,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "scripts/fig_bcn_correlation.py",
+    "line": 70,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "scripts/fig_bcn_correlation.py",
+    "line": 81,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "scripts/fig_bcn_correlation.py",
+    "line": 87,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "scripts/fig_bcn_correlation.py",
+    "line": 88,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "scripts/fig_bcn_correlation.py",
+    "line": 106,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "scripts/fig_bcn_correlation.py",
+    "line": 109,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "scripts/fig_bcn_correlation.py",
+    "line": 110,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

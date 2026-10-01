@@ -1,0 +1,142 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "example_display_thickness_results.py",
+    "line": 103,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "102 tibial_thickness = np.load('thickness_results_tibial_cartilage.npz', allow_pickle=True)['data']\n103 dd = pd.read_pickle('thickness_results.pkl')\n104",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "registration/registers.py",
+    "line": 68,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "67 \n68         process = subprocess.Popen(cmd, cwd=self.avsm_path,shell=True)\n69         process.wait()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "registration/registers.py",
+    "line": 228,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "227         )\n228         process = subprocess.Popen(cmd, shell=True)\n229         process.wait()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "registration/registers.py",
+    "line": 269,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "268 \n269         process = subprocess.Popen(cmd, shell=True)\n270         process.wait()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "registration/registers.py",
+    "line": 410,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "409         )\n410         process = subprocess.Popen(cmd, shell=True)\n411         process.wait()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "registration/registers.py",
+    "line": 419,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "418         )\n419         process = subprocess.Popen(cmd, shell=True)\n420         process.wait()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "registration/registers.py",
+    "line": 429,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "428         )\n429         process = subprocess.Popen(cmd, shell=True)\n430         process.wait()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "segmentation/utils.py",
+    "line": 25,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "24             print(\"=> loading checkpoint '{}'\".format(ckpoint_path))\n25             checkpoint = torch.load(ckpoint_path, map_location='cpu')\n26             if 'best_score' in checkpoint:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "registration/registers.py",
+    "line": 68,
+    "message": "Found 'subprocess' function 'Popen' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "registration/registers.py",
+    "line": 228,
+    "message": "Found 'subprocess' function 'Popen' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "registration/registers.py",
+    "line": 269,
+    "message": "Found 'subprocess' function 'Popen' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "registration/registers.py",
+    "line": 410,
+    "message": "Found 'subprocess' function 'Popen' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "registration/registers.py",
+    "line": 419,
+    "message": "Found 'subprocess' function 'Popen' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "registration/registers.py",
+    "line": 429,
+    "message": "Found 'subprocess' function 'Popen' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

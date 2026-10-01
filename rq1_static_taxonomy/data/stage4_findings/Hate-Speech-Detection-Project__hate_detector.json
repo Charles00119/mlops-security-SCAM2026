@@ -1,0 +1,12 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "augmentation.py",
+    "line": 260,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "259     cursor.execute(\n260       \"\"\"\n261       CREATE TEMPORARY VIEW temp_comments AS\n262       SELECT * FROM comments\n263       WHERE cid IN (%s)\n264       ORDER BY created\n265       \"\"\" % (','.join([str(row['cid']) for index, row in df.iterrows()]))\n266     )",
+    "stage": "unreachable"
+  }
+]

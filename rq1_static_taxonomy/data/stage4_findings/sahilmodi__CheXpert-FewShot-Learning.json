@@ -1,0 +1,452 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "chexpert_specific/model/trainer.py",
+    "line": 72,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "71         t.close()\n72         self.model.load_state_dict(torch.load(self.output_dir / f'model_best_{self.mode}.pth'))\n73         self.validate(split='test')",
+    "stage": "evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "chexpert_specific/model/trainer.py",
+    "line": 157,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "156 \n157         for batch_idx, (imgs, labels) in enumerate(tqdm(eval(f'self.{split}_loader'), position=1, leave=False, dynamic_ncols=True)):\n158             imgs, labels = imgs.to(self.device), labels.to(self.device)",
+    "stage": "evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "chexpert_specific/train.py",
+    "line": 84,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "83             if i == 0 and args.teacher_init:\n84                 model.load_state_dict(torch.load(args.teacher_init))\n85                 print(\"Loaded teacher model from\", args.teacher_init)",
+    "stage": "training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "imbalanced-semi-self/dataset/imbalance_chexpert.py",
+    "line": 221,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "220         with open(self.unlabeled_pseudo, 'rb') as f:\n221             aux_targets = pickle.load(f)\n222         aux_targets = aux_targets['extrapolated_targets']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "imbalanced-semi-self/dataset/imbalance_cifar.py",
+    "line": 147,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "146         with open(self.unlabeled_data, 'rb') as f:\n147             aux = pickle.load(f)\n148         aux_data = aux['data']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "imbalanced-semi-self/dataset/imbalance_cifar.py",
+    "line": 152,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "151         with open(self.unlabeled_pseudo, 'rb') as f:\n152             aux_targets = pickle.load(f)\n153         aux_targets = aux_targets['extrapolated_targets']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "imbalanced-semi-self/dataset/imbalance_svhn.py",
+    "line": 141,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "140         with open(self.unlabeled_pseudo, 'rb') as f:\n141             aux_targets = pickle.load(f)\n142         aux_targets = aux_targets['extrapolated_targets']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "imbalanced-semi-self/gen_pseudolabels.py",
+    "line": 79,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "78     with open(os.path.join(args.data_dir, args.data_filename), 'rb') as f:\n79         data = pickle.load(f)\n80",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "imbalanced-semi-self/gen_pseudolabels.py",
+    "line": 96,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "95     print(f\"===> Loading checkpoint '{args.resume}'\")\n96     checkpoint = torch.load(args.resume, map_location=torch.device(f'cuda:{str(args.gpu)}'))\n97     print(checkpoint)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "imbalanced-semi-self/imagenet_inat/main.py",
+    "line": 46,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "45 with open(args.cfg) as f:\n46     config = yaml.load(f)\n47 config = update(config, args)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "imbalanced-semi-self/imagenet_inat/run_networks.py",
+    "line": 659,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "658 \n659         checkpoint = torch.load(model_dir)          \n660         model_state = checkpoint['state_dict_best'] if not model_dir.endswith('.pth.tar') else checkpoint['state_dict']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "imbalanced-semi-self/imagenet_inat/utils.py",
+    "line": 41,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "40     print('Pretrained %s weights path: %s' % ('classifier' if classifier else 'feature model', weights_path))\n41     weights = torch.load(weights_path)   \n42     if not classifier:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "imbalanced-semi-self/pretrain_moco.py",
+    "line": 205,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "204             if args.gpu is None:\n205                 checkpoint = torch.load(args.resume)\n206             else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "imbalanced-semi-self/pretrain_moco.py",
+    "line": 209,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "208                 loc = 'cuda:{}'.format(args.gpu)\n209                 checkpoint = torch.load(args.resume, map_location=loc)\n210             args.start_epoch = checkpoint['epoch']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "maml/model/net.py",
+    "line": 41,
+    "message": "Use of exec detected.",
+    "snippet": "40                 n = n.replace(f\".{i}.\", f\"[{i}].\")\n41             exec(f'net.{n}.data = v')\n42",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "maml/model/net.py",
+    "line": 108,
+    "message": "Use of exec detected.",
+    "snippet": "107             n = n.replace(\".1.\", \"[1].\")\n108             exec(f'self.{n}.data = v')\n109",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "rfs/dataset/cifar.py",
+    "line": 53,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "52         with open(os.path.join(self.data_root, self.file_pattern % partition), 'rb') as f:\n53             data = pickle.load(f, encoding='latin1')\n54             self.imgs = data['data']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "rfs/dataset/mini_imagenet.py",
+    "line": 48,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "47         with open(os.path.join(self.data_root, self.file_pattern % partition), 'rb') as f:\n48             data = pickle.load(f, encoding='latin1')\n49             self.imgs = data['data']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "rfs/dataset/tiered_imagenet.py",
+    "line": 103,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "102             with open(file, 'rb') as fo:\n103                 data = pickle.load(fo)\n104             return data",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "rfs/eval_fewshot.py",
+    "line": 140,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "139     model = create_model(opt.model, n_cls, opt.dataset)\n140     ckpt = torch.load(opt.model_path)\n141     model.load_state_dict(ckpt['model'])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "rfs/train_distillation.py",
+    "line": 162,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "161     model = create_model(model_t, n_cls, dataset)\n162     model.load_state_dict(torch.load(model_path)['model'])\n163     print('==> done')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "simclr/finetune.py",
+    "line": 116,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "115 \n116     checkpoint = torch.load(args.dir / 'checkpoint_0200.pth.tar', map_location=device)\n117     state_dict = checkpoint['state_dict']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "simclr/finetune.py",
+    "line": 135,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "134     if args.self_training:\n135         teacher_state_dict = torch.load(args.dir / f'tds{args.training_size}' / \"teacher.pth.tar\")\n136         teacher_model = copy.deepcopy(model)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "simclr/finetune.py",
+    "line": 228,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "227     # Test\n228     model.load_state_dict(torch.load(output_dir / \"model_best.pth.tar\"))\n229     print()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "utils/dataset_info.py",
+    "line": 15,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "14 for spl in [\"train\", \"val\", \"test\"]:\n15     df = eval(spl)\n16     c = [spl]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "utils/dataset_info.py",
+    "line": 29,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "28     cls_counts = [0] * 32\n29     df = eval(spl).fillna(0)\n30     for idx, row in df[classes].iterrows():",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "chexpert_specific/model/trainer.py",
+    "line": 157,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "evaluation+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "imbalanced-semi-self/dataset/imbalance_chexpert.py",
+    "line": 221,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "imbalanced-semi-self/dataset/imbalance_cifar.py",
+    "line": 147,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "imbalanced-semi-self/dataset/imbalance_cifar.py",
+    "line": 152,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "imbalanced-semi-self/dataset/imbalance_svhn.py",
+    "line": 141,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "imbalanced-semi-self/gen_pseudolabels.py",
+    "line": 79,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "imbalanced-semi-self/gen_pseudolabels.py",
+    "line": 195,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "imbalanced-semi-self/imagenet_inat/run_networks.py",
+    "line": 72,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "imbalanced-semi-self/imagenet_inat/run_networks.py",
+    "line": 477,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "imbalanced-semi-self/imagenet_inat/run_networks.py",
+    "line": 546,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "imbalanced-semi-self/imagenet_inat/run_networks.py",
+    "line": 582,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "maml/model/net.py",
+    "line": 41,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "maml/model/net.py",
+    "line": 108,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "rfs/dataset/cifar.py",
+    "line": 53,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "rfs/dataset/mini_imagenet.py",
+    "line": 48,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "rfs/dataset/tiered_imagenet.py",
+    "line": 103,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "rfs/dataset/tiered_imagenet.py",
+    "line": 107,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "utils/dataset_info.py",
+    "line": 15,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "utils/dataset_info.py",
+    "line": 29,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

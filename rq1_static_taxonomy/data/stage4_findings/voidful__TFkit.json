@@ -1,0 +1,472 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tests/conftest.py",
+    "line": 17,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "16     \"\"\"Create a mock tokenizer for testing.\"\"\"\n17     return AutoTokenizer.from_pretrained('bert-base-uncased')\n18",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tests/conftest.py",
+    "line": 23,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "22     \"\"\"Create a mock pretrained model for testing.\"\"\"\n23     return AutoModel.from_pretrained('bert-base-uncased')\n24",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tfkit/dump.py",
+    "line": 23,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "22     if model_type == 'clm':\n23         hf_model = AutoModelForCausalLM.from_pretrained(model_info.get(\"model_config\"))\n24         hf_model.eval()",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tfkit/dump.py",
+    "line": 34,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "33     elif model_type == 'seq2seq':\n34         hf_model = AutoModelForSeq2SeqLM.from_pretrained(model_info.get(\"model_config\"))\n35         hf_model.eval()",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tfkit/dump.py",
+    "line": 43,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "42     elif model_type == 'clas':\n43         hf_model = AutoModelForSequenceClassification.from_pretrained(model_info.get(\"model_config\"))\n44         hf_model.classifier.weight = model.classifier_list[0].weight",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tfkit/test/task/test_task_model.py",
+    "line": 15,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "14         maxlen = 32\n15         tokenizer = AutoTokenizer.from_pretrained('sshleifer/bart-tiny-random')\n16         pretrained = AutoModel.from_pretrained('sshleifer/bart-tiny-random')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tfkit/test/task/test_task_model.py",
+    "line": 16,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "15         tokenizer = AutoTokenizer.from_pretrained('sshleifer/bart-tiny-random')\n16         pretrained = AutoModel.from_pretrained('sshleifer/bart-tiny-random')\n17         # tfkit.task.seq2seq, tfkit.task.once, tfkit.task.oncectc, tfkit.task.clm",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tfkit/test/test_atrain.py",
+    "line": 34,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "33         model_class = load_model_class('clas')\n34         tokenizer = BertTokenizer.from_pretrained('voidful/albert_chinese_tiny')\n35         pretrained = AutoModel.from_pretrained('voidful/albert_chinese_tiny')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tfkit/test/test_atrain.py",
+    "line": 35,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "34         tokenizer = BertTokenizer.from_pretrained('voidful/albert_chinese_tiny')\n35         pretrained = AutoModel.from_pretrained('voidful/albert_chinese_tiny')\n36         model = model_class.Model(tokenizer=tokenizer, pretrained=pretrained, tasks_detail={\"taskA\": [\"a\", \"b\"]},",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "tfkit/test/test_atrain.py",
+    "line": 48,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "47              'voidful/albert_chinese_tiny', '--maxlen', '50'])\n48         result = os.system(\n49             'tfkit-train --batch 2 --epoch 2 --savedir ' + MTTASK_MODEL_DIR + ' --train ' + CLAS_DATASET + ' ' + GEN_DATASET + ' --lr 5e-5 --test ' + CLAS_DATASET + ' ' + GEN_DATASET + ' --task once clm --config voidful/albert_chinese_tiny --maxlen 50')\n50         self.assertTrue(result == 0)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "tfkit/test/test_atrain.py",
+    "line": 57,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "56              'voidful/albert_chinese_tiny', '--maxlen', '50'])\n57         result = os.system(\n58             'tfkit-train --batch 2 --epoch 2 --savedir ' + ONCE_MODEL_DIR + ' --train ' + GEN_DATASET + ' --test ' + GEN_DATASET + ' --task once --config voidful/albert_chinese_tiny --maxlen 50')\n59         self.assertTrue(result == 0)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "tfkit/test/test_atrain.py",
+    "line": 66,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "65              'voidful/albert_chinese_tiny', '--maxlen', '50'])\n66         result = os.system(\n67             'tfkit-train --batch 2 --epoch 2 --savedir ' + ONCE_MODEL_DIR + ' --train ' + GEN_DATASET + ' --test ' + GEN_DATASET + ' --task oncectc --config voidful/albert_chinese_tiny --maxlen 50')\n68         self.assertTrue(result == 0)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "tfkit/test/test_atrain.py",
+    "line": 84,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "83     def testGenCLM(self):\n84         result = os.system(\n85             'tfkit-train --batch 2 --epoch 1 --savedir ' + CLM_MODEL_DIR + ' --train ' + GEN_DATASET + ' --test ' + GEN_DATASET + ' --task clm --config prajjwal1/bert-small --maxlen 50')\n86         self.assertTrue(result == 0)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "tfkit/test/test_atrain.py",
+    "line": 97,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "96              'voidful/albert_chinese_tiny', '--maxlen', '100', '--add_tokens_file', NEWTOKEN_FILE])\n97         result = os.system(\n98             f'tfkit-train --batch 2 --add_tokens_file {NEWTOKEN_FILE}  --savedir {ADDTOKFILE_SAVE_DIR} --epoch 2  --train {ADDTOK_DATASET}  --test {ADDTOK_DATASET} --task clm --config voidful/albert_chinese_tiny --maxlen 50')\n99         self.assertTrue(result == ",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "tfkit/test/test_atrain.py",
+    "line": 142,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "141              'voidful/albert_chinese_tiny', '--maxlen', '50'])\n142         result = os.system(\n143             'tfkit-train --batch 2 --epoch 2 --savedir ' + CLAS_MODEL_DIR + ' --train ' + CLAS_DATASET + ' --test ' + CLAS_DATASET + ' --task clas --config voidful/albert_chinese_tiny --maxlen 50')\n144         self.assertTrue(result == 0)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "tfkit/test/test_zeval.py",
+    "line": 27,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "26             ['--model', ONCE_MODEL_PATH, '--valid', GEN_DATASET, '--metric', 'emf1', '--print'])\n27         result = os.system(\n28             'tfkit-eval --model ' + ONCE_MODEL_PATH + ' --valid ' + GEN_DATASET + ' --metric emf1 --print')\n29         self.assertTrue(result == 0)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "tfkit/test/test_zeval.py",
+    "line": 34,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "33             ['--model', ONCE_MODEL_PATH, '--valid', GEN_DATASET, '--metric', 'emf1', '--print'])\n34         result = os.system(\n35             'tfkit-eval --model ' + ONCE_MODEL_PATH + ' --valid ' + GEN_DATASET + ' --metric emf1 --print')\n36         self.assertTrue(result == 0)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "tfkit/test/test_zeval.py",
+    "line": 41,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "40             ['--model', ONCECTC_MODEL_PATH, '--valid', GEN_DATASET, '--metric', 'emf1', '--print'])\n41         result = os.system(\n42             'tfkit-eval --model ' + ONCECTC_MODEL_PATH + ' --valid ' + GEN_DATASET + ' --metric emf1 --print')\n43         self.assertTrue(result == 0)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "tfkit/test/test_zeval.py",
+    "line": 51,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "50             ['--model', SEQ2SEQ_MODEL_PATH, '--valid', GEN_DATASET, '--metric', 'emf1', '--print'])\n51         result = os.system(\n52             'tfkit-eval --model ' + SEQ2SEQ_MODEL_PATH + ' --valid ' + GEN_DATASET + ' --metric emf1 --print')\n53         self.assertTrue(result == 0)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "tfkit/test/test_zeval.py",
+    "line": 58,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "57             ['--model', CLM_MODEL_PATH, '--valid', GEN_DATASET, '--metric', 'emf1', '--print'])\n58         result = os.system(\n59             'tfkit-eval --model ' + CLM_MODEL_PATH + ' --valid ' + GEN_DATASET + ' --metric emf1 --print')\n60         self.assertTrue(result == 0)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "tfkit/test/test_zeval.py",
+    "line": 63,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "62     def testEvalAddedTokenModel(self):\n63         result = os.system(\n64             'tfkit-eval --model ' + ADDTOKFILE_MODEL_PATH + ' --valid ' + ADDTOK_DATASET + ' --metric emf1 --print')\n65         self.assertTrue(result == 0)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "tfkit/test/test_zeval.py",
+    "line": 70,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "69             ['--model', CLAS_MODEL_PATH, '--valid', CLAS_DATASET, '--metric', 'clas', '--print'])\n70         result = os.system(\n71             'tfkit-eval --model ' + CLAS_MODEL_PATH + ' --valid ' + CLAS_DATASET + ' --metric clas --print')\n72         self.assertTrue(result == 0)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "tfkit/test/test_zzdump.py",
+    "line": 24,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "23         tfkit.dump.main([\"--model\", CLM_MODEL_PATH, '--dumpdir', dump_dir])\n24         result = os.system(\n25             'tfkit-dump --model ' + CLM_MODEL_PATH + ' --dumpdir ' + dump_dir)\n26         self.assertTrue(result == 0)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tfkit/test/utility/test_utility_eval_metric.py",
+    "line": 17,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "16     def testER(self):\n17         tokenizer = BertTokenizer.from_pretrained('voidful/albert_chinese_tiny')\n18",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tfkit/test/utility/test_utility_eval_metric.py",
+    "line": 75,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "74     def testEMF1(self):\n75         tokenizer = BertTokenizer.from_pretrained('voidful/albert_chinese_tiny')\n76",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tfkit/test/utility/test_utility_eval_metric.py",
+    "line": 148,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "147     def test_tokenize_text(self):\n148         tokenizer = AutoTokenizer.from_pretrained('bert-base-cased')\n149         eval = tfkit.utility.eval_metric.EvalMetric(tokenizer, normalize_text=False)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tfkit/test/utility/test_utility_eval_metric.py",
+    "line": 174,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "173     def testNLGWithPAD(self):\n174         tokenizer = BertTokenizer.from_pretrained('voidful/albert_chinese_tiny')\n175",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tfkit/test/utility/test_utility_eval_metric.py",
+    "line": 195,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "194     def testNLG(self):\n195         tokenizer = BertTokenizer.from_pretrained('voidful/albert_chinese_tiny')\n196",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tfkit/test/utility/test_utility_eval_metric.py",
+    "line": 250,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "249     def testTag(self):\n250         tokenizer = BertTokenizer.from_pretrained('voidful/albert_chinese_tiny')\n251         eval = tfkit.utility.eval_metric.EvalMetric(tokenizer)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tfkit/test/utility/test_utility_eval_metric.py",
+    "line": 263,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "262     def testClassify(self):\n263         tokenizer = BertTokenizer.from_pretrained('voidful/albert_chinese_tiny')\n264         eval = tfkit.utility.eval_metric.EvalMetric(tokenizer)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tfkit/test/utility/test_utility_eval_metric.py",
+    "line": 339,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "338 \n339         tokenizer = AutoTokenizer.from_pretrained('facebook/bart-base')\n340         eval = tfkit.utility.eval_metric.EvalMetric(tokenizer)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tfkit/test/utility/test_utility_eval_metric.py",
+    "line": 347,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "346 \n347         tokenizer = AutoTokenizer.from_pretrained('bert-base-cased')\n348         eval = tfkit.utility.eval_metric.EvalMetric(tokenizer)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tfkit/test/utility/test_utility_model.py",
+    "line": 28,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "27         # load pre-train task\n28         tokenizer = BertTokenizer.from_pretrained('voidful/albert_chinese_tiny')\n29         pretrained = AutoModel.from_pretrained('voidful/albert_chinese_tiny')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tfkit/test/utility/test_utility_model.py",
+    "line": 29,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "28         tokenizer = BertTokenizer.from_pretrained('voidful/albert_chinese_tiny')\n29         pretrained = AutoModel.from_pretrained('voidful/albert_chinese_tiny')\n30         model = model_class.Model(tokenizer=tokenizer, pretrained=pretrained, tasks_detail={\"taskA\": [\"a\", \"b\"]},",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tfkit/test/utility/test_utility_tok.py",
+    "line": 17,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "16     def testTok(self):\n17         tokenizer = BertTokenizer.from_pretrained('voidful/albert_chinese_tiny')\n18         begin = tfkit.utility.tok.tok_begin(tokenizer)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tfkit/test/utility/test_utility_tok.py",
+    "line": 28,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "27     def testTok_roberta(self):\n28         tokenizer = AutoTokenizer.from_pretrained('distilroberta-base')\n29         begin = tfkit.utility.tok.tok_begin(tokenizer)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tfkit/test/utility/test_utility_tok.py",
+    "line": 39,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "38     def testGetXUnkToken(self):\n39         tokenizer = BertTokenizer.from_pretrained('voidful/albert_chinese_tiny')\n40         result = tfkit.utility.tok.get_topP_unk_token(tokenizer, file_paths=[], topP=0.5)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tfkit/test/utility/test_utility_tok.py",
+    "line": 52,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "51     def testHandleExceed(self):\n52         tokenizer = BertTokenizer.from_pretrained('voidful/albert_chinese_tiny')\n53         seq = \" \".join([str(_) for _ in range(100)])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "tfkit/train.py",
+    "line": 246,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "245         logger.write_log(\"Loading back:\", input_arg.get('resume'))\n246         package = torch.load(input_arg.get('resume'))\n247         if 'model_state_dict' in package:",
+    "stage": "data_acquisition+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tfkit/utility/dataset.py",
+    "line": 30,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "29         try:\n30             hf_ds = load_dataset(file_path, split=parameter.get('split', 'train'))\n31             return HFDataset(hf_ds, tokenizer=tokenizer,",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tfkit/utility/model.py",
+    "line": 82,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "81     tasks = _normalize_model_types(model_type)\n82     config = AutoConfig.from_pretrained(pretrained_config, trust_remote_code=trust_remote)\n83",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tfkit/utility/model.py",
+    "line": 86,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "85         try:\n86             return AutoModelForSeq2SeqLM.from_pretrained(\n87                 pretrained_config,\n88                 config=config,\n89                 trust_remote_code=trust_remote,\n90             )\n91         except (ValueError, OSError):",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tfkit/utility/model.py",
+    "line": 96,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "95         try:\n96             return AutoModelForCausalLM.from_pretrained(\n97                 pretrained_config,\n98                 config=config,\n99                 trust_remote_code=trust_remote,\n100             )\n101         except (ValueError, OSError):",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tfkit/utility/model.py",
+    "line": 105,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "104 \n105     return AutoModel.from_pretrained(\n106         pretrained_config,\n107         config=config,\n108         trust_remote_code=trust_remote,\n109     )\n110",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tfkit/utility/model.py",
+    "line": 113,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "112 def load_pretrained_tokenizer(pretrained_config, trust_remote_code: bool | None = None):\n113     tokenizer = AutoTokenizer.from_pretrained(\n114         pretrained_config,\n115         trust_remote_code=_should_trust_remote_code(trust_remote_code),\n116     )\n117     return tokenizer",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "tfkit/utility/model.py",
+    "line": 149,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "148     device = 'cuda' if torch.cuda.is_available() else 'cpu'\n149     torchpack = torch.load(model_path, map_location=device)\n150",
+    "stage": "data_preparation+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tfkit/utility/tok.py",
+    "line": 55,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "54 def get_all_tok_from_config(config):\n55     tokenizer = AutoTokenizer.from_pretrained(config)\n56     return list(tokenizer.get_vocab().keys())",
+    "stage": "data_preparation"
+  }
+]

@@ -1,0 +1,162 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "rave/dataset.py",
+    "line": 180,
+    "message": "Call to requests without timeout",
+    "snippet": "179         logging.info(\"starting remote dataset session\")\n180         self.length = int(requests.get(\"/\".join([db_path, \"len\"])).text)\n181         logging.info(\"connection established !\")",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "rave/dataset.py",
+    "line": 187,
+    "message": "Call to requests without timeout",
+    "snippet": "186     def __getitem__(self, index):\n187         example = requests.get(\"/\".join([\n188             self.db_path,\n189             \"get\",\n190             f\"{index}\",\n191         ])).text\n192         example = AudioExampleWrapper(base64.b64decode(example)).get(\"audio\")",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "scripts/export.py",
+    "line": 485,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "484 def get_state_dict(RUN, PRIOR):\n485     state_dict = torch.load(PRIOR, map_location=\"cpu\")['state_dict']\n486     for k, v in RUN.state_dict().items():",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "scripts/export.py",
+    "line": 506,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "505         logging.info('model found : %s'%FLAGS.run)\n506         checkpoint = torch.load(FLAGS.run, map_location='cpu')\n507         if FLAGS.ema_weights and \"EMA\" in checkpoint[\"callbacks\"]:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "scripts/export_onnx.py",
+    "line": 25,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "24     pretrained = rave.RAVE()\n25     pretrained.load_state_dict(torch.load(checkpoint)[\"state_dict\"])\n26     pretrained.eval()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "scripts/remote_dataset.py",
+    "line": 64,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "63 \n64     app.run(host=\"0.0.0.0\", port=FLAGS.port)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "scripts/train.py",
+    "line": 201,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "200 \n201     gin_hash = hashlib.md5(\n202         gin.operative_config_str().encode()).hexdigest()[:10]\n203",
+    "stage": "data_acquisition+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "scripts/train.py",
+    "line": 260,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "259         print('loading state from file %s'%run)\n260         loaded = torch.load(run, map_location='cpu')\n261         # model = model.load_state_dict(loaded)",
+    "stage": "data_acquisition+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "scripts/train_prior.py",
+    "line": 78,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "77     print('model found : %s'%run)\n78     checkpoint = torch.load(run, map_location='cpu')\n79     if \"EMA\" in checkpoint[\"callbacks\"]:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "scripts/train_prior.py",
+    "line": 148,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "147 \n148     gin_hash = hashlib.md5(\n149         gin.operative_config_str().encode()).hexdigest()[:10]\n150",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "scripts/train_prior.py",
+    "line": 199,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "198         print('loading state from file %s'%run)\n199         loaded = torch.load(run, map_location='cpu')\n200         trainer.fit_loop.epoch_loop._batches_that_stepped = loaded['global_step']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "setup.py",
+    "line": 7,
+    "message": "Use of exec detected.",
+    "snippet": "6 # imports __version__\n7 exec(open('rave/version.py').read())\n8",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.app-run-param-config.avoid_app_run_with_bad_host",
+    "file_path": "scripts/remote_dataset.py",
+    "line": 64,
+    "message": "Running flask app with host 0.0.0.0 could expose the server publicly.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "scripts/train.py",
+    "line": 201,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "scripts/train_prior.py",
+    "line": 148,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "setup.py",
+    "line": 7,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "dependencies"
+  }
+]

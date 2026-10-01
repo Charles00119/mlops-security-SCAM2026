@@ -1,0 +1,52 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "uncertainty_est/models/__init__.py",
+    "line": 81,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "80     with (checkpoint_path.parent / \"config.yaml\").open(\"r\") as f:\n81         config = yaml.load(f, Loader=yaml.FullLoader)\n82",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "uncertainty_est/models/__init__.py",
+    "line": 85,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "84         with (checkpoint_path.parent / \"hparams.yaml\").open(\"r\") as f:\n85             hparams = yaml.load(f, Loader=yaml.FullLoader)\n86         if \"checkpoint\" in hparams:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "uncertainty_est/models/energy_finetuning.py",
+    "line": 27,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "26         self.save_hyperparameters()\n27         self.load_state_dict(torch.load(checkpoint)[\"state_dict\"])\n28",
+    "stage": "evaluation+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "uncertainty_est/seml_grid.py",
+    "line": 24,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "23     run = subprocess.run(\n24         f\"seml {collection} add {str(out_path)} -f\", shell=True, capture_output=True\n25     )\n26     print(run.stdout.decode(\"UTF-8\"))\n27     print(run.stderr.decode(\"UTF-8\"))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "uncertainty_est/seml_grid.py",
+    "line": 24,
+    "message": "Found 'subprocess' function 'run' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

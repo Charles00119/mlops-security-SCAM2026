@@ -1,0 +1,1282 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "notebooks/sd_multilora/text_encoder.py",
+    "line": 17,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "16 def _model_loader(model_name):\n17     return CLIPTextModel.from_pretrained(model_name, subfolder=\"text_encoder\")\n18",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "notebooks/sd_multilora/text_encoder2.py",
+    "line": 17,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "16 def _model_loader(model_name):\n17     return CLIPTextModelWithProjection.from_pretrained(model_name, subfolder=\"text_encoder_2\")\n18",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/cli/extract_adapters.py",
+    "line": 80,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "79         # Load LoRA config and LoRA model\n80         config = AutoConfig.from_pretrained(\n81             self.args.model_name_or_path, cache_dir=self.args.cache_dir, trust_remote_code=self.args.trust_remote_code\n82         )\n83         if is_peft:",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/cli/extract_adapters.py",
+    "line": 97,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "96             # Transformers model\n97             peft_model = AutoModelForCausalLM.from_pretrained(\n98                 self.args.model_name_or_path,\n99                 cache_dir=self.args.cache_dir,\n100                 trust_remote_code=self.args.trust_remote_code,\n101             )\n102",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "olive/cli/init/wizard.py",
+    "line": 219,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "218                 print(f\"\\nRunning: {command_str}\\n\")\n219                 subprocess.run(command_str, shell=True, check=False)\n220",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "olive/cli/init/wizard.py",
+    "line": 224,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "223             print(\"\\nGenerating configuration file...\\n\")\n224             subprocess.run(config_cmd, shell=True, check=False)\n225             config_path = Path(output_dir) / \"config.json\"",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "olive/cli/init/wizard.py",
+    "line": 231,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "230             print(f\"\\nRunning: {command_str}\\n\")\n231             subprocess.run(command_str, shell=True, check=False)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/common/hf/io_config/task_config.py",
+    "line": 62,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "61     if isinstance(model_name_or_config, str):\n62         config = AutoConfig.from_pretrained(model_name_or_config, **kwargs)\n63     else:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/common/hf/io_config/task_config.py",
+    "line": 349,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "348     if isinstance(model_name_or_config, str):\n349         config = AutoConfig.from_pretrained(model_name_or_config, **kwargs)\n350     else:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/common/hf/utils.py",
+    "line": 233,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "232 \n233             processor = AutoProcessor.from_pretrained(model_name_or_path)\n234             if not isinstance(processor, PreTrainedTokenizerBase):",
+    "stage": "data_preparation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/data/component/load_dataset.py",
+    "line": 40,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "39     assert data_name is not None, \"Please specify the data name\"\n40     dataset = load_dataset(path=data_name, name=subset, data_dir=data_dir, split=split, data_files=data_files, **kwargs)\n41     if col_filters:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/data/component/pre_process_data.py",
+    "line": 273,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "272     fe_args = feature_extractor_args or {}\n273     fea_extractor = AutoFeatureExtractor.from_pretrained(model_name, trust_remote_code=trust_remote_code, **fe_args)\n274     dataset.cast_column(input_cols[0], Audio(sampling_rate=fea_extractor.sampling_rate))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/data/component/sd_lora/auto_caption.py",
+    "line": 175,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "174     dtype = torch.float16 if use_fp16 and device == \"cuda\" else torch.float32\n175     processor = AutoProcessor.from_pretrained(model_name)\n176     model = Blip2ForConditionalGeneration.from_pretrained(model_name, torch_dtype=dtype).to(device)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/data/component/sd_lora/auto_caption.py",
+    "line": 176,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "175     processor = AutoProcessor.from_pretrained(model_name)\n176     model = Blip2ForConditionalGeneration.from_pretrained(model_name, torch_dtype=dtype).to(device)\n177     model.eval()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/data/component/sd_lora/auto_caption.py",
+    "line": 296,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "295     dtype = torch.float16 if use_fp16 and device == \"cuda\" else torch.float32\n296     processor = AutoProcessor.from_pretrained(model_name, trust_remote_code=trust_remote_code)\n297     model = AutoModelForCausalLM.from_pretrained(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/data/component/sd_lora/auto_caption.py",
+    "line": 297,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "296     processor = AutoProcessor.from_pretrained(model_name, trust_remote_code=trust_remote_code)\n297     model = AutoModelForCausalLM.from_pretrained(\n298         model_name,\n299         torch_dtype=dtype,\n300         trust_remote_code=trust_remote_code,\n301     ).to(device)\n302     model.eval()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/data/component/sd_lora/auto_tagging.py",
+    "line": 118,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in hf_hub_download()",
+    "snippet": "117     # Download model and tags from HuggingFace\n118     model_path = hf_hub_download(model_name, filename=\"model.onnx\")\n119     tags_path = hf_hub_download(model_name, filename=\"selected_tags.csv\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/data/component/sd_lora/auto_tagging.py",
+    "line": 119,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in hf_hub_download()",
+    "snippet": "118     model_path = hf_hub_download(model_name, filename=\"model.onnx\")\n119     tags_path = hf_hub_download(model_name, filename=\"selected_tags.csv\")\n120",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/evaluator/lmeval_ort.py",
+    "line": 229,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "228         self.prefill = Prefill(model_path, ep, ep_options)\n229         self.config = AutoConfig.from_pretrained(Path(model_path).parent)\n230         self.tokenizer = AutoTokenizer.from_pretrained(Path(model_path).parent)",
+    "stage": "data_acquisition+data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/evaluator/lmeval_ort.py",
+    "line": 230,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "229         self.config = AutoConfig.from_pretrained(Path(model_path).parent)\n230         self.tokenizer = AutoTokenizer.from_pretrained(Path(model_path).parent)\n231",
+    "stage": "data_acquisition+data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/evaluator/lmeval_ort.py",
+    "line": 639,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "638         if self._hf_tokenizer is None:\n639             self._hf_tokenizer = AutoTokenizer.from_pretrained(self._pretrained)\n640         return self._hf_tokenizer.apply_chat_template(",
+    "stage": "data_acquisition+data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/evaluator/mteb_ort.py",
+    "line": 40,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "39     def __init__(self, tokenizer_path: str, batch_size: int = 32, max_length: int | None = None):\n40         self.tokenizer = AutoTokenizer.from_pretrained(tokenizer_path)\n41         self.batch_size = batch_size",
+    "stage": "data_preparation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/model/utils/diffusers_utils.py",
+    "line": 40,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in hf_hub_download()",
+    "snippet": "39 \n40         hf_hub_download(model_path, \"model_index.json\")\n41         return True",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/passes/diffusers/lora.py",
+    "line": 271,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "270             # Load text encoders (frozen, for encoding prompts only)\n271             text_encoder = CLIPTextModel.from_pretrained(model_path, subfolder=\"text_encoder\")\n272             text_encoder_2 = None",
+    "stage": "data_acquisition+data_preparation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/passes/diffusers/lora.py",
+    "line": 274,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "273             if model_variant == DiffusersModelVariant.SDXL:\n274                 text_encoder_2 = CLIPTextModelWithProjection.from_pretrained(model_path, subfolder=\"text_encoder_2\")\n275",
+    "stage": "data_acquisition+data_preparation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/passes/diffusers/lora.py",
+    "line": 632,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "631             # Load text encoders (frozen, for encoding prompts only)\n632             text_encoder = CLIPTextModel.from_pretrained(model_path, subfolder=\"text_encoder\")\n633             text_encoder_2 = T5EncoderModel.from_pretrained(model_path, subfolder=\"text_encoder_2\")",
+    "stage": "data_acquisition+data_preparation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/passes/diffusers/lora.py",
+    "line": 633,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "632             text_encoder = CLIPTextModel.from_pretrained(model_path, subfolder=\"text_encoder\")\n633             text_encoder_2 = T5EncoderModel.from_pretrained(model_path, subfolder=\"text_encoder_2\")\n634",
+    "stage": "data_acquisition+data_preparation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "olive/passes/diffusers/lora.py",
+    "line": 945,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "944             # Used solely for creating unique directory names in cache, not a security-sensitive usage.\n945             prompt_hash = hashlib.md5(class_prompt.encode()).hexdigest()[:8]  # CodeQL [SM02167] Justification above\n946             output_dir = cache.get_cache_dir() / \"class_images\" / prompt_hash",
+    "stage": "data_acquisition+data_preparation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/passes/diffusers/lora.py",
+    "line": 1061,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "1060         if model_variant == DiffusersModelVariant.FLUX:\n1061             tokenizers[\"clip\"] = AutoTokenizer.from_pretrained(model_path, subfolder=\"tokenizer\")\n1062             tokenizers[\"t5\"] = AutoTokenizer.from_pretrained(model_path, subfolder=\"tokenizer_2\")",
+    "stage": "data_acquisition+data_preparation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/passes/diffusers/lora.py",
+    "line": 1062,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "1061             tokenizers[\"clip\"] = AutoTokenizer.from_pretrained(model_path, subfolder=\"tokenizer\")\n1062             tokenizers[\"t5\"] = AutoTokenizer.from_pretrained(model_path, subfolder=\"tokenizer_2\")\n1063         elif model_variant == DiffusersModelVariant.SDXL:",
+    "stage": "data_acquisition+data_preparation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/passes/diffusers/lora.py",
+    "line": 1064,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "1063         elif model_variant == DiffusersModelVariant.SDXL:\n1064             tokenizers[\"one\"] = AutoTokenizer.from_pretrained(model_path, subfolder=\"tokenizer\")\n1065             tokenizers[\"two\"] = AutoTokenizer.from_pretrained(model_path, subfolder=\"tokenizer_2\")",
+    "stage": "data_acquisition+data_preparation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/passes/diffusers/lora.py",
+    "line": 1065,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "1064             tokenizers[\"one\"] = AutoTokenizer.from_pretrained(model_path, subfolder=\"tokenizer\")\n1065             tokenizers[\"two\"] = AutoTokenizer.from_pretrained(model_path, subfolder=\"tokenizer_2\")\n1066         else:  # SD",
+    "stage": "data_acquisition+data_preparation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/passes/diffusers/lora.py",
+    "line": 1067,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "1066         else:  # SD\n1067             tokenizers[\"main\"] = AutoTokenizer.from_pretrained(model_path, subfolder=\"tokenizer\")\n1068",
+    "stage": "data_acquisition+data_preparation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/passes/onnx/discrepancy_check.py",
+    "line": 1127,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "1126 \n1127         ref_cfg = AutoConfig.from_pretrained(ref_path)\n1128         architectures = getattr(ref_cfg, \"architectures\", None) or []",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/passes/onnx/discrepancy_check.py",
+    "line": 1767,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "1766             try:\n1767                 processor = AutoProcessor.from_pretrained(candidate)\n1768                 if candidate != ref_model_path:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/passes/onnx/discrepancy_check.py",
+    "line": 2036,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "2035 \n2036             processor = AutoProcessor.from_pretrained(ref_model_path)\n2037             image = self._load_or_make_image(config)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/passes/onnx/discrepancy_check.py",
+    "line": 2061,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "2060 \n2061             tokenizer = AutoTokenizer.from_pretrained(ref_model_path)\n2062             input_ids = tokenizer(config.generate_prompt, return_tensors=\"pt\").input_ids",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/passes/onnx/discrepancy_check.py",
+    "line": 2341,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "2340         # Tokenize the generation prompt using the main-env tokenizer\n2341         tokenizer = AutoTokenizer.from_pretrained(ref_model_path)\n2342         encoded = tokenizer(config.generate_prompt, return_tensors=\"pt\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/passes/onnx/nvmo_quantization.py",
+    "line": 213,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "212     def get_input_shapes_profile(self, model_name_or_path):\n213         config = AutoConfig.from_pretrained(model_name_or_path)\n214",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/passes/onnx/nvmo_quantization.py",
+    "line": 400,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "399 \n400         config = AutoConfig.from_pretrained(\n401             model_name, token=True, cache_dir=cache_dir, trust_remote_code=self.config.trust_remote_code\n402         )\n403         tokenizer = AutoTokenizer.from_pretrained(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/passes/onnx/nvmo_quantization.py",
+    "line": 403,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "402         )\n403         tokenizer = AutoTokenizer.from_pretrained(\n404             model_name, token=True, cache_dir=cache_dir, trust_remote_code=self.config.trust_remote_code\n405         )\n406         tokenizer.add_special_tokens({\"pad_token\": \"[PAD]\"})",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/passes/onnx/nvmo_quantization.py",
+    "line": 414,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "413         if \"cnn\" in dataset_name:\n414             dataset2 = load_dataset(\"cnn_dailymail\", name=\"3.0.0\", split=\"train\").select(range(max_calib_rows_to_load))\n415             column = \"article\"",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/passes/onnx/nvmo_quantization.py",
+    "line": 417,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "416         elif \"pile\" in dataset_name:\n417             dataset2 = load_dataset(\"mit-han-lab/pile-val-backup\", split=\"validation\")\n418             column = \"text\"",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/passes/openvino/compression.py",
+    "line": 644,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "643                 ) from None\n644             tokenizer = AutoTokenizer.from_pretrained(model.model_name_or_path)\n645",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/passes/openvino/optimum_intel.py",
+    "line": 85,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "84                 try:\n85                     config = AutoConfig.from_pretrained(model_name_or_path)\n86                     with_past_arch_list = [\"MistralForCausalLM\", \"Zamba2ForCausalLM\"]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/passes/qairt/pipeline.py",
+    "line": 129,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in snapshot_download()",
+    "snippet": "128 \n129             local_model_path = snapshot_download(\n130                 model.model_path,\n131                 local_files_only=True,\n132                 ignore_patterns=[\"*.pt\", \"*.bin\", \"*.safetensors\"],\n133             )\n134         except Exception as e:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/passes/quark_vitisai/torch/language_modeling/llm_ptq/quantize_quark.py",
+    "line": 63,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "62     if multimodal:\n63         processor = AutoProcessor.from_pretrained(args.model_dir, trust_remote_code=args.trust_remote_code)\n64         if args.model_export is not None:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/passes/quark_vitisai/torch/language_modeling/llm_utils/data_preparation.py",
+    "line": 23,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "22 ) -> DataLoader[torch.Tensor]:\n23     dataset = load_dataset(\"mit-han-lab/pile-val-backup\", split=\"validation\").shuffle(seed=seed)\n24",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/passes/quark_vitisai/torch/language_modeling/llm_utils/data_preparation.py",
+    "line": 50,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "49 ) -> DataLoader[torch.Tensor]:\n50     traindata = load_dataset(\"Salesforce/wikitext\", \"wikitext-2-raw-v1\", split=\"train\")\n51     trainenc = tokenizer(\"\\n\\n\".join(traindata[\"text\"]), return_tensors=\"pt\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/passes/quark_vitisai/torch/language_modeling/llm_utils/data_preparation.py",
+    "line": 108,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "107     if dataset_name == \"pileval\":\n108         dataset = load_dataset(\"mit-han-lab/pile-val-backup\", split=\"validation\")\n109         text_data = dataset[\"text\"][:num_calib_data]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/passes/quark_vitisai/torch/language_modeling/llm_utils/data_preparation.py",
+    "line": 111,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "110     elif dataset_name == \"cnn_dailymail\":\n111         dataset = load_dataset(\"cnn_dailymail\", name=\"3.0.0\", split=\"train\")\n112         text_data = dataset[\"article\"][:num_calib_data]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/passes/quark_vitisai/torch/language_modeling/llm_utils/data_preparation.py",
+    "line": 114,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "113     elif dataset_name == \"wikitext\":\n114         dataset = load_dataset(\"Salesforce/wikitext\", \"wikitext-2-raw-v1\", split=\"train\")\n115         text_data = dataset[\"text\"][:num_calib_data]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/passes/quark_vitisai/torch/language_modeling/llm_utils/data_preparation.py",
+    "line": 154,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "153     if dataset_name == \"pileval\":\n154         dataset = load_dataset(\"mit-han-lab/pile-val-backup\", split=\"validation\")\n155         prompt_col_name = \"text\"",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/passes/quark_vitisai/torch/language_modeling/llm_utils/data_preparation.py",
+    "line": 157,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "156     elif dataset_name == \"cnn_dailymail\":\n157         dataset = load_dataset(\"cnn_dailymail\", name=\"3.0.0\", split=\"train\")\n158         prompt_col_name = \"article\"",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/passes/quark_vitisai/torch/language_modeling/llm_utils/data_preparation.py",
+    "line": 160,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "159     elif dataset_name == \"wikitext\":\n160         dataset = load_dataset(\"Salesforce/wikitext\", \"wikitext-2-raw-v1\", split=\"train\")\n161         prompt_col_name = \"text\"",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/passes/quark_vitisai/torch/language_modeling/llm_utils/data_preparation.py",
+    "line": 192,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "191 \n192     ds = load_dataset(dataset_name, split=\"train_sft\")\n193     ds = ds.shuffle(seed=42).select(range(num_calib_data))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/passes/quark_vitisai/torch/language_modeling/llm_utils/data_preparation.py",
+    "line": 278,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "277     if path in [\"Salesforce/wikitext\"]:\n278         train_dataset = load_dataset(path=path, name=\"wikitext-2-raw-v1\", split=subset, trust_remote_code=True)\n279     elif path in [\"shibing624/AdvertiseGen\"]:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/passes/quark_vitisai/torch/language_modeling/llm_utils/data_preparation.py",
+    "line": 280,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "279     elif path in [\"shibing624/AdvertiseGen\"]:\n280         train_dataset = load_dataset(path=path, split=subset, trust_remote_code=True)\n281     else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/passes/quark_vitisai/torch/language_modeling/llm_utils/data_preparation.py",
+    "line": 284,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "283     # Using wikitext as default eval_dataset\n284     eval_dataset = load_dataset(\"Salesforce/wikitext\", \"wikitext-2-raw-v1\", split=\"test\", trust_remote_code=True)\n285",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/passes/quark_vitisai/torch/language_modeling/llm_utils/data_preparation.py",
+    "line": 310,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "309     if path in [\"Salesforce/wikitext\"]:\n310         text = load_dataset(path=path, name=\"wikitext-2-raw-v1\", split=subset)\n311         strtext = \"\\n\\n\".join(text[\"text\"])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/passes/quark_vitisai/torch/language_modeling/llm_utils/data_preparation.py",
+    "line": 313,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "312     elif path in [\"shibing624/AdvertiseGen\"]:\n313         text = load_dataset(path=path, split=subset)\n314         strtext = \"\\n\\n\".join(str(i[0]) + str(i[1]) for i in list(zip(list(text[\"content\"]), list(text[\"summary\"]))))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/passes/quark_vitisai/torch/language_modeling/llm_utils/model_preparation.py",
+    "line": 118,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "117     use_fast = model_type in [\"grok\", \"cohere\", \"olmo\", \"instella\", \"deepseekv2v3\"]\n118     tokenizer = AutoTokenizer.from_pretrained(\n119         ckpt_path,\n120         model_max_length=max_seq_len,\n121         padding_side=\"left\",\n122         trust_remote_code=trust_remote_code,\n123         use_fast=use_fast,\n124     )\n125     if model_type and model_type in [\"qwen\", \"qwen2\"]:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/passes/quark_vitisai/torch/language_modeling/llm_utils/model_preparation.py",
+    "line": 188,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "187 \n188         model = MllamaForConditionalGeneration.from_pretrained(\n189             ckpt_path,\n190             device_map=device,\n191             torch_dtype=model_dtype,\n192             max_memory=max_memory,\n193             trust_remote_code=trust_remote_code,\n194             attn_implementation=attn_implementation,\n195         )\n196     else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/passes/quark_vitisai/torch/language_modeling/llm_utils/model_preparation.py",
+    "line": 198,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "197         try:\n198             model = AutoModelForCausalLM.from_pretrained(\n199                 ckpt_path,\n200                 device_map=device,\n201                 torch_dtype=model_dtype,\n202                 max_memory=max_memory,\n203                 trust_remote_code=trust_remote_code,\n204                 attn_implementation=attn_implementation,\n205             )\n206         except Exceptio",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/passes/quark_vitisai/torch/language_modeling/llm_utils/model_preparation.py",
+    "line": 207,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "206         except Exception:\n207             model = AutoModelForCausalLM.from_pretrained(\n208                 ckpt_path,\n209                 device_map=device,\n210                 torch_dtype=model_dtype,\n211                 max_memory=max_memory,\n212                 trust_remote_code=trust_remote_code,\n213             )\n214     if multi_device and hasattr(model, \"hf_device_map\"):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "olive/passes/quark_vitisai/torch/language_modeling/llm_utils/model_preparation.py",
+    "line": 246,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "245         try:\n246             tokenizer = AutoTokenizer.from_pretrained(model_name_or_path, trust_remote_code=trust_remote_code)\n247             logger.info(\"Saved the tokenizer from pretrained: %s\", model_name_or_path)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "olive/systems/docker/docker_system.py",
+    "line": 242,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "241         # Add default environment variables\n242         environment.setdefault(\"PYTHONPYCACHEPREFIX\", \"/tmp\")\n243         environment[\"OLIVE_LOG_LEVEL\"] = logging.getLevelName(logger.getEffectiveLevel())",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "olive/telemetry/utils.py",
+    "line": 28,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "27         if platform.system() != \"Windows\":\n28             return Path(\"/var/tmp\")\n29         return Path(tempfile.gettempdir())",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "scripts/quantize_and_compare_perplexity.py",
+    "line": 224,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "223             raise ValueError(\"--num_samples is required when using a streaming eval dataset (e.g. C4).\")\n224         ds = load_dataset(dataset, dataset_config, split=split, streaming=True)\n225         rows = []",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "scripts/quantize_and_compare_perplexity.py",
+    "line": 233,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "232 \n233     ds = load_dataset(dataset, dataset_config, split=split)\n234     rows = [row for row in ds[\"text\"] if row.strip()]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "scripts/quantize_and_compare_perplexity.py",
+    "line": 354,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "353 \n354     tokenizer = AutoTokenizer.from_pretrained(args.model_id)\n355     baseline = AutoModelForCausalLM.from_pretrained(args.model_id, **dtype_kwargs).to(args.device)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "scripts/quantize_and_compare_perplexity.py",
+    "line": 355,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "354     tokenizer = AutoTokenizer.from_pretrained(args.model_id)\n355     baseline = AutoModelForCausalLM.from_pretrained(args.model_id, **dtype_kwargs).to(args.device)\n356     if hasattr(baseline, \"set_experts_implementation\"):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "test/cli/init/test_init_command.py",
+    "line": 18,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "17 \n18         args = parser.parse_args([\"init\", \"-o\", \"/tmp/out\"])\n19         assert args.output_path == \"/tmp/out\"",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "test/cli/init/test_init_command.py",
+    "line": 19,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "18         args = parser.parse_args([\"init\", \"-o\", \"/tmp/out\"])\n19         assert args.output_path == \"/tmp/out\"\n20         assert args.func is InitCommand",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "test/cli/test_cli.py",
+    "line": 849,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "848     cache_dir = tmp_path / \"cache_dir\"\n849     base_model = AutoModelForCausalLM.from_pretrained(\n850         \"hf-internal-testing/tiny-random-LlamaForCausalLM\", cache_dir=str(cache_dir)\n851     )\n852     base_model.generation_config.pad_token_id = 0",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "test/cli/test_cli_test_model_smoke.py",
+    "line": 358,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "357 \n358             config = AutoConfig.from_pretrained(model_path)\n359             tokenizer = AutoTokenizer.from_pretrained(model_path)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "test/cli/test_cli_test_model_smoke.py",
+    "line": 359,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "358             config = AutoConfig.from_pretrained(model_path)\n359             tokenizer = AutoTokenizer.from_pretrained(model_path)\n360             for token_id in (\"bos_token_id\", \"eos_token_id\", \"pad_token_id\"):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "test/cli/test_cli_test_model_smoke.py",
+    "line": 375,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "374 \n375             processor = AutoProcessor.from_pretrained(model_path)\n376             image = Image.new(\"RGB\", (32, 32), color=(128, 128, 128))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "test/cli/test_run_pass.py",
+    "line": 38,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "37     # Test parsing with valid arguments\n38     args = parser.parse_args([\"run-pass\", \"--pass-name\", \"OnnxConversion\", \"-m\", \"test_model\", \"-o\", \"/tmp/output\"])\n39",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "test/cli/test_run_pass.py",
+    "line": 78,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "77             \"-o\",\n78             \"/tmp/output\",\n79             \"--pass-config\",\n80             json_config,\n81         ]\n82     )\n83 \n84     assert args.pass_config == json_config\n85 \n86 \n87 def test_run_pass_command_missing_pass_name():\n88     \"\"\"Test that the run-pass command requires --pass-name argument when not listing passes.\"\"\"\n89     parser = ArgumentParser()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "test/cli/test_run_pass.py",
+    "line": 97,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "96     # Test missing pass-name without list-passes should succeed in parsing but fail later\n97     args = parser.parse_args([\"run-pass\", \"-m\", \"test_model\", \"-o\", \"/tmp/output\"])\n98     assert args.pass_name is None",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "test/cli/test_run_pass.py",
+    "line": 112,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "111     # Test missing model should succeed in parsing but fail later when required\n112     args = parser.parse_args([\"run-pass\", \"--pass-name\", \"OnnxConversion\", \"-o\", \"/tmp/output\"])\n113     assert args.pass_name == \"OnnxConversion\"",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "test/cli/test_run_pass.py",
+    "line": 145,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "144     # Update output directory\n145     config[\"output_dir\"] = \"/tmp/test_output\"\n146",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "test/cli/test_run_pass.py",
+    "line": 151,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "150     assert config[\"passes\"][\"onnxconversion\"][\"type\"] == \"OnnxConversion\"\n151     assert config[\"output_dir\"] == \"/tmp/test_output\"\n152     assert config[\"host\"] == \"local_system\"",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "test/cli/test_run_pass.py",
+    "line": 208,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "207             \"-o\",\n208             \"/tmp/output\",\n209             \"--device\",\n210             \"gpu\",\n211             \"--provider\",\n212             \"CUDAExecutionProvider\",\n213         ]\n214     )\n215 \n216     assert args.device == \"gpu\"\n217     assert args.provider == \"CUDAExecutionProvider\"\n218 \n219     # Test default device (cpu)\n220     args_default = parser.parse_args(\n221         [\"run-pas",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "test/cli/test_run_pass.py",
+    "line": 221,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "220     args_default = parser.parse_args(\n221         [\"run-pass\", \"--pass-name\", \"OnnxConversion\", \"-m\", \"test_model\", \"-o\", \"/tmp/output\"]\n222     )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "test/evaluator/test_olive_evaluator.py",
+    "line": 511,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "510         model = MagicMock(spec=ONNXModelHandler)\n511         model.model_path = \"/tmp/model.onnx\"\n512",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "test/evaluator/test_olive_evaluator.py",
+    "line": 541,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "540         model = MagicMock(spec=ONNXModelHandler)\n541         model.model_path = \"/tmp/model.onnx\"\n542",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "test/evaluator/test_olive_evaluator.py",
+    "line": 568,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "567         model = MagicMock(spec=ONNXModelHandler)\n568         model.model_path = \"/tmp/model.onnx\"\n569",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "test/model/test_hf_model.py",
+    "line": 72,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "71         assert all(Path(fp).exists() for fp in saved_filepaths)\n72         assert isinstance(transformers.AutoConfig.from_pretrained(tmp_path), transformers.Phi3Config)\n73         assert isinstance(transformers.AutoTokenizer.from_pretrained(tmp_path), transformers.PreTrainedTokenizerBase)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "test/model/test_hf_model.py",
+    "line": 73,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "72         assert isinstance(transformers.AutoConfig.from_pretrained(tmp_path), transformers.Phi3Config)\n73         assert isinstance(transformers.AutoTokenizer.from_pretrained(tmp_path), transformers.PreTrainedTokenizerBase)\n74         assert (tmp_path / \"generation_config.json\").exists()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "test/model/test_hf_model.py",
+    "line": 287,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "286     assert all(Path(fp).exists() for fp in saved_filepaths)\n287     config = transformers.AutoConfig.from_pretrained(tmp_path, **load_kwargs)\n288     assert config.__class__.__name__ == \"Phi3Config\"",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "test/model/test_hf_model.py",
+    "line": 295,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "294     assert isinstance(\n295         transformers.AutoTokenizer.from_pretrained(tmp_path, **load_kwargs),\n296         transformers.PreTrainedTokenizerBase,",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "test/passes/onnx/test_extract_adapters.py",
+    "line": 37,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "36 \n37     pytorch_model = AutoModelForCausalLM.from_pretrained(model_name)\n38     # init_lora_weights are set so that lora_B weights are not all zeros",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "test/passes/onnx/test_model_builder.py",
+    "line": 394,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "393             quant_type=\"olive\",\n394             input_path=\"/tmp/does_not_matter\",\n395             quant_attrs=quant_attrs,",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "test/passes/onnx/test_nvmo_graph_surgery.py",
+    "line": 34,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "33 \n34     cfg = AutoConfig.from_pretrained(MODEL_ID, trust_remote_code=False)\n35     hidden = cfg.hidden_size",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "test/passes/openvino/test_openvino_compression.py",
+    "line": 26,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "25 \n26     return datasets.load_dataset(\"Salesforce/wikitext\", \"wikitext-2-raw-v1\", split=\"test\")\n27",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "test/passes/pytorch/test_quant_utils.py",
+    "line": 676,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "675 def _make_nested_decoder_root(input_model):\n676     return _NestedDecoderRoot(LlamaForCausalLM.from_pretrained(input_model.model_path))\n677",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "test/passes/pytorch/test_quant_utils.py",
+    "line": 918,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "917 def test_prepare_model_embedding_component_quantizes_all_owned_embeddings(input_model, monkeypatch):\n918     root_model = LlamaForCausalLM.from_pretrained(input_model.model_path)\n919     root_model.model.embed_tokens_per_layer = torch.nn.Embedding(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "test/passes/pytorch/test_quant_utils.py",
+    "line": 1007,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "1006 def test_layerwise_quantization_rejects_embedding_role_with_decoder_wrapper(input_model, monkeypatch):\n1007     root_model = _NestedBackboneRoot(LlamaForCausalLM.from_pretrained(input_model.model_path))\n1008     monkeypatch.setattr(quant_utils_module, \"load_hf_base_model\", lambda _: root_model)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "test/passes/pytorch/test_quant_utils.py",
+    "line": 1106,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "1105 ):\n1106     root_model = _NestedBackboneRoot(LlamaForCausalLM.from_pretrained(input_model.model_path))\n1107     monkeypatch.setattr(quant_utils_module, \"load_hf_base_model\", lambda _: root_model)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "test/passes/pytorch/test_quant_utils.py",
+    "line": 1200,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "1199     _with_existing_quantization_config(monkeypatch, existing)\n1200     root_model = _NestedBackboneRoot(LlamaForCausalLM.from_pretrained(input_model.model_path))\n1201     monkeypatch.setattr(quant_utils_module, \"load_hf_base_model\", lambda _: root_model)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "test/passes/pytorch/test_quant_utils.py",
+    "line": 1222,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "1221 ):\n1222     root_model = _NestedBackboneRoot(LlamaForCausalLM.from_pretrained(input_model.model_path))\n1223     root_model.vision = torch.nn.Linear(16, 16)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "test/passes/pytorch/test_quant_utils.py",
+    "line": 1561,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "1560     _with_existing_quantization_config(monkeypatch, existing)\n1561     root_model = LlamaForCausalLM.from_pretrained(input_model.model_path)\n1562     first_down_proj = root_model.model.layers[0].mlp.down_proj",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "test/passes/pytorch/test_rtn.py",
+    "line": 66,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "65     save_path.mkdir(parents=True, exist_ok=True)\n66     model = AutoModelForCausalLM.from_pretrained(\"yujiepan/mixtral-tiny-random\")\n67     model.save_pretrained(save_path)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "test/passes/pytorch/test_rtn.py",
+    "line": 68,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "67     model.save_pretrained(save_path)\n68     AutoTokenizer.from_pretrained(\"yujiepan/mixtral-tiny-random\").save_pretrained(save_path)\n69",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "test/workflows/test_hf_component_assembly.py",
+    "line": 358,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "357     assert config[\"olive_component_quantization\"][\"vision-build\"][\"passes\"] == [\"rtn\"]\n358     assert AutoConfig.from_pretrained(parent).model_type == \"llama\"\n359     parent_model_config = json.loads((parent / \"model_config.json\").read_text(encoding=\"utf-8\"))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "olive/cli/init/wizard.py",
+    "line": 219,
+    "message": "Found 'subprocess' function 'run' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "olive/cli/init/wizard.py",
+    "line": 224,
+    "message": "Found 'subprocess' function 'run' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "olive/cli/init/wizard.py",
+    "line": 231,
+    "message": "Found 'subprocess' function 'run' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "olive/cli/model_package.py",
+    "line": 1258,
+    "message": "Detected a python logger call with a potential hardcoded secret \"Shared assets contain no %s; leaving model.tokenizer_dir unset. Files staged: %s.\" being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "olive/common/hf/utils.py",
+    "line": 224,
+    "message": "Detected a python logger call with a potential hardcoded secret \"Could not save tokenizer for test model from %r: %s\" being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "data_preparation+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "olive/common/hf/utils.py",
+    "line": 518,
+    "message": "Detected a python logger call with a potential hardcoded secret \"Setting pad_token to eos_token for tokenizer %s\" being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "data_preparation+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "olive/common/utils.py",
+    "line": 138,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "olive/passes/diffusers/lora.py",
+    "line": 945,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.django.security.injection.command.subprocess-injection.subprocess-injection",
+    "file_path": "olive/passes/onnx/discrepancy_check.py",
+    "line": 1002,
+    "message": "Detected user input entering a `subprocess` call unsafely. This could result in a command injection vulnerability. An attacker could use this vulnerability to execute arbitrary commands on the host, which allows them to download malware, scan sensitive data, or run any command they wish on the server. Do not let users choose the command to run. In general, prefer to use Python API versions of system commands. If you must use subprocess, use a dictionary to allowlist a set of commands.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "olive/passes/onnx/discrepancy_check.py",
+    "line": 1386,
+    "message": "Detected a python logger call with a potential hardcoded secret \"OnnxDiscrepancyCheck first_token_20: first_token_matches=%s (transformers=%s, genai=%s), \"\r\n                \"second_token_matches=%s (transformers=%s, genai=%s), matching_leading_tokens=%s\" being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "olive/passes/onnx/discrepancy_check.py",
+    "line": 1402,
+    "message": "Detected a python logger call with a potential hardcoded secret \"OnnxDiscrepancyCheck tft (time to first token): transformers=%s, genai=%s\" being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "olive/passes/onnx/discrepancy_check.py",
+    "line": 1412,
+    "message": "Detected a python logger call with a potential hardcoded secret \"OnnxDiscrepancyCheck tf5t (time to first 5 tokens): transformers=%s, genai=%s\" being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "olive/passes/onnx/discrepancy_check.py",
+    "line": 1571,
+    "message": "Detected a python logger call with a potential hardcoded secret \"OnnxDiscrepancyCheck first_token_20 (llama.cpp): first_token_matches=%s \"\r\n                    \"(transformers=%s, llama_cpp=%s), second_token_matches=%s (transformers=%s, llama_cpp=%s), \"\r\n                    \"matching_leading_tokens=%s\" being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "olive/passes/onnx/discrepancy_check.py",
+    "line": 2376,
+    "message": "Detected a python logger call with a potential hardcoded secret \"Saved reference HuggingFace model and tokenizer to %s\" being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "olive/passes/onnx/discrepancy_check.py",
+    "line": 2444,
+    "message": "Detected a python logger call with a potential hardcoded secret \"OnnxDiscrepancyCheck llama.cpp comparison: first_token_matches_pytorch=%s, \"\r\n            \"matching_leading_tokens=%s, ttft=%s, ttfn=%s, total=%s\" being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "olive/passes/onnx/nvmo_quantization.py",
+    "line": 287,
+    "message": "Detected a python logger call with a potential hardcoded secret \"tokenizer-dir=%s, int4-block-size=%d\" being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "olive/passes/openvino/compression.py",
+    "line": 619,
+    "message": "Detected a python logger call with a potential hardcoded secret \"pad_token_id is not set. Setting pad_token_id to eos_token_id: %s to avoid warnings during generation.\" being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "olive/passes/openvino/compression.py",
+    "line": 625,
+    "message": "Detected a python logger call with a potential hardcoded secret \"generation_config.pad_token_id is not set. Setting generation_config.pad_token_id to eos_token_id: %s to avoid warnings during generation.\" being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "olive/passes/quark_vitisai/torch/language_modeling/llm_utils/model_preparation.py",
+    "line": 116,
+    "message": "Detected a python logger call with a potential hardcoded secret \"Initializing tokenizer from %s\" being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "olive/passes/quark_vitisai/torch/language_modeling/llm_utils/model_preparation.py",
+    "line": 247,
+    "message": "Detected a python logger call with a potential hardcoded secret \"Saved the tokenizer from pretrained: %s\" being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "olive/passes/quark_vitisai/torch/language_modeling/llm_utils/model_preparation.py",
+    "line": 249,
+    "message": "Detected a python logger call with a potential hardcoded secret \"An error occurred when loading tokenizer: %s\" being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

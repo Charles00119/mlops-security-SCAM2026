@@ -1,0 +1,122 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "sequoia/methods/packnet_method.py",
+    "line": 313,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "312         device = model.device\n313         model.load_state_dict(torch.load(self.PATH))\n314         model = model.to(device)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B314",
+    "file_path": "sequoia/settings/rl/envs/mujoco/hopper_test.py",
+    "line": 132,
+    "message": "Using xml.etree.ElementTree.fromstring to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.fromstring with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "131 \n132     input_tree = fromstring(input_xml_str)\n133     expected = fromstring(output_xml_str)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B314",
+    "file_path": "sequoia/settings/rl/envs/mujoco/hopper_test.py",
+    "line": 133,
+    "message": "Using xml.etree.ElementTree.fromstring to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.fromstring with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "132     input_tree = fromstring(input_xml_str)\n133     expected = fromstring(output_xml_str)\n134",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B314",
+    "file_path": "sequoia/settings/rl/envs/mujoco/modified_size.py",
+    "line": 95,
+    "message": "Using xml.etree.ElementTree.parse to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.parse with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "94         logger.debug(f\"Default XML path: {full_path}\")\n95         self.default_tree = ET.parse(full_path)\n96         self.tree = self.default_tree",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "sequoia/settings/rl/envs/mujoco/modified_size.py",
+    "line": 103,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "102             # IDEA: Create an XML file with a unique name somewhere, and then write the\n103             hash_str = hashlib.md5((str(self) + str(body_name_to_size_scale)).encode()).hexdigest()\n104             temp_dir = Path(tempfile.gettempdir())",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "dockerfile.security.last-user-is-root.last-user-is-root",
+    "file_path": "dockers/base/Dockerfile",
+    "line": 3,
+    "message": "The last user in the container is 'root'. This is a security hazard because if an attacker gains control of the container they will have root access. Switch back to another user after running commands as 'root'.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "dockerfile.security.last-user-is-root.last-user-is-root",
+    "file_path": "dockers/branch/Dockerfile",
+    "line": 3,
+    "message": "The last user in the container is 'root'. This is a security hazard because if an attacker gains control of the container they will have root access. Switch back to another user after running commands as 'root'.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml.use-defused-xml",
+    "file_path": "sequoia/settings/rl/envs/mujoco/hopper_test.py",
+    "line": 9,
+    "message": "The Python documentation recommends using `defusedxml` instead of `xml` because the native Python `xml` library is vulnerable to XML External Entity (XXE) attacks. These attacks can leak confidential data and \"XML bombs\" can cause denial of service.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml.use-defused-xml",
+    "file_path": "sequoia/settings/rl/envs/mujoco/modified_size.py",
+    "line": 5,
+    "message": "The Python documentation recommends using `defusedxml` instead of `xml` because the native Python `xml` library is vulnerable to XML External Entity (XXE) attacks. These attacks can leak confidential data and \"XML bombs\" can cause denial of service.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml-parse.use-defused-xml-parse",
+    "file_path": "sequoia/settings/rl/envs/mujoco/modified_size.py",
+    "line": 95,
+    "message": "The native Python `xml` library is vulnerable to XML External Entity (XXE) attacks.  These attacks can leak confidential data and \"XML bombs\" can cause denial of service. Do not use this library to parse untrusted input. Instead  the Python documentation recommends using `defusedxml`.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "sequoia/settings/rl/envs/mujoco/modified_size.py",
+    "line": 103,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml.use-defused-xml",
+    "file_path": "sequoia/settings/rl/envs/mujoco/mujoco_model_utils.py",
+    "line": 3,
+    "message": "The Python documentation recommends using `defusedxml` instead of `xml` because the native Python `xml` library is vulnerable to XML External Entity (XXE) attacks. These attacks can leak confidential data and \"XML bombs\" can cause denial of service.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

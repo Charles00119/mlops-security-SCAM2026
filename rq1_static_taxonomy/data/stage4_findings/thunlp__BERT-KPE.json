@@ -1,0 +1,1022 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/networks/.ipynb_checkpoints/DistilBert2Joint-checkpoint.py",
+    "line": 252,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "251 \n252         self.distilbert = DistilBertModel.from_pretrained(\n253             \"distilbert-base-multilingual-cased\"\n254         )\n255",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/networks/DistilBert2Joint.py",
+    "line": 252,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "251 \n252         self.distilbert = DistilBertModel.from_pretrained(\n253             \"distilbert-base-multilingual-cased\"\n254         )\n255",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/convert_bert_pytorch_checkpoint_to_original_tf.py",
+    "line": 116,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "115     \n116     model = BertModel.from_pretrained(\n117         pretrained_model_name_or_path=args.model_name,\n118         state_dict=torch.load(args.pytorch_model_path),\n119         cache_dir=args.cache_dir\n120     )\n121",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "bertkpe/transformers/convert_bert_pytorch_checkpoint_to_original_tf.py",
+    "line": 118,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "117         pretrained_model_name_or_path=args.model_name,\n118         state_dict=torch.load(args.pytorch_model_path),\n119         cache_dir=args.cache_dir",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "bertkpe/transformers/convert_pytorch_checkpoint_to_tf2.py",
+    "line": 119,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "118                                                   config=config,\n119                                                   state_dict=torch.load(pytorch_checkpoint_path,\n120                                                                         map_location='cpu'))\n121         pt_inputs = torch.tensor(inputs_list)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "bertkpe/transformers/convert_xlm_original_pytorch_checkpoint_to_pytorch.py",
+    "line": 34,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "33     # Load checkpoint\n34     chkpt = torch.load(xlm_checkpoint_path, map_location='cpu')\n35",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "bertkpe/transformers/file_utils.py",
+    "line": 238,
+    "message": "Call to requests without timeout",
+    "snippet": "237 def http_get(url, temp_file, proxies=None):\n238     req = requests.get(url, stream=True, proxies=proxies)\n239     content_length = req.headers.get('Content-Length')",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "bertkpe/transformers/modeling_tf_pytorch_utils.py",
+    "line": 80,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "79 \n80     pt_state_dict = torch.load(pt_path, map_location='cpu')\n81",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "bertkpe/transformers/modeling_utils.py",
+    "line": 391,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "390         if state_dict is None and not from_tf:\n391             state_dict = torch.load(resolved_archive_file, map_location='cpu')\n392",
+    "stage": "inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_auto_test.py",
+    "line": 45,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "44         for model_name in list(BERT_PRETRAINED_MODEL_ARCHIVE_MAP.keys())[:1]:\n45             config = AutoConfig.from_pretrained(model_name)\n46             self.assertIsNotNone(config)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_auto_test.py",
+    "line": 49,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "48 \n49             model = AutoModel.from_pretrained(model_name)\n50             model, loading_info = AutoModel.from_pretrained(model_name, output_loading_info=True)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_auto_test.py",
+    "line": 50,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "49             model = AutoModel.from_pretrained(model_name)\n50             model, loading_info = AutoModel.from_pretrained(model_name, output_loading_info=True)\n51             self.assertIsNotNone(model)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_auto_test.py",
+    "line": 60,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "59         for model_name in list(BERT_PRETRAINED_MODEL_ARCHIVE_MAP.keys())[:1]:\n60             config = AutoConfig.from_pretrained(model_name)\n61             self.assertIsNotNone(config)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_auto_test.py",
+    "line": 64,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "63 \n64             model = AutoModelWithLMHead.from_pretrained(model_name)\n65             model, loading_info = AutoModelWithLMHead.from_pretrained(model_name, output_loading_info=True)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_auto_test.py",
+    "line": 65,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "64             model = AutoModelWithLMHead.from_pretrained(model_name)\n65             model, loading_info = AutoModelWithLMHead.from_pretrained(model_name, output_loading_info=True)\n66             self.assertIsNotNone(model)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_auto_test.py",
+    "line": 73,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "72         for model_name in list(BERT_PRETRAINED_MODEL_ARCHIVE_MAP.keys())[:1]:\n73             config = AutoConfig.from_pretrained(model_name)\n74             self.assertIsNotNone(config)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_auto_test.py",
+    "line": 77,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "76 \n77             model = AutoModelForSequenceClassification.from_pretrained(model_name)\n78             model, loading_info = AutoModelForSequenceClassification.from_pretrained(model_name, output_loading_info=True)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_auto_test.py",
+    "line": 78,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "77             model = AutoModelForSequenceClassification.from_pretrained(model_name)\n78             model, loading_info = AutoModelForSequenceClassification.from_pretrained(model_name, output_loading_info=True)\n79             self.assertIsNotNone(model)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_auto_test.py",
+    "line": 86,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "85         for model_name in list(BERT_PRETRAINED_MODEL_ARCHIVE_MAP.keys())[:1]:\n86             config = AutoConfig.from_pretrained(model_name)\n87             self.assertIsNotNone(config)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_auto_test.py",
+    "line": 90,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "89 \n90             model = AutoModelForQuestionAnswering.from_pretrained(model_name)\n91             model, loading_info = AutoModelForQuestionAnswering.from_pretrained(model_name, output_loading_info=True)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_auto_test.py",
+    "line": 91,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "90             model = AutoModelForQuestionAnswering.from_pretrained(model_name)\n91             model, loading_info = AutoModelForQuestionAnswering.from_pretrained(model_name, output_loading_info=True)\n92             self.assertIsNotNone(model)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "bertkpe/transformers/tests/modeling_bert_test.py",
+    "line": 361,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "360     def test_model_from_pretrained(self):\n361         cache_dir = \"/tmp/transformers_test/\"\n362         for model_name in list(BERT_PRETRAINED_MODEL_ARCHIVE_MAP.keys())[:1]:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_bert_test.py",
+    "line": 363,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "362         for model_name in list(BERT_PRETRAINED_MODEL_ARCHIVE_MAP.keys())[:1]:\n363             model = BertModel.from_pretrained(model_name, cache_dir=cache_dir)\n364             shutil.rmtree(cache_dir)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "bertkpe/transformers/tests/modeling_common_test.py",
+    "line": 692,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "691         def create_and_check_model_from_pretrained(self):\n692             cache_dir = \"/tmp/transformers_test/\"\n693             for model_name in list(self.base_model_class.pretrained_model_archive_map.keys())[:1]:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_common_test.py",
+    "line": 797,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "796         for model_name in list(BERT_PRETRAINED_MODEL_ARCHIVE_MAP.keys())[:1]:\n797             config = BertConfig.from_pretrained(model_name)\n798             self.assertIsNotNone(config)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_common_test.py",
+    "line": 801,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "800 \n801             model = BertModel.from_pretrained(model_name)\n802             model, loading_info = BertModel.from_pretrained(model_name, output_loading_info=True)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_common_test.py",
+    "line": 802,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "801             model = BertModel.from_pretrained(model_name)\n802             model, loading_info = BertModel.from_pretrained(model_name, output_loading_info=True)\n803             self.assertIsNotNone(model)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_common_test.py",
+    "line": 808,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "807 \n808             config = BertConfig.from_pretrained(model_name, output_attentions=True, output_hidden_states=True)\n809             model = BertModel.from_pretrained(model_name, output_attentions=True, output_hidden_states=True)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_common_test.py",
+    "line": 809,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "808             config = BertConfig.from_pretrained(model_name, output_attentions=True, output_hidden_states=True)\n809             model = BertModel.from_pretrained(model_name, output_attentions=True, output_hidden_states=True)\n810             self.assertEqual(model.config.output_attentions, True)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "bertkpe/transformers/tests/modeling_ctrl_test.py",
+    "line": 207,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "206     def test_model_from_pretrained(self):\n207         cache_dir = \"/tmp/transformers_test/\"\n208         for model_name in list(CTRL_PRETRAINED_MODEL_ARCHIVE_MAP.keys())[:1]:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_ctrl_test.py",
+    "line": 209,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "208         for model_name in list(CTRL_PRETRAINED_MODEL_ARCHIVE_MAP.keys())[:1]:\n209             model = CTRLModel.from_pretrained(model_name, cache_dir=cache_dir)\n210             shutil.rmtree(cache_dir)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_encoder_decoder_test.py",
+    "line": 34,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "33         for model_name in list(BERT_PRETRAINED_MODEL_ARCHIVE_MAP.keys())[:1]:\n34             model = Model2Model.from_pretrained(model_name)\n35             self.assertIsInstance(model.encoder, BertModel)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_encoder_decoder_test.py",
+    "line": 43,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "42         with self.assertRaises(ValueError):\n43             _ = Model2Model.from_pretrained('roberta')\n44",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_encoder_decoder_test.py",
+    "line": 46,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "45         with self.assertRaises(ValueError):\n46             _ = Model2Model.from_pretrained('distilbert')\n47",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_encoder_decoder_test.py",
+    "line": 49,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "48         with self.assertRaises(ValueError):\n49             _ = Model2Model.from_pretrained('does-not-exist')\n50",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "bertkpe/transformers/tests/modeling_gpt2_test.py",
+    "line": 240,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "239     def test_model_from_pretrained(self):\n240         cache_dir = \"/tmp/transformers_test/\"\n241         for model_name in list(GPT2_PRETRAINED_MODEL_ARCHIVE_MAP.keys())[:1]:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_gpt2_test.py",
+    "line": 242,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "241         for model_name in list(GPT2_PRETRAINED_MODEL_ARCHIVE_MAP.keys())[:1]:\n242             model = GPT2Model.from_pretrained(model_name, cache_dir=cache_dir)\n243             shutil.rmtree(cache_dir)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "bertkpe/transformers/tests/modeling_openai_test.py",
+    "line": 208,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "207     def test_model_from_pretrained(self):\n208         cache_dir = \"/tmp/transformers_test/\"\n209         for model_name in list(OPENAI_GPT_PRETRAINED_MODEL_ARCHIVE_MAP.keys())[:1]:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_openai_test.py",
+    "line": 210,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "209         for model_name in list(OPENAI_GPT_PRETRAINED_MODEL_ARCHIVE_MAP.keys())[:1]:\n210             model = OpenAIGPTModel.from_pretrained(model_name, cache_dir=cache_dir)\n211             shutil.rmtree(cache_dir)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "bertkpe/transformers/tests/modeling_roberta_test.py",
+    "line": 200,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "199     def test_model_from_pretrained(self):\n200         cache_dir = \"/tmp/transformers_test/\"\n201         for model_name in list(ROBERTA_PRETRAINED_MODEL_ARCHIVE_MAP.keys())[:1]:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_roberta_test.py",
+    "line": 202,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "201         for model_name in list(ROBERTA_PRETRAINED_MODEL_ARCHIVE_MAP.keys())[:1]:\n202             model = RobertaModel.from_pretrained(model_name, cache_dir=cache_dir)\n203             shutil.rmtree(cache_dir)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_roberta_test.py",
+    "line": 212,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "211     def test_inference_masked_lm(self):\n212         model = RobertaForMaskedLM.from_pretrained('roberta-base')\n213",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_roberta_test.py",
+    "line": 233,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "232     def test_inference_no_head(self):\n233         model = RobertaModel.from_pretrained('roberta-base')\n234",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_roberta_test.py",
+    "line": 249,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "248     def test_inference_classification_head(self):\n249         model = RobertaForSequenceClassification.from_pretrained('roberta-large-mnli')\n250",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_tf_auto_test.py",
+    "line": 48,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "47         for model_name in ['bert-base-uncased']:\n48             config = AutoConfig.from_pretrained(model_name, force_download=True)\n49             self.assertIsNotNone(config)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_tf_auto_test.py",
+    "line": 52,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "51 \n52             model = TFAutoModel.from_pretrained(model_name, force_download=True)\n53             self.assertIsNotNone(model)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_tf_auto_test.py",
+    "line": 60,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "59         for model_name in ['bert-base-uncased']:\n60             config = AutoConfig.from_pretrained(model_name, force_download=True)\n61             self.assertIsNotNone(config)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_tf_auto_test.py",
+    "line": 64,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "63 \n64             model = TFAutoModelWithLMHead.from_pretrained(model_name, force_download=True)\n65             self.assertIsNotNone(model)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_tf_auto_test.py",
+    "line": 72,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "71         for model_name in ['bert-base-uncased']:\n72             config = AutoConfig.from_pretrained(model_name, force_download=True)\n73             self.assertIsNotNone(config)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_tf_auto_test.py",
+    "line": 76,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "75 \n76             model = TFAutoModelForSequenceClassification.from_pretrained(model_name, force_download=True)\n77             self.assertIsNotNone(model)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_tf_auto_test.py",
+    "line": 84,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "83         for model_name in ['bert-base-uncased']:\n84             config = AutoConfig.from_pretrained(model_name, force_download=True)\n85             self.assertIsNotNone(config)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_tf_auto_test.py",
+    "line": 88,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "87 \n88             model = TFAutoModelForQuestionAnswering.from_pretrained(model_name, force_download=True)\n89             self.assertIsNotNone(model)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "bertkpe/transformers/tests/modeling_tf_bert_test.py",
+    "line": 314,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "313     def test_model_from_pretrained(self):\n314         cache_dir = \"/tmp/transformers_test/\"\n315         # for model_name in list(TF_BERT_PRETRAINED_MODEL_ARCHIVE_MAP.keys())[:1]:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_tf_bert_test.py",
+    "line": 317,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "316         for model_name in ['bert-base-uncased']:\n317             model = TFBertModel.from_pretrained(model_name, cache_dir=cache_dir)\n318             shutil.rmtree(cache_dir)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "bertkpe/transformers/tests/modeling_tf_ctrl_test.py",
+    "line": 193,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "192     def test_model_from_pretrained(self):\n193         cache_dir = \"/tmp/transformers_test/\"\n194         for model_name in list(TF_CTRL_PRETRAINED_MODEL_ARCHIVE_MAP.keys())[:1]:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_tf_ctrl_test.py",
+    "line": 195,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "194         for model_name in list(TF_CTRL_PRETRAINED_MODEL_ARCHIVE_MAP.keys())[:1]:\n195             model = TFCTRLModel.from_pretrained(model_name, cache_dir=cache_dir)\n196             shutil.rmtree(cache_dir)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "bertkpe/transformers/tests/modeling_tf_gpt2_test.py",
+    "line": 224,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "223     def test_model_from_pretrained(self):\n224         cache_dir = \"/tmp/transformers_test/\"\n225         for model_name in list(TF_GPT2_PRETRAINED_MODEL_ARCHIVE_MAP.keys())[:1]:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_tf_gpt2_test.py",
+    "line": 226,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "225         for model_name in list(TF_GPT2_PRETRAINED_MODEL_ARCHIVE_MAP.keys())[:1]:\n226             model = TFGPT2Model.from_pretrained(model_name, cache_dir=cache_dir)\n227             shutil.rmtree(cache_dir)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "bertkpe/transformers/tests/modeling_tf_openai_gpt_test.py",
+    "line": 223,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "222     def test_model_from_pretrained(self):\n223         cache_dir = \"/tmp/transformers_test/\"\n224         for model_name in list(TF_OPENAI_GPT_PRETRAINED_MODEL_ARCHIVE_MAP.keys())[:1]:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_tf_openai_gpt_test.py",
+    "line": 225,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "224         for model_name in list(TF_OPENAI_GPT_PRETRAINED_MODEL_ARCHIVE_MAP.keys())[:1]:\n225             model = TFOpenAIGPTModel.from_pretrained(model_name, cache_dir=cache_dir)\n226             shutil.rmtree(cache_dir)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "bertkpe/transformers/tests/modeling_tf_roberta_test.py",
+    "line": 196,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "195     def test_model_from_pretrained(self):\n196         cache_dir = \"/tmp/transformers_test/\"\n197         for model_name in list(TF_ROBERTA_PRETRAINED_MODEL_ARCHIVE_MAP.keys())[:1]:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_tf_roberta_test.py",
+    "line": 198,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "197         for model_name in list(TF_ROBERTA_PRETRAINED_MODEL_ARCHIVE_MAP.keys())[:1]:\n198             model = TFRobertaModel.from_pretrained(model_name, cache_dir=cache_dir)\n199             shutil.rmtree(cache_dir)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_tf_roberta_test.py",
+    "line": 208,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "207     def test_inference_masked_lm(self):\n208         model = TFRobertaForMaskedLM.from_pretrained('roberta-base')\n209",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_tf_roberta_test.py",
+    "line": 229,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "228     def test_inference_no_head(self):\n229         model = TFRobertaModel.from_pretrained('roberta-base')\n230",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_tf_roberta_test.py",
+    "line": 245,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "244     def test_inference_classification_head(self):\n245         model = TFRobertaForSequenceClassification.from_pretrained('roberta-large-mnli')\n246",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "bertkpe/transformers/tests/modeling_tf_transfo_xl_test.py",
+    "line": 209,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "208     def test_model_from_pretrained(self):\n209         cache_dir = \"/tmp/transformers_test/\"\n210         for model_name in list(TF_TRANSFO_XL_PRETRAINED_MODEL_ARCHIVE_MAP.keys())[:1]:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_tf_transfo_xl_test.py",
+    "line": 211,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "210         for model_name in list(TF_TRANSFO_XL_PRETRAINED_MODEL_ARCHIVE_MAP.keys())[:1]:\n211             model = TFTransfoXLModel.from_pretrained(model_name, cache_dir=cache_dir)\n212             shutil.rmtree(cache_dir)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "bertkpe/transformers/tests/modeling_tf_xlm_test.py",
+    "line": 256,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "255     def test_model_from_pretrained(self):\n256         cache_dir = \"/tmp/transformers_test/\"\n257         for model_name in list(TF_XLM_PRETRAINED_MODEL_ARCHIVE_MAP.keys())[:1]:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "bertkpe/transformers/tests/modeling_tf_xlnet_test.py",
+    "line": 299,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "298     def test_model_from_pretrained(self):\n299         cache_dir = \"/tmp/transformers_test/\"\n300         for model_name in list(TF_XLNET_PRETRAINED_MODEL_ARCHIVE_MAP.keys())[:1]:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_tf_xlnet_test.py",
+    "line": 301,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "300         for model_name in list(TF_XLNET_PRETRAINED_MODEL_ARCHIVE_MAP.keys())[:1]:\n301             model = TFXLNetModel.from_pretrained(model_name, cache_dir=cache_dir)\n302             shutil.rmtree(cache_dir)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "bertkpe/transformers/tests/modeling_transfo_xl_test.py",
+    "line": 209,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "208     def test_model_from_pretrained(self):\n209         cache_dir = \"/tmp/transformers_test/\"\n210         for model_name in list(TRANSFO_XL_PRETRAINED_MODEL_ARCHIVE_MAP.keys())[:1]:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_transfo_xl_test.py",
+    "line": 211,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "210         for model_name in list(TRANSFO_XL_PRETRAINED_MODEL_ARCHIVE_MAP.keys())[:1]:\n211             model = TransfoXLModel.from_pretrained(model_name, cache_dir=cache_dir)\n212             shutil.rmtree(cache_dir)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "bertkpe/transformers/tests/modeling_xlm_test.py",
+    "line": 317,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "316     def test_model_from_pretrained(self):\n317         cache_dir = \"/tmp/transformers_test/\"\n318         for model_name in list(XLM_PRETRAINED_MODEL_ARCHIVE_MAP.keys())[:1]:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_xlm_test.py",
+    "line": 319,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "318         for model_name in list(XLM_PRETRAINED_MODEL_ARCHIVE_MAP.keys())[:1]:\n319             model = XLMModel.from_pretrained(model_name, cache_dir=cache_dir)\n320             shutil.rmtree(cache_dir)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "bertkpe/transformers/tests/modeling_xlnet_test.py",
+    "line": 326,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "325     def test_model_from_pretrained(self):\n326         cache_dir = \"/tmp/transformers_test/\"\n327         for model_name in list(XLNET_PRETRAINED_MODEL_ARCHIVE_MAP.keys())[:1]:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/modeling_xlnet_test.py",
+    "line": 328,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "327         for model_name in list(XLNET_PRETRAINED_MODEL_ARCHIVE_MAP.keys())[:1]:\n328             model = XLNetModel.from_pretrained(model_name, cache_dir=cache_dir)\n329             shutil.rmtree(cache_dir)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "bertkpe/transformers/tests/optimization_test.py",
+    "line": 53,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "52 \n53                 state_dict = torch.load(file_name)\n54                 scheduler.load_state_dict(state_dict)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/tokenization_auto_test.py",
+    "line": 33,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "32         for model_name in list(BERT_PRETRAINED_CONFIG_ARCHIVE_MAP.keys())[:1]:\n33             tokenizer = AutoTokenizer.from_pretrained(model_name)\n34             self.assertIsNotNone(tokenizer)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/tokenization_auto_test.py",
+    "line": 39,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "38         for model_name in list(GPT2_PRETRAINED_CONFIG_ARCHIVE_MAP.keys())[:1]:\n39             tokenizer = AutoTokenizer.from_pretrained(model_name)\n40             self.assertIsNotNone(tokenizer)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/tokenization_bert_test.py",
+    "line": 46,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "45     def get_tokenizer(self, **kwargs):\n46         return BertTokenizer.from_pretrained(self.tmpdirname, **kwargs)\n47",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/tokenization_ctrl_test.py",
+    "line": 47,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "46         kwargs.update(self.special_tokens_map)\n47         return CTRLTokenizer.from_pretrained(self.tmpdirname, **kwargs)\n48",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/tokenization_distilbert_test.py",
+    "line": 32,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "31     def get_tokenizer(self, **kwargs):\n32         return DistilBertTokenizer.from_pretrained(self.tmpdirname, **kwargs)\n33",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/tokenization_distilbert_test.py",
+    "line": 36,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "35     def test_sequence_builders(self):\n36         tokenizer = DistilBertTokenizer.from_pretrained(\"distilbert-base-uncased\")\n37",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/tokenization_gpt2_test.py",
+    "line": 51,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "50         kwargs.update(self.special_tokens_map)\n51         return GPT2Tokenizer.from_pretrained(self.tmpdirname, **kwargs)\n52",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/tokenization_openai_test.py",
+    "line": 49,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "48     def get_tokenizer(self, **kwargs):\n49         return OpenAIGPTTokenizer.from_pretrained(self.tmpdirname, **kwargs)\n50",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/tokenization_roberta_test.py",
+    "line": 51,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "50         kwargs.update(self.special_tokens_map)\n51         return RobertaTokenizer.from_pretrained(self.tmpdirname, **kwargs)\n52",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/tokenization_roberta_test.py",
+    "line": 84,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "83     def test_sequence_builders(self):\n84         tokenizer = RobertaTokenizer.from_pretrained(\"roberta-base\")\n85",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/tokenization_transfo_xl_test.py",
+    "line": 49,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "48         kwargs['lower_case'] = True\n49         return TransfoXLTokenizer.from_pretrained(self.tmpdirname, **kwargs)\n50",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/tokenization_xlm_test.py",
+    "line": 49,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "48     def get_tokenizer(self, **kwargs):\n49         return XLMTokenizer.from_pretrained(self.tmpdirname, **kwargs)\n50",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/tokenization_xlm_test.py",
+    "line": 72,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "71     def test_sequence_builders(self):\n72         tokenizer = XLMTokenizer.from_pretrained(\"xlm-mlm-en-2048\")\n73",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/tokenization_xlnet_test.py",
+    "line": 40,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "39     def get_tokenizer(self, **kwargs):\n40         return XLNetTokenizer.from_pretrained(self.tmpdirname, **kwargs)\n41",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "bertkpe/transformers/tests/tokenization_xlnet_test.py",
+    "line": 95,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "94     def test_sequence_builders(self):\n95         tokenizer = XLNetTokenizer.from_pretrained(\"xlnet-base-cased\")\n96",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "bertkpe/transformers/tokenization_transfo_xl.py",
+    "line": 100,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "99             # in a library like ours, at all.\n100             vocab_dict = torch.load(pretrained_vocab_file)\n101             for key, value in vocab_dict.items():",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "bertkpe/transformers/tokenization_transfo_xl.py",
+    "line": 475,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "474         corpus = cls(*inputs, **kwargs)\n475         corpus_dict = torch.load(resolved_corpus_file)\n476         for key, value in corpus_dict.items():",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "bertkpe/transformers/tokenization_transfo_xl.py",
+    "line": 555,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "554         logger.info('Loading cached dataset...')\n555         corpus = torch.load(fn_pickle)\n556     elif os.path.exists(fn):",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "bertkpe/transformers/tokenization_transfo_xl.py",
+    "line": 559,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "558         with open(fn, \"rb\") as fp:\n559             corpus = pickle.load(fp)\n560     else:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "scripts/.ipynb_checkpoints/model-checkpoint.py",
+    "line": 212,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "211         logger.info(\"Loading model %s\" % filename)\n212         saved_params = torch.load(filename, map_location=lambda storage, loc: storage)\n213",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "scripts/model.py",
+    "line": 212,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "211         logger.info(\"Loading model %s\" % filename)\n212         saved_params = torch.load(filename, map_location=lambda storage, loc: storage)\n213",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-cPickle",
+    "file_path": "bertkpe/transformers/convert_transfo_xl_original_tf_checkpoint_to_pytorch.py",
+    "line": 55,
+    "message": "Avoid using `cPickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "bertkpe/transformers/convert_transfo_xl_original_tf_checkpoint_to_pytorch.py",
+    "line": 55,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "bertkpe/transformers/data/processors/glue.py",
+    "line": 124,
+    "message": "Detected a python logger call with a potential hardcoded secret \"token_type_ids: %s\" % \" \".join([str(x) for x in token_type_ids]) being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "bertkpe/transformers/tokenization_transfo_xl.py",
+    "line": 559,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B306",
+    "file_path": "variants/features.py",
+    "line": 143,
+    "message": "Use of insecure and deprecated function (mktemp).",
+    "snippet": "142         print('working directory is %s' % temp_dir)\n143         reg_file = tempfile.mktemp(dir=temp_dir,\n144                                    suffix='_' + self.sample_id +\n145                                    '.region')\n146         sys.stdout.flush()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "variants/func.py",
+    "line": 431,
+    "message": "Found 'subprocess' function 'Popen' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

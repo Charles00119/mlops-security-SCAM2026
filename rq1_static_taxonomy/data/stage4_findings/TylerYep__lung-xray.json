@@ -1,0 +1,32 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "src/models/binary_mask_only.py",
+    "line": 18,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "17             binary_path = os.path.join('checkpoints', binary_checkpoint, 'model_best.pth.tar')\n18             bin_model_weights = torch.load(binary_path)#, map_location=torch.device('cpu'))\n19             self.bin_model.load_state_dict(bin_model_weights['state_dict'])",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "src/models/binary_mask_only.py",
+    "line": 23,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "22             mask_only_path = os.path.join('checkpoints', mask_checkpoint, 'model_best.pth.tar')\n23             mask_only_model_weights = torch.load(mask_only_path)#, map_location=torch.device('cpu'))\n24             self.mask_only_model.load_state_dict(mask_only_model_weights['state_dict'])",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "src/util.py",
+    "line": 89,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "88     load_file = 'model_best.pth.tar' if use_best else 'checkpoint.pth.tar'\n89     return torch.load(os.path.join(SAVE_DIR, checkpoint_name, load_file))\n90",
+    "stage": "unreachable"
+  }
+]

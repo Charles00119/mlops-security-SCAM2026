@@ -1,0 +1,512 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "cac/analysis/classification.py",
+    "line": 89,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "88             elif ext == 'pt':\n89                 epoch_logs = torch.load(file)\n90",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "cac/data/dataloader.py",
+    "line": 378,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "377         num_workers=num_workers,\n378         collate_fn=partial(eval(cfg['collate_fn']['name']),\n379                            **cfg['collate_fn']['params']),",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "cac/data/dataloader.py",
+    "line": 440,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "439         num_workers=num_workers,\n440         collate_fn=partial(eval(cfg['collate_fn']['name']),\n441                            **cfg['collate_fn']['params']),",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "cac/models/classification.py",
+    "line": 541,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "540             if exists(self.load_path):\n541                 checkpoint = torch.load(self.load_path)\n542                 self.network.load_state_dict(checkpoint['network'])",
+    "stage": "evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "cac/models/classification.py",
+    "line": 698,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "697                 color('Using cached values from {}'.format(cache_path), 'red'))\n698             results = torch.load(cache_path)\n699         else:",
+    "stage": "evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "cac/models/multi_signal_classification.py",
+    "line": 57,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "56         params = self.network_config['params']\n57         self.network = eval(f'{network_name}(**{params})').to(self.device)\n58         logging.info(color(f\"Building the network: {type(self.network).__name__}\"))",
+    "stage": "evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "cac/models/multi_signal_classification.py",
+    "line": 296,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "295             if exists(self.load_path):\n296                 checkpoint = torch.load(self.load_path)\n297                 model_state_dict = self.network.state_dict()",
+    "stage": "evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "cac/utils/io.py",
+    "line": 34,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "33     with open(path, 'r') as f:\n34         data = yaml.load(f, Loader=loader)\n35",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "cac/utils/io.py",
+    "line": 55,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "54     \"\"\"\n55     return pickle.load(open(filepath, 'rb'))\n56",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "datasets/download/coswara.py",
+    "line": 35,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "34     if not exists(repo_dir):\n35         call(f\"git clone {args.url} {repo_dir}\", shell=True)\n36     else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "datasets/download/coswara.py",
+    "line": 41,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "40     print(colored(\"3. EXTRACTING DATA ...\", 'yellow'))\n41     call(f\"cd {repo_dir}; python extract_data.py\", shell=True)\n42",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "datasets/download/esc50.py",
+    "line": 22,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "21 if not exists(zip_file):\n22 \tcall(command, shell=True)\n23",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "datasets/download/esc50.py",
+    "line": 29,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "28 if not isdir(unzip_folder):\n29 \tcall(command, shell=True)\n30",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "datasets/download/flusense.py",
+    "line": 42,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "41     if not exists(repo_dir):\n42         call(f\"git clone {args.url} {repo_dir}\", shell=True)\n43     else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "datasets/download/flusense.py",
+    "line": 56,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "55                 Please see README to download AudioSet files from GDrive.\"\n56             call(f\"unzip '{file}' -d {repo_dir}/\", shell=True)\n57",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "datasets/download/flusense.py",
+    "line": 59,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "58     new_unzipped_folder = unzipped_folder.replace('FluSense audio', 'FluSense-audio')\n59     call(f\"mv '{unzipped_folder}' {new_unzipped_folder}\", shell=True)\n60",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "datasets/download/freesound-kaggle.py",
+    "line": 39,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "38 \tif not exists(zip_fpath):\n39 \t\tcall(f\"wget {url} -O {zip_fpath}\", shell=True)\n40",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "datasets/download/freesound-kaggle.py",
+    "line": 43,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "42 \t\tif 'train.zip' in fname:\n43 \t\t\tcall(f\"7z e {zip_fpath} -Y -o{unzip_folder}\", shell=True)\n44 \t\telse:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "datasets/download/freesound-kaggle.py",
+    "line": 45,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "44 \t\telse:\n45 \t\t\tcall(f\"unzip {zip_fpath} -d {DATA_DIR}\", shell=True)\n46",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "datasets/download/wiai-crowdsourced.py",
+    "line": 41,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "40 if not isdir(unzip_folder):\n41     call(f'unzip {zip_fpath} -d {DATASET_DIR}', shell=True)\n42 # <--------------------------------------------------------->",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "datasets/versioning/copy_version_files.py",
+    "line": 22,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "21     dst_dir = src_dir.replace(assets_dir, '')\n22     call(f'rsync -avzP {src_dir}/ {dst_dir}/',  shell=True)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "evaluation/ensemble.py",
+    "line": 105,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "104 \n105         return torch.load(log_path)\n106",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "evaluation/inference.py",
+    "line": 193,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "192         if exists(epoch_logfile):\n193             epoch_logs = torch.load(epoch_logfile)\n194         return epoch_logs",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "evaluation/inference_multi_signal.py",
+    "line": 191,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "190         epoch_logfile = join(logdir, f\"epochwise/{mode}/{epoch}.pt\")\n191         epoch_logs = torch.load(epoch_logfile)\n192         return epoch_logs",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "tests/models/test_clf_checkpoint_load_save.py",
+    "line": 35,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "34         # remove existing checkpoints for sake of testing\n35         os.system('rm -rf {}/*.pth.tar'.format(tester_cfg.checkpoint_dir))\n36",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "tests/models/test_clf_checkpoint_load_save.py",
+    "line": 87,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "86             load_cfg['epoch'])\n87         saved_state = torch.load(load_path)['network']\n88",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "tests/models/test_clf_checkpoint_load_save.py",
+    "line": 119,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "118         self.assertIn('best_ckpt', load_path)\n119         saved_state = torch.load(load_path)['network']\n120",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/test_callbacks.py",
+    "line": 16,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "15         ckpt = ModelCheckpoint(\n16             ckpt_dir='/tmp/', period=1, monitor='auc-roc', monitor_mode='max'\n17         )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/test_callbacks.py",
+    "line": 28,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "27         self.assertTrue(save_status['save'])\n28         self.assertEqual(save_status['path'], '/tmp/1_ckpt.pth.tar')\n29         self.assertIn(\"auc-roc improved from -inf to 0.6\", save_status['info'])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "training/copy_model_ckpts.py",
+    "line": 39,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "38         if not exists(dst):\n39             call(f'rsync -avzP {src} {dst}',  shell=True)\n40         else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "training/copy_model_ckpts.py",
+    "line": 53,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "52                 if not exists(dst):\n53                     call(f'rsync -avzP {src} {dst}',  shell=True)\n54                 else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "cac/data/dataloader.py",
+    "line": 378,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "cac/data/dataloader.py",
+    "line": 440,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "cac/models/multi_signal_classification.py",
+    "line": 57,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "evaluation+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "cac/utils/io.py",
+    "line": 55,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "cac/utils/io.py",
+    "line": 61,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "datasets/download/coswara.py",
+    "line": 35,
+    "message": "Found 'subprocess' function 'call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "datasets/download/coswara.py",
+    "line": 41,
+    "message": "Found 'subprocess' function 'call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "datasets/download/esc50.py",
+    "line": 22,
+    "message": "Found 'subprocess' function 'call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "datasets/download/esc50.py",
+    "line": 29,
+    "message": "Found 'subprocess' function 'call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "datasets/download/flusense.py",
+    "line": 42,
+    "message": "Found 'subprocess' function 'call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "datasets/download/flusense.py",
+    "line": 56,
+    "message": "Found 'subprocess' function 'call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "datasets/download/flusense.py",
+    "line": 59,
+    "message": "Found 'subprocess' function 'call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "datasets/download/freesound-kaggle.py",
+    "line": 39,
+    "message": "Found 'subprocess' function 'call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "datasets/download/freesound-kaggle.py",
+    "line": 43,
+    "message": "Found 'subprocess' function 'call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "datasets/download/freesound-kaggle.py",
+    "line": 45,
+    "message": "Found 'subprocess' function 'call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "datasets/download/wiai-crowdsourced.py",
+    "line": 41,
+    "message": "Found 'subprocess' function 'call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "datasets/versioning/copy_version_files.py",
+    "line": 22,
+    "message": "Found 'subprocess' function 'call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-subprocess-use-tainted-env-args.dangerous-subprocess-use-tainted-env-args",
+    "file_path": "training/copy_model_ckpts.py",
+    "line": 39,
+    "message": "Detected subprocess function 'call' with user controlled data. A malicious actor could leverage this to perform command injection. You may consider using 'shlex.quote()'.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "training/copy_model_ckpts.py",
+    "line": 39,
+    "message": "Found 'subprocess' function 'call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "training/copy_model_ckpts.py",
+    "line": 53,
+    "message": "Found 'subprocess' function 'call' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

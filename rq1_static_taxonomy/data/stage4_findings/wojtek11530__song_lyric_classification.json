@@ -1,0 +1,262 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "backend_app/used_model.py",
+    "line": 38,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "37     )\n38     conv_model.load_state_dict(torch.load(_CONV_MODEL_PATH, map_location=_DEVICE))\n39     conv_model.eval()",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "scripts/analyse_size_of_training_set.py",
+    "line": 169,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "168     with open(file_name, 'rb') as handle:\n169         training_data_dictionary = pkl.load(handle)\n170         _plot_average_results(training_data_dictionary)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "scripts/datasets/download_raw_dataset.py",
+    "line": 50,
+    "message": "Call to requests without timeout",
+    "snippet": "49 \n50     r = requests.get(emomusic_url, allow_redirects=True)\n51     open(emomusic_output, 'wb').write(r.content)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "scripts/datasets/download_raw_dataset.py",
+    "line": 71,
+    "message": "Call to requests without timeout",
+    "snippet": "70 \n71     r = requests.get(MoodyLyrics4Q_url, allow_redirects=True)\n72     open(MoodyLyrics4Q_output, 'wb').write(r.content)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "scripts/datasets/get_lyrics_to_dataset.py",
+    "line": 84,
+    "message": "Call to requests without timeout",
+    "snippet": "83     try:\n84         response = requests.get(http_link)\n85         response.raise_for_status()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "scripts/evaluation/evaluate_fragmentized.py",
+    "line": 24,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "23                                           batch_size=128, removing_stop_words=True, lemmatization=False)\n24     mlp_model.load_state_dict(torch.load(_MLP_MODEL_PATH, map_location=device))\n25     evaluate_model(mlp_model)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "scripts/evaluation/evaluate_fragmentized.py",
+    "line": 50,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "49     )\n50     conv_model.load_state_dict(torch.load(_CONV_MODEL_PATH, map_location=device))\n51     evaluate_model(conv_model)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "scripts/evaluation/evaluate_fragmentized.py",
+    "line": 76,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "75     )\n76     lstm_model.load_state_dict(torch.load(_LSTM_MODEL_PATH, map_location=device))\n77     evaluate_model(lstm_model)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "scripts/evaluation/evaluate_model.py",
+    "line": 63,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "62                               batch_size=128, removing_stop_words=True, lemmatization=False)\n63     mlp_model.load_state_dict(torch.load(_MLP_MODEL_PATH, map_location=device))\n64     evaluate_model(mlp_model)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "scripts/evaluation/evaluate_model.py",
+    "line": 89,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "88     )\n89     lstm_model.load_state_dict(torch.load(_LSTM_MODEL_PATH, map_location=device))\n90     evaluate_model(lstm_model)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "scripts/evaluation/evaluate_model.py",
+    "line": 114,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "113     )\n114     gru_model.load_state_dict(torch.load(_GRU_MODEL_PATH, map_location=device))\n115     evaluate_model(gru_model)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "scripts/evaluation/evaluate_model.py",
+    "line": 140,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "139     )\n140     conv_model.load_state_dict(torch.load(_CONV_MODEL_PATH, map_location=device))\n141     evaluate_model(conv_model)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "scripts/evaluation/predict_emotion.py",
+    "line": 82,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "81                               batch_size=128, removing_stop_words=True, lemmatization=False)\n82     mlp_model.load_state_dict(torch.load(_MLP_MODEL_PATH, map_location=_DEVICE))\n83     mlp_model.eval()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "scripts/evaluation/predict_emotion.py",
+    "line": 102,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "101     )\n102     lstm_model.load_state_dict(torch.load(_LSTM_MODEL_PATH, map_location=_DEVICE))\n103     lstm_model.eval()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "scripts/evaluation/predict_emotion.py",
+    "line": 121,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "120     )\n121     gru_model.load_state_dict(torch.load(_GRU_MODEL_PATH, map_location=_DEVICE))\n122     gru_model.eval()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "scripts/evaluation/predict_emotion.py",
+    "line": 140,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "139     )\n140     conv_model.load_state_dict(torch.load(_CONV_MODEL_PATH, map_location=_DEVICE))\n141     conv_model.eval()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "scripts/evaluation/predict_with_fragmentized_models.py",
+    "line": 74,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "73                                           batch_size=128, removing_stop_words=True, lemmatization=False)\n74     mlp_model.load_state_dict(torch.load(_MLP_MODEL_PATH, map_location=_DEVICE))\n75     mlp_model.eval()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "scripts/evaluation/predict_with_fragmentized_models.py",
+    "line": 94,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "93     )\n94     lstm_model.load_state_dict(torch.load(_LSTM_MODEL_PATH, map_location=_DEVICE))\n95     lstm_model.eval()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "scripts/evaluation/predict_with_fragmentized_models.py",
+    "line": 113,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "112     )\n113     conv_model.load_state_dict(torch.load(_CONV_MODEL_PATH, map_location=_DEVICE))\n114     conv_model.eval()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.hardcoded-config.avoid_hardcoded_config_DEBUG",
+    "file_path": "backend_app/app.py",
+    "line": 11,
+    "message": "Hardcoded variable `DEBUG` detected. Set this by using FLASK_DEBUG environment variable",
+    "snippet": "requires login",
+    "stage": "inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "scripts/analyse_size_of_training_set.py",
+    "line": 45,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "scripts/analyse_size_of_training_set.py",
+    "line": 169,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "info",
+    "rule_id": "python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http",
+    "file_path": "scripts/datasets/download_raw_dataset.py",
+    "line": 50,
+    "message": "Detected a request using 'http://'. This request will be unencrypted, and attackers could listen into traffic on the network and be able to obtain sensitive information. Use 'https://' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "info",
+    "rule_id": "python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http",
+    "file_path": "scripts/datasets/download_raw_dataset.py",
+    "line": 71,
+    "message": "Detected a request using 'http://'. This request will be unencrypted, and attackers could listen into traffic on the network and be able to obtain sensitive information. Use 'https://' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.app-run-security-config.avoid_using_app_run_directly",
+    "file_path": "scripts/run_backend.py",
+    "line": 3,
+    "message": "top-level app.run(...) is ignored by flask. Consider putting app.run(...) behind a guard, like inside a function",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2026-3740",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "nltk 3.10.3: ### Summary  Several model-artifact APIs still treat caller-controlled model paths as ordinary filenames even when NLTK path security is enforced. The same outside-root paths are rejected by guarded h (fix: no fix listed)",
+    "snippet": "nltk==3.10.3",
+    "stage": "dependencies"
+  }
+]

@@ -1,0 +1,272 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "container/test.py",
+    "line": 69,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "68             command,\n69             shell=True,\n70             check=True,\n71             stdout=subprocess.PIPE if capture_output else None,\n72             stderr=subprocess.PIPE if capture_output else None,\n73             text=True\n74         )\n75         return result\n76     except subprocess.CalledProcessError as e:\n77         print(f\"❌ Command failed: {command}\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "mapreader/classify/classifier.py",
+    "line": 162,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "161                     num_labels = len(self.labels_map)\n162                     self.model = AutoModelForImageClassification.from_pretrained(\n163                         model,\n164                         num_labels=num_labels,\n165                         ignore_mismatched_sizes=True\n166                     ).to(self.device)\n167                     hf_processor = AutoImageProcessor.from_pretrain",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "mapreader/classify/classifier.py",
+    "line": 167,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "166                     ).to(self.device)\n167                     hf_processor = AutoImageProcessor.from_pretrained(model)\n168                     size = getattr(hf_processor, \"size\", {})",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "mapreader/classify/classifier.py",
+    "line": 1773,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "1772         path2model = os.path.join(par_name, f\"model_{base_name}\")\n1773         self.model = torch.load(path2model, map_location=mydevice, weights_only=False)\n1774",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "mapreader/download/downloader.py",
+    "line": 120,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "119             request = urllib.request.Request(tile_url, None, headers)\n120             response = urllib.request.urlopen(request)\n121             # get size of single tile",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "mapreader/download/iiif_downloader.py",
+    "line": 395,
+    "message": "Call to requests without timeout",
+    "snippet": "394                     y = height - tile_height\n395                 response = requests.get(\n396                     f\"{image_url}/{x},{y},{tile_width},{tile_height}/full/0/default.jpg\"\n397                 )\n398                 response.raise_for_status()",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "mapreader/download/sheet_downloader.py",
+    "line": 730,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "729             request = urllib.request.Request(tile_url, None, headers)\n730             response = urllib.request.urlopen(request)\n731             # get size of single tile",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "mapreader/download/tile_loading.py",
+    "line": 208,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "207         request = urllib.request.Request(url, None, headers)\n208         response = urllib.request.urlopen(request)\n209         data = response.read()",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "mapreader/process/occlusion_analysis.py",
+    "line": 113,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "112     def _load_model(self, model_path: str) -> nn.Module:\n113         model = torch.load(model_path, map_location=self.device, weights_only=False)\n114         return model",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "mapreader/process/process.py",
+    "line": 196,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "195         # gdalwarp -t_srs EPSG:3857 -crop_to_cutline -overwrite 126517601.27.tif ./preproc/resize_126517601.27.tif # noqa\n196         subprocess.run(gdal_command, shell=True)\n197         resampled = True",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "mapreader/spot_text/deepsolo_runner.py",
+    "line": 213,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "212             with open(self.use_customer_dictionary, \"rb\") as fp:\n213                 self.CTLABELS = pickle.load(fp)\n214         # voc_size includes the unknown class, which is not in self.CTABLES",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "mapreader/spot_text/maptext_runner.py",
+    "line": 362,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "361             with open(self.use_customer_dictionary, \"rb\") as fp:\n362                 self.CTLABELS = pickle.load(fp)\n363         # voc_size includes the unknown class, which is not in self.CTABLES",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "tests/test_classify/test_classifier.py",
+    "line": 112,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "111     annots, dataloaders = inputs\n112     my_model = torch.load(f\"{sample_dir}/model_test.pkl\", weights_only=False)\n113     assert isinstance(my_model, models.ResNet)  # sanity check",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tests/test_classify/test_classifier.py",
+    "line": 130,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "129     annots, dataloaders = inputs\n130     AutoImageProcessor.from_pretrained(\"microsoft/resnet-18\")\n131     my_model = AutoModelForImageClassification.from_pretrained(\"microsoft/resnet-18\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tests/test_classify/test_classifier.py",
+    "line": 131,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "130     AutoImageProcessor.from_pretrained(\"microsoft/resnet-18\")\n131     my_model = AutoModelForImageClassification.from_pretrained(\"microsoft/resnet-18\")\n132     model_type = transformers.models.resnet.ResNetForImageClassification",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tests/test_classify/test_classifier.py",
+    "line": 389,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "388     annots, dataloaders = inputs\n389     AutoImageProcessor.from_pretrained(\"microsoft/resnet-18\")\n390     my_model = AutoModelForImageClassification.from_pretrained(\"microsoft/resnet-18\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tests/test_classify/test_classifier.py",
+    "line": 390,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "389     AutoImageProcessor.from_pretrained(\"microsoft/resnet-18\")\n390     my_model = AutoModelForImageClassification.from_pretrained(\"microsoft/resnet-18\")\n391     classifier = ClassifierContainer(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tests/test_text_spotting/test_deepsolo_runner.py",
+    "line": 59,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "58         with open(f\"{sample_dir}/patch-0-0-800-40-deepsolo-pred.pkl\", \"rb\") as f:\n59             outputs = pickle.load(f)\n60         return outputs",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tests/test_text_spotting/test_dptext_runner.py",
+    "line": 58,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "57         with open(f\"{sample_dir}/patch-0-0-800-40-dptext-detr-pred.pkl\", \"rb\") as f:\n58             outputs = pickle.load(f)\n59         return outputs",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tests/test_text_spotting/test_maptext_runner.py",
+    "line": 57,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "56         with open(f\"{sample_dir}/patch-0-0-800-40-maptext-pred.pkl\", \"rb\") as f:\n57             outputs = pickle.load(f)\n58         return outputs",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "container/test.py",
+    "line": 69,
+    "message": "Found 'subprocess' function 'run' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "mapreader/download/downloader.py",
+    "line": 120,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "mapreader/download/sheet_downloader.py",
+    "line": 730,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "mapreader/download/tile_loading.py",
+    "line": 208,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "mapreader/process/process.py",
+    "line": 196,
+    "message": "Found 'subprocess' function 'run' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "mapreader/spot_text/deepsolo_runner.py",
+    "line": 213,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "mapreader/spot_text/maptext_runner.py",
+    "line": 362,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  }
+]

@@ -1,0 +1,1862 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nltk/decorators.py",
+    "line": 136,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "135     src = \"lambda %(signature)s: _wrapper_(%(signature)s)\" % infodict\n136     funcopy = eval(src, dict(_wrapper_=wrapper))\n137     return update_wrapper(funcopy, model, infodict)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nltk/decorators.py",
+    "line": 204,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "203         # import sys; print >> sys.stderr, src # for debugging purposes\n204         dec_func = eval(src, dict(_func_=func, _call_=caller))\n205         return update_wrapper(dec_func, func, infodict)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "nltk/downloader.py",
+    "line": 2599,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "2598 def _md5_hexdigest(fp):\n2599     md5_digest = md5()\n2600     while True:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "nltk/huggingface/dataset.py",
+    "line": 162,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "161             )\n162         return load_dataset(info[\"repo\"], fileid, split=info[\"split\"])\n163",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "nltk/huggingface/dataset.py",
+    "line": 165,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "164     if structure == \"flat\":\n165         ds = load_dataset(info[\"repo\"], split=info[\"split\"])\n166         if fileid is not None:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "nltk/huggingface/dataset.py",
+    "line": 172,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "171     # single\n172     return load_dataset(info[\"repo\"], split=info[\"split\"])\n173",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "nltk/huggingface/dataset.py",
+    "line": 227,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "226 \n227                 ds = load_dataset(info[\"repo\"], split=info[\"split\"])\n228                 return sorted(ds.unique(info[\"fileid_column\"]))",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "nltk/huggingface/dataset.py",
+    "line": 292,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "291         result = {\n292             cfg: load_dataset(info[\"repo\"], cfg, split=info[\"split\"], **kwargs)\n293             for cfg in configs",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "nltk/huggingface/dataset.py",
+    "line": 304,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "303     else:  # flat or single\n304         ds = load_dataset(info[\"repo\"], split=info[\"split\"], **kwargs)\n305         if not quiet:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nltk/internals.py",
+    "line": 536,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "535     try:\n536         return eval(s[start_position : match.end()]), match.end()\n537     except ValueError as e:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "nltk/sem/chat80.py",
+    "line": 151,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "150     \"\"\"\n151     inner = shelve.open(db, flag)\n152",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "nltk/sem/chat80.py",
+    "line": 495,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "494     for t in records:\n495         cur.execute(\"insert into %s values (?,?,?)\" % table_name, t)\n496         if verbose:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "nltk/sem/chat80.py",
+    "line": 682,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "681     valuation = make_valuation(concepts, read=True)\n682     db_out = shelve.open(db, \"n\")\n683",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "nltk/test/unit/test_advisory_coverage_ci.py",
+    "line": 106,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "105             request = urllib.request.Request(url, headers=_HEADERS)\n106             with urllib.request.urlopen(request, timeout=30) as response:\n107                 raw = response.read(_MAX_BYTES + 1)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "nltk/test/unit/test_attack_allowlist_callers_expanded.py",
+    "line": 410,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "409     payload = _object_ndarray_payload()\n410     plain = pickle.loads(payload)  # teeth: plain loader builds an object array\n411     assert isinstance(plain, numpy.ndarray) and plain.dtype.hasobject",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "nltk/test/unit/test_attack_deser_rce_expanded.py",
+    "line": 217,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "216         payload = _OPCODE_BUILDERS[opcode](str(marker))\n217         pickle.Unpickler(io.BytesIO(payload)).load()\n218         assert marker.exists(), (",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "nltk/test/unit/test_attack_deser_rce_expanded.py",
+    "line": 276,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "275         with pytest.raises(pickle.UnpicklingError):\n276             pickle.Unpickler(io.BytesIO(payload)).load()\n277",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "nltk/test/unit/test_attack_deser_rce_expanded.py",
+    "line": 459,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "458         marker = os.path.join(restricted_sandbox, \"SHELF_PWNED\")\n459         with shelve.open(base, \"n\") as shelf:\n460             shelf[\"adjacent\"] = {(\"chile\", \"argentina\"), (\"uk\", \"france\")}",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "nltk/test/unit/test_attack_deser_rce_expanded.py",
+    "line": 483,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "482         base = os.path.join(restricted_sandbox, \"raw\")\n483         with shelve.open(base, \"n\") as shelf:\n484             shelf[\"ok\"] = {(\"a\", \"b\")}",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B613",
+    "file_path": "nltk/test/unit/test_attack_json_loaders_expanded.py",
+    "line": 913,
+    "message": "A Python source file contains bidirectional control characters ('\\u202e').",
+    "snippet": "912     assert safe_json_loads('\"a\\\\u0000b\"') == \"a\\x00b\"\n913     assert safe_json_loads('\"x\\\\u202ey\"') == \"x‮y\"  # RTL override\n914     for bad in (r'\"\\x41\"', r'\"\\U0001F600\"', '﻿{\"a\":1}'):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B613",
+    "file_path": "nltk/test/unit/test_attack_jsontags_candidates_expanded.py",
+    "line": 276,
+    "message": "A Python source file contains bidirectional control characters ('\\u202e').",
+    "snippet": "275     assert safe_json_loads('\"a\\\\u0000b\"') == \"a\\x00b\"  # escaped NUL is data\n276     assert safe_json_loads('\"x\\\\u202ey\"') == \"x‮y\"  # RTL override, inert\n277     assert isinstance(safe_json_loads(r'\"\\ud800\"'), str)  # lone surrogate, inert",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B103",
+    "file_path": "nltk/test/unit/test_attack_path_sandbox_expanded.py",
+    "line": 376,
+    "message": "Chmod setting a permissive mask 0o777 on file (world).",
+    "snippet": "375         os.makedirs(world)\n376         os.chmod(world, 0o777)\n377         assert is_private_dir(world) is False",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B103",
+    "file_path": "nltk/test/unit/test_attack_path_sandbox_expanded.py",
+    "line": 380,
+    "message": "Chmod setting a permissive mask 0o770 on file (group).",
+    "snippet": "379         os.makedirs(group)\n380         os.chmod(group, 0o770)\n381         assert is_private_dir(group) is False",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B103",
+    "file_path": "nltk/test/unit/test_attack_path_sandbox_expanded.py",
+    "line": 396,
+    "message": "Chmod setting a permissive mask 0o777 on file (staging).",
+    "snippet": "395         assert nltk.data._staging_dir_is_still_safe(staging) is True\n396         os.chmod(staging, 0o777)\n397         assert nltk.data._staging_dir_is_still_safe(staging) is False",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B103",
+    "file_path": "nltk/test/unit/test_attack_path_sandbox_expanded.py",
+    "line": 424,
+    "message": "Chmod setting a permissive mask 0o777 on file (ancestor).",
+    "snippet": "423         ancestor.mkdir()\n424         os.chmod(ancestor, 0o777)\n425         target = ancestor / \"child\" / \"model.json\"",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "nltk/test/unit/test_attack_pickle_candidates_expanded.py",
+    "line": 316,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "315         payload = pickle.dumps(_MarkerGadget(str(marker)), protocol=protocol)\n316         pickle.Unpickler(io.BytesIO(payload)).load()\n317         assert marker.exists(), f\"protocol {protocol} gadget is not armed\"",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B604",
+    "file_path": "nltk/test/unit/test_attack_tool_injection_candidates_expanded.py",
+    "line": 98,
+    "message": "Function call with shell=True parameter identified, possible security issue.",
+    "snippet": "97     def _fake_popen(cmd, *a, **k):\n98         calls.append(SimpleNamespace(argv=list(cmd), shell=k.get(\"shell\", False)))\n99         return _FakeProc()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B103",
+    "file_path": "nltk/test/unit/test_attack_tool_injection_candidates_expanded.py",
+    "line": 119,
+    "message": "Chmod setting a permissive mask 0o755 on file (p).",
+    "snippet": "118     p = _regular_file(dirpath, name)\n119     os.chmod(p, 0o755)\n120     return p",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_attack_tool_injection_candidates_expanded.py",
+    "line": 342,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "341             [\"-javaagent:/tmp/evil.jar\"],\n342             [\"-jar\", \"/tmp/evil.jar\"],\n343         ],",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "nltk/test/unit/test_attack_warnonly_loaders_expanded.py",
+    "line": 271,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "270         payload = _OPCODE_BUILDERS[opcode](str(marker))\n271         pickle.Unpickler(io.BytesIO(payload)).load()\n272         assert marker.exists(), f\"{opcode} payload is not armed; guarded check vacuous\"",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B314",
+    "file_path": "nltk/test/unit/test_attack_xml_xss_expanded.py",
+    "line": 278,
+    "message": "Using xml.etree.ElementTree.fromstring to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.fromstring with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "277     payload = _flat_entity()\n278     stock = StockET.fromstring(payload)\n279     assert len(stock.text) == 5000 * 50  # stock expands it",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B314",
+    "file_path": "nltk/test/unit/test_attack_xml_xss_expanded.py",
+    "line": 286,
+    "message": "Using xml.etree.ElementTree.fromstring to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.fromstring with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "285     payload = _billion_laughs(levels=3, seed=\"AAAAAAAAAA\")\n286     stock = StockET.fromstring(payload)\n287     assert len(stock.text) == 10 * 10**3  # 10-char seed, three x10 levels",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B314",
+    "file_path": "nltk/test/unit/test_attack_xmlsec_candidates_expanded.py",
+    "line": 251,
+    "message": "Using xml.etree.ElementTree.fromstring to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.fromstring with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "250     payload = _flat_entity(size=5000, refs=50)\n251     stock = StockET.fromstring(payload)\n252     # The flat entity expands directly into the root element's text.",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B314",
+    "file_path": "nltk/test/unit/test_attack_xmlsec_candidates_expanded.py",
+    "line": 259,
+    "message": "Using xml.etree.ElementTree.fromstring to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.fromstring with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "258     payload = _billion_laughs(levels=3, seed=\"AAAAAAAAAA\")\n259     stock = StockET.fromstring(payload)\n260     assert len(stock.find(\"e\").text) == 10 * 10**3",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B103",
+    "file_path": "nltk/test/unit/test_boxer_security.py",
+    "line": 43,
+    "message": "Chmod setting a permissive mask 0o755 on file (target).",
+    "snippet": "42             pass\n43         os.chmod(target, 0o755)\n44     return directory",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B103",
+    "file_path": "nltk/test/unit/test_boxer_security.py",
+    "line": 67,
+    "message": "Chmod setting a permissive mask 0o755 on file (nested).",
+    "snippet": "66             pass\n67         os.chmod(nested, 0o755)\n68     monkeypatch.chdir(tmp_path)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B103",
+    "file_path": "nltk/test/unit/test_boxer_security.py",
+    "line": 116,
+    "message": "Chmod setting a permissive mask 0o755 on file (binary).",
+    "snippet": "115         handle.write(\"#!/bin/sh\\nexit 0\\n\")\n116     os.chmod(binary, 0o755)\n117",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "nltk/test/unit/test_chat80_shelve_rce.py",
+    "line": 45,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "44 def _make_shelf(base, values):\n45     with shelve.open(base, \"n\") as shelf:\n46         shelf.update(values)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "nltk/test/unit/test_chat80_shelve_rce.py",
+    "line": 70,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "69                     break\n70         with shelve.open(base, \"r\") as shelf:\n71             return set(shelf.keys())",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_corenlp_options_security.py",
+    "line": 131,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "130     [\"-textFile\", \"/etc/passwd\"],\n131     [\"-loadClassifier\", \"/tmp/evil.ser.gz\"],\n132     [\"-regexner.mapping\", \"/tmp/evil.tab\"],",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_corenlp_options_security.py",
+    "line": 132,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "131     [\"-loadClassifier\", \"/tmp/evil.ser.gz\"],\n132     [\"-regexner.mapping\", \"/tmp/evil.tab\"],\n133     [\"-tokensregex.rules\", \"/tmp/evil.rules\"],",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_corenlp_options_security.py",
+    "line": 133,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "132     [\"-regexner.mapping\", \"/tmp/evil.tab\"],\n133     [\"-tokensregex.rules\", \"/tmp/evil.rules\"],\n134     [\"-sutime.rules\", \"/tmp/evil.rules\"],",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_corenlp_options_security.py",
+    "line": 134,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "133     [\"-tokensregex.rules\", \"/tmp/evil.rules\"],\n134     [\"-sutime.rules\", \"/tmp/evil.rules\"],\n135     [\"-ServerProperties\", \"/etc/passwd\"],  # case variant of a dangerous flag",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_corenlp_options_security.py",
+    "line": 145,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "144 MODEL_DESER = [\n145     [\"-ner.model\", \"/tmp/evil.ser.gz\"],\n146     [\"-parse.model\", \"/tmp/evil.ser.gz\"],",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_corenlp_options_security.py",
+    "line": 146,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "145     [\"-ner.model\", \"/tmp/evil.ser.gz\"],\n146     [\"-parse.model\", \"/tmp/evil.ser.gz\"],\n147     [\"-pos.model\", \"/tmp/evil.ser.gz\"],",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_corenlp_options_security.py",
+    "line": 147,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "146     [\"-parse.model\", \"/tmp/evil.ser.gz\"],\n147     [\"-pos.model\", \"/tmp/evil.ser.gz\"],\n148     [\"-depparse.model\", \"/tmp/evil.ser.gz\"],",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_corenlp_options_security.py",
+    "line": 148,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "147     [\"-pos.model\", \"/tmp/evil.ser.gz\"],\n148     [\"-depparse.model\", \"/tmp/evil.ser.gz\"],\n149     [\"-coref.model\", \"/tmp/evil.ser.gz\"],",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_corenlp_options_security.py",
+    "line": 149,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "148     [\"-depparse.model\", \"/tmp/evil.ser.gz\"],\n149     [\"-coref.model\", \"/tmp/evil.ser.gz\"],\n150     [\"-sentiment.model\", \"/tmp/evil.ser.gz\"],",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_corenlp_options_security.py",
+    "line": 150,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "149     [\"-coref.model\", \"/tmp/evil.ser.gz\"],\n150     [\"-sentiment.model\", \"/tmp/evil.ser.gz\"],\n151     [\"-truecase.model\", \"/tmp/evil.ser.gz\"],",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_corenlp_options_security.py",
+    "line": 151,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "150     [\"-sentiment.model\", \"/tmp/evil.ser.gz\"],\n151     [\"-truecase.model\", \"/tmp/evil.ser.gz\"],\n152     [\"-tokenize.model\", \"/tmp/evil.ser.gz\"],",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_corenlp_options_security.py",
+    "line": 152,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "151     [\"-truecase.model\", \"/tmp/evil.ser.gz\"],\n152     [\"-tokenize.model\", \"/tmp/evil.ser.gz\"],\n153     [\"-kbp.model\", \"/tmp/evil.ser.gz\"],",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_corenlp_options_security.py",
+    "line": 153,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "152     [\"-tokenize.model\", \"/tmp/evil.ser.gz\"],\n153     [\"-kbp.model\", \"/tmp/evil.ser.gz\"],\n154     [\"-lemma.model\", \"/tmp/evil.ser.gz\"],",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_corenlp_options_security.py",
+    "line": 154,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "153     [\"-kbp.model\", \"/tmp/evil.ser.gz\"],\n154     [\"-lemma.model\", \"/tmp/evil.ser.gz\"],\n155     [\"-ner.additional.regexner.mapping\", \"/tmp/evil.tab\"],",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_corenlp_options_security.py",
+    "line": 155,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "154     [\"-lemma.model\", \"/tmp/evil.ser.gz\"],\n155     [\"-ner.additional.regexner.mapping\", \"/tmp/evil.tab\"],\n156 ]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_corenlp_options_security.py",
+    "line": 164,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "163     [\"-javaagent:/tmp/evil.jar\"],\n164     [\"-cp\", \"/tmp/evil.jar\"],\n165     [\"-classpath\", \"/tmp/evil.jar\"],",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_corenlp_options_security.py",
+    "line": 165,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "164     [\"-cp\", \"/tmp/evil.jar\"],\n165     [\"-classpath\", \"/tmp/evil.jar\"],\n166     [\"-agentlib:jdwp=transport=dt_socket\"],",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_corenlp_options_security.py",
+    "line": 357,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "356             [\"-serverProperties\", \"/etc/passwd\"],\n357             [\"-ner.model\", \"/tmp/evil.ser.gz\"],\n358             [\"-outputDirectory\", \"/etc/cron.d\"],",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_corenlp_options_security.py",
+    "line": 563,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "562             [\"-serverProperties\", \"/etc/passwd\"],\n563             [\"-parse.model\", \"/tmp/evil.ser.gz\"],\n564             [\"-outputDirectory\", \"/tmp\"],",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_corenlp_options_security.py",
+    "line": 564,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "563             [\"-parse.model\", \"/tmp/evil.ser.gz\"],\n564             [\"-outputDirectory\", \"/tmp\"],\n565             [\"-status_port\", \"-9\"],",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B314",
+    "file_path": "nltk/test/unit/test_downloader.py",
+    "line": 23,
+    "message": "Using xml.etree.ElementTree.fromstring to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.fromstring with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "22         \"\"\"\n23         xml_element = ET.fromstring(mock_xml)\n24         pkg = Package.fromxml(xml_element)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "nltk/test/unit/test_downloader.py",
+    "line": 131,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "130         sha256_checksum = hashlib.sha256(b\"x\").hexdigest()\n131         checksum = hashlib.md5(b\"x\").hexdigest()\n132",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "nltk/test/unit/test_downloader.py",
+    "line": 164,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "163         \"nltk.downloader.md5_hexdigest\",\n164         return_value=hashlib.md5(b\"x\").hexdigest(),\n165     ), unittest.mock.patch.object(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "nltk/test/unit/test_downloader_atomic.py",
+    "line": 37,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "36         \"size\": len(data),\n37         \"md5\": hashlib.md5(data).hexdigest(),\n38         \"sha256\": hashlib.sha256(data).hexdigest(),",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "nltk/test/unit/test_downloader_atomic.py",
+    "line": 100,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "99             content = f.read()\n100         data[\"zip_md5\"] = hashlib.md5(content).hexdigest()\n101         data[\"zip_sha256\"] = hashlib.sha256(content).hexdigest()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "nltk/test/unit/test_downloader_atomic.py",
+    "line": 277,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "276             unzipped_size=unzipped,\n277             checksum=hashlib.md5(zb).hexdigest(),\n278             sha256_checksum=hashlib.sha256(zb).hexdigest(),",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_downloader_package_traversal.py",
+    "line": 33,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "32         {\"id\": \"x\", \"subdir\": \"../../../../tmp\"},\n33         {\"id\": \"x\", \"subdir\": \"/tmp\"},\n34         {\"id\": \"x\", \"subdir\": \"..\\\\..\\\\tmp\"},",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_downloader_package_traversal.py",
+    "line": 37,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "36         {\"id\": \"../../../../tmp/evil\", \"subdir\": \"corpora\"},\n37         {\"id\": \"/tmp/evil\", \"subdir\": \"corpora\"},\n38         {\"id\": \"..\\\\..\\\\..\\\\tmp\\\\evil\", \"subdir\": \"corpora\"},",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_downloader_unzip.py",
+    "line": 117,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "116 \n117         absolute_target = Path(\"/tmp\") / f\"nltk_zip_slip_test_{os.getpid()}\"\n118",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_downloader_unzip.py",
+    "line": 244,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "243 \n244         absolute_target = Path(\"/tmp\") / f\"nltk_multi_viol_test_{os.getpid()}\"\n245",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "nltk/test/unit/test_full_functionality_smoke.py",
+    "line": 508,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "507     db = os.path.join(staging, \"evil\")\n508     with shelve.open(db, \"n\") as shelf:\n509         shelf[\"x\"] = _Gadget()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B103",
+    "file_path": "nltk/test/unit/test_hunpos_security.py",
+    "line": 50,
+    "message": "Chmod setting a permissive mask 0o755 on file (binp).",
+    "snippet": "49     binp.write_text(\"#!/bin/sh\\nexit 0\\n\")\n50     os.chmod(binp, 0o755)\n51     os.chmod(install, 0o777)  # world-writable: another user could swap the binary",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B103",
+    "file_path": "nltk/test/unit/test_hunpos_security.py",
+    "line": 51,
+    "message": "Chmod setting a permissive mask 0o777 on file (install).",
+    "snippet": "50     os.chmod(binp, 0o755)\n51     os.chmod(install, 0o777)  # world-writable: another user could swap the binary\n52",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B103",
+    "file_path": "nltk/test/unit/test_hunpos_security.py",
+    "line": 68,
+    "message": "Chmod setting a permissive mask 0o755 on file (binp).",
+    "snippet": "67         handle.write(\"#!/bin/sh\\nexit 0\\n\")\n68     os.chmod(binp, 0o755)\n69",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B604",
+    "file_path": "nltk/test/unit/test_hunpos_security.py",
+    "line": 85,
+    "message": "Function call with shell=True parameter identified, possible security issue.",
+    "snippet": "84             SimpleNamespace(\n85                 argv=list(cmd), shell=k.get(\"shell\", False), env=k.get(\"env\")\n86             )\n87         )\n88         return _FakeProc()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B103",
+    "file_path": "nltk/test/unit/test_hunpos_security.py",
+    "line": 176,
+    "message": "Chmod setting a permissive mask 0o755 on file (binp).",
+    "snippet": "175         handle.write(\"#!/bin/sh\\nexit 0\\n\")\n176     os.chmod(binp, 0o755)\n177     return binp",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B103",
+    "file_path": "nltk/test/unit/test_hunpos_security.py",
+    "line": 187,
+    "message": "Chmod setting a permissive mask 0o666 on file (model).",
+    "snippet": "186     model = _model_in_root(base)\n187     os.chmod(model, 0o666)  # world-writable: attacker could swap the model bytes\n188     monkeypatch.setattr(hp, \"find_binary\", lambda *a, **k: binp)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_java_injection_exploit.py",
+    "line": 58,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "57     [\"@/tmp/argfile\"],\n58     [\"-jar\", \"/tmp/evil.jar\"],\n59     # -D system properties that can load attacker code.",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_java_injection_exploit.py",
+    "line": 64,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "63     [\"--module-path=/tmp/evil\"],\n64     [\"-p\", \"/tmp/evil\"],\n65     # shell-metacharacter / whitespace smuggling on an otherwise-allowed prefix.",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_java_per_call_options_security.py",
+    "line": 41,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "40     [\"@/tmp/argfile\"],\n41     [\"-jar\", \"/tmp/evil.jar\"],\n42     # -XX: command-execution flags (JVM runs these on error / OOM) -- verified",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_java_per_call_options_security.py",
+    "line": 62,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "61     [\"--module-path=/tmp/evil\"],\n62     [\"-p\", \"/tmp/evil\"],\n63     [\"--add-opens\", \"java.base/java.lang=ALL-UNNAMED\"],",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_java_per_call_options_security.py",
+    "line": 69,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "68     # -cp / -classpath in options would add an unverified classpath\n69     [\"-cp\", \"/tmp/evil\"],\n70     [\"-classpath\", \"/tmp/evil\"],",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_java_per_call_options_security.py",
+    "line": 70,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "69     [\"-cp\", \"/tmp/evil\"],\n70     [\"-classpath\", \"/tmp/evil\"],\n71     [\"--class-path=/tmp/evil\"],",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_java_per_call_options_security.py",
+    "line": 197,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "196 DANGEROUS_CMD = [\n197     [\"-jar\", \"/tmp/evil.jar\"],\n198     [\"@/tmp/argfile\"],",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_java_per_call_options_security.py",
+    "line": 208,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "207     # main class never has surrounding whitespace) must not slip past the guard\n208     [\" -jar\", \"/tmp/evil.jar\"],\n209     [\"\\t-jar\", \"/tmp/evil.jar\"],",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_java_per_call_options_security.py",
+    "line": 209,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "208     [\" -jar\", \"/tmp/evil.jar\"],\n209     [\"\\t-jar\", \"/tmp/evil.jar\"],\n210     [\"\\n-jar\", \"/tmp/evil.jar\"],",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_java_per_call_options_security.py",
+    "line": 210,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "209     [\"\\t-jar\", \"/tmp/evil.jar\"],\n210     [\"\\n-jar\", \"/tmp/evil.jar\"],\n211     [\" @/tmp/argfile\"],",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_java_per_call_options_security.py",
+    "line": 274,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "273 UNICODE_WS_CMD = [\n274     [\"\\xa0-jar\", \"/tmp/evil.jar\"],  # NBSP-prefixed launcher switch\n275     [\" @/tmp/argfile\"],  # en-quad-prefixed @argfile",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_java_per_call_options_security.py",
+    "line": 485,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "484         monkeypatch.setenv(\"JAVA_TOOL_OPTIONS\", \"-Xmx1m\")\n485         monkeypatch.setenv(\"CLASSPATH\", \"/tmp/evil\")\n486         monkeypatch.setenv(\"NLTK_KEEP\", \"1\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B103",
+    "file_path": "nltk/test/unit/test_path_traversal_security.py",
+    "line": 420,
+    "message": "Chmod setting a permissive mask 0o777 on file (loc).",
+    "snippet": "419         os.makedirs(loc)\n420         os.chmod(loc, 0o777)\n421         with pytest.raises(PermissionError):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "nltk/test/unit/test_pathsec.py",
+    "line": 714,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "713         \"224.0.0.1\",  # multicast (is_global is True on some CPython versions)\n714         \"0.0.0.0\",  # unspecified (routes to localhost on Linux)\n715         \"100.64.1.1\",  # carrier-grade NAT -- missed by the old explicit list\n716         \"240.0.0.1\",  # reserved\n717         \"::1\",  # IPv6 loopback\n718         \"::\",  # IPv6 unspecified\n719         \"::ffff:127.0.0.1\",  # IPv4-mapped loopback",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B103",
+    "file_path": "nltk/test/unit/test_pathsec.py",
+    "line": 961,
+    "message": "Chmod setting a permissive mask 0o777 on file (world).",
+    "snippet": "960     world.mkdir()\n961     os.chmod(world, 0o777)\n962     group = tmp_path / \"group\"",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B103",
+    "file_path": "nltk/test/unit/test_pathsec.py",
+    "line": 964,
+    "message": "Chmod setting a permissive mask 0o770 on file (group).",
+    "snippet": "963     group.mkdir()\n964     os.chmod(group, 0o770)\n965",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B103",
+    "file_path": "nltk/test/unit/test_pathsec.py",
+    "line": 982,
+    "message": "Chmod setting a permissive mask 0o777 on file (shared).",
+    "snippet": "981     shared.mkdir()\n982     os.chmod(shared, 0o777)\n983",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B103",
+    "file_path": "nltk/test/unit/test_pathsec.py",
+    "line": 1036,
+    "message": "Chmod setting a permissive mask 0o777 on file (shared).",
+    "snippet": "1035     shared.mkdir()\n1036     os.chmod(shared, 0o777)\n1037     real = os.path.realpath(str(shared))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B103",
+    "file_path": "nltk/test/unit/test_pathsec_io_attack_matrix.py",
+    "line": 375,
+    "message": "Chmod setting a permissive mask 0o666 on file (ww).",
+    "snippet": "374         fh.write(b\"x\")\n375     os.chmod(ww, 0o666)\n376     with pytest.raises(REFUSALS) as e2:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_pathsec_sweep_chunk.py",
+    "line": 83,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "82 \n83     def fake_save(wgt, mpg, lab, aon, tab_dir=\"/tmp\"):\n84         captured[\"tab_dir\"] = tab_dir",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_pathsec_sweep_deserialization.py",
+    "line": 216,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "215     with pytest.raises(pickle.UnpicklingError):\n216         loader(_reduce_global_pickle(\"scipy.io\", \"mmwrite\", \"/tmp/should-not-write\"))\n217",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B103",
+    "file_path": "nltk/test/unit/test_pathsec_sweep_tag.py",
+    "line": 532,
+    "message": "Chmod setting a permissive mask 0o755 on file (binpath).",
+    "snippet": "531             handle.write(\"#!/bin/sh\\nexit 0\\n\")\n532         os.chmod(binpath, 0o755)\n533         _HUNPOS_STUB_BIN = binpath",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B613",
+    "file_path": "nltk/test/unit/test_pathsec_sweep_tag.py",
+    "line": 2509,
+    "message": "A Python source file contains bidirectional control characters ('\\u202e').",
+    "snippet": "2508         \"fullwidth-dot\": \"．．/etc/passwd\",\n2509         \"rtl-override\": \"‮\" + secret,\n2510         \"zero-width\": secret[:5] + \"​\" + secret[5:],",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B103",
+    "file_path": "nltk/test/unit/test_pathsec_trusted_exec.py",
+    "line": 82,
+    "message": "Chmod setting a permissive mask 0o755 on file (d).",
+    "snippet": "81     os.mkdir(d)\n82     os.chmod(d, 0o755)\n83     assert ps.is_private_dir(d) is True",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B103",
+    "file_path": "nltk/test/unit/test_pathsec_trusted_exec.py",
+    "line": 84,
+    "message": "Chmod setting a permissive mask 0o775 on file (d).",
+    "snippet": "83     assert ps.is_private_dir(d) is True\n84     os.chmod(d, 0o775)  # group-writable\n85     assert ps.is_private_dir(d) is False",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B103",
+    "file_path": "nltk/test/unit/test_pathsec_trusted_exec.py",
+    "line": 86,
+    "message": "Chmod setting a permissive mask 0o777 on file (d).",
+    "snippet": "85     assert ps.is_private_dir(d) is False\n86     os.chmod(d, 0o777)  # world-writable\n87     assert ps.is_private_dir(d) is False",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_pathsec_trusted_exec.py",
+    "line": 93,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "92     \"\"\"A shared sticky temp (/tmp, 1777) is refused: strict, no sticky exception.\"\"\"\n93     if not (os.path.isdir(\"/tmp\") and os.stat(\"/tmp\").st_mode & stat.S_ISVTX):\n94         pytest.skip(\"/tmp is not a sticky world-writable dir here\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_pathsec_trusted_exec.py",
+    "line": 93,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "92     \"\"\"A shared sticky temp (/tmp, 1777) is refused: strict, no sticky exception.\"\"\"\n93     if not (os.path.isdir(\"/tmp\") and os.stat(\"/tmp\").st_mode & stat.S_ISVTX):\n94         pytest.skip(\"/tmp is not a sticky world-writable dir here\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_pathsec_trusted_exec.py",
+    "line": 94,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "93     if not (os.path.isdir(\"/tmp\") and os.stat(\"/tmp\").st_mode & stat.S_ISVTX):\n94         pytest.skip(\"/tmp is not a sticky world-writable dir here\")\n95     assert ps.is_private_dir(\"/tmp\") is False",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_pathsec_trusted_exec.py",
+    "line": 95,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "94         pytest.skip(\"/tmp is not a sticky world-writable dir here\")\n95     assert ps.is_private_dir(\"/tmp\") is False\n96",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B103",
+    "file_path": "nltk/test/unit/test_pathsec_trusted_exec.py",
+    "line": 109,
+    "message": "Chmod setting a permissive mask 0o755 on file (d).",
+    "snippet": "108     os.mkdir(d)\n109     os.chmod(d, 0o755)\n110     other = os.geteuid() + 4242  # capture before patching to avoid recursion",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B103",
+    "file_path": "nltk/test/unit/test_pathsec_trusted_exec.py",
+    "line": 151,
+    "message": "Chmod setting a permissive mask 0o777 on file (install).",
+    "snippet": "150     binp = _mkexec(install, \"tool\")\n151     os.chmod(install, 0o777)  # world-writable holding dir\n152     assert ps._resolve_private(binp) is None",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_pathsec_trusted_exec.py",
+    "line": 159,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "158     refused, even though the leaf dir we create is a private 0700 mkdtemp.\"\"\"\n159     if not (os.path.isdir(\"/tmp\")):\n160         pytest.skip(\"no /tmp\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_pathsec_trusted_exec.py",
+    "line": 161,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "160         pytest.skip(\"no /tmp\")\n161     if not (os.stat(\"/tmp\").st_mode & (stat.S_IWGRP | stat.S_IWOTH)):\n162         pytest.skip(\"/tmp is not world-writable here\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_pathsec_trusted_exec.py",
+    "line": 162,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "161     if not (os.stat(\"/tmp\").st_mode & (stat.S_IWGRP | stat.S_IWOTH)):\n162         pytest.skip(\"/tmp is not world-writable here\")\n163     d = tempfile.mkdtemp(dir=\"/tmp\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_pathsec_trusted_exec.py",
+    "line": 163,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "162         pytest.skip(\"/tmp is not world-writable here\")\n163     d = tempfile.mkdtemp(dir=\"/tmp\")\n164     try:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B103",
+    "file_path": "nltk/test/unit/test_pathsec_trusted_exec.py",
+    "line": 183,
+    "message": "Chmod setting a permissive mask 0o777 on file (srv).",
+    "snippet": "182     os.symlink(final, os.path.join(srv, \"links\", \"bin\"))  # intermediate hop\n183     os.chmod(srv, 0o777)  # attacker can repoint srv/links/bin\n184",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B103",
+    "file_path": "nltk/test/unit/test_pathsec_trusted_exec.py",
+    "line": 267,
+    "message": "Chmod setting a permissive mask 0o777 on file (target_dir).",
+    "snippet": "266     tgt = _mkexec(target_dir, \"real\")\n267     os.chmod(target_dir, 0o777)  # target lives in an attacker-writable dir\n268     link = os.path.join(staging, \"clean\", \"keep\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B604",
+    "file_path": "nltk/test/unit/test_pathsec_trusted_exec.py",
+    "line": 433,
+    "message": "Function call with shell=True parameter identified, possible security issue.",
+    "snippet": "432                 argv=list(cmd),\n433                 shell=k.get(\"shell\", False),\n434                 env=k.get(\"env\"),\n435                 executable=k.get(\"executable\"),\n436                 close_fds=k.get(\"close_fds\"),\n437             )\n438         )\n439         return _FakeProc()\n440",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B604",
+    "file_path": "nltk/test/unit/test_pathsec_trusted_exec.py",
+    "line": 449,
+    "message": "Function call with shell=True parameter identified, possible security issue.",
+    "snippet": "448     with pytest.raises(ValueError, match=r\"Security Violation \\[spawn_trusted\\]\"):\n449         ps.spawn_trusted(\"/bin/sh\", [\"-c\", \"true\"], shell=True)\n450",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B103",
+    "file_path": "nltk/test/unit/test_pathsec_trusted_exec.py",
+    "line": 517,
+    "message": "Chmod setting a permissive mask 0o755 on file (evil).",
+    "snippet": "516     evil.write_text('#!/bin/sh\\n: > \"%s\"\\n' % marker)\n517     os.chmod(evil, 0o755)\n518     monkeypatch.chdir(cwd)  # the child inherits this CWD (spawn_trusted sets no cwd)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "nltk/test/unit/test_pickle_allowlist_security.py",
+    "line": 1405,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "1404         marker.unlink()\n1405     pickle.loads(payload)\n1406     assert marker.exists(), \"payload is not actually armed; the test would be vacuous\"",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B103",
+    "file_path": "nltk/test/unit/test_repp_security.py",
+    "line": 142,
+    "message": "Chmod setting a permissive mask 0o755 on file (NOT PARSED).",
+    "snippet": "141     reppdir = _make_repp_dir(tmp_path / \"wwrepp\")\n142     os.chmod(reppdir / \"src\" / \"repp\", 0o755)\n143     os.chmod(reppdir / \"src\", 0o777)  # world-writable: attacker can swap the binary",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B103",
+    "file_path": "nltk/test/unit/test_repp_security.py",
+    "line": 143,
+    "message": "Chmod setting a permissive mask 0o777 on file (NOT PARSED).",
+    "snippet": "142     os.chmod(reppdir / \"src\" / \"repp\", 0o755)\n143     os.chmod(reppdir / \"src\", 0o777)  # world-writable: attacker can swap the binary\n144     with pytest.raises(LookupError):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B103",
+    "file_path": "nltk/test/unit/test_repp_security.py",
+    "line": 156,
+    "message": "Chmod setting a permissive mask 0o755 on file (NOT PARSED).",
+    "snippet": "155     reppdir = _make_repp_dir(pathlib.Path(_staging()) / \"repp\")\n156     os.chmod(reppdir / \"src\" / \"repp\", 0o755)\n157",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B604",
+    "file_path": "nltk/test/unit/test_repp_security.py",
+    "line": 170,
+    "message": "Function call with shell=True parameter identified, possible security issue.",
+    "snippet": "169                 argv=list(cmd),\n170                 shell=k.get(\"shell\", False),\n171                 executable=k.get(\"executable\"),\n172             )\n173         )\n174         return _FakeProc()\n175",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B103",
+    "file_path": "nltk/test/unit/test_senna_security.py",
+    "line": 71,
+    "message": "Chmod setting a permissive mask 0o755 on file (target).",
+    "snippet": "70             pass\n71         os.chmod(target, 0o755)\n72     return directory",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B604",
+    "file_path": "nltk/test/unit/test_senna_security.py",
+    "line": 162,
+    "message": "Function call with shell=True parameter identified, possible security issue.",
+    "snippet": "161                 argv=argv,\n162                 shell=k.get(\"shell\", False),\n163                 env=k.get(\"env\"),\n164                 executable=k.get(\"executable\"),\n165             )\n166         )\n167         return _FakeProc()\n168",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B103",
+    "file_path": "nltk/test/unit/test_senna_security.py",
+    "line": 180,
+    "message": "Chmod setting a permissive mask 0o755 on file (binpath).",
+    "snippet": "179     binpath.write_bytes(b\"\")\n180     os.chmod(binpath, 0o755)\n181     monkeypatch.delenv(\"SENNA\", raising=False)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B103",
+    "file_path": "nltk/test/unit/test_senna_security.py",
+    "line": 198,
+    "message": "Chmod setting a permissive mask 0o755 on file (NOT PARSED).",
+    "snippet": "197     (cwd / binname).write_bytes(b\"\")\n198     os.chmod(cwd / binname, 0o755)\n199     monkeypatch.chdir(cwd)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B103",
+    "file_path": "nltk/test/unit/test_senna_security.py",
+    "line": 288,
+    "message": "Chmod setting a permissive mask 0o777 on file (root).",
+    "snippet": "287     if ww_ancestor:\n288         os.chmod(root, 0o777)\n289     return str(absdir)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B103",
+    "file_path": "nltk/test/unit/test_senna_security.py",
+    "line": 447,
+    "message": "Chmod setting a permissive mask 0o755 on file (binpath).",
+    "snippet": "446         fh.write(\"\\n\".join(lines) + \"\\n\")\n447     os.chmod(binpath, 0o755)\n448     return binpath",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B103",
+    "file_path": "nltk/test/unit/test_senna_security.py",
+    "line": 518,
+    "message": "Chmod setting a permissive mask 0o777 on file (absdir).",
+    "snippet": "517     binpath = _write_real_senna(absdir, marker=str(marker))\n518     os.chmod(absdir, 0o777)  # world-writable: another user could swap the binary\n519     monkeypatch.delenv(\"SENNA\", raising=False)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B103",
+    "file_path": "nltk/test/unit/test_senna_security.py",
+    "line": 571,
+    "message": "Chmod setting a permissive mask 0o755 on file (NOT PARSED).",
+    "snippet": "570     (final / binname).write_bytes(b\"\")\n571     os.chmod(final / binname, 0o755)\n572",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B103",
+    "file_path": "nltk/test/unit/test_senna_security.py",
+    "line": 576,
+    "message": "Chmod setting a permissive mask 0o777 on file (srv).",
+    "snippet": "575     os.symlink(final, srv / \"links\" / \"bin\")  # intermediate hop\n576     os.chmod(srv, 0o777)  # attacker can repoint srv/links/bin\n577",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B103",
+    "file_path": "nltk/test/unit/test_senna_security.py",
+    "line": 607,
+    "message": "Chmod setting a permissive mask 0o755 on file (binpath).",
+    "snippet": "606         fh.write(script)\n607     os.chmod(binpath, 0o755)\n608",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_stanford_arg_injection.py",
+    "line": 44,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "43     [\"--module-path=/tmp/evil\"],\n44     [\"-p\", \"/tmp\"],\n45     [\"-Xmx512m ; rm -rf /\"],",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_stanford_java_wrappers.py",
+    "line": 98,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "97         with pytest.warns(UserWarning, match=\"Arbitrary JAR execution is permitted\"):\n98             _verify_jar_sandbox(\"/tmp/evil.jar\")\n99",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_stanford_java_wrappers.py",
+    "line": 104,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "103         with pytest.raises(UntrustedJarError):\n104             _verify_jar_sandbox(\"/tmp/evil.jar\")\n105     with mock.patch.dict(os.environ, {\"NLTK_ALLOW_UNSAFE_JARS\": \"false\"}):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_stanford_java_wrappers.py",
+    "line": 107,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "106         with pytest.raises(UntrustedJarError):\n107             _verify_jar_sandbox(\"/tmp/evil.jar\")\n108",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B103",
+    "file_path": "nltk/test/unit/test_tadm_security.py",
+    "line": 48,
+    "message": "Chmod setting a permissive mask 0o777 on file (install).",
+    "snippet": "47     binp = _mkbin(str(install))\n48     os.chmod(install, 0o777)  # world-writable: attacker can swap the binary\n49     monkeypatch.setattr(tadm, \"_tadm_bin\", binp)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B604",
+    "file_path": "nltk/test/unit/test_tadm_security.py",
+    "line": 69,
+    "message": "Function call with shell=True parameter identified, possible security issue.",
+    "snippet": "68     def _fake_popen(cmd, *a, **k):\n69         calls.append(SimpleNamespace(argv=list(cmd), shell=k.get(\"shell\", False)))\n70         return _FakeProc()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "nltk/test/unit/test_tnt.py",
+    "line": 477,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "476 \n477     restored = pickle.loads(pickle.dumps(tagger))\n478     _assert_model_state_equal(restored, tagger)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_verbnet.py",
+    "line": 222,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "221         with pytest.raises(ValueError, match=\"not supported\"):\n222             VerbnetCorpusReader(\"/tmp\", \".*\", version=\"4.0\")\n223",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_weka_jvm_arff_hardening.py",
+    "line": 90,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "89     monkeypatch.setattr(weka, \"config_weka\", lambda *a, **k: None)\n90     monkeypatch.setattr(weka, \"_weka_classpath\", \"/tmp/evil-weka.jar\")\n91     root = _staged_root()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_weka_jvm_arff_hardening.py",
+    "line": 112,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "111     monkeypatch.setattr(weka, \"config_java\", lambda *a, **k: None)\n112     monkeypatch.setenv(\"WEKAHOME\", \"/tmp/evil-weka\")\n113     with pytest.warns(UserWarning, match=\"outside the trusted\"):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_weka_model_path_security.py",
+    "line": 24,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "23 OUT_OF_ROOT = [\n24     \"/tmp/outside_sandbox/evil.model\",  # absolute, outside any data root\n25     \"/etc/cron.d/evil\",  # absolute write to a sensitive dir\n26     \"../../../home/victim/.ssh/authorized_keys\",  # relative traversal\n27     \"/home/victim/secret.model\",  # absolute read oracle\n28     \"/etc/passwd\",  # absolute read of a sensitive file\n29     \"..\\\\..\\\\windows\\\\system32\\\\x\",  # backs",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_zip_member_platform_rules.py",
+    "line": 81,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "80     archive = str(root / \"evil.zip\")\n81     for member in (\"../../outside/PWNED.txt\", \"/tmp/PWNED_ABS.txt\", \"..\"):\n82         with zipfile.ZipFile(archive, \"w\") as handle:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "nltk/test/unit/test_zip_member_platform_rules.py",
+    "line": 89,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "88         assert not (outside / \"PWNED.txt\").exists()\n89         assert not os.path.exists(\"/tmp/PWNED_ABS.txt\")\n90",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nltk/tokenize/texttiling.py",
+    "line": 548,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "547     else:\n548         w = eval(\"numpy.\" + window + \"(window_len)\")\n549",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B314",
+    "file_path": "nltk/xmlsec.py",
+    "line": 121,
+    "message": "Using xml.etree.ElementTree.fromstring to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.fromstring with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "120     _reject_entities(text)\n121     return ElementTree.fromstring(text)\n122",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B314",
+    "file_path": "nltk/xmlsec.py",
+    "line": 147,
+    "message": "Using xml.etree.ElementTree.parse to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.parse with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "146     buffer = io.StringIO(data) if isinstance(data, str) else io.BytesIO(data)\n147     return ElementTree.parse(buffer)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tools/huggingface/push_stopwords.py",
+    "line": 173,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "172 \n173     outdir = \"/tmp/nltk_stopwords_v2\"\n174     if os.path.exists(outdir):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml.use-defused-xml",
+    "file_path": "nltk/corpus/reader/util.py",
+    "line": 15,
+    "message": "The Python documentation recommends using `defusedxml` instead of `xml` because the native Python `xml` library is vulnerable to XML External Entity (XXE) attacks. These attacks can leak confidential data and \"XML bombs\" can cause denial of service.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nltk/decorators.py",
+    "line": 136,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nltk/decorators.py",
+    "line": 204,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml.use-defused-xml",
+    "file_path": "nltk/downloader.py",
+    "line": 176,
+    "message": "The Python documentation recommends using `defusedxml` instead of `xml` because the native Python `xml` library is vulnerable to XML External Entity (XXE) attacks. These attacks can leak confidential data and \"XML bombs\" can cause denial of service.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "nltk/downloader.py",
+    "line": 2599,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml.use-defused-xml",
+    "file_path": "nltk/internals.py",
+    "line": 20,
+    "message": "The Python documentation recommends using `defusedxml` instead of `xml` because the native Python `xml` library is vulnerable to XML External Entity (XXE) attacks. These attacks can leak confidential data and \"XML bombs\" can cause denial of service.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nltk/internals.py",
+    "line": 536,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "nltk/picklesec.py",
+    "line": 56,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "nltk/picklesec.py",
+    "line": 98,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "nltk/picklesec.py",
+    "line": 144,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "nltk/picklesec.py",
+    "line": 149,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "nltk/picklesec.py",
+    "line": 492,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "nltk/picklesec.py",
+    "line": 502,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "nltk/picklesec.py",
+    "line": 507,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "nltk/picklesec.py",
+    "line": 523,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "nltk/picklesec.py",
+    "line": 537,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "nltk/picklesec.py",
+    "line": 545,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "nltk/picklesec.py",
+    "line": 551,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "nltk/picklesec.py",
+    "line": 562,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "nltk/picklesec.py",
+    "line": 568,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "nltk/picklesec.py",
+    "line": 574,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "nltk/picklesec.py",
+    "line": 655,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "nltk/picklesec.py",
+    "line": 660,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "nltk/picklesec.py",
+    "line": 667,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "nltk/picklesec.py",
+    "line": 672,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "nltk/picklesec.py",
+    "line": 677,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "nltk/picklesec.py",
+    "line": 687,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-shelve",
+    "file_path": "nltk/sem/chat80.py",
+    "line": 151,
+    "message": "Avoid using `shelve`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-shelve",
+    "file_path": "nltk/sem/chat80.py",
+    "line": 682,
+    "message": "Avoid using `shelve`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "nltk/tbl/demo.py",
+    "line": 60,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nltk/tokenize/texttiling.py",
+    "line": 548,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml.use-defused-xml",
+    "file_path": "nltk/tokenize/util.py",
+    "line": 8,
+    "message": "The Python documentation recommends using `defusedxml` instead of `xml` because the native Python `xml` library is vulnerable to XML External Entity (XXE) attacks. These attacks can leak confidential data and \"XML bombs\" can cause denial of service.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml.use-defused-xml",
+    "file_path": "nltk/toolbox.py",
+    "line": 15,
+    "message": "The Python documentation recommends using `defusedxml` instead of `xml` because the native Python `xml` library is vulnerable to XML External Entity (XXE) attacks. These attacks can leak confidential data and \"XML bombs\" can cause denial of service.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml.use-defused-xml",
+    "file_path": "nltk/xmlsec.py",
+    "line": 54,
+    "message": "The Python documentation recommends using `defusedxml` instead of `xml` because the native Python `xml` library is vulnerable to XML External Entity (XXE) attacks. These attacks can leak confidential data and \"XML bombs\" can cause denial of service.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml.use-defused-xml",
+    "file_path": "nltk/xmlsec.py",
+    "line": 55,
+    "message": "The Python documentation recommends using `defusedxml` instead of `xml` because the native Python `xml` library is vulnerable to XML External Entity (XXE) attacks. These attacks can leak confidential data and \"XML bombs\" can cause denial of service.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml-parse.use-defused-xml-parse",
+    "file_path": "nltk/xmlsec.py",
+    "line": 147,
+    "message": "The native Python `xml` library is vulnerable to XML External Entity (XXE) attacks.  These attacks can leak confidential data and \"XML bombs\" can cause denial of service. Do not use this library to parse untrusted input. Instead  the Python documentation recommends using `defusedxml`.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "generic.html-templates.security.var-in-href.var-in-href",
+    "file_path": "web/_templates/team.html",
+    "line": 13,
+    "message": "Detected a template variable used in an anchor tag with the 'href' attribute. This allows a malicious actor to input the 'javascript:' URI and is subject to cross- site scripting (XSS) attacks. If using Flask, use 'url_for()' to safely generate a URL. If using Django, use the 'url' filter to safely generate a URL. If using Mustache, use a URL encoding library, or prepend a slash '/' to the variable for relative links (`href=\"/{{link}}\"`). You may also consider setting the Content Security Policy (CSP) header.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

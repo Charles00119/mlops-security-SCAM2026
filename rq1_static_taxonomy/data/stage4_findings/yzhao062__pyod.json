@@ -1,0 +1,112 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "docs/conf.py",
+    "line": 24,
+    "message": "Use of exec detected.",
+    "snippet": "23 version_path = os.path.join(pyod_dir, 'pyod', 'version.py')\n24 exec(open(version_path).read())\n25 # -- Project information -----------------------------------------------------",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "examples/agentic_hindsight_real_data.py",
+    "line": 73,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "72     \"\"\"Download UCI Ionosphere and return X plus held-out labels.\"\"\"\n73     with urllib.request.urlopen(SOURCE_URL, timeout=30) as response:\n74         raw = response.read().decode('utf-8')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "pyod/models/base_dl.py",
+    "line": 354,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "353         with open(path, 'rb') as file:\n354             detector = pickle.load(file)\n355         return detector",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "pyod/utils/auto_model_selector.py",
+    "line": 297,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "296             selection_prompt = (\n297                 \"You are an expert in machine learning model selection.\\n\\n\"\n298                 \"Based on the dataset properties and model analyses \"\n299                 \"provided, recommend the most suitable model from the \"\n300                 \"given model list. Only select a model from the model \"\n301                 \"list.\\n\\n\"\n302                 f\"Da",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "pyod/utils/encoders/huggingface.py",
+    "line": 70,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "69 \n70         self.model_ = AutoModel.from_pretrained(\n71             self.model_name).to(self.device_)\n72         self.model_.eval()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "pyod/utils/encoders/huggingface.py",
+    "line": 75,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "74         if self.modality == 'image':\n75             self.processor_ = AutoImageProcessor.from_pretrained(\n76                 self.model_name)\n77         else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "pyod/utils/encoders/huggingface.py",
+    "line": 78,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "77         else:\n78             self.processor_ = AutoTokenizer.from_pretrained(\n79                 self.model_name)\n80",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "docs/conf.py",
+    "line": 24,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "examples/agentic_hindsight_real_data.py",
+    "line": 73,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "pyod/models/base_dl.py",
+    "line": 337,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "pyod/models/base_dl.py",
+    "line": 354,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

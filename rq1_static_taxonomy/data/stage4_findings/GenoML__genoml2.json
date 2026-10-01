@@ -1,0 +1,222 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B501",
+    "file_path": "build/lib/genoml/dependencies.py",
+    "line": 55,
+    "message": "Call to requests with verify=False disabling SSL certificate checks, security issue.",
+    "snippet": "54 def __install_exec(url, exec_path):\n55     r = requests.get(url, verify=False, stream=True)\n56     r.raw.decode_content = True",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "build/lib/genoml/dependencies.py",
+    "line": 55,
+    "message": "Call to requests without timeout",
+    "snippet": "54 def __install_exec(url, exec_path):\n55     r = requests.get(url, verify=False, stream=True)\n56     r.raw.decode_content = True",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "build/lib/genoml/preprocessing/harmonizing.py",
+    "line": 36,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "35         with open(self.prefix.joinpath(\"params.pkl\"), \"rb\") as file:\n36             params = pickle.load(file)\n37         self.adjust_normalize = params[\"adjust_normalize\"]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "build/lib/genoml/preprocessing/harmonizing.py",
+    "line": 70,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "69             with open(self.prefix.joinpath(\"adjustment_models.pkl\"), \"rb\") as file:\n70                 self.adjustment_models = pickle.load(file)\n71         else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "build/lib/genoml/preprocessing/utils.py",
+    "line": 101,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "100     print(bash_rm_temp)\n101     subprocess.run(bash_rm_temp, shell=True)\n102",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "build/lib/genoml/preprocessing/utils.py",
+    "line": 323,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "322         for cmd in cmds:\n323             subprocess.run(cmd, shell=True)\n324         df_geno = create_geno_df(run_prefix)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "build/lib/genoml/preprocessing/utils.py",
+    "line": 382,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "381         for cmd in cmds:\n382             subprocess.run(cmd, shell=True)\n383",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B501",
+    "file_path": "genoml/dependencies.py",
+    "line": 54,
+    "message": "Call to requests with verify=False disabling SSL certificate checks, security issue.",
+    "snippet": "53 def __install_exec(url, exec_path):\n54     r = requests.get(url, verify=False, stream=True)\n55     r.raw.decode_content = True",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "genoml/dependencies.py",
+    "line": 54,
+    "message": "Call to requests without timeout",
+    "snippet": "53 def __install_exec(url, exec_path):\n54     r = requests.get(url, verify=False, stream=True)\n55     r.raw.decode_content = True",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "genoml/preprocessing/harmonizing.py",
+    "line": 36,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "35         with open(self.prefix.joinpath(\"params.pkl\"), \"rb\") as file:\n36             params = pickle.load(file)\n37         self.adjust_normalize = params[\"adjust_normalize\"]",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "genoml/preprocessing/harmonizing.py",
+    "line": 73,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "72                 with open(self.prefix.joinpath(\"adjustment_models.pkl\"), \"rb\") as file:\n73                     self.adjustment_models = pickle.load(file)\n74         else:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "genoml/preprocessing/utils.py",
+    "line": 101,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "100     print(bash_rm_temp)\n101     subprocess.run(bash_rm_temp, shell=True)\n102",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "genoml/preprocessing/utils.py",
+    "line": 324,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "323         for cmd in cmds:\n324             subprocess.run(cmd, shell=True)\n325         df_geno = create_geno_df(run_prefix)",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "genoml/preprocessing/utils.py",
+    "line": 383,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "382         for cmd in cmds:\n383             subprocess.run(cmd, shell=True)\n384",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.requests.security.disabled-cert-validation.disabled-cert-validation",
+    "file_path": "genoml/dependencies.py",
+    "line": 54,
+    "message": "Certificate verification has been explicitly disabled. This permits insecure connections to insecure servers. Re-enable certification validation.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "genoml/preprocessing/adjuster.py",
+    "line": 111,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+inference"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "genoml/preprocessing/harmonizing.py",
+    "line": 36,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "genoml/preprocessing/harmonizing.py",
+    "line": 73,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "genoml/preprocessing/munging.py",
+    "line": 177,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "genoml/preprocessing/utils.py",
+    "line": 101,
+    "message": "Found 'subprocess' function 'run' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "genoml/preprocessing/utils.py",
+    "line": 324,
+    "message": "Found 'subprocess' function 'run' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "genoml/preprocessing/utils.py",
+    "line": 383,
+    "message": "Found 'subprocess' function 'run' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  }
+]

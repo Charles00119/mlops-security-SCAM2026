@@ -1,0 +1,462 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "stexls/stex/compiler.py",
+    "line": 350,
+    "message": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "snippet": "349         '''\n350         sha = sha1(file.parent.as_posix().encode()).hexdigest()\n351         return self.outdir / sha / (file.name + self.objectfile_extension)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "stexls/stex/compiler.py",
+    "line": 370,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "369         with open(objectfile, 'rb') as fd:\n370             obj = pickle.load(fd)\n371             if not isinstance(obj, StexObject) or obj.file.expanduser().resolve().absolute() != file.expanduser().resolve().absolute():",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "stexls/trefier/models/seq2seq.py",
+    "line": 126,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "125             self,\n126             download_dir: str = '/tmp/seq2seq/downloads/',\n127             cache_dir: Optional[str] = '/tmp/seq2seq/cache/',\n128             log_dir: Optional[str] = '/tmp/seq2seq/logs/',\n129             save_dir: Optional[str] = '/tmp/seq2seq/models',\n130             epochs: int = 1,\n131             optimizer: str = 'adam',\n132             glove_n_components: int = 10,\n1",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "stexls/trefier/models/seq2seq.py",
+    "line": 127,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "126             download_dir: str = '/tmp/seq2seq/downloads/',\n127             cache_dir: Optional[str] = '/tmp/seq2seq/cache/',\n128             log_dir: Optional[str] = '/tmp/seq2seq/logs/',\n129             save_dir: Optional[str] = '/tmp/seq2seq/models',\n130             epochs: int = 1,\n131             optimizer: str = 'adam',\n132             glove_n_components: int = 10,\n133             gaussia",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "stexls/trefier/models/seq2seq.py",
+    "line": 128,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "127             cache_dir: Optional[str] = '/tmp/seq2seq/cache/',\n128             log_dir: Optional[str] = '/tmp/seq2seq/logs/',\n129             save_dir: Optional[str] = '/tmp/seq2seq/models',\n130             epochs: int = 1,\n131             optimizer: str = 'adam',\n132             glove_n_components: int = 10,\n133             gaussian_noise: float = 0,\n134             capacity: int = 1,\n135     ",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "stexls/trefier/models/seq2seq.py",
+    "line": 129,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "128             log_dir: Optional[str] = '/tmp/seq2seq/logs/',\n129             save_dir: Optional[str] = '/tmp/seq2seq/models',\n130             epochs: int = 1,\n131             optimizer: str = 'adam',\n132             glove_n_components: int = 10,\n133             gaussian_noise: float = 0,\n134             capacity: int = 1,\n135             val_split: float = 0.1,\n136             test_split: float ",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "stexls/trefier/models/seq2seq.py",
+    "line": 310,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "309                                  f'but found {self.settings[\"__class__\"]}')\n310             self.glove = pickle.loads(package.read('glove.bin'))\n311             self.tfidf_model = pickle.loads(package.read('tfidf_model.bin'))",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "stexls/trefier/models/seq2seq.py",
+    "line": 311,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "310             self.glove = pickle.loads(package.read('glove.bin'))\n311             self.tfidf_model = pickle.loads(package.read('tfidf_model.bin'))\n312             self.keyphraseness_model = pickle.loads(",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "stexls/trefier/models/seq2seq.py",
+    "line": 312,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "311             self.tfidf_model = pickle.loads(package.read('tfidf_model.bin'))\n312             self.keyphraseness_model = pickle.loads(\n313                 package.read('keyphraseness_model.bin'))\n314             self.pos_tag_model = pickle.loads(",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "stexls/trefier/models/seq2seq.py",
+    "line": 314,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "313                 package.read('keyphraseness_model.bin'))\n314             self.pos_tag_model = pickle.loads(\n315                 package.read('pos_tag_model.bin'))\n316             with NamedTemporaryFile() as ref:",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "stexls/trefier/models/seq2seq.py",
+    "line": 329,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "328                         help='Number of epochs to train for.')\n329     parser.add_argument('--save_dir', '-s', default='/tmp/seq2seq/models',\n330                         help='Directory where the finished model is saved to.')",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "stexls/trefier/models/seq2seq.py",
+    "line": 331,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "330                         help='Directory where the finished model is saved to.')\n331     parser.add_argument('--download_dir', '-d', default='/tmp/seq2seq/downloads',\n332                         help='Directory where downloads are saved to.')",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "stexls/trefier/models/seq2seq.py",
+    "line": 333,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "332                         help='Directory where downloads are saved to.')\n333     parser.add_argument('--log_dir', '-l', default='/tmp/seq2seq/logs',\n334                         help='Directory for tensorboard logs.')",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "stexls/trefier/models/seq2seq.py",
+    "line": 335,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "334                         help='Directory for tensorboard logs.')\n335     parser.add_argument('--cache_dir', '-c', default='/tmp/seq2seq/cache/',\n336                         help='Path to directory for cache files.')",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "stexls/trefier/training/datasets/smglom.py",
+    "line": 38,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "37         with open(cache, 'rb') as file:\n38             x, y = pickle.load(file)\n39         print('Loaded', len(x), 'files from cache.')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "stexls/trefier/training/features/embedding.py",
+    "line": 17,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "16             source_dim: int = 50,\n17             download_dir: str = '/tmp',\n18             extract_dir: str = None):\n19         ''' Initializes the embedding transform.\n20         Parameters:\n21             n_components: Performs PCA on the loaded embeddings to fit the given number of components.\n22             oov_vector: Method of how a oov token should be treated: 'random' or 'zero' vector ",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "stexls/util/download.py",
+    "line": 38,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "37         ' Attempts to download the size of the url. '\n38         with urllib.request.urlopen(self.url) as response:\n39             sz = response.headers['Content-Length']",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "stexls/util/download.py",
+    "line": 52,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "51         bytes_downloaded = 0\n52         with urllib.request.urlopen(self.url) as response, open(self.download_location, 'wb') as out_file:\n53             while not self.finished:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "stexls/util/download.py",
+    "line": 185,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "184                            path_to_extract_location)\n185                     zip_ref.extractall(path_to_extract_location)\n186             elif url.endswith(\".tar.gz\"):",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "stexls/util/download.py",
+    "line": 192,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "191                            path_to_extract_location)\n192                     tar_ref.extractall(path_to_extract_location)\n193             elif url.endswith(\".gz\"):",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/test_jsonrpc.py",
+    "line": 48,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "47         logging.basicConfig(\n48             filename='/tmp/test_get_set.log', level=logging.DEBUG)\n49         (host, port), server_task = await GetSetServer.start_server()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/test_jsonrpc.py",
+    "line": 69,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "68     async def test_ipc(self):\n69         logging.basicConfig(filename='/tmp/test_ipc.log', level=logging.DEBUG)\n70         server_read, client_write = socketpair()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/test_jsonrpc.py",
+    "line": 91,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "90         logging.basicConfig(\n91             filename='/tmp/test_raise_errors.log', level=logging.DEBUG)\n92         (host, port), server_task = await GetSetServer.start_server()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/test_lsp.py",
+    "line": 23,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "22                 'capabilities': {},\n23                 'rootUri': Path('/tmp/stexls-tests-root-dir').as_uri(),\n24                 'initializationOptions': {",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "stexls/lsp/server.py",
+    "line": 342,
+    "message": "Detected a python logger call with a potential hardcoded secret 'Cancelling work done progress token: %s' being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "stexls/lsp/server.py",
+    "line": 345,
+    "message": "Detected a python logger call with a potential hardcoded secret 'Unknown progress token: %s' being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "stexls/lsp/server.py",
+    "line": 347,
+    "message": "Detected a python logger call with a potential hardcoded secret 'Token already cancelled: %s' being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1",
+    "file_path": "stexls/stex/compiler.py",
+    "line": 350,
+    "message": "Detected SHA1 hash algorithm which is considered insecure. SHA1 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "stexls/stex/compiler.py",
+    "line": 370,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "stexls/stex/compiler.py",
+    "line": 437,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "stexls/trefier/models/seq2seq.py",
+    "line": 283,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "stexls/trefier/models/seq2seq.py",
+    "line": 284,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "stexls/trefier/models/seq2seq.py",
+    "line": 286,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "stexls/trefier/models/seq2seq.py",
+    "line": 287,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "stexls/trefier/models/seq2seq.py",
+    "line": 289,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "stexls/trefier/models/seq2seq.py",
+    "line": 291,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "stexls/trefier/models/seq2seq.py",
+    "line": 293,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "stexls/trefier/models/seq2seq.py",
+    "line": 295,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "stexls/trefier/models/seq2seq.py",
+    "line": 310,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "stexls/trefier/models/seq2seq.py",
+    "line": 311,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "stexls/trefier/models/seq2seq.py",
+    "line": 312,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "stexls/trefier/models/seq2seq.py",
+    "line": 314,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "stexls/trefier/training/datasets/smglom.py",
+    "line": 38,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "stexls/trefier/training/datasets/smglom.py",
+    "line": 53,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "stexls/util/download.py",
+    "line": 38,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "stexls/util/download.py",
+    "line": 52,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  }
+]

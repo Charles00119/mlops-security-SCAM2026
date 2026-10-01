@@ -1,0 +1,62 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "demo_cam.py",
+    "line": 49,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "48     # Load checkpoint weights\n49     model.load_state_dict(torch.load(opt.weights_path))\n50",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "detect.py",
+    "line": 51,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "50         # Load checkpoint weights\n51         model.load_state_dict(torch.load(opt.weights_path))\n52",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "test.py",
+    "line": 90,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "89         # Load checkpoint weights\n90         model.load_state_dict(torch.load(opt.weights_path))\n91",
+    "stage": "data_acquisition+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "train.py",
+    "line": 72,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "71         if opt.pretrained_weights.endswith(\".pth\"):\n72             model.load_state_dict(torch.load(opt.pretrained_weights))\n73         else:",
+    "stage": "data_acquisition+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "train.py",
+    "line": 191,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "190         if epoch % opt.checkpoint_interval == 0:\n191             torch.save(model.state_dict(), f\"/tmp/yolov3_ckpt_%d.pth\" % epoch)\n192             z.write(f\"/tmp/yolov3_ckpt_%d.pth\" % epoch)",
+    "stage": "data_acquisition+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "train.py",
+    "line": 192,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "191             torch.save(model.state_dict(), f\"/tmp/yolov3_ckpt_%d.pth\" % epoch)\n192             z.write(f\"/tmp/yolov3_ckpt_%d.pth\" % epoch)\n193     z.close()",
+    "stage": "data_acquisition+training"
+  }
+]

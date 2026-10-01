@@ -1,0 +1,202 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "alphapy/data.py",
+    "line": 429,
+    "message": "Call to requests without timeout",
+    "snippet": "428     url = base_url.format(symbol, interval, lookback_period)\n429     response = requests.get(url)\n430     # Process the response",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "alphapy/data.py",
+    "line": 708,
+    "message": "Call to requests without timeout",
+    "snippet": "707         logger.info(request)\n708         response = requests.get(request)\n709         response_json = response.json()['chart']",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "alphapy/estimators.py",
+    "line": 234,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "233     with open(full_path, 'r') as ymlfile:\n234         specs = yaml.load(ymlfile, Loader=yaml.FullLoader)\n235",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "alphapy/estimators.py",
+    "line": 310,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "309         lvar = 'layer' + str(i+1)\n310         layer = eval(lvar)\n311         model.add(eval(layer))",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "alphapy/estimators.py",
+    "line": 311,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "310         layer = eval(lvar)\n311         model.add(eval(layer))\n312     model.compile(optimizer=optimizer, loss=loss, metrics=[metrics])",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "alphapy/estimators.py",
+    "line": 375,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "374             if param in ps_fields and isinstance(param, str):\n375                 algo_specs[algo]['params'][param] = eval(ps_fields[param])\n376         try:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "alphapy/market_flow.py",
+    "line": 97,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "96     with open(full_path, 'r') as ymlfile:\n97         cfg = yaml.load(ymlfile, Loader=yaml.FullLoader)\n98",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "alphapy/model.py",
+    "line": 221,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "220     with open(full_path, 'r') as ymlfile:\n221         cfg = yaml.load(ymlfile, Loader=yaml.FullLoader)\n222",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "alphapy/portfolio.py",
+    "line": 720,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "719             estr = '.'.join('pos', weightby)\n720             bdata[i] = eval(estr)\n721         else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "alphapy/portfolio.py",
+    "line": 793,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "792             estr = '.'.join('pos', koby)\n793             kovalue[i] = eval(estr)\n794         else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "alphapy/sport_flow.py",
+    "line": 166,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "165     with open(full_path, 'r') as ymlfile:\n166         cfg = yaml.load(ymlfile, Loader=yaml.FullLoader)\n167",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "alphapy/variables.py",
+    "line": 583,
+    "message": "Use of exec detected.",
+    "snippet": "582                         % (fname, vname)\n583                 exec(estr)\n584         else:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "alphapy/estimators.py",
+    "line": 310,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "alphapy/estimators.py",
+    "line": 311,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "alphapy/estimators.py",
+    "line": 375,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "alphapy/market_flow.py",
+    "line": 204,
+    "message": "Detected a python logger call with a potential hardcoded secret 'api_key         = %s' being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "alphapy/market_flow.py",
+    "line": 205,
+    "message": "Detected a python logger call with a potential hardcoded secret 'api_key_name    = %s' being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "alphapy/portfolio.py",
+    "line": 720,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "alphapy/portfolio.py",
+    "line": 793,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "alphapy/variables.py",
+    "line": 583,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  }
+]

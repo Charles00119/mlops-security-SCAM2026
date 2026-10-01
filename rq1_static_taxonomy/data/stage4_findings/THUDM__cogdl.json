@@ -1,0 +1,752 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "cogdl/data/sampler.py",
+    "line": 224,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "223         if os.path.exists(save_name):\n224             return torch.load(save_name)\n225         print(\"Preprocessing...\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "cogdl/datasets/__init__.py",
+    "line": 111,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "110         try:\n111             return torch.load(data_path)\n112         except Exception as e:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "cogdl/datasets/customized_data.py",
+    "line": 69,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "68             try:\n69                 self.data = torch.load(path)\n70             except Exception as e:",
+    "stage": "data_preparation+evaluation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "cogdl/datasets/customized_data.py",
+    "line": 118,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "117         # try:\n118         data = torch.load(path)\n119         if hasattr(data[0], \"y\") and data[0].y is None:",
+    "stage": "data_preparation+evaluation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "cogdl/datasets/gatne.py",
+    "line": 57,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "56         super(GatneDataset, self).__init__(root)\n57         self.data = torch.load(self.processed_paths[0])\n58",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "cogdl/datasets/gcc_data.py",
+    "line": 96,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "95         super(Edgelist, self).__init__(root)\n96         self.data = torch.load(self.processed_paths[0])\n97",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "cogdl/datasets/geom_data.py",
+    "line": 94,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "93 \n94         self.data = torch.load(self.processed_paths[0])\n95         self.raw_dir = osp.join(self.root, self.name, \"raw\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "cogdl/datasets/geom_data.py",
+    "line": 224,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "223             if sys.version_info > (3, 0):\n224                 objects.append(pkl.load(f, encoding=\"latin1\"))\n225             else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "cogdl/datasets/geom_data.py",
+    "line": 226,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "225             else:\n226                 objects.append(pkl.load(f))\n227",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "cogdl/datasets/geom_data.py",
+    "line": 284,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "283 \n284         self.data = torch.load(self.processed_paths[0])\n285         self.raw_dir = osp.join(self.root, self.name, \"raw\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "cogdl/datasets/grb_data.py",
+    "line": 44,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "43         super(GRBDataset, self).__init__(root)\n44         self.data = torch.load(self.processed_paths[0])\n45",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "cogdl/datasets/gtn_data.py",
+    "line": 25,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "24         super(GTNDataset, self).__init__(root)\n25         self.data = torch.load(self.processed_paths[0])\n26         self.num_edge = len(self.data.adj)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "cogdl/datasets/gtn_data.py",
+    "line": 43,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "42     def read_gtn_data(self, folder):\n43         edges = pickle.load(open(osp.join(folder, \"edges.pkl\"), \"rb\"))\n44         labels = pickle.load(open(osp.join(folder, \"labels.pkl\"), \"rb\"))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "cogdl/datasets/gtn_data.py",
+    "line": 44,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "43         edges = pickle.load(open(osp.join(folder, \"edges.pkl\"), \"rb\"))\n44         labels = pickle.load(open(osp.join(folder, \"labels.pkl\"), \"rb\"))\n45         node_features = pickle.load(open(osp.join(folder, \"node_features.pkl\"), \"rb\"))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "cogdl/datasets/gtn_data.py",
+    "line": 45,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "44         labels = pickle.load(open(osp.join(folder, \"labels.pkl\"), \"rb\"))\n45         node_features = pickle.load(open(osp.join(folder, \"node_features.pkl\"), \"rb\"))\n46",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "cogdl/datasets/han_data.py",
+    "line": 32,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "31         super(HANDataset, self).__init__(root)\n32         self.data = torch.load(self.processed_paths[0])\n33         self.num_edge = len(self.data.adj)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "cogdl/datasets/kg_data.py",
+    "line": 246,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "245         super(KnowledgeGraphDataset, self).__init__(root)\n246         self.data = torch.load(self.processed_paths[0])\n247         triple_config = torch.load(self.processed_paths[1])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "cogdl/datasets/kg_data.py",
+    "line": 247,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "246         self.data = torch.load(self.processed_paths[0])\n247         triple_config = torch.load(self.processed_paths[1])\n248         self.triples = triple_config[\"triples\"]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "cogdl/datasets/matlab_matrix.py",
+    "line": 28,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "27         super(MatlabMatrix, self).__init__(root)\n28         self.data = torch.load(self.processed_paths[0])\n29",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "cogdl/datasets/matlab_matrix.py",
+    "line": 109,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "108         super(NetworkEmbeddingCMTYDataset, self).__init__(root)\n109         self.data = torch.load(self.processed_paths[0])\n110",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "cogdl/datasets/ogb.py",
+    "line": 20,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "19         self.transform = None\n20         self.data = torch.load(self.processed_paths[0])\n21",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "cogdl/datasets/planetoid_data.py",
+    "line": 62,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "61             if sys.version_info > (3, 0):\n62                 objects.append(pkl.load(f, encoding=\"latin1\"))\n63             else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "cogdl/datasets/planetoid_data.py",
+    "line": 64,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "63             else:\n64                 objects.append(pkl.load(f))\n65     test_index = parse_index_file(f\"{folder}/ind.{prefix}.{names[-1]}\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "cogdl/datasets/planetoid_data.py",
+    "line": 121,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "120         super(Planetoid, self).__init__(root)\n121         self.data = torch.load(self.processed_paths[0])\n122",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "cogdl/datasets/rd2cd_data.py",
+    "line": 74,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "73         super(RD2CD, self).__init__(path)\n74         self.data = torch.load(self.processed_paths[0])\n75",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "cogdl/datasets/rec_data.py",
+    "line": 147,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "146         super(RecDataset, self).__init__(root)\n147         self.data = torch.load(self.processed_paths[0])\n148",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "cogdl/datasets/saint_data.py",
+    "line": 72,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "71         super(SAINTDataset, self).__init__(root)\n72         self.data = torch.load(self.processed_paths[0])\n73",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "cogdl/datasets/stgat_data.py",
+    "line": 178,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "177         super(STGATDataset, self).__init__(root)\n178         self.data = torch.load(self.processed_paths[0])\n179         self.num_nodes = self.data.num_nodes",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "cogdl/datasets/stgcn_data.py",
+    "line": 179,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "178         super(STGCNDataset, self).__init__(root)\n179         self.data = torch.load(self.processed_paths[0])\n180         self.num_nodes = self.data.num_nodes",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "cogdl/datasets/tu_data.py",
+    "line": 225,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "224 \n225         self.data, self.y = torch.load(self.processed_paths[0])\n226",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "cogdl/models/emb/dgk.py",
+    "line": 63,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "62                 neigh_feats = [features[node]] + sorted(neigh_feats)\n63                 hash_feat = hashlib.md5(\"_\".join([str(x) for x in neigh_feats]).encode())\n64                 hash_feat = hash_feat.hexdigest()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "cogdl/models/emb/graph2vec.py",
+    "line": 73,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "72                 neigh_feats = [features[node]] + sorted(neigh_feats)\n73                 hash_feat = hashlib.md5(\"_\".join([str(x) for x in neigh_feats]).encode())\n74                 hash_feat = hash_feat.hexdigest()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "cogdl/models/nn/sagn.py",
+    "line": 54,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "53             print(\"Loading existing features\")\n54             feats = torch.load(feat_emb_path)\n55         else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "cogdl/models/nn/sagn.py",
+    "line": 69,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "68         if osp.exists(feat_emb_path):\n69             feats = torch.load(feat_emb_path)\n70         else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "cogdl/models/nn/sagn.py",
+    "line": 140,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "139         if osp.exists(label_emb_path) and load_emb:\n140             label_emb = torch.load(label_emb_path)\n141         elif label_emb is not None:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "cogdl/models/nn/sagn.py",
+    "line": 151,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "150         if osp.exists(label_emb_path) and load_emb:\n151             label_emb = torch.load(label_emb_path)\n152         elif label_emb is not None:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "cogdl/models/nn/sign.py",
+    "line": 143,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "142             if os.path.exists(dataset_name):\n143                 return torch.load(dataset_name).to(x.device)\n144         if graph.is_inductive():",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "cogdl/oag/oagbert.py",
+    "line": 63,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "62         if os.path.exists(os.path.join(model_name_or_path, \"vocab.txt\")):\n63             tokenizer = BertTokenizer.from_pretrained(model_name_or_path)\n64         elif os.path.exists(os.path.join(model_name_or_path, \"vocab.model\")):",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "cogdl/oag/oagbert.py",
+    "line": 75,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "74         if load_weights and os.path.exists(model_weight_path):\n75             bert_model.load_state_dict(torch.load(model_weight_path))\n76",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "cogdl/trainer/trainer_utils.py",
+    "line": 71,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "70     print(f\"Loading model from {path} ...\")\n71     model.load_state_dict(torch.load(path))\n72     return model",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "cogdl/utils/utils.py",
+    "line": 82,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "81     try:\n82         data = request.urlopen(url)\n83     except Exception as e:",
+    "stage": "data_acquisition+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "cogdl/wrappers/model_wrapper/pretraining/gcc_mw.py",
+    "line": 185,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "184     def load_checkpoint(self, path):\n185         state = torch.load(path)\n186         self.model.load_state_dict(state[\"model\"])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "examples/GRB/test_adv.py",
+    "line": 43,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "42 trainer.run(model_wrapper, dataset_wrapper)\n43 model_sur.load_state_dict(torch.load(\"./checkpoints/model.pt\"), False)\n44 model_sur.to(device)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "examples/GRB/test_adv.py",
+    "line": 87,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "86 trainer.run(model_wrapper, dataset_wrapper)\n87 model_target.load_state_dict(torch.load(\"./checkpoints/model.pt\"), False)\n88 model_target.to(device)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "examples/GRB/test_attack_defense.py",
+    "line": 35,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "34     trainer.run(model_wrapper1, dataset_wrapper)\n35     model.load_state_dict(torch.load(\"./checkpoints/model.pt\"), False)\n36     model.to(device)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "examples/GRB/test_attack_defense.py",
+    "line": 604,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "603     trainer.run(model_wrapper, dataset_wrapper)\n604     model_target.load_state_dict(torch.load(\"./checkpoints/model.pt\"), False)\n605     model_target.to(device)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "examples/GRB/test_defense.py",
+    "line": 43,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "42 trainer.run(model_wrapper1, dataset_wrapper)\n43 model.load_state_dict(torch.load(\"./checkpoints/model.pt\"), False)\n44 model.to(device)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "examples/GRB/test_defense.py",
+    "line": 75,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "74 trainer.run(model_wrapper, dataset_wrapper)\n75 model_target.load_state_dict(torch.load(\"./checkpoints/model.pt\"), False)\n76 model_target.to(device)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "examples/GRB/test_injection.py",
+    "line": 42,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "41 trainer.run(model_wrapper, dataset_wrapper)\n42 model_sur.load_state_dict(torch.load(\"./checkpoints/model.pt\"), False)\n43 model_sur.to(device)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "examples/GRB/test_injection.py",
+    "line": 76,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "75 trainer.run(model_wrapper, dataset_wrapper)\n76 model_target.load_state_dict(torch.load(\"./checkpoints/model.pt\"), False)\n77 model_target.to(device)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "examples/GRB/test_modification.py",
+    "line": 43,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "42 trainer.run(model_wrapper1, dataset_wrapper)\n43 model.load_state_dict(torch.load(\"./checkpoints/model.pt\"), False)\n44 model.to(device)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "examples/GRB/test_modification.py",
+    "line": 76,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "75 trainer.run(model_wrapper, dataset_wrapper)\n76 model_target.load_state_dict(torch.load(\"./checkpoints/model.pt\"), False)\n77 model_target.to(device)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "examples/dgraph/models/sign.py",
+    "line": 128,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "127             if os.path.exists(dataset_name):\n128                 return torch.load(dataset_name).to(x.device)\n129         if graph.is_inductive():",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "examples/graphmae2/datasets/lc_sampler.py",
+    "line": 130,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "129     else:\n130         nodes = torch.load(ego_graphs_file_path)\n131",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "examples/graphmae2/datasets/localclustering.py",
+    "line": 133,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "132         assert num_nodes == 12403930\n133         split_idx = torch.load(os.path.join(data_dir, dataset_name, \"split_idx_f.pt\"))\n134     else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "examples/graphmae2/main_full_batch.py",
+    "line": 110,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "109             logging.info(\"Loading Model ... \")\n110             model.load_state_dict(torch.load(\"checkpoint.pt\"))\n111",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "examples/graphmae2/main_large.py",
+    "line": 231,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "230         if load_model:\n231             model.load_state_dict(torch.load(os.path.join(args.checkpoint_path)))\n232             logging.info(f\"Loading Model from {args.checkpoint_path}...\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "examples/graphmae2/utils.py",
+    "line": 239,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "238     with open(config_path, \"r\") as f:\n239         configs = yaml.load(f, yaml.FullLoader)\n240",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "examples/graphmae/graphmae/utils.py",
+    "line": 190,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "189     with open(path, \"r\") as f:\n190         configs = yaml.load(f, yaml.FullLoader)\n191",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "examples/graphmae/main_graph.py",
+    "line": 181,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "180             logging.info(\"Loading Model ... \")\n181             model.load_state_dict(torch.load(\"checkpoint.pt\"))\n182         if save_model:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "examples/graphmae/main_inductive.py",
+    "line": 252,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "251             logging.info(\"Loading Model ... \")\n252             model.load_state_dict(torch.load(\"checkpoint.pt\"))\n253         if save_model:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "examples/graphmae/main_inductive.py",
+    "line": 275,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "274     with open(path, \"r\") as f:\n275         configs = yaml.load(f, yaml.FullLoader)\n276",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "examples/graphmae/main_transductive.py",
+    "line": 79,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in load_dataset()",
+    "snippet": "78 \n79     graph, (num_features, num_classes) = load_dataset(dataset_name)\n80     args.num_features = num_features",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "examples/graphmae/main_transductive.py",
+    "line": 113,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "112             logging.info(\"Loading Model ... \")\n113             model.load_state_dict(torch.load(\"checkpoint.pt\"))\n114         if save_model:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "cogdl/datasets/geom_data.py",
+    "line": 224,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "cogdl/datasets/geom_data.py",
+    "line": 226,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "cogdl/datasets/gtn_data.py",
+    "line": 43,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "cogdl/datasets/gtn_data.py",
+    "line": 44,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "cogdl/datasets/gtn_data.py",
+    "line": 45,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "cogdl/datasets/planetoid_data.py",
+    "line": 62,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "cogdl/datasets/planetoid_data.py",
+    "line": 64,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "cogdl/models/emb/dgk.py",
+    "line": 63,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "cogdl/models/emb/graph2vec.py",
+    "line": 73,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "cogdl/utils/utils.py",
+    "line": 82,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml.use-defused-xml",
+    "file_path": "examples/graphmae2/datasets/data_proc.py",
+    "line": 3,
+    "message": "The Python documentation recommends using `defusedxml` instead of `xml` because the native Python `xml` library is vulnerable to XML External Entity (XXE) attacks. These attacks can leak confidential data and \"XML bombs\" can cause denial of service.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

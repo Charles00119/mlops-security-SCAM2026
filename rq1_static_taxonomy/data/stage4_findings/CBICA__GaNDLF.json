@@ -1,0 +1,362 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "GANDLF/cli/deploy.py",
+    "line": 182,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "181     assert (\n182         os.system(command_to_run) == 0\n183     ), \"mlcube_docker configuration failed. Check output for more details.\"",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "GANDLF/cli/preprocess_and_save.py",
+    "line": 50,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "49     if os.path.exists(parameter_file):\n50         parameters_prev = pickle.load(open(parameter_file, \"rb\"))\n51         assert (",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "GANDLF/cli/recover_config.py",
+    "line": 27,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "26     with open(pickle_location, \"rb\") as handle:\n27         parameters = pickle.load(handle)\n28         os.makedirs(os.path.dirname(os.path.realpath(outputFile)), exist_ok=True)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "GANDLF/compute/inference_loop.py",
+    "line": 91,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "90 \n91         main_dict = torch.load(file_to_load, map_location=parameters[\"device\"])\n92         state_dict = main_dict[\"model_state_dict\"]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "GANDLF/compute/training_loop.py",
+    "line": 659,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "658     # # write parameters to pickle - this should not change for the different folds, so keeping is independent\n659     parameters = pickle.load(open(args.parameter_pickle, \"rb\"))\n660     trainingDataFromPickle = pd.read_pickle(args.train_loader_pickle)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "GANDLF/compute/training_loop.py",
+    "line": 660,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "659     parameters = pickle.load(open(args.parameter_pickle, \"rb\"))\n660     trainingDataFromPickle = pd.read_pickle(args.train_loader_pickle)\n661     validationDataFromPickle = pd.read_pickle(args.val_loader_pickle)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "GANDLF/compute/training_loop.py",
+    "line": 661,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "660     trainingDataFromPickle = pd.read_pickle(args.train_loader_pickle)\n661     validationDataFromPickle = pd.read_pickle(args.val_loader_pickle)\n662     testingData_str = args.testing_loader_pickle",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "GANDLF/compute/training_loop.py",
+    "line": 663,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "662     testingData_str = args.testing_loader_pickle\n663     testingDataFromPickle = pd.read_pickle(testingData_str) if testingData_str else None\n664",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "GANDLF/inference_manager.py",
+    "line": 52,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "51         accelerator in allowed_accelerators\n52     ), f\"Invalid accelerator selected: {accelerator}. Please select from {allowed_accelerators}\"\n53     strategy = parameters.get(\"strategy\", \"auto\")",
+    "stage": "inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "GANDLF/inference_manager.py",
+    "line": 58,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "57         strategy in allowed_strategies\n58     ), f\"Invalid strategy selected: {strategy}. Please select from {allowed_strategies}\"\n59     precision = parameters.get(\"precision\", \"32\")",
+    "stage": "inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "GANDLF/inference_manager.py",
+    "line": 73,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "72         precision in allowed_precisions\n73     ), f\"Invalid precision selected: {precision}. Please select from {allowed_precisions}\"\n74",
+    "stage": "inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "GANDLF/training_manager.py",
+    "line": 61,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "60             )\n61             parameters = pickle.load(open(currentModelConfigPickle, \"rb\"))\n62",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "GANDLF/training_manager.py",
+    "line": 124,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "123             accelerator in allowed_accelerators\n124         ), f\"Invalid accelerator selected: {accelerator}. Please select from {allowed_accelerators}\"\n125         strategy = parameters.get(\"strategy\", \"auto\")",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "GANDLF/training_manager.py",
+    "line": 130,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "129             strategy in allowed_strategies\n130         ), f\"Invalid strategy selected: {strategy}. Please select from {allowed_strategies}\"\n131         precision = parameters.get(\"precision\", \"32\")",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "GANDLF/training_manager.py",
+    "line": 145,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "144             precision in allowed_precisions\n145         ), f\"Invalid precision selected: {precision}. Please select from {allowed_precisions}\"\n146",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "GANDLF/training_manager.py",
+    "line": 225,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "224             )\n225             parameters = pickle.load(open(currentModelConfigPickle, \"rb\"))\n226",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "GANDLF/training_manager.py",
+    "line": 246,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "245         accelerator in allowed_accelerators\n246     ), f\"Invalid accelerator selected: {accelerator}. Please select from {allowed_accelerators}\"\n247     strategy = parameters.get(\"strategy\", \"auto\")",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "GANDLF/training_manager.py",
+    "line": 251,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "250         strategy in allowed_strategies\n251     ), f\"Invalid strategy selected: {strategy}. Please select from {allowed_strategies}\"\n252     precision = parameters.get(\"precision\", \"32\")",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B608",
+    "file_path": "GANDLF/training_manager.py",
+    "line": 265,
+    "message": "Possible SQL injection vector through string-based query construction.",
+    "snippet": "264         precision in allowed_precisions\n265     ), f\"Invalid precision selected: {precision}. Please select from {allowed_precisions}\"\n266",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "GANDLF/utils/modelio.py",
+    "line": 180,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "179     # This prevents the new security warning in PyTorch 2.7+\n180     model_dict = torch.load(path, map_location=device, weights_only=False)\n181",
+    "stage": "inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "GANDLF/utils/write_parse.py",
+    "line": 181,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "180         if input_file.endswith(\".pkl\"):\n181             return_dataframe = pd.read_pickle(input_file)\n182         elif input_file.endswith(\".csv\"):",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "mlcube/metrics_mlcube/example_custom_entrypoint/getting_started_3d_rad_seg.py",
+    "line": 52,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "51     \"\"\"\n52     exit_status = os.system(\n53         f\"gandlf generate-metrics -c {config} -i ./data.csv -o {output_file}\"\n54     )\n55     exit_code = os.WEXITSTATUS(exit_status)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "mlcube/metrics_mlcube/example_custom_entrypoint/template.py",
+    "line": 27,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "26     \"\"\"\n27     exit_status = os.system(\n28         f\"gandlf generate-metrics -c {config} -i ./data.csv -o {output_file}\"\n29     )\n30     exit_code = os.WEXITSTATUS(exit_status)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "mlcube/model_mlcube/example_custom_entrypoint/getting_started_3d_rad_seg.py",
+    "line": 35,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "34     \"\"\"\n35     exit_status = os.system(\n36         \"gandlf run --infer \"\n37         f\"--device {device} --config /embedded_config.yml \"\n38         f\"--model-dir /embedded_model/ -i ./data.csv -o {output_path}\"\n39     )\n40     exit_code = os.WEXITSTATUS(exit_status)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "mlcube/model_mlcube/example_custom_entrypoint/template.py",
+    "line": 28,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "27     \"\"\"\n28     exit_status = os.system(\n29         \"gandlf run --infer \"\n30         f\"--device {device} --config /embedded_config.yml \"\n31         f\"--model-dir /embedded_model/ -i ./data.csv -o {output_path}\"\n32     )\n33     exit_code = os.WEXITSTATUS(exit_status)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "testing/test_full.py",
+    "line": 2300,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "2299             try:\n2300                 os.system(\n2301                     \"vips resize \" + filename + \" \" + new_filename + \" \" + str(scale)\n2302                 )\n2303             except Exception as ex2:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "GANDLF/cli/preprocess_and_save.py",
+    "line": 50,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "GANDLF/cli/preprocess_and_save.py",
+    "line": 56,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "GANDLF/cli/recover_config.py",
+    "line": 27,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "GANDLF/compute/training_loop.py",
+    "line": 659,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.unverified-ssl-context.unverified-ssl-context",
+    "file_path": "GANDLF/models/imagenet_unet.py",
+    "line": 194,
+    "message": "Unverified SSL context detected. This will permit insecure connections without verifying SSL certificates. Use 'ssl.create_default_context' instead.",
+    "snippet": "requires login",
+    "stage": "modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "GANDLF/training_manager.py",
+    "line": 53,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "GANDLF/training_manager.py",
+    "line": 61,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "GANDLF/training_manager.py",
+    "line": 217,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "GANDLF/training_manager.py",
+    "line": 225,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "testing/entrypoints/test_deploy.py",
+    "line": 20,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

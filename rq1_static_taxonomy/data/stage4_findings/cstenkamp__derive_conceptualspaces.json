@@ -1,0 +1,212 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "REFACTOR_ME/derive_conceptualspace/cli/util/upload_model.py",
+    "line": 25,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "24     args = parse_command_line_args(modelversions)\n25     modelversions = eval(args.versions) if isinstance(args.versions, str) else args.versions\n26     modelsyncer = SeafileModelSyncer(server, account, password, repoid, repopath)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "derive_conceptualspace/analysis/plots.py",
+    "line": 58,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "57                 descs = [descriptions._descriptions[i] for i in list(df[df[category] == part_df].index)]\n58                 custom_data = [{\"Name\": desc.title, \"V.Nr.\": \"|\".join(eval(desc._additionals[\"veranstaltungsnummer\"])),\n59                     \"Class\": catnames[df[df[category] == part_df].iloc[n][category]] if catnames else df[df[category] == part_df].iloc[n][category],  \"extra\": {\"Descr",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "derive_conceptualspace/load_data/dataset_specifics/siddata2022.py",
+    "line": 38,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "37         if name == \"fachbereich\":\n38             veranst_nums = [eval(i._additionals.get(\"veranstaltungsnummer\")) or None for i in descriptions._descriptions]\n39             new_dset = make_classifier_dict(dict(enumerate(veranst_nums)))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "derive_conceptualspace/load_data/dataset_specifics/siddata2022.py",
+    "line": 49,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "48             level = int(name.split(\"_\")[1].replace(\"level\",\"\").replace(\"l\",\"\"))\n49             ddcs = [eval(i._additionals.get(\"ddc_code\")) if i._additionals.get(\"ddc_code\") else None for i in descriptions._descriptions]\n50             if verbose:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "derive_conceptualspace/load_data/dataset_specifics/siddata2022.py",
+    "line": 98,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "97     new_col = []\n98     col = [eval(i) if isinstance(i, str) else \"\" for i in col]\n99     if pgbar: col = tqdm(col, desc=pgbar)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "fb_classifier/preprocess_data.py",
+    "line": 18,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "17     '''gets all configs from main.config that start with PP_ as dict.'''\n18     pp_config = {i: eval('fb_classifier.settings.' + i) for i in dir(fb_classifier.settings) if i.startswith('PP_')}\n19     pp_config_str = '\\n'.join(f'{key}: {val}' for key, val in pp_config.items())",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "fb_classifier/util/misc.py",
+    "line": 23,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "22 def get_all_debug_confs():\n23     return {i:eval('main.config.'+i) for i in dir(main.config) if i.startswith('DEBUG')}\n24",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "fb_classifier/util/misc.py",
+    "line": 27,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "26 def get_all_configs(as_string=True):\n27     config = {i: eval('fb_classifier.settings.' + i) for i in dir(fb_classifier.settings) if not i.startswith('_')}\n28     config = {key: val for key, val in config.items() if",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "misc_util/telegram_notifier.py",
+    "line": 15,
+    "message": "Call to requests without timeout",
+    "snippet": "14     kwargs = {'files': {'document': (filename, file)}} if filename and file else {}\n15     response = requests.get(url, **kwargs)\n16     assert response.status_code == 200",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "REFACTOR_ME/derive_conceptualspace/cli/util/upload_model.py",
+    "line": 25,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "derive_conceptualspace/analysis/plots.py",
+    "line": 58,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "derive_conceptualspace/load_data/dataset_specifics/siddata2022.py",
+    "line": 38,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "derive_conceptualspace/load_data/dataset_specifics/siddata2022.py",
+    "line": 49,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "derive_conceptualspace/load_data/dataset_specifics/siddata2022.py",
+    "line": 98,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "fb_classifier/preprocess_data.py",
+    "line": 18,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "fb_classifier/util/misc.py",
+    "line": 23,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "fb_classifier/util/misc.py",
+    "line": 27,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2026-1845",
+    "file_path": "requirements-dev.txt",
+    "line": 0,
+    "message": "pytest 6.2.3: pytest through 9.0.2 on UNIX relies on directories with the `/tmp/pytest-of-{user}` name pattern, which allows local users to cause a denial of service or possibly gain privileges. (fix: 9.0.3)",
+    "snippet": "pytest==6.2.3",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2026-1845",
+    "file_path": "requirements-dev.txt",
+    "line": 0,
+    "message": "pytest 6.2.3: pytest through 9.0.2 on UNIX relies on directories with the `/tmp/pytest-of-{user}` name pattern, which allows local users to cause a denial of service or possibly gain privileges. (fix: 9.0.3)",
+    "snippet": "pytest==6.2.3",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2021-428",
+    "file_path": "requirements-dev.txt",
+    "line": 0,
+    "message": "nbdime 3.1.0: nbdime provides tools for diffing and merging of Jupyter Notebooks. In affected versions a stored cross-site scripting (XSS) issue exists within the Jupyter-owned nbdime project. It appears that when  (fix: 1.1.1, 2.1.1, 3.1.1)",
+    "snippet": "nbdime==3.1.0",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2021-428",
+    "file_path": "requirements-dev.txt",
+    "line": 0,
+    "message": "nbdime 3.1.0: ### Impact  Improper handling of user controlled input caused a stored cross-site scripting (XSS) vulnerability. All previous versions of nbdime are affected.  ### Patches  Security patches will be re (fix: 1.1.1, 2.1.1, 3.1.1)",
+    "snippet": "nbdime==3.1.0",
+    "stage": "dependencies"
+  }
+]

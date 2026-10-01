@@ -1,0 +1,292 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "ride/finetune.py",
+    "line": 154,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "153 def try_pyth_load(file, model_state_key):\n154     loaded = torch.load(file, map_location=\"cpu\")\n155     if issubclass(type(loaded), torch.nn.Module):",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ride/finetune.py",
+    "line": 187,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "186         try:\n187             return pickle.load(file)\n188         except Exception:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ride/finetune.py",
+    "line": 192,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "191         try:\n192             return pickle.load(f, encoding=\"latin1\")\n193         except Exception:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ride/finetune.py",
+    "line": 198,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "197         try:\n198             return pickle.load(file)\n199         except Exception:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "ride/finetune.py",
+    "line": 203,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "202         try:\n203             return pickle.load(f, encoding=\"latin1\")\n204         except Exception:  # pragma: no cover",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "ride/utils/io.py",
+    "line": 73,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "72     with open(path, \"r\") as f:\n73         data = yaml.load(f, Loader=yaml.FullLoader)\n74     return data",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "ride/finetune.py",
+    "line": 187,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "ride/finetune.py",
+    "line": 192,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "ride/finetune.py",
+    "line": 198,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "ride/finetune.py",
+    "line": 203,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2022-181",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "pytorch-lightning 1.4.9: Code Injection in GitHub repository pytorchlightning/pytorch-lightning prior to 1.6.0. (fix: 1.6.0)",
+    "snippet": "pytorch-lightning==1.4.9",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2022-181",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "pytorch-lightning 1.4.9: PyTorch Lightning version 1.5.10 and prior is vulnerable to code injection. An attacker could execute commands on the target OS running the operating system by setting the `PL_TRAINER_GPUS` when using (fix: 1.6.0)",
+    "snippet": "pytorch-lightning==1.4.9",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2026-3974",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "pytorch-lightning 1.4.9: A remote code execution (RCE) vulnerability exists in the lightning-ai/pytorch-lightning library version 2.2.1 due to improper handling of deserialized user input and mismanagement of dunder attribute (fix: 2.3.3)",
+    "snippet": "pytorch-lightning==1.4.9",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2021-874",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "pytorch-lightning 1.4.9: pytorch-lightning is vulnerable to Deserialization of Untrusted Data. (fix: 1.6.0)",
+    "snippet": "pytorch-lightning==1.4.9",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2021-874",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "pytorch-lightning 1.4.9: pytorch-lightning is vulnerable to Deserialization of Untrusted Data (fix: 1.6.0)",
+    "snippet": "pytorch-lightning==1.4.9",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2026-3975",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "pytorch-lightning 1.4.9: A vulnerability in the /v1/runs API endpoint of lightning-ai/pytorch-lightning v2.2.4 allows attackers to exploit path traversal when extracting tar.gz files. When the LightningApp is running with the (fix: 2.3.3)",
+    "snippet": "pytorch-lightning==1.4.9",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2026-507",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "pytorch-lightning 1.4.9: In lightning-ai/pytorch-lightning version 2.3.2, a vulnerability exists in the `LightningApp` when running on a Windows host. The vulnerability occurs at the `/api/v1/upload_file/` endpoint, allowing  (fix: 2.4.0)",
+    "snippet": "pytorch-lightning==1.4.9",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2026-1857",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "pytorch-lightning 1.4.9: A vulnerability in lightning-ai/pytorch-lightning version 2.3.2 allows an attacker to cause a denial of service by sending an unexpected POST request to the `/api/v1/state` endpoint of `LightningApp`. (fix: no fix listed)",
+    "snippet": "pytorch-lightning==1.4.9",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2026-3043",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "pytorch-lightning 1.4.9: PyTorch-Lightning versions 2.6.0 and earlier contain an insecure deserialization vulnerability (CWE-502) in the checkpoint loading mechanism. The LightningModule.load_from_checkpoint() method, which i (fix: no fix listed)",
+    "snippet": "pytorch-lightning==1.4.9",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2026-507",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "pytorch-lightning 1.4.9: In lightning-ai/pytorch-lightning version 2.3.2, a vulnerability exists in the `LightningApp` when running on a Windows host. The vulnerability occurs at the `/api/v1/upload_file/` endpoint, allowing  (fix: 2.4.0)",
+    "snippet": "pytorch-lightning==1.4.9",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2026-1857",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "pytorch-lightning 1.4.9: A vulnerability in lightning-ai/pytorch-lightning version 2.3.2 allows an attacker to cause a denial of service by sending an unexpected POST request to the `/api/v1/state` endpoint of `LightningApp`. (fix: no fix listed)",
+    "snippet": "pytorch-lightning==1.4.9",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2026-3043",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "pytorch-lightning 1.4.9: PyTorch-Lightning versions 2.6.0 and earlier contain an insecure deserialization vulnerability (CWE-502) in the checkpoint loading mechanism. The LightningModule.load_from_checkpoint() method, which i (fix: no fix listed)",
+    "snippet": "pytorch-lightning==1.4.9",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2026-3967",
+    "file_path": "requirements.txt",
+    "line": 0,
+    "message": "pytorch-lightning 1.4.9: PyTorch Lightning through 2.6.5, fixed in commit d710d68, contains a remote code execution vulnerability in the _load_state function that imports and executes attacker-controlled module names from che (fix: 2.6.6)",
+    "snippet": "pytorch-lightning==1.4.9",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2026-899",
+    "file_path": "requirements/build.txt",
+    "line": 0,
+    "message": "protobuf 3.20.0: ### Summary  A message parsing and memory management vulnerability in ProtocolBuffer’s C++ and Python implementations can trigger an out of memory (OOM) failure when processing a specially crafted mes (fix: 3.18.3, 3.19.5, 3.20.2, 4.21.6)",
+    "snippet": "protobuf==3.20.0",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2026-1806",
+    "file_path": "requirements/build.txt",
+    "line": 0,
+    "message": "protobuf 3.20.0: ### Summary Any project that uses Protobuf pure-Python backend to parse untrusted Protocol Buffers data containing an arbitrary number of **recursive groups**, **recursive messages** or **a series of  (fix: 4.25.8, 5.29.5, 6.31.1)",
+    "snippet": "protobuf==3.20.0",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2026-1805",
+    "file_path": "requirements/build.txt",
+    "line": 0,
+    "message": "protobuf 3.20.0: A denial-of-service (DoS) vulnerability exists in google.protobuf.json_format.ParseDict() in Python, where the max_recursion_depth limit can be bypassed when parsing nested google.protobuf.Any message (fix: 5.29.6, 6.33.5)",
+    "snippet": "protobuf==3.20.0",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2026-899",
+    "file_path": "requirements/build.txt",
+    "line": 0,
+    "message": "protobuf 3.20.0: ### Summary  A message parsing and memory management vulnerability in ProtocolBuffer’s C++ and Python implementations can trigger an out of memory (OOM) failure when processing a specially crafted mes (fix: 3.18.3, 3.19.5, 3.20.2, 4.21.6)",
+    "snippet": "protobuf==3.20.0",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2026-1806",
+    "file_path": "requirements/build.txt",
+    "line": 0,
+    "message": "protobuf 3.20.0: ### Summary Any project that uses Protobuf pure-Python backend to parse untrusted Protocol Buffers data containing an arbitrary number of **recursive groups**, **recursive messages** or **a series of  (fix: 4.25.8, 5.29.5, 6.31.1)",
+    "snippet": "protobuf==3.20.0",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "pip_audit",
+    "severity": "medium",
+    "rule_id": "PYSEC-2026-1805",
+    "file_path": "requirements/build.txt",
+    "line": 0,
+    "message": "protobuf 3.20.0: A denial-of-service (DoS) vulnerability exists in google.protobuf.json_format.ParseDict() in Python, where the max_recursion_depth limit can be bypassed when parsing nested google.protobuf.Any message (fix: 5.29.6, 6.33.5)",
+    "snippet": "protobuf==3.20.0",
+    "stage": "dependencies"
+  }
+]

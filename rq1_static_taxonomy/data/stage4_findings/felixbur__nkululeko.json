@@ -1,0 +1,1922 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "data/banglaser/process_database.py",
+    "line": 107,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "106     for set in [\"train\", \"dev\", \"test\"]:\n107         df = eval(f\"{set}_df\")\n108         df.to_csv(Path(output_dir) / f\"banglaser_{set}.csv\", index=False)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "data/eaed/process_database.py",
+    "line": 48,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "47     for set_name in [\"train\", \"dev\", \"test\"]:\n48         df_set = df[df[\"speaker\"].isin(eval(f\"{set_name}_speakers\"))]\n49         df_set.to_csv(Path(output_dir, f\"eaed_{set_name}.csv\"), index=False)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "data/erysac/process_database.py",
+    "line": 58,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "57     for split in [\"train\", \"dev\", \"test\"]:\n58         df_split = eval(f\"df_{split}\")\n59         df_split.to_csv(output_dir / f\"erysac_{split}.csv\", index=False)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "data/polish/process_database.py",
+    "line": 67,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "66     for set_name in [\"train\", \"dev\", \"test\"]:\n67         df_set = df[df[\"speaker\"].isin(eval(f\"{set_name}_speakers\"))]\n68         df_set.to_csv(output_dir / f\"polish_{set_name}.csv\", index=False)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "data/turev/process_database.py",
+    "line": 45,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "44     for split in [\"train\", \"dev\", \"test\"]:\n45         df_split = eval(f\"df_{split}\")\n46         df_split.to_csv(Path(output_dir) / f\"turev_{split}.csv\", index=False)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B314",
+    "file_path": "data/uudb/process_database.py",
+    "line": 84,
+    "message": "Using xml.etree.ElementTree.parse to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.parse with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "83         try:\n84             tree = ET.parse(xml_path)\n85             root = tree.getroot()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/augment.py",
+    "line": 43,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "42     filename = f\"{expr.data_dir}/{filename}\"\n43     no_reuse = eval(util.config_val(\"DATA\", \"no_reuse\", \"False\"))\n44     if os.path.exists(filename) and not no_reuse:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/augmenting/augmenter_audiomentations.py",
+    "line": 34,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "33         audiomentations = self.util.config_val(\"AUGMENT\", \"augmentations\", defaults)\n34         self.audioment = eval(audiomentations)\n35",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/augmenting/resampler.py",
+    "line": 24,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "23         self.replace = (\n24             eval(self.util.config_val(\"RESAMPLE\", \"replace\", \"False\"))\n25             if not not_testing",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "nkululeko/bundle.py",
+    "line": 262,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "261     try:\n262         pickle.loads(model_data)\n263     except (",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/data/dataset.py",
+    "line": 285,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "284 \n285         reverse = eval(self.util.config_val_data(self.name, \"reverse\", \"False\"))\n286         if reverse:",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/data/dataset.py",
+    "line": 287,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "286         if reverse:\n287             max = eval(self.util.config_val_data(self.name, \"reverse.max\", \"False\"))\n288             if max:",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/data/dataset.py",
+    "line": 387,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "386         # check if train or test set should be ignored\n387         as_test = eval(self.util.config_val_data(self.name, \"as_test\", \"False\"))\n388         if as_test:",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/data/dataset.py",
+    "line": 390,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "389             self.df_train = pd.DataFrame()\n390         as_train = eval(self.util.config_val_data(self.name, \"as_train\", \"False\"))\n391         if as_train:",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/data/dataset.py",
+    "line": 524,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "523         # check if train or test set should be ignored\n524         as_test = eval(self.util.config_val_data(self.name, \"as_test\", \"False\"))\n525         if as_test:",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/data/dataset.py",
+    "line": 528,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "527             self.df_dev = pd.DataFrame()\n528         as_train = eval(self.util.config_val_data(self.name, \"as_train\", \"False\"))\n529         if as_train:",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/data/dataset.py",
+    "line": 834,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "833         # strategy = self.util.config_val(\"DATA\", \"strategy\", \"train_test\")\n834         only_tests = eval(self.util.config_val(\"DATA\", \"tests\", \"False\"))\n835         module = self.context.module",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/data/dataset_csv.py",
+    "line": 48,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "47             df = df.rename(columns=col_dict)\n48         absolute_path = eval(\n49             self.util.config_val_data(self.name, \"absolute_path\", \"True\")\n50         )\n51         if not absolute_path:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "nkululeko/data/datasplitter.py",
+    "line": 398,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "397                 try:\n398                     ds_test_cached = pd.read_pickle(storage_test)\n399                     if ds_test_cached.shape[0] > 0:",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/experiment.py",
+    "line": 55,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "54         self.context.util = self.util\n55         self.split3 = eval(self.util.config_val(\"EXP\", \"traindevtest\", \"False\"))\n56         self.context.split3 = self.split3",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/experiment.py",
+    "line": 57,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "56         self.context.split3 = self.split3\n57         fresh_report = eval(self.util.config_val(\"REPORT\", \"fresh\", \"False\"))\n58         if not fresh_report:",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "nkululeko/experiment.py",
+    "line": 63,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "62                 with open(report_path, \"rb\") as handle:\n63                     self.report = pickle.load(handle)\n64             except FileNotFoundError:",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/experiment.py",
+    "line": 89,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "88         save_checksum(report_path)\n89         if eval(self.util.config_val(\"REPORT\", \"show\", \"False\")):\n90             self.report.print()",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/experiment.py",
+    "line": 162,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "161         self.df_test = pd.DataFrame()\n162         start_fresh = eval(self.util.config_val(\"DATA\", \"no_reuse\", \"False\"))\n163         store = self.util.get_path(\"store\")",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/experiment.py",
+    "line": 499,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "498         \"\"\"Do a feature exploration.\"\"\"\n499         plot_feats = eval(\n500             self.util.config_val(\"EXPL\", \"feature_distributions\", \"False\")\n501         )\n502         sample_selection = self.util.config_val(\"EXP\", \"sample_selection\", \"all\")",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/experiment.py",
+    "line": 521,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "520             self.plot_distribution(df_labels)\n521         print_colvals = eval(self.util.config_val(\"EXPL\", \"print_colvals\", \"False\"))\n522         if print_colvals:",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/experiment.py",
+    "line": 528,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "527         # check if data should be shown with the spotlight data visualizer\n528         spotlight = eval(self.util.config_val(\"EXPL\", \"spotlight\", \"False\"))\n529         if spotlight:",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/experiment.py",
+    "line": 553,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "552         # check if SHAP features should be analysed\n553         shap = eval(self.util.config_val(\"EXPL\", \"shap\", \"False\"))\n554         if shap:",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/experiment.py",
+    "line": 561,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "560         # check if a scatterplot should be done\n561         list_of_dimreds = eval(self.util.config_val(\"EXPL\", \"scatter\", \"False\"))\n562",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/experiment.py",
+    "line": 620,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "619         # check if t-SNE plot should be generated\n620         tsne = eval(self.util.config_val(\"EXPL\", \"tsne\", \"False\"))\n621         if tsne:",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/experiment.py",
+    "line": 630,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "629         # check if UMAP plot should be generated\n630         umap_plot = eval(self.util.config_val(\"EXPL\", \"umap\", \"False\"))\n631         if umap_plot:",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/experiment.py",
+    "line": 640,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "639         # check if PCA plot should be generated\n640         pca_plot = eval(self.util.config_val(\"EXPL\", \"pca\", \"False\"))\n641         if pca_plot:",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "nkululeko/experiment.py",
+    "line": 813,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "812             f = open(filename, \"rb\")\n813             tmp_dict = pickle.load(f)\n814             f.close()",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/explore.py",
+    "line": 85,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "84         # Check exploration settings regardless of whether experiment was loaded or not\n85         plot_feats = eval(util.config_val(\"EXPL\", \"feature_distributions\", \"False\"))\n86         tsne_plot = eval(util.config_val(\"EXPL\", \"tsne\", \"False\"))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/explore.py",
+    "line": 86,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "85         plot_feats = eval(util.config_val(\"EXPL\", \"feature_distributions\", \"False\"))\n86         tsne_plot = eval(util.config_val(\"EXPL\", \"tsne\", \"False\"))\n87         umap_plot = eval(util.config_val(\"EXPL\", \"umap\", \"False\"))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/explore.py",
+    "line": 87,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "86         tsne_plot = eval(util.config_val(\"EXPL\", \"tsne\", \"False\"))\n87         umap_plot = eval(util.config_val(\"EXPL\", \"umap\", \"False\"))\n88         pca_plot = eval(util.config_val(\"EXPL\", \"pca\", \"False\"))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/explore.py",
+    "line": 88,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "87         umap_plot = eval(util.config_val(\"EXPL\", \"umap\", \"False\"))\n88         pca_plot = eval(util.config_val(\"EXPL\", \"pca\", \"False\"))\n89         scatter = eval(util.config_val(\"EXPL\", \"scatter\", \"False\"))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/explore.py",
+    "line": 89,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "88         pca_plot = eval(util.config_val(\"EXPL\", \"pca\", \"False\"))\n89         scatter = eval(util.config_val(\"EXPL\", \"scatter\", \"False\"))\n90         shap = eval(util.config_val(\"EXPL\", \"shap\", \"False\"))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/explore.py",
+    "line": 90,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "89         scatter = eval(util.config_val(\"EXPL\", \"scatter\", \"False\"))\n90         shap = eval(util.config_val(\"EXPL\", \"shap\", \"False\"))\n91         model_type = util.config_val(\"EXPL\", \"model\", False)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/explore.py",
+    "line": 92,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "91         model_type = util.config_val(\"EXPL\", \"model\", False)\n92         plot_tree = eval(util.config_val(\"EXPL\", \"plot_tree\", \"False\"))\n93",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/export.py",
+    "line": 100,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "99         data_name = util.config_val(\"EXPORT\", \"data_name\", \"export\")\n100         segments_as_files = eval(util.config_val(\"EXPORT\", \"segments_as_files\", \"False\"))\n101         audeer.mkdir(target_root)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "nkululeko/feat_extract/feats_analyser.py",
+    "line": 63,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "62             with open(cache_path, \"rb\") as f:\n63                 cached = pickle.load(f)\n64             if len(cached) == n_feats:",
+    "stage": "data_acquisition+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "nkululeko/feat_extract/feats_ast.py",
+    "line": 28,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "27         )\n28         self.processor = AutoProcessor.from_pretrained(model_path)\n29         self.model = ASTModel.from_pretrained(model_path).to(self.device)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "nkululeko/feat_extract/feats_ast.py",
+    "line": 29,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "28         self.processor = AutoProcessor.from_pretrained(model_path)\n29         self.model = ASTModel.from_pretrained(model_path).to(self.device)\n30         print(f\"initialized AST model on {self.device}\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "nkululeko/feat_extract/feats_ast.py",
+    "line": 66,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "65             self.util.debug(f\"reusing extracted {self.feat_type} embeddings\")\n66             self.df = pd.read_pickle(storage)\n67             if self.df.isnull().values.any():",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "nkululeko/feat_extract/feats_audmodel.py",
+    "line": 75,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "74         self.util.debug(\"loading as torch model\")\n75         config = transformers.AutoConfig.from_pretrained(model_root)\n76         if self.hidden_layer != 0:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "nkululeko/feat_extract/feats_audmodel.py",
+    "line": 90,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "89         try:\n90             self.processor = transformers.AutoFeatureExtractor.from_pretrained(f\"{model_root}/config.json\")\n91         except Exception:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "nkululeko/feat_extract/feats_audmodel.py",
+    "line": 97,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "96                 )\n97                 self.processor = transformers.AutoFeatureExtractor.from_pretrained(base)\n98             else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "nkululeko/feat_extract/feats_audmodel.py",
+    "line": 107,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "106                 )\n107         self.model = transformers.AutoModel.from_pretrained(\n108             model_root, config=config\n109         ).to(self.device)\n110         self.model.eval()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "nkululeko/feat_extract/feats_bert.py",
+    "line": 35,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "34         self.util.debug(f\"loading {self.model_path} model...\")\n35         config = transformers.AutoConfig.from_pretrained(\n36             self.model_path, trust_remote_code=True\n37         )\n38         layer_num = config.num_hidden_layers",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "nkululeko/feat_extract/feats_bert.py",
+    "line": 43,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "42 \n43         self.tokenizer = transformers.AutoTokenizer.from_pretrained(\n44             self.model_path, trust_remote_code=True\n45         )\n46         self.model = transformers.AutoModel.from_pretrained(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "nkululeko/feat_extract/feats_bert.py",
+    "line": 46,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "45         )\n46         self.model = transformers.AutoModel.from_pretrained(\n47             self.model_path, config=config\n48         ).to(self.device)\n49         print(f\"initialized {self.model_path} model on {self.device}\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "nkululeko/feat_extract/feats_bert.py",
+    "line": 83,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "82             self.util.debug(f\"reusing extracted {model_path} embeddings\")\n83             self.df = pd.read_pickle(storage)\n84             if self.df.isnull().values.any():",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "nkululeko/feat_extract/feats_emotion2vec.py",
+    "line": 97,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "96             self.util.debug(f\"reusing extracted {self.feat_type} embeddings\")\n97             self.df = pd.read_pickle(storage)\n98             if self.df.isnull().values.any():",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "nkululeko/feat_extract/feats_hubert.py",
+    "line": 42,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "41         )\n42         config = transformers.AutoConfig.from_pretrained(model_path)\n43         layer_num = config.num_hidden_layers",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "nkululeko/feat_extract/feats_hubert.py",
+    "line": 47,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "46         self.util.debug(f\"using hidden layer #{config.num_hidden_layers} (from input)\")\n47         self.processor = Wav2Vec2FeatureExtractor.from_pretrained(model_path)\n48         self.model = HubertModel.from_pretrained(model_path, config=config).to(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "nkululeko/feat_extract/feats_hubert.py",
+    "line": 48,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "47         self.processor = Wav2Vec2FeatureExtractor.from_pretrained(model_path)\n48         self.model = HubertModel.from_pretrained(model_path, config=config).to(\n49             self.device",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "nkululeko/feat_extract/feats_hubert.py",
+    "line": 85,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "84             self.util.debug(f\"reusing extracted {self.feat_type} embeddings\")\n85             self.df = pd.read_pickle(storage)\n86             if self.df.isnull().values.any():",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "nkululeko/feat_extract/feats_oxbow.py",
+    "line": 66,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "65                 # store the codebook\n66                 os.system(\n67                     f\"java -jar {xbow_path}/openXBOW.jar -i {lld_name} -standardizeInput -log -o {xbow_name} -size {size} -a {assignments} -B {codebook_name}\"\n68                 )\n69             else:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "nkululeko/feat_extract/feats_oxbow.py",
+    "line": 71,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "70                 # use the codebook\n71                 os.system(\n72                     f\"java -jar {xbow_path}/openXBOW.jar -i {lld_name} -o {xbow_name} -b {codebook_name}\"\n73                 )\n74             # read in the result from disk",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "nkululeko/feat_extract/feats_oxbow.py",
+    "line": 104,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "103             self.util.debug(\"reusing extracted OS features.\")\n104             self.df = pd.read_pickle(storage)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "nkululeko/feat_extract/feats_spkrec.py",
+    "line": 78,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "77             self.util.debug(f\"reusing extracted {self.feat_type} embeddings\")\n78             self.df = pd.read_pickle(storage)\n79             if self.df.isnull().values.any():",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "nkululeko/feat_extract/feats_trill.py",
+    "line": 67,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "66             self.util.debug(\"reusing extracted TRILL embeddings\")\n67             self.df = pd.read_pickle(storage)\n68",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "nkululeko/feat_extract/feats_wav2vec2.py",
+    "line": 46,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "45         )\n46         config = transformers.AutoConfig.from_pretrained(model_path)\n47         layer_num = config.num_hidden_layers",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "nkululeko/feat_extract/feats_wav2vec2.py",
+    "line": 51,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "50         self.util.debug(f\"using hidden layer #{config.num_hidden_layers} (from input)\")\n51         self.processor = Wav2Vec2FeatureExtractor.from_pretrained(model_path)\n52         self.model = Wav2Vec2Model.from_pretrained(model_path, config=config).to(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "nkululeko/feat_extract/feats_wav2vec2.py",
+    "line": 52,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "51         self.processor = Wav2Vec2FeatureExtractor.from_pretrained(model_path)\n52         self.model = Wav2Vec2Model.from_pretrained(model_path, config=config).to(\n53             self.device",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "nkululeko/feat_extract/feats_wav2vec2.py",
+    "line": 92,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "91             self.util.debug(\"reusing extracted wav2vec2 embeddings\")\n92             self.df = pd.read_pickle(storage)\n93             if self.df.isnull().values.any():",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "nkululeko/feat_extract/feats_wavlm.py",
+    "line": 41,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "40         )\n41         config = transformers.AutoConfig.from_pretrained(model_path)\n42         layer_num = config.num_hidden_layers",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "nkululeko/feat_extract/feats_wavlm.py",
+    "line": 53,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "52         )\n53         self.processor = Wav2Vec2FeatureExtractor.from_pretrained(model_path)\n54         self.model = WavLMModel.from_pretrained(model_path, config=config).to(",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "nkululeko/feat_extract/feats_wavlm.py",
+    "line": 54,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "53         self.processor = Wav2Vec2FeatureExtractor.from_pretrained(model_path)\n54         self.model = WavLMModel.from_pretrained(model_path, config=config).to(\n55             self.device",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "nkululeko/feat_extract/feats_wavlm.py",
+    "line": 93,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "92             self.util.debug(f\"reusing extracted {self.feat_type} embeddings\")\n93             self.df = pd.read_pickle(storage)\n94             if self.df.isnull().values.any():",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "nkululeko/feat_extract/feats_whisper.py",
+    "line": 30,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "29         model_name = f\"openai/{self.feat_type}\"\n30         self.model = WhisperModel.from_pretrained(model_name).to(self.device)\n31         print(f\"intialized Whisper model on {self.device}\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "nkululeko/feat_extract/feats_whisper.py",
+    "line": 32,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "31         print(f\"intialized Whisper model on {self.device}\")\n32         self.feature_extractor = AutoFeatureExtractor.from_pretrained(model_name)\n33         self.model_initialized = True",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "nkululeko/feat_extract/feats_whisper.py",
+    "line": 82,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "81             self.util.debug(\"reusing extracted wav2vec2 embeddings\")\n82             self.df = pd.read_pickle(storage)\n83             if self.df.isnull().values.any():",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "nkululeko/feat_extract/featureset.py",
+    "line": 147,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "146         end_s = end.total_seconds() if not pd.isna(end) else -1\n147         path_hash = hashlib.md5(str(file).encode(\"utf-8\")).hexdigest()\n148         cache_name = (",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/flags.py",
+    "line": 297,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "296         util = Util(\"flags\")\n297         shap = eval(util.config_val(\"EXPL\", \"shap\", \"False\"))\n298         if shap:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "nkululeko/infer.py",
+    "line": 75,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "74         with open(path, \"rb\") as f:\n75             return pickle.load(f)\n76     except (",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/models/model.py",
+    "line": 316,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "315                 try:\n316                     class_weight = eval(\n317                         self.util.config_val(\"MODEL\", \"class_weight\", \"False\")\n318                     )\n319                     if class_weight:",
+    "stage": "data_acquisition+data_preparation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "nkululeko/models/model.py",
+    "line": 444,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "443             with open(path, \"rb\") as handle:\n444                 self.clf = pickle.load(handle)\n445         except FileNotFoundError as fe:",
+    "stage": "data_acquisition+data_preparation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "nkululeko/models/model.py",
+    "line": 454,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "453         with open(path, \"rb\") as handle:\n454             self.clf = pickle.load(handle)\n455",
+    "stage": "data_acquisition+data_preparation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/models/model_adm.py",
+    "line": 51,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "50         # Manual seed\n51         manual_seed = eval(self.util.config_val(\"MODEL\", \"random_seed\", \"False\"))\n52         if manual_seed:",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "nkululeko/models/model_cnn.py",
+    "line": 247,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "246         self.model = myCNN(layers, self.class_num).to(self.device)\n247         self.model.load_state_dict(torch.load(self.store_path))\n248         self.model.eval()",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "nkululeko/models/model_cnn.py",
+    "line": 266,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "265         ).to(self.device)\n266         self.model.load_state_dict(torch.load(self.store_path))\n267         self.model.eval()",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/models/model_mlp.py",
+    "line": 33,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "32         self.target = self.context.config[\"DATA\"][\"target\"]\n33         manual_seed = eval(self.util.config_val(\"MODEL\", \"random_seed\", \"False\"))\n34         if manual_seed:",
+    "stage": "data_acquisition+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "nkululeko/models/model_mlp.py",
+    "line": 307,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "306         try:\n307             self.model.load_state_dict(torch.load(self.store_path))\n308         except FileNotFoundError:",
+    "stage": "data_acquisition+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "nkululeko/models/model_mlp.py",
+    "line": 339,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "338         ).to(self.device)\n339         self.model.load_state_dict(torch.load(self.store_path))\n340         self.model.eval()",
+    "stage": "data_acquisition+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/models/model_mlp_regression.py",
+    "line": 50,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "49         self.util.debug(f\"using activation function: {act_func}\")\n50         manual_seed = eval(self.util.config_val(\"MODEL\", \"random_seed\", \"False\"))\n51         if manual_seed:",
+    "stage": "data_acquisition+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "nkululeko/models/model_mlp_regression.py",
+    "line": 270,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "269         ).to(self.device)\n270         self.model.load_state_dict(torch.load(dir + name))\n271         self.model.eval()",
+    "stage": "data_acquisition+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "nkululeko/models/model_mlp_regression.py",
+    "line": 289,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "288         ).to(self.device)\n289         self.model.load_state_dict(torch.load(self.store_path))\n290         self.model.eval()",
+    "stage": "data_acquisition+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "nkululeko/models/model_tuned.py",
+    "line": 258,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "257             }\n258             self.config = transformers.AutoConfig.from_pretrained(\n259                 pretrained_model,\n260                 num_labels=len(target_mapping),\n261                 label2id=target_mapping,\n262                 id2label=target_mapping_reverse,\n263                 finetuning_task=target_name,\n264             )\n265         else:",
+    "stage": "data_acquisition+data_preparation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "nkululeko/models/model_tuned.py",
+    "line": 267,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "266             self.util.debug(\"Task is regression.\")\n267             self.config = transformers.AutoConfig.from_pretrained(\n268                 pretrained_model,\n269                 num_labels=1,\n270                 finetuning_task=target_name,\n271             )\n272         original_num_layers = self.config.num_hidden_layers",
+    "stage": "data_acquisition+data_preparation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "nkululeko/models/model_tuned.py",
+    "line": 333,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "332         try:\n333             feature_extractor = transformers.Wav2Vec2FeatureExtractor.from_pretrained(\n334                 pretrained_model\n335             )\n336         except Exception as e:",
+    "stage": "data_acquisition+data_preparation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "nkululeko/models/model_tuned.py",
+    "line": 943,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "942             if os.path.exists(model_path):\n943                 self.model.load_state_dict(torch.load(model_path))\n944                 # from_pretrained()/load_state_dict() always materialize on",
+    "stage": "data_acquisition+data_preparation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "nkululeko/models/model_tuned.py",
+    "line": 972,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "971         with open(path, \"rb\") as handle:\n972             self.clf = pickle.load(handle)\n973",
+    "stage": "data_acquisition+data_preparation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/multidb.py",
+    "line": 169,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "168         try:\n169             use_splits = eval(config[\"EXP\"][\"use_splits\"])\n170         except KeyError:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/plots.py",
+    "line": 32,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "31         self.target = self.util.config_val(\"DATA\", \"target\", \"emotion\")\n32         self.with_ccc = eval(self.util.config_val(\"PLOT\", \"ccc\", \"False\"))\n33         self.type_s = \"samples\"",
+    "stage": "data_preparation+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/plots.py",
+    "line": 34,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "33         self.type_s = \"samples\"\n34         self.titles = eval(self.util.config_val(\"PLOT\", \"titles\", \"True\"))\n35         self.print_stats = eval(self.util.config_val(\"EXPL\", \"print_stats\", \"False\"))",
+    "stage": "data_preparation+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/plots.py",
+    "line": 35,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "34         self.titles = eval(self.util.config_val(\"PLOT\", \"titles\", \"True\"))\n35         self.print_stats = eval(self.util.config_val(\"EXPL\", \"print_stats\", \"False\"))\n36",
+    "stage": "data_preparation+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/plots.py",
+    "line": 322,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "321         \"\"\"\n322         bin_reals_att = eval(self.util.config_val(\"EXPL\", f\"{att}.bin_reals\", \"False\"))\n323         if bin_reals_att:",
+    "stage": "data_preparation+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/plots.py",
+    "line": 426,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "425         dist_type = self.util.config_val(\"EXPL\", \"dist_type\", \"kde\")\n426         fill_areas = eval(self.util.config_val(\"PLOT\", \"fill_areas\", \"False\"))\n427         max_cat, cat_str, effect_results = su.get_effect_size(",
+    "stage": "data_preparation+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/plots.py",
+    "line": 802,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "801  \n802         ignore_gender = eval(self.util.config_val(\"EXPL\", \"ignore_gender\", \"False\"))\n803         sample_num = df_labels.shape[0]",
+    "stage": "data_preparation+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/reporting/run_plotter.py",
+    "line": 21,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "20         self.exp = experiment\n21         self.titles = eval(self.util.config_val(\"PLOT\", \"titles\", \"True\"))\n22",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/reporting/run_plotter.py",
+    "line": 44,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "43         run_num = int(self.util.config_val(\"EXP\", \"runs\", 1))\n44         print_stats = eval(self.util.config_val(\"EXPL\", \"print_stats\", \"False\"))\n45         plot_name = f\"{self.exp.util.get_exp_name()}_runs_plot\"",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/runmanager.py",
+    "line": 61,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "60         self.target = self.context.config[\"DATA\"][\"target\"]\n61         self.split3 = eval(self.util.config_val(\"EXP\", \"traindevtest\", \"False\"))\n62",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/segmenting/seg_pyannote.py",
+    "line": 92,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "91         dfs = []\n92         max_length = eval(self.util.config_val(\"SEGMENT\", \"max_length\", \"False\"))\n93         if max_length:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "nkululeko/segmenting/seg_silero.py",
+    "line": 95,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "94         dfs = []\n95         max_length = eval(self.util.config_val(\"SEGMENT\", \"max_length\", \"False\"))\n96         if max_length:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "nkululeko/testing_pretrain.py",
+    "line": 112,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "111 \n112     config = transformers.AutoConfig.from_pretrained(\n113         model_path,\n114         num_labels=len(target_mapping),\n115         label2id=target_mapping,\n116         id2label=target_mapping_reverse,\n117         finetuning_task=target_name,\n118     )\n119     if num_layers is not None:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "nkululeko/utils/storage.py",
+    "line": 34,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "33         with open(name, \"rb\") as handle:\n34             return pickle.load(handle)\n35",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "nkululeko/utils/storage.py",
+    "line": 46,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "45         if format == \"pkl\":\n46             return pd.read_pickle(name)\n47         elif format == \"csv\":",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/feat_extract/test_feats_opensmile.py",
+    "line": 35,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "34     def get_path(self, key):\n35         return \"/tmp/test_store/\"\n36",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/feat_extract/test_feats_opensmile.py",
+    "line": 51,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "50     mock_config = {\n51         \"EXP\": {\"root\": \"/tmp/test_nkululeko\", \"name\": \"test_exp\"},\n52         \"FEATS\": {",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/feat_extract/test_feats_sptk.py",
+    "line": 16,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "15     util.config_val = Mock(side_effect=lambda section, key, default: default)\n16     util.get_path = Mock(return_value=\"/tmp/store/\")\n17     util.debug = Mock()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/models/test_model_adm.py",
+    "line": 308,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "307     def get_path(self, key):\n308         return \"/tmp/\"\n309",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/models/test_model_adm.py",
+    "line": 370,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "369         model.sptk_feat_dim = 64\n370         model.store_path = \"/tmp/test_adm.pt\"\n371",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/models/test_model_mlp.py",
+    "line": 94,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "93         model.testloader = model.get_loader(feats_test, df_test, False)\n94         model.store_path = \"/tmp/test_model.pt\"\n95",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tests/test_experiment.py",
+    "line": 396,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "395         with open(out, \"rb\") as fh:\n396             d = _pickle.load(fh)\n397         assert \"feature_extractor\" in d",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "tests/test_glob_conf.py",
+    "line": 189,
+    "message": "Use of exec detected.",
+    "snippet": "188 \n189         exec(\"from nkululeko.glob_conf import *\", namespace)\n190",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/test_optim.py",
+    "line": 33,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "32             \"name\": \"test_optim\",\n33             \"root\": \"/tmp\",\n34             \"runs\": \"1\",\n35             \"epochs\": \"1\",\n36             \"traindevtest\": \"False\",\n37         },\n38         \"FEATS\": {\"type\": \"['os']\"},\n39         \"REPORT\": {\"fresh\": \"True\"},\n40     }[x]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "tests/test_optim.py",
+    "line": 265,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "264             \"name\": \"test_adm_optim\",\n265             \"root\": \"/tmp\",\n266             \"runs\": \"1\",\n267             \"epochs\": \"5\",\n268         },\n269         \"FEATS\": {\"type\": \"['hubert-base-ls960', 'sptk']\"},\n270         \"REPORT\": {\"fresh\": \"True\"},\n271     }[x]",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "data/banglaser/process_database.py",
+    "line": 107,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "data/eaed/process_database.py",
+    "line": 48,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "data/erysac/process_database.py",
+    "line": 58,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "data/polish/process_database.py",
+    "line": 67,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "data/turev/process_database.py",
+    "line": 45,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml.use-defused-xml",
+    "file_path": "data/uudb/process_database.py",
+    "line": 14,
+    "message": "The Python documentation recommends using `defusedxml` instead of `xml` because the native Python `xml` library is vulnerable to XML External Entity (XXE) attacks. These attacks can leak confidential data and \"XML bombs\" can cause denial of service.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml-parse.use-defused-xml-parse",
+    "file_path": "data/uudb/process_database.py",
+    "line": 84,
+    "message": "The native Python `xml` library is vulnerable to XML External Entity (XXE) attacks.  These attacks can leak confidential data and \"XML bombs\" can cause denial of service. Do not use this library to parse untrusted input. Instead  the Python documentation recommends using `defusedxml`.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/augment.py",
+    "line": 43,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/augmenting/augmenter_audiomentations.py",
+    "line": 34,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/augmenting/resampler.py",
+    "line": 24,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "nkululeko/bundle.py",
+    "line": 262,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "nkululeko/bundle.py",
+    "line": 288,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "nkululeko/bundle.py",
+    "line": 299,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/data/dataset.py",
+    "line": 285,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/data/dataset.py",
+    "line": 287,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/data/dataset.py",
+    "line": 387,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/data/dataset.py",
+    "line": 390,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/data/dataset.py",
+    "line": 524,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/data/dataset.py",
+    "line": 528,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/data/dataset.py",
+    "line": 834,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/data/dataset_csv.py",
+    "line": 48,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/experiment.py",
+    "line": 55,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/experiment.py",
+    "line": 57,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "nkululeko/experiment.py",
+    "line": 63,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "nkululeko/experiment.py",
+    "line": 87,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/experiment.py",
+    "line": 89,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/experiment.py",
+    "line": 162,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/experiment.py",
+    "line": 499,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/experiment.py",
+    "line": 521,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/experiment.py",
+    "line": 528,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/experiment.py",
+    "line": 553,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/experiment.py",
+    "line": 561,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/experiment.py",
+    "line": 620,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/experiment.py",
+    "line": 630,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/experiment.py",
+    "line": 640,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "nkululeko/experiment.py",
+    "line": 813,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "nkululeko/experiment.py",
+    "line": 866,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "nkululeko/experiment.py",
+    "line": 902,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/explore.py",
+    "line": 85,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/explore.py",
+    "line": 86,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/explore.py",
+    "line": 87,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/explore.py",
+    "line": 88,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/explore.py",
+    "line": 89,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/explore.py",
+    "line": 90,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/explore.py",
+    "line": 92,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/export.py",
+    "line": 100,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "nkululeko/feat_extract/feats_analyser.py",
+    "line": 63,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "nkululeko/feat_extract/feats_analyser.py",
+    "line": 91,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "nkululeko/feat_extract/featureset.py",
+    "line": 147,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/flags.py",
+    "line": 297,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "nkululeko/infer.py",
+    "line": 75,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/models/model.py",
+    "line": 316,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "nkululeko/models/model.py",
+    "line": 433,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "nkululeko/models/model.py",
+    "line": 444,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "nkululeko/models/model.py",
+    "line": 454,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/models/model_adm.py",
+    "line": 51,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/models/model_mlp.py",
+    "line": 33,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/models/model_mlp_regression.py",
+    "line": 50,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "nkululeko/models/model_tuned.py",
+    "line": 972,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/multidb.py",
+    "line": 169,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/plots.py",
+    "line": 32,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_preparation+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/plots.py",
+    "line": 34,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_preparation+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/plots.py",
+    "line": 35,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_preparation+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/plots.py",
+    "line": 322,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_preparation+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/plots.py",
+    "line": 426,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_preparation+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/plots.py",
+    "line": 802,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "data_preparation+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/reporting/run_plotter.py",
+    "line": 21,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/reporting/run_plotter.py",
+    "line": 44,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/runmanager.py",
+    "line": 61,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/segmenting/seg_pyannote.py",
+    "line": 92,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "nkululeko/segmenting/seg_silero.py",
+    "line": 95,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "nkululeko/utils/storage.py",
+    "line": 25,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "nkululeko/utils/storage.py",
+    "line": 34,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  }
+]

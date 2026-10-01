@@ -1,0 +1,152 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B506",
+    "file_path": "pie/data/dataset.py",
+    "line": 476,
+    "message": "Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().",
+    "snippet": "475         except ValueError:      # use yaml\n476             obj = yaml.load(string, Loader=Loader)\n477         return cls._init(inst, obj)",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "pie/models/base_model.py",
+    "line": 203,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "202             # load state_dict\n203             model.load_state_dict(torch.load(tar.extractfile('state_dict.pt'), map_location='cpu'))\n204         model.eval()",
+    "stage": "data_acquisition+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "pie/pretrain_encoder.py",
+    "line": 179,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "178                 dictpath = os.path.join(tmppath, 'state_dict.pt')\n179                 model.load_state_dict(torch.load(dictpath, map_location='cpu'))\n180",
+    "stage": "data_acquisition+evaluation+inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "pie/trainer.py",
+    "line": 138,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "137                 if is_target:\n138                     state_dict = torch.load(self.fid)\n139                     os.remove(self.fid)",
+    "stage": "evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B102",
+    "file_path": "setup.py",
+    "line": 53,
+    "message": "Use of exec detected.",
+    "snippet": "52     with open(os.path.join(here, project_slug, '__version__.py')) as f:\n53         exec(f.read(), about)\n54 else:",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "setup.py",
+    "line": 96,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "95         self.status('Building Source and Wheel (universal) distribution…')\n96         os.system('{0} setup.py sdist bdist_wheel --universal'.format(sys.executable))\n97",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "setup.py",
+    "line": 102,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "101         self.status('Pushing git tags…')\n102         os.system('git tag v{0}'.format(about['__version__']))\n103         os.system('git push --tags')",
+    "stage": "dependencies"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "test/data/test_data.py",
+    "line": 22,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "21         le = self.data.label_encoder\n22         le.save('/tmp/encoder.json')\n23         le2 = MultiLabelEncoder.load_from_file('/tmp/encoder.json')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "test/data/test_data.py",
+    "line": 23,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "22         le.save('/tmp/encoder.json')\n23         le2 = MultiLabelEncoder.load_from_file('/tmp/encoder.json')\n24",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "test/data/test_tabreader.py",
+    "line": 17,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "16     TASKS = [{\"name\": \"lemma\"}, {\"name\": \"pos\"}]\n17     FILENAME = '/tmp/test-data.tab'\n18     HEADER = {",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "test/models/test_model.py",
+    "line": 29,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "28         model = self.model\n29         fid = '/tmp/{}'.format(str(uuid.uuid1()))\n30         model.save(fid)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.deserialization.avoid-pyyaml-load.avoid-pyyaml-load",
+    "file_path": "pie/data/dataset.py",
+    "line": 476,
+    "message": "Detected a possible YAML deserialization vulnerability. `yaml.unsafe_load`, `yaml.Loader`, `yaml.CLoader`, and `yaml.UnsafeLoader` are all known to be unsafe methods of deserializing YAML. An attacker with control over the YAML input could create special YAML input that allows the attacker to run arbitrary Python code. This would allow the attacker to steal files, download and install malware, or otherwise take over the machine. Use `yaml.safe_load` or `yaml.SafeLoader` instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-uuid-version.insecure-uuid-version",
+    "file_path": "pie/trainer.py",
+    "line": 84,
+    "message": "Using UUID version 1 for UUID generation can lead to predictable UUIDs based on system information (e.g., MAC address, timestamp). This may lead to security risks such as the sandwich attack. Consider using `uuid.uuid4()` instead for better randomness and security.",
+    "snippet": "requires login",
+    "stage": "evaluation+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-uuid-version.insecure-uuid-version",
+    "file_path": "pie/utils.py",
+    "line": 173,
+    "message": "Using UUID version 1 for UUID generation can lead to predictable UUIDs based on system information (e.g., MAC address, timestamp). This may lead to security risks such as the sandwich attack. Consider using `uuid.uuid4()` instead for better randomness and security.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.exec-detected.exec-detected",
+    "file_path": "setup.py",
+    "line": 53,
+    "message": "Detected the use of exec(). exec() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "dependencies"
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "src/models/models.py",
+    "line": 261,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "260     n_blocks = model_config['BLOCKS']\n261     kernel_size = eval(model_config['KERNEL_SIZE'])\n262     max_pool_size = eval(model_config['MAXPOOL_SIZE'])",
+    "stage": "evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "src/models/models.py",
+    "line": 262,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "261     kernel_size = eval(model_config['KERNEL_SIZE'])\n262     max_pool_size = eval(model_config['MAXPOOL_SIZE'])\n263     strides = eval(model_config['STRIDES'])",
+    "stage": "evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "src/models/models.py",
+    "line": 263,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "262     max_pool_size = eval(model_config['MAXPOOL_SIZE'])\n263     strides = eval(model_config['STRIDES'])\n264     pad = kernel_size[0] // 2",
+    "stage": "evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "src/predict.py",
+    "line": 46,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "45                                             class_mode=class_mode, validate_filenames=True, shuffle=False)\n46     class_idx_map = dill.load(open(cfg['PATHS']['CLASS_NAME_MAP'], 'rb'))\n47     class_idx_map = {v: k for k, v in class_idx_map.items()}    # Reverse the map",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "src/models/models.py",
+    "line": 261,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "src/models/models.py",
+    "line": 262,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "src/models/models.py",
+    "line": 263,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-dill",
+    "file_path": "src/predict.py",
+    "line": 46,
+    "message": "Avoid using `dill`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-dill",
+    "file_path": "src/train.py",
+    "line": 186,
+    "message": "Avoid using `dill`, which uses `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation+inference+training"
+  }
+]

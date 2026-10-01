@@ -1,0 +1,202 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "SED/TestModel.py",
+    "line": 131,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "130     # Model\n131     expe_state = torch.load(model_path, map_location=\"cpu\")\n132     dataset = DESED(base_feature_dir=osp.join(cfg.workspace, \"dataset\", \"features\"), compute_log=False)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "SED/TestModel_ss_late_integration.py",
+    "line": 208,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "207 \n208     expe_state = torch.load(model_path, map_location=\"cpu\")\n209     dataset = DESED(base_feature_dir=os.path.join(cfg.workspace, \"dataset\", \"features\"), compute_log=False)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "SED/main.py",
+    "line": 397,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "396         model_fname = os.path.join(saved_model_dir, \"baseline_best\")\n397         state = torch.load(model_fname)\n398         crnn = _load_crnn(state)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "SED/models/RNN.py",
+    "line": 32,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "31         if filename is not None:\n32             self.load_state_dict(torch.load(filename))\n33         elif parameters is not None:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "general/Cache.py",
+    "line": 6,
+    "message": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+    "snippet": "5 def hashkey(key):\n6    hash_object = hashlib.sha1(key.encode('utf-8'))\n7    return  hash_object.hexdigest()",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "general/libinstall.py",
+    "line": 30,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "29             pbar.set_description(\"Installing %s\" % pack)\n30             os.system('pip install --upgrade -q '+pack)\n31     pbar.set_description(\"The required libraries have been  installed\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "general/libinstall.py",
+    "line": 64,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "63         if not(pack in installed_packages):\n64             os.system('pip install --upgrade -q '+pack)\n65     pbar.set_description(\"Everything Installed\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "general/utils.py",
+    "line": 235,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "234             with open(file + f, 'rb') as fl:\n235                 func.__dict__[x[1]] = pickle.load(fl)\n236         elif ('pyact.h5' in f):",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "main.py",
+    "line": 103,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "102     import os\n103     os.system(\"taskset -a -pc 0-1000 %d >>/dev/null\" % os.getpid())\n104     run(args)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "metric/TatbulMetric.py",
+    "line": 18,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "17     for act in acts:\n18         revent[act]=open(f\"/tmp/tat-{act}.realn\", \"w\")\n19         pevent[act]=open(f\"/tmp/tat-{act}.predn\", \"w\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "metric/TatbulMetric.py",
+    "line": 19,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "18         revent[act]=open(f\"/tmp/tat-{act}.realn\", \"w\")\n19         pevent[act]=open(f\"/tmp/tat-{act}.predn\", \"w\")\n20",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "metric/TatbulMetric.py",
+    "line": 38,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "37         \n38         result[act] = eval_my_metric(f\"/tmp/tat-{act}.realn\", f\"/tmp/tat-{act}.predn\",debug=debug)\n39     if(len(acts)==1):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "metric/TatbulMetric.py",
+    "line": 38,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "37         \n38         result[act] = eval_my_metric(f\"/tmp/tat-{act}.realn\", f\"/tmp/tat-{act}.predn\",debug=debug)\n39     if(len(acts)==1):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "ml_strategy/Simple.py",
+    "line": 61,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "60         import os\n61         os.system(\"taskset -a -pc 0-1000 %d >>/dev/null\" % os.getpid())\n62",
+    "stage": "evaluation+inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "test/test_psds.py",
+    "line": 18,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "17 import SED.my_eval\n18 path=\"/tmp/test/\"\n19",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "wardmetrics/core_methods.py",
+    "line": 593,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "592     with open(file+'data.pkl', 'rb') as f:\n593         real,pred= pickle.load(f)\n594     real_scores, pred_scores, event_scores, standard_score_statistics=eval_events(real,pred)",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1",
+    "file_path": "general/Cache.py",
+    "line": 6,
+    "message": "Detected SHA1 hash algorithm which is considered insecure. SHA1 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "general/utils.py",
+    "line": 75,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "general/utils.py",
+    "line": 235,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "wardmetrics/core_methods.py",
+    "line": 593,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  }
+]

@@ -1,0 +1,222 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "axelerate/networks/common_utils/convert.py",
+    "line": 19,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "18 def run_command(cmd, cwd=None):\n19     with subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, executable='/bin/bash', universal_newlines=True, cwd=cwd) as p:\n20         while True:",
+    "stage": "data_acquisition+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "axelerate/networks/common_utils/convert.py",
+    "line": 41,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "40                 tar_file = tarfile.open(k210_converter_download_path)\n41                 tar_file.extractall(os.path.join(os.path.dirname(__file__),\"ncc\"))\n42                 tar_file.close()",
+    "stage": "data_acquisition+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B103",
+    "file_path": "axelerate/networks/common_utils/convert.py",
+    "line": 43,
+    "message": "Chmod setting a permissive mask 0o775 on file (k210_converter_path).",
+    "snippet": "42                 tar_file.close()\n43                 os.chmod(k210_converter_path, 0o775)\n44",
+    "stage": "data_acquisition+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B314",
+    "file_path": "axelerate/networks/yolo/backend/utils/annotation.py",
+    "line": 167,
+    "message": "Using xml.etree.ElementTree.parse to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.parse with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "166     def _root_tag(self, fname):\n167         tree = parse(fname)\n168         root = tree.getroot()",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B314",
+    "file_path": "axelerate/networks/yolo/backend/utils/annotation.py",
+    "line": 172,
+    "message": "Using xml.etree.ElementTree.parse to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.parse with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called",
+    "snippet": "171     def _tree(self, fname):\n172         tree = parse(fname)\n173         return tree",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B201",
+    "file_path": "example_scripts/tensorflow_lite/classifier/classifier_stream.py",
+    "line": 104,
+    "message": "A Flask app appears to be run with debug=True, which exposes the Werkzeug debugger and allows the execution of arbitrary code.",
+    "snippet": "103 if __name__ == \"__main__\" :\n104    app.run(host = '0.0.0.0', port = 5000, debug = True)\n105",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "example_scripts/tensorflow_lite/classifier/classifier_stream.py",
+    "line": 104,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "103 if __name__ == \"__main__\" :\n104    app.run(host = '0.0.0.0', port = 5000, debug = True)\n105",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B201",
+    "file_path": "example_scripts/tensorflow_lite/detector/detector_stream.py",
+    "line": 103,
+    "message": "A Flask app appears to be run with debug=True, which exposes the Werkzeug debugger and allows the execution of arbitrary code.",
+    "snippet": "102 if __name__ == \"__main__\" :\n103    app.run(host = '0.0.0.0', port = 5000, debug = True)\n104",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "example_scripts/tensorflow_lite/detector/detector_stream.py",
+    "line": 103,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "102 if __name__ == \"__main__\" :\n103    app.run(host = '0.0.0.0', port = 5000, debug = True)\n104",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B201",
+    "file_path": "example_scripts/tensorflow_lite/segnet/segnet_stream.py",
+    "line": 114,
+    "message": "A Flask app appears to be run with debug=True, which exposes the Werkzeug debugger and allows the execution of arbitrary code.",
+    "snippet": "113 if __name__ == \"__main__\" :\n114    app.run(host = '0.0.0.0', port = 5000, debug = True)\n115",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "example_scripts/tensorflow_lite/segnet/segnet_stream.py",
+    "line": 114,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "113 if __name__ == \"__main__\" :\n114    app.run(host = '0.0.0.0', port = 5000, debug = True)\n115",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "axelerate/networks/common_utils/convert.py",
+    "line": 19,
+    "message": "Found 'subprocess' function 'Popen' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.insecure-file-permissions.insecure-file-permissions",
+    "file_path": "axelerate/networks/common_utils/convert.py",
+    "line": 43,
+    "message": "These permissions `0o775` are widely permissive and grant access to more people than may be necessary. A good default is `0o644` which gives read and write access to yourself and read access to everyone else.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+modeling"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml.use-defused-xml",
+    "file_path": "axelerate/networks/yolo/backend/utils/annotation.py",
+    "line": 5,
+    "message": "The Python documentation recommends using `defusedxml` instead of `xml` because the native Python `xml` library is vulnerable to XML External Entity (XXE) attacks. These attacks can leak confidential data and \"XML bombs\" can cause denial of service.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml-parse.use-defused-xml-parse",
+    "file_path": "axelerate/networks/yolo/backend/utils/annotation.py",
+    "line": 167,
+    "message": "The native Python `xml` library is vulnerable to XML External Entity (XXE) attacks.  These attacks can leak confidential data and \"XML bombs\" can cause denial of service. Do not use this library to parse untrusted input. Instead  the Python documentation recommends using `defusedxml`.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.use-defused-xml-parse.use-defused-xml-parse",
+    "file_path": "axelerate/networks/yolo/backend/utils/annotation.py",
+    "line": 172,
+    "message": "The native Python `xml` library is vulnerable to XML External Entity (XXE) attacks.  These attacks can leak confidential data and \"XML bombs\" can cause denial of service. Do not use this library to parse untrusted input. Instead  the Python documentation recommends using `defusedxml`.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.app-run-param-config.avoid_app_run_with_bad_host",
+    "file_path": "example_scripts/tensorflow_lite/classifier/classifier_stream.py",
+    "line": 104,
+    "message": "Running flask app with host 0.0.0.0 could expose the server publicly.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.debug-enabled.debug-enabled",
+    "file_path": "example_scripts/tensorflow_lite/classifier/classifier_stream.py",
+    "line": 104,
+    "message": "Detected Flask app with debug=True. Do not deploy to production with this flag enabled as it will leak sensitive information. Instead, consider using Flask configuration variables or setting 'debug' using system environment variables.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.app-run-param-config.avoid_app_run_with_bad_host",
+    "file_path": "example_scripts/tensorflow_lite/detector/detector_stream.py",
+    "line": 103,
+    "message": "Running flask app with host 0.0.0.0 could expose the server publicly.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.debug-enabled.debug-enabled",
+    "file_path": "example_scripts/tensorflow_lite/detector/detector_stream.py",
+    "line": 103,
+    "message": "Detected Flask app with debug=True. Do not deploy to production with this flag enabled as it will leak sensitive information. Instead, consider using Flask configuration variables or setting 'debug' using system environment variables.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.app-run-param-config.avoid_app_run_with_bad_host",
+    "file_path": "example_scripts/tensorflow_lite/segnet/segnet_stream.py",
+    "line": 114,
+    "message": "Running flask app with host 0.0.0.0 could expose the server publicly.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.flask.security.audit.debug-enabled.debug-enabled",
+    "file_path": "example_scripts/tensorflow_lite/segnet/segnet_stream.py",
+    "line": 114,
+    "message": "Detected Flask app with debug=True. Do not deploy to production with this flag enabled as it will leak sensitive information. Instead, consider using Flask configuration variables or setting 'debug' using system environment variables.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

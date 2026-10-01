@@ -1,0 +1,62 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B324",
+    "file_path": "deepac/builtin_loading.py",
+    "line": 162,
+    "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+    "snippet": "161         data = f.read()\n162         return hashlib.md5(data).hexdigest()\n163",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "supplement_paper/subreads/read_simulation_nanopore/python_scripts/read_sim_nanopore.py",
+    "line": 14,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "13         command = \"./deep_simulator.sh -i %s -n %s -l %s -o %s -c 12\" % (genome,read_numb,read_length_mean,output_path)\n14         os.system(command)\n15",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "supplement_paper/umap_visualisation/utils.py",
+    "line": 64,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "63         openFile = open(embedding_path, 'rb')\n64         umap_object = pickle.load(openFile)  # read the data\n65         openFile.close()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5",
+    "file_path": "deepac/builtin_loading.py",
+    "line": 162,
+    "message": "Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "supplement_paper/umap_visualisation/umap_vis.py",
+    "line": 38,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "supplement_paper/umap_visualisation/utils.py",
+    "line": 64,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "chemprop/callbacks/interpret.py",
+    "line": 67,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "66 \n67         model_file = torch.load(\n68             model_paths[0], map_location=torch.device(\"cpu\"), weights_only=False\n69         )\n70         mol_atom_bond = \"atom_predictor\" in model_file[\"hyper_parameters\"].keys()",
+    "stage": "inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "chemprop/cli/fingerprint.py",
+    "line": 242,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "241 \n242     model_file = torch.load(model_paths[0], map_location=torch.device(\"cpu\"), weights_only=False)\n243     mol_atom_bond = \"atom_predictor\" in model_file[\"hyper_parameters\"].keys()",
+    "stage": "inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "chemprop/cli/predict.py",
+    "line": 933,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "932 \n933     model_file = torch.load(model_paths[0], map_location=torch.device(\"cpu\"), weights_only=False)\n934     mol_atom_bond = \"atom_predictor\" in model_file[\"hyper_parameters\"].keys()",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B310",
+    "file_path": "chemprop/cli/train.py",
+    "line": 1494,
+    "message": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+    "snippet": "1493                         )\n1494                         urlretrieve(\n1495                             r\"https://zenodo.org/records/15460715/files/chemeleon_mp.pt\", model_path\n1496                         )\n1497                     else:",
+    "stage": "data_acquisition+data_preparation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "chemprop/models/model.py",
+    "line": 239,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "238         try:\n239             d = torch.load(path, map_location, weights_only=False)\n240         except AttributeError:",
+    "stage": "evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "chemprop/models/model.py",
+    "line": 302,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "301         state_dict = cls._add_metric_task_weights_to_state_dict(state_dict, hparams)\n302         d = torch.load(checkpoint_path, map_location, weights_only=False)\n303         d[\"state_dict\"] = state_dict",
+    "stage": "evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "chemprop/models/mol_atom_bond.py",
+    "line": 469,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "468     def _load(cls, path, map_location, **submodules):\n469         d = torch.load(path, map_location, weights_only=False)\n470",
+    "stage": "evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "chemprop/models/mol_atom_bond.py",
+    "line": 550,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "549 \n550         d = torch.load(checkpoint_path, map_location, weights_only=False)\n551         d[\"hyper_parameters\"] = hparams",
+    "stage": "evaluation+inference+modeling+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "chemprop/models/multi.py",
+    "line": 71,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "70         try:\n71             d = torch.load(path, map_location, weights_only=False)\n72         except AttributeError:",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "chemprop/models/utils.py",
+    "line": 41,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "40 ) -> list[str] | tuple[list[str] | None, list[str] | None, list[str] | None] | None:\n41     model_file = torch.load(path, map_location=torch.device(\"cpu\"), weights_only=False)\n42",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "chemprop/utils/v1_to_v2.py",
+    "line": 329,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "328 \n329     model_v1_dict = torch.load(model_v1_file, map_location=torch.device(\"cpu\"), weights_only=False)\n330     model_v2_dict = convert_model_dict_v1_to_v2(model_v1_dict)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "chemprop/utils/v2_0_to_v2_1.py",
+    "line": 38,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "37 def convert_model_file_v2_0_to_v2_1(model_v1_file: PathLike, model_v2_file: PathLike):\n38     model = torch.load(\n39         model_v1_file, map_location=\"cpu\", pickle_module=sys.modules[__name__], weights_only=False\n40     )\n41     torch.save(model, model_v2_file)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tests/cli/test_parsing.py",
+    "line": 206,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "205     preds_df = pd.read_csv(tmp_path / \"preds.csv\")\n206     expected_df = pd.read_pickle(\"tests/data/data_for_test_preds_stay_same.pkl\")\n207",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+    "file_path": "chemprop/cli/train.py",
+    "line": 1494,
+    "message": "Detected a dynamic value being used with urllib. urllib supports 'file://' schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the 'requests' library instead.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+inference+training"
+  }
+]

@@ -1,0 +1,82 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "gent2_predictor/__main__.py",
+    "line": 68,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "67                 model = Baseline_FFN()\n68                 model.load_state_dict(torch.load(model_path))\n69                 trainer = FFNTrainer(model, USE_FULL_DATA)",
+    "stage": "inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "gent2_predictor/__main__.py",
+    "line": 74,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "73                 model = FFN()\n74                 model.load_state_dict(torch.load(model_path))\n75                 trainer = FFNTrainer(model, USE_FULL_DATA)",
+    "stage": "inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "gent2_predictor/__main__.py",
+    "line": 80,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "79                 model = Landmarks_baseline()\n80                 model.load_state_dict(torch.load(model_path))\n81                 trainer = FFNTrainer(model, USE_FULL_DATA)",
+    "stage": "inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "gent2_predictor/__main__.py",
+    "line": 86,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "85                 model = Landmarks_full()\n86                 model.load_state_dict(torch.load(model_path))\n87                 trainer = FFNTrainer(model, USE_FULL_DATA)",
+    "stage": "inference+modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "gent2_predictor/data_parser/data_parser.py",
+    "line": 103,
+    "message": "Call to requests without timeout",
+    "snippet": "102     def get_landmarks():\n103         response = requests.get(LANDMARK_URL)\n104",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "gent2_predictor/data_parser/gent2_dataset.py",
+    "line": 38,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "37         with open(patient_file, 'rb') as f:\n38             data = pickle.load(f)\n39",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "gent2_predictor/data_parser/data_parser.py",
+    "line": 74,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "gent2_predictor/data_parser/gent2_dataset.py",
+    "line": 38,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  }
+]

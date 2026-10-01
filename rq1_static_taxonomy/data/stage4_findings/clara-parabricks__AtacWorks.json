@@ -1,0 +1,42 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "atacworks/dl4atac/utils.py",
+    "line": 153,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "152                 color='yellow', rank=rank)\n153         checkpoint = torch.load(weights_path, map_location=\"cuda:\" + str(rank))\n154         model.load_state_dict(checkpoint['state_dict'])",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "tests/utils/verify_diff.py",
+    "line": 57,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "56     rank = 0\n57     result_model = torch.load(result_path, map_location=\"cuda:\" + str(rank))\n58     expected_model = torch.load(expected_path,",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "tests/utils/verify_diff.py",
+    "line": 58,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "57     result_model = torch.load(result_path, map_location=\"cuda:\" + str(rank))\n58     expected_model = torch.load(expected_path,\n59                                 map_location=\"cuda:\" + str(rank))\n60     val = 0",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "tests/utils/verify_diff.py",
+    "line": 187,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "186     cmd = \"diff \" + result_path + \" \" + expected_path\n187     ret = subprocess.call(cmd, shell=True)\n188     err_msg = result_path + \" and \" + expected_path + \" are not identical!\"",
+    "stage": "unreachable"
+  }
+]

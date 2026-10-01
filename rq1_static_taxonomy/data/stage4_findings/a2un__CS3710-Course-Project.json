@@ -1,0 +1,132 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "build_vocab.py",
+    "line": 28,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "27             embedding = lex_embed[word].unsqueeze(0)\n28     sem_embedding = torch.from_numpy(np.array([[float(eval(score,{},{})) if bool(re.match(r'^-?\\d+(\\.\\d+)?$', score)) else 0 for score in line.split()[1:]] for line in open(sem_embed_path,'r').readlines()[:vocab_size]]))\n29     syn_embedding = torch.from_numpy(np.array([[float(eval(score,{},{})) if bool(re.match(r'^-?\\d+(\\.\\d+)?$', score))",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "build_vocab.py",
+    "line": 29,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "28     sem_embedding = torch.from_numpy(np.array([[float(eval(score,{},{})) if bool(re.match(r'^-?\\d+(\\.\\d+)?$', score)) else 0 for score in line.split()[1:]] for line in open(sem_embed_path,'r').readlines()[:vocab_size]]))\n29     syn_embedding = torch.from_numpy(np.array([[float(eval(score,{},{})) if bool(re.match(r'^-?\\d+(\\.\\d+)?$', score)) else 0 for score in line.split()[1:]] for line in open(",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "main.py",
+    "line": 86,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "85 \n86             model.load_state_dict(torch.load(os.path.join(args.model_save_path, \"best.pt\")))\n87             _, accuracy, precision, recall, f1, cm = evaluate(model, test_dataloader, embedding, args)",
+    "stage": "data_acquisition+data_preparation+evaluation+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "tools/syntactic_semantic_embeddings/WordGCN/semgcn.py",
+    "line": 456,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "455 \n456 \t\tif not os.path.isdir(self.p.log_dir): os.system('mkdir {}'.format(self.p.log_dir))\n457 \t\tif not os.path.isdir(self.p.emb_dir): os.system('mkdir {}'.format(self.p.emb_dir))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "tools/syntactic_semantic_embeddings/WordGCN/semgcn.py",
+    "line": 457,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "456 \t\tif not os.path.isdir(self.p.log_dir): os.system('mkdir {}'.format(self.p.log_dir))\n457 \t\tif not os.path.isdir(self.p.emb_dir): os.system('mkdir {}'.format(self.p.emb_dir))\n458",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "tools/syntactic_semantic_embeddings/WordGCN/switch_evaluation_data.py",
+    "line": 20,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "19 \t\tname = full_name.split('/')[-1]\n20 \t\tos.system( 'rm -r {}{}'.format(path, name))\n21 \t\tos.system( 'cp -r {}{}/{} {}{}'.format(path, args.split, name, path, name))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "tools/syntactic_semantic_embeddings/WordGCN/switch_evaluation_data.py",
+    "line": 21,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "20 \t\tos.system( 'rm -r {}{}'.format(path, name))\n21 \t\tos.system( 'cp -r {}{}/{} {}{}'.format(path, args.split, name, path, name))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "tools/syntactic_semantic_embeddings/WordGCN/syngcn.py",
+    "line": 436,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "435 \n436 \t\tif not os.path.isdir(self.p.log_dir): os.system('mkdir {}'.format(self.p.log_dir))\n437 \t\tif not os.path.isdir(self.p.emb_dir): os.system('mkdir {}'.format(self.p.emb_dir))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "tools/syntactic_semantic_embeddings/WordGCN/syngcn.py",
+    "line": 437,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "436 \t\tif not os.path.isdir(self.p.log_dir): os.system('mkdir {}'.format(self.p.log_dir))\n437 \t\tif not os.path.isdir(self.p.emb_dir): os.system('mkdir {}'.format(self.p.emb_dir))\n438",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "build_vocab.py",
+    "line": 28,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "build_vocab.py",
+    "line": 29,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-system-call-tainted-env-args.dangerous-system-call-tainted-env-args",
+    "file_path": "tools/syntactic_semantic_embeddings/WordGCN/switch_evaluation_data.py",
+    "line": 20,
+    "message": "Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.dangerous-system-call-tainted-env-args.dangerous-system-call-tainted-env-args",
+    "file_path": "tools/syntactic_semantic_embeddings/WordGCN/switch_evaluation_data.py",
+    "line": 21,
+    "message": "Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

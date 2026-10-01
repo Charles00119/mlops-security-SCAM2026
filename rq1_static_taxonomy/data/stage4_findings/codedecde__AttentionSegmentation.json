@@ -1,0 +1,632 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "AttentionSegmentation/commons/model_utils.py",
+    "line": 87,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "86     if isinstance(src_model, str):\n87         src_model = torch.load(\n88             src_model, map_location=lambda storage, loc: storage)\n89     common_layers = list(",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "AttentionSegmentation/commons/trainer.py",
+    "line": 370,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "369         logger.info(\"Loading best model from {0}\".format(model_path))\n370         model_state = torch.load(model_path,\n371                                  map_location=util.device_mapping(-1))\n372         self._model.load_state_dict(model_state)",
+    "stage": "training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "AttentionSegmentation/commons/trainer.py",
+    "line": 686,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "685         # buffer. The GPU transfer happens implicitly in load_state_dict.\n686         model_state = torch.load(\n687             model_path, map_location=util.device_mapping(-1))\n688         training_state = torch.load(",
+    "stage": "training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "AttentionSegmentation/commons/trainer.py",
+    "line": 688,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "687             model_path, map_location=util.device_mapping(-1))\n688         training_state = torch.load(\n689             training_state_path, map_location=util.device_mapping(-1))\n690         self._model.load_state_dict(model_state)",
+    "stage": "training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "AttentionSegmentation/model/attn_classifier.py",
+    "line": 87,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "86         self.text_field_embedder = text_field_embedder\n87         self.label_indexer = eval(label_indexer)\n88         # FIXME: Implement this",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B307",
+    "file_path": "AttentionSegmentation/model/dyn_hier_attn_classifier.py",
+    "line": 84,
+    "message": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+    "snippet": "83         self.label_namespace = label_namespace\n84         self.label_indexer = eval(label_indexer)\n85         # FIXME: Implement this",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "AttentionSegmentation/model/inference.py",
+    "line": 108,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "107         logger.info(\"Loading Model\")\n108         model_state = torch.load(model_path,\n109                                  map_location=util.device_mapping(-1))\n110         old_keys = []",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "AttentionSegmentation/trainer.py",
+    "line": 70,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "69         logger.info(\"Loading best model from {0}\".format(model_path))\n70         model_state = torch.load(model_path,\n71                                  map_location=util.device_mapping(-1))\n72         self._model.load_state_dict(model_state)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "allennlp/commands/train.py",
+    "line": 310,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "309     best_model_state_path = os.path.join(serialization_dir, 'best.th')\n310     best_model_state = torch.load(best_model_state_path)\n311     best_model = model",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "allennlp/common/file_utils.py",
+    "line": 101,
+    "message": "Call to requests without timeout",
+    "snippet": "100     # make HEAD request to check ETag\n101     response = requests.head(url)\n102     if response.status_code != 200:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "allennlp/common/file_utils.py",
+    "line": 119,
+    "message": "Call to requests without timeout",
+    "snippet": "118             # GET file object\n119             req = requests.get(url, stream=True)\n120             content_length = req.headers.get('Content-Length')",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "allennlp/common/testing/test_case.py",
+    "line": 26,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "25 \n26         self.TEST_DIR = \"/tmp/allennlp_tests/\"\n27         os.makedirs(self.TEST_DIR, exist_ok=True)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B202",
+    "file_path": "allennlp/models/archival.py",
+    "line": 116,
+    "message": "tarfile.extractall used without any validation. Please check and discard dangerous members.",
+    "snippet": "115         with tarfile.open(archive_file, 'r:gz') as archive:\n116             archive.extractall(tempdir)\n117",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "allennlp/models/model.py",
+    "line": 243,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "242         model = Model.from_params(vocab, model_params)\n243         model_state = torch.load(weights_file, map_location=util.device_mapping(cuda_device))\n244         model.load_state_dict(model_state)",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "allennlp/service/predictors/wikitables_parser.py",
+    "line": 37,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "36         if not os.path.exists(abbreviations_path):\n37             run(f'wget {ABBREVIATIONS_FILE}', shell=True)\n38             run(f'mv wikitables-abbreviations.tsv {abbreviations_path}', shell=True)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "allennlp/service/predictors/wikitables_parser.py",
+    "line": 38,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "37             run(f'wget {ABBREVIATIONS_FILE}', shell=True)\n38             run(f'mv wikitables-abbreviations.tsv {abbreviations_path}', shell=True)\n39",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "allennlp/service/predictors/wikitables_parser.py",
+    "line": 42,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "41         if not os.path.exists(grammar_path):\n42             run(f'wget {GROW_FILE}', shell=True)\n43             run(f'mv wikitables-grow.grammar {grammar_path}', shell=True)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "allennlp/service/predictors/wikitables_parser.py",
+    "line": 43,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "42             run(f'wget {GROW_FILE}', shell=True)\n43             run(f'mv wikitables-grow.grammar {grammar_path}', shell=True)\n44",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "allennlp/service/predictors/wikitables_parser.py",
+    "line": 115,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "114                             table_dir])\n115         run(command, shell=True)\n116",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "allennlp/service/server_flask.py",
+    "line": 70,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "69 \n70     http_server = WSGIServer(('0.0.0.0', port), app)\n71     logger.info(\"Server started on port %i.  Please visit: http://localhost:%i\", port, port)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B104",
+    "file_path": "allennlp/service/server_simple.py",
+    "line": 150,
+    "message": "Possible binding to all interfaces.",
+    "snippet": "149 \n150     http_server = WSGIServer(('0.0.0.0', args.port), app)\n151     print(f\"Model loaded, serving demo on port {args.port}\")",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "allennlp/training/metrics/evalb_bracketing_scorer.py",
+    "line": 90,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "89                   f\"{gold_path} {predicted_path} > {output_path}\"\n90         subprocess.run(command, shell=True, check=True)\n91",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "allennlp/training/metrics/evalb_bracketing_scorer.py",
+    "line": 127,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "126     def compile_evalb(evalb_directory_path: str = DEFAULT_EVALB_DIR):\n127         os.system(\"cd {} && make && cd ../../../\".format(evalb_directory_path))\n128",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "allennlp/training/metrics/evalb_bracketing_scorer.py",
+    "line": 131,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "130     def clean_evalb(evalb_directory_path: str = DEFAULT_EVALB_DIR):\n131         os.system(\"rm {}\".format(os.path.join(evalb_directory_path, \"evalb\")))",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "allennlp/training/metrics/wikitables_accuracy.py",
+    "line": 83,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "82         if not os.path.exists(abbreviations_path):\n83             subprocess.run(f'wget {ABBREVIATIONS_FILE}', shell=True)\n84             subprocess.run(f'mv wikitables-abbreviations.tsv {abbreviations_path}', shell=True)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "allennlp/training/metrics/wikitables_accuracy.py",
+    "line": 84,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "83             subprocess.run(f'wget {ABBREVIATIONS_FILE}', shell=True)\n84             subprocess.run(f'mv wikitables-abbreviations.tsv {abbreviations_path}', shell=True)\n85",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "allennlp/training/metrics/wikitables_accuracy.py",
+    "line": 88,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "87         if not os.path.exists(grammar_path):\n88             subprocess.run(f'wget {GROW_FILE}', shell=True)\n89             subprocess.run(f'mv wikitables-grow.grammar {grammar_path}', shell=True)",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "allennlp/training/metrics/wikitables_accuracy.py",
+    "line": 89,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "88             subprocess.run(f'wget {GROW_FILE}', shell=True)\n89             subprocess.run(f'mv wikitables-grow.grammar {grammar_path}', shell=True)\n90",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "allennlp/training/trainer.py",
+    "line": 851,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "850         # buffer. The GPU transfer happens implicitly in load_state_dict.\n851         model_state = torch.load(model_path, map_location=util.device_mapping(-1))\n852         training_state = torch.load(training_state_path, map_location=util.device_mapping(-1))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "allennlp/training/trainer.py",
+    "line": 852,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "851         model_state = torch.load(model_path, map_location=util.device_mapping(-1))\n852         training_state = torch.load(training_state_path, map_location=util.device_mapping(-1))\n853         self._model.load_state_dict(model_state)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "AttentionSegmentation/model/attn_classifier.py",
+    "line": 87,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.eval-detected.eval-detected",
+    "file_path": "AttentionSegmentation/model/dyn_hier_attn_classifier.py",
+    "line": 84,
+    "message": "Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "allennlp/data/dataset_readers/reading_comprehension/squad.py",
+    "line": 95,
+    "message": "Detected a python logger call with a potential hardcoded secret \"Passage tokens: %s\" being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "allennlp/data/dataset_readers/reading_comprehension/squad.py",
+    "line": 99,
+    "message": "Detected a python logger call with a potential hardcoded secret \"Tokens in answer: %s\" being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "allennlp/data/token_indexers/dep_label_indexer.py",
+    "line": 36,
+    "message": "Detected a python logger call with a potential hardcoded secret \"Token had no dependency label: %s\" being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "allennlp/data/token_indexers/pos_tag_indexer.py",
+    "line": 43,
+    "message": "Detected a python logger call with a potential hardcoded secret \"Token had no POS tag: %s\" being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "allennlp/data/vocabulary.py",
+    "line": 244,
+    "message": "Detected a python logger call with a potential hardcoded secret \"Loading token dictionary from %s.\" being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "allennlp/data/vocabulary.py",
+    "line": 422,
+    "message": "Detected a python logger call with a potential hardcoded secret 'Token: %s' being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "allennlp/service/predictors/wikitables_parser.py",
+    "line": 38,
+    "message": "Found 'subprocess' function 'run' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "allennlp/service/predictors/wikitables_parser.py",
+    "line": 43,
+    "message": "Found 'subprocess' function 'run' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "allennlp/service/predictors/wikitables_parser.py",
+    "line": 115,
+    "message": "Found 'subprocess' function 'run' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "c.lang.security.insecure-use-string-copy-fn.insecure-use-string-copy-fn",
+    "file_path": "allennlp/tools/EVALB/evalb.c",
+    "line": 386,
+    "message": "Finding triggers whenever there is a strcpy or strncpy used. This is an issue because strcpy does not affirm the size of the destination array and strncpy will not automatically NULL-terminate strings. This can lead to buffer overflows, which can cause program crashes and potentially let an attacker inject code in the program. Fix this by using strcpy_s instead (although note that strcpy_s is an optional part of the C11 standard, and so may not be available).",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "c.lang.security.insecure-use-string-copy-fn.insecure-use-string-copy-fn",
+    "file_path": "allennlp/tools/EVALB/evalb.c",
+    "line": 572,
+    "message": "Finding triggers whenever there is a strcpy or strncpy used. This is an issue because strcpy does not affirm the size of the destination array and strncpy will not automatically NULL-terminate strings. This can lead to buffer overflows, which can cause program crashes and potentially let an attacker inject code in the program. Fix this by using strcpy_s instead (although note that strcpy_s is an optional part of the C11 standard, and so may not be available).",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "c.lang.security.insecure-use-string-copy-fn.insecure-use-string-copy-fn",
+    "file_path": "allennlp/tools/EVALB/evalb.c",
+    "line": 578,
+    "message": "Finding triggers whenever there is a strcpy or strncpy used. This is an issue because strcpy does not affirm the size of the destination array and strncpy will not automatically NULL-terminate strings. This can lead to buffer overflows, which can cause program crashes and potentially let an attacker inject code in the program. Fix this by using strcpy_s instead (although note that strcpy_s is an optional part of the C11 standard, and so may not be available).",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "c.lang.security.insecure-use-string-copy-fn.insecure-use-string-copy-fn",
+    "file_path": "allennlp/tools/EVALB/evalb.c",
+    "line": 584,
+    "message": "Finding triggers whenever there is a strcpy or strncpy used. This is an issue because strcpy does not affirm the size of the destination array and strncpy will not automatically NULL-terminate strings. This can lead to buffer overflows, which can cause program crashes and potentially let an attacker inject code in the program. Fix this by using strcpy_s instead (although note that strcpy_s is an optional part of the C11 standard, and so may not be available).",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "c.lang.security.insecure-use-string-copy-fn.insecure-use-string-copy-fn",
+    "file_path": "allennlp/tools/EVALB/evalb.c",
+    "line": 595,
+    "message": "Finding triggers whenever there is a strcpy or strncpy used. This is an issue because strcpy does not affirm the size of the destination array and strncpy will not automatically NULL-terminate strings. This can lead to buffer overflows, which can cause program crashes and potentially let an attacker inject code in the program. Fix this by using strcpy_s instead (although note that strcpy_s is an optional part of the C11 standard, and so may not be available).",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "c.lang.security.insecure-use-string-copy-fn.insecure-use-string-copy-fn",
+    "file_path": "allennlp/tools/EVALB/evalb.c",
+    "line": 597,
+    "message": "Finding triggers whenever there is a strcpy or strncpy used. This is an issue because strcpy does not affirm the size of the destination array and strncpy will not automatically NULL-terminate strings. This can lead to buffer overflows, which can cause program crashes and potentially let an attacker inject code in the program. Fix this by using strcpy_s instead (although note that strcpy_s is an optional part of the C11 standard, and so may not be available).",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "c.lang.security.insecure-use-string-copy-fn.insecure-use-string-copy-fn",
+    "file_path": "allennlp/tools/EVALB/evalb.c",
+    "line": 608,
+    "message": "Finding triggers whenever there is a strcpy or strncpy used. This is an issue because strcpy does not affirm the size of the destination array and strncpy will not automatically NULL-terminate strings. This can lead to buffer overflows, which can cause program crashes and potentially let an attacker inject code in the program. Fix this by using strcpy_s instead (although note that strcpy_s is an optional part of the C11 standard, and so may not be available).",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "c.lang.security.insecure-use-string-copy-fn.insecure-use-string-copy-fn",
+    "file_path": "allennlp/tools/EVALB/evalb.c",
+    "line": 610,
+    "message": "Finding triggers whenever there is a strcpy or strncpy used. This is an issue because strcpy does not affirm the size of the destination array and strncpy will not automatically NULL-terminate strings. This can lead to buffer overflows, which can cause program crashes and potentially let an attacker inject code in the program. Fix this by using strcpy_s instead (although note that strcpy_s is an optional part of the C11 standard, and so may not be available).",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "c.lang.security.insecure-use-string-copy-fn.insecure-use-string-copy-fn",
+    "file_path": "allennlp/tools/EVALB/evalb.c",
+    "line": 700,
+    "message": "Finding triggers whenever there is a strcpy or strncpy used. This is an issue because strcpy does not affirm the size of the destination array and strncpy will not automatically NULL-terminate strings. This can lead to buffer overflows, which can cause program crashes and potentially let an attacker inject code in the program. Fix this by using strcpy_s instead (although note that strcpy_s is an optional part of the C11 standard, and so may not be available).",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "c.lang.security.insecure-use-string-copy-fn.insecure-use-string-copy-fn",
+    "file_path": "allennlp/tools/EVALB/evalb.c",
+    "line": 701,
+    "message": "Finding triggers whenever there is a strcpy or strncpy used. This is an issue because strcpy does not affirm the size of the destination array and strncpy will not automatically NULL-terminate strings. This can lead to buffer overflows, which can cause program crashes and potentially let an attacker inject code in the program. Fix this by using strcpy_s instead (although note that strcpy_s is an optional part of the C11 standard, and so may not be available).",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "c.lang.security.insecure-use-string-copy-fn.insecure-use-string-copy-fn",
+    "file_path": "allennlp/tools/EVALB/evalb.c",
+    "line": 717,
+    "message": "Finding triggers whenever there is a strcpy or strncpy used. This is an issue because strcpy does not affirm the size of the destination array and strncpy will not automatically NULL-terminate strings. This can lead to buffer overflows, which can cause program crashes and potentially let an attacker inject code in the program. Fix this by using strcpy_s instead (although note that strcpy_s is an optional part of the C11 standard, and so may not be available).",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "c.lang.security.insecure-use-string-copy-fn.insecure-use-string-copy-fn",
+    "file_path": "allennlp/tools/EVALB/evalb.c",
+    "line": 718,
+    "message": "Finding triggers whenever there is a strcpy or strncpy used. This is an issue because strcpy does not affirm the size of the destination array and strncpy will not automatically NULL-terminate strings. This can lead to buffer overflows, which can cause program crashes and potentially let an attacker inject code in the program. Fix this by using strcpy_s instead (although note that strcpy_s is an optional part of the C11 standard, and so may not be available).",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "c.lang.security.insecure-use-string-copy-fn.insecure-use-string-copy-fn",
+    "file_path": "allennlp/tools/EVALB/evalb.c",
+    "line": 732,
+    "message": "Finding triggers whenever there is a strcpy or strncpy used. This is an issue because strcpy does not affirm the size of the destination array and strncpy will not automatically NULL-terminate strings. This can lead to buffer overflows, which can cause program crashes and potentially let an attacker inject code in the program. Fix this by using strcpy_s instead (although note that strcpy_s is an optional part of the C11 standard, and so may not be available).",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "c.lang.security.insecure-use-string-copy-fn.insecure-use-string-copy-fn",
+    "file_path": "allennlp/tools/EVALB/evalb.c",
+    "line": 879,
+    "message": "Finding triggers whenever there is a strcpy or strncpy used. This is an issue because strcpy does not affirm the size of the destination array and strncpy will not automatically NULL-terminate strings. This can lead to buffer overflows, which can cause program crashes and potentially let an attacker inject code in the program. Fix this by using strcpy_s instead (although note that strcpy_s is an optional part of the C11 standard, and so may not be available).",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "c.lang.security.insecure-use-string-copy-fn.insecure-use-string-copy-fn",
+    "file_path": "allennlp/tools/EVALB/evalb.c",
+    "line": 893,
+    "message": "Finding triggers whenever there is a strcpy or strncpy used. This is an issue because strcpy does not affirm the size of the destination array and strncpy will not automatically NULL-terminate strings. This can lead to buffer overflows, which can cause program crashes and potentially let an attacker inject code in the program. Fix this by using strcpy_s instead (although note that strcpy_s is an optional part of the C11 standard, and so may not be available).",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "c.lang.security.insecure-use-string-copy-fn.insecure-use-string-copy-fn",
+    "file_path": "allennlp/tools/EVALB/evalb.c",
+    "line": 905,
+    "message": "Finding triggers whenever there is a strcpy or strncpy used. This is an issue because strcpy does not affirm the size of the destination array and strncpy will not automatically NULL-terminate strings. This can lead to buffer overflows, which can cause program crashes and potentially let an attacker inject code in the program. Fix this by using strcpy_s instead (although note that strcpy_s is an optional part of the C11 standard, and so may not be available).",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "c.lang.security.insecure-use-string-copy-fn.insecure-use-string-copy-fn",
+    "file_path": "allennlp/tools/EVALB/evalb.c",
+    "line": 933,
+    "message": "Finding triggers whenever there is a strcpy or strncpy used. This is an issue because strcpy does not affirm the size of the destination array and strncpy will not automatically NULL-terminate strings. This can lead to buffer overflows, which can cause program crashes and potentially let an attacker inject code in the program. Fix this by using strcpy_s instead (although note that strcpy_s is an optional part of the C11 standard, and so may not be available).",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "c.lang.security.insecure-use-string-copy-fn.insecure-use-string-copy-fn",
+    "file_path": "allennlp/tools/EVALB/evalb.c",
+    "line": 1032,
+    "message": "Finding triggers whenever there is a strcpy or strncpy used. This is an issue because strcpy does not affirm the size of the destination array and strncpy will not automatically NULL-terminate strings. This can lead to buffer overflows, which can cause program crashes and potentially let an attacker inject code in the program. Fix this by using strcpy_s instead (although note that strcpy_s is an optional part of the C11 standard, and so may not be available).",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "c.lang.security.insecure-use-string-copy-fn.insecure-use-string-copy-fn",
+    "file_path": "allennlp/tools/EVALB/evalb.c",
+    "line": 1033,
+    "message": "Finding triggers whenever there is a strcpy or strncpy used. This is an issue because strcpy does not affirm the size of the destination array and strncpy will not automatically NULL-terminate strings. This can lead to buffer overflows, which can cause program crashes and potentially let an attacker inject code in the program. Fix this by using strcpy_s instead (although note that strcpy_s is an optional part of the C11 standard, and so may not be available).",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "allennlp/training/metrics/evalb_bracketing_scorer.py",
+    "line": 90,
+    "message": "Found 'subprocess' function 'run' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "allennlp/training/metrics/wikitables_accuracy.py",
+    "line": 84,
+    "message": "Found 'subprocess' function 'run' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "allennlp/training/metrics/wikitables_accuracy.py",
+    "line": 89,
+    "message": "Found 'subprocess' function 'run' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  }
+]

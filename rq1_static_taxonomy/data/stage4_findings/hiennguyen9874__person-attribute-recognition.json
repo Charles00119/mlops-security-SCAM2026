@@ -1,0 +1,132 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "attention/cam.py",
+    "line": 48,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "47     print(\"Loading checkpoint: {} ...\".format(config[\"resume\"]))\n48     checkpoint = torch.load(config[\"resume\"], map_location=map_location)\n49",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "attention/gradcam.py",
+    "line": 156,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "155     print(\"Loading checkpoint: {} ...\".format(config[\"resume\"]))\n156     checkpoint = torch.load(config[\"resume\"], map_location=map_location)\n157",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "evaluators/recognition_metrics.py",
+    "line": 521,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "520     logger_func(\"Loading checkpoint: {} ...\".format(config[\"resume\"]))\n521     checkpoint = torch.load(config[\"resume\"], map_location=map_location)\n522",
+    "stage": "inference"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "extractor.py",
+    "line": 44,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "43 \n44     attribute_name = pickle.load(open(path_attribute, \"rb\"))\n45",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "extractor.py",
+    "line": 47,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "46     model, _ = build_model(config, num_classes=len(attribute_name))\n47     checkpoint = torch.load(path_model, map_location=map_location)\n48",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "test.py",
+    "line": 42,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "41     logger.info(\"Loading checkpoint: {} ...\".format(config[\"resume\"]))\n42     checkpoint = torch.load(config[\"resume\"], map_location=map_location)\n43",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "torchserve/model.py",
+    "line": 26,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "25 \n26     attribute_name = pickle.load(open(path_attribute, \"rb\"))\n27",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "torchserve/model.py",
+    "line": 30,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "29 \n30     checkpoint = torch.load(path_model, map_location=map_location)\n31",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "trainer/trainer.py",
+    "line": 249,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "248         self.logger.info(\"Loading checkpoint: {} ...\".format(resume_path))\n249         checkpoint = torch.load(resume_path, map_location=self.map_location)\n250         self.model.load_state_dict(checkpoint[\"state_dict\"])",
+    "stage": "evaluation+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "data/image/pa_100k.py",
+    "line": 132,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "data/image/peta.py",
+    "line": 151,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "extractor.py",
+    "line": 44,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "torchserve/model.py",
+    "line": 26,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]

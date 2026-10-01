@@ -1,0 +1,22 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "src/make_prediction_plot.py",
+    "line": 11,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "10 for index, row in df.iterrows():\n11     with open(f'/tmp/{index}_accuracies.csv', 'w') as f:\n12         for i, value in enumerate(row):",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "src/show_statistics.py",
+    "line": 149,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "148 \n149     df.to_csv('/tmp/summary_statistics.csv')",
+    "stage": "unreachable"
+  }
+]

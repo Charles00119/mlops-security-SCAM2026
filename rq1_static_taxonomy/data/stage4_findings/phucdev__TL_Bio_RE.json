@@ -1,0 +1,112 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "tlbiore/data/utils.py",
+    "line": 173,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "172 def get_deep_copy(obj):\n173     return pickle.loads(pickle.dumps(obj))\n174",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "tlbiore/dataset_readers/readers.py",
+    "line": 249,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "248         logger.info(\"Loading features from cached file %s\", cached_features_file)\n249         features = torch.load(cached_features_file)\n250     else:",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tlbiore/models/models.py",
+    "line": 24,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "23         super(RBERT, self).__init__(bert_config)\n24         self.bert = BertModel.from_pretrained(args.pretrained_model_name, config=bert_config)  # Load pretrained bert\n25",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tlbiore/models/models.py",
+    "line": 90,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "89         super(BertForSequenceClassification, self).__init__(bert_config)\n90         self.bert = BertModel.from_pretrained(args.pretrained_model_name, config=bert_config)  # Load pretrained bert\n91",
+    "stage": "modeling"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tlbiore/trainers/trainers.py",
+    "line": 32,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "31 \n32         self.bert_config = BertConfig.from_pretrained(args.pretrained_model_name, num_labels=self.num_labels,\n33                                                       finetuning_task=args.task)\n34         self.model = models[args.model](self.bert_config, args)",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tlbiore/trainers/trainers.py",
+    "line": 258,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "257         try:\n258             self.bert_config = BertConfig.from_pretrained(self.args.model_dir)\n259             logger.info(\"***** Bert config loaded *****\")",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B615",
+    "file_path": "tlbiore/utils.py",
+    "line": 19,
+    "message": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+    "snippet": "18 def load_tokenizer(args):\n19     tokenizer = BertTokenizer.from_pretrained(args.pretrained_model_name)\n20     tokenizer.add_special_tokens({\"additional_special_tokens\": ADDITIONAL_SPECIAL_TOKENS})",
+    "stage": "data_acquisition+data_preparation+evaluation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "tlbiore/data/utils.py",
+    "line": 173,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "tlbiore/data/utils.py",
+    "line": 173,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "tlbiore/dataset_readers/readers.py",
+    "line": 214,
+    "message": "Detected a python logger call with a potential hardcoded secret \"tokens: %s\" % \" \".join([str(x) for x in tokens]) being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure",
+    "file_path": "tlbiore/dataset_readers/readers.py",
+    "line": 217,
+    "message": "Detected a python logger call with a potential hardcoded secret \"token_type_ids: %s\" % \" \".join([str(x) for x in token_type_ids]) being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.",
+    "snippet": "requires login",
+    "stage": "data_acquisition"
+  }
+]

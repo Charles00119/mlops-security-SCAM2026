@@ -1,0 +1,272 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B108",
+    "file_path": "alignn/cli.py",
+    "line": 22,
+    "message": "Probable insecure usage of temp file/directory.",
+    "snippet": "21     progress: bool = False,\n22     checkpoint_dir: Path = Path(\"/tmp/models\"),\n23     store_outputs: bool = False,",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "alignn/data.py",
+    "line": 270,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "269         print(\"This module is made for debugging only.\")\n270         train_loader = torch.load(train_sample)\n271         val_loader = torch.load(val_sample)",
+    "stage": "data_acquisition+data_preparation+evaluation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "alignn/data.py",
+    "line": 271,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "270         train_loader = torch.load(train_sample)\n271         val_loader = torch.load(val_sample)\n272         test_loader = torch.load(test_sample)",
+    "stage": "data_acquisition+data_preparation+evaluation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "alignn/data.py",
+    "line": 272,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "271         val_loader = torch.load(val_sample)\n272         test_loader = torch.load(test_sample)\n273         if train_loader.pin_memory != pin_memory:",
+    "stage": "data_acquisition+data_preparation+evaluation"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B113",
+    "file_path": "alignn/pretrained.py",
+    "line": 177,
+    "message": "Call to requests without timeout",
+    "snippet": "176     if not os.path.isfile(path):\n177         response = requests.get(url, stream=True)\n178         total_size_in_bytes = int(response.headers.get(\"content-length\", 0))",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "alignn/pretrained.py",
+    "line": 202,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "201         f.write(data)\n202     model.load_state_dict(torch.load(filename, map_location=device)[\"model\"])\n203     model.to(device)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "alignn/scripts/defect.py",
+    "line": 38,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "37     model = ALIGNN()\n38     model.load_state_dict(torch.load(model_path, map_location=device)[\"model\"])\n39     # model=torch.load('checkpoint_250.pt')['model']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "alignn/scripts/final_model.py",
+    "line": 38,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "37 model = ALIGNN()\n38 model.load_state_dict(torch.load(model_path, map_location=device)[\"model\"])\n39 model.to(device)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "alignn/scripts/make_test_split_cross_pred.py",
+    "line": 31,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "30 model = ALIGNN()\n31 model.load_state_dict(torch.load(model_path, map_location=device)[\"model\"])\n32 # model=torch.load('checkpoint_250.pt')['model']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "alignn/scripts/predict.py",
+    "line": 12,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "11 model = ALIGNN()\n12 model.load_state_dict(torch.load(\"checkpoint_250.pt\")[\"model\"])\n13 # model=torch.load('checkpoint_250.pt')['model']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "alignn/scripts/predict_db.py",
+    "line": 17,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "16 model = ALIGNN()\n17 model.load_state_dict(torch.load(model_path, map_location=device)[\"model\"])\n18 # model=torch.load('checkpoint_250.pt')['model']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "alignn/scripts/predict_db_all.py",
+    "line": 55,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "54                             model.load_state_dict(\n55                                 torch.load(\n56                                     gap_model_path, map_location=device\n57                                 )[\"model\"]\n58                             )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "alignn/scripts/predict_db_all.py",
+    "line": 64,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "63                             model.load_state_dict(\n64                                 torch.load(\n65                                     form_model_path, map_location=device\n66                                 )[\"model\"]\n67                             )",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "alignn/scripts/train_cgcnn_repo.py",
+    "line": 24,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "23         cmd = \"git clone https://github.com/txie-93/cgcnn.git\"\n24         os.system(cmd)\n25     cwd = os.getcwd()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "alignn/scripts/train_cgcnn_repo.py",
+    "line": 38,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "37     if not os.path.exists(\"atom_init.json\"):\n38         os.system(cmd)\n39",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "alignn/scripts/train_cgcnn_repo.py",
+    "line": 56,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "55     )\n56     os.system(cmd)\n57     os.chdir(cwd)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "alignn/tests/test_prop.py",
+    "line": 40,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "39     cmd1 = 'python alignn/train_folder.py --root_dir \"alignn/examples/sample_data\" --config \"alignn/examples/sample_data/config_example.json\"'\n40     os.system(cmd1)\n41     cmd2 = 'python alignn/train_folder.py --root_dir \"alignn/examples/sample_data\" --classification_threshold 0.01 --config \"alignn/examples/sample_data/config_example.json\"'",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "alignn/tests/test_prop.py",
+    "line": 42,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "41     cmd2 = 'python alignn/train_folder.py --root_dir \"alignn/examples/sample_data\" --classification_threshold 0.01 --config \"alignn/examples/sample_data/config_example.json\"'\n42     os.system(cmd2)\n43     cmd3 = 'python alignn/train_folder.py --root_dir \"alignn/examples/sample_data_multi_prop\" --config \"alignn/examples/sample_data/config_example.json\"'",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "alignn/tests/test_prop.py",
+    "line": 44,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "43     cmd3 = 'python alignn/train_folder.py --root_dir \"alignn/examples/sample_data_multi_prop\" --config \"alignn/examples/sample_data/config_example.json\"'\n44     os.system(cmd3)\n45",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "alignn/tests/test_prop.py",
+    "line": 236,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "235     cmd1 = \"python alignn/pretrained.py\"\n236     os.system(cmd1)\n237",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "alignn/train.py",
+    "line": 82,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "81     \"\"\"Use standard scalar and PCS for multi-output data.\"\"\"\n82     sc = pk.load(open(os.path.join(tmp_output_dir, \"sc.pkl\"), \"rb\"))\n83     y_pred, y = output",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "alignn/train.py",
+    "line": 557,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "556                 if config.standard_scalar_and_pca:\n557                     sc = pk.load(open(\"sc.pkl\", \"rb\"))\n558                     out_data = list(",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B301",
+    "file_path": "alignn/train.py",
+    "line": 593,
+    "message": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+    "snippet": "592                 if config.standard_scalar_and_pca:\n593                     sc = pk.load(\n594                         open(os.path.join(tmp_output_dir, \"sc.pkl\"), \"rb\")\n595                     )\n596                     out_data = sc.transform(np.array(out_data).reshape(-1, 1))[",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "alignn/data.py",
+    "line": 408,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+data_preparation+evaluation"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "alignn/train.py",
+    "line": 82,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "alignn/train.py",
+    "line": 557,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation+inference+training"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "medium",
+    "rule_id": "python.lang.security.deserialization.pickle.avoid-pickle",
+    "file_path": "alignn/train.py",
+    "line": 593,
+    "message": "Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When unpickling, the serialized data could be manipulated to run arbitrary code. Instead, consider serializing the relevant data as JSON or a similar text-based serialization format.",
+    "snippet": "requires login",
+    "stage": "data_acquisition+evaluation+inference+training"
+  }
+]

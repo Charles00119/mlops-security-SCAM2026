@@ -1,0 +1,342 @@
+[
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "neuroc_pygs/eval_full.py",
+    "line": 12,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "11 def evaluate(model_path, model, data, subgraph_loader):\n12     save_dict = torch.load(model_path)\n13     model_dict, epoch = save_dict['model_state_dict'], save_dict['epoch']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "neuroc_pygs/eval_full.py",
+    "line": 46,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "45     if len(os.listdir(args.checkpoint_dir)) > 0:\n46         os.system(f'rm {args.checkpoint_dir}/*')\n47     data = build_dataset(args)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "neuroc_pygs/eval_sampling.py",
+    "line": 12,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "11 def evaluate(model_path, model, data, subgraph_loader):\n12     save_dict = torch.load(model_path)\n13     model_dict, epoch = save_dict['model_state_dict'], save_dict['epoch']",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "neuroc_pygs/eval_sampling.py",
+    "line": 44,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "43     if len(os.listdir(args.checkpoint_dir)) > 0:\n44         os.system(f'rm {args.checkpoint_dir}/*')\n45     data = build_dataset(args)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "neuroc_pygs/opt_experiment.py",
+    "line": 8,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "7 if '--mode None' in default_args:\n8     pro_eval = subprocess.Popen(f'python eval_full.py --device cuda:0 ' + default_args, shell=True)\n9 else:",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "neuroc_pygs/opt_experiment.py",
+    "line": 10,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "9 else:\n10     pro_eval = subprocess.Popen(f'python eval_sampling.py --device cuda:1 ' + default_args, shell=True)\n11",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "neuroc_pygs/opt_experiment.py",
+    "line": 13,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "12 # 训练与评估步骤的流水线(--device)\n13 pro_train = subprocess.Popen(f'python train.py --device cuda:0 ' + default_args, shell=True)\n14",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "neuroc_pygs/sec4_time/epoch_opt_full_eval.py",
+    "line": 14,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "13     t0 = time.time()\n14     save_dict = torch.load(model_path)\n15     model.load_state_dict(save_dict['model_state_dict'])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "neuroc_pygs/sec4_time/epoch_opt_full_eval.py",
+    "line": 56,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "55     if len(os.listdir(args.checkpoint_dir)) > 0:\n56         os.system(f'rm {args.checkpoint_dir}/*')\n57     data = build_dataset(args)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "neuroc_pygs/sec4_time/epoch_opt_sampling_eval.py",
+    "line": 15,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "14     t0 = time.time()\n15     save_dict = torch.load(model_path)\n16     model.load_state_dict(save_dict['model_state_dict'])",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "neuroc_pygs/sec4_time/epoch_opt_sampling_eval.py",
+    "line": 49,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "48     if len(os.listdir(args.checkpoint_dir)) > 0:\n49         os.system(f'rm {args.checkpoint_dir}/*')\n50     data = build_dataset(args)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "neuroc_pygs/sec4_time/test_epoch_full.py",
+    "line": 8,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "7     pro_train = subprocess.Popen(\n8         \"python sec4_time/epoch_opt_full_train.py --device cuda:0 \" + args, shell=True)\n9     pro_eval = subprocess.Popen(\n10         \"python epoch_opt_full_eval.py --device cuda:1 \" + args, shell=True)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "neuroc_pygs/sec4_time/test_epoch_full.py",
+    "line": 10,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "9     pro_eval = subprocess.Popen(\n10         \"python epoch_opt_full_eval.py --device cuda:1 \" + args, shell=True)\n11     print(f'Pid train process: {pro_train.pid}, eval_process: {pro_eval.pid}')\n12     pro_eval.communicate()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "neuroc_pygs/sec4_time/test_epoch_full.py",
+    "line": 18,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "17 def epoch(args=''):\n18     pro = subprocess.Popen(\"python epoch_base_full.py --device cuda:0 \" + args, shell=True)\n19     pro.communicate()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "neuroc_pygs/sec4_time/test_epoch_sampling_total.py",
+    "line": 14,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "13     pro_train = subprocess.Popen(\n14         \"python epoch_opt_sampling_train.py --device cuda:0 \" + args, shell=True)\n15     pro_eval = subprocess.Popen(\n16         \"python epoch_opt_sampling_eval.py --device cuda:1 \" + args, shell=True)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "neuroc_pygs/sec4_time/test_epoch_sampling_total.py",
+    "line": 16,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "15     pro_eval = subprocess.Popen(\n16         \"python epoch_opt_sampling_eval.py --device cuda:1 \" + args, shell=True)\n17     print(f'Pid train process: {pro_train.pid}, eval_process: {pro_eval.pid}')\n18     pro_eval.communicate()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B602",
+    "file_path": "neuroc_pygs/sec4_time/test_epoch_sampling_total.py",
+    "line": 25,
+    "message": "subprocess call with shell=True identified, security issue.",
+    "snippet": "24     print(args)\n25     pro = subprocess.Popen(\"python epoch_base_sampling.py --device cuda:0 \" + args, shell=True)\n26     pro.communicate()",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "neuroc_pygs/sec6_cutting/cluster_gcn.py",
+    "line": 279,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "278     model.reset_parameters()\n279     save_dict = torch.load(os.path.join(PROJECT_PATH, 'sec6_cutting', 'best_model_pth',  'cluster_gcn_best_model.pth'))\n280     model.load_state_dict(save_dict)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "neuroc_pygs/sec6_cutting/cluster_gcn_predict.py",
+    "line": 225,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "224     model.reset_parameters()\n225     save_dict = torch.load(os.path.join(PROJECT_PATH, 'sec6_cutting', 'best_model_pth',  'cluster_gcn_best_model.pth'))\n226     model.load_state_dict(save_dict)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "neuroc_pygs/sec6_cutting/cutting_method_acc.py",
+    "line": 24,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "23         # 这里使用的是训练好的模型，对推理进行模拟\n24         save_dict = torch.load(dir_path + f'/{args.model}_{args.dataset}_best_model.pth')\n25         model.load_state_dict(save_dict)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "neuroc_pygs/sec6_cutting/reddit_sage.py",
+    "line": 196,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "195     y = data.y.squeeze().to(device)\n196     save_dict = torch.load(os.path.join(PROJECT_PATH, 'sec6_cutting', 'best_model_pth',  'reddit_sage_best_model.pth'), map_location=device)\n197     model.load_state_dict(save_dict)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "neuroc_pygs/sec6_cutting/reddit_sage_predict.py",
+    "line": 172,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "171     y = data.y.squeeze().to(device)\n172     save_dict = torch.load(os.path.join(PROJECT_PATH, 'sec6_cutting', 'best_model_pth',  'reddit_sage_best_model.pth'), map_location=device)\n173     model.load_state_dict(save_dict)",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "high",
+    "rule_id": "B605",
+    "file_path": "neuroc_pygs/sec6_cutting/run_utils.py",
+    "line": 6,
+    "message": "Starting a process with a shell, possible injection detected, security issue.",
+    "snippet": "5         print(file)\n6         os.system(f'python {file}')",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "neuroc_pygs/utils/citation_datasets.py",
+    "line": 62,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "61         super(Planetoid, self).__init__(root, transform, pre_transform)\n62         self.data, self.slices = torch.load(self.processed_paths[0])\n63",
+    "stage": "reachable_unmapped"
+  },
+  {
+    "tool": "bandit",
+    "severity": "medium",
+    "rule_id": "B614",
+    "file_path": "neuroc_pygs/utils/datasets.py",
+    "line": 33,
+    "message": "Use of unsafe PyTorch load",
+    "snippet": "32         super(DataProcess, self).__init__(root, transform, pre_transform)\n33         self.data, self.slices = torch.load(self.processed_paths[0]) # 直接这里返回就可以\n34",
+    "stage": "data_acquisition"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "neuroc_pygs/opt_experiment.py",
+    "line": 8,
+    "message": "Found 'subprocess' function 'Popen' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "neuroc_pygs/opt_experiment.py",
+    "line": 10,
+    "message": "Found 'subprocess' function 'Popen' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "neuroc_pygs/opt_experiment.py",
+    "line": 13,
+    "message": "Found 'subprocess' function 'Popen' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "neuroc_pygs/sec4_time/test_epoch_full.py",
+    "line": 8,
+    "message": "Found 'subprocess' function 'Popen' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "neuroc_pygs/sec4_time/test_epoch_full.py",
+    "line": 10,
+    "message": "Found 'subprocess' function 'Popen' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "neuroc_pygs/sec4_time/test_epoch_full.py",
+    "line": 18,
+    "message": "Found 'subprocess' function 'Popen' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "neuroc_pygs/sec4_time/test_epoch_sampling_total.py",
+    "line": 14,
+    "message": "Found 'subprocess' function 'Popen' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "neuroc_pygs/sec4_time/test_epoch_sampling_total.py",
+    "line": 16,
+    "message": "Found 'subprocess' function 'Popen' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  },
+  {
+    "tool": "semgrep",
+    "severity": "high",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "file_path": "neuroc_pygs/sec4_time/test_epoch_sampling_total.py",
+    "line": 25,
+    "message": "Found 'subprocess' function 'Popen' with 'shell=True'. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use 'shell=False' instead.",
+    "snippet": "requires login",
+    "stage": "unreachable"
+  }
+]
