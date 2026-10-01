@@ -44,6 +44,11 @@ def run_tool(
             cwd=cwd,
             capture_output=True,
             text=True,
+            # Tool output is UTF-8 JSON; never let a stray byte kill the reader
+            # thread (on Windows the default is cp1252, which raised
+            # UnicodeDecodeError and surfaced as 'NoneType'.strip crashes).
+            encoding="utf-8",
+            errors="replace",
             timeout=timeout,
             check=False,
         )
