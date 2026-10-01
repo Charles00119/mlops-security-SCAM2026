@@ -26,13 +26,19 @@ $env:OPENAI_API_KEY    = "sk-..."          # RQ2 cross-validation (gpt-4o)
 $env:GIT_TERMINAL_PROMPT = "0"; $env:GCM_INTERACTIVE = "Never"
 ```
 
-Static tools (same four as the original run; gitleaks and nbdefense were not
-used and stay off):
+Dependencies (static tools for RQ1, the two SDKs for RQ2; gitleaks and
+nbdefense were never used and stay off; ModelScan ran on the original 408
+with zero findings and is omitted for the extension):
 
 ```powershell
-pip install bandit semgrep pip-audit modelscan
-bandit --version; semgrep --version; pip-audit --version; modelscan --version
+pip install -r requirements.txt
+bandit --version; semgrep --version; pip-audit --version
+python -c "import anthropic, openai; print('SDKs ok')"
 ```
+
+Handoff note: everything below reads from and writes to files in this
+repository, so a second person can pick up at any step by pulling `main`;
+the only things not in the repository are the three keys above.
 
 ## 1. RQ1 — static tools on the new repositories (~1–3 h)
 

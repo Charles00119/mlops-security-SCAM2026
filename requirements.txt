@@ -1,10 +1,16 @@
-# Analysis + figures
+# Analysis + figures (only these are needed to rebuild the released tables)
 matplotlib>=3.7
-# Static-analysis tools (Stage 4)
+openpyxl>=3.1          # reading list_of_repositories.xlsx (corpus construction)
+
+# RQ1 static-analysis tools (Stage 4); needed only to re-scan repositories
 bandit>=1.7
 semgrep>=1.50
 pip-audit>=2.7
-modelscan>=0.8
-# Note: the taxonomy/correlation scripts themselves use only the Python
-# standard library + matplotlib. The tools above are needed only to
-# re-run Stage 4 from scratch; released findings can be analyzed without them.
+# modelscan>=0.8       # ran on the original 408 and reported no findings; omitted for the
+                       # extension. Requires Python <3.13 if you want it: pipx install modelscan
+
+# RQ2 LLM audit + cross-validation (API keys via ANTHROPIC_API_KEY / OPENAI_API_KEY)
+anthropic>=0.40
+openai>=1.40
+
+# Note: the taxonomy/correlation scripts use only the standard library + matplotlib.
